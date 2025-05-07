@@ -1,0 +1,1278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Biochemical Engineering - Chemical Engineering Specialization</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* Base Styles */
+        :root {
+            --primary-color: #1b263b;        /* Deep navy */
+            --primary-light: #2e4057;        /* Lighter navy */
+            --secondary-color: #0a3d3a;      /* Dark emerald */
+            --accent-color: #d4a017;         /* Rich gold */
+            --accent-light: #e8c475;         /* Soft gold */
+            --text-color: #e0e1dd;           /* Off-white for readability */
+            --light-text: #ffffff;           /* Pure white */
+            --dark-text: #a3bffa;            /* Light blue-gray for contrast */
+            --light-bg: #0f172a;             /* Very dark navy background */
+            --dark-bg: #070f21;              /* Darker navy background */
+            --card-bg: #1e293b;              /* Dark slate for cards */
+            --card-shadow: rgba(0, 0, 0, 0.5); /* Subtle shadow */
+            --border-radius: 10px;
+            --box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+            --transition: all 0.3s ease-in-out;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--light-bg);
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        a {
+            text-decoration: none;
+            color: var(--accent-light);
+            transition: var(--transition);
+        }
+
+        a:hover {
+            color: var(--accent-color);
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            border-radius: var(--border-radius);
+        }
+
+        .bg-dark {
+            background-color: var(--dark-bg);
+        }
+
+        /* Navbar */
+        .navbar {
+            background-color: var(--primary-color);
+            color: var(--light-text);
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: var(--box-shadow);
+        }
+
+        .navbar .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--light-text);
+        }
+
+        .back-button a {
+            color: var(--light-text);
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .back-button a:hover {
+            color: var(--accent-light);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            color: var(--light-text);
+            text-align: center;
+            padding: 6rem 0;
+            position: relative;
+        }
+
+        .hero .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0.2;
+            mix-blend-mode: overlay;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        /* Section Styles */
+        .section {
+            padding: 5rem 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+            color: var(--accent-light);
+            position: relative;
+            font-size: 2rem;
+        }
+
+        .section-title::after {
+            content: "";
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background-color: var(--accent-light);
+            border-radius: 2px;
+        }
+
+        .section-intro {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto 2.5rem;
+            font-size: 1.1rem;
+        }
+
+        /* Content Wrapper */
+        .content-wrapper {
+            display: flex;
+            gap: 2.5rem;
+            align-items: center;
+        }
+
+        .text-content {
+            flex: 1;
+        }
+
+        .text-content p {
+            margin-bottom: 1.25rem;
+            font-size: 1.05rem;
+        }
+
+        .image-content {
+            flex: 1;
+            box-shadow: var(--box-shadow);
+            border-radius: var(--border-radius);
+            overflow: hidden;
+        }
+
+        /* Cards Grid */
+        .cards-grid {
+            display: grid;
+            gap: 1.5rem;
+        }
+
+        .two-columns {
+            grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+        }
+
+        .three-columns {
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        }
+
+        .four-columns {
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        }
+
+        /* Card Styles */
+        .card {
+            background-color: var(--card-bg);
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--box-shadow);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .card:hover {
+            border-color: var(--accent-light);
+        }
+
+        .card-header {
+            padding: 1.25rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .card-header h3 {
+            color: var(--accent-light);
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .card-header h3 i {
+            color: var(--accent-color);
+        }
+
+        .card-header p {
+            color: var(--dark-text);
+            font-size: 0.9rem;
+        }
+
+        .card-content {
+            padding: 1.25rem;
+        }
+
+        /* Project Cards */
+        .project-card .card-image {
+            height: 180px;
+            overflow: hidden;
+        }
+
+        .project-card .card-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* Career List */
+        .career-list {
+            list-style: none;
+        }
+
+        .career-list li {
+            display: flex;
+            justify-content: space-between;
+            padding: 0.5rem 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .career-list li:last-child {
+            border-bottom: none;
+        }
+
+        .badge {
+            background-color: rgba(255, 255, 255, 0.15);
+            color: var(--light-text);
+            padding: 0.25rem 0.5rem;
+            border-radius: 9999px;
+            font-size: 0.75rem;
+            font-weight: 600;
+        }
+
+        .badge.top {
+            background-color: var(--accent-color);
+            color: var(--dark-bg);
+        }
+
+        .badge.program {
+            background-color: var(--primary-light);
+            color: var(--light-text);
+        }
+
+        /* Skills List */
+        .skills-list {
+            list-style: none;
+        }
+
+        .skills-list li {
+            padding: 0.5rem 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .skills-list li:last-child {
+            border-bottom: none;
+        }
+
+        .skill-name {
+            font-weight: 600;
+            display: block;
+            margin-bottom: 0.25rem;
+            color: var(--accent-light);
+        }
+
+        .skill-desc {
+            font-size: 0.9rem;
+            color: var(--dark-text);
+        }
+
+        /* Accordion */
+        .accordion {
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            background-color: var(--card-bg);
+        }
+
+        .accordion-item {
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .accordion-item:last-child {
+            border-bottom: none;
+        }
+
+        .accordion-header {
+            padding: 1rem;
+            cursor: pointer;
+            font-weight: 600;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: var(--accent-light);
+        }
+
+        .accordion-header::after {
+            content: '\f078';
+            font-family: 'Font Awesome 5 Free';
+            font-weight: 900;
+        }
+
+        .accordion-content {
+            padding: 0 1rem;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+        }
+
+        .accordion-content p {
+            padding-bottom: 1rem;
+        }
+
+        .accordion-item.active .accordion-header {
+            background-color: rgba(255, 255, 255, 0.05);
+            color: var(--accent-color);
+        }
+
+        .accordion-item.active .accordion-content {
+            max-height: 500px;
+        }
+
+        /* Course List */
+        .course-list {
+            list-style: none;
+            margin-top: 1rem;
+        }
+
+        .course-item {
+            background-color: rgba(255, 255, 255, 0.05);
+            border-radius: var(--border-radius);
+            padding: 1rem;
+            margin-bottom: 1rem;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .course-item:hover {
+            border-color: var(--accent-light);
+        }
+
+        .course-title {
+            font-weight: 600;
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+            color: var(--accent-light);
+        }
+
+        .course-desc {
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .course-meta {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.8rem;
+            color: var(--dark-text);
+        }
+
+        /* Tools Grid */
+        .tools-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .tool-card {
+            background-color: var(--card-bg);
+            border-radius: var(--border-radius);
+            padding: 1.5rem 1rem;
+            text-align: center;
+            box-shadow: var(--box-shadow);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .tool-card:hover {
+            border-color: var(--accent-light);
+        }
+
+        .tool-card i {
+            font-size: 2.5rem;
+            color: var(--accent-light);
+            margin-bottom: 1rem;
+        }
+
+        .tool-card h3 {
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+            color: var(--accent-light);
+        }
+
+        .tool-card p {
+            font-size: 0.9rem;
+            color: var(--dark-text);
+        }
+
+        /* Footer */
+        .footer {
+            background-color: var(--dark-bg);
+            color: var(--light-text);
+            padding: 4rem 0 1rem;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2.5rem;
+            margin-bottom: 2.5rem;
+        }
+
+        .footer-logo h2 {
+            margin-bottom: 1rem;
+        }
+
+        .footer-links h3,
+        .footer-resources h3 {
+            margin-bottom: 1.25rem;
+            position: relative;
+            padding-bottom: 0.5rem;
+            display: inline-block;
+        }
+
+        .footer-links h3::after,
+        .footer-resources h3::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background-color: var(--accent-light);
+        }
+
+        .footer-links ul,
+        .footer-resources ul {
+            list-style-type: none;
+        }
+
+        .footer-links li,
+        .footer-resources li {
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-links a,
+        .footer-resources a {
+            color: var(--dark-text);
+        }
+
+        .footer-links a:hover,
+        .footer-resources a:hover {
+            color: var(--accent-light);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 1.25rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .content-wrapper {
+                flex-direction: column;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .two-columns {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .section {
+                padding: 3.5rem 0;
+            }
+
+            .hero {
+                padding: 5rem 0;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .section-title {
+                font-size: 1.75rem;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .navbar {
+                padding: 0.75rem 0;
+            }
+
+            .logo {
+                font-size: 1.2rem;
+            }
+
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+
+            .section-title {
+                font-size: 1.5rem;
+            }
+
+            .tools-grid {
+                grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="logo">GoFarAsYouCan</div>
+            <div class="back-button">
+                <a href="/Engineering/Chemical/chemical.ejs"><i class="fas fa-arrow-left"></i> Go Back</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="hero">
+        <div class="overlay"></div>
+        <div class="container">
+            <h1>Biochemical Engineering</h1>
+            <p>Harness the power of biology and chemistry to develop innovative solutions for healthcare, energy, and sustainability</p>
+        </div>
+    </header>
+
+    <!-- About Section -->
+    <section class="section" id="about">
+        <div class="container">
+            <h2 class="section-title">What is Biochemical Engineering?</h2>
+            <div class="content-wrapper">
+                <div class="text-content">
+                    <p>Biochemical engineering integrates principles of biology, chemistry, and engineering to design processes that use living organisms or biological molecules to produce valuable products. This field bridges the gap between laboratory discoveries and industrial-scale applications, focusing on areas like pharmaceuticals, biofuels, and food production.</p>
+                    <p>As a biochemical engineer, you'll work on developing and optimizing processes for producing antibiotics, vaccines, biofuels, and enzymes. You'll use techniques like fermentation, cell culture, and genetic engineering to create sustainable and efficient solutions for global challenges such as healthcare, energy, and environmental sustainability.</p>
+                    <p>With the growing demand for biopharmaceuticals and renewable energy, biochemical engineering offers exciting career opportunities in industries that are shaping the future of science and technology.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Key Areas Section -->
+    <section class="section bg-dark" id="key-areas">
+        <div class="container">
+            <h2 class="section-title">Key Areas of Study</h2>
+            <p class="section-intro">Biochemical Engineering encompasses several specialized areas critical to advancing biotechnology and sustainable processes:</p>
+            
+            <div class="cards-grid three-columns">
+                <div class="card">
+                    <div class="card-header">
+                        <h3><i class="fas fa-vial"></i> Fermentation Technology</h3>
+                    </div>
+                    <div class="card-content">
+                        <p>Study of microbial and enzymatic processes to produce chemicals, fuels, and pharmaceuticals through controlled fermentation.</p>
+                        <ul class="skills-list">
+                            <li>
+                                <span class="skill-name">Microbial Kinetics</span>
+                                <p class="skill-desc">Growth models, substrate utilization</p>
+                            </li>
+                            <li>
+                                <span class="skill-name">Bioreactor Design</span>
+                                <p class="skill-desc">Stirred tanks, air-lift reactors</p>
+                            </li>
+                            <li>
+                                <span class="skill-name">Scale-Up</span>
+                                <p class="skill-desc">Lab to industrial-scale fermentation</p>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <h3><i class="fas fa-dna"></i> Genetic Engineering</h3>
+                    </div>
+                    <div class="card-content">
+                        <p>Manipulation of genetic material to enhance the production of proteins, enzymes, and other bio-products.</p>
+                        <ul class="skills-list">
+                            <li>
+                                <span class="skill-name">Recombinant DNA</span>
+                                <p class="skill-desc">Cloning, gene expression</p>
+                            </li>
+                            <li>
+                                <span class="skill-name">CRISPR</span>
+                                <p class="skill-desc">Gene editing techniques</p>
+                            </li>
+                            <li>
+                                <span class="skill-name">Synthetic Biology</span>
+                                <p class="skill-desc">Designing biological systems</p>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <h3><i class="fas fa-flask"></i> Bioprocess Engineering</h3>
+                    </div>
+                    <div class="card-content">
+                        <p>Design and optimization of processes for large-scale production of biological products like vaccines and biofuels.</p>
+                        <ul class="skills-list">
+                            <li>
+                                <span class="skill-name">Mass Transfer</span>
+                                <p class="skill-desc">Oxygen transfer, mixing</p>
+                            </li>
+                            <li>
+                                <span class="skill-name">Process Control</span>
+                                <p class="skill-desc">Automation, feedback systems</p>
+                            </li>
+                            <li>
+                                <span class="skill-name">Downstream Processing</span>
+                                <p class="skill-desc">Purification, separation</p>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="cards-grid three-columns" style="margin-top: 1.5rem;">
+                <div class="card">
+                    <div class="card-header">
+                        <h3><i class="fas fa-seedling"></i> Environmental Biotechnology</h3>
+                    </div>
+                    <div class="card-content">
+                        <p>Use of biological processes to address environmental challenges like waste treatment and bioremediation.</p>
+                        <ul class="skills-list">
+                            <li>
+                                <span class="skill-name">Bioremediation</span>
+                                <p class="skill-desc">Degrading pollutants</p>
+                            </li>
+                            <li>
+                                <span class="skill-name">Wastewater Treatment</span>
+                                <p class="skill-desc">Activated sludge, biofilters</p>
+                            </li>
+                            <li>
+                                <span class="skill-name">Bioenergy</span>
+                                <p class="skill-desc">Biofuels, biogas production</p>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <h3><i class="fas fa-prescription-bottle"></i> Biopharmaceuticals</h3>
+                    </div>
+                    <div class="card-content">
+                        <p>Development of drugs and therapies using biological systems, including monoclonal antibodies and vaccines.</p>
+                        <ul class="skills-list">
+                            <li>
+                                <span class="skill-name">Cell Culture</span>
+                                <p class="skill-desc">Mammalian, microbial cultures</p>
+                            </li>
+                            <li>
+                                <span class="skill-name">Protein Engineering</span>
+                                <p class="skill-desc">Antibody design, optimization</p>
+                            </li>
+                            <li>
+                                <span class="skill-name">GMP Compliance</span>
+                                <p class="skill-desc">Regulatory standards</p>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <h3><i class="fas fa-microscope"></i> Enzyme Technology</h3>
+                    </div>
+                    <div class="card-content">
+                        <p>Application of enzymes in industrial processes, including food, textiles, and pharmaceuticals.</p>
+                        <ul class="skills-list">
+                            <li>
+                                <span class="skill-name">Enzyme Kinetics</span>
+                                <p class="skill-desc">Reaction rates, inhibition</p>
+                            </li>
+                            <li>
+                                <span class="skill-name">Immobilization</span>
+                                <p class="skill-desc">Enzyme stabilization</p>
+                            </li>
+                            <li>
+                                <span class="skill-name">Biocatalysis</span>
+                                <p class="skill-desc">Enzyme-based reactions</p>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Career Opportunities Section -->
+    <section class="section" id="careers">
+        <div class="container">
+            <h2 class="section-title">Career Opportunities</h2>
+            <p class="section-intro">Biochemical Engineering offers diverse career paths in biotechnology, pharmaceuticals, and environmental sectors:</p>
+            
+            <div class="cards-grid three-columns">
+                <div class="card">
+                    <div class="card-header">
+                        <h3><i class="fas fa-briefcase"></i> Industry Roles</h3>
+                    </div>
+                    <div class="card-content">
+                        <ul class="career-list">
+                            <li>
+                                <span>Bioprocess Engineer</span>
+                                <span class="badge">₹7-20 LPA</span>
+                            </li>
+                            <li>
+                                <span>Fermentation Scientist</span>
+                                <span class="badge">₹8-22 LPA</span>
+                            </li>
+                            <li>
+                                <span>Biotechnology Researcher</span>
+                                <span class="badge">₹9-25 LPA</span>
+                            </li>
+                            <li>
+                                <span>Quality Control Specialist</span>
+                                <span class="badge">₹6-18 LPA</span>
+                            </li>
+                            <li>
+                                <span>Regulatory Affairs Manager</span>
+                                <span class="badge">₹10-28 LPA</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <h3><i class="fas fa-building"></i> Top Employers</h3>
+                    </div>
+                    <div class="card-content">
+                        <ul class="career-list">
+                            <li>
+                                <span>Pharmaceuticals</span>
+                                <span class="badge top">Biocon, Dr. Reddy’s</span>
+                            </li>
+                            <li>
+                                <span>Biotech Companies</span>
+                                <span class="badge top">Novozymes, Syngene</span>
+                            </li>
+                            <li>
+                                <span>Food Industry</span>
+                                <span class="badge">Nestlé, Amul</span>
+                            </li>
+                            <li>
+                                <span>Energy Sector</span>
+                                <span class="badge">Reliance Biofuels</span>
+                            </li>
+                            <li>
+                                <span>Research Institutes</span>
+                                <span class="badge">CSIR, ICMR</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <h3><i class="fas fa-chart-line"></i> Growth Areas</h3>
+                    </div>
+                    <div class="card-content">
+                        <p>Biochemical engineering is expanding rapidly due to advancements in biotechnology:</p>
+                        <ul>
+                            <li>• Biopharmaceuticals & Vaccines</li>
+                            <li>• Biofuels & Renewable Energy</li>
+                            <li>• Synthetic Biology</li>
+                            <li>• Personalized Medicine</li>
+                            <li>• Environmental Bioremediation</li>
+                            <li>• Industrial Enzymes</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Essential Skills Section -->
+    <section class="section bg-dark" id="skills">
+        <div class="container">
+            <h2 class="section-title">Essential Skills & Tools</h2>
+            <p class="section-intro">To excel in Biochemical Engineering, you'll need a blend of technical expertise, software proficiency, and professional skills:</p>
+            
+            <div class="cards-grid three-columns">
+                <div class="card">
+                    <div class="card-header">
+                        <h3><i class="fas fa-book-open"></i> Technical Knowledge</h3>
+                    </div>
+                    <div class="card-content">
+                        <ul class="skills-list">
+                            <li>
+                                <span class="skill-name">Biochemistry</span>
+                                <p class="skill-desc">Protein structure, metabolism</p>
+                            </li>
+                            <li>
+                                <span class="skill-name">Microbiology</span>
+                                <p class="skill-desc">Microbial growth, sterilization</p>
+                            </li>
+                            <li>
+                                <span class="skill-name">Bioprocess Design</span>
+                                <p class="skill-desc">Reactor design, scale-up</p>
+                            </li>
+                            <li>
+                                <span class="skill-name">Molecular Biology</span>
+                                <p class="skill-desc">Gene expression, cloning</p>
+                            </li>
+                            <li>
+                                <span class="skill-name">Thermodynamics</span>
+                                <p class="skill-desc">Energy balances, phase equilibria</p>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <h3><i class="fas fa-laptop-code"></i> Software & Tools</h3>
+                    </div>
+                    <div class="card-content">
+                        <p>Mastery of industry-standard tools is crucial:</p>
+                        <div class="tools-grid">
+                            <div class="tool-card">
+                                <i class="fas fa-vial"></i>
+                                <h3>Simulation</h3>
+                                <p>SuperPro, BioWin</p>
+                            </div>
+                            <div class="tool-card">
+                                <i class="fas fa-dna"></i>
+                                <h3>Bioinformatics</h3>
+                                <p>BLAST, ClustalW</p>
+                            </div>
+                            <div class="tool-card">
+                                <i class="fas fa-chart-line"></i>
+                                <h3>Data Analysis</h3>
+                                <p>MATLAB, Python</p>
+                            </div>
+                            <div class="tool-card">
+                                <i class="fas fa-flask"></i>
+                                <h3>Process Control</h3>
+                                <p>LabVIEW, DeltaV</p>
+                            </div>
+                            <div class="tool-card">
+                                <i class="fas fa-file-alt"></i>
+                                <h3>LIMS</h3>
+                                <p>LabWare, STARLIMS</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <h3><i class="fas fa-user-tie"></i> Professional Skills</h3>
+                    </div>
+                    <div class="card-content">
+                        <ul class="skills-list">
+                            <li>
+                                <span class="skill-name">Regulatory Compliance</span>
+                                <p class="skill-desc">GMP, FDA standards</p>
+                            </li>
+                            <li>
+                                <span class="skill-name">Project Management</span>
+                                <p class="skill-desc">Planning, execution</p>
+                            </li>
+                            <li>
+                                <span class="skill-name">Team Collaboration</span>
+                                <p class="skill-desc">Cross-disciplinary teamwork</p>
+                            </li>
+                            <li>
+                                <span class="skill-name">Technical Writing</span>
+                                <p class="skill-desc">Reports, SOPs</p>
+                            </li>
+                            <li>
+                                <span class="skill-name">Problem Solving</span>
+                                <p class="skill-desc">Process optimization</p>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    <!-- Courses Section -->
+    <section class="section" id="courses">
+        <div class="container">
+            <h2 class="section-title">Recommended Courses</h2>
+            <p class="section-intro">Enhance your expertise in Biochemical Engineering with these specialized courses:</p>
+            
+            <div class="accordion">
+                <div class="accordion-item">
+                    <div class="accordion-header">Core Biochemical Courses</div>
+                    <div class="accordion-content">
+                        <ul class="course-list">
+                            <li class="course-item">
+                                <div class="course-title">Bioprocess Engineering</div>
+                                <div class="course-desc">Fundamentals of bioreactor design, mass transfer, and scale-up.</div>
+                                <div class="course-meta">
+                                    <span>Duration: 12 weeks</span>
+                                    <span>Level: Intermediate</span>
+                                </div>
+                            </li>
+                            <li class="course-item">
+                                <div class="course-title">Fermentation Technology</div>
+                                <div class="course-desc">Microbial kinetics, fermentation systems, and industrial applications.</div>
+                                <div class="course-meta">
+                                    <span>Duration: 10 weeks</span>
+                                    <span>Level: Intermediate</span>
+                                </div>
+                            </li>
+                            <li class="course-item">
+                                <div class="course-title">Molecular Biology</div>
+                                <div class="course-desc">Techniques in genetic engineering and recombinant DNA technology.</div>
+                                <div class="course-meta">
+                                    <span>Duration: 8 weeks</span>
+                                    <span>Level: Intermediate</span>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="accordion-item">
+                    <div class="accordion-header">Application-Specific Courses</div>
+                    <div class="accordion-content">
+                        <ul class="course-list">
+                            <li class="course-item">
+                                <div class="course-title">Biopharmaceutical Production</div>
+                                <div class="course-desc">Cell culture, purification, and GMP compliance for drug manufacturing.</div>
+                                <div class="course-meta">
+                                    <span>Duration: 12 weeks</span>
+                                    <span>Level: Advanced</span>
+                                </div>
+                            </li>
+                            <li class="course-item">
+                                <div class="course-title">Biofuel Technology</div>
+                                <div class="course-desc">Processes for producing biofuels from biomass and algae.</div>
+                                <div class="course-meta">
+                                    <span>Duration: 10 weeks</span>
+                                    <span>Level: Intermediate</span>
+                                </div>
+                            </li>
+                            <li class="course-item">
+                                <div class="course-title">Environmental Biotechnology</div>
+                                <div class="course-desc">Bioremediation and wastewater treatment using biological systems.</div>
+                                <div class="course-meta">
+                                    <span>Duration: 8 weeks</span>
+                                    <span>Level: Intermediate</span>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="accordion-item">
+                    <div class="accordion-header">Advanced Topics</div>
+                    <div class="accordion-content">
+                        <ul class="course-list">
+                            <li class="course-item">
+                                <div class="course-title">Synthetic Biology</div>
+                                <div class="course-desc">Designing biological systems for novel applications.</div>
+                                <div class="course-meta">
+                                    <span>Duration: 10 weeks</span>
+                                    <span>Level: Advanced</span>
+                                </div>
+                            </li>
+                            <li class="course-item">
+                                <div class="course-title">Enzyme Engineering</div>
+                                <div class="course-desc">Enzyme optimization and biocatalysis for industrial processes.</div>
+                                <div class="course-meta">
+                                    <span>Duration: 8 weeks</span>
+                                    <span>Level: Advanced</span>
+                                </div>
+                            </li>
+                            <li class="course-item">
+                                <div class="course-title">Bioinformatics</div>
+                                <div class="course-desc">Computational tools for analyzing biological data.</div>
+                                <div class="course-meta">
+                                    <span>Duration: 10 weeks</span>
+                                    <span>Level: Advanced</span>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section class="section bg-dark" id="projects">
+        <div class="container">
+            <h2 class="section-title">Hands-on Projects</h2>
+            <p class="section-intro">Build your portfolio with these practical biochemical engineering projects to showcase your skills:</p>
+            
+            <div class="cards-grid three-columns">
+                <div class="card project-card">
+                    <div class="card-image">
+                        <img src="https://images.unsplash.com/photo-1584483766114-2cea6facdf57?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Vaccine Production">
+                    </div>
+                    <div class="card-header">
+                        <h3><i class="fas fa-syringe"></i> Vaccine Production System</h3>
+                    </div>
+                    <div class="card-content">
+                        <p>Design a bioprocess for large-scale vaccine production using mammalian cell cultures, including bioreactor design and downstream purification.</p>
+                        <p><strong>Skills:</strong> Cell culture, bioreactor operation, purification techniques</p>
+                    </div>
+                </div>
+
+                <div class="card project-card">
+                    <div class="card-image">
+                        <img src="https://images.unsplash.com/photo-1512621776951-a57141f2eefd?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Biofuel Production">
+                    </div>
+                    <div class="card-header">
+                        <h3><i class="fas fa-leaf"></i> Algal Biofuel Reactor</h3>
+                    </div>
+                    <div class="card-content">
+                        <p>Develop a photobioreactor for producing biofuels from microalgae, optimizing light, nutrients, and harvesting processes.</p>
+                        <p><strong>Skills:</strong> Photobioreactor design, algal cultivation, lipid extraction</p>
+                    </div>
+                </div>
+
+                <div class="card project-card">
+                    <div class="card-image">
+                        <img src="https://images.unsplash.com/photo-1519378058457-4c29a0a2efac?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Wastewater Treatment">
+                    </div>
+                    <div class="card-header">
+                        <h3><i class="fas fa-water"></i> Bioremediation System</h3>
+                    </div>
+                    <div class="card-content">
+                        <p>Create a microbial system for treating industrial wastewater, focusing on pollutant degradation and process efficiency.</p>
+                        <p><strong>Skills:</strong> Microbial selection, bioreactor design, pollutant analysis</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="cards-grid three-columns" style="margin-top: 1.5rem;">
+                <div class="card project-card">
+                    <div class="card-image">
+                        <img src="https://images.unsplash.com/photo-1585435465945-bef5a93f1179?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Enzyme Production">
+                    </div>
+                    <div class="card-header">
+                        <h3><i class="fas fa-vial"></i> Industrial Enzyme Production</h3>
+                    </div>
+                    <div class="card-content">
+                        <p>Design a fermentation process for producing industrial enzymes, optimizing microbial strains and purification methods.</p>
+                        <p><strong>Skills:</strong> Fermentation, enzyme purification, process optimization</p>
+                    </div>
+                </div>
+
+                <div class="card project-card">
+                    <div class="card-image">
+                        <img src="https://images.unsplash.com/photo-1617791138031-04cd52987916?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Biosensor Development">
+                    </div>
+                    <div class="card-header">
+                        <h3><i class="fas fa-microscope"></i> Biosensor Development</h3>
+                    </div>
+                    <div class="card-content">
+                        <p>Develop a biosensor for detecting glucose or other biomarkers using enzyme-based detection and signal processing.</p>
+                        <p><strong>Skills:</strong> Enzyme immobilization, sensor design, data analysis</p>
+                    </div>
+                </div>
+
+                <div class="card project-card">
+                    <div class="card-image">
+                        <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Food Processing">
+                    </div>
+                    <div class="card-header">
+                        <h3><i class="fas fa-utensils"></i> Food Processing Bioreactor</h3>
+                    </div>
+                    <div class="card-content">
+                        <p>Create a bioprocess for producing fermented foods like yogurt or probiotics, focusing on microbial selection and quality control.</p>
+                        <p><strong>Skills:</strong> Fermentation, microbial cultures, quality assurance</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="section" id="faq">
+        <div class="container">
+            <h2 class="section-title">Frequently Asked Questions</h2>
+            <p class="section-intro">Answers to common questions about pursuing a career in Biochemical Engineering:</p>
+            
+            <div class="accordion">
+                <div class="accordion-item active">
+                    <div class="accordion-header">What educational background is needed for biochemical engineering?</div>
+                    <div class="accordion-content">
+                        <p>A bachelor’s degree in Chemical Engineering, Biochemical Engineering, or Biotechnology is ideal. Knowledge in biochemistry, microbiology, and bioprocess engineering is essential. Advanced roles may require a master’s or Ph.D., particularly in research or biopharmaceuticals.</p>
+                    </div>
+                </div>
+                
+                <div class="accordion-item">
+                    <div class="accordion-header">How does biochemical engineering differ from chemical engineering?</div>
+                    <div class="accordion-content">
+                        <p>Biochemical engineering focuses on biological systems, such as microbes and enzymes, to produce products like drugs or biofuels. Chemical engineering is broader, dealing with chemical processes like petrochemicals. Biochemical engineering requires expertise in biology and bioprocesses, while chemical engineering emphasizes physical and chemical transformations.</p>
+                    </div>
+                </div>
+                
+                <div class="accordion-item">
+                    <div class="accordion-header">What are the key industries for biochemical engineers?</div>
+                    <div class="accordion-content">
+                        <p>Key industries include pharmaceuticals (vaccines, antibodies), biotechnology (enzymes, biofuels), food and beverage (fermented products), and environmental sectors (bioremediation, waste treatment). Emerging areas like synthetic biology and personalized medicine are also growing.</p>
+                    </div>
+                </div>
+                
+                <div class="accordion-item">
+                    <div class="accordion-header">How can I start learning biochemical engineering?</div>
+                    <div class="accordion-content">
+                        <p>Begin with courses in biochemistry, microbiology, and chemical engineering fundamentals. Gain hands-on experience with lab techniques like fermentation or cell culture. Learn software tools like SuperPro or MATLAB. Join projects or internships in biotech labs to apply your knowledge.</p>
+                    </div>
+                </div>
+                
+                <div class="accordion-item">
+                    <div class="accordion-header">What are the career growth prospects?</div>
+                    <div class="accordion-content">
+                        <p>Career prospects are strong due to demand in biopharmaceuticals, biofuels, and sustainability. Roles progress from bioprocess engineer to senior scientist, process manager, or R&D lead. Specialized skills in synthetic biology or regulatory affairs can lead to high-demand positions.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <h2>GoFarAsYouCan</h2>
+                    <p>Empowering engineers with comprehensive resources and career guidance.</p>
+                </div>
+                
+                <div class="footer-links">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="#about">About Biochemical Engineering</a></li>
+                        <li><a href="#key-areas">Key Areas</a></li>
+                        <li><a href="#careers">Career Opportunities</a></li>
+                        <li><a href="#skills">Essential Skills</a></li>
+                        <li><a href="#courses">Recommended Courses</a></li>
+                        <li><a href="#projects">Hands-on Projects</a></li>
+                        <li><a href="#faq">FAQ</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-resources">
+                    <h3>More Resources</h3>
+                    <ul>
+                        <li><a href="/Engineering">Engineering Disciplines</a></li>
+                        <li><a href="/Engineering/Chemical/chemical.ejs">Chemical Engineering</a></li>
+                        <li><a href="/resources">Learning Resources</a></li>
+                        <li><a href="/blog">Engineering Blog</a></li>
+                        <li><a href="/contact">Contact Us</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>© <script>document.write(new Date().getFullYear())</script> GoFarAsYouCan. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Accordion functionality
+        function setupAccordions() {
+            const accordionHeaders = document.querySelectorAll(".accordion-header");
+            
+            accordionHeaders.forEach(header => {
+                header.addEventListener("click", function() {
+                    const accordionItem = this.parentElement;
+                    accordionItem.classList.toggle("active");
+                    
+                    this.classList.toggle("active");
+                    
+                    const content = this.nextElementSibling;
+                    if (accordionItem.classList.contains("active")) {
+                        content.style.maxHeight = content.scrollHeight + "px";
+                    } else {
+                        content.style.maxHeight = 0;
+                    }
+                });
+            });
+        }
+
+        // Smooth scrolling for anchor links
+        function setupSmoothScrolling() {
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+
+                    const targetId = this.getAttribute('href');
+                    if (targetId === "#") return;
+
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        window.scrollTo({
+                            top: targetElement.offsetTop - 80,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+        }
+
+        // Initialize when DOM is loaded
+        document.addEventListener("DOMContentLoaded", function() {
+            setupAccordions();
+            setupSmoothScrolling();
+            
+            // Open the first accordion item by default
+            const firstAccordionItem = document.querySelector(".accordion-item");
+            if (firstAccordionItem) {
+                firstAccordionItem.classList.add("active");
+                const content = firstAccordionItem.querySelector(".accordion-content");
+                content.style.maxHeight = content.scrollHeight + "px";
+                firstAccordionItem.querySelector(".accordion-header").classList.add("active");
+            }
+        });
+    </script>
+</body>
+</html>

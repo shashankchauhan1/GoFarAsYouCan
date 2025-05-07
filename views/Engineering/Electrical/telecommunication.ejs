@@ -1,0 +1,1243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Telecommunications Engineering - Electrical Engineering Specialization</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* Base Styles */
+        :root {
+            --primary-color: #321655;         /* Deep purple */
+            --primary-light: #7c43bd;         /* Medium purple */
+            --secondary-color: #6a1b9a;       /* Rich purple */
+            --accent-color: #e040fb;          /* Bright violet */
+            --accent-light: #aa00ff;          /* Vivid purple */
+            --text-color: #212121;            /* Dark gray for readability */
+            --light-text: #ffffff;            /* Pure white */
+            --dark-text: #757575;             /* Medium gray for less emphasis */
+            --light-bg: #f5f5f5;              /* Very light background */
+            --dark-bg: #4a148c;               /* Dark purple background */
+            --card-bg: #ffffff;               /* White card surface */
+            --card-shadow: rgba(0, 0, 0, 0.1); /* Shadow color */
+            --border-radius: 8px;
+            --box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease-in-out;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--light-bg);
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        a {
+            text-decoration: none;
+            color: var(--primary-color);
+            transition: var(--transition);
+        }
+
+        a:hover {
+            color: var(--accent-color);
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            border-radius: var(--border-radius);
+        }
+
+        .bg-dark {
+            background-color: var(--primary-color);
+            color: var(--light-text);
+        }
+
+        /* Navbar */
+        .navbar {
+            background-color: var(--primary-color);
+            color: var(--light-text);
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: var(--box-shadow);
+        }
+
+        .navbar .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--light-text);
+        }
+
+        .back-button a {
+            color: var(--light-text);
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .back-button a:hover {
+            color: var(--accent-light);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            color: var(--light-text);
+            text-align: center;
+            padding: 6rem 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0.2;
+            mix-blend-mode: overlay;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            position: relative;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        /* Section Styles */
+        .section {
+            padding: 5rem 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+            color: var(--primary-color);
+            position: relative;
+            font-size: 2rem;
+        }
+
+        .section-title::after {
+            content: "";
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background-color: var(--accent-color);
+            border-radius: 2px;
+        }
+
+        .section-intro {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto 2.5rem;
+            font-size: 1.1rem;
+        }
+
+        /* Content Wrapper */
+        .content-wrapper {
+            display: flex;
+            gap: 2.5rem;
+            align-items: center;
+        }
+
+        .text-content {
+            flex: 1;
+        }
+
+        .text-content p {
+            margin-bottom: 1.25rem;
+            font-size: 1.05rem;
+        }
+
+        .image-content {
+            flex: 1;
+            box-shadow: var(--box-shadow);
+            border-radius: var(--border-radius);
+            overflow: hidden;
+        }
+
+        /* Cards Grid */
+        .cards-grid {
+            display: grid;
+            gap: 1.5rem;
+        }
+
+        .two-columns {
+            grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+        }
+
+        .three-columns {
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        }
+
+        .four-columns {
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        }
+
+        /* Card Styles */
+        .card {
+            background-color: var(--card-bg);
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: 0 4px 12px var(--card-shadow);
+            transition: var(--transition);
+            border: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+            border-color: var(--accent-color);
+        }
+
+        .card-header {
+            padding: 1.25rem 1.25rem 0.5rem;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
+        .card-header h3 {
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .card-header h3 i {
+            color: var(--accent-color);
+        }
+
+        .card-header p {
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        .card-content {
+            padding: 1.25rem;
+            color: #333;
+        }
+
+        /* Project Cards */
+        .project-card .card-image {
+            height: 180px;
+            overflow: hidden;
+        }
+
+        .project-card .card-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .project-card:hover .card-image img {
+            transform: scale(1.05);
+        }
+
+        /* Career List */
+        .career-list {
+            list-style: none;
+        }
+
+        .career-list li {
+            display: flex;
+            justify-content: space-between;
+            padding: 0.5rem 0;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
+        .career-list li:last-child {
+            border-bottom: none;
+        }
+
+        .badge {
+            background-color: rgba(0, 0, 0, 0.05);
+            color: #333;
+            padding: 0.25rem 0.5rem;
+            border-radius: 9999px;
+            font-size: 0.75rem;
+            font-weight: 600;
+        }
+
+        .badge.top {
+            background-color: var(--accent-color);
+            color: white;
+        }
+
+        .badge.program {
+            background-color: var(--primary-light);
+            color: white;
+        }
+
+        /* Skills List */
+        .skills-list {
+            list-style: none;
+        }
+
+        .skills-list li {
+            padding: 0.5rem 0;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
+        .skills-list li:last-child {
+            border-bottom: none;
+        }
+
+        .skill-name {
+            font-weight: 600;
+            display: block;
+            margin-bottom: 0.25rem;
+            color: var(--primary-color);
+        }
+
+        .skill-desc {
+            font-size: 0.9rem;
+            color: #666;
+        }
+
+        /* Accordion */
+        .accordion {
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            border: 1px solid rgba(0, 0, 0, 0.05);
+            background-color: var(--card-bg);
+        }
+
+        .accordion-item {
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
+        .accordion-item:last-child {
+            border-bottom: none;
+        }
+
+        .accordion-header {
+            padding: 1rem;
+            cursor: pointer;
+            font-weight: 600;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: var(--transition);
+            color: var(--primary-color);
+        }
+
+        .accordion-header::after {
+            content: '\f078';
+            font-family: 'Font Awesome 5 Free';
+            font-weight: 900;
+            transition: var(--transition);
+        }
+
+        .accordion-header.active::after {
+            transform: rotate(180deg);
+        }
+
+        .accordion-content {
+            padding: 0 1rem;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+        }
+
+        .accordion-content p {
+            padding-bottom: 1rem;
+        }
+
+        .accordion-item.active .accordion-header {
+            background-color: rgba(0, 0, 0, 0.02);
+            color: var(--accent-color);
+        }
+
+        .accordion-item.active .accordion-content {
+            max-height: 500px;
+        }
+
+        /* Course List */
+        .course-list {
+            list-style: none;
+            margin-top: 1rem;
+        }
+
+        .course-item {
+            background-color: rgba(0, 0, 0, 0.02);
+            border-radius: var(--border-radius);
+            padding: 1rem;
+            margin-bottom: 1rem;
+            border: 1px solid rgba(0, 0, 0, 0.05);
+            transition: var(--transition);
+        }
+
+        .course-item:hover {
+            background-color: rgba(0, 0, 0, 0.04);
+            border-color: var(--accent-color);
+        }
+
+        .course-title {
+            font-weight: 600;
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+            color: var(--primary-color);
+        }
+
+        .course-desc {
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .course-meta {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.8rem;
+            color: #666;
+        }
+
+        /* Tools Grid */
+        .tools-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .tool-card {
+            background-color: var(--card-bg);
+            border-radius: var(--border-radius);
+            padding: 1.5rem 1rem;
+            text-align: center;
+            box-shadow: 0 4px 8px var(--card-shadow);
+            border: 1px solid rgba(0, 0, 0, 0.05);
+            transition: var(--transition);
+        }
+
+        .tool-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+            border-color: var(--accent-color);
+        }
+
+        .tool-card img {
+            height: 60px;
+            width: auto;
+            margin-bottom: 1rem;
+        }
+
+        .tool-card h3 {
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+            color: var(--primary-color);
+        }
+
+        .tool-card p {
+            font-size: 0.9rem;
+            color: #666;
+        }
+
+        /* Footer */
+        .footer {
+            background-color: var(--primary-color);
+            color: var(--light-text);
+            padding: 4rem 0 1rem;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2.5rem;
+            margin-bottom: 2.5rem;
+        }
+
+        .footer-logo h2 {
+            margin-bottom: 1rem;
+        }
+
+        .footer-links h3,
+        .footer-resources h3 {
+            margin-bottom: 1.25rem;
+            position: relative;
+            padding-bottom: 0.5rem;
+            display: inline-block;
+        }
+
+        .footer-links h3::after,
+        .footer-resources h3::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background-color: var(--accent-color);
+        }
+
+        .footer-links ul,
+        .footer-resources ul {
+            list-style-type: none;
+        }
+
+        .footer-links li,
+        .footer-resources li {
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-links a,
+        .footer-resources a {
+            color: var(--light-text);
+            opacity: 0.8;
+        }
+
+        .footer-links a:hover,
+        .footer-resources a:hover {
+            color: var(--accent-light);
+            opacity: 1;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 1.25rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .content-wrapper {
+                flex-direction: column;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .two-columns {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .section {
+                padding: 3.5rem 0;
+            }
+
+            .hero {
+                padding: 5rem 0;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .section-title {
+                font-size: 1.75rem;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .navbar {
+                padding: 0.75rem 0;
+            }
+
+            .logo {
+                font-size: 1.2rem;
+            }
+
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+
+            .section-title {
+                font-size: 1.5rem;
+            }
+
+            .tools-grid {
+                grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="logo">GoFarAsYouCan</div>
+            <div class="back-button">
+                <a href="/Engineering/Electrical/electrical.ejs"><i class="fas fa-arrow-left"></i> Go Back</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="hero">
+        <div class="overlay"></div>
+        <div class="container">
+            <h1>Telecommunications Engineering</h1>
+            <p>Explore the technology that connects our world through wireless and wired communication systems</p>
+        </div>
+    </header>
+
+    <!-- About Section -->
+    <section class="section" id="about">
+        <div class="container">
+            <h2 class="section-title">What is Telecommunications Engineering?</h2>
+            <div class="content-wrapper">
+                <div class="text-content">
+                    <p>Telecommunications Engineering is a specialized branch of electrical engineering that focuses on the design, development, and maintenance of systems that transmit information over distances. It encompasses the study of wired and wireless communication technologies that enable voice, data, and video transmission across local and global networks.</p>
+                    <p>As a telecommunications engineer, you'll work on creating and improving the infrastructure that connects our world, from cellular networks and satellite systems to fiber optic cables and internet protocols. You'll apply principles of signal processing, network theory, and information theory to develop reliable and efficient communication systems.</p>
+                    <p>This field is at the heart of our connected society, enabling technologies like mobile phones, broadband internet, IoT devices, and broadcasting systems. With the continuous evolution of communication technologies, telecommunications engineers are constantly innovating to meet the growing demand for faster, more reliable, and more secure communication networks.</p>
+                </div>
+                <div class="image-content">
+                    <img src="https://images.unsplash.com/photo-1544197150-b99a580bb7a8?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Telecommunications Engineering">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Key Areas Section -->
+    <section class="section bg-dark" id="key-areas">
+        <div class="container">
+            <h2 class="section-title" style="color: var(--light-text);">Key Areas of Study</h2>
+            <p class="section-intro" style="color: var(--light-text);">Telecommunications Engineering encompasses several specialized areas that form the foundation of modern communication systems:</p>
+            
+            <div class="cards-grid three-columns">
+                <div class="card">
+                    <div class="card-header">
+                        <h3><i class="fas fa-broadcast-tower"></i> Wireless Communications</h3>
+                    </div>
+                    <div class="card-content">
+                        <p>The study of transmitting information over the air using electromagnetic waves. This includes cellular networks, satellite communications, Wi-Fi, Bluetooth, and other wireless technologies.</p>
+                        <ul class="skills-list">
+                            <li>
+                                <span class="skill-name">Radio Frequency Engineering</span>
+                                <p class="skill-desc">Antenna design, propagation models, link budgets</p>
+                            </li>
+                            <li>
+                                <span class="skill-name">Cellular Networks</span>
+                                <p class="skill-desc">4G/5G technologies, network planning, optimization</p>
+                            </li>
+                            <li>
+                                <span class="skill-name">Wireless Protocols</span>
+                                <p class="skill-desc">IEEE 802.11, Bluetooth, ZigBee, LoRa</p>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <h3><i class="fas fa-network-wired"></i> Network Engineering</h3>
+                    </div>
+                    <div class="card-content">
+                        <p>The design and implementation of communication networks that enable data exchange between devices. This includes local area networks (LANs), wide area networks (WANs), and the Internet.</p>
+                        <ul class="skills-list">
+                            <li>
+                                <span class="skill-name">Network Protocols</span>
+                                <p class="skill-desc">TCP/IP, routing protocols, QoS mechanisms</p>
+                            </li>
+                            <li>
+                                <span class="skill-name">Network Architecture</span>
+                                <p class="skill-desc">OSI model, network topologies, SDN</p>
+                            </li>
+                            <li>
+                                <span class="skill-name">Network Security</span>
+                                <p class="skill-desc">Encryption, firewalls, intrusion detection</p>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <h3><i class="fas fa-wave-square"></i> Signal Processing</h3>
+                    </div>
+                    <div class="card-content">
+                        <p>The manipulation of signals to improve transmission efficiency, reliability, and quality. This includes modulation techniques, error correction, and filtering to optimize communication systems.</p>
+                        <ul class="skills-list">
+                            <li>
+                                <span class="skill-name">Digital Signal Processing</span>
+                                <p class="skill-desc">Filtering, sampling, FFT analysis</p>
+                            </li>
+                            <li>
+                                <span class="skill-name">Modulation Techniques</span>
+                                <p class="skill-desc">AM, FM, PSK, QAM, OFDM</p>
+                            </li>
+                            <li>
+                                <span class="skill-name">Error Correction</span>
+                                <p class="skill-desc">FEC, channel coding, interleaving</p>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="cards-grid three-columns" style="margin-top: 1.5rem;">
+                <div class="card">
+                    <div class="card-header">
+                        <h3><i class="fas fa-project-diagram"></i> Optical Communications</h3>
+                    </div>
+                    <div class="card-content">
+                        <p>The transmission of information using light waves through optical fibers. This includes fiber optic technology, optical network design, and photonic systems for high-speed data transmission.</p>
+                        <ul class="skills-list">
+                            <li>
+                                <span class="skill-name">Fiber Optic Technology</span>
+                                <p class="skill-desc">Single-mode/multi-mode fibers, dispersion, attenuation</p>
+                            </li>
+                            <li>
+                                <span class="skill-name">Optical Network Design</span>
+                                <p class="skill-desc">SONET/SDH, WDM, PON architectures</p>
+                            </li>
+                            <li>
+                                <span class="skill-name">Photonic Systems</span>
+                                <p class="skill-desc">Optical transmitters, receivers, amplifiers</p>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <h3><i class="fas fa-satellite"></i> Satellite Communications</h3>
+                    </div>
+                    <div class="card-content">
+                        <p>The use of artificial satellites to provide communication links across large distances. This includes satellite system design, orbital mechanics, and earth station engineering.</p>
+                        <ul class="skills-list">
+                            <li>
+                                <span class="skill-name">Satellite Systems</span>
+                                <p class="skill-desc">GEO, MEO, LEO constellations, transponders</p>
+                            </li>
+                            <li>
+                                <span class="skill-name">Earth Station Design</span>
+                                <p class="skill-desc">Antenna systems, tracking, VSAT networks</p>
+                            </li>
+                            <li>
+                                <span class="skill-name">Satellite Access</span>
+                                <p class="skill-desc">FDMA, TDMA, CDMA, multiple access techniques</p>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <h3><i class="fas fa-mobile-alt"></i> Mobile Communications</h3>
+                    </div>
+                    <div class="card-content">
+                        <p>The study of communication systems that enable users to maintain connections while moving. This includes cellular networks, mobile devices, and mobility management protocols.</p>
+                        <ul class="skills-list">
+                            <li>
+                                <span class="skill-name">Cellular Technology</span>
+                                <p class="skill-desc">GSM, UMTS, LTE, 5G architectures</p>
+                            </li>
+                            <li>
+                                <span class="skill-name">Mobility Management</span>
+                                <p class="skill-desc">Handover, roaming, location tracking</p>
+                            </li>
+                            <li>
+                                <span class="skill-name">Mobile Network Planning</span>
+                                <p class="skill-desc">Coverage, capacity, interference management</p>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Career Opportunities Section -->
+    <section class="section" id="careers">
+        <div class="container">
+            <h2 class="section-title">Career Opportunities</h2>
+            <p class="section-intro">Telecommunications Engineering offers diverse career paths across various industries and sectors:</p>
+            
+            <div class="cards-grid three-columns">
+                <div class="card">
+                    <div class="card-header">
+                        <h3><i class="fas fa-briefcase"></i> Industry Roles</h3>
+                    </div>
+                    <div class="card-content">
+                        <ul class="career-list">
+                            <li>
+                                <span>Telecommunications Engineer</span>
+                                <span class="badge">₹6-20 LPA</span>
+                            </li>
+                            <li>
+                                <span>Network Engineer</span>
+                                <span class="badge">₹7-22 LPA</span>
+                            </li>
+                            <li>
+                                <span>RF Engineer</span>
+                                <span class="badge">₹8-25 LPA</span>
+                            </li>
+                            <li>
+                                <span>Optical Network Engineer</span>
+                                <span class="badge">₹8-24 LPA</span>
+                            </li>
+                            <li>
+                                <span>Wireless Systems Engineer</span>
+                                <span class="badge">₹9-26 LPA</span>
+                            </li>
+                            <li>
+                                <span>Network Operations Specialist</span>
+                                <span class="badge">₹5-18 LPA</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <h3><i class="fas fa-building"></i> Top Employers</h3>
+                    </div>
+                    <div class="card-content">
+                        <ul class="career-list">
+                            <li>
+                                <span>Telecom Service Providers</span>
+                                <span class="badge top">Airtel, Jio</span>
+                            </li>
+                            <li>
+                                <span>Network Equipment Vendors</span>
+                                <span class="badge top">Cisco, Nokia</span>
+                            </li>
+                            <li>
+                                <span>Satellite Companies</span>
+                                <span class="badge">ISRO, Intelsat</span>
+                            </li>
+                            <li>
+                                <span>Internet Service Providers</span>
+                                <span class="badge">ACT, Tata</span>
+                            </li>
+                            <li>
+                                <span>Defense & Aerospace</span>
+                                <span class="badge">DRDO, HAL</span>
+                            </li>
+                            <li>
+                                <span>IT & Consulting Firms</span>
+                                <span class="badge">TCS, Infosys</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <h3><i class="fas fa-chart-line"></i> Growth Areas</h3>
+                    </div>
+                    <div class="card-content">
+                        <p>The telecommunications sector is experiencing significant growth due to several emerging technologies:</p>
+                        <ul>
+                            <li>• 5G and Beyond Networks</li>
+                            <li>• Internet of Things (IoT) Connectivity</li>
+                            <li>• Edge Computing Infrastructure</li>
+                            <li>• Network Virtualization (SDN/NFV)</li>
+                            <li>• Satellite Mega-Constellations</li>
+                            <li>• Quantum Communications</li>
+                            <li>• Rural Connectivity Solutions</li>
+                            <li>• Network Security & Resilience</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Essential Skills Section -->
+    <section class="section bg-dark" id="skills">
+        <div class="container">
+            <h2 class="section-title" style="color: var(--light-text);">Essential Skills & Tools</h2>
+            <p class="section-intro" style="color: var(--light-text);">To excel in Telecommunications Engineering, you'll need to develop a combination of technical knowledge, software proficiency, and professional skills:</p>
+            
+            <div class="cards-grid three-columns">
+                <div class="card">
+                    <div class="card-header">
+                        <h3><i class="fas fa-book-open"></i> Technical Knowledge</h3>
+                    </div>
+                    <div class="card-content">
+                        <ul class="skills-list">
+                            <li>
+                                <span class="skill-name">Communication Theory</span>
+                                <p class="skill-desc">Information theory, channel capacity, coding</p>
+                            </li>
+                            <li>
+                                <span class="skill-name">Electromagnetic Theory</span>
+                                <p class="skill-desc">Wave propagation, antennas, transmission lines</p>
+                            </li>
+                            <li>
+                                <span class="skill-name">Network Protocols</span>
+                                <p class="skill-desc">TCP/IP, routing, switching, QoS</p>
+                            </li>
+                            <li>
+                                <span class="skill-name">Signal Processing</span>
+                                <p class="skill-desc">Modulation, filtering, equalization</p>
+                            </li>
+                            <li>
+                                <span class="skill-name">Wireless Standards</span>
+                                <p class="skill-desc">3GPP, IEEE 802.11, Bluetooth, LoRaWAN</p>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <h3><i class="fas fa-laptop-code"></i> Software & Tools</h3>
+                    </div>
+                    <div class="card-content">
+                        <p>Proficiency in industry-standard software tools is essential:</p>
+                        <div class="tools-grid">
+                            <div class="tool-card">
+                                <i class="fas fa-calculator" style="font-size: 2.5rem; color: var(--accent-color); margin-bottom: 1rem;"></i>
+                                <h3>MATLAB</h3>
+                                <p>Signal processing</p>
+                            </div>
+                            <div class="tool-card">
+                                <i class="fas fa-network-wired" style="font-size: 2.5rem; color: var(--accent-color); margin-bottom: 1rem;"></i>
+                                <h3>Wireshark</h3>
+                                <p>Network analysis</p>
+                            </div>
+                            <div class="tool-card">
+                                <i class="fas fa-broadcast-tower" style="font-size: 2.5rem; color: var(--accent-color); margin-bottom: 1rem;"></i>
+                                <h3>Atoll</h3>
+                                <p>RF planning</p>
+                            </div>
+                            <div class="tool-card">
+                                <i class="fas fa-code" style="font-size: 2.5rem; color: var(--accent-color); margin-bottom: 1rem;"></i>
+                                <h3>GNS3/Packet Tracer</h3>
+                                <p>Network simulation</p>
+                            </div>
+                            <div class="tool-card">
+                                <i class="fas fa-wave-square" style="font-size: 2.5rem; color: var(--accent-color); margin-bottom: 1rem;"></i>
+                                <h3>SDR Software</h3>
+                                <p>Radio experimentation</p>
+                            </div>
+                            <div class="tool-card">
+                                <i class="fas fa-project-diagram" style="font-size: 2.5rem; color: var(--accent-color); margin-bottom: 1rem;"></i>
+                                <h3>OptiSystem</h3>
+                                <p>Optical network design</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <h3><i class="fas fa-user-tie"></i> Professional Skills</h3>
+                    </div>
+                    <div class="card-content">
+                        <ul class="skills-list">
+                            <li>
+                                <span class="skill-name">Problem Solving</span>
+                                <p class="skill-desc">Troubleshooting, fault isolation, performance optimization</p>
+                            </li>
+                            <li>
+                                <span class="skill-name">Technical Documentation</span>
+                                <p class="skill-desc">Network diagrams, specifications, test reports</p>
+                            </li>
+                            <li>
+                                <span class="skill-name">Project Management</span>
+                                <p class="skill-desc">Network deployment, upgrades, migrations</p>
+                            </li>
+                            <li>
+                                <span class="skill-name">Communication</span>
+                                <p class="skill-desc">Explaining technical concepts to diverse audiences</p>
+                            </li>
+                            <li>
+                                <span class="skill-name">Regulatory Knowledge</span>
+                                <p class="skill-desc">Spectrum regulations, compliance requirements</p>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Courses Section -->
+    <section class="section" id="courses">
+        <div class="container">
+            <h2 class="section-title">Recommended Courses</h2>
+            <p class="section-intro">Enhance your knowledge and skills in Telecommunications Engineering with these specialized courses:</p>
+            
+            <div class="accordion">
+                <div class="accordion-item">
+                    <div class="accordion-header">Core Telecommunications Courses</div>
+                    <div class="accordion-content">
+                        <ul class="course-list">
+                            <li class="course-item">
+                                <div class="course-title">Communication Systems</div>
+                                <div class="course-desc">Fundamentals of analog and digital communication systems, modulation techniques, and channel coding.</div>
+                                <div class="course-meta">
+                                    <span>Duration: 12 weeks</span>
+                                    <span>Level: Intermediate</span>
+                                </div>
+                            </li>
+                            <li class="course-item">
+                                <div class="course-title">Electromagnetic Wave Theory</div>
+                                <div class="course-desc">Principles of electromagnetic waves, propagation, antennas, and transmission lines.</div>
+                                <div class="course-meta">
+                                    <span>Duration: 14 weeks</span>
+                                    <span>Level: Intermediate</span>
+                                </div>
+                            </li>
+                            <li class="course-item">
+                                <div class="course-title">Computer Networks</div>
+                                <div class="course-desc">Network architectures, protocols, routing, and switching fundamentals.</div>
+                                <div class="course-meta">
+                                    <span>Duration: 10 weeks</span>
+                                    <span>Level: Intermediate</span>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="accordion-item">
+                    <div class="accordion-header">Specialized Telecommunications Courses</div>
+                    <div class="accordion-content">
+                        <ul class="course-list">
+                            <li class="course-item">
+                                <div class="course-title">Wireless Communication Networks</div>
+                                <div class="course-desc">Cellular systems, wireless LAN/MAN/PAN technologies, and mobile network architectures.</div>
+                                <div class="course-meta">
+                                    <span>Duration: 12 weeks</span>
+                                    <span>Level: Advanced</span>
+                                </div>
+                            </li>
+                            <li class="course-item">
+                                <div class="course-title">Optical Fiber Communications</div>
+                                <div class="course-desc">Fiber optic technology, optical networks, and photonic systems.</div>
+                                <div class="course-meta">
+                                    <span>Duration: 10 weeks</span>
+                                    <span>Level: Advanced</span>
+                                </div>
+                            </li>
+                            <li class="course-item">
+                                <div class="course-title">Satellite Communication Systems</div>
+                                <div class="course-desc">Satellite orbits, link design, earth stations, and satellite networks.</div>
+                                <div class="course-meta">
+                                    <span>Duration: 8 weeks</span>
+                                    <span>Level: Advanced</span>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="accordion-item">
+                    <div class="accordion-header">Emerging Technologies Courses</div>
+                    <div class="accordion-content">
+                        <ul class="course-list">
+                            <li class="course-item">
+                                <div class="course-title">5G and Beyond Technologies</div>
+                                <div class="course-desc">5G architecture, massive MIMO, mmWave communications, and future wireless systems.</div>
+                                <div class="course-meta">
+                                    <span>Duration: 10 weeks</span>
+                                    <span>Level: Advanced</span>
+                                </div>
+                            </li>
+                            <li class="course-item">
+                                <div class="course-title">Software-Defined Networks</div>
+                                <div class="course-desc">SDN architecture, OpenFlow, network virtualization, and NFV.</div>
+                                <div class="course-meta">
+                                    <span>Duration: 8 weeks</span>
+                                    <span>Level: Advanced</span>
+                                </div>
+                            </li>
+                            <li class="course-item">
+                                <div class="course-title">IoT Communications</div>
+                                <div class="course-desc">Low-power wide-area networks, short-range IoT protocols, and IoT architecture.</div>
+                                <div class="course-meta">
+                                    <span>Duration: 6 weeks</span>
+                                    <span>Level: Intermediate</span>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section class="section bg-dark" id="projects">
+        <div class="container">
+            <h2 class="section-title" style="color: var(--light-text);">Hands-on Projects</h2>
+            <p class="section-intro" style="color: var(--light-text);">Build your portfolio with these practical telecommunications projects that demonstrate your skills to potential employers:</p>
+            
+            <div class="cards-grid three-columns">
+                <div class="card project-card">
+                    <div class="card-image">
+                        <img src="https://images.unsplash.com/photo-1544197150-b99a580bb7a8?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Wireless Network">
+                    </div>
+                    <div class="card-header">
+                        <h3><i class="fas fa-wifi"></i> Wireless Mesh Network</h3>
+                    </div>
+                    <div class="card-content">
+                        <p>Design and implement a wireless mesh network for campus or community connectivity, including node placement, routing protocols, and performance optimization.</p>
+                        <p><strong>Skills:</strong> Wireless networking, routing protocols, network planning</p>
+                    </div>
+                </div>
+
+                <div class="card project-card">
+                    <div class="card-image">
+                        <img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="SDR Project">
+                    </div>
+                    <div class="card-header">
+                        <h3><i class="fas fa-broadcast-tower"></i> Software-Defined Radio</h3>
+                    </div>
+                    <div class="card-content">
+                        <p>Build a software-defined radio system for signal reception, modulation/demodulation, and spectrum analysis using platforms like GNU Radio and RTL-SDR.</p>
+                        <p><strong>Skills:</strong> Signal processing, RF engineering, software development</p>
+                    </div>
+                </div>
+
+                <div class="card project-card">
+                    <div class="card-image">
+                        <img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="IoT Network">
+                    </div>
+                    <div class="card-header">
+                        <h3><i class="fas fa-network-wired"></i> IoT Communication Gateway</h3>
+                    </div>
+                      IoT Communication Gateway</h3>
+                      <div class="card-content">
+                        <p>Develop a communication gateway that connects various IoT devices using different protocols (LoRa, Zigbee, Bluetooth) and integrates them into a unified network with cloud connectivity.</p>
+                        <p><strong>Skills:</strong> IoT protocols, embedded systems, network integration</p>
+                    </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <h2>GoFarAsYouCan</h2>
+                    <p>Your guide to engineering education and career paths</p>
+                </div>
+
+                <div class="footer-links">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="#about">About Telecommunications</a></li>
+                        <li><a href="#key-areas">Key Areas</a></li>
+                        <li><a href="#careers">Career Opportunities</a></li>
+                        <li><a href="#skills">Skills & Tools</a></li>
+                        <li><a href="#courses">Recommended Courses</a></li>
+                        <li><a href="#projects">Hands-on Projects</a></li>
+                        <li><a href="electrical-engineering.html">Back to Electrical Engineering</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-resources">
+                    <h3>Resources</h3>
+                    <ul>
+                        <li><a href="https://www.ieee.org/communities/societies/communications.html" target="_blank">IEEE Communications Society</a></li>
+                        <li><a href="https://www.itu.int/" target="_blank">International Telecommunication Union</a></li>
+                        <li><a href="https://www.nptel.ac.in/courses/106105160/" target="_blank">NPTEL Telecommunications Courses</a></li>
+                        <li><a href="https://www.comsoc.org/" target="_blank">Communications Society</a></li>
+                        <li><a href="https://www.trai.gov.in/" target="_blank">Telecom Regulatory Authority of India</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; <script>document.write(new Date().getFullYear())</script> GoFarAsYouCan. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Accordion functionality
+        function setupAccordions() {
+            const accordionHeaders = document.querySelectorAll(".accordion-header");
+            
+            accordionHeaders.forEach(header => {
+                header.addEventListener("click", function() {
+                    // Toggle active class on the parent accordion item
+                    const accordionItem = this.parentElement;
+                    accordionItem.classList.toggle("active");
+                    
+                    // Toggle active class on the header itself
+                    this.classList.toggle("active");
+                    
+                    // Toggle the content visibility
+                    const content = this.nextElementSibling;
+                    if (accordionItem.classList.contains("active")) {
+                        content.style.maxHeight = content.scrollHeight + "px";
+                    } else {
+                        content.style.maxHeight = 0;
+                    }
+                });
+            });
+        }
+
+        // Smooth scrolling for anchor links
+        function setupSmoothScrolling() {
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+
+                    const targetId = this.getAttribute('href');
+                    if (targetId === "#") return;
+
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        window.scrollTo({
+                            top: targetElement.offsetTop - 80,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+        }
+
+        // Initialize everything when the DOM is loaded
+        document.addEventListener("DOMContentLoaded", function() {
+            setupAccordions();
+            setupSmoothScrolling();
+            
+            // Open the first accordion item by default
+            const firstAccordionItem = document.querySelector(".accordion-item");
+            if (firstAccordionItem) {
+                firstAccordionItem.classList.add("active");
+                const content = firstAccordionItem.querySelector(".accordion-content");
+                content.style.maxHeight = content.scrollHeight + "px";
+                firstAccordionItem.querySelector(".accordion-header").classList.add("active");
+            }
+        });
+    </script>
+</body>
+</html>

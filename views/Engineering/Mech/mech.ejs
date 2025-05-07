@@ -1,0 +1,1774 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mechanical Engineering - GoFarAsYouCan</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+
+    <style>
+      /* Base Styles */
+:root {
+  --primary-color: #1e40af;
+  --primary-light: #3b82f6;
+  --secondary-color: #0d47a1;
+  --accent-color: #f59e0b;
+  --text-color: #333;
+  --light-text: #fff;
+  --light-bg: #f5f5f5;
+  --dark-bg: #1e293b;
+  --card-bg: #fff;
+  --border-radius: 8px;
+  --box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  --transition: all 0.3s ease;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  line-height: 1.6;
+  color: var(--text-color);
+  background-color: var(--light-bg);
+}
+
+.container {
+  width: 90%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+a {
+  text-decoration: none;
+  color: var(--primary-color);
+  transition: var(--transition);
+}
+
+a:hover {
+  color: var(--secondary-color);
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  border-radius: var(--border-radius);
+}
+
+.bg-light {
+  background-color: var(--light-bg);
+}
+
+/* Navbar */
+.navbar {
+  background-color: var(--dark-bg);
+  color: var(--light-text);
+  padding: 1rem 0;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  box-shadow: var(--box-shadow);
+}
+
+.navbar .container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: var(--light-text);
+}
+
+.back-button a {
+  color: var(--light-text);
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.back-button a:hover {
+  color: var(--accent-color);
+}
+
+/* Hero Section */
+.hero {
+  background-color: var(--dark-bg);
+  color: var(--light-text);
+  text-align: center;
+  padding: 6rem 0;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero .overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: url('https://images.unsplash.com/photo-1537462715879-360eeb61a0ad?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80') center/cover;
+  opacity: 0.3;
+}
+
+.hero h1 {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+  position: relative;
+}
+
+.hero p {
+  font-size: 1.2rem;
+  max-width: 700px;
+  margin: 0 auto;
+  position: relative;
+}
+
+/* Section Styles */
+.section {
+  padding: 5rem 0;
+}
+
+.section-title {
+  text-align: center;
+  margin-bottom: 3rem;
+  color: var(--primary-color);
+  position: relative;
+  font-size: 2rem;
+}
+
+.section-title::after {
+  content: "";
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80px;
+  height: 4px;
+  background-color: var(--accent-color);
+}
+
+.section-intro {
+  text-align: center;
+  max-width: 800px;
+  margin: 0 auto 2.5rem;
+  font-size: 1.1rem;
+}
+
+/* Content Wrapper */
+.content-wrapper {
+  display: flex;
+  gap: 2.5rem;
+  align-items: center;
+}
+
+.text-content {
+  flex: 1;
+}
+
+.text-content p {
+  margin-bottom: 1.25rem;
+  font-size: 1.05rem;
+}
+
+.image-content {
+  flex: 1;
+  box-shadow: var(--box-shadow);
+  border-radius: var(--border-radius);
+  overflow: hidden;
+}
+
+/* Cards Grid */
+.cards-grid {
+  display: grid;
+  gap: 1.5rem;
+}
+
+.two-columns {
+  grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+}
+
+.three-columns {
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+}
+
+.four-columns {
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+}
+
+/* Card Styles */
+.card {
+  background-color: var(--card-bg);
+  border-radius: var(--border-radius);
+  overflow: hidden;
+  box-shadow: var(--box-shadow);
+  transition: var(--transition);
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+.card-header {
+  padding: 1.25rem 1.25rem 0.5rem;
+}
+
+.card-header h3 {
+  color: var(--primary-color);
+  margin-bottom: 0.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.card-header h3 i {
+  color: var(--primary-color);
+}
+
+.card-header p {
+  color: #666;
+  font-size: 0.9rem;
+}
+
+.card-content {
+  padding: 0.5rem 1.25rem 1.25rem;
+}
+
+/* Project Cards */
+.project-card .card-image {
+  height: 180px;
+  overflow: hidden;
+}
+
+.project-card .card-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.project-card:hover .card-image img {
+  transform: scale(1.05);
+}
+
+/* Career List */
+.career-list {
+  list-style: none;
+}
+
+.career-list li {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.5rem 0;
+  border-bottom: 1px solid #eee;
+}
+
+.career-list li:last-child {
+  border-bottom: none;
+}
+
+.badge {
+  background-color: #e5e7eb;
+  color: #4b5563;
+  padding: 0.25rem 0.5rem;
+  border-radius: 9999px;
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+.badge.top {
+  background-color: var(--primary-light);
+  color: white;
+}
+
+.badge.program {
+  background-color: var(--accent-color);
+  color: white;
+}
+
+.growth-sectors {
+  margin-top: 1rem;
+}
+
+.text-success {
+  color: #10b981;
+  font-weight: 600;
+  font-size: 1.05rem;
+}
+
+/* Education Pathways */
+.education-pathways {
+  margin-top: 2.5rem;
+  background-color: white;
+  padding: 1.5rem;
+  border-radius: var(--border-radius);
+  box-shadow: var(--box-shadow);
+}
+
+.education-pathways h3 {
+  color: var(--primary-color);
+  margin-bottom: 1rem;
+  font-size: 1.25rem;
+}
+
+.pathways-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1rem;
+}
+
+.pathway-card {
+  border: 1px solid #e5e7eb;
+  padding: 1rem;
+  border-radius: var(--border-radius);
+}
+
+.pathway-card h4 {
+  margin-bottom: 0.5rem;
+  font-size: 1.1rem;
+}
+
+/* Skills List */
+.skills-list {
+  list-style: none;
+}
+
+.skills-list li {
+  padding: 0.5rem 0;
+  border-bottom: 1px solid #eee;
+}
+
+.skills-list li:last-child {
+  border-bottom: none;
+}
+
+.skill-name {
+  font-weight: 600;
+  display: block;
+  margin-bottom: 0.25rem;
+}
+
+.skill-desc {
+  font-size: 0.9rem;
+  color: #666;
+}
+
+/* Accordion */
+.accordion {
+  border-radius: var(--border-radius);
+  overflow: hidden;
+}
+
+.accordion-item {
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.accordion-item:last-child {
+  border-bottom: none;
+}
+
+.accordion-header {
+  padding: 1rem;
+  cursor: pointer;
+  font-weight: 600;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: var(--transition);
+}
+
+.accordion-header::after {
+  content: '\f078';
+  font-family: 'Font Awesome 5 Free';
+  font-weight: 900;
+  transition: var(--transition);
+}
+
+.accordion-header.active::after {
+  transform: rotate(180deg);
+}
+
+.accordion-content {
+  padding: 0 1rem;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease;
+}
+
+.accordion-content p {
+  padding-bottom: 1rem;
+}
+
+.accordion-item.active .accordion-header {
+  background-color: #f8fafc;
+}
+
+.accordion-item.active .accordion-content {
+  max-height: 500px;
+}
+
+/* Specialization Grid */
+.specialization-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  gap: 1.5rem;
+}
+
+.specialization-card {
+  background-color: white;
+  padding: 1.5rem 1rem;
+  border-radius: var(--border-radius);
+  box-shadow: var(--box-shadow);
+  text-align: center;
+  transition: var(--transition);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: var(--text-color);
+}
+
+.specialization-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+  background-color: var(--primary-color);
+  color: var(--light-text);
+}
+
+.specialization-card i {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+  color: var(--primary-color);
+  transition: var(--transition);
+}
+
+.specialization-card:hover i {
+  color: var(--light-text);
+}
+
+.specialization-card h3 {
+  font-size: 1rem;
+}
+
+/* Internship List */
+.internship-list {
+  list-style: none;
+}
+
+.internship-list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+}
+
+.company-name {
+  font-weight: 600;
+  margin-bottom: 0.25rem;
+}
+
+.company-desc {
+  font-size: 0.9rem;
+  color: #666;
+}
+
+/* Internship Tips */
+.internship-tips {
+  margin-top: 2.5rem;
+  background-color: #f0f9ff;
+  padding: 1.5rem;
+  border-radius: var(--border-radius);
+  box-shadow: var(--box-shadow);
+}
+
+.internship-tips h3 {
+  color: var(--primary-color);
+  margin-bottom: 1.5rem;
+  font-size: 1.25rem;
+}
+
+.tips-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1.5rem;
+  list-style: none;
+}
+
+.tips-grid li {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+}
+
+.tip-number {
+  background-color: #dbeafe;
+  width: 2rem;
+  height: 2rem;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+  color: var(--primary-color);
+  flex-shrink: 0;
+}
+
+.tip-title {
+  font-weight: 600;
+  margin-bottom: 0.25rem;
+}
+
+.tip-desc {
+  font-size: 0.9rem;
+  color: #666;
+}
+
+/* Tabs */
+.tabs {
+  margin-bottom: 2rem;
+}
+
+.tab-buttons {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 2rem;
+}
+
+.tab-button {
+  padding: 0.75rem 1.5rem;
+  background-color: #e5e7eb;
+  border: none;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: 600;
+  transition: var(--transition);
+}
+
+.tab-button:first-child {
+  border-radius: var(--border-radius) 0 0 var(--border-radius);
+}
+
+.tab-button:last-child {
+  border-radius: 0 var(--border-radius) var(--border-radius) 0;
+}
+
+.tab-button.active {
+  background-color: var(--primary-color);
+  color: var(--light-text);
+}
+
+.tab-content {
+  display: none;
+}
+
+.tab-content.active {
+  display: block;
+}
+
+/* Colleges Grid */
+.colleges-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 1.5rem;
+}
+
+.college-card {
+  background-color: white;
+  padding: 1.25rem;
+  border-radius: var(--border-radius);
+  box-shadow: var(--box-shadow);
+  transition: var(--transition);
+}
+
+.college-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+}
+
+.college-card h3 {
+  color: var(--primary-color);
+  margin-bottom: 0.25rem;
+}
+
+.college-location {
+  color: #666;
+  margin-bottom: 0.75rem;
+  font-size: 0.9rem;
+}
+
+.college-details {
+  display: flex;
+  justify-content: space-between;
+  color: #666;
+  font-size: 0.85rem;
+  margin-bottom: 1rem;
+}
+
+.college-rank, .college-year {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.college-rank i {
+  color: var(--accent-color);
+}
+
+.college-year i {
+  color: var(--primary-color);
+}
+
+.college-info {
+  border-top: 1px solid #eee;
+  padding-top: 1rem;
+}
+
+.college-info p {
+  margin-bottom: 0.5rem;
+  font-size: 0.9rem;
+}
+
+.college-info span {
+  font-weight: 600;
+}
+
+/* FAQ Section */
+.faq-container {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+/* Footer */
+.footer {
+  background-color: var(--dark-bg);
+  color: var(--light-text);
+  padding: 4rem 0 1rem;
+}
+
+.footer-content {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2.5rem;
+  margin-bottom: 2.5rem;
+}
+
+.footer-logo h2 {
+  margin-bottom: 1rem;
+}
+
+.footer-links h3,
+.footer-resources h3 {
+  margin-bottom: 1.25rem;
+  position: relative;
+  padding-bottom: 0.5rem;
+  display: inline-block;
+}
+
+.footer-links h3::after,
+.footer-resources h3::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 50px;
+  height: 3px;
+  background-color: var(--accent-color);
+}
+
+.footer-links ul,
+.footer-resources ul {
+  list-style-type: none;
+}
+
+.footer-links li,
+.footer-resources li {
+  margin-bottom: 0.5rem;
+}
+
+.footer-links a,
+.footer-resources a {
+  color: #ccc;
+}
+
+.footer-links a:hover,
+.footer-resources a:hover {
+  color: var(--accent-color);
+}
+
+.footer-bottom {
+  text-align: center;
+  padding-top: 1.25rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Responsive Design */
+@media (max-width: 992px) {
+  .content-wrapper {
+    flex-direction: column;
+  }
+
+  .hero h1 {
+    font-size: 2.5rem;
+  }
+  
+  .two-columns {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .section {
+    padding: 3.5rem 0;
+  }
+
+  .hero {
+    padding: 5rem 0;
+  }
+
+  .hero h1 {
+    font-size: 2rem;
+  }
+
+  .section-title {
+    font-size: 1.75rem;
+  }
+
+  .college-details {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+}
+
+@media (max-width: 576px) {
+  .navbar {
+    padding: 0.75rem 0;
+  }
+
+  .logo {
+    font-size: 1.2rem;
+  }
+
+  .hero h1 {
+    font-size: 1.8rem;
+  }
+
+  .section-title {
+    font-size: 1.5rem;
+  }
+
+  .tab-buttons {
+    flex-direction: column;
+    width: 100%;
+    max-width: 300px;
+    margin: 0 auto 1.5rem;
+  }
+
+  .tab-button {
+    border-radius: 0;
+  }
+
+  .tab-button:first-child {
+    border-radius: var(--border-radius) var(--border-radius) 0 0;
+  }
+
+  .tab-button:last-child {
+    border-radius: 0 0 var(--border-radius) var(--border-radius);
+  }
+
+  .specialization-grid {
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  }
+}
+    </style>
+
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="logo">GoFarAsYouCan</div>
+            <div class="back-button">
+                <a href="/Engineering/engineering.ejs"><i class="fas fa-arrow-left"></i> Back</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="hero">
+        <div class="overlay"></div>
+        <div class="container">
+            <h1>Mechanical Engineering</h1>
+            <p>Discover the world of machines, energy, and innovation that powers our modern society</p>
+        </div>
+    </header>
+
+    <!-- What is Mechanical Engineering Section -->
+    <section class="section" id="about">
+        <div class="container">
+            <h2 class="section-title">What is Mechanical Engineering?</h2>
+            <div class="content-wrapper">
+                <div class="text-content">
+                    <p>Mechanical engineering is one of the oldest and broadest engineering disciplines. It combines principles of physics and materials science for the design, analysis, manufacturing, and maintenance of mechanical systems.</p>
+                    <p>Mechanical engineers design and build everything from small individual parts and devices to large systems and machines. They are involved in various stages of product development, from research and design to installation and final commissioning.</p>
+                    <p>As a mechanical engineer, you'll be at the forefront of innovation, creating solutions that address global challenges in energy, transportation, healthcare, and manufacturing.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Specializations Section -->
+    <section class="section bg-light" id="specializations">
+      <div class="container">
+          <h2 class="section-title">Specializations</h2>
+          <p class="section-intro">Explore different specializations within mechanical engineering that align with your interests and career goals:</p>
+          
+          <div class="specialization-grid">
+              <a href="automotive.ejs" class="specialization-card">
+                  <i class="fas fa-car"></i>
+                  <h3>Automotive Engineering</h3>
+              </a>
+              <a href="aerospace.ejs" class="specialization-card">
+                  <i class="fas fa-rocket"></i>
+                  <h3>Aerospace Engineering</h3>
+              </a>
+              <a href="robotics.ejs" class="specialization-card">
+                  <i class="fas fa-robot"></i>
+                  <h3>Robotics & Automation</h3>
+              </a>
+              <a href="manifacturing.ejs" class="specialization-card">
+                  <i class="fas fa-industry"></i>
+                  <h3>Manufacturing Engineering</h3>
+              </a>
+              <a href="thermal.ejs" class="specialization-card">
+                  <i class="fas fa-temperature-high"></i>
+                  <h3>Thermal Engineering</h3>
+              </a>
+              <a href="energy.ejs" class="specialization-card">
+                  <i class="fas fa-solar-panel"></i>
+                  <h3>Energy Systems</h3>
+              </a>
+          </div>
+      </div>
+  </section>
+
+    <!-- Career Paths Section - NEW -->
+    <section class="section bg-light" id="careers">
+        <div class="container">
+            <h2 class="section-title">Career Paths & Outlook</h2>
+            
+            <div class="cards-grid three-columns">
+                <div class="card">
+                    <div class="card-header">
+                        <h3><i class="fas fa-briefcase"></i> Industry Roles</h3>
+                    </div>
+                    <div class="card-content">
+                        <ul class="career-list">
+                            <li>
+                                <span>Design Engineer</span>
+                                <span class="badge">₹4-12 LPA</span>
+                            </li>
+                            <li>
+                                <span>Manufacturing Engineer</span>
+                                <span class="badge">₹5-15 LPA</span>
+                            </li>
+                            <li>
+                                <span>Project Engineer</span>
+                                <span class="badge">₹6-18 LPA</span>
+                            </li>
+                            <li>
+                                <span>R&D Engineer</span>
+                                <span class="badge">₹7-20 LPA</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <h3><i class="fas fa-chart-line"></i> Job Outlook</h3>
+                    </div>
+                    <div class="card-content">
+                        <p>The demand for mechanical engineers in India is projected to grow by 9% through 2030, with over 25,000 new positions annually.</p>
+                        <div class="growth-sectors">
+                            <span class="text-success">Growth Sectors:</span>
+                            <ul>
+                                <li>• Renewable Energy</li>
+                                <li>• Automotive (EV)</li>
+                                <li>• Aerospace</li>
+                                <li>• Robotics & Automation</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <h3><i class="fas fa-award"></i> Certifications</h3>
+                    </div>
+                    <div class="card-content">
+                        <ul>
+                            <li>• ASME Certification</li>
+                            <li>• Certified Manufacturing Engineer (CMfgE)</li>
+                            <li>• Six Sigma Certification</li>
+                            <li>• PMP Certification</li>
+                            <li>• AutoCAD Professional Certification</li>
+                            <li>• Certified Energy Manager (CEM)</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="education-pathways">
+                <h3>Higher Education Pathways</h3>
+                <div class="pathways-grid">
+                    <div class="pathway-card">
+                        <h4>M.Tech / M.E.</h4>
+                        <p>Specialized master's programs in areas like thermal engineering, manufacturing, automotive engineering, etc.</p>
+                    </div>
+                    <div class="pathway-card">
+                        <h4>MBA</h4>
+                        <p>For engineers looking to move into management roles or start their own ventures.</p>
+                    </div>
+                    <div class="pathway-card">
+                        <h4>Ph.D.</h4>
+                        <p>For research-oriented careers in academia, R&D labs, or specialized industry positions.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Real-world Projects Section -->
+    <section class="section" id="projects">
+        <div class="container">
+            <h2 class="section-title">Real-world Projects</h2>
+            <div class="cards-grid four-columns">
+
+                <div class="card project-card">
+                    <a href="https://en.wikipedia.org/wiki/Automotive_industry">
+                      <div class="card-image">
+                        <img src="https://images.unsplash.com/photo-1473621038790-b778b4750efe?ixlib=rb-1.2.1&auto=format&fit=crop&w=1352&q=80" alt="Automotive Engineering">
+                    </div>
+                    <div class="card-header">
+                        <h3>Automotive Design</h3>
+                    </div>
+                    <div class="card-content">
+                        <p>Designing and optimizing vehicle components, systems, and manufacturing processes.</p>
+                    </div>
+                    </a>
+                </div>
+
+                <div class="card project-card">
+                  <a href="https://en.wikipedia.org/wiki/Robotics">
+                    <div class="card-image">
+                        <img src="https://www.me.columbia.edu/files/seas/styles/816x460/public/content/cs_image/2022/28/robot_hero.jpg?itok=TrT_MOb-" alt="Robotics">
+                    </div>
+                    <div class="card-header">
+                        <h3>Robotics</h3>
+                    </div>
+                    <div class="card-content">
+                        <p>Creating automated systems and robots for industrial and consumer applications.</p>
+                    </div>
+                  </a>
+                </div>
+
+                <div class="card project-card">
+                  <a href="https://en.wikipedia.org/wiki/Renewable_energy">
+                    <div class="card-image">
+                        <img src="https://images.unsplash.com/photo-1497436072909-60f360e1d4b1?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Renewable Energy">
+                    </div>
+                    <div class="card-header">
+                        <h3>Renewable Energy</h3>
+                    </div>
+                    <div class="card-content">
+                        <p>Developing wind turbines, solar systems, and other sustainable energy solutions.</p>
+                    </div>
+                  </a>
+                </div>
+
+                <div class="card project-card">
+                    <a href="https://en.wikipedia.org/wiki/Aerospace_engineering">
+                    <div class="card-image">
+                      <img src="https://media.istockphoto.com/id/1486146016/photo/space-shuttle-takes-off-on-background-of-blue-sky.jpg?s=612x612&w=0&k=20&c=j2nrCmY7ZpMTPLZYfg4FaGHFEY6R7svzXarhwz7aOOo=" alt="Aerospace">
+                    </div>
+                    <div class="card-header">
+                        <h3>Aerospace Engineering</h3>
+                    </div>
+                    <div class="card-content">
+                        <p>Designing aircraft, spacecraft, and related systems and equipment.</p>
+                    </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- What to Master Section -->
+    <section class="section bg-light" id="skills">
+        <div class="container">
+            <h2 class="section-title">What to Master</h2>
+            <div class="cards-grid three-columns">
+                <div class="card">
+                    <div class="card-header">
+                        <h3><i class="fas fa-book-open"></i> Core Technical Skills</h3>
+                    </div>
+                    <div class="card-content">
+                        <ul class="skills-list">
+                            <li>
+                                <span class="skill-name">Thermodynamics</span>
+                                <p class="skill-desc">Energy transfer, heat engines, refrigeration cycles</p>
+                            </li>
+                            <li>
+                                <span class="skill-name">Fluid Mechanics</span>
+                                <p class="skill-desc">Fluid flow, hydraulics, aerodynamics</p>
+                            </li>
+                            <li>
+                                <span class="skill-name">Solid Mechanics</span>
+                                <p class="skill-desc">Stress analysis, material deformation, failure theories</p>
+                            </li>
+                            <li>
+                                <span class="skill-name">Materials Science</span>
+                                <p class="skill-desc">Material properties, selection, and processing</p>
+                            </li>
+                            <li>
+                                <span class="skill-name">Machine Design</span>
+                                <p class="skill-desc">Mechanical components, mechanisms, systems</p>
+                            </li>
+                            <li>
+                                <span class="skill-name">Manufacturing Processes</span>
+                                <p class="skill-desc">Machining, forming, additive manufacturing</p>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <h3><i class="fas fa-code"></i> Software & Tools</h3>
+                    </div>
+                    <div class="card-content">
+                        <ul class="skills-list">
+                            <li>
+                                <span class="skill-name">CAD Software</span>
+                                <p class="skill-desc">AutoCAD, SolidWorks, CATIA, Fusion 360</p>
+                            </li>
+                            <li>
+                                <span class="skill-name">CAE Software</span>
+                                <p class="skill-desc">ANSYS, COMSOL, Abaqus, Nastran</p>
+                            </li>
+                            <li>
+                                <span class="skill-name">Programming</span>
+                                <p class="skill-desc">MATLAB, Python, C++, LabVIEW</p>
+                            </li>
+                            <li>
+                                <span class="skill-name">Finite Element Analysis</span>
+                                <p class="skill-desc">Structural analysis, thermal analysis, optimization</p>
+                            </li>
+                            <li>
+                                <span class="skill-name">Computational Fluid Dynamics</span>
+                                <p class="skill-desc">Flow simulation, heat transfer, multiphysics</p>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <h3><i class="fas fa-wrench"></i> Professional Skills</h3>
+                    </div>
+                    <div class="card-content">
+                        <ul class="skills-list">
+                            <li>
+                                <span class="skill-name">Project Management</span>
+                                <p class="skill-desc">Planning, scheduling, resource allocation</p>
+                            </li>
+                            <li>
+                                <span class="skill-name">Technical Writing</span>
+                                <p class="skill-desc">Reports, documentation, specifications</p>
+                            </li>
+                            <li>
+                                <span class="skill-name">Problem-solving</span>
+                                <p class="skill-desc">Analytical thinking, troubleshooting, innovation</p>
+                            </li>
+                            <li>
+                                <span class="skill-name">Team Collaboration</span>
+                                <p class="skill-desc">Cross-functional teams, leadership, communication</p>
+                            </li>
+                            <li>
+                                <span class="skill-name">Industry Standards</span>
+                                <p class="skill-desc">ISO, ASME, ASTM, GD&T</p>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Research Areas - NEW -->
+    <section class="section" id="research">
+        <div class="container">
+            <h2 class="section-title">Research Areas</h2>
+
+            <div class="cards-grid two-columns">
+                <div class="card">
+                    <div class="card-header">
+                        <h3><i class="fas fa-lightbulb"></i> Emerging Research Fields</h3>
+                    </div>
+                    <div class="card-content">
+                        <div class="accordion">
+                            <div class="accordion-item">
+                                <div class="accordion-header">Additive Manufacturing</div>
+                                <div class="accordion-content">
+                                    <p>Research in 3D printing technologies, materials, and applications for complex geometries and customized parts. Focus areas include metal printing, bioprinting, and large-scale additive manufacturing.</p>
+                                </div>
+                            </div>
+                            <div class="accordion-item">
+                                <div class="accordion-header">Biomechanics</div>
+                                <div class="accordion-content">
+                                    <p>Application of mechanical principles to biological systems. Research includes prosthetics, orthopedic implants, tissue engineering, and medical devices.</p>
+                                </div>
+                            </div>
+                            <div class="accordion-item">
+                                <div class="accordion-header">Nanotechnology</div>
+                                <div class="accordion-content">
+                                    <p>Engineering at the nanoscale, including nanocomposites, nanomaterials, and nanodevices for applications in energy, healthcare, and electronics.</p>
+                                </div>
+                            </div>
+                            <div class="accordion-item">
+                                <div class="accordion-header">Smart Materials</div>
+                                <div class="accordion-content">
+                                    <p>Development and application of materials that respond to environmental stimuli, including shape memory alloys, piezoelectric materials, and self-healing materials.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <h3><i class="fas fa-lightbulb"></i> Sustainable Engineering</h3>
+                    </div>
+                    <div class="card-content">
+                        <div class="accordion">
+                            <div class="accordion-item">
+                                <div class="accordion-header">Renewable Energy Systems</div>
+                                <div class="accordion-content">
+                                    <p>Research in solar, wind, hydro, and geothermal energy technologies, focusing on efficiency improvements, storage solutions, and grid integration.</p>
+                                </div>
+                            </div>
+                            <div class="accordion-item">
+                                <div class="accordion-header">Energy Efficiency</div>
+                                <div class="accordion-content">
+                                    <p>Development of energy-efficient systems, buildings, and processes to reduce energy consumption and environmental impact.</p>
+                                </div>
+                            </div>
+                            <div class="accordion-item">
+                                <div class="accordion-header">Circular Economy</div>
+                                <div class="accordion-content">
+                                    <p>Design for disassembly, recycling, and remanufacturing to minimize waste and maximize resource utilization throughout product lifecycles.</p>
+                                </div>
+                            </div>
+                            <div class="accordion-item">
+                                <div class="accordion-header">Sustainable Manufacturing</div>
+                                <div class="accordion-content">
+                                    <p>Development of cleaner production methods, waste reduction strategies, and environmentally friendly materials and processes.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    
+
+    <!-- Internship Opportunities - NEW -->
+    <section class="section" id="internships">
+        <div class="container">
+            <h2 class="section-title">Internship Opportunities</h2>
+
+            <div class="cards-grid three-columns">
+                <div class="card">
+                    <div class="card-header">
+                        <h3>Industry Internships</h3>
+                        <p>Gain hands-on experience in real-world engineering environments</p>
+                    </div>
+                    <div class="card-content">
+                        <ul class="internship-list">
+                            <li>
+                                <span class="badge top">Top</span>
+                                <div>
+                                    <p class="company-name">Tata Motors</p>
+                                    <p class="company-desc">Automotive design, manufacturing, and testing</p>
+                                </div>
+                            </li>
+                            <li>
+                                <span class="badge top">Top</span>
+                                <div>
+                                    <p class="company-name">L&T</p>
+                                    <p class="company-desc">Heavy engineering, construction, and infrastructure</p>
+                                </div>
+                            </li>
+                            <li>
+                                <span class="badge">Popular</span>
+                                <div>
+                                    <p class="company-name">BHEL</p>
+                                    <p class="company-desc">Power generation equipment and systems</p>
+                                </div>
+                            </li>
+                            <li>
+                                <span class="badge">Popular</span>
+                                <div>
+                                    <p class="company-name">Mahindra & Mahindra</p>
+                                    <p class="company-desc">Automotive and farm equipment</p>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <h3>Research Internships</h3>
+                        <p>Contribute to cutting-edge research and development</p>
+                    </div>
+                    <div class="card-content">
+                        <ul class="internship-list">
+                            <li>
+                                <span class="badge top">Top</span>
+                                <div>
+                                    <p class="company-name">ISRO</p>
+                                    <p class="company-desc">Aerospace engineering and space technology</p>
+                                </div>
+                            </li>
+                            <li>
+                                <span class="badge top">Top</span>
+                                <div>
+                                    <p class="company-name">DRDO</p>
+                                    <p class="company-desc">Defense research and development</p>
+                                </div>
+                            </li>
+                            <li>
+                                <span class="badge">Popular</span>
+                                <div>
+                                    <p class="company-name">IISc Bangalore</p>
+                                    <p class="company-desc">Advanced research in various engineering domains</p>
+                                </div>
+                            </li>
+                            <li>
+                                <span class="badge">Popular</span>
+                                <div>
+                                    <p class="company-name">CSIR Labs</p>
+                                    <p class="company-desc">Scientific and industrial research</p>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <h3>International Opportunities</h3>
+                        <p>Expand your horizons with global experience</p>
+                    </div>
+                    <div class="card-content">
+                        <ul class="internship-list">
+                            <li>
+                                <span class="badge program">Program</span>
+                                <div>
+                                    <p class="company-name">MITACS Globalink</p>
+                                    <p class="company-desc">Research internships in Canadian universities</p>
+                                </div>
+                            </li>
+                            <li>
+                                <span class="badge program">Program</span>
+                                <div>
+                                    <p class="company-name">DAAD WISE</p>
+                                    <p class="company-desc">Research internships in German universities</p>
+                                </div>
+                            </li>
+                            <li>
+                                <span class="badge">Company</span>
+                                <div>
+                                    <p class="company-name">Siemens</p>
+                                    <p class="company-desc">Global engineering and technology company</p>
+                                </div>
+                            </li>
+                            <li>
+                                <span class="badge">Company</span>
+                                <div>
+                                    <p class="company-name">Bosch</p>
+                                    <p class="company-desc">Engineering and technology solutions</p>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="internship-tips">
+                <h3>Tips for Securing Internships</h3>
+                <ul class="tips-grid">
+                    <li>
+                        <div class="tip-number">1</div>
+                        <div>
+                            <p class="tip-title">Build a Strong Portfolio</p>
+                            <p class="tip-desc">Document your projects, include CAD models, simulations, and prototypes</p>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="tip-number">2</div>
+                        <div>
+                            <p class="tip-title">Develop Technical Skills</p>
+                            <p class="tip-desc">Master relevant software tools like SolidWorks, ANSYS, and MATLAB</p>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="tip-number">3</div>
+                        <div>
+                            <p class="tip-title">Participate in Competitions</p>
+                            <p class="tip-desc">Join SAE, ASME, or robotics competitions to showcase your skills</p>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="tip-number">4</div>
+                        <div>
+                            <p class="tip-title">Network Effectively</p>
+                            <p class="tip-desc">Connect with professionals on LinkedIn and attend industry events</p>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Top Colleges Section -->
+    <section class="section bg-light" id="colleges">
+        <div class="container">
+            <h2 class="section-title">Top Colleges for Mechanical Engineering</h2>
+            
+            <div class="tabs">
+                <div class="tab-buttons">
+                    <button class="tab-button active" onclick="openTab('government')">Government</button>
+                    <button class="tab-button" onclick="openTab('private')">Private</button>
+                </div>
+                
+                <div id="government" class="tab-content active">
+                    <div class="colleges-grid">
+                        <div class="college-card">
+                            <h3>IIT Bombay</h3>
+                            <p class="college-location">Mumbai, Maharashtra</p>
+                            <div class="college-details">
+                                <div class="college-rank">
+                                    <i class="fas fa-star"></i>
+                                    <span>NIRF Rank: 1</span>
+                                </div>
+                                <div class="college-year">
+                                    <i class="fas fa-graduation-cap"></i>
+                                    <span>Established: 1958</span>
+                                </div>
+                            </div>
+                            <div class="college-info">
+                                <p><span>Specializations:</span> Thermal & Fluids Engineering, Design Engineering, Manufacturing</p>
+                                <p><span>Average Placement:</span> ₹16-25 LPA</p>
+                            </div>
+                        </div>
+
+                        <div class="college-card">
+                            <h3>IIT Delhi</h3>
+                            <p class="college-location">New Delhi</p>
+                            <div class="college-details">
+                                <div class="college-rank">
+                                    <i class="fas fa-star"></i>
+                                    <span>NIRF Rank: 2</span>
+                                </div>
+                                <div class="college-year">
+                                    <i class="fas fa-graduation-cap"></i>
+                                    <span>Established: 1961</span>
+                                </div>
+                            </div>
+                            <div class="college-info">
+                                <p><span>Specializations:</span> Industrial Engineering, Production, Automotive Engineering</p>
+                                <p><span>Average Placement:</span> ₹15-24 LPA</p>
+                            </div>
+                        </div>
+
+                        <div class="college-card">
+                            <h3>IIT Madras</h3>
+                            <p class="college-location">Chennai, Tamil Nadu</p>
+                            <div class="college-details">
+                                <div class="college-rank">
+                                    <i class="fas fa-star"></i>
+                                    <span>NIRF Rank: 3</span>
+                                </div>
+                                <div class="college-year">
+                                    <i class="fas fa-graduation-cap"></i>
+                                    <span>Established: 1959</span>
+                                </div>
+                            </div>
+                            <div class="college-info">
+                                <p><span>Specializations:</span> Robotics, Manufacturing, Thermal Engineering</p>
+                                <p><span>Average Placement:</span> ₹14-23 LPA</p>
+                            </div>
+                        </div>
+
+                        <div class="college-card">
+                            <h3>IIT Kanpur</h3>
+                            <p class="college-location">Kanpur, Uttar Pradesh</p>
+                            <div class="college-details">
+                                <div class="college-rank">
+                                    <i class="fas fa-star"></i>
+                                    <span>NIRF Rank: 4</span>
+                                </div>
+                                <div class="college-year">
+                                    <i class="fas fa-graduation-cap"></i>
+                                    <span>Established: 1959</span>
+                                </div>
+                            </div>
+                            <div class="college-info">
+                                <p><span>Specializations:</span> Aerospace, Materials, Manufacturing</p>
+                                <p><span>Average Placement:</span> ₹14-22 LPA</p>
+                            </div>
+                        </div>
+
+                        <div class="college-card">
+                            <h3>IIT Kharagpur</h3>
+                            <p class="college-location">Kharagpur, West Bengal</p>
+                            <div class="college-details">
+                                <div class="college-rank">
+                                    <i class="fas fa-star"></i>
+                                    <span>NIRF Rank: 5</span>
+                                </div>
+                                <div class="college-year">
+                                    <i class="fas fa-graduation-cap"></i>
+                                    <span>Established: 1951</span>
+                                </div>
+                            </div>
+                            <div class="college-info">
+                                <p><span>Specializations:</span> Manufacturing, Thermal, Mechatronics</p>
+                                <p><span>Average Placement:</span> ₹13-21 LPA</p>
+                            </div>
+                        </div>
+
+                        <div class="college-card">
+                            <h3>NIT Trichy</h3>
+                            <p class="college-location">Tiruchirappalli, Tamil Nadu</p>
+                            <div class="college-details">
+                                <div class="college-rank">
+                                    <i class="fas fa-star"></i>
+                                    <span>NIRF Rank: 10</span>
+                                </div>
+                                <div class="college-year">
+                                    <i class="fas fa-graduation-cap"></i>
+                                    <span>Established: 1964</span>
+                                </div>
+                            </div>
+                            <div class="college-info">
+                                <p><span>Specializations:</span> Energy Engineering, Design, Manufacturing</p>
+                                <p><span>Average Placement:</span> ₹8-15 LPA</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div id="private" class="tab-content">
+                    <div class="colleges-grid">
+                        <div class="college-card">
+                            <h3>BITS Pilani</h3>
+                            <p class="college-location">Pilani, Rajasthan</p>
+                            <div class="college-details">
+                                <div class="college-rank">
+                                    <i class="fas fa-star"></i>
+                                    <span>NIRF Rank: 17</span>
+                                </div>
+                                <div class="college-year">
+                                    <i class="fas fa-graduation-cap"></i>
+                                    <span>Established: 1964</span>
+                                </div>
+                            </div>
+                            <div class="college-info">
+                                <p><span>Specializations:</span> Manufacturing, Design, Robotics</p>
+                                <p><span>Average Placement:</span> ₹10-18 LPA</p>
+                            </div>
+                        </div>
+
+                        <div class="college-card">
+                            <h3>VIT Vellore</h3>
+                            <p class="college-location">Vellore, Tamil Nadu</p>
+                            <div class="college-details">
+                                <div class="college-rank">
+                                    <i class="fas fa-star"></i>
+                                    <span>NIRF Rank: 12</span>
+                                </div>
+                                <div class="college-year">
+                                    <i class="fas fa-graduation-cap"></i>
+                                    <span>Established: 1984</span>
+                                </div>
+                            </div>
+                            <div class="college-info">
+                                <p><span>Specializations:</span> Automotive, Energy, Manufacturing</p>
+                                <p><span>Average Placement:</span> ₹6-14 LPA</p>
+                            </div>
+                        </div>
+
+                        <div class="college-card">
+                            <h3>Manipal Institute of Technology</h3>
+                            <p class="college-location">Manipal, Karnataka</p>
+                            <div class="college-details">
+                                <div class="college-rank">
+                                    <i class="fas fa-star"></i>
+                                    <span>NIRF Rank: 45</span>
+                                </div>
+                                <div class="college-year">
+                                    <i class="fas fa-graduation-cap"></i>
+                                    <span>Established: 1957</span>
+                                </div>
+                            </div>
+                            <div class="college-info">
+                                <p><span>Specializations:</span> Mechatronics, Manufacturing, Automobile</p>
+                                <p><span>Average Placement:</span> ₹5-12 LPA</p>
+                            </div>
+                        </div>
+
+                        <div class="college-card">
+                            <h3>SRM Institute of Science and Technology</h3>
+                            <p class="college-location">Chennai, Tamil Nadu</p>
+                            <div class="college-details">
+                                <div class="college-rank">
+                                    <i class="fas fa-star"></i>
+                                    <span>NIRF Rank: 35</span>
+                                </div>
+                                <div class="college-year">
+                                    <i class="fas fa-graduation-cap"></i>
+                                    <span>Established: 1985</span>
+                                </div>
+                            </div>
+                            <div class="college-info">
+                                <p><span>Specializations:</span> Automotive, Robotics, Manufacturing</p>
+                                <p><span>Average Placement:</span> ₹5-11 LPA</p>
+                            </div>
+                        </div>
+
+                        <div class="college-card">
+                            <h3>Thapar Institute of Engineering & Technology</h3>
+                            <p class="college-location">Patiala, Punjab</p>
+                            <div class="college-details">
+                                <div class="college-rank">
+                                    <i class="fas fa-star"></i>
+                                    <span>NIRF Rank: 23</span>
+                                </div>
+                                <div class="college-year">
+                                    <i class="fas fa-graduation-cap"></i>
+                                    <span>Established: 1956</span>
+                                </div>
+                            </div>
+                            <div class="college-info">
+                                <p><span>Specializations:</span> CAD/CAM, Production, Industrial</p>
+                                <p><span>Average Placement:</span> ₹6-13 LPA</p>
+                            </div>
+                        </div>
+
+                        <div class="college-card">
+                            <h3>PSG College of Technology</h3>
+                            <p class="college-location">Coimbatore, Tamil Nadu</p>
+                            <div class="college-details">
+                                <div class="college-rank">
+                                    <i class="fas fa-star"></i>
+                                    <span>NIRF Rank: 39</span>
+                                </div>
+                                <div class="college-year">
+                                    <i class="fas fa-graduation-cap"></i>
+                                    <span>Established: 1951</span>
+                                </div>
+                            </div>
+                            <div class="college-info">
+                                <p><span>Specializations:</span> Manufacturing, Automobile, Energy</p>
+                                <p><span>Average Placement:</span> ₹5-12 LPA</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section - NEW -->
+    <section class="section" id="faq">
+        <div class="container">
+            <h2 class="section-title">Frequently Asked Questions</h2>
+
+            <div class="faq-container">
+                <div class="accordion">
+                    <div class="accordion-item">
+                        <div class="accordion-header">What is the difference between Mechanical and Automobile Engineering?</div>
+                        <div class="accordion-content">
+                            <p>Mechanical Engineering is a broader field that covers the design, manufacturing, and maintenance of mechanical systems in general. Automobile Engineering is a specialized branch that focuses specifically on the design, development, and manufacturing of vehicles. Mechanical engineers can work in various industries, while automobile engineers primarily work in the automotive sector.</p>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item">
+                        <div class="accordion-header">Is coding knowledge necessary for Mechanical Engineers?</div>
+                        <div class="accordion-content">
+                            <p>While not mandatory, coding knowledge is increasingly valuable for mechanical engineers. Programming skills in languages like MATLAB, Python, and C++ help in automation, simulation, data analysis, and working with CAD/CAM software. As industries embrace Industry 4.0 and smart manufacturing, mechanical engineers with programming skills have a competitive advantage.</p>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item">
+                        <div class="accordion-header">What are the emerging areas in Mechanical Engineering?</div>
+                        <div class="accordion-content">
+                            <p>Emerging areas include additive manufacturing (3D printing), robotics and automation, renewable energy systems, biomechanics and medical devices, nanotechnology, and smart materials. The integration of AI and IoT with mechanical systems is also creating new opportunities in fields like predictive maintenance, autonomous vehicles, and smart manufacturing.</p>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item">
+                        <div class="accordion-header">How is the job market for Mechanical Engineers in India?</div>
+                        <div class="accordion-content">
+                            <p>The job market for mechanical engineers in India remains strong, with opportunities in automotive, aerospace, energy, manufacturing, and infrastructure sectors. The push towards Make in India, renewable energy, and electric vehicles is creating new opportunities. However, the field is becoming more competitive, and engineers with specialized skills in emerging areas like automation, CAD/CAM, and sustainable design have better prospects.</p>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item">
+                        <div class="accordion-header">What certifications can enhance my employability as a Mechanical Engineer?</div>
+                        <div class="accordion-content">
+                            <p>Valuable certifications include: ASME certifications, Certified Manufacturing Engineer (CMfgE), Six Sigma (Green Belt/Black Belt), Project Management Professional (PMP), CAD certifications (AutoCAD, SolidWorks, CATIA), Certified Energy Manager (CEM), and AWS Certified Welding Inspector. Industry-specific certifications in automotive, aerospace, or oil and gas can also be beneficial depending on your career goals.</p>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item">
+                        <div class="accordion-header">How can I prepare for GATE in Mechanical Engineering?</div>
+                        <div class="accordion-content">
+                            <p>To prepare for GATE in Mechanical Engineering: (1) Understand the syllabus thoroughly, (2) Focus on core subjects like Thermodynamics, Fluid Mechanics, Strength of Materials, and Manufacturing, (3) Solve previous years' question papers, (4) Use standard textbooks and reference materials, (5) Join a good coaching program if needed, (6) Create a structured study plan with regular revision, and (7) Take mock tests to improve time management and identify weak areas.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <h2>GoFarAsYouCan</h2>
+                    <p>Your guide to engineering education and career paths</p>
+                </div>
+
+                <div class="footer-links">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="#about">About Mechanical Engineering</a></li>
+                        <li><a href="#careers">Career Paths</a></li>
+                        <li><a href="#projects">Real-world Projects</a></li>
+                        <li><a href="#skills">Skills to Master</a></li>
+                        <li><a href="#specializations">Specializations</a></li>
+                        <li><a href="#colleges">Top Colleges</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-resources">
+                  <h3>Resources</h3>
+                  <ul>
+                      <li><a href="https://www.engineering.com/" target="_blank">Engineering Blogs</a></li>
+                      <li><a href="https://www.coursera.org/" target="_blank">Online Courses</a></li>
+                      <li><a href="https://scholar.google.com/" target="_blank">Research Papers</a></li>
+                      <li><a href="https://www.statista.com/" target="_blank">Industry Reports</a></li>
+                      <li><a href="https://www.naukri.com/career-guidance" target="_blank">Career Guidance</a></li>
+                  </ul>
+              </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; <script>document.write(new Date().getFullYear())</script> GoFarAsYouCan. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+      // Tab functionality for colleges section
+function openTab(tabName) {
+  // Hide all tab content
+  const tabContents = document.querySelectorAll(".tab-content");
+  tabContents.forEach((content) => {
+    content.classList.remove("active");
+  });
+
+  // Remove active class from all tab buttons
+  const tabButtons = document.querySelectorAll(".tab-button");
+  tabButtons.forEach((button) => {
+    button.classList.remove("active");
+  });
+
+  // Show the selected tab content and mark the button as active
+  document.getElementById(tabName).classList.add("active");
+  document.querySelector(`button[onclick="openTab('${tabName}')"]`).classList.add("active");
+}
+
+// Accordion functionality
+function setupAccordions() {
+  const accordionHeaders = document.querySelectorAll(".accordion-header");
+  
+  accordionHeaders.forEach(header => {
+    header.addEventListener("click", function() {
+      // Toggle active class on the parent accordion item
+      const accordionItem = this.parentElement;
+      accordionItem.classList.toggle("active");
+      
+      // Toggle active class on the header itself
+      this.classList.toggle("active");
+      
+      // Toggle the content visibility
+      const content = this.nextElementSibling;
+      if (accordionItem.classList.contains("active")) {
+        content.style.maxHeight = content.scrollHeight + "px";
+      } else {
+        content.style.maxHeight = 0;
+      }
+    });
+  });
+}
+
+// Smooth scrolling for anchor links
+function setupSmoothScrolling() {
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+      e.preventDefault();
+
+      const targetId = this.getAttribute('href');
+      if (targetId === "#") return;
+
+      const targetElement = document.querySelector(targetId);
+      if (targetElement) {
+        window.scrollTo({
+          top: targetElement.offsetTop - 80,
+          behavior: 'smooth'
+        });
+      }
+    });
+  });
+}
+
+// Initialize everything when the DOM is loaded
+document.addEventListener("DOMContentLoaded", function() {
+  // Set the default tab to 'government'
+  openTab("government");
+  
+  // Setup accordions
+  setupAccordions();
+  
+  // Setup smooth scrolling
+  setupSmoothScrolling();
+});
+    </script>
+</body>
+</html>

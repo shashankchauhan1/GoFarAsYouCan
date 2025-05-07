@@ -1,0 +1,850 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" rel="stylesheet">
+  <title>Manufacturing Engineering Learning Hub</title>
+  <style>
+    :root {
+      --primary-bg: #1A1A1D;
+      /* Dark industrial background */
+      --section-bg: #252529;
+      /* Slightly lighter background */
+      --card-bg: #2D2D33;
+      /* Card background */
+      --card-hover: #36363D;
+      /* Card hover effect */
+      --text-primary: #F2F2F2;
+      /* Light text color */
+      --text-secondary: #B8B8B8;
+      /* Muted text color */
+      --accent: #FF6B35;
+      /* Orange accent */
+      --accent-hover: #FF8C5A;
+      /* Lighter orange for hover */
+      --highlight: #4ECDC4;
+      /* Teal for highlights */
+      --border: #3A3A40;
+      /* Border color */
+      --gradient-start: #FF6B35;
+      /* Gradient start color */
+      --gradient-end: #F9A03F;
+      /* Gradient end color */
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: var(--primary-bg);
+      color: var(--text-primary);
+      line-height: 1.6;
+      background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23303035' fill-opacity='0.2'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    }
+
+    .navbar {
+      background: var(--section-bg);
+      padding: 1rem 2rem;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+      border-bottom: 1px solid rgba(255, 107, 53, 0.1);
+    }
+
+    .nav-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      font-size: 1.8rem;
+      font-weight: bold;
+      background: linear-gradient(90deg, var(--gradient-start), var(--gradient-end));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      text-decoration: none;
+    }
+
+    .back-button {
+      text-decoration: none;
+      color: var(--text-primary);
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      transition: color 0.3s ease;
+    }
+
+    .back-button:hover {
+      color: var(--accent);
+    }
+
+    header {
+      text-align: center;
+      padding: 6rem 2rem;
+      background: var(--section-bg);
+      position: relative;
+      overflow: hidden;
+      background-image: linear-gradient(rgba(37, 37, 41, 0.9), rgba(37, 37, 41, 0.9)), url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%23FF6B35' fill-opacity='0.1' fill-rule='evenodd'/%3E%3C/svg%3E");
+    }
+
+    header::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(135deg, rgba(255, 107, 53, 0.1) 0%, rgba(249, 160, 63, 0.05) 100%);
+      z-index: 1;
+    }
+
+    header h1, header p {
+      position: relative;
+      z-index: 3;
+    }
+
+    header h1 {
+      font-size: 3.5rem;
+      margin-bottom: 1.5rem;
+      background: linear-gradient(90deg, var(--gradient-start), var(--gradient-end));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      text-shadow: 0 2px 10px rgba(255, 107, 53, 0.3);
+    }
+
+    header p {
+      font-size: 1.25rem;
+      color: var(--text-secondary);
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    section {
+      max-width: 1200px;
+      margin: 3rem auto;
+      padding: 2rem;
+    }
+
+    .section-title {
+      color: var(--accent);
+      margin-bottom: 2rem;
+      font-size: 2.2rem;
+      position: relative;
+      padding-bottom: 0.8rem;
+      display: inline-block;
+    }
+
+    .section-title::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 60%;
+      height: 3px;
+      background: linear-gradient(90deg, var(--gradient-start), var(--gradient-end));
+      border-radius: 3px;
+    }
+
+    .topics-grid,
+    .specialization-grid,
+    .projects-grid,
+    .practice-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 2rem;
+      margin: 2rem 0;
+    }
+
+    .topic-card,
+    .specialization-card,
+    .project-card,
+    .practice-card {
+      background: var(--card-bg);
+      padding: 2rem;
+      border-radius: 8px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+      transition: all 0.3s ease;
+      border: 1px solid var(--border);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .topic-card::before,
+    .specialization-card::before,
+    .project-card::before,
+    .practice-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 4px;
+      background: linear-gradient(90deg, var(--gradient-start), var(--gradient-end));
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    .topic-card:hover::before,
+    .specialization-card:hover::before,
+    .project-card:hover::before,
+    .practice-card:hover::before {
+      opacity: 1;
+    }
+
+    .topic-card:hover,
+    .specialization-card:hover,
+    .project-card:hover,
+    .practice-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.2);
+      border-color: rgba(255, 107, 53, 0.3);
+      background: var(--card-hover);
+    }
+
+    .topic-title,
+    .specialization-title,
+    .project-title {
+      color: var(--highlight);
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+    }
+
+    .topic-title i,
+    .specialization-title i,
+    .project-title i {
+      color: var(--accent);
+    }
+
+    .learn-btn {
+      display: inline-block;
+      padding: 0.75rem 1.5rem;
+      background: linear-gradient(90deg, var(--gradient-start), var(--gradient-end));
+      color: #FFFFFF;
+      text-decoration: none;
+      border-radius: 4px;
+      transition: all 0.3s ease;
+      margin-top: 1.5rem;
+      font-weight: bold;
+      position: relative;
+      z-index: 1;
+      overflow: hidden;
+    }
+
+    .learn-btn::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, var(--gradient-end), var(--gradient-start));
+      z-index: -1;
+      transition: opacity 0.3s ease;
+      opacity: 0;
+    }
+
+    .learn-btn:hover::before {
+      opacity: 1;
+    }
+
+    .learn-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(255, 107, 53, 0.3);
+    }
+
+    footer {
+      text-align: center;
+      padding: 3rem 2rem;
+      background: var(--section-bg);
+      margin-top: 4rem;
+      border-top: 1px solid var(--border);
+      position: relative;
+      overflow: hidden;
+    }
+
+    footer::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(135deg, rgba(255, 107, 53, 0.05) 0%, rgba(249, 160, 63, 0.02) 100%);
+      z-index: 1;
+    }
+
+    .quote {
+      font-style: italic;
+      color: var(--text-secondary);
+      max-width: 800px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 2;
+    }
+
+    .project-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin: 1rem 0;
+    }
+
+    .project-tag {
+      background: rgba(255, 107, 53, 0.1);
+      color: var(--accent);
+      padding: 0.3rem 0.8rem;
+      border-radius: 4px;
+      font-size: 0.8rem;
+      border: 1px solid rgba(255, 107, 53, 0.2);
+    }
+
+    .features-list {
+      list-style: none;
+    }
+
+    .features-list li {
+      margin-bottom: 0.8rem;
+      display: flex;
+      align-items: flex-start;
+      gap: 0.8rem;
+    }
+
+    .features-list i {
+      color: var(--highlight);
+      margin-top: 0.3rem;
+    }
+
+    .resources-section {
+      margin-top: 1.8rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid rgba(255, 107, 53, 0.1);
+    }
+
+    .resources-title {
+      font-size: 1.1rem;
+      margin-bottom: 1rem;
+      color: var(--accent);
+    }
+
+    .channel-list {
+      list-style: none;
+    }
+
+    .channel-list li {
+      margin-bottom: 0.8rem;
+    }
+
+    .channel-list i {
+      margin-right: 0.5rem;
+      color: var(--accent);
+    }
+
+    .resource-list {
+      list-style: none;
+    }
+
+    .resource-list li {
+      margin-bottom: 0.8rem;
+    }
+
+    .resource-list i {
+      margin-right: 0.5rem;
+      color: var(--accent);
+    }
+
+    /* Responsive styles */
+    @media (max-width: 1200px) {
+      section {
+        padding: 2rem 1.5rem;
+      }
+    }
+
+    @media (max-width: 992px) {
+      .topics-grid,
+      .specialization-grid,
+      .projects-grid,
+      .practice-grid {
+        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      }
+    }
+
+    @media (max-width: 768px) {
+      .navbar {
+        padding: 1rem;
+      }
+
+      .logo {
+        font-size: 1.5rem;
+      }
+
+      header {
+        padding: 4rem 1.5rem;
+      }
+
+      header h1 {
+        font-size: 2.5rem;
+      }
+
+      header p {
+        font-size: 1.1rem;
+      }
+
+      section {
+        padding: 1.5rem 1rem;
+      }
+
+      .section-title {
+        font-size: 1.8rem;
+      }
+    }
+
+    @media (max-width: 576px) {
+      header h1 {
+        font-size: 2rem;
+      }
+
+      .topics-grid,
+      .specialization-grid,
+      .projects-grid,
+      .practice-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .topic-card,
+      .specialization-card,
+      .project-card,
+      .practice-card {
+        padding: 1.5rem;
+      }
+    }
+
+    /* Animation for cards */
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .topic-card,
+    .specialization-card,
+    .project-card,
+    .practice-card {
+      animation: fadeInUp 0.5s ease forwards;
+    }
+
+    .topic-card:nth-child(2),
+    .specialization-card:nth-child(2),
+    .project-card:nth-child(2),
+    .practice-card:nth-child(2) {
+      animation-delay: 0.1s;
+    }
+
+    .topic-card:nth-child(3),
+    .specialization-card:nth-child(3),
+    .project-card:nth-child(3),
+    .practice-card:nth-child(3) {
+      animation-delay: 0.2s;
+    }
+
+    /* Industrial pattern overlay */
+    .industrial-pattern {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23FF6B35' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+      pointer-events: none;
+      z-index: -1;
+      opacity: 0.05;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="industrial-pattern"></div>
+  
+  <nav class="navbar">
+    <div class="nav-container">
+      <a href="#" class="logo">Manufacturing Engineering</a>
+      <a href="/Engineering/MECH/mech.ejs" class="back-button">
+        <i class="fas fa-arrow-left"></i> Back
+      </a>
+    </div>
+  </nav>
+
+  <header>
+    <h1>Manufacturing Engineering</h1>
+    <p>Master the fundamentals of production systems, advanced manufacturing processes, and industrial optimization with comprehensive learning resources.</p>
+  </header>
+
+  <section class="specialization-section">
+    <h2 class="section-title">Specialization Areas</h2>
+    <div class="specialization-grid">
+  
+      <!-- Advanced Manufacturing -->
+      <div class="specialization-card">
+        <div class="specialization-title">
+          <i class="fas fa-industry"></i>
+          Advanced Manufacturing
+        </div>
+        <p>Focus on cutting-edge production technologies, smart manufacturing, and Industry 4.0 implementation.</p>
+        <ul class="features-list">
+          <li><i class="fas fa-check"></i> <span>Additive manufacturing (3D printing)</span></li>
+          <li><i class="fas fa-check"></i> <span>Smart factory technologies</span></li>
+          <li><i class="fas fa-check"></i> <span>Industrial IoT integration</span></li>
+        </ul>
+        <div class="resources-section">
+          <div class="resources-title">Learning Resources</div>
+          <ul class="channel-list">
+            <li><a style="color: white; text-decoration: none;" href="https://www.youtube.com/c/3DPrintingNerd" target="_blank"><i class="fab fa-youtube"></i> 3D Printing Nerd</a></li>
+            <li><a style="color: white; text-decoration: none;" href="https://www.youtube.com/c/AmericaMakes" target="_blank"><i class="fab fa-youtube"></i> America Makes</a></li>
+            <li><a style="color: white; text-decoration: none;" href="https://www.coursera.org/learn/industry-4" target="_blank"><i class="fas fa-book"></i> Industry 4.0: The Future of Manufacturing</a></li>
+          </ul>
+        </div>
+      </div>
+  
+      <!-- Production Systems -->
+      <div class="specialization-card">
+        <div class="specialization-title">
+          <i class="fas fa-cogs"></i>
+          Production Systems
+        </div>
+        <p>Study of manufacturing processes, production planning, and optimization of manufacturing operations.</p>
+        <ul class="features-list">
+          <li><i class="fas fa-check"></i> <span>Lean manufacturing</span></li>
+          <li><i class="fas fa-check"></i> <span>Production planning & control</span></li>
+          <li><i class="fas fa-check"></i> <span>Process optimization</span></li>
+        </ul>
+        <div class="resources-section">
+          <div class="resources-title">Learning Resources</div>
+          <ul class="channel-list">
+            <li><a style="color: white; text-decoration: none;" href="https://www.youtube.com/c/GembaAcademy" target="_blank"><i class="fab fa-youtube"></i> Gemba Academy</a></li>
+            <li><a style="color: white; text-decoration: none;" href="https://www.edx.org/course/lean-production" target="_blank"><i class="fas fa-graduation-cap"></i> Lean Production</a></li>
+            <li><a style="color: white; text-decoration: none;" href="https://www.lean.org/explore-lean/lean-topics/" target="_blank"><i class="fas fa-graduation-cap"></i> Lean Enterprise Institute</a></li>
+          </ul>
+        </div>
+      </div>
+  
+      <!-- Quality & Reliability -->
+      <div class="specialization-card">
+        <div class="specialization-title">
+          <i class="fas fa-check-circle"></i>
+          Quality & Reliability
+        </div>
+        <p>Focus on quality control systems, statistical process control, and reliability engineering.</p>
+        <ul class="features-list">
+          <li><i class="fas fa-check"></i> <span>Statistical quality control</span></li>
+          <li><i class="fas fa-check"></i> <span>Six Sigma methodologies</span></li>
+          <li><i class="fas fa-check"></i> <span>Reliability testing & analysis</span></li>
+        </ul>
+        <div class="resources-section">
+          <div class="resources-title">Learning Resources</div>
+          <ul class="channel-list">
+            <li><a style="color: white; text-decoration: none;" href="https://www.youtube.com/c/ASQorg" target="_blank"><i class="fab fa-youtube"></i> ASQ (American Society for Quality)</a></li>
+            <li><a style="color: white; text-decoration: none;" href="https://www.coursera.org/learn/six-sigma-principles" target="_blank"><i class="fas fa-graduation-cap"></i> Six Sigma Principles</a></li>
+            <li><a style="color: white; text-decoration: none;" href="https://asq.org/quality-resources" target="_blank"><i class="fas fa-book"></i> ASQ Quality Resources</a></li>
+          </ul>
+        </div>
+      </div>
+  
+    </div>
+  </section>
+  
+
+  <!-- Projects section -->
+  <section class="projects-section">
+    <h2 class="section-title">Industry Projects</h2>
+    <div class="projects-grid">
+      <div class="project-card">
+        <div class="project-title">
+          <i class="fas fa-robot"></i>
+          Smart Factory Implementation
+        </div>
+        <p>Design and implement Industry 4.0 solutions with IoT sensors, digital twins, and predictive maintenance systems.</p>
+        <div class="project-tags">
+          <span class="project-tag">Digital Transformation</span>
+          <span class="project-tag">IIoT</span>
+          <span class="project-tag">Predictive Analytics</span>
+        </div>
+        <a href="https://www.plm.automation.siemens.com/global/en/our-story/glossary/digital-twin/24465" class="learn-btn" target="_blank">View Case Studies</a>
+      </div>
+  
+      <div class="project-card">
+        <div class="project-title">
+          <i class="fas fa-print"></i>
+          Additive Manufacturing
+        </div>
+        <p>Develop advanced 3D printing applications for production parts, tooling, and custom manufacturing solutions.</p>
+        <div class="project-tags">
+          <span class="project-tag">Metal 3D Printing</span>
+          <span class="project-tag">Topology Optimization</span>
+          <span class="project-tag">Rapid Prototyping</span>
+        </div>
+        <a href="https://www.ge.com/additive/case-studies" class="learn-btn" target="_blank">View Examples</a>
+      </div>
+  
+      <div class="project-card">
+        <div class="project-title">
+          <i class="fas fa-recycle"></i>
+          Sustainable Manufacturing
+        </div>
+        <p>Create environmentally friendly production processes with reduced waste, energy efficiency, and circular economy principles.</p>
+        <div class="project-tags">
+          <span class="project-tag">Green Manufacturing</span>
+          <span class="project-tag">Waste Reduction</span>
+          <span class="project-tag">Energy Optimization</span>
+        </div>
+        <a href="https://www.epa.gov/sustainability/sustainable-manufacturing" class="learn-btn" target="_blank">View Resources</a>
+      </div>
+    </div>
+  </section>
+  
+
+  <section>
+    <h2 class="section-title">Core Concepts</h2>
+    <div class="topics-grid">
+      <div class="topic-card">
+        <div class="topic-title"><i class="fas fa-tools"></i> Manufacturing Processes</div>
+        <p>Understand traditional and advanced manufacturing methods including machining, forming, casting, and joining.</p>
+        <a class="learn-btn" href="https://www.coursera.org/learn/manufacturing-processes" target="_blank">Learn More</a>
+      </div>
+  
+      <div class="topic-card">
+        <div class="topic-title"><i class="fas fa-clipboard-check"></i> Lean Manufacturing</div>
+        <p>Master the principles of waste elimination, continuous improvement, and value stream optimization.</p>
+        <a class="learn-btn" href="https://www.edx.org/course/lean-production" target="_blank">Learn More</a>
+      </div>
+  
+      <div class="topic-card">
+        <div class="topic-title"><i class="fas fa-drafting-compass"></i> CAD/CAM Systems</div>
+        <p>Learn about computer-aided design and manufacturing tools for product development and production.</p>
+        <a class="learn-btn" href="https://www.coursera.org/learn/cad-cam-cae" target="_blank">Learn More</a>
+      </div>
+    </div>
+  
+    <div class="topics-grid">
+      <div class="topic-card">
+        <div class="topic-title"><i class="fas fa-chart-line"></i> Quality Control</div>
+        <p>Study statistical process control, inspection methods, and quality management systems.</p>
+        <a class="learn-btn" href="https://www.edx.org/course/statistical-quality-control" target="_blank">Learn More</a>
+      </div>
+  
+      <div class="topic-card">
+        <div class="topic-title"><i class="fas fa-cubes"></i> Additive Manufacturing</div>
+        <p>Understand 3D printing technologies, materials, and applications in production environments.</p>
+        <a class="learn-btn" href="https://www.coursera.org/learn/3d-printing-revolution" target="_blank">Learn More</a>
+      </div>
+  
+      <div class="topic-card">
+        <div class="topic-title"><i class="fas fa-network-wired"></i> Industry 4.0</div>
+        <p>Learn about smart manufacturing, industrial IoT, and cyber-physical production systems.</p>
+        <a class="learn-btn" href="https://www.edx.org/course/industry-4-0-how-to-revolutionize-your-business" target="_blank">Learn More</a>
+      </div>
+  
+      <div class="topic-card">
+        <div class="topic-title"><i class="fas fa-robot"></i> Automation & Robotics</div>
+        <p>Study industrial automation, robotics, and control systems for manufacturing applications.</p>
+        <a class="learn-btn" href="https://www.coursera.org/learn/industrial-robotics" target="_blank">Learn More</a>
+      </div>
+  
+      <div class="topic-card">
+        <div class="topic-title"><i class="fas fa-tasks"></i> Production Planning</div>
+        <p>Explore scheduling, capacity planning, and inventory management for efficient operations.</p>
+        <a class="learn-btn" href="https://www.edx.org/course/supply-chain-analytics" target="_blank">Learn More</a>
+      </div>
+  
+      <div class="topic-card">
+        <div class="topic-title"><i class="fas fa-sitemap"></i> Supply Chain Management</div>
+        <p>Master the integration of manufacturing with procurement, logistics, and distribution networks.</p>
+        <a class="learn-btn" href="https://www.coursera.org/specializations/supply-chain-management" target="_blank">Learn More</a>
+      </div>
+  
+      <div class="topic-card">
+        <div class="topic-title"><i class="fas fa-cog"></i> CNC Machining</div>
+        <p>Learn about computer numerical control programming, tooling, and precision machining.</p>
+        <a class="learn-btn" href="https://www.coursera.org/learn/cnc-machining" target="_blank">Learn More</a>
+      </div>
+  
+      <div class="topic-card">
+        <div class="topic-title"><i class="fas fa-microscope"></i> Materials Engineering</div>
+        <p>Study materials selection, properties, and processing for manufacturing applications.</p>
+        <a class="learn-btn" href="https://www.edx.org/course/materials-science-and-engineering" target="_blank">Learn More</a>
+      </div>
+  
+      <div class="topic-card">
+        <div class="topic-title"><i class="fas fa-shield-alt"></i> Manufacturing Safety</div>
+        <p>Understand safety standards, risk assessment, and ergonomics in production environments.</p>
+        <a class="learn-btn" href="https://www.osha.gov/training" target="_blank">Learn More</a>
+      </div>
+  
+      <div class="topic-card">
+        <div class="topic-title"><i class="fas fa-calculator"></i> Cost Estimation</div>
+        <p>Learn techniques for accurate manufacturing cost analysis, estimation, and optimization.</p>
+        <a class="learn-btn" href="https://www.coursera.org/learn/manufacturing-cost-estimation" target="_blank">Learn More</a>
+      </div>
+  
+      <div class="topic-card">
+        <div class="topic-title"><i class="fas fa-recycle"></i> Sustainable Manufacturing</div>
+        <p>Explore green manufacturing practices, waste reduction, and environmentally friendly production.</p>
+        <a class="learn-btn" href="https://www.edx.org/course/sustainable-manufacturing" target="_blank">Learn More</a>
+      </div>
+  
+      <div class="topic-card">
+        <div class="topic-title"><i class="fas fa-project-diagram"></i> Process Design</div>
+        <p>Study manufacturing process design, optimization, and simulation for efficient production.</p>
+        <a class="learn-btn" href="https://www.coursera.org/learn/process-improvement" target="_blank">Learn More</a>
+      </div>
+    </div>
+  </section>
+  
+
+  <section class="practice-section">
+    <h2 class="section-title">Software & Simulation Tools</h2>
+    <div class="practice-grid">
+      <div class="practice-card">
+        <h3><i class="fas fa-drafting-compass"></i> SolidWorks</h3>
+        <p>Industry-standard CAD/CAM software for product design, simulation, and manufacturing.</p>
+        <a href="https://www.solidworks.com/product/solidworks-manufacturing" target="_blank" class="learn-btn">Explore Tool</a>
+      </div>
+
+      <div class="practice-card">
+        <h3><i class="fas fa-cube"></i> Autodesk Fusion 360</h3>
+        <p>Integrated CAD, CAM, and CAE platform for product development and manufacturing.</p>
+        <a href="https://www.autodesk.com/products/fusion-360/manufacturing" target="_blank" class="learn-btn">Explore Tool</a>
+      </div>
+
+      <div class="practice-card">
+        <h3><i class="fas fa-chart-line"></i> Minitab</h3>
+        <p>Statistical software for quality control, process improvement, and Six Sigma applications.</p>
+        <a href="https://www.minitab.com/en-us/products/minitab/" target="_blank" class="learn-btn">Explore Tool</a>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2 class="section-title">Learning Resources</h2>
+    <div class="topics-grid">
+      <div class="topic-card">
+        <div class="topic-title"><i class="fas fa-graduation-cap"></i> Online Courses</div>
+        <ul class="resource-list">
+          <li><a style="color: white; text-decoration: none;" href="https://www.edx.org/learn/manufacturing" target="_blank"><i class="fas fa-graduation-cap"></i> edX Manufacturing Courses</a></li>
+          <li><a style="color: white; text-decoration: none;" href="https://www.coursera.org/courses?query=manufacturing%20engineering" target="_blank"><i class="fas fa-graduation-cap"></i> Coursera Manufacturing Engineering</a></li>
+          <li><a style="color: white; text-decoration: none;" href="https://www.udemy.com/topic/manufacturing-engineering/" target="_blank"><i class="fas fa-graduation-cap"></i> Udemy Manufacturing Courses</a></li>
+        </ul>
+      </div>
+
+      <div class="topic-card">
+        <div class="topic-title"><i class="fas fa-file-alt"></i> Technical Resources</div>
+        <ul class="resource-list">
+          <li><a style="color: white; text-decoration: none;" href="https://www.sme.org/technologies/" target="_blank"><i class="fas fa-file-alt"></i> SME Technical Papers</a></li>
+          <li><a style="color: white; text-decoration: none;" href="https://www.researchgate.net/topic/Manufacturing-Engineering" target="_blank"><i class="fas fa-file-alt"></i> ResearchGate Manufacturing</a></li>
+          <li><a style="color: white; text-decoration: none;" href="https://www.sciencedirect.com/topics/engineering/manufacturing-engineering" target="_blank"><i class="fas fa-file-alt"></i> ScienceDirect Manufacturing Research</a></li>
+        </ul>
+      </div>
+
+      <div class="topic-card">
+        <div class="topic-title"><i class="fas fa-newspaper"></i> Industry Publications</div>
+        <ul class="resource-list">
+          <li><a style="color: white; text-decoration: none;" href="https://www.manufacturingengineering.org/" target="_blank"><i class="fas fa-newspaper"></i> Manufacturing Engineering Magazine</a></li>
+          <li><a style="color: white; text-decoration: none;" href="https://www.industryweek.com/" target="_blank"><i class="fas fa-newspaper"></i> Industry Week</a></li>
+          <li><a style="color: white; text-decoration: none;" href="https://www.assemblymag.com/" target="_blank"><i class="fas fa-newspaper"></i> Assembly Magazine</a></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="community-section">
+    <h2 class="section-title">Professional Organizations</h2>
+    <div class="topics-grid">
+      <div class="topic-card">
+        <div class="topic-title"><i class="fas fa-users"></i> Industry Associations</div>
+        <ul class="resource-list">
+          <li><a style="color: white; text-decoration: none;" href="https://www.sme.org/" target="_blank"><i class="fas fa-building"></i> Society of Manufacturing Engineers (SME)</a></li>
+          <li><a style="color: white; text-decoration: none;" href="https://www.asme.org/" target="_blank"><i class="fas fa-building"></i> American Society of Mechanical Engineers (ASME)</a></li>
+          <li><a style="color: white; text-decoration: none;" href="https://www.imeche.org/" target="_blank"><i class="fas fa-building"></i> Institution of Mechanical Engineers (IMechE)</a></li>
+        </ul>
+      </div>
+
+      <div class="topic-card">
+        <div class="topic-title"><i class="fas fa-calendar-alt"></i> Conferences & Events</div>
+        <ul class="resource-list">
+          <li><a style="color: white; text-decoration: none;" href="https://www.imts.com/" target="_blank"><i class="fas fa-calendar-day"></i> International Manufacturing Technology Show (IMTS)</a></li>
+          <li><a style="color: white; text-decoration: none;" href="https://www.hannovermesse.de/en/" target="_blank"><i class="fas fa-calendar-day"></i> Hannover Messe</a></li>
+          <li><a style="color: white; text-decoration: none;" href="https://www.fabtechexpo.com/" target="_blank"><i class="fas fa-calendar-day"></i> FABTECH</a></li>
+        </ul>
+      </div>
+
+      <div class="topic-card">
+        <div class="topic-title"><i class="fas fa-certificate"></i> Certifications</div>
+        <ul class="resource-list">
+          <li><a style="color: white; text-decoration: none;" href="https://www.sme.org/training/certifications/certified-manufacturing-engineer-cmfge/" target="_blank"><i class="fas fa-award"></i> Certified Manufacturing Engineer (CMfgE)</a></li>
+          <li><a style="color: white; text-decoration: none;" href="https://asq.org/cert/quality-engineer" target="_blank"><i class="fas fa-award"></i> Certified Quality Engineer (CQE)</a></li>
+          <li><a style="color: white; text-decoration: none;" href="https://www.sme.org/training/certifications/lean-certification/" target="_blank"><i class="fas fa-award"></i> Lean Certification</a></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <p class="quote">"Manufacturing is more than just putting parts together. It's coming up with ideas, testing principles and perfecting the engineering, as well as final assembly." — James Dyson</p>
+  </footer>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // Smooth scrolling for anchor links
+      document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+          e.preventDefault();
+
+          const targetId = this.getAttribute('href');
+          if (targetId === '#') return;
+
+          const targetElement = document.querySelector(targetId);
+          if (targetElement) {
+            window.scrollTo({
+              top: targetElement.offsetTop - 70,
+              behavior: 'smooth'
+            });
+          }
+        });
+      });
+
+      // Add intersection observer for animation on scroll
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.style.opacity = 1;
+            entry.target.style.transform = 'translateY(0)';
+          }
+        });
+      }, {
+        threshold: 0.1
+      });
+
+      document.querySelectorAll('.topic-card, .specialization-card, .project-card, .practice-card').forEach(card => {
+        observer.observe(card);
+      });
+    });
+  </script>
+</body>
+
+</html>

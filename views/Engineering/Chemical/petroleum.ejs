@@ -1,0 +1,1279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Petroleum Engineering - Energy Engineering Specialization</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* Base Styles */
+        :root {
+            --primary-color: #250b2c;        /* Deep burgundy */
+            --primary-light: #421c4a;        /* Lighter burgundy */
+            --secondary-color: #1a2f1e;      /* Dark olive */
+            --accent-color: #a67c00;         /* Bronze */
+            --accent-light: #d4a373;         /* Light bronze */
+            --text-color: #e6dede;           /* Off-white for readability */
+            --light-text: #ffffff;           /* Pure white */
+            --dark-text: #b8b8a8;            /* Light gray for contrast */
+            --light-bg: #281d2d;             /* Dark reddish-brown background */
+            --dark-bg: #202537;              /* Darker brown background */
+            --card-bg: #284358;              /* Dark earthy card surface */
+            --card-shadow: rgba(0, 0, 0, 0.5); /* Subtle shadow */
+            --border-radius: 10px;
+            --box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+            --transition: all 0.3s ease-in-out;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--light-bg);
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        a {
+            text-decoration: none;
+            color: var(--accent-light);
+            transition: var(--transition);
+        }
+
+        a:hover {
+            color: var(--accent-color);
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            border-radius: var(--border-radius);
+        }
+
+        .bg-dark {
+            background-color: var(--dark-bg);
+        }
+
+        /* Navbar */
+        .navbar {
+            background-color: var(--primary-color);
+            color: var(--light-text);
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: var(--box-shadow);
+        }
+
+        .navbar .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--light-text);
+        }
+
+        .back-button a {
+            color: var(--light-text);
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .back-button a:hover {
+            color: var(--accent-light);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            color: var(--light-text);
+            text-align: center;
+            padding: 6rem 0;
+            position: relative;
+        }
+
+        .hero .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0.2;
+            mix-blend-mode: overlay;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        /* Section Styles */
+        .section {
+            padding: 5rem 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+            color: var(--accent-light);
+            position: relative;
+            font-size: 2rem;
+        }
+
+        .section-title::after {
+            content: "";
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background-color: var(--accent-light);
+            border-radius: 2px;
+        }
+
+        .section-intro {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto 2.5rem;
+            font-size: 1.1rem;
+        }
+
+        /* Content Wrapper */
+        .content-wrapper {
+            display: flex;
+            gap: 2.5rem;
+            align-items: center;
+        }
+
+        .text-content {
+            flex: 1;
+        }
+
+        .text-content p {
+            margin-bottom: 1.25rem;
+            font-size: 1.05rem;
+        }
+
+        .image-content {
+            flex: 1;
+            box-shadow: var(--box-shadow);
+            border-radius: var(--border-radius);
+            overflow: hidden;
+        }
+
+        /* Cards Grid */
+        .cards-grid {
+            display: grid;
+            gap: 1.5rem;
+        }
+
+        .two-columns {
+            grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+        }
+
+        .three-columns {
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        }
+
+        .four-columns {
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        }
+
+        /* Card Styles */
+        .card {
+            background-color: var(--card-bg);
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--box-shadow);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .card:hover {
+            border-color: var(--accent-light);
+        }
+
+        .card-header {
+            padding: 1.25rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .card-header h3 {
+            color: var(--accent-light);
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .card-header h3 i {
+            color: var(--accent-color);
+        }
+
+        .card-header p {
+            color: var(--dark-text);
+            font-size: 0.9rem;
+        }
+
+        .card-content {
+            padding: 1.25rem;
+        }
+
+        /* Project Cards */
+        .project-card .card-image {
+            height: 180px;
+            overflow: hidden;
+        }
+
+        .project-card .card-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* Career List */
+        .career-list {
+            list-style: none;
+        }
+
+        .career-list li {
+            display: flex;
+            justify-content: space-between;
+            padding: 0.5rem 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .career-list li:last-child {
+            border-bottom: none;
+        }
+
+        .badge {
+            background-color: rgba(255, 255, 255, 0.15);
+            color: var(--light-text);
+            padding: 0.25rem 0.5rem;
+            border-radius: 9999px;
+            font-size: 0.75rem;
+            font-weight: 600;
+        }
+
+        .badge.top {
+            background-color: var(--accent-color);
+            color: var(--dark-bg);
+        }
+
+        .badge.program {
+            background-color: var(--primary-light);
+            color: var(--light-text);
+        }
+
+        /* Skills List */
+        .skills-list {
+            list-style: none;
+        }
+
+        .skills-list li {
+            padding: 0.5rem 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .skills-list li:last-child {
+            border-bottom: none;
+        }
+
+        .skill-name {
+            font-weight: 600;
+            display: block;
+            margin-bottom: 0.25rem;
+            color: var(--accent-light);
+        }
+
+        .skill-desc {
+            font-size: 0.9rem;
+            color: var(--dark-text);
+        }
+
+        /* Accordion */
+        .accordion {
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            background-color: var(--card-bg);
+        }
+
+        .accordion-item {
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .accordion-item:last-child {
+            border-bottom: none;
+        }
+
+        .accordion-header {
+            padding: 1rem;
+            cursor: pointer;
+            font-weight: 600;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: var(--accent-light);
+        }
+
+        .accordion-header::after {
+            content: '\f078';
+            font-family: 'Font Awesome 5 Free';
+            font-weight: 900;
+        }
+
+        .accordion-content {
+            padding: 0 1rem;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+        }
+
+        .accordion-content p {
+            padding-bottom: 1rem;
+        }
+
+        .accordion-item.active .accordion-header {
+            background-color: rgba(255, 255, 255, 0.05);
+            color: var(--accent-color);
+        }
+
+        .accordion-item.active .accordion-content {
+            max-height: 500px;
+        }
+
+        /* Course List */
+        .course-list {
+            list-style: none;
+            margin-top: 1rem;
+        }
+
+        .course-item {
+            background-color: rgba(255, 255, 255, 0.05);
+            border-radius: var(--border-radius);
+            padding: 1rem;
+            margin-bottom: 1rem;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .course-item:hover {
+            border-color: var(--accent-light);
+        }
+
+        .course-title {
+            font-weight: 600;
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+            color: var(--accent-light);
+        }
+
+        .course-desc {
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .course-meta {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.8rem;
+            color: var(--dark-text);
+        }
+
+        /* Tools Grid */
+        .tools-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .tool-card {
+            background-color: var(--card-bg);
+            border-radius: var(--border-radius);
+            padding: 1.5rem 1rem;
+            text-align: center;
+            box-shadow: var(--box-shadow);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .tool-card:hover {
+            border-color: var(--accent-light);
+        }
+
+        .tool-card i {
+            font-size: 2.5rem;
+            color: var(--accent-light);
+            margin-bottom: 1rem;
+        }
+
+        .tool-card h3 {
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+            color: var(--accent-light);
+        }
+
+        .tool-card p {
+            font-size: 0.9rem;
+            color: var(--dark-text);
+        }
+
+        /* Footer */
+        .footer {
+            background-color: var(--dark-bg);
+            color: var(--light-text);
+            padding: 4rem 0 1rem;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2.5rem;
+            margin-bottom: 2.5rem;
+        }
+
+        .footer-logo h2 {
+            margin-bottom: 1rem;
+        }
+
+        .footer-links h3,
+        .footer-resources h3 {
+            margin-bottom: 1.25rem;
+            position: relative;
+            padding-bottom: 0.5rem;
+            display: inline-block;
+        }
+
+        .footer-links h3::after,
+        .footer-resources h3::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background-color: var(--accent-light);
+        }
+
+        .footer-links ul,
+        .footer-resources ul {
+            list-style-type: none;
+        }
+
+        .footer-links li,
+        .footer-resources li {
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-links a,
+        .footer-resources a {
+            color: var(--dark-text);
+        }
+
+        .footer-links a:hover,
+        .footer-resources a:hover {
+            color: var(--accent-light);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 1.25rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .content-wrapper {
+                flex-direction: column;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .two-columns {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .section {
+                padding: 3.5rem 0;
+            }
+
+            .hero {
+                padding: 5rem 0;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .section-title {
+                font-size: 1.75rem;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .navbar {
+                padding: 0.75rem 0;
+            }
+
+            .logo {
+                font-size: 1.2rem;
+            }
+
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+
+            .section-title {
+                font-size: 1.5rem;
+            }
+
+            .tools-grid {
+                grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="logo">GoFarAsYouCan</div>
+            <div class="back-button">
+                <a href="/Engineering/Chemical/chemical.ejs"><i class="fas fa-arrow-left"></i> Go Back</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="hero">
+        <div class="overlay"></div>
+        <div class="container">
+            <h1>Petroleum Engineering</h1>
+            <p>Explore the science and technology behind extracting and refining the world's energy resources</p>
+        </div>
+    </header>
+
+    <!-- About Section -->
+    <section class="section" id="about">
+        <div class="container">
+            <h2 class="section-title">What is Petroleum Engineering?</h2>
+            <div class="content-wrapper">
+                <div class="text-content">
+                    <p>Petroleum engineering focuses on the exploration, extraction, and production of oil and natural gas. It combines principles of geology, physics, and engineering to design processes that efficiently recover hydrocarbons from subsurface reservoirs while prioritizing safety and environmental sustainability.</p>
+                    <p>As a petroleum engineer, you'll work on drilling operations, reservoir management, and production optimization. You'll use advanced technologies to locate reserves, design drilling systems, and enhance recovery methods, contributing to the global energy supply. This field requires a deep understanding of subsurface dynamics and innovative approaches to address declining resources and environmental concerns.</p>
+                    <p>With the energy sector transitioning toward sustainability, petroleum engineers are also exploring roles in carbon capture, geothermal energy, and alternative fuels, making this a dynamic and evolving career path.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Key Areas Section -->
+    <section class="section bg-dark" id="key-areas">
+        <div class="container">
+            <h2 class="section-title">Key Areas of Study</h2>
+            <p class="section-intro">Petroleum Engineering encompasses critical disciplines for efficient and sustainable hydrocarbon extraction:</p>
+            
+            <div class="cards-grid three-columns">
+                <div class="card">
+                    <div class="card-header">
+                        <h3><i class="fas fa-hard-hat"></i> Drilling Engineering</h3>
+                    </div>
+                    <div class="card-content">
+                        <p>Design and execution of drilling operations to access hydrocarbon reservoirs safely and efficiently.</p>
+                        <ul class="skills-list">
+                            <li>
+                                <span class="skill-name">Well Design</span>
+                                <p class="skill-desc">Casing, drilling fluids</p>
+                            </li>
+                            <li>
+                                <span class="skill-name">Drilling Techniques</span>
+                                <p class="skill-desc">Directional, horizontal drilling</p>
+                            </li>
+                            <li>
+                                <span class="skill-name">Blowout Prevention</span>
+                                <p class="skill-desc">Safety systems, BOPs</p>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <h3><i class="fas fa-layer-group"></i> Reservoir Engineering</h3>
+                    </div>
+                    <div class="card-content">
+                        <p>Analysis and management of subsurface reservoirs to maximize hydrocarbon recovery.</p>
+                        <ul class="skills-list">
+                            <li>
+                                <span class="skill-name">Reservoir Simulation</span>
+                                <p class="skill-desc">Modeling fluid flow</p>
+                            </li>
+                            <li>
+                                <span class="skill-name">Enhanced Recovery</span>
+                                <p class="skill-desc">Waterflooding, CO2 injection</p>
+                            </li>
+                            <li>
+                                <span class="skill-name">Reserve Estimation</span>
+                                <p class="skill-desc">Volumetric, decline curve analysis</p>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <h3><i class="fas fa-industry"></i> Production Engineering</h3>
+                    </div>
+                    <div class="card-content">
+                        <p>Optimization of hydrocarbon production from wells to surface facilities.</p>
+                        <ul class="skills-list">
+                            <li>
+                                <span class="skill-name">Well Completion</span>
+                                <p class="skill-desc">Perforation, stimulation</p>
+                            </li>
+                            <li>
+                                <span class="skill-name">Artificial Lift</span>
+                                <p class="skill-desc">Pumps, gas lift systems</p>
+                            </li>
+                            <li>
+                                <span class="skill-name">Production Optimization</span>
+                                <p class="skill-desc">Flow assurance, choke management</p>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="cards-grid three-columns" style="margin-top: 1.5rem;">
+                <div class="card">
+                    <div class="card-header">
+                        <h3><i class="fas fa-globe"></i> Formation Evaluation</h3>
+                    </div>
+                    <div class="card-content">
+                        <p>Techniques to assess reservoir properties using geological and geophysical data.</p>
+                        <ul class="skills-list">
+                            <li>
+                                <span class="skill-name">Well Logging</span>
+                                <p class="skill-desc">Wireline, LWD tools</p>
+                            </li>
+                            <li>
+                                <span class="skill-name">Core Analysis</span>
+                                <p class="skill-desc">Porosity, permeability</p>
+                            </li>
+                            <li>
+                                <span class="skill-name">Seismic Interpretation</span>
+                                <p class="skill-desc">Reservoir mapping</p>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <h3><i class="fas fa-leaf"></i> Environmental Management</h3>
+                    </div>
+                    <div class="card-content">
+                        <p>Strategies to minimize environmental impact and ensure regulatory compliance in petroleum operations.</p>
+                        <ul class="skills-list">
+                            <li>
+                                <span class="skill-name">Carbon Capture</span>
+                                <p class="skill-desc">CCS technologies</p>
+                            </li>
+                            <li>
+                                <span class="skill-name">Waste Management</span>
+                                <p class="skill-desc">Drilling waste, produced water</p>
+                            </li>
+                            <li>
+                                <span class="skill-name">Regulatory Compliance</span>
+                                <p class="skill-desc">EIA, environmental standards</p>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <h3><i class="fas fa-cogs"></i> Petroleum Economics</h3>
+                    </div>
+                    <div class="card-content">
+                        <p>Evaluation of project feasibility and risk in oil and gas developments.</p>
+                        <ul class="skills-list">
+                            <li>
+                                <span class="skill-name">Cost Estimation</span>
+                                <p class="skill-desc">CAPEX, OPEX analysis</p>
+                            </li>
+                            <li>
+                                <span class="skill-name">Risk Analysis</span>
+                                <p class="skill-desc">Monte Carlo, decision trees</p>
+                            </li>
+                            <li>
+                                <span class="skill-name">Project Valuation</span>
+                                <p class="skill-desc">NPV, IRR calculations</p>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Career Opportunities Section -->
+    <section class="section" id="careers">
+        <div class="container">
+            <h2 class="section-title">Career Opportunities</h2>
+            <p class="section-intro">Petroleum Engineering offers diverse roles in the energy sector with opportunities in emerging sustainable technologies:</p>
+            
+            <div class="cards-grid three-columns">
+                <div class="card">
+                    <div class="card-header">
+                        <h3><i class="fas fa-briefcase"></i> Industry Roles</h3>
+                    </div>
+                    <div class="card-content">
+                        <ul class="career-list">
+                            <li>
+                                <span>Drilling Engineer</span>
+                                <span class="badge">₹10-30 LPA</span>
+                            </li>
+                            <li>
+                                <span>Reservoir Engineer</span>
+                                <span class="badge">₹12-35 LPA</span>
+                            </li>
+                            <li>
+                                <span>Production Engineer</span>
+                                <span class="badge">₹10-28 LPA</span>
+                            </li>
+                            <li>
+                                <span>Petrophysicist</span>
+                                <span class="badge">₹12-32 LPA</span>
+                            </li>
+                            <li>
+                                <span>Completion Engineer</span>
+                                <span class="badge">₹10-30 LPA</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <h3><i class="fas fa-building"></i> Top Employers</h3>
+                    </div>
+                    <div class="card-content">
+                        <ul class="career-list">
+                            <li>
+                                <span>Oil & Gas Companies</span>
+                                <span class="badge top">ONGC, Reliance</span>
+                            </li>
+                            <li>
+                                <span>International Majors</span>
+                                <span class="badge top">Shell, Chevron</span>
+                            </li>
+                            <li>
+                                <span>Service Companies</span>
+                                <span class="badge">Schlumberger, Halliburton</span>
+                            </li>
+                            <li>
+                                <span>Consulting Firms</span>
+                                <span class="badge">McKinsey, Wood Mackenzie</span>
+                            </li>
+                            <li>
+                                <span>Government Agencies</span>
+                                <span class="badge">GAIL, IOCL</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <h3><i class="fas fa-chart-line"></i> Growth Areas</h3>
+                    </div>
+                    <div class="card-content">
+                        <p>Petroleum engineering is evolving with new opportunities in sustainable energy:</p>
+                        <ul>
+                            <li>• Carbon Capture and Storage (CCS)</li>
+                            <li>• Geothermal Energy</li>
+                            <li>• Enhanced Oil Recovery (EOR)</li>
+                            <li>• Offshore and Deepwater Exploration</li>
+                            <li>• Digital Oilfield Technologies</li>
+                            <li>• Hydrogen Production</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Essential Skills Section -->
+    <section class="section bg-dark" id="skills">
+        <div class="container">
+            <h2 class="section-title">Essential Skills & Tools</h2>
+            <p class="section-intro">To succeed in Petroleum Engineering, you need technical expertise, software proficiency, and professional skills:</p>
+            
+            <div class="cards-grid three-columns">
+                <div class="card">
+                    <div class="card-header">
+                        <h3><i class="fas fa-book-open"></i> Technical Knowledge</h3>
+                    </div>
+                    <div class="card-content">
+                        <ul class="skills-list">
+                            <li>
+                                <span class="skill-name">Geology</span>
+                                <p class="skill-desc">Reservoir characterization</p>
+                            </li>
+                            <li>
+                                <span class="skill-name">Fluid Mechanics</span>
+                                <p class="skill-desc">Multiphase flow, hydraulics</p>
+                            </li>
+                            <li>
+                                <span class="skill-name">Drilling Technology</span>
+                                <p class="skill-desc">Well planning, drilling systems</p>
+                            </li>
+                            <li>
+                                <span class="skill-name">Reservoir Dynamics</span>
+                                <p class="skill-desc">Pressure, fluid behavior</p>
+                            </li>
+                            <li>
+                                <span class="skill-name">Petrophysics</span>
+                                <p class="skill-desc">Rock-fluid interactions</p>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <h3><i class="fas fa-laptop-code"></i> Software & Tools</h3>
+                    </div>
+                    <div class="card-content">
+                        <p>Proficiency in industry-standard tools is essential:</p>
+                        <div class="tools-grid">
+                            <div class="tool-card">
+                                <i class="fas fa-layer-group"></i>
+                                <h3>Reservoir Simulation</h3>
+                                <p>ECLIPSE, CMG</p>
+                            </div>
+                            <div class="tool-card">
+                                <i class="fas fa-hard-hat"></i>
+                                <h3>Drilling Software</h3>
+                                <p>Landmark, WellCAT</p>
+                            </div>
+                            <div class="tool-card">
+                                <i class="fas fa-globe"></i>
+                                <h3>Petrophysics</h3>
+                                <p>Techlog, GeoFrame</p>
+                            </div>
+                            <div class="tool-card">
+                                <i class="fas fa-chart-line"></i>
+                                <h3>Data Analysis</h3>
+                                <p>MATLAB, Python</p>
+                            </div>
+                            <div class="tool-card">
+                                <i class="fas fa-project-diagram"></i>
+                                <h3>Project Management</h3>
+                                <p>Primavera, MS Project</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <h3><i class="fas fa-user-tie"></i> Professional Skills</h3>
+                    </div>
+                    <div class="card-content">
+                        <ul class="skills-list">
+                            <li>
+                                <span class="skill-name">Risk Management</span>
+                                <p class="skill-desc">Safety, operational risks</p>
+                            </li>
+                            <li>
+                                <span class="skill-name">Project Planning</span>
+                                <p class="skill-desc">Timelines, budgets</p>
+                            </li>
+                            <li>
+                                <span class="skill-name">Team Collaboration</span>
+                                <p class="skill-desc">Geologists, engineers</p>
+                            </li>
+                            <li>
+                                <span class="skill-name">Technical Reporting</span>
+                                <p class="skill-desc">Well reports, proposals</p>
+                            </li>
+                            <li>
+                                <span class="skill-name">Problem Solving</span>
+                                <p class="skill-desc">Operational challenges</p>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Courses Section -->
+    <section class="section" id="courses">
+        <div class="container">
+            <h2 class="section-title">Recommended Courses</h2>
+            <p class="section-intro">Enhance your expertise in Petroleum Engineering with these specialized courses:</p>
+            
+            <div class="accordion">
+                <div class="accordion-item">
+                    <div class="accordion-header">Core Petroleum Courses</div>
+                    <div class="accordion-content">
+                        <ul class="course-list">
+                            <li class="course-item">
+                                <div class="course-title">Drilling Engineering</div>
+                                <div class="course-desc">Well design, drilling fluids, and safety systems.</div>
+                                <div class="course-meta">
+                                    <span>Duration: 12 weeks</span>
+                                    <span>Level: Intermediate</span>
+                                </div>
+                            </li>
+                            <li class="course-item">
+                                <div class="course-title">Reservoir Engineering</div>
+                                <div class="course-desc">Reservoir simulation, recovery techniques, and reserve estimation.</div>
+                                <div class="course-meta">
+                                    <span>Duration: 10 weeks</span>
+                                    <span>Level: Intermediate</span>
+                                </div>
+                            </li>
+                            <li class="course-item">
+                                <div class="course-title">Production Engineering</div>
+                                <div class="course-desc">Well completion, artificial lift, and production optimization.</div>
+                                <div class="course-meta">
+                                    <span>Duration: 8 weeks</span>
+                                    <span>Level: Intermediate</span>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="accordion-item">
+                    <div class="accordion-header">Application-Specific Courses</div>
+                    <div class="accordion-content">
+                        <ul class="course-list">
+                            <li class="course-item">
+                                <div class="course-title">Enhanced Oil Recovery</div>
+                                <div class="course-desc">Techniques like waterflooding and CO2 injection for maximizing recovery.</div>
+                                <div class="course-meta">
+                                    <span>Duration: 10 weeks</span>
+                                    <span>Level: Advanced</span>
+                                </div>
+                            </li>
+                            <li class="course-item">
+                                <div class="course-title">Petrophysics</div>
+                                <div class="course-desc">Well logging and core analysis for reservoir evaluation.</div>
+                                <div class="course-meta">
+                                    <span>Duration: 8 weeks</span>
+                                    <span>Level: Intermediate</span>
+                                </div>
+                            </li>
+                            <li class="course-item">
+                                <div class="course-title">Offshore Engineering</div>
+                                <div class="course-desc">Design and operation of offshore drilling and production systems.</div>
+                                <div class="course-meta">
+                                    <span>Duration: 12 weeks</span>
+                                    <span>Level: Advanced</span>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="accordion-item">
+                    <div class="accordion-header">Advanced Topics</div>
+                    <div class="accordion-content">
+                        <ul class="course-list">
+                            <li class="course-item">
+                                <div class="course-title">Carbon Capture and Storage</div>
+                                <div class="course-desc">Technologies for reducing carbon emissions in oil and gas operations.</div>
+                                <div class="course-meta">
+                                    <span>Duration: 8 weeks</span>
+                                    <span>Level: Advanced</span>
+                                </div>
+                            </li>
+                            <li class="course-item">
+                                <div class="course-title">Petroleum Economics</div>
+                                <div class="course-desc">Project valuation, risk analysis, and cost estimation.</div>
+                                <div class="course-meta">
+                                    <span>Duration: 10 weeks</span>
+                                    <span>Level: Advanced</span>
+                                </div>
+                            </li>
+                            <li class="course-item">
+                                <div class="course-title">Digital Oilfield</div>
+                                <div class="course-desc">Data analytics and IoT for optimizing oilfield operations.</div>
+                                <div class="course-meta">
+                                    <span>Duration: 10 weeks</span>
+                                    <span>Level: Advanced</span>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section class="section bg-dark" id="projects">
+        <div class="container">
+            <h2 class="section-title">Hands-on Projects</h2>
+            <p class="section-intro">Build your portfolio with these practical petroleum engineering projects to demonstrate your skills:</p>
+            
+            <div class="cards-grid three-columns">
+                <div class="card project-card">
+                    <div class="card-image">
+                        <img src="https://images.unsplash.com/photo-1475070929565-c985b496cb9f?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Reservoir Simulation">
+                    </div>
+                    <div class="card-header">
+                        <h3><i class="fas fa-layer-group"></i> Reservoir Simulation Model</h3>
+                    </div>
+                    <div class="card-content">
+                        <p>Develop a reservoir simulation model to predict oil recovery using software like ECLIPSE or CMG, incorporating geological and fluid data.</p>
+                        <p><strong>Skills:</strong> Reservoir modeling, fluid dynamics, data analysis</p>
+                    </div>
+                </div>
+
+                <div class="card project-card">
+                    <div class="card-image">
+                        <img src="https://images.unsplash.com/photo-1506377247377-2a5b89b11197?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Drilling Plan">
+                    </div>
+                    <div class="card-header">
+                        <h3><i class="fas fa-hard-hat"></i> Directional Drilling Plan</h3>
+                    </div>
+                    <div class="card-content">
+                        <p>Design a directional drilling plan for an offshore well, including trajectory, casing design, and safety measures.</p>
+                        <p><strong>Skills:</strong> Well planning, drilling technology, safety engineering</p>
+                    </div>
+                </div>
+
+                <div class="card project-card">
+                    <div class="card-image">
+                        <img src="https://images.unsplash.com/photo-1519421972080-d3d943380305?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Production Optimization">
+                    </div>
+                    <div class="card-header">
+                        <h3><i class="fas fa-industry"></i> Production Optimization System</h3>
+                    </div>
+                    <div class="card-content">
+                        <p>Create a system to optimize production using artificial lift and choke management, based on well performance data.</p>
+                        <p><strong>Skills:</strong> Artificial lift, flow assurance, production analysis</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="cards-grid three-columns" style="margin-top: 1.5rem;">
+                <div class="card project-card">
+                    <div class="card-image">
+                        <img src="https://images.unsplash.com/photo-1522163185299-7e3e47862e00?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Carbon Capture">
+                    </div>
+                    <div class="card-header">
+                        <h3><i class="fas fa-leaf"></i> Carbon Capture System</h3>
+                    </div>
+                    <div class="card-content">
+                        <p>Design a carbon capture and storage system for an oilfield, focusing on CO2 injection and sequestration.</p>
+                        <p><strong>Skills:</strong> CCS technology, reservoir engineering, environmental management</p>
+                    </div>
+                </div>
+
+                <div class="card project-card">
+                    <div class="card-image">
+                        <img src="https://images.unsplash.com/photo-1519733001-5775e6c66852?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Petrophysical Analysis">
+                    </div>
+                    <div class="card-header">
+                        <h3><i class="fas fa-globe"></i> Petrophysical Analysis</h3>
+                    </div>
+                    <div class="card-content">
+                        <p>Conduct a petrophysical analysis using well log data to evaluate reservoir properties like porosity and permeability.</p>
+                        <p><strong>Skills:</strong> Well logging, core analysis, reservoir evaluation</p>
+                    </div>
+                </div>
+
+                <div class="card project-card">
+                    <div class="card-image">
+                        <img src="https://images.unsplash.com/photo-1504973960431-1c4670b7a1c0?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Economic Evaluation">
+                    </div>
+            </div>
+                <div class="card-header">
+                    <h3><i class="fas fa-calculator"></i> Economic Evaluation Model</h3>
+                </div>
+                <div class="card-content">
+                    <p>Build a model to evaluate the economic feasibility of an oilfield development, calculating NPV and IRR.</p>
+                    <p><strong>Skills:</strong> Cost estimation, risk analysis, project valuation</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="section" id="faq">
+        <div class="container">
+            <h2 class="section-title">Frequently Asked Questions</h2>
+            <p class="section-intro">Answers to common questions about pursuing a career in Petroleum Engineering:</p>
+            
+            <div class="accordion">
+                <div class="accordion-item active">
+                    <div class="accordion-header">What educational background is needed for petroleum engineering?</div>
+                    <div class="accordion-content">
+                        <p>A bachelor’s degree in Petroleum Engineering, Chemical Engineering, or Mechanical Engineering is ideal. Knowledge in geology, fluid mechanics, and reservoir engineering is crucial. Advanced roles may require a master’s degree, especially in research or specialized areas like CCS.</p>
+                    </div>
+                </div>
+                
+                <div class="accordion-item">
+                    <div class="accordion-header">How does petroleum engineering differ from other engineering fields?</div>
+                    <div class="accordion-content">
+                        <p>Petroleum engineering is specialized in the extraction and production of hydrocarbons, requiring expertise in subsurface geology, drilling, and reservoir management. Unlike mechanical or civil engineering, it focuses on fluid flow in porous media and energy resource recovery, with a growing emphasis on sustainability.</p>
+                    </div>
+                </div>
+                
+                <div class="accordion-item">
+                    <div class="accordion-header">What are the key industries for petroleum engineers?</div>
+                    <div class="accordion-content">
+                        <p>Primary industries include oil and gas exploration, production, and refining. Emerging sectors include carbon capture, geothermal energy, and hydrogen production. Service companies, consulting firms, and government agencies also hire petroleum engineers.</p>
+                    </div>
+                </div>
+                
+                <div class="accordion-item">
+                    <div class="accordion-header">How can I start learning petroleum engineering?</div>
+                    <div class="accordion-content">
+                        <p>Begin with courses in geology, fluid mechanics, and petroleum engineering fundamentals. Learn software like ECLIPSE or Techlog. Gain hands-on experience through internships or projects in drilling or reservoir analysis. Join professional societies like SPE for networking and resources.</p>
+                    </div>
+                </div>
+                
+                <div class="accordion-item">
+                    <div class="accordion-header">What are the career growth prospects?</div>
+                    <div class="accordion-content">
+                        <p>Petroleum engineering offers strong career prospects, with roles progressing from drilling or reservoir engineer to senior engineer, project manager, or technical specialist. Opportunities in sustainable technologies like CCS and geothermal energy are growing, alongside traditional oil and gas roles.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <h2>GoFarAsYouCan</h2>
+                    <p>Empowering engineers with comprehensive resources and career guidance.</p>
+                </div>
+                
+                <div class="footer-links">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="#about">About Petroleum Engineering</a></li>
+                        <li><a href="#key-areas">Key Areas</a></li>
+                        <li><a href="#careers">Career Opportunities</a></li>
+                        <li><a href="#skills">Essential Skills</a></li>
+                        <li><a href="#courses">Recommended Courses</a></li>
+                        <li><a href="#projects">Hands-on Projects</a></li>
+                        <li><a href="#faq">FAQ</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-resources">
+                    <h3>More Resources</h3>
+                    <ul>
+                        <li><a href="/Engineering">Engineering Disciplines</a></li>
+                        <li><a href="/Engineering/Energy/energy.ejs">Energy Engineering</a></li>
+                        <li><a href="/resources">Learning Resources</a></li>
+                        <li><a href="/blog">Engineering Blog</a></li>
+                        <li><a href="/contact">Contact Us</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>© <script>document.write(new Date().getFullYear())</script> GoFarAsYouCan. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Accordion functionality
+        function setupAccordions() {
+            const accordionHeaders = document.querySelectorAll(".accordion-header");
+            
+            accordionHeaders.forEach(header => {
+                header.addEventListener("click", function() {
+                    const accordionItem = this.parentElement;
+                    accordionItem.classList.toggle("active");
+                    
+                    this.classList.toggle("active");
+                    
+                    const content = this.nextElementSibling;
+                    if (accordionItem.classList.contains("active")) {
+                        content.style.maxHeight = content.scrollHeight + "px";
+                    } else {
+                        content.style.maxHeight = 0;
+                    }
+                });
+            });
+        }
+
+        // Smooth scrolling for anchor links
+        function setupSmoothScrolling() {
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+
+                    const targetId = this.getAttribute('href');
+                    if (targetId === "#") return;
+
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        window.scrollTo({
+                            top: targetElement.offsetTop - 80,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+        }
+
+        // Initialize when DOM is loaded
+        document.addEventListener("DOMContentLoaded", function() {
+            setupAccordions();
+            setupSmoothScrolling();
+            
+            // Open the first accordion item by default
+            const firstAccordionItem = document.querySelector(".accordion-item");
+            if (firstAccordionItem) {
+                firstAccordionItem.classList.add("active");
+                const content = firstAccordionItem.querySelector(".accordion-content");
+                content.style.maxHeight = content.scrollHeight + "px";
+                firstAccordionItem.querySelector(".accordion-header").classList.add("active");
+            }
+        });
+    </script>
+</body>
+</html>

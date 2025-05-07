@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GoFarAsYouCan - Login</title>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Nunito', sans-serif;
+    }
+    
+    body {
+      background: linear-gradient(135deg, #1a2a6c 0%, #2a4858 100%);
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+    
+    .container {
+      width: 100%;
+      max-width: 400px;
+      padding: 20px;
+    }
+    
+    .login-card {
+      background-color: white;
+      border-radius: 20px;
+      padding: 30px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+      position: relative;
+      overflow: hidden;
+      animation: fadeIn 0.8s ease-in-out;
+    }
+    
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    
+    .header {
+      text-align: center;
+      margin-bottom: 30px;
+      position: relative;
+      z-index: 1;
+    }
+    
+    .header h1 {
+      color: #333;
+      font-size: 28px;
+      margin-bottom: 10px;
+    }
+    
+    .header p {
+      color: #666;
+      font-size: 16px;
+    }
+    
+    .form-group {
+      margin-bottom: 20px;
+      position: relative;
+      z-index: 1;
+    }
+    
+    .form-group label {
+      display: block;
+      margin-bottom: 8px;
+      color: #555;
+      font-weight: 600;
+    }
+    
+    .form-group input {
+      width: 100%;
+      padding: 12px 15px;
+      border: 2px solid #e1e1e1;
+      border-radius: 10px;
+      font-size: 16px;
+      transition: all 0.3s ease;
+    }
+    
+    .form-group input:focus {
+      border-color: #1a2a6c;
+      outline: none;
+      box-shadow: 0 0 0 3px rgba(26, 42, 108, 0.3);
+    }
+    
+    .btn {
+      width: 100%;
+      padding: 12px;
+      background: linear-gradient(to right, #1a2a6c, #2a4858);
+      border: none;
+      border-radius: 10px;
+      color: white;
+      font-size: 16px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      position: relative;
+      z-index: 1;
+      box-shadow: 0 4px 10px rgba(26, 42, 108, 0.3);
+    }
+    
+    .btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 6px 15px rgba(255, 107, 149, 0.4);
+    }
+    
+    .btn:active {
+      transform: translateY(0);
+    }
+    
+    .footer {
+      text-align: center;
+      margin-top: 25px;
+      position: relative;
+      z-index: 1;
+    }
+    
+    .footer a {
+      color: #1a2a6c;
+      text-decoration: none;
+      font-weight: 600;
+      transition: all 0.3s ease;
+    }
+    
+    .footer a:hover {
+      color: #2a4858;
+      text-decoration: underline;
+    }
+    
+  </style>
+</head>
+<body>
+ 
+
+  <div class="container">
+    <div class="login-card">
+      <div class="header">
+        <h1>Login</h1>
+        <p>Empower Your Journey: Discover, Learn, Achieve!</p>
+      </div>
+      
+      <form action="/api/auth/login" method="POST">
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input type="email" id="email" name="email" placeholder="Enter your email" required>
+        </div>
+        
+        <div class="form-group">
+          <label for="password">Password</label>
+          <input type="password" id="password" name="password" placeholder="Enter your password" required>
+        </div>
+        
+        <button type="submit" class="btn">Log In</button>
+      </form>
+      
+      <div class="footer">
+        <p>Don't have an account? <a href="/signup">Sign Up</a></p>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

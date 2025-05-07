@@ -1,0 +1,686 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Engineering - Build Your Future</title>
+    <link rel="stylesheet" href="/styles/engineering.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" rel="stylesheet"> <!-- For icons -->
+
+    <style>
+        /* Reset basics */
+        body, h1, h2, h3, p, ul {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: #1e1e2f;
+            color: #d1d1e0;
+            overflow-x: hidden;
+        }
+
+        /* Navbar */
+        .navbar {
+            background: #2a2a40;
+            padding: 1rem 2rem;
+            color: #fff;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            animation: fadeInDown 1s ease-in-out;
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: #4cafef;
+            animation: slideInLeft 1s ease-in-out;
+        }
+
+        .back-button {
+            text-decoration: none;
+            color: #fff;
+            font-size: 1rem;
+            transition: color 0.3s ease;
+        }
+
+        .back-button:hover {
+            color: #4cafef;
+        }
+
+        /* Hero Section */
+        .hero {
+            text-align: center;
+            padding: 60px 20px;
+            color: #fff;
+            background: linear-gradient(135deg, #2a2a40, #1e1e2f);
+            animation: fadeIn 1.5s ease-in-out;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 15px;
+            animation: zoomIn 1s ease-in-out;
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            animation: fadeInUp 1.5s ease-in-out;
+        }
+
+        /* Branches Section */
+        .branches {
+            padding: 50px 20px;
+            text-align: center;
+            animation: fadeIn 1.5s ease-in-out;
+        }
+
+        .branches h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            color: #4cafef;
+        }
+
+        .branch-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+        }
+
+        .branch-card {
+            background: #2a2a40;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s, box-shadow 0.3s;
+            animation: fadeInUp 1s ease-in-out;
+        }
+
+        .branch-card:hover {
+            transform: translateY(-10px) scale(1.05);
+            box-shadow: 0 12px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .branch-icon {
+            font-size: 2.5rem;
+            color: #4cafef;
+            margin-bottom: 10px;
+            animation: pulse 2s infinite;
+        }
+
+        /* Why Engineering Section */
+        .why-engineering {
+            background: #1e1e2f;
+            padding: 50px 20px;
+            text-align: center;
+            animation: fadeIn 1.5s ease-in-out;
+        }
+
+        .why-engineering h2 {
+            margin-bottom: 20px;
+            color: #4cafef;
+            animation: slideInRight 1s ease-in-out;
+        }
+
+        .why-engineering ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .why-engineering li {
+            font-size: 1.2rem;
+            margin: 10px 0;
+            color: #d1d1e0;
+            animation: fadeInLeft 1s ease-in-out;
+        }
+
+        .why-engineering i {
+            color: #4cafef;
+            margin-right: 10px;
+        }
+
+        /* Getting Started Section */
+        .getting-started {
+            background: #2a2a40;
+            padding: 50px 20px;
+            text-align: center;
+            animation: fadeIn 1.5s ease-in-out;
+        }
+
+        .getting-started h2 {
+            margin-bottom: 30px;
+            color: #4cafef;
+            animation: slideInRight 1s ease-in-out;
+        }
+
+        .steps-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin-top: 20px;
+        }
+
+        .step-card {
+            background: #1e1e2f;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s;
+            animation: fadeInUp 1s ease-in-out;
+        }
+
+        .step-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .step-number {
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+            line-height: 40px;
+            background: #4cafef;
+            color: #1e1e2f;
+            border-radius: 50%;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+
+        /* Career Paths Section */
+        .career-paths {
+            padding: 50px 20px;
+            text-align: center;
+            animation: fadeIn 1.5s ease-in-out;
+        }
+
+        .career-paths h2 {
+            margin-bottom: 30px;
+            color: #4cafef;
+            animation: slideInRight 1s ease-in-out;
+        }
+
+        .path-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 20px;
+        }
+
+        .path-card {
+            background: #2a2a40;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s;
+            animation: fadeInUp 1s ease-in-out;
+            text-align: left;
+        }
+
+        .path-card h3 {
+            color: #4cafef;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+        }
+
+        .path-card h3 i {
+            margin-right: 10px;
+        }
+
+        .path-card ul {
+            list-style: none;
+            padding-left: 10px;
+        }
+
+        .path-card li {
+            margin: 8px 0;
+            position: relative;
+            padding-left: 20px;
+        }
+
+        .path-card li:before {
+            content: "→";
+            position: absolute;
+            left: 0;
+            color: #4cafef;
+        }
+
+        /* FAQ Section */
+        .faq-section {
+            background: #1e1e2f;
+            padding: 50px 20px;
+            animation: fadeIn 1.5s ease-in-out;
+        }
+
+        .faq-section h2 {
+            text-align: center;
+            margin-bottom: 30px;
+            color: #4cafef;
+            animation: slideInRight 1s ease-in-out;
+        }
+
+        .faq-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .faq-item {
+            background: #2a2a40;
+            margin-bottom: 15px;
+            border-radius: 8px;
+            overflow: hidden;
+            animation: fadeInUp 1s ease-in-out;
+        }
+
+        .faq-question {
+            padding: 15px 20px;
+            cursor: pointer;
+            font-weight: bold;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: background-color 0.3s;
+        }
+
+        .faq-question:hover {
+            background-color: #323250;
+        }
+
+        .faq-answer {
+            padding: 0 20px;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out, padding 0.3s ease;
+        }
+
+        .faq-item.active .faq-answer {
+            padding: 15px 20px;
+            max-height: 500px;
+        }
+
+        .faq-toggle {
+            color: #4cafef;
+            font-size: 1.2rem;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 20px;
+            background: #2a2a40;
+            color: white;
+            margin-top: 40px;
+            animation: fadeInUp 1s ease-in-out;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+
+            .branches h2, .getting-started h2, .career-paths h2, .faq-section h2 {
+                font-size: 2rem;
+            }
+
+            .branch-card, .step-card, .path-card {
+                padding: 15px;
+            }
+
+            .branch-icon {
+                font-size: 2rem;
+            }
+
+            .logo{
+                font-size: 1.5rem;
+            }
+
+            .back-button{
+                font-size: 0.9rem;
+            }
+
+            .why-engineering h2 {
+                font-size: 2rem;
+            }
+
+            .why-engineering li {
+                font-size: 1rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .navbar {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero p {
+                font-size: 0.9rem;
+            }
+
+            .branches h2, .getting-started h2, .career-paths h2, .faq-section h2 {
+                font-size: 1.8rem;
+            }
+
+            .branch-card, .step-card, .path-card {
+                padding: 10px;
+            }
+
+            .branch-icon {
+                font-size: 1.8rem;
+            }
+
+            .why-engineering h2 {
+                font-size: 1.8rem;
+            }
+
+            .why-engineering li {
+                font-size: 0.9rem;
+            }
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes slideInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-100px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes slideInRight {
+            from {
+                opacity: 0;
+                transform: translateX(100px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes zoomIn {
+            from {
+                opacity: 0;
+                transform: scale(0.8);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.1);
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <h1 class="logo">GoFarAsYouCan</h1>
+            <a href="/dashboard" class="back-button"><i class="fas fa-arrow-left"></i> Back to Dashboard</a>
+        </div>
+    </nav>
+
+    <div class="hero">
+        <h1>Engineering Excellence</h1>
+        <p>Design. Innovate. Build. Change the world through engineering.</p>
+    </div>
+
+    <section class="branches">
+        <h2>Popular Engineering Fields</h2>
+        <div class="branch-cards" >
+            <a href="/engineering/CSE/cse.ejs" style="color: white; text-decoration: none;" class="">
+                <div class="branch-card"> 
+                    <i class="fas fa-laptop-code branch-icon"></i>
+                    <h3>Computer Science</h3>
+                    <p>Shape the digital world with coding, AI, and futuristic tech.</p>
+                </div>
+            </a>
+
+            <a href="/engineering/Mech/mech.ejs" style="color: white; text-decoration: none;">
+                <div class="branch-card">
+                    <i class="fas fa-cogs branch-icon"></i>
+                    <h3>Mechanical</h3>
+                    <p>Invent machines, engines, and technologies that move the world.</p>
+                </div>
+            </a>
+
+            <a href="/engineering/Civil/civil.ejs" style="color: white; text-decoration: none;">
+                <div class="branch-card">
+                    <i class="fas fa-road branch-icon"></i>
+                    <h3>Civil</h3>
+                    <p>Build sustainable cities, roads, bridges, and infrastructure.</p>
+                </div>
+            </a>
+
+            <a href="/engineering/Electrical/electrical.ejs" style="color: white; text-decoration: none;">
+                <div class="branch-card">
+                    <i class="fas fa-bolt branch-icon"></i>
+                    <h3>Electrical</h3>
+                    <p>Power the world through innovation in electricity and electronics.</p>
+                </div>
+            </a>
+
+            <a href="/engineering/Chemical/chemical.ejs" style="color: white; text-decoration: none;">
+            <div class="branch-card">
+                <i class="fas fa-flask branch-icon"></i>
+                <h3>Chemical</h3>
+                <p>Engineer new materials, fuels, and medicines to improve life.</p>
+            </div>
+        </a>
+        </div>
+    </section>
+
+    <section class="why-engineering">
+        <h2>Why Choose Engineering?</h2>
+        <ul>
+            <li><i class="fas fa-check-circle"></i> Turn ideas into real-world innovations.</li>
+            <li><i class="fas fa-check-circle"></i> High-paying career options worldwide.</li>
+            <li><i class="fas fa-check-circle"></i> Endless opportunities in tech, research, and startups.</li>
+            <li><i class="fas fa-check-circle"></i> Solve real-world problems creatively.</li>
+        </ul>
+    </section>
+
+    <!-- New Section: Getting Started with Engineering -->
+    <section class="getting-started">
+        <h2>Getting Started with Engineering</h2>
+        <p>For 12th grade students and droppers looking to pursue engineering</p>
+        
+        <div class="steps-container">
+            <div class="step-card">
+                <div class="step-number">1</div>
+                <h3>Entrance Exam Preparation</h3>
+                <p>Focus on JEE Main, JEE Advanced, or state-level engineering entrance exams. Build strong fundamentals in Physics, Chemistry, and Mathematics.</p>
+                <p>Tip: Create a structured study plan with daily goals and regular practice tests.</p>
+            </div>
+            
+            <div class="step-card">
+                <div class="step-number">2</div>
+                <h3>Choose Your Branch Wisely</h3>
+                <p>Research different engineering branches based on your interests, aptitude, and career prospects. Don't just follow trends!</p>
+                <p>Tip: Talk to seniors, professionals, and career counselors to get insights.</p>
+            </div>
+            
+            <div class="step-card">
+                <div class="step-number">3</div>
+                <h3>College Selection</h3>
+                <p>Look beyond rankings. Consider factors like faculty quality, infrastructure, placement records, and location.</p>
+                <p>Tip: Visit campuses if possible or attend virtual open days to get a feel for the environment.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- New Section: Career Paths -->
+    <section class="career-paths">
+        <h2>Engineering Career Paths for Freshers</h2>
+        
+        <div class="path-container">
+            <div class="path-card">
+                <h3><i class="fas fa-industry"></i> Core Engineering</h3>
+                <ul>
+                    <li>Work with industry giants in your specialized field</li>
+                    <li>Design, develop, and test new products and systems</li>
+                    <li>Manage technical projects and lead engineering teams</li>
+                    <li>Average starting salary: ₹3-7 lakhs per annum</li>
+                </ul>
+            </div>
+            
+            <div class="path-card">
+                <h3><i class="fas fa-code-branch"></i> Tech & IT</h3>
+                <ul>
+                    <li>Software development, data science, cybersecurity</li>
+                    <li>Work with cutting-edge technologies like AI, ML, and blockchain</li>
+                    <li>Opportunities in both product and service companies</li>
+                    <li>Average starting salary: ₹4-10 lakhs per annum</li>
+                </ul>
+            </div>
+            
+            <div class="path-card">
+                <h3><i class="fas fa-graduation-cap"></i> Higher Studies</h3>
+                <ul>
+                    <li>Pursue M.Tech, MS, MBA, or PhD in India or abroad</li>
+                    <li>Specialize in emerging technologies or management</li>
+                    <li>Open doors to research, teaching, and leadership roles</li>
+                    <li>Better long-term career growth and higher salary packages</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- New Section: FAQs for Engineering Aspirants -->
+    <section class="faq-section">
+        <h2>FAQs for Engineering Aspirants</h2>
+        
+        <div class="faq-container">
+            <div class="faq-item">
+                <div class="faq-question">
+                    Is engineering difficult for average students?
+                    <span class="faq-toggle">+</span>
+                </div>
+                <div class="faq-answer">
+                    <p>Engineering is challenging but definitely achievable with consistent effort. Many "average" students excel in engineering by finding their area of interest and developing good study habits. The key is persistence, not just natural talent.</p>
+                </div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question">
+                    Which engineering branch has the best scope for the future?
+                    <span class="faq-toggle">+</span>
+                </div>
+                <div class="faq-answer">
+                    <p>Computer Science, AI/ML, Data Science, and Renewable Energy Engineering have excellent future prospects. However, all branches offer good opportunities if you develop specialized skills. Choose based on your interest rather than just trends.</p>
+                </div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question">
+                    What if I don't get into a top engineering college?
+                    <span class="faq-toggle">+</span>
+                </div>
+                <div class="faq-answer">
+                    <p>While prestigious colleges offer advantages, your success ultimately depends on your skills, knowledge, and attitude. Many successful engineers come from tier-2 and tier-3 colleges. Focus on building practical skills, doing projects, and networking.</p>
+                </div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question">
+                    How important are programming skills for non-CS engineers?
+                    <span class="faq-toggle">+</span>
+                </div>
+                <div class="faq-answer">
+                    <p>Very important! Basic programming knowledge is valuable across all engineering disciplines. It helps in automation, data analysis, and problem-solving. Learning languages like Python can significantly boost your career prospects regardless of your branch.</p>
+                </div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question">
+                    What should I do if I'm a dropper preparing for engineering entrance?
+                    <span class="faq-toggle">+</span>
+                </div>
+                <div class="faq-answer">
+                    <p>Use your drop year effectively by analyzing your previous mistakes, creating a structured study plan, joining a good coaching program if needed, and maintaining a positive mindset. Take regular mock tests and focus on weak areas. Remember, many successful engineers have taken a drop year.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>🚀 Go Beyond Limits | Write Your Own Destiny</p>
+    </footer>
+
+    <script>
+        // JavaScript for FAQ accordion functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const faqItems = document.querySelectorAll('.faq-item');
+            
+            faqItems.forEach(item => {
+                const question = item.querySelector('.faq-question');
+                
+                question.addEventListener('click', () => {
+                    // Toggle active class
+                    item.classList.toggle('active');
+                    
+                    // Change the toggle symbol
+                    const toggle = question.querySelector('.faq-toggle');
+                    toggle.textContent = item.classList.contains('active') ? '-' : '+';
+                });
+            });
+        });
+    </script>
+</body>
+</html>

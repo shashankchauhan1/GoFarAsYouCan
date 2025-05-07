@@ -1,0 +1,146 @@
+/* General reset for padding and margin */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f5f5f5; /* Soft light gray background */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 10px;
+  }
+  
+  .container {
+    background-color: #ffffff; /* White background for the container */
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); /* Light shadow for elevation */
+    width: 100%;
+    max-width: 400px; /* Ensure it's not too wide */
+    transition: transform 0.3s ease;
+  }
+  
+  .container:hover {
+    transform: scale(1.03); /* Slight scale effect when hovered */
+  }
+  
+  h1 {
+    text-align: center;
+    color: #ff4f81; /* Bright pink for header */
+    font-size: 28px;
+    margin-bottom: 20px;
+  }
+  
+  label {
+    font-size: 14px;
+    margin-bottom: 8px;
+    display: block;
+    color: #333;
+  }
+  
+  input {
+    width: 100%;
+    padding: 15px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 16px;
+    font-family: 'Arial', sans-serif;
+    transition: border 0.3s ease;
+  }
+  
+  input:focus {
+    border-color: #ff4f81; /* Pink focus effect */
+    outline: none;
+  }
+  
+  button {
+    width: 100%;
+    padding: 15px;
+    background-color: #ff4f81; /* Bright pink button */
+    border: none;
+    border-radius: 8px;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  button:hover {
+    background-color: #e04060; /* Darker pink on hover */
+  }
+  
+  p {
+    text-align: center;
+    font-size: 14px;
+    color: #555;
+  }
+  
+  a {
+    color: #ff4f81;
+    text-decoration: none;
+    font-weight: bold;
+  }
+  
+  a:hover {
+    text-decoration: underline;
+  }
+  
+  /* Mobile responsiveness */
+  @media (max-width: 768px) {
+    .container {
+      padding: 20px;
+      max-width: 350px;
+    }
+  
+    h1 {
+      font-size: 24px;
+    }
+  
+    input {
+      padding: 12px;
+      font-size: 14px;
+    }
+  
+    button {
+      padding: 14px;
+      font-size: 14px;
+    }
+  }
+  
+  /* For smaller screens like mobile devices */
+  @media (max-width: 480px) {
+    body {
+      padding: 0;
+    }
+  
+    .container {
+      padding: 15px;
+      max-width: 90%;
+    }
+  
+    h1 {
+      font-size: 22px;
+    }
+  
+    input {
+      padding: 10px;
+      font-size: 13px;
+    }
+  
+    button {
+      padding: 12px;
+      font-size: 13px;
+    }
+  
+    p {
+      font-size: 12px;
+    }
+  }
+  
+ 

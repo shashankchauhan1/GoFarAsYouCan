@@ -1,0 +1,618 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" rel="stylesheet">
+  <title>Water Resources Engineering Learning Hub</title>
+  <style>
+    :root {
+      --primary-bg: #0a2540;      /* Dark blue background */
+      --section-bg: #143456;      /* Slightly lighter background */
+      --card-bg: #1d4469;         /* Card background */
+      --card-hover: #26537e;      /* Card hover effect */
+      --text-primary: #e6f1ff;    /* Light text color */
+      --text-secondary: #b3d4ff;  /* Muted text color */
+      --accent: #00b4d8;          /* Cyan accent */
+      --accent-hover: #0096c7;    /* Darker cyan for hover */
+      --highlight: #48cae4;       /* Bright cyan for highlights */
+      --border: #1d4469;          /* Border color */
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: var(--primary-bg);
+      color: var(--text-primary);
+      line-height: 1.6;
+    }
+
+    .navbar {
+      background: var(--section-bg);
+      padding: 1rem 2rem;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .nav-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      font-size: 1.8rem;
+      font-weight: bold;
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    .back-button {
+      text-decoration: none;
+      color: var(--text-primary);
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      transition: color 0.3s ease;
+    }
+
+    .back-button:hover {
+      color: var(--accent);
+    }
+
+    header {
+      text-align: center;
+      padding: 4rem 2rem;
+      background: var(--section-bg);
+      background-image: linear-gradient(rgba(20, 52, 86, 0.9), rgba(20, 52, 86, 0.9)), 
+                        url('https://images.unsplash.com/photo-1468413253725-0d5181091126?q=80&w=2000');
+      background-size: cover;
+      background-position: center;
+    }
+
+    header h1 {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+      color: var(--accent);
+    }
+
+    header p {
+      font-size: 1.25rem;
+      color: var(--text-secondary);
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    section {
+      max-width: 1200px;
+      margin: 2rem auto;
+      padding: 2rem;
+    }
+
+    .section-title {
+      color: var(--accent);
+      margin-bottom: 1.5rem;
+      font-size: 2rem;
+      position: relative;
+      padding-bottom: 0.5rem;
+    }
+
+    .section-title::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100px;
+      height: 3px;
+      background: var(--accent);
+      border-radius: 3px;
+    }
+
+    .topics-grid,
+    .specialization-grid,
+    .projects-grid,
+    .practice-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+      margin: 2rem 0;
+    }
+
+    .topic-card,
+    .specialization-card,
+    .project-card,
+    .practice-card {
+      background: var(--card-bg);
+      padding: 2rem;
+      border-radius: 12px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      transition: all 0.3s ease;
+      border: 1px solid var(--border);
+    }
+
+    .topic-card:hover,
+    .specialization-card:hover,
+    .project-card:hover,
+    .practice-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+      border-color: var(--accent);
+      background: var(--card-hover);
+    }
+
+    .topic-title,
+    .specialization-title,
+    .project-title {
+      color: var(--highlight);
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
+    }
+
+    .learn-btn {
+      display: inline-block;
+      padding: 0.75rem 1.5rem;
+      background: var(--accent);
+      color: #0a2540;
+      font-weight: bold;
+      text-decoration: none;
+      border-radius: 8px;
+      transition: all 0.3s ease;
+      margin-top: 1rem;
+    }
+
+    .learn-btn:hover {
+      background: var(--accent-hover);
+      transform: translateY(-2px);
+    }
+
+    footer {
+      text-align: center;
+      padding: 2rem;
+      background: var(--section-bg);
+      margin-top: 4rem;
+      border-top: 1px solid var(--border);
+    }
+
+    .quote {
+      font-style: italic;
+      color: var(--text-secondary);
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .project-tags {
+      margin-top: 1rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+
+    .project-tag {
+      background: rgba(0, 180, 216, 0.2);
+      color: var(--accent);
+      padding: 0.3rem 0.6rem;
+      border-radius: 4px;
+      font-size: 0.8rem;
+      font-weight: 500;
+    }
+
+    .features-list {
+      list-style: none;
+    }
+
+    .features-list li {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .features-list i {
+      color: var(--accent);
+    }
+
+    .resources-title {
+      font-size: larger;
+      color: #48cae4;
+    }
+
+    .channel-list {
+      list-style: none;
+      margin-top: 0.5rem;
+    }
+
+    .channel-list li {
+      margin-bottom: 0.5rem;
+    }
+
+    .resource-list {
+      list-style: none;
+    }
+
+    .wave-divider {
+      position: relative;
+      height: 70px;
+      background: var(--primary-bg);
+      overflow: hidden;
+    }
+
+    .wave {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 100px;
+      background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="%23143456" fill-opacity="1" d="M0,192L48,197.3C96,203,192,213,288,229.3C384,245,480,267,576,250.7C672,235,768,181,864,181.3C960,181,1056,235,1152,234.7C1248,235,1344,181,1392,154.7L1440,128L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path></svg>');
+      background-size: cover;
+      background-repeat: no-repeat;
+    }
+
+    @media (max-width: 768px) {
+      .navbar {
+        padding: 1rem;
+      }
+
+      .logo {
+        font-size: 1.5rem;
+      }
+
+      header {
+        padding: 3rem 1rem;
+      }
+
+      header h1 {
+        font-size: 2rem;
+      }
+
+      section {
+        padding: 1rem;
+      }
+
+      .topics-grid,
+      .specialization-grid,
+      .projects-grid,
+      .practice-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <nav class="navbar">
+    <div class="nav-container">
+      <a href="#" class="logo">Water Resources Engineering</a>
+      <a href="/Engineering/CIVIL/civil.ejs" class="back-button">
+        <i class="fas fa-arrow-left"></i> Back
+      </a>
+    </div>
+  </nav>
+
+  <header>
+    <h1>Water Resources Engineering Specialization</h1>
+    <p>Master the fundamentals of hydraulics, hydrology, water supply systems, and sustainable water management with comprehensive learning resources.</p>
+  </header>
+
+  <div class="wave-divider">
+    <div class="wave"></div>
+  </div>
+
+  <section class="specialization-section">
+    <h2 class="section-title">Specialization Areas</h2>
+    <div class="specialization-grid">
+  
+      <!-- Hydraulic Engineering -->
+      <div class="specialization-card">
+        <div class="specialization-title">
+          <i class="fas fa-water"></i>
+          Hydraulic Engineering
+        </div>
+        <p>Focus on the behavior and control of water flow in natural and engineered systems.</p>
+        <br>
+        <ul class="features-list">
+          <li><i class="fas fa-check"></i> Open channel flow</li><br>
+          <li><i class="fas fa-check"></i> Hydraulic structures</li><br>
+          <li><i class="fas fa-check"></i> Pipe network analysis</li>
+        </ul>
+        <br>
+        <div class="resources-section">
+          <div class="resources-title">Learning Resources</div><br>
+          <ul class="channel-list">
+            <li><a style="color: white; text-decoration: none;" href="https://www.youtube.com/c/PracticalEngineering" target="_blank"><i class="fab fa-youtube"></i> Practical Engineering</a></li>
+            <li><a style="color: white; text-decoration: none;" href="https://www.youtube.com/c/TheEfficiency" target="_blank"><i class="fab fa-youtube"></i> The Efficiency</a></li>
+            <li><a style="color: white; text-decoration: none;" href="https://www.asce.org/communities/institutes-and-technical-groups/environmental-and-water-resources-institute" target="_blank"><i class="fas fa-book"></i> ASCE EWRI Resources</a></li>
+          </ul>
+        </div>
+      </div>
+  
+      <!-- Hydrology -->
+      <div class="specialization-card">
+        <div class="specialization-title">
+          <i class="fas fa-cloud-rain"></i>
+          Hydrology
+        </div>
+        <p>Study of water movement, distribution, and quality across the Earth's surface and atmosphere.</p>
+        <br>
+        <ul class="features-list">
+          <li><i class="fas fa-check"></i> Rainfall-runoff modeling</li><br>
+          <li><i class="fas fa-check"></i> Flood forecasting</li><br>
+          <li><i class="fas fa-check"></i> Groundwater analysis</li>
+        </ul>
+        <br>
+        <div class="resources-section">
+          <div class="resources-title">Learning Resources</div><br>
+          <ul class="channel-list">
+            <li><a style="color: white; text-decoration: none;" href="https://www.youtube.com/@nptel" target="_blank"><i class="fab fa-youtube"></i> NPTEL Hydrology</a></li>
+            <li><a style="color: white; text-decoration: none;" href="https://www.youtube.com/c/USGSWaterResources" target="_blank"><i class="fab fa-youtube"></i> USGS Water Resources</a></li>
+            <li><a style="color: white; text-decoration: none;" href="https://water.usgs.gov/edu/" target="_blank"><i class="fas fa-book"></i> USGS Water Science School</a></li>
+          </ul>
+        </div>
+      </div>
+  
+      <!-- Water Resources Management -->
+      <div class="specialization-card">
+        <div class="specialization-title">
+          <i class="fas fa-tint-slash"></i>
+          Water Resources Management
+        </div>
+        <p>Focus on sustainable planning, development, and management of water resources.</p>
+        <br>
+        <ul class="features-list">
+          <li><i class="fas fa-check"></i> Water allocation</li><br>
+          <li><i class="fas fa-check"></i> Reservoir operations</li><br>
+          <li><i class="fas fa-check"></i> Drought management</li>
+        </ul>
+        <br>
+        <div class="resources-section">
+          <div class="resources-title">Learning Resources</div><br>
+          <ul class="channel-list">
+            <li><a style="color: white; text-decoration: none;" href="https://www.youtube.com/c/WorldBank" target="_blank"><i class="fab fa-youtube"></i> World Bank Water</a></li>
+            <li><a style="color: white; text-decoration: none;" href="https://www.youtube.com/c/UNWater" target="_blank"><i class="fab fa-youtube"></i> UN Water</a></li>
+            <li><a style="color: white; text-decoration: none;" href="https://www.iwra.org/resources/" target="_blank"><i class="fas fa-globe"></i> IWRA Resources</a></li>
+          </ul>
+        </div>
+      </div>
+  
+    </div>
+  </section>
+  
+
+  <!-- Projects section -->
+  <section class="projects-section">
+    <h2 class="section-title">Industry Projects</h2>
+    <div class="projects-grid">
+      <div class="project-card">
+        <div class="project-title">
+          <i class="fas fa-shield-alt"></i>
+          Flood Risk Management
+        </div>
+        <p>Design and implement flood protection systems and early warning networks for urban areas.</p>
+        <div class="project-tags">
+          <span class="project-tag">Flood Modeling</span>
+          <span class="project-tag">Levee Design</span>
+          <span class="project-tag">Early Warning Systems</span>
+        </div>
+        <a href="https://www.usace.army.mil/Missions/Civil-Works/Flood-Risk-Management/" class="learn-btn" target="_blank">View Research</a>
+      </div>
+  
+      <div class="project-card">
+        <div class="project-title">
+          <i class="fas fa-faucet"></i>
+          Smart Water Infrastructure
+        </div>
+        <p>Develop intelligent water distribution systems with real-time monitoring and leak detection.</p>
+        <div class="project-tags">
+          <span class="project-tag">IoT Sensors</span>
+          <span class="project-tag">Pressure Management</span>
+          <span class="project-tag">Digital Twins</span>
+        </div>
+        <a href="https://www.awwa.org/Resources-Tools/Resource-Topics/Infrastructure" class="learn-btn" target="_blank">View Resources</a>
+      </div>
+  
+      <div class="project-card">
+        <div class="project-title">
+          <i class="fas fa-seedling"></i>
+          Watershed Restoration
+        </div>
+        <p>Design nature-based solutions for watershed health, water quality, and ecosystem services.</p>
+        <div class="project-tags">
+          <span class="project-tag">Stream Restoration</span>
+          <span class="project-tag">Wetland Construction</span>
+          <span class="project-tag">Green Infrastructure</span>
+        </div>
+        <a href="https://www.epa.gov/watersheds" class="learn-btn" target="_blank">View Guidelines</a>
+      </div>
+    </div>
+  </section>
+  
+
+  <section>
+    <h2 class="section-title">Core Concepts</h2>
+    <div class="topics-grid">
+      <div class="topic-card">
+        <div class="topic-title">Fluid Mechanics</div>
+        <p>Understand the principles of fluid statics, dynamics, and the behavior of water in various conditions.</p>
+        <a class="learn-btn" href="https://www.efluids.com/efluids/pages/edu_resources.htm" target="_blank">Learn More</a>
+      </div>
+  
+      <div class="topic-card">
+        <div class="topic-title">Open Channel Hydraulics</div>
+        <p>Master the fundamentals of flow in rivers, channels, and other open conduits.</p>
+        <a class="learn-btn" href="https://www.hec.usace.army.mil/software/hec-ras/" target="_blank">Learn More</a>
+      </div>
+  
+      <div class="topic-card">
+        <div class="topic-title">Hydrologic Processes</div>
+        <p>Learn about precipitation, infiltration, evapotranspiration, and runoff processes.</p>
+        <a class="learn-btn" href="https://water.usgs.gov/edu/watercycle.html" target="_blank">Learn More</a>
+      </div>
+    </div>
+  
+    <div class="topics-grid">
+      <div class="topic-card">
+        <div class="topic-title">Groundwater Hydrology</div>
+        <p>Study subsurface water movement, aquifer properties, and well hydraulics.</p>
+        <a class="learn-btn" href="https://water.usgs.gov/ogw/" target="_blank">Learn More</a>
+      </div>
+  
+      <div class="topic-card">
+        <div class="topic-title">Hydraulic Structures</div>
+        <p>Understand design principles for dams, weirs, spillways, and other water control structures.</p>
+        <a class="learn-btn" href="https://www.usbr.gov/tsc/techreferences/mands/mands-pdfs/HydraulicStructures.pdf" target="_blank">Learn More</a>
+      </div>
+  
+      <div class="topic-card">
+        <div class="topic-title">Water Supply Systems</div>
+        <p>Learn about water treatment, distribution networks, and system design principles.</p>
+        <a class="learn-btn" href="https://www.awwa.org/Resources-Tools/Resource-Topics/Distribution-Systems" target="_blank">Learn More</a>
+      </div>
+  
+      <div class="topic-card">
+        <div class="topic-title">Stormwater Management</div>
+        <p>Study urban drainage systems, detention facilities, and low impact development.</p>
+        <a class="learn-btn" href="https://www.epa.gov/npdes/stormwater-management-practices" target="_blank">Learn More</a>
+      </div>
+  
+      <div class="topic-card">
+        <div class="topic-title">River Engineering</div>
+        <p>Explore river mechanics, sediment transport, and river restoration techniques.</p>
+        <a class="learn-btn" href="https://www.usace.army.mil/Missions/Civil-Works/Project-Planning/nfpc/" target="_blank">Learn More</a>
+      </div>
+  
+      <div class="topic-card">
+        <div class="topic-title">Coastal Engineering</div>
+        <p>Master principles of coastal processes, shoreline protection, and harbor design.</p>
+        <a class="learn-btn" href="https://www.coastal.edu/coastal/" target="_blank">Learn More</a>
+      </div>
+  
+      <div class="topic-card">
+        <div class="topic-title">Water Resources Planning</div>
+        <p>Learn techniques for integrated water resources management and planning.</p>
+        <a class="learn-btn" href="https://www.iwra.org/iwrm/" target="_blank">Learn More</a>
+      </div>
+  
+      <div class="topic-card">
+        <div class="topic-title">Hydropower Engineering</div>
+        <p>Study design and operation of hydroelectric facilities and energy production.</p>
+        <a class="learn-btn" href="https://www.energy.gov/eere/water/hydropower-basics" target="_blank">Learn More</a>
+      </div>
+  
+      <div class="topic-card">
+        <div class="topic-title">Irrigation Systems</div>
+        <p>Understand agricultural water management, irrigation methods, and efficiency.</p>
+        <a class="learn-btn" href="https://www.irrigation.org/IA/Resources/Technical-Resources/IA/Resources/Technical-Resources.aspx" target="_blank">Learn More</a>
+      </div>
+  
+      <div class="topic-card">
+        <div class="topic-title">Water Quality Modeling</div>
+        <p>Explore contaminant transport, water quality assessment, and pollution control.</p>
+        <a class="learn-btn" href="https://www.epa.gov/ceam/surface-water-quality-modeling" target="_blank">Learn More</a>
+      </div>
+  
+      <div class="topic-card">
+        <div class="topic-title">Climate Change Impacts</div>
+        <p>Learn about climate change effects on water resources and adaptation strategies.</p>
+        <a class="learn-btn" href="https://www.epa.gov/climate-impacts/climate-impacts-water-resources" target="_blank">Learn More</a>
+      </div>
+  
+      <div class="topic-card">
+        <div class="topic-title">Watershed Management</div>
+        <p>Study integrated approaches to managing land and water resources at watershed scale.</p>
+        <a class="learn-btn" href="https://www.epa.gov/hwp" target="_blank">Learn More</a>
+      </div>
+    </div>
+  </section>
+  
+
+  <section class="practice-section">
+    <h2 class="section-title">Software & Analysis Tools</h2>
+    <div class="practice-grid">
+      <div class="practice-card">
+        <h3>HEC-RAS</h3>
+        <p>River Analysis System for modeling water flow through natural rivers and other channels.</p>
+        <a href="https://www.hec.usace.army.mil/software/hec-ras/" target="_blank" class="learn-btn">Explore Tool</a>
+      </div>
+
+      <div class="practice-card">
+        <h3>HEC-HMS</h3>
+        <p>Hydrologic Modeling System for simulating precipitation-runoff processes.</p>
+        <a href="https://www.hec.usace.army.mil/software/hec-hms/" target="_blank" class="learn-btn">Explore Tool</a>
+      </div>
+
+      <div class="practice-card">
+        <h3>EPANET</h3>
+        <p>Software for modeling water distribution piping systems.</p>
+        <a href="https://www.epa.gov/water-research/epanet" target="_blank" class="learn-btn">Explore Tool</a>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2 class="section-title">Learning Resources</h2>
+    <div class="topics-grid">
+      <div class="topic-card">
+        <div class="topic-title">Online Courses</div>
+        <ul class="resource-list">
+          <li><a style="color: white; text-decoration: none;" href="https://www.edx.org/learn/water" target="_blank"><i class="fas fa-graduation-cap"></i> edX Water Resources Courses</a></li><br>
+          <li><a style="color: white; text-decoration: none;" href="https://www.coursera.org/courses?query=water%20resources" target="_blank"><i class="fas fa-graduation-cap"></i> Coursera Water Resources Engineering</a></li><br>
+          <li><a style="color: white; text-decoration: none;" href="https://www.unesco-ihe.org/online-courses" target="_blank"><i class="fas fa-graduation-cap"></i> IHE Delft Online Courses</a></li>
+        </ul>
+      </div>
+
+      <div class="topic-card">
+        <div class="topic-title">Technical Resources</div>
+        <ul class="resource-list">
+          <li><a style="color: white; text-decoration: none;" href="https://ascelibrary.org/journal/jwrmd5" target="_blank"><i class="fas fa-file-alt"></i> ASCE Journal of Water Resources Planning and Management</a></li><br>
+          <li><a style="color: white; text-decoration: none;" href="https://www.usace.army.mil/Missions/Civil-Works/Engineer-Manuals/" target="_blank"><i class="fas fa-file-alt"></i> USACE Engineering Manuals</a></li><br>
+          <li><a style="color: white; text-decoration: none;" href="https://www.sciencedirect.com/journal/journal-of-hydrology" target="_blank"><i class="fas fa-file-alt"></i> Journal of Hydrology</a></li>
+        </ul>
+      </div>
+
+      <div class="topic-card">
+        <div class="topic-title">Industry Publications</div>
+        <ul class="resource-list">
+          <li><a style="color: white; text-decoration: none;" href="https://www.waterworld.com/" target="_blank"><i class="fas fa-newspaper"></i> WaterWorld</a></li><br>
+          <li><a style="color: white; text-decoration: none;" href="https://www.waterwaysmagazine.com/" target="_blank"><i class="fas fa-newspaper"></i> Waterways Magazine</a></li><br>
+          <li><a style="color: white; text-decoration: none;" href="https://www.iwapublishing.com/journals" target="_blank"><i class="fas fa-newspaper"></i> IWA Publishing Journals</a></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <p class="quote">"Water is the driving force of all nature." - Leonardo da Vinci</p>
+  </footer>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // Smooth scrolling for anchor links
+      document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+          e.preventDefault();
+
+          const targetId = this.getAttribute('href');
+          if (targetId === '#') return;
+
+          const targetElement = document.querySelector(targetId);
+          if (targetElement) {
+            window.scrollTo({
+              top: targetElement.offsetTop - 70,
+              behavior: 'smooth'
+            });
+          }
+        });
+      });
+    });
+  </script>
+</body>
+
+</html>

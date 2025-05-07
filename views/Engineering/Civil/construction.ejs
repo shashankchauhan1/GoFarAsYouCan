@@ -1,0 +1,596 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" rel="stylesheet">
+  <title>Construction Management Learning Hub</title>
+  <style>
+    :root {
+      --primary-bg: #2b2d42;      /* Dark blue-gray background */
+      --section-bg: #3a3d56;      /* Slightly lighter background */
+      --card-bg: #454968;         /* Card background */
+      --card-hover: #505479;      /* Card hover effect */
+      --text-primary: #edf2f4;    /* Light text color */
+      --text-secondary: #b8c2cc;  /* Muted text color */
+      --accent: #fca311;          /* Yellow accent */
+      --accent-hover: #e8940f;    /* Darker yellow for hover */
+      --highlight: #fdb44d;       /* Bright yellow for highlights */
+      --border: #454968;          /* Border color */
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: var(--primary-bg);
+      color: var(--text-primary);
+      line-height: 1.6;
+    }
+
+    .navbar {
+      background: var(--section-bg);
+      padding: 1rem 2rem;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .nav-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      font-size: 1.8rem;
+      font-weight: bold;
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    .back-button {
+      text-decoration: none;
+      color: var(--text-primary);
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      transition: color 0.3s ease;
+    }
+
+    .back-button:hover {
+      color: var(--accent);
+    }
+
+    header {
+      text-align: center;
+      padding: 4rem 2rem;
+      background: var(--section-bg);
+      background-image: linear-gradient(rgba(58, 61, 86, 0.9), rgba(58, 61, 86, 0.9)), 
+                        url('https://images.unsplash.com/photo-1541888946425-d81bb19240f5?q=80&w=2000');
+      background-size: cover;
+      background-position: center;
+    }
+
+    header h1 {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+      color: var(--accent);
+    }
+
+    header p {
+      font-size: 1.25rem;
+      color: var(--text-secondary);
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    section {
+      max-width: 1200px;
+      margin: 2rem auto;
+      padding: 2rem;
+    }
+
+    .section-title {
+      color: var(--accent);
+      margin-bottom: 1.5rem;
+      font-size: 2rem;
+      position: relative;
+      padding-bottom: 0.5rem;
+    }
+
+    .section-title::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100px;
+      height: 3px;
+      background: var(--accent);
+      border-radius: 3px;
+    }
+
+    .topics-grid,
+    .specialization-grid,
+    .projects-grid,
+    .practice-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+      margin: 2rem 0;
+    }
+
+    .topic-card,
+    .specialization-card,
+    .project-card,
+    .practice-card {
+      background: var(--card-bg);
+      padding: 2rem;
+      border-radius: 12px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      transition: all 0.3s ease;
+      border: 1px solid var(--border);
+    }
+
+    .topic-card:hover,
+    .specialization-card:hover,
+    .project-card:hover,
+    .practice-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+      border-color: var(--accent);
+      background: var(--card-hover);
+    }
+
+    .topic-title,
+    .specialization-title,
+    .project-title {
+      color: var(--highlight);
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
+    }
+
+    .learn-btn {
+      display: inline-block;
+      padding: 0.75rem 1.5rem;
+      background: var(--accent);
+      color: #2b2d42;
+      font-weight: bold;
+      text-decoration: none;
+      border-radius: 8px;
+      transition: all 0.3s ease;
+      margin-top: 1rem;
+    }
+
+    .learn-btn:hover {
+      background: var(--accent-hover);
+      transform: translateY(-2px);
+    }
+
+    footer {
+      text-align: center;
+      padding: 2rem;
+      background: var(--section-bg);
+      margin-top: 4rem;
+      border-top: 1px solid var(--border);
+    }
+
+    .quote {
+      font-style: italic;
+      color: var(--text-secondary);
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .project-tags {
+      margin-top: 1rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+
+    .project-tag {
+      background: rgba(252, 163, 17, 0.2);
+      color: var(--accent);
+      padding: 0.3rem 0.6rem;
+      border-radius: 4px;
+      font-size: 0.8rem;
+      font-weight: 500;
+    }
+
+    .features-list {
+      list-style: none;
+    }
+
+    .features-list li {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .features-list i {
+      color: var(--accent);
+    }
+
+    .resources-title {
+      font-size: larger;
+      color: #fdb44d;
+    }
+
+    .channel-list {
+      list-style: none;
+      margin-top: 0.5rem;
+    }
+
+    .channel-list li {
+      margin-bottom: 0.5rem;
+    }
+
+    .resource-list {
+      list-style: none;
+    }
+
+    @media (max-width: 768px) {
+      .navbar {
+        padding: 1rem;
+      }
+
+      .logo {
+        font-size: 1.5rem;
+      }
+
+      header {
+        padding: 3rem 1rem;
+      }
+
+      header h1 {
+        font-size: 2rem;
+      }
+
+      section {
+        padding: 1rem;
+      }
+
+      .topics-grid,
+      .specialization-grid,
+      .projects-grid,
+      .practice-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <nav class="navbar">
+    <div class="nav-container">
+      <a href="#" class="logo">Construction Management</a>
+      <a href="/Engineering/CIVIL/civil.ejs" class="back-button">
+        <i class="fas fa-arrow-left"></i> Back
+      </a>
+    </div>
+  </nav>
+
+  <header>
+    <h1>Construction Management Specialization</h1>
+    <p>Master the fundamentals of project planning, scheduling, cost control, and construction operations with comprehensive learning resources.</p>
+  </header>
+
+  <section class="specialization-section">
+    <h2 class="section-title">Specialization Areas</h2>
+    <div class="specialization-grid">
+  
+      <!-- Project Management -->
+      <div class="specialization-card">
+        <div class="specialization-title">
+          <i class="fas fa-tasks"></i>
+          Project Management
+        </div>
+        <p>Focus on planning, scheduling, and controlling construction projects from inception to completion.</p>
+        <br>
+        <ul class="features-list">
+          <li><i class="fas fa-check"></i> Project planning</li><br>
+          <li><i class="fas fa-check"></i> Critical path method</li><br>
+          <li><i class="fas fa-check"></i> Risk management</li>
+        </ul>
+        <br>
+        <div class="resources-section">
+          <div class="resources-title">Learning Resources</div><br>
+          <ul class="channel-list">
+            <li><a style="color: white; text-decoration: none;" href="https://www.youtube.com/c/ConstructionManagement" target="_blank"><i class="fab fa-youtube"></i> Construction Management</a></li>
+            <li><a style="color: white; text-decoration: none;" href="https://www.youtube.com/c/PMPwithRay" target="_blank"><i class="fab fa-youtube"></i> PMP with Ray</a></li>
+            <li><a style="color: white; text-decoration: none;" href="https://www.pmi.org/learning/library" target="_blank"><i class="fas fa-book"></i> PMI Resources</a></li>
+          </ul>
+        </div>
+      </div>
+  
+      <!-- Cost Engineering -->
+      <div class="specialization-card">
+        <div class="specialization-title">
+          <i class="fas fa-dollar-sign"></i>
+          Cost Engineering
+        </div>
+        <p>Study of cost estimation, budgeting, and financial control of construction projects.</p>
+        <br>
+        <ul class="features-list">
+          <li><i class="fas fa-check"></i> Cost estimation</li><br>
+          <li><i class="fas fa-check"></i> Value engineering</li><br>
+          <li><i class="fas fa-check"></i> Earned value management</li>
+        </ul>
+        <br>
+        <div class="resources-section">
+          <div class="resources-title">Learning Resources</div><br>
+          <ul class="channel-list">
+            <li><a style="color: white; text-decoration: none;" href="https://www.youtube.com/@nptel" target="_blank"><i class="fab fa-youtube"></i> NPTEL Cost Engineering</a></li>
+            <li><a style="color: white; text-decoration: none;" href="https://www.youtube.com/c/AACEInternational" target="_blank"><i class="fab fa-youtube"></i> AACE International</a></li>
+            <li><a style="color: white; text-decoration: none;" href="https://web.aacei.org/resources" target="_blank"><i class="fas fa-book"></i> AACE Resources</a></li>
+          </ul>
+        </div>
+      </div>
+  
+      <!-- Construction Technology -->
+      <div class="specialization-card">
+        <div class="specialization-title">
+          <i class="fas fa-hard-hat"></i>
+          Construction Technology
+        </div>
+        <p>Focus on construction methods, equipment, and innovative building technologies.</p>
+        <br>
+        <ul class="features-list">
+          <li><i class="fas fa-check"></i> Construction methods</li><br>
+          <li><i class="fas fa-check"></i> Equipment management</li><br>
+          <li><i class="fas fa-check"></i> Prefabrication</li>
+        </ul>
+        <br>
+        <div class="resources-section">
+          <div class="resources-title">Learning Resources</div><br>
+          <ul class="channel-list">
+            <li><a style="color: white; text-decoration: none;" href="https://www.youtube.com/c/PracticalEngineering" target="_blank"><i class="fab fa-youtube"></i> Practical Engineering</a></li>
+            <li><a style="color: white; text-decoration: none;" href="https://www.youtube.com/c/TheB1M" target="_blank"><i class="fab fa-youtube"></i> The B1M</a></li>
+            <li><a style="color: white; text-decoration: none;" href="https://www.constructionequipment.com/" target="_blank"><i class="fas fa-globe"></i> Construction Equipment</a></li>
+          </ul>
+        </div>
+      </div>
+  
+    </div>
+  </section>
+  
+
+  <!-- Projects section -->
+  <section class="projects-section">
+    <h2 class="section-title">Industry Projects</h2>
+    <div class="projects-grid">
+      <div class="project-card">
+        <div class="project-title">
+          <i class="fas fa-building"></i>
+          Lean Construction Implementation
+        </div>
+        <p>Apply lean principles to eliminate waste and improve efficiency in construction processes.</p>
+        <div class="project-tags">
+          <span class="project-tag">Last Planner System</span>
+          <span class="project-tag">Pull Planning</span>
+          <span class="project-tag">Value Stream Mapping</span>
+        </div>
+        <a href="https://www.leanconstruction.org/learning/" class="learn-btn" target="_blank">View Research</a>
+      </div>
+  
+      <div class="project-card">
+        <div class="project-title">
+          <i class="fas fa-vr-cardboard"></i>
+          BIM Implementation
+        </div>
+        <p>Develop Building Information Modeling strategies for design coordination and construction management.</p>
+        <div class="project-tags">
+          <span class="project-tag">4D Scheduling</span>
+          <span class="project-tag">Clash Detection</span>
+          <span class="project-tag">Digital Twin</span>
+        </div>
+        <a href="https://www.bimframework.info/resources/" class="learn-btn" target="_blank">View Resources</a>
+      </div>
+  
+      <div class="project-card">
+        <div class="project-title">
+          <i class="fas fa-shield-alt"></i>
+          Safety Management Systems
+        </div>
+        <p>Design comprehensive safety programs to prevent accidents and improve site safety culture.</p>
+        <div class="project-tags">
+          <span class="project-tag">Job Hazard Analysis</span>
+          <span class="project-tag">Safety Training</span>
+          <span class="project-tag">Incident Prevention</span>
+        </div>
+        <a href="https://www.osha.gov/construction" class="learn-btn" target="_blank">View Guidelines</a>
+      </div>
+    </div>
+  </section>
+  
+
+  <section>
+    <h2 class="section-title">Core Concepts</h2>
+    <div class="topics-grid">
+      <div class="topic-card">
+        <div class="topic-title">Project Planning</div>
+        <p>Understand the principles of project initiation, scope definition, and work breakdown structures.</p>
+        <a class="learn-btn" href="https://www.pmi.org/learning/library/project-planning-skills-tools-techniques-6126" target="_blank">Learn More</a>
+      </div>
+  
+      <div class="topic-card">
+        <div class="topic-title">Scheduling</div>
+        <p>Master the fundamentals of construction scheduling, critical path method, and resource allocation.</p>
+        <a class="learn-btn" href="https://www.pmi.org/learning/library/project-scheduling-techniques-tools-7551" target="_blank">Learn More</a>
+      </div>
+  
+      <div class="topic-card">
+        <div class="topic-title">Cost Estimation</div>
+        <p>Learn about quantity takeoff, pricing, and developing accurate construction cost estimates.</p>
+        <a class="learn-btn" href="https://www.aacei.org/resources/cost-engineering" target="_blank">Learn More</a>
+      </div>
+    </div>
+  
+    <div class="topics-grid">
+      <div class="topic-card">
+        <div class="topic-title">Contract Management</div>
+        <p>Study construction contracts, procurement methods, and contract administration.</p>
+        <a class="learn-btn" href="https://www.asce.org/topics/construction-engineering/construction-contracts" target="_blank">Learn More</a>
+      </div>
+  
+      <div class="topic-card">
+        <div class="topic-title">Quality Management</div>
+        <p>Understand quality control, quality assurance, and continuous improvement in construction.</p>
+        <a class="learn-btn" href="https://www.constructionqualitymanagement.com/" target="_blank">Learn More</a>
+      </div>
+  
+      <div class="topic-card">
+        <div class="topic-title">Safety Management</div>
+        <p>Learn about construction safety regulations, hazard identification, and safety programs.</p>
+        <a class="learn-btn" href="https://www.osha.gov/construction" target="_blank">Learn More</a>
+      </div>
+  
+      <div class="topic-card">
+        <div class="topic-title">Risk Management</div>
+        <p>Study risk identification, assessment, and mitigation strategies for construction projects.</p>
+        <a class="learn-btn" href="https://www.pmi.org/learning/library/risk-management-construction-industry-7710" target="_blank">Learn More</a>
+      </div>
+  
+      <div class="topic-card">
+        <div class="topic-title">Building Information Modeling</div>
+        <p>Explore BIM applications in construction planning, coordination, and facility management.</p>
+        <a class="learn-btn" href="https://www.autodesk.com/solutions/bim" target="_blank">Learn More</a>
+      </div>
+  
+      <div class="topic-card">
+        <div class="topic-title">Lean Construction</div>
+        <p>Master principles of waste reduction, continuous flow, and value maximization in construction.</p>
+        <a class="learn-btn" href="https://www.leanconstruction.org/" target="_blank">Learn More</a>
+      </div>
+  
+      <div class="topic-card">
+        <div class="topic-title">Construction Law</div>
+        <p>Learn about legal aspects of construction, including claims, disputes, and resolutions.</p>
+        <a class="learn-btn" href="https://www.americanbar.org/groups/construction_industry/" target="_blank">Learn More</a>
+      </div>
+  
+      <div class="topic-card">
+        <div class="topic-title">Sustainable Construction</div>
+        <p>Study green building practices, LEED certification, and sustainable construction methods.</p>
+        <a class="learn-btn" href="https://www.usgbc.org/leed" target="_blank">Learn More</a>
+      </div>
+  
+      <div class="topic-card">
+        <div class="topic-title">Construction Equipment</div>
+        <p>Understand equipment selection, productivity analysis, and fleet management.</p>
+        <a class="learn-btn" href="https://www.constructionequipment.com/equipment-management" target="_blank">Learn More</a>
+      </div>
+  
+      <div class="topic-card">
+        <div class="topic-title">Temporary Structures</div>
+        <p>Explore design and installation of formwork, scaffolding, and temporary support systems.</p>
+        <a class="learn-btn" href="https://www.osha.gov/scaffolds" target="_blank">Learn More</a>
+      </div>
+  
+      <div class="topic-card">
+        <div class="topic-title">Construction Finance</div>
+        <p>Learn about project financing, cash flow management, and financial performance metrics.</p>
+        <a class="learn-btn" href="https://www.cfma.org/resources" target="_blank">Learn More</a>
+      </div>
+  
+      <div class="topic-card">
+        <div class="topic-title">Construction Technology</div>
+        <p>Study emerging technologies in construction, including robotics, drones, and automation.</p>
+        <a class="learn-btn" href="https://constructech.com/" target="_blank">Learn More</a>
+      </div>
+    </div>
+  </section>
+  
+
+  <section class="practice-section">
+    <h2 class="section-title">Software & Analysis Tools</h2>
+    <div class="practice-grid">
+      <div class="practice-card">
+        <h3>Primavera P6</h3>
+        <p>Enterprise project portfolio management software for construction scheduling and control.</p>
+        <a href="https://www.oracle.com/industries/construction-engineering/primavera-p6/" target="_blank" class="learn-btn">Explore Tool</a>
+      </div>
+
+      <div class="practice-card">
+        <h3>Procore</h3>
+        <p>Construction management platform for project management, quality, and safety.</p>
+        <a href="https://www.procore.com/" target="_blank" class="learn-btn">Explore Tool</a>
+      </div>
+
+      <div class="practice-card">
+        <h3>Autodesk BIM 360</h3>
+        <p>Cloud-based BIM platform for construction document management and field collaboration.</p>
+        <a href="https://www.autodesk.com/bim-360/" target="_blank" class="learn-btn">Explore Tool</a>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2 class="section-title">Learning Resources</h2>
+    <div class="topics-grid">
+      <div class="topic-card">
+        <div class="topic-title">Online Courses</div>
+        <ul class="resource-list">
+          <li><a style="color: white; text-decoration: none;" href="https://www.edx.org/learn/construction-management" target="_blank"><i class="fas fa-graduation-cap"></i> edX Construction Management Courses</a></li><br>
+          <li><a style="color: white; text-decoration: none;" href="https://www.coursera.org/courses?query=construction%20management" target="_blank"><i class="fas fa-graduation-cap"></i> Coursera Construction Management</a></li><br>
+          <li><a style="color: white; text-decoration: none;" href="https://www.linkedin.com/learning/topics/construction" target="_blank"><i class="fas fa-graduation-cap"></i> LinkedIn Learning Construction Courses</a></li>
+        </ul>
+      </div>
+
+      <div class="topic-card">
+        <div class="topic-title">Technical Resources</div>
+        <ul class="resource-list">
+          <li><a style="color: white; text-decoration: none;" href="https://www.cmaanet.org/resources" target="_blank"><i class="fas fa-file-alt"></i> CMAA Resources</a></li><br>
+          <li><a style="color: white; text-decoration: none;" href="https://ascelibrary.org/journal/jcemd4" target="_blank"><i class="fas fa-file-alt"></i> ASCE Journal of Construction Engineering and Management</a></li><br>
+          <li><a style="color: white; text-decoration: none;" href="https://www.sciencedirect.com/journal/automation-in-construction" target="_blank"><i class="fas fa-file-alt"></i> Automation in Construction Journal</a></li>
+        </ul>
+      </div>
+
+      <div class="topic-card">
+        <div class="topic-title">Industry Publications</div>
+        <ul class="resource-list">
+          <li><a style="color: white; text-decoration: none;" href="https://www.enr.com/" target="_blank"><i class="fas fa-newspaper"></i> Engineering News-Record</a></li><br>
+          <li><a style="color: white; text-decoration: none;" href="https://www.constructiondive.com/" target="_blank"><i class="fas fa-newspaper"></i> Construction Dive</a></li><br>
+          <li><a style="color: white; text-decoration: none;" href="https://www.constructionbusinessowner.com/" target="_blank"><i class="fas fa-newspaper"></i> Construction Business Owner</a></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <p class="quote">"The best way to predict the future is to create it." - Peter Drucker</p>
+  </footer>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // Smooth scrolling for anchor links
+      document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+          e.preventDefault();
+
+          const targetId = this.getAttribute('href');
+          if (targetId === '#') return;
+
+          const targetElement = document.querySelector(targetId);
+          if (targetElement) {
+            window.scrollTo({
+              top: targetElement.offsetTop - 70,
+              behavior: 'smooth'
+            });
+          }
+        });
+      });
+    });
+  </script>
+</body>
+
+</html>

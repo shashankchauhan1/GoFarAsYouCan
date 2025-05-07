@@ -1,0 +1,1346 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Process Engineering - Chemical Engineering Specialization</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* Base Styles */
+        :root {
+            --primary-color: #2c3e50;         /* Deep indigo */
+            --primary-light: #34495e;         /* Medium indigo */
+            --secondary-color: #f1c40f;       /* Vibrant amber */
+            --accent-color: #e67e22;          /* Warm orange */
+            --accent-light: #f39c12;          /* Light amber */
+            --text-color: #ecf0f1;            /* Light gray for readability */
+            --light-text: #ffffff;            /* Pure white */
+            --dark-text: #bdc3c7;             /* Medium gray for less emphasis */
+            --light-bg: #34495e;              /* Muted indigo background */
+            --dark-bg: #1e2a38;               /* Darker indigo background */
+            --card-bg: #2c3e50;               /* Dark card surface */
+            --card-shadow: rgba(0, 0, 0, 0.3); /* Shadow color */
+            --border-radius: 10px;
+            --box-shadow: 0 6px 14px rgba(0, 0, 0, 0.2);
+            --transition: all 0.3s ease-in-out;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--light-bg);
+            background-image: linear-gradient(135deg, var(--light-bg) 0%, var(--dark-bg) 100%);
+            background-attachment: fixed;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        a {
+            text-decoration: none;
+            color: var(--accent-light);
+            transition: var(--transition);
+        }
+
+        a:hover {
+            color: var(--secondary-color);
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            border-radius: var(--border-radius);
+        }
+
+        .bg-dark {
+            background-color: var(--dark-bg);
+            color: var(--light-text);
+        }
+
+        /* Navbar */
+        .navbar {
+            background-color: var(--primary-color);
+            color: var(--light-text);
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: var(--box-shadow);
+        }
+
+        .navbar .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--light-text);
+        }
+
+        .back-button a {
+            color: var(--light-text);
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .back-button a:hover {
+            color: var(--accent-light);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-light) 100%);
+            color: var(--light-text);
+            text-align: center;
+            padding: 6rem 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0.2;
+            mix-blend-mode: overlay;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            position: relative;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        /* Section Styles */
+        .section {
+            padding: 5rem 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+            color: var(--accent-color);
+            position: relative;
+            font-size: 2rem;
+        }
+
+        .section-title::after {
+            content: "";
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background-color: var(--accent-color);
+            border-radius: 2px;
+        }
+
+        .section-intro {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto 2.5rem;
+            font-size: 1.1rem;
+        }
+
+        /* Content Wrapper */
+        .content-wrapper {
+            display: flex;
+            gap: 2.5rem;
+            align-items: center;
+        }
+
+        .text-content {
+            flex: 1;
+        }
+
+        .text-content p {
+            margin-bottom: 1.25rem;
+            font-size: 1.05rem;
+        }
+
+        .image-content {
+            flex: 1;
+            box-shadow: var(--box-shadow);
+            border-radius: var(--border-radius);
+            overflow: hidden;
+        }
+
+        /* Cards Grid */
+        .cards-grid {
+            display: grid;
+            gap: 1.5rem;
+        }
+
+        .two-columns {
+            grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+        }
+
+        .three-columns {
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        }
+
+        .four-columns {
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        }
+
+        /* Card Styles */
+        .card {
+            background-color: var(--card-bg);
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--box-shadow);
+            transition: var(--transition);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4);
+            border-color: var(--accent-light);
+        }
+
+        .card-header {
+            padding: 1.25rem 1.25rem 0.5rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .card-header h3 {
+            color: var(--accent-color);
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .card-header h3 i {
+            color: var(--accent-light);
+        }
+
+        .card-header p {
+            color: var(--dark-text);
+            font-size: 0.9rem;
+        }
+
+        .card-content {
+            padding: 1.25rem;
+            color: var(--text-color);
+        }
+
+        /* Project Cards */
+        .project-card .card-image {
+            height: 180px;
+            overflow: hidden;
+        }
+
+        .project-card .card-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .project-card:hover .card-image img {
+            transform: scale(1.05);
+        }
+
+        /* Career List */
+        .career-list {
+            list-style: none;
+        }
+
+        .career-list li {
+            display: flex;
+            justify-content: space-between;
+            padding: 0.5rem 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .career-list li:last-child {
+            border-bottom: none;
+        }
+
+        .badge {
+            background-color: rgba(255, 255, 255, 0.1);
+            color: var(--light-text);
+            padding: 0.25rem 0.5rem;
+            border-radius: 9999px;
+            font-size: 0.75rem;
+            font-weight: 600;
+        }
+
+        .badge.top {
+            background-color: var(--accent-color);
+            color: var(--dark-bg);
+        }
+
+        .badge.program {
+            background-color: var(--secondary-color);
+            color: var(--dark-bg);
+        }
+
+        /* Skills List */
+        .skills-list {
+            list-style: none;
+        }
+
+        .skills-list li {
+            padding: 0.5rem 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .skills-list li:last-child {
+            border-bottom: none;
+        }
+
+        .skill-name {
+            font-weight: 600;
+            display: block;
+            margin-bottom: 0.25rem;
+            color: var(--accent-color);
+        }
+
+        .skill-desc {
+            font-size: 0.9rem;
+            color: var(--dark-text);
+        }
+
+        /* Accordion */
+        .accordion {
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            background-color: var(--card-bg);
+        }
+
+        .accordion-item {
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .accordion-item:last-child {
+            border-bottom: none;
+        }
+
+        .accordion-header {
+            padding: 1rem;
+            cursor: pointer;
+            font-weight: 600;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: var(--transition);
+            color: var(--accent-color);
+        }
+
+        .accordion-header::after {
+            content: '\f078';
+            font-family: 'Font Awesome 5 Free';
+            font-weight: 900;
+            transition: var(--transition);
+        }
+
+        .accordion-header.active::after {
+            transform: rotate(180deg);
+        }
+
+        .accordion-content {
+            padding: 0 1rem;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+        }
+
+        .accordion-content p {
+            padding-bottom: 1rem;
+        }
+
+        .accordion-item.active .accordion-header {
+            background-color: rgba(255, 255, 255, 0.05);
+            color: var(--accent-light);
+        }
+
+        .accordion-item.active .accordion-content {
+            max-height: 500px;
+        }
+
+        /* Course List */
+        .course-list {
+            list-style: none;
+            margin-top: 1rem;
+        }
+
+        .course-item {
+            background-color: rgba(255, 255, 255, 0.05);
+            border-radius: var(--border-radius);
+            padding: 1rem;
+            margin-bottom: 1rem;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: var(--transition);
+        }
+
+        .course-item:hover {
+            background-color: rgba(255, 255, 255, 0.08);
+            border-color: var(--accent-light);
+        }
+
+        .course-title {
+            font-weight: 600;
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+            color: var(--accent-color);
+        }
+
+        .course-desc {
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .course-meta {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.8rem;
+            color: var(--dark-text);
+        }
+
+        /* Tools Grid */
+        .tools-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .tool-card {
+            background-color: var(--card-bg);
+            border-radius: var(--border-radius);
+            padding: 1.5rem 1rem;
+            text-align: center;
+            box-shadow: var(--box-shadow);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: var(--transition);
+        }
+
+        .tool-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3);
+            border-color: var(--accent-light);
+        }
+
+        .tool-card i {
+            font-size: 2.5rem;
+            color: var(--accent-color);
+            margin-bottom: 1rem;
+        }
+
+        .tool-card h3 {
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+            color: var(--accent-color);
+        }
+
+        .tool-card p {
+            font-size: 0.9rem;
+            color: var(--dark-text);
+        }
+
+        /* Footer */
+        .footer {
+            background-color: var(--dark-bg);
+            color: var(--light-text);
+            padding: 4rem 0 1rem;
+            background-image: linear-gradient(to top, var(--dark-bg), var(--primary-light));
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2.5rem;
+            margin-bottom: 2.5rem;
+        }
+
+        .footer-logo h2 {
+            margin-bottom: 1rem;
+        }
+
+        .footer-links h3,
+        .footer-resources h3 {
+            margin-bottom: 1.25rem;
+            position: relative;
+            padding-bottom: 0.5rem;
+            display: inline-block;
+        }
+
+        .footer-links h3::after,
+        .footer-resources h3::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background-color: var(--accent-color);
+        }
+
+        .footer-links ul,
+        .footer-resources ul {
+            list-style-type: none;
+        }
+
+        .footer-links li,
+        .footer-resources li {
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-links a,
+        .footer-resources a {
+            color: var(--dark-text);
+        }
+
+        .footer-links a:hover,
+        .footer-resources a:hover {
+            color: var(--accent-light);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 1.25rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        /* Animation */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .animate-fade-in {
+            animation: fadeIn 0.8s ease-out forwards;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .content-wrapper {
+                flex-direction: column;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .two-columns {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .section {
+                padding: 3.5rem 0;
+            }
+
+            .hero {
+                padding: 5rem 0;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .section-title {
+                font-size: 1.75rem;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .navbar {
+                padding: 0.75rem 0;
+            }
+
+            .logo {
+                font-size: 1.2rem;
+            }
+
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+
+            .section-title {
+                font-size: 1.5rem;
+            }
+
+            .tools-grid {
+                grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="logo">GoFarAsYouCan</div>
+            <div class="back-button">
+                <a href="/Engineering/Chemical/chemical.ejs"><i class="fas fa-arrow-left"></i> Go Back</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="hero">
+        <div class="overlay"></div>
+        <div class="container">
+            <h1>Process Engineering</h1>
+            <p>Master the art of designing and optimizing processes that transform raw materials into valuable products</p>
+        </div>
+    </header>
+
+    <!-- About Section -->
+    <section class="section" id="about">
+        <div class="container">
+            <h2 class="section-title">What is Process Engineering?</h2>
+            <div class="content-wrapper">
+                <div class="text-content">
+                    <p>Process Engineering is a core specialization within Chemical Engineering that focuses on the design, operation, control, and optimization of chemical, physical, and biological processes. It involves creating efficient systems to transform raw materials into valuable products, such as fuels, pharmaceuticals, food, and advanced materials.</p>
+                    <p>As a process engineer, you'll develop and refine processes used in industries like petrochemicals, pharmaceuticals, food processing, and energy production. You'll apply principles of chemistry, physics, and mathematics to ensure processes are safe, sustainable, and cost-effective, addressing global challenges like energy efficiency and environmental impact.</p>
+                    <p>With the rise of sustainable technologies and green chemistry, process engineers are in high demand to innovate and improve industrial processes, making this a dynamic and impactful career path.</p>
+                </div>
+                <div class="image-content">
+                    <img src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Process Engineering">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Key Areas Section -->
+    <section class="section bg-dark" id="key-areas">
+        <div class="container">
+            <h2 class="section-title">Key Areas of Study</h2>
+            <p class="section-intro">Process Engineering encompasses critical areas that form the backbone of industrial production and innovation:</p>
+            
+            <div class="cards-grid three-columns">
+                <div class="card">
+                    <div class="card-header">
+                        <h3><i class="fas fa-cogs"></i> Process Design</h3>
+                    </div>
+                    <div class="card-content">
+                        <p>Creating and optimizing process flow diagrams, equipment layouts, and piping and instrumentation diagrams (P&IDs) for industrial plants.</p>
+                        <ul class="skills-list">
+                            <li>
+                                <span class="skill-name">Flow Diagrams</span>
+                                <p class="skill-desc">PFDs, P&IDs, process schematics</p>
+                            </li>
+                            <li>
+                                <span class="skill-name">Equipment Sizing</span>
+                                <p class="skill-desc">Reactors, heat exchangers, pumps</p>
+                            </li>
+                            <li>
+                                <span class="skill-name">Process Simulation</span>
+                                <p class="skill-desc">ASPEN Plus, HYSYS, ChemCAD</p>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <h3><i class="fas fa-thermometer"></i> Thermodynamics</h3>
+                    </div>
+                    <div class="card-content">
+                        <p>Applying thermodynamic principles to analyze energy balances, phase equilibria, and heat transfer in chemical processes.</p>
+                        <ul class="skills-list">
+                            <li>
+                                <span class="skill-name">Energy Balances</span>
+                                <p class="skill-desc">Heat, work, and energy flow calculations</p>
+                            </li>
+                            <li>
+                                <span class="skill-name">Phase Equilibria</span>
+                                <p class="skill-desc">Vapor-liquid, liquid-liquid systems</p>
+                            </li>
+                            <li>
+                                <span class="skill-name">Heat Transfer</span>
+                                <p class="skill-desc">Conduction, convection, radiation</p>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <h3><i class="fas fa-tint"></i> Fluid Mechanics</h3>
+                    </div>
+                    <div class="card-content">
+                        <p>Understanding fluid flow, pressure drops, and transport phenomena to design pipelines, pumps, and fluid systems.</p>
+                        <ul class="skills-list">
+                            <li>
+                                <span class="skill-name">Fluid Flow</span>
+                                <p class="skill-desc">Laminar, turbulent flow, Bernoulli's principle</p>
+                            </li>
+                            <li>
+                                <span class="skill-name">Pump Design</span>
+                                <p class="skill-desc">Centrifugal, positive displacement pumps</p>
+                            </li>
+                            <li>
+                                <span class="skill-name">Pipeline Systems</span>
+                                <p class="skill-desc">Pressure drop, pipe sizing</p>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="cards-grid three-columns" style="margin-top: 1.5rem;">
+                <div class="card">
+                    <div class="card-header">
+                        <h3><i class="fas fa-flask"></i> Reaction Engineering</h3>
+                    </div>
+                    <div class="card-content">
+                        <p>Designing and optimizing chemical reactors to maximize yield, efficiency, and safety in chemical transformations.</p>
+                        <ul class="skills-list">
+                            <li>
+                                <span class="skill-name">Kinetics</span>
+                                <p class="skill-desc">Reaction rates, rate laws</p>
+                            </li>
+                            <li>
+                                <span class="skill-name">Reactor Design</span>
+                                <p class="skill-desc">CSTR, PFR, batch reactors</p>
+                            </li>
+                            <li>
+                                <span class="skill-name">Catalysis</span>
+                                <p class="skill-desc">Catalyst selection, reaction enhancement</p>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <h3><i class="fas fa-exchange-alt"></i> Mass Transfer</h3>
+                    </div>
+                    <div class="card-content">
+                        <p>Studying mass transfer operations like distillation, absorption, and extraction to separate and purify products.</p>
+                        <ul class="skills-list">
+                            <li>
+                                <span class="skill-name">Distillation</span>
+                                <p class="skill-desc">Vapor-liquid separation, column design</p>
+                            </li>
+                            <li>
+                                <span class="skill-name">Absorption</span>
+                                <p class="skill-desc">Gas-liquid interactions, scrubbers</p>
+                            </li>
+                            <li>
+                                <span class="skill-name">Extraction</span>
+                                <p class="skill-desc">Liquid-liquid separation, solvent selection</p>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <h3><i class="fas fa-shield-alt"></i> Process Safety</h3>
+                    </div>
+                    <div class="card-content">
+                        <p>Ensuring processes are safe through risk assessment, hazard analysis, and adherence to safety standards.</p>
+                        <ul class="skills-list">
+                            <li>
+                                <span class="skill-name">HAZOP Analysis</span>
+                                <p class="skill-desc">Hazard and operability studies</p>
+                            </li>
+                            <li>
+                                <span class="skill-name">Risk Assessment</span>
+                                <p class="skill-desc">Quantitative and qualitative risk analysis</p>
+                            </li>
+                            <li>
+                                <span class="skill-name">Safety Standards</span>
+                                <p class="skill-desc">OSHA, ISO 45001 compliance</p>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Career Opportunities Section -->
+    <section class="section" id="careers">
+        <div class="container">
+            <h2 class="section-title">Career Opportunities</h2>
+            <p class="section-intro">Process Engineering offers diverse career paths across various industries:</p>
+            
+            <div class="cards-grid three-columns">
+                <div class="card">
+                    <div class="card-header">
+                        <h3><i class="fas fa-briefcase"></i> Industry Roles</h3>
+                    </div>
+                    <div class="card-content">
+                        <ul class="career-list">
+                            <li>
+                                <span>Process Engineer</span>
+                                <span class="badge">₹6-18 LPA</span>
+                            </li>
+                            <li>
+                                <span>Plant Manager</span>
+                                <span class="badge">₹10-25 LPA</span>
+                            </li>
+                            <li>
+                                <span>Process Safety Engineer</span>
+                                <span class="badge">₹8-20 LPA</span>
+                            </li>
+                            <li>
+                                <span>Production Engineer</span>
+                                <span class="badge">₹5-15 LPA</span>
+                            </li>
+                            <li>
+                                <span>R&D Engineer</span>
+                                <span class="badge">₹7-20 LPA</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <h3><i class="fas fa-building"></i> Top Employers</h3>
+                    </div>
+                    <div class="card-content">
+                        <ul class="career-list">
+                            <li>
+                                <span>Petrochemicals</span>
+                                <span class="badge top">Reliance Industries, IOCL</span>
+                            </li>
+                            <li>
+                                <span>Pharmaceuticals</span>
+                                <span class="badge top">Dr. Reddy’s, Cipla</span>
+                            </li>
+                            <li>
+                                <span>Chemicals</span>
+                                <span class="badge">BASF, Dow</span>
+                            </li>
+                            <li>
+                                <span>Food Processing</span>
+                                <span class="badge">Nestlé, Amul</span>
+                            </li>
+                            <li>
+                                <span>Energy</span>
+                                <span class="badge">ONGC, BPCL</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <h3><i class="fas fa-chart-line"></i> Growth Areas</h3>
+                    </div>
+                    <div class="card-content">
+                        <p>The process engineering field is evolving with new technologies and sustainability goals:</p>
+                        <ul>
+                            <li>• Green Chemistry and Sustainable Processes</li>
+                            <li>• Carbon Capture and Storage</li>
+                            <li>• Renewable Energy Production</li>
+                            <li>• Bioprocessing for Biofuels</li>
+                            <li>• Advanced Materials Manufacturing</li>
+                            <li>• Process Automation and Digitalization</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Essential Skills Section -->
+    <section class="section bg-dark" id="skills">
+        <div class="container">
+            <h2 class="section-title">Essential Skills & Tools</h2>
+            <p class="section-intro">To excel in Process Engineering, you'll need a blend of technical expertise, software proficiency, and professional skills:</p>
+            
+            <div class="cards-grid three-columns">
+                <div class="card">
+                    <div class="card-header">
+                        <h3><i class="fas fa-book-open"></i> Technical Knowledge</h3>
+                    </div>
+                    <div class="card-content">
+                        <ul class="skills-list">
+                            <li>
+                                <span class="skill-name">Process Modeling</span>
+                                <p class="skill-desc">Steady-state and dynamic simulations</p>
+                            </li>
+                            <li>
+                                <span class="skill-name">Heat and Mass Balance</span>
+                                <p class="skill-desc">Energy and material flow calculations</p>
+                            </li>
+                            <li>
+                                <span class="skill-name">Unit Operations</span>
+                                <p class="skill-desc">Distillation, reactors, filtration</p>
+                            </li>
+                            <li>
+                                <span class="skill-name">Process Control</span>
+                                <p class="skill-desc">PID controllers, feedback systems</p>
+                            </li>
+                            <li>
+                                <span class="skill-name">Sustainability</span>
+                                <p class="skill-desc">Lifecycle analysis, green engineering</p>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <h3><i class="fas fa-laptop-code"></i> Software & Tools</h3>
+                    </div>
+                    <div class="card-content">
+                        <p>Mastery of industry-standard software is critical:</p>
+                        <div class="tools-grid">
+                            <div class="tool-card">
+                                <i class="fas fa-project-diagram"></i>
+                                <h3>Process Simulation</h3>
+                                <p>ASPEN Plus, HYSYS</p>
+                            </div>
+                            <div class="tool-card">
+                                <i class="fas fa-code"></i>
+                                <h3>Data Analysis</h3>
+                                <p>MATLAB, Python</p>
+                            </div>
+                            <div class="tool-card">
+                                <i class="fas fa-drafting-compass"></i>
+                                <h3>CAD Software</h3>
+                                <p>AutoCAD, SolidWorks</p>
+                            </div>
+                            <div class="tool-card">
+                                <i class="fas fa-chart-line"></i>
+                                <h3>Process Control</h3>
+                                <p>DeltaV, SCADA</p>
+                            </div>
+                            <div class="tool-card">
+                                <i class="fas fa-calculator"></i>
+                                <h3>Excel VBA</h3>
+                                <p>Process calculations</p>
+                            </div>
+                            <div class="tool-card">
+                                <i class="fas fa-code-branch"></i>
+                                <h3>Version Control</h3>
+                                <p>Git, SVN</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <h3><i class="fas fa-user-tie"></i> Professional Skills</h3>
+                    </div>
+                    <div class="card-content">
+                        <ul class="skills-list">
+                            <li>
+                                <span class="skill-name">Project Management</span>
+                                <p class="skill-desc">Planning, budgeting, execution</p>
+                            </li>
+                            <li>
+                                <span class="skill-name">Safety Management</span>
+                                <p class="skill-desc">HAZOP, risk mitigation</p>
+                            </li>
+                            <li>
+                                <span class="skill-name">Communication</span>
+                                <p class="skill-desc">Technical reports, presentations</p>
+                            </li>
+                            <li>
+                                <span class="skill-name">Team Collaboration</span>
+                                <p class="skill-desc">Cross-functional teamwork</p>
+                            </li>
+                            <li>
+                                <span class="skill-name">Problem Solving</span>
+                                <p class="skill-desc">Process optimization, troubleshooting</p>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Courses Section -->
+    <section class="section" id="courses">
+        <div class="container">
+            <h2 class="section-title">Recommended Courses</h2>
+            <p class="section-intro">Advance your expertise in Process Engineering with these specialized courses:</p>
+            
+            <div class="accordion">
+                <div class="accordion-item">
+                    <div class="accordion-header">Core Process Engineering Courses</div>
+                    <div class="accordion-content">
+                        <ul class="course-list">
+                            <li class="course-item">
+                                <div class="course-title">Process Design and Simulation</div>
+                                <div class="course-desc">Learn to create process flow diagrams and simulate processes using ASPEN Plus and HYSYS.</div>
+                                <div class="course-meta">
+                                    <span>Duration: 12 weeks</span>
+                                    <span>Level: Intermediate</span>
+                                </div>
+                            </li>
+                            <li class="course-item">
+                                <div class="course-title">Chemical Reaction Engineering</div>
+                                <div class="course-desc">Study reaction kinetics, reactor design, and catalysis for industrial applications.</div>
+                                <div class="course-meta">
+                                    <span>Duration: 10 weeks</span>
+                                    <span>Level: Intermediate</span>
+                                </div>
+                            </li>
+                            <li class="course-item">
+                                <div class="course-title">Process Safety and Risk Management</div>
+                                <div class="course-desc">Master HAZOP, risk assessment, and safety standards for safe process operations.</div>
+                                <div class="course-meta">
+                                    <span>Duration: 8 weeks</span>
+                                    <span>Level: Advanced</span>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="accordion-item">
+                    <div class="accordion-header">Application-Specific Courses</div>
+                    <div class="accordion-content">
+                        <ul class="course-list">
+                            <li class="course-item">
+                                <div class="course-title">Petrochemical Process Engineering</div>
+                                <div class="course-desc">Explore refining, cracking, and petrochemical production processes.</div>
+                                <div class="course-meta">
+                                    <span>Duration: 12 weeks</span>
+                                    <span>Level: Intermediate</span>
+                                </div>
+                            </li>
+                            <li class="course-item">
+                                <div class="course-title">Pharmaceutical Process Engineering</div>
+                                <div class="course-desc">Learn about drug manufacturing, scale-up, and GMP compliance.</div>
+                                <div class="course-meta">
+                                    <span>Duration: 10 weeks</span>
+                                    <span>Level: Advanced</span>
+                                </div>
+                            </li>
+                            <li class="course-item">
+                                <div class="course-title">Sustainable Process Engineering</div>
+                                <div class="course-desc">Focus on green chemistry, carbon capture, and renewable energy processes.</div>
+                                <div class="course-meta">
+                                    <span>Duration: 8 weeks</span>
+                                    <span>Level: Advanced</span>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="accordion-item">
+                    <div class="accordion-header">Advanced Topics</div>
+                    <div class="accordion-content">
+                        <ul class="course-list">
+                            <li class="course-item">
+                                <div class="course-title">Process Optimization</div>
+                                <div class="course-desc">Use advanced techniques like pinch analysis and optimization algorithms to improve efficiency.</div>
+                                <div class="course-meta">
+                                    <span>Duration: 8 weeks</span>
+                                    <span>Level: Advanced</span>
+                                </div>
+                            </li>
+                            <li class="course-item">
+                                <div class="course-title">Process Control and Automation</div>
+                                <div class="course-desc">Implement advanced control strategies using DCS and SCADA systems.</div>
+                                <div class="course-meta">
+                                    <span>Duration: 10 weeks</span>
+                                    <span>Level: Advanced</span>
+                                </div>
+                            </li>
+                            <li class="course-item">
+                                <div class="course-title">Data Analytics for Process Engineering</div>
+                                <div class="course-desc">Apply Python and machine learning for process monitoring and optimization.</div>
+                                <div class="course-meta">
+                                    <span>Duration: 12 weeks</span>
+                                    <span>Level: Advanced</span>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section class="section bg-dark" id="projects">
+        <div class="container">
+            <h2 class="section-title">Hands-on Projects</h2>
+            <p class="section-intro">Build your portfolio with these practical process engineering projects to showcase your skills:</p>
+            
+            <div class="cards-grid three-columns">
+                <div class="card project-card">
+                    <div class="card-image">
+                        <img src="https://images.unsplash.com/photo-1512621776951-a57141f2eefd?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Biofuel Production">
+                    </div>
+                    <div class="card-header">
+                        <h3><i class="fas fa-leaf"></i> Biofuel Production Plant</h3>
+                    </div>
+                    <div class="card-content">
+                        <p>Design a process for producing biodiesel from biomass, including pretreatment, transesterification, and purification stages. Use simulation tools like ASPEN Plus to optimize yield and energy efficiency.</p>
+                        <p><strong>Skills:</strong> Process simulation, reactor design, energy optimization</p>
+                    </div>
+                </div>
+
+                <div class="card project-card">
+                    <div class="card-image">
+                        <img src="https://images.unsplash.com/photo-1584483766114-2cea6facdf57?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Pharmaceutical Process">
+                    </div>
+                    <div class="card-header">
+                        <h3><i class="fas fa-capsules"></i> Pharmaceutical Manufacturing Process</h3>
+                    </div>
+                    <div class="card-content">
+                        <p>Develop a process for producing an active pharmaceutical ingredient, including reaction, separation, and purification steps. Ensure compliance with GMP standards and optimize for cost and safety.</p>
+                        <p><strong>Skills:</strong> Process design, GMP compliance, safety analysis</p>
+                    </div>
+                </div>
+
+                <div class="card project-card">
+                    <div class="card-image">
+                        <img src="https://images.unsplash.com/photo-1519378058457-4c29a0a2efac?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Water Treatment">
+                    </div>
+                    <div class="card-header">
+                        <h3><i class="fas fa-tint"></i> Water Treatment System</h3>
+                    </div>
+                    <div class="card-content">
+                        <p>Design a wastewater treatment process using filtration, chemical treatment, and biological processes to meet environmental standards. Simulate the process to minimize energy and chemical usage.</p>
+                        <p><strong>Skills:</strong> Mass transfer, process simulation, environmental compliance</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="cards-grid three-columns" style="margin-top: 1.5rem;">
+                <div class="card project-card">
+                    <div class="card-image">
+                        <img src="https://images.unsplash.com/photo-1561214115-f2f134cc4912?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Polymer Production">
+                    </div>
+                    <div class="card-header">
+                        <h3><i class="fas fa-atom"></i> Polymer Production Process</h3>
+                    </div>
+                    <div class="card-content">
+                        <p>Create a process for producing a polymer like polyethylene, including polymerization, cooling, and pelletizing. Optimize the process for high throughput and minimal waste.</p>
+                        <p><strong>Skills:</strong> Reaction engineering, process optimization, material handling</p>
+                    </div>
+                </div>
+
+                <div class="card project-card">
+                    <div class="card-image">
+                        <img src="https://images.unsplash.com/photo-1506619216599-9d16d0903dfd?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Food Processing">
+                    </div>
+                    <div class="card-header">
+                        <h3><i class="fas fa-utensils"></i> Food Processing Plant</h3>
+                    </div>
+                    <div class="card-content">
+                        <p>Design a process for producing a food product like dairy or beverages, including mixing, heating, and packaging stages. Ensure compliance with food safety regulations.</p>
+                        <p><strong>Skills:</strong> Process design, hygiene standards, quality control</p>
+                    </div>
+                </div>
+
+                <div class="card project-card">
+                    <div class="card-image">
+                        <img src="https://images.unsplash.com/photo-1618221710640-c0eaaa2adb49?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Carbon Capture">
+                    </div>
+                    <div class="card-header">
+                        <h3><i class="fas fa-cloud"></i> Carbon Capture System</h3>
+                    </div>
+                    <div class="card-content">
+                        <p>Develop a process for capturing CO2 from industrial emissions using absorption or membrane separation. Optimize for energy efficiency and scalability.</p>
+                        <p><strong>Skills:</strong> Mass transfer, process simulation, sustainability</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="section" id="faq">
+        <div class="container">
+            <h2 class="section-title">Frequently Asked Questions</h2>
+            <p class="section-intro">Find answers to common questions about pursuing a career in process engineering:</p>
+            
+            <div class="accordion">
+                <div class="accordion-item active">
+                    <div class="accordion-header">What does a Process Engineer do?</div>
+                    <div class="accordion-content">
+                        <p>Process engineers design, optimize, and manage industrial processes to produce chemicals, fuels, pharmaceuticals, and other products. They create process flow diagrams, simulate processes, ensure safety, and improve efficiency through optimization and automation.</p>
+                    </div>
+                </div>
+                
+                <div class="accordion-item">
+                    <div class="accordion-header">What skills are most important for Process Engineers?</div>
+                    <div class="accordion-content">
+                        <p>Key skills include process design, thermodynamics, fluid mechanics, reaction engineering, and process safety. Proficiency in simulation tools like ASPEN Plus, data analysis with Python, and knowledge of safety standards like HAZOP are critical. Soft skills like problem-solving and communication are also essential.</p>
+                    </div>
+                </div>
+                
+                <div class="accordion-item">
+                    <div class="accordion-header">How is Process Engineering different from other Chemical Engineering specializations?</div>
+                    <div class="accordion-content">
+                        <p>Process Engineering focuses on the design and optimization of industrial processes, whereas other specializations like biochemical engineering or materials engineering focus on specific applications (e.g., biological systems or material synthesis). Process engineering is broadly applicable across industries, emphasizing efficiency, safety, and scalability.</p>
+                    </div>
+                </div>
+                
+                <div class="accordion-item">
+                    <div class="accordion-header">What are the emerging trends in Process Engineering?</div>
+                    <div class="accordion-content">
+                        <p>Emerging trends include green chemistry, carbon capture, renewable energy processes, and process digitalization using AI and IoT. Sustainability and automation are driving innovation, with a focus on reducing environmental impact and improving process efficiency.</p>
+                    </div>
+                </div>
+                
+                <div class="accordion-item">
+                    <div class="accordion-header">How do I start a career in Process Engineering?</div>
+                    <div class="accordion-content">
+                        <p>Start with a degree in Chemical Engineering, focusing on core subjects like thermodynamics and process design. Gain hands-on experience through internships in industries like petrochemicals or pharmaceuticals. Learn simulation tools like ASPEN Plus, pursue certifications like Six Sigma, and build a portfolio with process design projects.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <h2>GoFarAsYouCan</h2>
+                    <p>Empowering the next generation of engineers with comprehensive educational resources and career guidance.</p>
+                </div>
+                
+                <div class="footer-links">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="#about">About Process Engineering</a></li>
+                        <li><a href="#key-areas">Key Areas</a></li>
+                        <li><a href="#careers">Career Opportunities</a></li>
+                        <li><a href="#skills">Essential Skills</a></li>
+                        <li><a href="#courses">Recommended Courses</a></li>
+                        <li><a href="#projects">Hands-on Projects</a></li>
+                        <li><a href="#faq">FAQ</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-resources">
+                    <h3>More Resources</h3>
+                    <ul>
+                        <li><a href="/Engineering">Engineering Disciplines</a></li>
+                        <li><a href="/Engineering/Chemical/chemical.ejs">Chemical Engineering</a></li>
+                        <li><a href="/resources">Learning Resources</a></li>
+                        <li><a href="/blog">Engineering Blog</a></li>
+                        <li><a href="/contact">Contact Us</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>© <script>document.write(new Date().getFullYear())</script> GoFarAsYouCan. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Accordion functionality
+        function setupAccordions() {
+            const accordionHeaders = document.querySelectorAll(".accordion-header");
+            
+            accordionHeaders.forEach(header => {
+                header.addEventListener("click", function() {
+                    const accordionItem = this.parentElement;
+                    accordionItem.classList.toggle("active");
+                    
+                    this.classList.toggle("active");
+                    
+                    const content = this.nextElementSibling;
+                    if (accordionItem.classList.contains("active")) {
+                        content.style.maxHeight = content.scrollHeight + "px";
+                    } else {
+                        content.style.maxHeight = 0;
+                    }
+                });
+            });
+        }
+
+        // Smooth scrolling for anchor links
+        function setupSmoothScrolling() {
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+
+                    const targetId = this.getAttribute('href');
+                    if (targetId === "#") return;
+
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        window.scrollTo({
+                            top: targetElement.offsetTop - 80,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+        }
+
+        // Animate elements on scroll
+        function setupScrollAnimations() {
+            const animateElements = document.querySelectorAll('.card, .section-title, .section-intro');
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('animate-fade-in');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, {
+                threshold: 0.1
+            });
+            
+            animateElements.forEach(element => {
+                observer.observe(element);
+            });
+        }
+
+        // Initialize everything when the DOM is loaded
+        document.addEventListener("DOMContentLoaded", function() {
+            // setupAccordions();
+            // setupSmoothScrolling();
+            // setupScrollAnimations();
+            
+            // Open the first accordion item by default
+            const firstAccordionItem = document.querySelector(".accordion-item");
+            if (firstAccordionItem) {
+                firstAccordionItem.classList.add("active");
+                const content = firstAccordionItem.querySelector(".accordion-content");
+                content.style.maxHeight = content.scrollHeight + "px";
+                firstAccordionItem.querySelector(".accordion-header").classList.add("active");
+            }
+        });
+    </script>
+</body>
+</html>

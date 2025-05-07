@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>iOS Development Learning Hub</title>
+  <style>
+    :root {
+      --primary-bg: #0A0F1F;
+      --section-bg: #111627;
+      --card-bg: #1A2138;
+      --card-hover: #232942;
+      --text-primary: #E2E8F0;
+      --text-secondary: #94A3B8;
+      --accent: #0EA5E9;
+      --accent-hover: #0284C7;
+      --highlight: #38BDF8;
+      --border: #1E293B;
+    }
+    
+    html {
+      scroll-behavior: smooth;
+    }
+    
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Segoe UI', Roboto, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: var(--primary-bg);
+      color: var(--text-primary);
+      line-height: 1.6;
+    }
+    
+    .navbar {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      background-color: rgba(10, 15, 31, 0.95);
+      padding: 1rem;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--border);
+    }
+    
+    .navbar a {
+      color: var(--text-primary);
+      margin: 8px 16px;
+      text-decoration: none;
+      font-size: 16px;
+      position: relative;
+      padding: 6px 0;
+      transition: color 0.3s;
+    }
+    
+    .navbar a:hover {
+      color: var(--accent);
+    }
+    
+    header {
+      text-align: center;
+      padding: 6rem 2rem;
+      background: linear-gradient(135deg, #0C4A6E 0%, #0369A1 100%);
+      color: white;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    header::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      opacity: 0.2;
+      z-index: 0;
+    }
+    
+    header > * {
+      position: relative;
+      z-index: 1;
+    }
+    
+    header h1 {
+      font-size: 3rem;
+      margin-bottom: 1.5rem;
+      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    }
+    
+    header p {
+      font-size: 1.25rem;
+      max-width: 800px;
+      margin: 0 auto;
+      color: var(--text-secondary);
+    }
+    
+    section {
+      padding: 4rem 2rem;
+      background: var(--section-bg);
+      margin: 2rem;
+      border-radius: 16px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+      border: 1px solid var(--border);
+    }
+    
+    .section-title {
+      text-align: center;
+      margin-bottom: 3rem;
+      color: var(--accent);
+      position: relative;
+    }
+    
+    .section-title::after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 60px;
+      height: 3px;
+      background: var(--accent);
+      border-radius: 3px;
+    }
+    
+    .tech-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+      margin-top: 2rem;
+    }
+    
+    .tech-card {
+      background: var(--card-bg);
+      padding: 2rem;
+      border-radius: 12px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      transition: all 0.3s ease;
+      border: 1px solid var(--border);
+    }
+    
+    .tech-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+      border-color: var(--accent);
+    }
+    
+    .tech-card h3 {
+      color: var(--highlight);
+      margin: 0 0 1rem;
+      font-size: 1.5rem;
+    }
+    
+    .tech-card p {
+      color: var(--text-secondary);
+      margin-bottom: 1.5rem;
+    }
+    
+    .learn-btn {
+      display: inline-block;
+      padding: 0.75rem 1.5rem;
+      background-color: var(--accent);
+      color: white;
+      text-decoration: none;
+      border-radius: 8px;
+      transition: all 0.3s ease;
+      font-weight: 500;
+    }
+    
+    .learn-btn:hover {
+      background-color: var(--accent-hover);
+      transform: translateY(-2px);
+    }
+    
+    .roadmap {
+      background: var(--card-bg);
+      padding: 2rem;
+      border-radius: 12px;
+      margin-top: 2rem;
+    }
+    
+    .roadmap-step {
+      margin-bottom: 1.5rem;
+      padding-left: 2rem;
+      position: relative;
+    }
+    
+    .roadmap-step::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 12px;
+      height: 12px;
+      background: var(--accent);
+      border-radius: 50%;
+    }
+    
+    .roadmap-step::after {
+      content: '';
+      position: absolute;
+      left: 5px;
+      top: 12px;
+      width: 2px;
+      height: calc(100% + 1rem);
+      background: var(--border);
+    }
+    
+    .roadmap-step:last-child::after {
+      display: none;
+    }
+    
+    .resource-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+      margin-top: 2rem;
+    }
+    
+    .channel-card {
+      background: var(--card-bg);
+      padding: 1.5rem;
+      border-radius: 12px;
+      border: 1px solid var(--border);
+      transition: all 0.3s ease;
+    }
+    
+    .channel-card:hover {
+      transform: translateY(-5px);
+      border-color: var(--accent);
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    }
+    
+    .channel-card h4 {
+      color: var(--highlight);
+      margin: 0 0 0.75rem;
+      font-size: 1.2rem;
+    }
+    
+    .channel-card p {
+      color: var(--text-secondary);
+      margin: 0 0 1rem;
+      font-size: 0.95rem;
+    }
+    
+    .channel-link {
+      color: var(--accent);
+      text-decoration: none;
+      font-weight: 500;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    
+    .channel-link:hover {
+      color: var(--accent-hover);
+      text-decoration: underline;
+    }
+    
+    @media (max-width: 768px) {
+      header {
+        padding: 4rem 1.5rem;
+      }
+      
+      header h1 {
+        font-size: 2.25rem;
+      }
+      
+      section {
+        padding: 2rem 1.5rem;
+        margin: 1rem;
+      }
+      
+      .tech-grid {
+        gap: 1.5rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="navbar">
+    <a href="#fundamentals">Swift Fundamentals</a>
+    <a href="#frameworks">iOS Frameworks</a>
+    <a href="#design">UI Design</a>
+    <a href="#roadmap">Roadmap</a>
+    <a href="#resources">Resources</a>
+    <a href="/Engineering/CSE/cse.ejs">Go Back</a>
+  </div>
+  
+  <header>
+    <h1>iOS Development</h1>
+    <p>Master iOS app development with Swift, SwiftUI, and modern Apple frameworks.</p>
+  </header>
+  
+  <section id="fundamentals">
+    <h2 class="section-title">Swift Fundamentals</h2>
+    <div class="tech-grid">
+      <div class="tech-card">
+        <h3>Swift Programming</h3>
+        <p>Learn Swift programming language fundamentals, including syntax, optionals, protocols, and modern features.</p>
+        <a href="https://docs.swift.org/swift-book/documentation/the-swift-programming-language/" class="learn-btn" target="_blank">Learn More</a>
+      </div>
+      
+      <div class="tech-card">
+        <h3>SwiftUI</h3>
+        <p>Master Apple's modern declarative framework for building user interfaces across all Apple platforms.</p>
+        <a href="https://developer.apple.com/xcode/swiftui/" class="learn-btn" target="_blank">Learn More</a>
+      </div>
+      
+      <div class="tech-card">
+        <h3>UIKit</h3>
+        <p>Understand the traditional iOS UI framework for building complex user interfaces programmatically.</p>
+        <a href="https://developer.apple.com/documentation/uikit" class="learn-btn" target="_blank">Learn More</a>
+      </div>
+    </div>
+  </section>
+  
+  <section id="frameworks">
+    <h2 class="section-title">Essential iOS Frameworks</h2>
+    <div class="tech-grid">
+      <div class="tech-card">
+        <h3>Core Data</h3>
+        <p>Learn data persistence and management with Apple's object graph and persistence framework.</p>
+        <a href="https://developer.apple.com/documentation/coredata" class="learn-btn" target="_blank">Learn More</a>
+      </div>
+      
+      <div class="tech-card">
+        <h3>Core Animation</h3>
+        <p>Create fluid animations and visual effects in your iOS applications.</p>
+        <a href="https://developer.apple.com/documentation/quartzcore" class="learn-btn" target="_blank">Learn More</a>
+      </div>
+      
+      <div class="tech-card">
+        <h3>Core ML</h3>
+        <p>Integrate machine learning models into your iOS apps for intelligent features.</p>
+        <a href="https://developer.apple.com/documentation/coreml" class="learn-btn" target="_blank">Learn More</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="design">
+    <h2 class="section-title">UI Design for iOS</h2>
+    <div class="tech-grid">
+      <div class="tech-card">
+        <h3>Human Interface Guidelines</h3>
+        <p>Learn Apple's design principles for creating intuitive and user-friendly iOS apps.</p>
+        <a href="https://developer.apple.com/design/human-interface-guidelines/" class="learn-btn" target="_blank">Learn More</a>
+      </div>
+  
+      <div class="tech-card">
+        <h3>SwiftUI Design</h3>
+        <p>Master SwiftUI's declarative syntax to create beautiful and responsive user interfaces.</p>
+        <a href="https://developer.apple.com/xcode/swiftui/" class="learn-btn" target="_blank">Learn More</a>
+      </div>
+  
+      <div class="tech-card">
+        <h3>UIKit Design</h3>
+        <p>Understand UIKit's components and how to build custom views for complex UI requirements.</p>
+        <a href="https://developer.apple.com/documentation/uikit" class="learn-btn" target="_blank">Learn More</a>
+      </div>
+  
+      <div class="tech-card">
+        <h3>Prototyping with Figma</h3>
+        <p>Use Figma to create interactive prototypes and collaborate on app designs with your team.</p>
+        <a href="https://www.figma.com/" class="learn-btn" target="_blank">Learn More</a>
+      </div>
+  
+      <div class="tech-card">
+        <h3>Accessibility</h3>
+        <p>Ensure your app is accessible to all users by following Apple's accessibility guidelines.</p>
+        <a href="https://developer.apple.com/accessibility/" class="learn-btn" target="_blank">Learn More</a>
+      </div>
+  
+      <div class="tech-card">
+        <h3>Design Systems</h3>
+        <p>Learn how to create reusable design systems for consistency across your app's UI.</p>
+        <a href="https://material.io/design" class="learn-btn" target="_blank">Learn More</a>
+      </div>
+    </div>
+  </section>
+  
+  <section id="roadmap">
+    <h2 class="section-title">iOS Development Roadmap</h2>
+    <div class="roadmap">
+      <div class="roadmap-step">
+        <h3>1. Swift Basics</h3>
+        <p>Master Swift syntax, data types, control flow, and object-oriented programming concepts.</p>
+      </div>
+      
+      <div class="roadmap-step">
+        <h3>2. iOS Fundamentals</h3>
+        <p>Learn app lifecycle, view controllers, and basic UI components.</p>
+      </div>
+      
+      <div class="roadmap-step">
+        <h3>3. UI Development</h3>
+        <p>Master SwiftUI and understand UIKit for building modern interfaces.</p>
+      </div>
+      
+      <div class="roadmap-step">
+        <h3>4. Data & Networking</h3>
+        <p>Learn Core Data, networking with URLSession, and JSON parsing.</p>
+      </div>
+      
+      <div class="roadmap-step">
+        <h3>5. Advanced Topics</h3>
+        <p>Explore concurrency, memory management, and app architecture patterns.</p>
+      </div>
+      
+      <div class="roadmap-step">
+        <h3>6. App Store & Distribution</h3>
+        <p>Understand certificates, provisioning profiles, and App Store submission process.</p>
+      </div>
+    </div>
+  </section>
+  
+  <section id="resources">
+    <h2 class="section-title">Learning Resources</h2>
+    <div class="resource-grid">
+      <div class="channel-card">
+        <h4>Paul Hudson (Hacking with Swift)</h4>
+        <p>Comprehensive Swift and iOS development tutorials with practical projects.</p>
+        <a href="https://www.youtube.com/@twostraws" class="channel-link" target="_blank">Visit Channel →</a>
+      </div>
+      
+      <div class="channel-card">
+        <h4>Sean Allen</h4>
+        <p>iOS development tutorials and career advice for Apple developers.</p>
+        <a href="https://www.youtube.com/@seanallen" class="channel-link" target="_blank">Visit Channel →</a>
+      </div>
+      
+      <div class="channel-card">
+        <h4>Kilo Loco</h4>
+        <p>SwiftUI tutorials and modern iOS development practices.</p>
+        <a href="https://www.youtube.com/@KiloLoco" class="channel-link" target="_blank">Visit Channel →</a>
+      </div>
+      
+      <div class="channel-card">
+        <h4>iOS Academy</h4>
+        <p>Step-by-step iOS app development tutorials and Swift programming.</p>
+        <a href="https://www.youtube.com/@iOSAcademy" class="channel-link" target="_blank">Visit Channel →</a>
+      </div>
+    </div>
+  </section>
+ 
+</body>
+</html>

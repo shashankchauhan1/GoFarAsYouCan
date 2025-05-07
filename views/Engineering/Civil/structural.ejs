@@ -1,0 +1,607 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" rel="stylesheet">
+  <title>Structural Engineering Learning Hub</title>
+  <style>
+    :root {
+      --primary-bg: #1c2826;
+      /* Dark forest green background */
+      --section-bg: #263a33;
+      /* Slightly lighter background */
+      --card-bg: #304a41;
+      /* Card background */
+      --card-hover: #3a5a4e;
+      /* Card hover effect */
+      --text-primary: #e8f0eb;
+      /* Light text color */
+      --text-secondary: #b3c2bc;
+      /* Muted text color */
+      --accent: #75c9a9;
+      /* Green accent */
+      --accent-hover: #5fb396;
+      /* Darker green for hover */
+      --highlight: #8edec0;
+      /* Bright green for highlights */
+      --border: #4a6a5d;
+      /* Border color */
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: var(--primary-bg);
+      color: var(--text-primary);
+      line-height: 1.6;
+    }
+
+    .navbar {
+      background: var(--section-bg);
+      padding: 1rem 2rem;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .nav-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      font-size: 1.8rem;
+      font-weight: bold;
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    .back-button {
+      text-decoration: none;
+      color: var(--text-primary);
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      transition: color 0.3s ease;
+    }
+
+    .back-button:hover {
+      color: var(--accent);
+    }
+
+    header {
+      text-align: center;
+      padding: 4rem 2rem;
+      background: var(--section-bg);
+      background-image: linear-gradient(rgba(38, 58, 51, 0.9), rgba(38, 58, 51, 0.9)), 
+                        url('https://images.unsplash.com/photo-1487958449943-2429e8be8625?q=80&w=2000');
+      background-size: cover;
+      background-position: center;
+    }
+
+    header h1 {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+      color: var(--accent);
+    }
+
+    header p {
+      font-size: 1.25rem;
+      color: var(--text-secondary);
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    section {
+      max-width: 1200px;
+      margin: 2rem auto;
+      padding: 2rem;
+    }
+
+    .section-title {
+      color: var(--accent);
+      margin-bottom: 1.5rem;
+      font-size: 2rem;
+      position: relative;
+      padding-bottom: 0.5rem;
+    }
+
+    .section-title::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100px;
+      height: 3px;
+      background: var(--accent);
+      border-radius: 3px;
+    }
+
+    .topics-grid,
+    .specialization-grid,
+    .projects-grid,
+    .practice-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+      margin: 2rem 0;
+    }
+
+    .topic-card,
+    .specialization-card,
+    .project-card,
+    .practice-card {
+      background: var(--card-bg);
+      padding: 2rem;
+      border-radius: 12px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      transition: all 0.3s ease;
+      border: 1px solid var(--border);
+    }
+
+    .topic-card:hover,
+    .specialization-card:hover,
+    .project-card:hover,
+    .practice-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+      border-color: var(--accent);
+      background: var(--card-hover);
+    }
+
+    .topic-title,
+    .specialization-title,
+    .project-title {
+      color: var(--highlight);
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
+    }
+
+    .learn-btn {
+      display: inline-block;
+      padding: 0.75rem 1.5rem;
+      background: var(--accent);
+      color: #0e1814;
+      font-weight: bold;
+      text-decoration: none;
+      border-radius: 8px;
+      transition: all 0.3s ease;
+      margin-top: 1rem;
+    }
+
+    .learn-btn:hover {
+      background: var(--accent-hover);
+      transform: translateY(-2px);
+    }
+
+    footer {
+      text-align: center;
+      padding: 2rem;
+      background: var(--section-bg);
+      margin-top: 4rem;
+      border-top: 1px solid var(--border);
+    }
+
+    .quote {
+      font-style: italic;
+      color: var(--text-secondary);
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .project-tags {
+      margin-top: 1rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+
+    .project-tag {
+      background: rgba(117, 201, 169, 0.2);
+      color: var(--accent);
+      padding: 0.3rem 0.6rem;
+      border-radius: 4px;
+      font-size: 0.8rem;
+      font-weight: 500;
+    }
+
+    .features-list {
+      list-style: none;
+    }
+
+    .features-list li {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .features-list i {
+      color: var(--accent);
+    }
+
+    .resources-title {
+      font-size: larger;
+      color: #f0c75e;
+    }
+
+    .channel-list {
+      list-style: none;
+      margin-top: 0.5rem;
+    }
+
+    .channel-list li {
+      margin-bottom: 0.5rem;
+    }
+
+    .resource-list {
+      list-style: none;
+    }
+
+    @media (max-width: 768px) {
+      .navbar {
+        padding: 1rem;
+      }
+
+      .logo {
+        font-size: 1.5rem;
+      }
+
+      header {
+        padding: 3rem 1rem;
+      }
+
+      header h1 {
+        font-size: 2rem;
+      }
+
+      section {
+        padding: 1rem;
+      }
+
+      .topics-grid,
+      .specialization-grid,
+      .projects-grid,
+      .practice-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <nav class="navbar">
+    <div class="nav-container">
+      <a href="#" class="logo">Structural Engineering</a>
+      <a href="/Engineering/CIVIL/civil.ejs" class="back-button">
+        <i class="fas fa-arrow-left"></i> Back
+      </a>
+    </div>
+  </nav>
+
+  <header>
+    <h1>Structural Engineering Specialization</h1>
+    <p>Master the fundamentals of structural analysis, design, and construction with comprehensive learning resources.</p>
+  </header>
+
+  <section class="specialization-section">
+    <h2 class="section-title">Specialization Areas</h2>
+    <div class="specialization-grid">
+  
+      <!-- Building Structures -->
+      <div class="specialization-card">
+        <div class="specialization-title">
+          <i class="fas fa-building"></i>
+          Building Structures
+        </div>
+        <p>Focus on design and analysis of residential, commercial, and industrial buildings.</p>
+        <br>
+        <ul class="features-list">
+          <li><i class="fas fa-check"></i> Steel and concrete design</li><br>
+          <li><i class="fas fa-check"></i> High-rise buildings</li><br>
+          <li><i class="fas fa-check"></i> Lateral load resistance</li>
+        </ul>
+        <br>
+        <div class="resources-section">
+          <div class="resources-title">Learning Resources</div><br>
+          <ul class="channel-list">
+            <li><a style="color: white; text-decoration: none;" href="https://www.youtube.com/c/structurefree" target="_blank"><i class="fab fa-youtube"></i> StructureFree</a></li>
+            <li><a style="color: white; text-decoration: none;" href="https://www.youtube.com/c/DrstructuresChannel" target="_blank"><i class="fab fa-youtube"></i> Dr. Structure</a></li>
+            <li><a style="color: white; text-decoration: none;" href="https://www.structuremag.org/" target="_blank"><i class="fas fa-book"></i> STRUCTURE Magazine</a></li>
+          </ul>
+        </div>
+      </div>
+  
+      <!-- Bridge Engineering -->
+      <div class="specialization-card">
+        <div class="specialization-title">
+          <i class="fas fa-archway"></i>
+          Bridge Engineering
+        </div>
+        <p>Study of bridge design, analysis, construction, and maintenance for various span and loading conditions.</p>
+        <br>
+        <ul class="features-list">
+          <li><i class="fas fa-check"></i> Suspension and cable-stayed bridges</li><br>
+          <li><i class="fas fa-check"></i> Beam and truss bridges</li><br>
+          <li><i class="fas fa-check"></i> Bridge dynamics and stability</li>
+        </ul>
+        <br>
+        <div class="resources-section">
+          <div class="resources-title">Learning Resources</div><br>
+          <ul class="channel-list">
+            <li><a style="color: white; text-decoration: none;" href="https://www.youtube.com/@PracticalEngineering" target="_blank"><i class="fab fa-youtube"></i> Practical Engineering</a></li>
+            <li><a style="color: white; text-decoration: none;" href="https://www.youtube.com/@TheB1M" target="_blank"><i class="fab fa-youtube"></i> The B1M</a></li>
+            <li><a style="color: white; text-decoration: none;" href="https://store.asce.org/bridge-engineering-handbook-second-edition-five-volume-set/" target="_blank"><i class="fas fa-book"></i> Bridge Engineering Handbook</a></li>
+          </ul>
+        </div>
+      </div>
+  
+      <!-- Earthquake Engineering -->
+      <div class="specialization-card">
+        <div class="specialization-title">
+          <i class="fas fa-wave-square"></i>
+          Earthquake Engineering
+        </div>
+        <p>Focus on seismic analysis, design, and retrofitting of structures to withstand earthquake forces.</p>
+        <br>
+        <ul class="features-list">
+          <li><i class="fas fa-check"></i> Seismic analysis and design</li><br>
+          <li><i class="fas fa-check"></i> Base isolation systems</li><br>
+          <li><i class="fas fa-check"></i> Performance-based design</li>
+        </ul>
+        <br>
+        <div class="resources-section">
+          <div class="resources-title">Learning Resources</div><br>
+          <ul class="channel-list">
+            <li><a style="color: white; text-decoration: none;" href="https://www.youtube.com/c/EERIvideos" target="_blank"><i class="fab fa-youtube"></i> EERI Learning</a></li>
+            <li><a style="color: white; text-decoration: none;" href="https://www.youtube.com/c/UCBerkeley" target="_blank"><i class="fab fa-youtube"></i> UC Berkeley Structural Engineering</a></li>
+            <li><a style="color: white; text-decoration: none;" href="https://www.eeri.org/resources/" target="_blank"><i class="fas fa-globe"></i> EERI Resources</a></li>
+          </ul>
+        </div>
+      </div>
+  
+    </div>
+  </section>
+  
+
+  <!-- Projects section -->
+  <section class="projects-section">
+    <h2 class="section-title">Industry Projects</h2>
+    <div class="projects-grid">
+      <div class="project-card">
+        <div class="project-title">
+          <i class="fas fa-cloud"></i>
+          Tall Building Design
+        </div>
+        <p>Design and analyze high-rise buildings for wind and seismic loads.</p>
+        <div class="project-tags">
+          <span class="project-tag">Core Systems</span>
+          <span class="project-tag">Damping Solutions</span>
+          <span class="project-tag">Wind Engineering</span>
+        </div>
+        <a href="https://www.ctbuh.org/resources" class="learn-btn" target="_blank">View Research</a>
+      </div>
+  
+      <div class="project-card">
+        <div class="project-title">
+          <i class="fas fa-recycle"></i>
+          Sustainable Structures
+        </div>
+        <p>Develop environmentally friendly structural systems using sustainable materials.</p>
+        <div class="project-tags">
+          <span class="project-tag">Mass Timber</span>
+          <span class="project-tag">Life Cycle Assessment</span>
+          <span class="project-tag">Green Building</span>
+        </div>
+        <a href="https://www.structurlam.com/education/design-center/" class="learn-btn" target="_blank">View Resources</a>
+      </div>
+  
+      <div class="project-card">
+        <div class="project-title">
+          <i class="fas fa-cogs"></i>
+          Structural Retrofitting
+        </div>
+        <p>Improve existing structures to meet modern safety and performance requirements.</p>
+        <div class="project-tags">
+          <span class="project-tag">Seismic Strengthening</span>
+          <span class="project-tag">Historic Preservation</span>
+          <span class="project-tag">FRP Applications</span>
+        </div>
+        <a href="https://www.fema.gov/emergency-managers/risk-management/building-science/publications" class="learn-btn" target="_blank">View Guidelines</a>
+      </div>
+    </div>
+  </section>
+  
+
+  <section>
+    <h2 class="section-title">Core Concepts</h2>
+    <div class="topics-grid">
+      <div class="topic-card">
+        <div class="topic-title">Structural Analysis</div>
+        <p>Understand the principles of force distribution, stress analysis, and structural behavior.</p>
+        <a class="learn-btn" href="https://www.structuralexpertcenter.com/structural-analysis-courses" target="_blank">Learn More</a>
+      </div>
+  
+      <div class="topic-card">
+        <div class="topic-title">Steel Design</div>
+        <p>Master the fundamentals of steel structures, connections, and limit state design principles.</p>
+        <a class="learn-btn" href="https://www.aisc.org/education/" target="_blank">Learn More</a>
+      </div>
+  
+      <div class="topic-card">
+        <div class="topic-title">Concrete Design</div>
+        <p>Learn about reinforced concrete behavior, design methodologies, and detailing practices.</p>
+        <a class="learn-btn" href="https://www.concrete.org/education/educationalresources.aspx" target="_blank">Learn More</a>
+      </div>
+    </div>
+  
+    <div class="topics-grid">
+      <div class="topic-card">
+        <div class="topic-title">Structural Dynamics</div>
+        <p>Study vibration analysis, dynamic loading, modal analysis, and response of structures.</p>
+        <a class="learn-btn" href="https://ocw.mit.edu/courses/1-57-mechanics-of-materials-fall-2006/" target="_blank">Learn More</a>
+      </div>
+  
+      <div class="topic-card">
+        <div class="topic-title">Foundation Engineering</div>
+        <p>Understand soil-structure interaction, foundation design, and ground improvement techniques.</p>
+        <a class="learn-btn" href="https://www.geoengineer.org/" target="_blank">Learn More</a>
+      </div>
+  
+      <div class="topic-card">
+        <div class="topic-title">Timber Design</div>
+        <p>Learn about wood as a structural material, timber connections, and mass timber construction.</p>
+        <a class="learn-btn" href="https://www.woodworks.org/education-event/online-training/" target="_blank">Learn More</a>
+      </div>
+  
+      <div class="topic-card">
+        <div class="topic-title">Structural Mechanics</div>
+        <p>Study the mechanics of solids, deformation theory, and material behavior under load.</p>
+        <a class="learn-btn" href="https://ocw.mit.edu/courses/1-050-engineering-mechanics-i-fall-2007/" target="_blank">Learn More</a>
+      </div>
+  
+      <div class="topic-card">
+        <div class="topic-title">Prestressed Concrete</div>
+        <p>Explore pre-tensioning, post-tensioning, and design principles for prestressed elements.</p>
+        <a class="learn-btn" href="https://www.post-tensioning.org/education" target="_blank">Learn More</a>
+      </div>
+  
+      <div class="topic-card">
+        <div class="topic-title">Structural Reliability</div>
+        <p>Master probabilistic design approaches, risk assessment, and safety factors in structures.</p>
+        <a class="learn-btn" href="https://www.jcss-lc.org/publications/" target="_blank">Learn More</a>
+      </div>
+  
+      <div class="topic-card">
+        <div class="topic-title">Bridge Design</div>
+        <p>Learn techniques for analyzing and designing various types of bridge structures.</p>
+        <a class="learn-btn" href="https://www.fhwa.dot.gov/bridge/nbis.cfm" target="_blank">Learn More</a>
+      </div>
+  
+      <div class="topic-card">
+        <div class="topic-title">Wind Engineering</div>
+        <p>Study wind effects on structures, aerodynamic design, and wind load calculations.</p>
+        <a class="learn-btn" href="https://www.iawe.org/" target="_blank">Learn More</a>
+      </div>
+  
+      <div class="topic-card">
+        <div class="topic-title">Computational Methods</div>
+        <p>Understand finite element analysis, numerical methods, and computer-aided structural design.</p>
+        <a class="learn-btn" href="https://www.simscale.com/blog/2016/10/what-is-finite-element-method/" target="_blank">Learn More</a>
+      </div>
+  
+      <div class="topic-card">
+        <div class="topic-title">Shell Structures</div>
+        <p>Explore thin-shell structures, membrane theory, and complex geometric forms.</p>
+        <a class="learn-btn" href="https://www.iass-structures.org/" target="_blank">Learn More</a>
+      </div>
+  
+      <div class="topic-card">
+        <div class="topic-title">Structural Health Monitoring</div>
+        <p>Learn about sensors, data analysis, and monitoring systems for structural assessment.</p>
+        <a class="learn-btn" href="https://www.ishmii.org/resources/" target="_blank">Learn More</a>
+      </div>
+  
+      <div class="topic-card">
+        <div class="topic-title">Seismic Design</div>
+        <p>Study earthquake-resistant design principles, codes, and performance-based approaches.</p>
+        <a class="learn-btn" href="https://www.eeri.org/resources/" target="_blank">Learn More</a>
+      </div>
+    </div>
+  </section>
+  
+
+  <section class="practice-section">
+    <h2 class="section-title">Software & Analysis Tools</h2>
+    <div class="practice-grid">
+      <div class="practice-card">
+        <h3>SAP2000</h3>
+        <p>Industry-standard structural analysis and design software for all types of structures.</p>
+        <a href="https://www.csiamerica.com/products/sap2000" target="_blank" class="learn-btn">Explore Tool</a>
+      </div>
+
+      <div class="practice-card">
+        <h3>ETABS</h3>
+        <p>Specialized software for analysis and design of building structures.</p>
+        <a href="https://www.csiamerica.com/products/etabs" target="_blank" class="learn-btn">Explore Tool</a>
+      </div>
+
+      <div class="practice-card">
+        <h3>STAAD.Pro</h3>
+        <p>Comprehensive structural analysis and design solution for various structure types.</p>
+        <a href="https://www.bentley.com/en/products/product-line/structural-analysis-software/staadpro" target="_blank" class="learn-btn">Explore Tool</a>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2 class="section-title">Learning Resources</h2>
+    <div class="topics-grid">
+      <div class="topic-card">
+        <div class="topic-title">Online Courses</div>
+        <ul class="resource-list">
+          <li><a style="color: white; text-decoration: none;" href="https://www.edx.org/learn/structural-engineering" target="_blank"><i class="fas fa-graduation-cap"></i> edX Structural Engineering Courses</a></li><br>
+          <li><a style="color: white; text-decoration: none;" href="https://www.coursera.org/courses?query=structural%20engineering" target="_blank"><i class="fas fa-graduation-cap"></i> Coursera Structural Engineering</a></li><br>
+          <li><a style="color: white; text-decoration: none;" href="https://www.linkedin.com/learning/topics/structural-engineering" target="_blank"><i class="fas fa-graduation-cap"></i> LinkedIn Learning Structural Courses</a></li>
+        </ul>
+      </div>
+
+      <div class="topic-card">
+        <div class="topic-title">Technical Resources</div>
+        <ul class="resource-list">
+          <li><a style="color: white; text-decoration: none;" href="https://ascelibrary.org/journals" target="_blank"><i class="fas fa-file-alt"></i> ASCE Journals</a></li><br>
+          <li><a style="color: white; text-decoration: none;" href="https://www.structuremag.org/" target="_blank"><i class="fas fa-file-alt"></i> STRUCTURE Magazine</a></li><br>
+          <li><a style="color: white; text-decoration: none;" href="https://www.sciencedirect.com/topics/engineering/structural-engineering" target="_blank"><i class="fas fa-file-alt"></i> ScienceDirect Structural Research</a></li>
+        </ul>
+      </div>
+
+      <div class="topic-card">
+        <div class="topic-title">Industry Publications</div>
+        <ul class="resource-list">
+          <li><a style="color: white; text-decoration: none;" href="https://www.structuralengineering.info/" target="_blank"><i class="fas fa-newspaper"></i> Structural Engineering Info</a></li><br>
+          <li><a style="color: white; text-decoration: none;" href="https://www.enr.com/" target="_blank"><i class="fas fa-newspaper"></i> Engineering News-Record</a></li><br>
+          <li><a style="color: white; text-decoration: none;" href="https://www.istructe.org/journal/" target="_blank"><i class="fas fa-newspaper"></i> The Structural Engineer Journal</a></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <p class="quote">"Form follows function – that has been misunderstood. Form and function should be one, joined in a spiritual union." - Frank Lloyd Wright</p>
+  </footer>
+
+  <script>
+    // Mobile menu toggle functionality could be added here if needed
+    document.addEventListener('DOMContentLoaded', function() {
+      // Smooth scrolling for anchor links
+      document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+          e.preventDefault();
+
+          const targetId = this.getAttribute('href');
+          if (targetId === '#') return;
+
+          const targetElement = document.querySelector(targetId);
+          if (targetElement) {
+            window.scrollTo({
+              top: targetElement.offsetTop - 70,
+              behavior: 'smooth'
+            });
+          }
+        });
+      });
+    });
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,554 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" rel="stylesheet">
+  <title>Automotive Engineering Learning Hub</title>
+  <style>
+    :root {
+      --primary-bg: #0A0A0A;
+      /* Dark background */
+      --section-bg: #1A1A1A;
+      /* Slightly lighter background */
+      --card-bg: #222222;
+      /* Card background */
+      --card-hover: #333333;
+      /* Card hover effect */
+      --text-primary: #E5E5E5;
+      /* Light text color */
+      --text-secondary: #A0A0A0;
+      /* Muted text color */
+      --accent: #52fcff;
+      /* Red accent */
+      --accent-hover: #52fcff;
+      /* Darker red for hover */
+      --highlight: #80ccff;
+      /* Bright red for highlights */
+      --border: #444444;
+      /* Border color */
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: var(--primary-bg);
+      color: var(--text-primary);
+      line-height: 1.6;
+    }
+
+    .navbar {
+      background: var(--section-bg);
+      padding: 1rem 2rem;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .nav-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      font-size: 1.8rem;
+      font-weight: bold;
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    .back-button {
+      text-decoration: none;
+      color: var(--text-primary);
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      transition: color 0.3s ease;
+    }
+
+    .back-button:hover {
+      color: var(--accent);
+    }
+
+    header {
+      text-align: center;
+      padding: 4rem 2rem;
+      background: var(--section-bg);
+    }
+
+    header h1 {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+      color: var(--accent);
+    }
+
+    header p {
+      font-size: 1.25rem;
+      color: var(--text-secondary);
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    section {
+      max-width: 1200px;
+      margin: 2rem auto;
+      padding: 2rem;
+    }
+
+    .section-title {
+      color: var(--accent);
+      margin-bottom: 1.5rem;
+      font-size: 2rem;
+      position: relative;
+      padding-bottom: 0.5rem;
+    }
+
+    .section-title::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100px;
+      height: 3px;
+      background: var(--accent);
+      border-radius: 3px;
+    }
+
+    .topics-grid,
+    .specialization-grid,
+    .projects-grid,
+    .practice-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+      margin: 2rem 0;
+    }
+
+    .topic-card,
+    .specialization-card,
+    .project-card,
+    .practice-card {
+      background: var(--card-bg);
+      padding: 2rem;
+      border-radius: 12px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      transition: all 0.3s ease;
+      border: 1px solid var(--border);
+    }
+
+    .topic-card:hover,
+    .specialization-card:hover,
+    .project-card:hover,
+    .practice-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+      border-color: var(--accent);
+      background: var(--card-hover);
+    }
+
+    .topic-title,
+    .specialization-title,
+    .project-title {
+      color: var(--highlight);
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
+    }
+
+    .learn-btn {
+      display: inline-block;
+      padding: 0.75rem 1.5rem;
+      background: var(--accent);
+      color: rgb(0, 0, 0);
+      text-decoration: none;
+      border-radius: 8px;
+      transition: all 0.3s ease;
+      margin-top: 1rem;
+    }
+
+    .learn-btn:hover {
+      background: var(--accent-hover);
+      transform: translateY(-2px);
+    }
+
+    footer {
+      text-align: center;
+      padding: 2rem;
+      background: var(--section-bg);
+      margin-top: 4rem;
+      border-top: 1px solid var(--border);
+    }
+
+    .quote {
+      font-style: italic;
+      color: var(--text-secondary);
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    @media (max-width: 768px) {
+      .navbar {
+        padding: 1rem;
+      }
+
+      .logo {
+        font-size: 1.5rem;
+      }
+
+      header {
+        padding: 3rem 1rem;
+      }
+
+      header h1 {
+        font-size: 2rem;
+      }
+
+      section {
+        padding: 1rem;
+      }
+
+      .topics-grid,
+      .specialization-grid,
+      .projects-grid,
+      .practice-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <nav class="navbar">
+    <div class="nav-container">
+      <a href="#" class="logo">Automotive Engineering</a>
+      <a href="/Engineering/MECH/mech.ejs" class="back-button">
+        <i class="fas fa-arrow-left"></i> Back
+      </a>
+    </div>
+  </nav>
+
+  <header>
+    <h1>Automotive Engineering Specialization</h1>
+    <p>Master the fundamentals of automotive design, development, and manufacturing with comprehensive learning resources.</p>
+  </header>
+
+  <section class="specialization-section">
+    <h2 class="section-title">Specialization Areas</h2>
+    <div class="specialization-grid">
+  
+      <!-- Powertrain Engineering -->
+      <div class="specialization-card">
+        <div class="specialization-title">
+          <i class="fas fa-cogs"></i>
+          Powertrain Engineering
+        </div>
+        <p>Focus on engine design, transmission systems, and alternative propulsion technologies.</p>
+        <br>
+        <ul class="features-list">
+          <li><i class="fas fa-check"></i> Internal combustion engines</li><br>
+          <li><i class="fas fa-check"></i> Electric & hybrid powertrains</li><br>
+          <li><i class="fas fa-check"></i> Transmission systems</li>
+        </ul>
+        <br>
+        <div class="resources-section">
+          <div class="resources-title" style="font-size: larger; color: gold;">Learning Resources</div><br>
+          <ul class="channel-list">
+            <li><a style="color: white; text-decoration: none;" href="https://www.youtube.com/user/EngineeringExplained" target="_blank"><i class="fab fa-youtube"></i> Engineering Explained</a></li>
+            <li><a style="color: white; text-decoration: none;" href="https://www.youtube.com/weberauto" target="_blank"><i class="fab fa-youtube"></i> Weber Auto</a></li>
+            <li><a style="color: white; text-decoration: none;" href="https://www.sae.org/publications/technical-papers" target="_blank"><i class="fas fa-book"></i> SAE Technical Papers</a></li>
+          </ul>
+        </div>
+      </div>
+  
+      <!-- Vehicle Dynamics -->
+      <div class="specialization-card">
+        <div class="specialization-title">
+          <i class="fas fa-car-side"></i>
+          Vehicle Dynamics
+        </div>
+        <p>Study of vehicle motion, handling, stability, and control systems for optimal performance and safety.</p>
+        <br>
+        <ul class="features-list">
+          <li><i class="fas fa-check"></i> Suspension systems</li><br>
+          <li><i class="fas fa-check"></i> Steering mechanisms</li><br>
+          <li><i class="fas fa-check"></i> Braking systems</li>
+        </ul>
+        <br>
+        <div class="resources-section">
+          <div class="resources-title" style="font-size: larger; color: gold;">Learning Resources</div><br>
+          <ul class="channel-list">
+            <li><a style="color: white; text-decoration: none;" href="https://www.youtube.com/@Learn-Engineering" target="_blank"><i class="fab fa-youtube"></i> Learn Engineering</a></li>
+            <li><a style="color: white; text-decoration: none;" href="https://www.youtube.com/channel/UCL6JmiMXKoXS6bpP1D3bk8g" target="_blank"><i class="fab fa-youtube"></i> Donut Media</a></li>
+            <li><a style="color: white; text-decoration: none;" href="https://www.racecar-engineering.com/" target="_blank"><i class="fas fa-globe"></i> Racecar Engineering</a></li>
+          </ul>
+        </div>
+      </div>
+  
+      <!-- Automotive Electronics -->
+      <div class="specialization-card">
+        <div class="specialization-title">
+          <i class="fas fa-microchip"></i>
+          Automotive Electronics
+        </div>
+        <p>Focus on electrical systems, control units, sensors, and advanced driver assistance systems.</p>
+        <br>
+        <ul class="features-list">
+          <li><i class="fas fa-check"></i> ECU programming</li><br>
+          <li><i class="fas fa-check"></i> Sensor integration</li><br>
+          <li><i class="fas fa-check"></i> ADAS development</li>
+        </ul>
+        <br>
+        <div class="resources-section">
+          <div class="resources-title" style="font-size: larger; color: gold;">Learning Resources</div><br>
+          <ul class="channel-list">
+            <li><a style="color: white; text-decoration: none;" href="https://www.youtube.com/c/Autotechlabs-Brand" target="_blank"><i class="fab fa-youtube"></i> Auto Tech Labs</a></li>
+            <li><a style="color: white; text-decoration: none;" href="https://www.youtube.com/c/LearnEmbeddedSystems" target="_blank"><i class="fab fa-youtube"></i> Learn Embedded Systems</a></li>
+            <li><a style="color: white; text-decoration: none;" href="https://www.amazon.com/Automotive-Electronics-Handbook-Ronald-Jurgen/dp/0070344531" target="_blank"><i class="fas fa-book"></i> Automotive Electronics Handbook</a></li>
+          </ul>
+        </div>
+      </div>
+  
+    </div>
+  </section>
+  
+
+  <!-- Projects section -->
+  <section class="projects-section">
+    <h2 class="section-title">Industry Projects</h2>
+    <div class="projects-grid">
+      <div class="project-card">
+        <div class="project-title">
+          <i class="fas fa-car-battery"></i>
+          EV Battery Management
+        </div>
+        <p>Design and implement battery management systems for electric vehicles.</p>
+        <div class="project-tags">
+          <span class="project-tag">Thermal Management</span>
+          <span class="project-tag">Cell Balancing</span>
+          <span class="project-tag">BMS Architecture</span>
+        </div>
+        <a href="https://www.mdpi.com/2313-0105/9/3/152" class="learn-btn" target="_blank">View Research</a>
+      </div>
+  
+      <div class="project-card">
+        <div class="project-title">
+          <i class="fas fa-robot"></i>
+          Autonomous Vehicle Systems
+        </div>
+        <p>Develop perception, planning, and control systems for self-driving vehicles.</p>
+        <div class="project-tags">
+          <span class="project-tag">Sensor Fusion</span>
+          <span class="project-tag">Path Planning</span>
+          <span class="project-tag">Computer Vision</span>
+        </div>
+        <a href="https://www.udacity.com/course/self-driving-car-engineer-nanodegree--nd0013" class="learn-btn" target="_blank">View Course</a>
+      </div>
+  
+      <div class="project-card">
+        <div class="project-title">
+          <i class="fas fa-wind"></i>
+          Aerodynamic Optimization
+        </div>
+        <p>Improve vehicle performance through computational fluid dynamics and wind tunnel testing.</p>
+        <div class="project-tags">
+          <span class="project-tag">CFD Analysis</span>
+          <span class="project-tag">Drag Reduction</span>
+          <span class="project-tag">Downforce</span>
+        </div>
+        <a href="https://www.ansys.com/academic/educators/education-resources/aerodynamic-analysis-with-ansys-fluent-part-1" class="learn-btn" target="_blank">View Tools</a>
+      </div>
+    </div>
+  </section>
+  
+
+  <section>
+    <h2 class="section-title">Core Concepts</h2>
+    <div class="topics-grid">
+      <div class="topic-card">
+        <div class="topic-title">Vehicle Dynamics & Handling</div>
+        <p>Understand the principles of vehicle motion, stability, and control.</p>
+        <a class="learn-btn" href="https://www.sae.org/publications/books/content/r-367/" target="_blank">Learn More</a>
+      </div>
+  
+      <div class="topic-card">
+        <div class="topic-title">Powertrain Systems</div>
+        <p>Master the fundamentals of engines, transmissions, and drivetrain components.</p>
+        <a class="learn-btn" href="https://www.sae.org/powertrain/" target="_blank">Learn More</a>
+      </div>
+  
+      <div class="topic-card">
+        <div class="topic-title">Automotive Materials</div>
+        <p>Learn about materials selection, properties, and applications in vehicle design.</p>
+        <a class="learn-btn" href="https://www.sae.org/standards/aerospace-material-specifications/385" target="_blank">Learn More</a>
+      </div>
+    </div>
+  
+    <div class="topics-grid">
+      <div class="topic-card">
+        <div class="topic-title">Internal Combustion Engines</div>
+        <p>Study engine design, thermodynamics, combustion processes, and performance optimization.</p>
+        <a class="learn-btn" href="https://saemobilus.sae.org/books/internal-combustion-engine-handbook-r-345" target="_blank">Learn More</a>
+      </div>
+  
+      <div class="topic-card">
+        <div class="topic-title">Suspension & Steering Systems</div>
+        <p>Understand suspension geometry, steering mechanisms, and their impact on vehicle handling.</p>
+        <a class="learn-btn" href="https://dl.ojocv.gov.et/admin_/book/Automotive%20Suspension%20%26%20Steering%20Systems%20%282%20Volumes%29%2C%204th%20Edition%20%28%20PDFDrive%20%29.pdf" target="_blank">Learn More</a>
+      </div>
+  
+      <div class="topic-card">
+        <div class="topic-title">Braking Systems</div>
+        <p>Learn about hydraulic, pneumatic, and regenerative braking technologies and safety systems.</p>
+        <a class="learn-btn" href="https://www.sae.org/publications/books/content/r-395/" target="_blank">Learn More</a>
+      </div>
+  
+      <div class="topic-card">
+        <div class="topic-title">Automotive Aerodynamics</div>
+        <p>Study airflow around vehicles, drag reduction techniques, and performance optimization.</p>
+        <a class="learn-btn" href="https://www.sae.org/publications/books/content/r-348/" target="_blank">Learn More</a>
+      </div>
+  
+      <div class="topic-card">
+        <div class="topic-title">Electric & Hybrid Vehicles</div>
+        <p>Explore electric motors, battery systems, power electronics, and hybrid architectures.</p>
+        <a class="learn-btn" href="https://www.sae.org/publications/books/content/r-561/" target="_blank">Learn More</a>
+      </div>
+  
+      <div class="topic-card">
+        <div class="topic-title">Vehicle Electronics & Control Systems</div>
+        <p>Master automotive electrical systems, ECUs, sensors, and control algorithms.</p>
+        <a class="learn-btn" href="https://www.sae.org/publications/books/content/r-413/" target="_blank">Learn More</a>
+      </div>
+  
+      <div class="topic-card">
+        <div class="topic-title">NVH (Noise, Vibration & Harshness)</div>
+        <p>Learn techniques for analyzing and reducing noise and vibration in vehicles.</p>
+        <a class="learn-btn" href="https://www.sae.org/publications/books/content/r-481/" target="_blank">Learn More</a>
+      </div>
+  
+      <div class="topic-card">
+        <div class="topic-title">Vehicle Safety Engineering</div>
+        <p>Study crash dynamics, occupant protection systems, and safety regulations.</p>
+        <a class="learn-btn" href="https://www.sae.org/publications/books/content/r-341/" target="_blank">Learn More</a>
+      </div>
+  
+      <div class="topic-card">
+        <div class="topic-title">Automotive Manufacturing</div>
+        <p>Understand production processes, quality control, and assembly techniques.</p>
+        <a class="learn-btn" href="https://www.sae.org/publications/books/content/r-344/" target="_blank">Learn More</a>
+      </div>
+  
+      <div class="topic-card">
+        <div class="topic-title">Autonomous Vehicle Technology</div>
+        <p>Explore sensors, perception systems, decision-making algorithms, and control strategies.</p>
+        <a class="learn-btn" href="https://www.rand.org/content/dam/rand/pubs/research_reports/RR400/RR443-2/RAND_RR443-2.pdf" target="_blank">Learn More</a>
+      </div>
+  
+      <div class="topic-card">
+        <div class="topic-title">Vehicle Thermal Management</div>
+        <p>Study cooling systems, HVAC, and thermal optimization for conventional and electric vehicles.</p>
+        <a class="learn-btn" href="https://go.sae.org/mythermalinfo.html" target="_blank">Learn More</a>
+      </div>
+  
+      <div class="topic-card">
+        <div class="topic-title">Automotive Lightweighting</div>
+        <p>Learn strategies for weight reduction through material selection and structural optimization.</p>
+        <a class="learn-btn" href="https://go.sae.org/lightweighting.html" target="_blank">Learn More</a>
+      </div>
+    </div>
+  </section>
+  
+
+  <section class="practice-section">
+    <h2 class="section-title">Software & Simulation Tools</h2>
+    <div class="practice-grid">
+      <div class="practice-card">
+        <h3>MATLAB/Simulink</h3>
+        <p>Industry-standard tool for modeling and simulating automotive systems.</p>
+        <a href="https://www.mathworks.com/solutions/automotive.html" target="_blank" class="learn-btn">Explore Tool</a>
+      </div>
+
+      <div class="practice-card">
+        <h3>ANSYS Fluent</h3>
+        <p>Computational fluid dynamics software for aerodynamic analysis.</p>
+        <a href="https://www.ansys.com/products/fluids/ansys-fluent" target="_blank" class="learn-btn">Explore Tool</a>
+      </div>
+
+      <div class="practice-card">
+        <h3>GT-SUITE</h3>
+        <p>Multi-physics CAE system for vehicle and engine simulation.</p>
+        <a href="https://www.gtisoft.com/" target="_blank" class="learn-btn">Explore Tool</a>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2 class="section-title">Learning Resources</h2>
+    <div class="topics-grid">
+      <div class="topic-card">
+        <div class="topic-title">Online Courses</div>
+        <ul class="resource-list">
+          <li><a style="color: white; text-decoration: none;" href="https://www.edx.org/learn/automotive-engineering" target="_blank"><i class="fas fa-graduation-cap"></i> edX Automotive Courses</a></li><br>
+          <li><a style="color: white; text-decoration: none;" href="https://www.coursera.org/courses?query=automotive%20engineering" target="_blank"><i class="fas fa-graduation-cap"></i> Coursera Automotive Engineering</a></li><br>
+          <li><a style="color: white; text-decoration: none;" href="https://www.udemy.com/topic/automotive-engineering/" target="_blank"><i class="fas fa-graduation-cap"></i> Udemy Automotive Courses</a></li>
+        </ul>
+      </div>
+
+      <div class="topic-card">
+        <div class="topic-title">Technical Resources</div>
+        <ul class="resource-list">
+          <li><a style="color: white; text-decoration: none;" href="https://www.sae.org/publications/technical-papers" target="_blank"><i class="fas fa-file-alt"></i> SAE Technical Papers</a></li><br>
+          <li><a style="color: white; text-decoration: none;" href="https://www.researchgate.net/topic/Automotive-Engineering" target="_blank"><i class="fas fa-file-alt"></i> ResearchGate Automotive Papers</a></li><br>
+          <li><a style="color: white; text-decoration: none;" href="https://www.sciencedirect.com/topics/engineering/automotive-engineering" target="_blank"><i class="fas fa-file-alt"></i> ScienceDirect Automotive Research</a></li>
+        </ul>
+      </div>
+
+      <div class="topic-card">
+        <div class="topic-title">Industry Publications</div>
+        <ul class="resource-list">
+          <li><a style="color: white; text-decoration: none;" href="https://www.sae.org/publications/automotive-engineering" target="_blank"><i class="fas fa-newspaper"></i> Automotive Engineering Magazine</a></li><br>
+          <li><a style="color: white; text-decoration: none;" href="https://www.automotivenews.com/" target="_blank"><i class="fas fa-newspaper"></i> Automotive News</a></li><br>
+          <li><a style="color: white; text-decoration: none;" href="https://www.racecar-engineering.com/" target="_blank"><i class="fas fa-newspaper"></i> Racecar Engineering</a></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <p class="quote">"The automobile has not merely taken over the street, it has dissolved the living tissue of the city." - Lewis Mumford</p>
+  </footer>
+
+  <script>
+    // Mobile menu toggle functionality could be added here if needed
+    // document.addEventListener('DOMContentLoaded', function() {
+    //   // Smooth scrolling for anchor links
+    //   document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    //     anchor.addEventListener('click', function(e) {
+    //       e.preventDefault();
+
+    //       const targetId = this.getAttribute('href');
+    //       if (targetId === '#') return;
+
+    //       const targetElement = document.querySelector(targetId);
+    //       if (targetElement) {
+    //         window.scrollTo({
+    //           top: targetElement.offsetTop - 70,
+    //           behavior: 'smooth'
+    //         });
+    //       }
+    //     });
+    //   });
+    // });
+  </script>
+</body>
+
+</html>

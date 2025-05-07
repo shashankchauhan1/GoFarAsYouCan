@@ -1,0 +1,1238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Electronics Engineering - Electrical Engineering Specialization</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* Base Styles */
+        :root {
+            --primary-color: #2c3e50;         /* Dark blue-gray */
+            --primary-light: #34495e;         /* Lighter blue-gray */
+            --secondary-color: #3a506b;       /* Medium blue */
+            --accent-color: #e74c3c;          /* Vibrant red */
+            --accent-light: #f39c12;          /* Warm orange */
+            --text-color: #ecf0f100;            /* Light gray for readability */
+            --light-text: #ffffff;            /* Pure white */
+            --dark-text: #bdc3c7;             /* Muted text for less emphasis */
+            --light-bg: #f5f7fa3a;              /* Very light background */
+            --dark-bg: #1a2530;               /* Dark background */
+            --card-bg: #ffffffae;               /* White card surface */
+            --card-shadow: rgba(0, 0, 0, 0.1); /* Shadow color */
+            --border-radius: 8px;
+            --box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease-in-out;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: var(--light-bg);
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        a {
+            text-decoration: none;
+            color: var(--accent-color);
+            transition: var(--transition);
+        }
+
+        a:hover {
+            color: var(--accent-light);
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            border-radius: var(--border-radius);
+        }
+
+        .bg-dark {
+            background-color: var(--primary-color);
+            color: var(--light-text);
+        }
+
+        /* Navbar */
+        .navbar {
+            background-color: var(--primary-color);
+            color: var(--light-text);
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: var(--box-shadow);
+        }
+
+        .navbar .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--light-text);
+        }
+
+        .back-button a {
+            color: var(--light-text);
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .back-button a:hover {
+            color: var(--accent-light);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            color: var(--light-text);
+            text-align: center;
+            padding: 6rem 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0.2;
+            mix-blend-mode: overlay;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            position: relative;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        /* Section Styles */
+        .section {
+            padding: 5rem 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+            color: var(--primary-color);
+            position: relative;
+            font-size: 2rem;
+        }
+
+        .section-title::after {
+            content: "";
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background-color: var(--accent-color);
+            border-radius: 2px;
+        }
+
+        .section-intro {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto 2.5rem;
+            font-size: 1.1rem;
+        }
+
+        /* Content Wrapper */
+        .content-wrapper {
+            display: flex;
+            gap: 2.5rem;
+            align-items: center;
+        }
+
+        .text-content {
+            flex: 1;
+        }
+
+        .text-content p {
+            margin-bottom: 1.25rem;
+            font-size: 1.05rem;
+        }
+
+        .image-content {
+            flex: 1;
+            box-shadow: var(--box-shadow);
+            border-radius: var(--border-radius);
+            overflow: hidden;
+        }
+
+        /* Cards Grid */
+        .cards-grid {
+            display: grid;
+            gap: 1.5rem;
+        }
+
+        .two-columns {
+            grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+        }
+
+        .three-columns {
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        }
+
+        .four-columns {
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        }
+
+        /* Card Styles */
+        .card {
+            background-color: var(--card-bg);
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: 0 4px 12px var(--card-shadow);
+            transition: var(--transition);
+            border: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .card-header {
+            padding: 1.25rem 1.25rem 0.5rem;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
+        .card-header h3 {
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .card-header h3 i {
+            color: var(--accent-color);
+        }
+
+        .card-header p {
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        .card-content {
+            padding: 1.25rem;
+            color: #333;
+        }
+
+        /* Project Cards */
+        .project-card .card-image {
+            height: 180px;
+            overflow: hidden;
+        }
+
+        .project-card .card-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .project-card:hover .card-image img {
+            transform: scale(1.05);
+        }
+
+        /* Career List */
+        .career-list {
+            list-style: none;
+        }
+
+        .career-list li {
+            display: flex;
+            justify-content: space-between;
+            padding: 0.5rem 0;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
+        .career-list li:last-child {
+            border-bottom: none;
+        }
+
+        .badge {
+            background-color: rgba(0, 0, 0, 0.05);
+            color: #333;
+            padding: 0.25rem 0.5rem;
+            border-radius: 9999px;
+            font-size: 0.75rem;
+            font-weight: 600;
+        }
+
+        .badge.top {
+            background-color: var(--accent-color);
+            color: rgb(255, 255, 255);
+        }
+
+        .badge.program {
+            background-color: var(--accent-light);
+            color: rgb(255, 255, 255);
+        }
+
+        /* Skills List */
+        .skills-list {
+            list-style: none;
+        }
+
+        .skills-list li {
+            padding: 0.5rem 0;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
+        .skills-list li:last-child {
+            border-bottom: none;
+        }
+
+        .skill-name {
+            font-weight: 600;
+            display: block;
+            margin-bottom: 0.25rem;
+            color: var(--primary-color);
+        }
+
+        .skill-desc {
+            font-size: 0.9rem;
+            color: #666;
+        }
+
+        /* Accordion */
+        .accordion {
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            border: 1px solid rgba(0, 0, 0, 0.05);
+            background-color: var(--card-bg);
+        }
+
+        .accordion-item {
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
+        .accordion-item:last-child {
+            border-bottom: none;
+        }
+
+        .accordion-header {
+            padding: 1rem;
+            cursor: pointer;
+            font-weight: 600;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: var(--transition);
+            color: var(--primary-color);
+        }
+
+        .accordion-header::after {
+            content: '\f078';
+            font-family: 'Font Awesome 5 Free';
+            font-weight: 900;
+            transition: var(--transition);
+        }
+
+        .accordion-header.active::after {
+            transform: rotate(180deg);
+        }
+
+        .accordion-content {
+            padding: 0 1rem;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+        }
+
+        .accordion-content p {
+            padding-bottom: 1rem;
+        }
+
+        .accordion-item.active .accordion-header {
+            background-color: rgba(0, 0, 0, 0.02);
+            color: var(--accent-color);
+        }
+
+        .accordion-item.active .accordion-content {
+            max-height: 500px;
+        }
+
+        /* Course List */
+        .course-list {
+            list-style: none;
+            margin-top: 1rem;
+        }
+
+        .course-item {
+            background-color: rgba(0, 0, 0, 0.02);
+            border-radius: var(--border-radius);
+            padding: 1rem;
+            margin-bottom: 1rem;
+            border: 1px solid rgba(0, 0, 0, 0.05);
+            transition: var(--transition);
+        }
+
+        .course-item:hover {
+            background-color: rgba(0, 0, 0, 0.04);
+            border-color: var(--accent-color);
+        }
+
+        .course-title {
+            font-weight: 600;
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+            color: var(--primary-color);
+        }
+
+        .course-desc {
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .course-meta {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.8rem;
+            color: #666;
+        }
+
+        /* Tools Grid */
+        .tools-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .tool-card {
+            background-color: var(--card-bg);
+            border-radius: var(--border-radius);
+            padding: 1.5rem 1rem;
+            text-align: center;
+            box-shadow: 0 4px 8px var(--card-shadow);
+            border: 1px solid rgba(0, 0, 0, 0.05);
+            transition: var(--transition);
+        }
+
+        .tool-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+            border-color: var(--accent-color);
+        }
+
+        .tool-card img {
+            height: 60px;
+            width: auto;
+            margin-bottom: 1rem;
+        }
+
+        .tool-card h3 {
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+            color: var(--primary-color);
+        }
+
+        .tool-card p {
+            font-size: 0.9rem;
+            color: #666;
+        }
+
+        /* Footer */
+        .footer {
+            background-color: var(--primary-color);
+            color: var(--light-text);
+            padding: 4rem 0 1rem;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2.5rem;
+            margin-bottom: 2.5rem;
+        }
+
+        .footer-logo h2 {
+            margin-bottom: 1rem;
+        }
+
+        .footer-links h3,
+        .footer-resources h3 {
+            margin-bottom: 1.25rem;
+            position: relative;
+            padding-bottom: 0.5rem;
+            display: inline-block;
+        }
+
+        .footer-links h3::after,
+        .footer-resources h3::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background-color: var(--accent-color);
+        }
+
+        .footer-links ul,
+        .footer-resources ul {
+            list-style-type: none;
+        }
+
+        .footer-links li,
+        .footer-resources li {
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-links a,
+        .footer-resources a {
+            color: var(--dark-text);
+        }
+
+        .footer-links a:hover,
+        .footer-resources a:hover {
+            color: var(--accent-light);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 1.25rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .content-wrapper {
+                flex-direction: column;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .two-columns {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .section {
+                padding: 3.5rem 0;
+            }
+
+            .hero {
+                padding: 5rem 0;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .section-title {
+                font-size: 1.75rem;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .navbar {
+                padding: 0.75rem 0;
+            }
+
+            .logo {
+                font-size: 1.2rem;
+            }
+
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+
+            .section-title {
+                font-size: 1.5rem;
+            }
+
+            .tools-grid {
+                grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="logo">GoFarAsYouCan</div>
+            <div class="back-button">
+                <a href="/Engineering/Electrical/electrical.ejs"><i class="fas fa-arrow-left"></i> Go Back</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="hero">
+        <div class="overlay"></div>
+        <div class="container">
+            <h1>Electronics Engineering</h1>
+            <p>Discover the world of electronic circuits, devices, and systems that power modern technology and innovation</p>
+        </div>
+    </header>
+
+    <!-- About Section -->
+    <section class="section" id="about">
+        <div class="container">
+            <h2 class="section-title">What is Electronics Engineering?</h2>
+            <div class="content-wrapper">
+                <div class="text-content">
+                    <p>Electronics Engineering is a specialized branch of electrical engineering that focuses on the design, development, and application of electronic circuits, devices, and systems. It involves working with components that control the flow of electrons or other charge carriers in devices, enabling the processing, transmission, and storage of information.</p>
+                    <p>As an electronics engineer, you'll work on creating and improving a wide range of technologies, from consumer electronics and communication systems to medical devices and industrial automation. You'll apply principles of physics, mathematics, and computer science to develop innovative solutions that address real-world challenges.</p>
+                    <p>This field is at the heart of technological advancement, driving progress in areas such as telecommunications, computing, healthcare, transportation, and entertainment. With the rapid pace of technological change, electronics engineers are constantly learning and adapting to new developments in materials, devices, and design methodologies.</p>
+                </div>
+                <div class="image-content">
+                    <img src="https://images.unsplash.com/photo-1517420704952-d9f39e95b43e?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Electronics Engineering">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Key Areas Section -->
+    <section class="section bg-dark" id="key-areas">
+        <div class="container">
+            <h2 class="section-title" style="color: var(--light-text);">Key Areas of Study</h2>
+            <p class="section-intro" style="color: var(--light-text);">Electronics Engineering encompasses several specialized areas that form the foundation of modern electronic systems:</p>
+            
+            <div class="cards-grid three-columns">
+                <div class="card">
+                    <div class="card-header">
+                        <h3><i class="fas fa-microchip"></i> Digital Electronics</h3>
+                    </div>
+                    <div class="card-content">
+                        <p>The study of electronic circuits that operate with discrete signals, using binary logic (0s and 1s) to process and store information. This includes combinational and sequential logic circuits, digital signal processing, and computer architecture.</p>
+                        <ul class="skills-list">
+                            <li>
+                                <span class="skill-name">Logic Design</span>
+                                <p class="skill-desc">Boolean algebra, logic gates, flip-flops, registers</p>
+                            </li>
+                            <li>
+                                <span class="skill-name">Digital Systems</span>
+                                <p class="skill-desc">Microprocessors, memory systems, digital interfaces</p>
+                            </li>
+                            <li>
+                                <span class="skill-name">FPGA Design</span>
+                                <p class="skill-desc">Hardware description languages (VHDL, Verilog)</p>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <h3><i class="fas fa-wave-square"></i> Analog Electronics</h3>
+                    </div>
+                    <div class="card-content">
+                        <p>The study of electronic circuits that process continuous signals, dealing with variables that change over a continuous range. This includes amplifiers, filters, oscillators, and power supplies that manipulate voltage and current levels.</p>
+                        <ul class="skills-list">
+                            <li>
+                                <span class="skill-name">Circuit Analysis</span>
+                                <p class="skill-desc">Kirchhoff's laws, network theorems, transient analysis</p>
+                            </li>
+                            <li>
+                                <span class="skill-name">Amplifier Design</span>
+                                <p class="skill-desc">Operational amplifiers, feedback systems, gain control</p>
+                            </li>
+                            <li>
+                                <span class="skill-name">Filter Design</span>
+                                <p class="skill-desc">Active and passive filters, frequency response</p>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <h3><i class="fas fa-satellite-dish"></i> Communication Systems</h3>
+                    </div>
+                    <div class="card-content">
+                        <p>The study of transmitting and receiving information over various media, including wired and wireless channels. This includes modulation techniques, signal processing, and network protocols for reliable data transfer.</p>
+                        <ul class="skills-list">
+                            <li>
+                                <span class="skill-name">Signal Modulation</span>
+                                <p class="skill-desc">AM, FM, digital modulation techniques</p>
+                            </li>
+                            <li>
+                                <span class="skill-name">Wireless Communications</span>
+                                <p class="skill-desc">RF design, antennas, propagation models</p>
+                            </li>
+                            <li>
+                                <span class="skill-name">Communication Networks</span>
+                                <p class="skill-desc">Protocols, network architecture, data transmission</p>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="cards-grid three-columns" style="margin-top: 1.5rem;">
+                <div class="card">
+                    <div class="card-header">
+                        <h3><i class="fas fa-robot"></i> Embedded Systems</h3>
+                    </div>
+                    <div class="card-content">
+                        <p>The study of specialized computing systems designed for dedicated functions within larger mechanical or electrical systems. This includes microcontrollers, real-time operating systems, and interface design for various applications.</p>
+                        <ul class="skills-list">
+                            <li>
+                                <span class="skill-name">Microcontroller Programming</span>
+                                <p class="skill-desc">ARM, AVR, PIC architectures and programming</p>
+                            </li>
+                            <li>
+                                <span class="skill-name">Real-Time Systems</span>
+                                <p class="skill-desc">RTOS, scheduling, resource management</p>
+                            </li>
+                            <li>
+                                <span class="skill-name">Interfacing</span>
+                                <p class="skill-desc">Sensors, actuators, communication protocols</p>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <h3><i class="fas fa-microchip"></i> VLSI Design</h3>
+                    </div>
+                    <div class="card-content">
+                        <p>The study of designing and creating integrated circuits by combining thousands to billions of transistors into a single chip. This includes semiconductor physics, circuit design, and fabrication processes for modern ICs.</p>
+                        <ul class="skills-list">
+                            <li>
+                                <span class="skill-name">IC Design</span>
+                                <p class="skill-desc">Transistor-level design, standard cells, IP blocks</p>
+                            </li>
+                            <li>
+                                <span class="skill-name">Physical Design</span>
+                                <p class="skill-desc">Layout, floor planning, routing, verification</p>
+                            </li>
+                            <li>
+                                <span class="skill-name">Semiconductor Processes</span>
+                                <p class="skill-desc">Fabrication techniques, process integration</p>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <h3><i class="fas fa-cogs"></i> Control Systems</h3>
+                    </div>
+                    <div class="card-content">
+                        <p>The study of managing, commanding, directing, or regulating the behavior of devices or systems using control loops. This includes feedback mechanisms, stability analysis, and controller design for various applications.</p>
+                        <ul class="skills-list">
+                            <li>
+                                <span class="skill-name">System Modeling</span>
+                                <p class="skill-desc">Transfer functions, state-space representation</p>
+                            </li>
+                            <li>
+                                <span class="skill-name">Controller Design</span>
+                                <p class="skill-desc">PID controllers, state feedback, optimal control</p>
+                            </li>
+                            <li>
+                                <span class="skill-name">Digital Control</span>
+                                <p class="skill-desc">Discrete-time systems, digital implementation</p>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Career Opportunities Section -->
+    <section class="section" id="careers">
+        <div class="container">
+            <h2 class="section-title">Career Opportunities</h2>
+            <p class="section-intro">Electronics Engineering offers diverse career paths across various industries and sectors:</p>
+            
+            <div class="cards-grid three-columns">
+                <div class="card">
+                    <div class="card-header">
+                        <h3><i class="fas fa-briefcase"></i> Industry Roles</h3>
+                    </div>
+                    <div class="card-content">
+                        <ul class="career-list">
+                            <li>
+                                <span>Electronics Design Engineer</span>
+                                <span class="badge">₹6-20 LPA</span>
+                            </li>
+                            <li>
+                                <span>VLSI Design Engineer</span>
+                                <span class="badge">₹8-25 LPA</span>
+                            </li>
+                            <li>
+                                <span>Embedded Systems Engineer</span>
+                                <span class="badge">₹7-22 LPA</span>
+                            </li>
+                            <li>
+                                <span>RF Engineer</span>
+                                <span class="badge">₹8-24 LPA</span>
+                            </li>
+                            <li>
+                                <span>IoT Solutions Architect</span>
+                                <span class="badge">₹10-30 LPA</span>
+                            </li>
+                            <li>
+                                <span>Hardware Test Engineer</span>
+                                <span class="badge">₹5-18 LPA</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <h3><i class="fas fa-building"></i> Top Employers</h3>
+                    </div>
+                    <div class="card-content">
+                        <ul class="career-list">
+                            <li>
+                                <span>Semiconductor Companies</span>
+                                <span class="badge top">Intel, AMD</span>
+                            </li>
+                            <li>
+                                <span>Electronics Manufacturers</span>
+                                <span class="badge top">Samsung, LG</span>
+                            </li>
+                            <li>
+                                <span>Telecom Companies</span>
+                                <span class="badge">Airtel, Jio</span>
+                            </li>
+                            <li>
+                                <span>Automotive Electronics</span>
+                                <span class="badge">Bosch, Continental</span>
+                            </li>
+                            <li>
+                                <span>Defense & Aerospace</span>
+                                <span class="badge">DRDO, HAL</span>
+                            </li>
+                            <li>
+                                <span>Consumer Electronics</span>
+                                <span class="badge">Apple, Sony</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <h3><i class="fas fa-chart-line"></i> Growth Areas</h3>
+                    </div>
+                    <div class="card-content">
+                        <p>The electronics sector is experiencing significant growth due to several emerging technologies:</p>
+                        <ul>
+                            <li>• Internet of Things (IoT)</li>
+                            <li>• 5G and Beyond Communication</li>
+                            <li>• Artificial Intelligence Hardware</li>
+                            <li>• Autonomous Vehicles</li>
+                            <li>• Wearable Technology</li>
+                            <li>• Medical Electronics</li>
+                            <li>• Renewable Energy Systems</li>
+                            <li>• Edge Computing Devices</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Essential Skills Section -->
+    <section class="section bg-dark" id="skills">
+        <div class="container">
+            <h2 class="section-title" style="color: var(--light-text);">Essential Skills & Tools</h2>
+            <p class="section-intro" style="color: var(--light-text);">To excel in Electronics Engineering, you'll need to develop a combination of technical knowledge, software proficiency, and professional skills:</p>
+            
+            <div class="cards-grid three-columns">
+                <div class="card">
+                    <div class="card-header">
+                        <h3><i class="fas fa-book-open"></i> Technical Knowledge</h3>
+                    </div>
+                    <div class="card-content">
+                        <ul class="skills-list">
+                            <li>
+                                <span class="skill-name">Circuit Theory</span>
+                                <p class="skill-desc">Ohm's law, Kirchhoff's laws, network theorems</p>
+                            </li>
+                            <li>
+                                <span class="skill-name">Semiconductor Physics</span>
+                                <p class="skill-desc">PN junctions, transistors, diodes, MOSFETs</p>
+                            </li>
+                            <li>
+                                <span class="skill-name">Digital Logic</span>
+                                <p class="skill-desc">Boolean algebra, combinational and sequential circuits</p>
+                            </li>
+                            <li>
+                                <span class="skill-name">Signal Processing</span>
+                                <p class="skill-desc">Fourier analysis, filters, sampling theory</p>
+                            </li>
+                            <li>
+                                <span class="skill-name">Electromagnetic Theory</span>
+                                <p class="skill-desc">Maxwell's equations, wave propagation, antennas</p>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <h3><i class="fas fa-laptop-code"></i> Software & Tools</h3>
+                    </div>
+                    <div class="card-content">
+                        <p>Proficiency in industry-standard software tools is essential:</p>
+                        <div class="tools-grid">
+                            <div class="tool-card">
+                                <i class="fas fa-microchip" style="font-size: 2.5rem; color: var(--accent-color); margin-bottom: 1rem;"></i>
+                                <h3>Altium Designer</h3>
+                                <p>PCB design</p>
+                            </div>
+                            <div class="tool-card">
+                                <i class="fas fa-code" style="font-size: 2.5rem; color: var(--accent-color); margin-bottom: 1rem;"></i>
+                                <h3>MATLAB</h3>
+                                <p>Simulation & analysis</p>
+                            </div>
+                            <div class="tool-card">
+                                <i class="fas fa-microchip" style="font-size: 2.5rem; color: var(--accent-color); margin-bottom: 1rem;"></i>
+                                <h3>Cadence</h3>
+                                <p>IC design</p>
+                            </div>
+                            <div class="tool-card">
+                                <i class="fas fa-cogs" style="font-size: 2.5rem; color: var(--accent-color); margin-bottom: 1rem;"></i>
+                                <h3>LTspice</h3>
+                                <p>Circuit simulation</p>
+                            </div>
+                            <div class="tool-card">
+                                <i class="fas fa-code-branch" style="font-size: 2.5rem; color: var(--accent-color); margin-bottom: 1rem;"></i>
+                                <h3>Xilinx Vivado</h3>
+                                <p>FPGA development</p>
+                            </div>
+                            <div class="tool-card">
+                                <i class="fas fa-microchip" style="font-size: 2.5rem; color: var(--accent-color); margin-bottom: 1rem;"></i>
+                                <h3>Arduino IDE</h3>
+                                <p>Embedded programming</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <h3><i class="fas fa-user-tie"></i> Professional Skills</h3>
+                    </div>
+                    <div class="card-content">
+                        <ul class="skills-list">
+                            <li>
+                                <span class="skill-name">Problem Solving</span>
+                                <p class="skill-desc">Analytical thinking, troubleshooting, debugging</p>
+                            </li>
+                            <li>
+                                <span class="skill-name">Technical Documentation</span>
+                                <p class="skill-desc">Schematics, datasheets, technical reports</p>
+                            </li>
+                            <li>
+                                <span class="skill-name">Project Management</span>
+                                <p class="skill-desc">Planning, scheduling, resource allocation</p>
+                            </li>
+                            <li>
+                                <span class="skill-name">Communication</span>
+                                <p class="skill-desc">Presenting technical information to diverse audiences</p>
+                            </li>
+                            <li>
+                                <span class="skill-name">Teamwork</span>
+                                <p class="skill-desc">Collaboration with cross-functional teams</p>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Courses Section -->
+    <section class="section" id="courses">
+        <div class="container">
+            <h2 class="section-title">Recommended Courses</h2>
+            <p class="section-intro">Enhance your knowledge and skills in Electronics Engineering with these specialized courses:</p>
+            
+            <div class="accordion">
+                <div class="accordion-item">
+                    <div class="accordion-header">Core Electronics Courses</div>
+                    <div class="accordion-content">
+                        <ul class="course-list">
+                            <li class="course-item">
+                                <div class="course-title">Analog Circuit Design</div>
+                                <div class="course-desc">Study of operational amplifiers, filters, oscillators, and power supply circuits.</div>
+                                <div class="course-meta">
+                                    <span>Duration: 12 weeks</span>
+                                    <span>Level: Intermediate</span>
+                                </div>
+                            </li>
+                            <li class="course-item">
+                                <div class="course-title">Digital System Design</div>
+                                <div class="course-desc">Principles of combinational and sequential logic, memory systems, and digital interfaces.</div>
+                                <div class="course-meta">
+                                    <span>Duration: 10 weeks</span>
+                                    <span>Level: Intermediate</span>
+                                </div>
+                            </li>
+                            <li class="course-item">
+                                <div class="course-title">Microprocessors and Microcontrollers</div>
+                                <div class="course-desc">Architecture, programming, and interfacing of microprocessors and microcontrollers.</div>
+                                <div class="course-meta">
+                                    <span>Duration: 14 weeks</span>
+                                    <span>Level: Intermediate</span>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="accordion-item">
+                    <div class="accordion-header">Specialized Electronics Courses</div>
+                    <div class="accordion-content">
+                        <ul class="course-list">
+                            <li class="course-item">
+                                <div class="course-title">VLSI Design and Technology</div>
+                                <div class="course-desc">Design methodologies, tools, and fabrication processes for integrated circuits.</div>
+                                <div class="course-meta">
+                                    <span>Duration: 16 weeks</span>
+                                    <span>Level: Advanced</span>
+                                </div>
+                            </li>
+                            <li class="course-item">
+                                <div class="course-title">RF and Microwave Engineering</div>
+                                <div class="course-desc">High-frequency circuit design, transmission lines, and wireless systems.</div>
+                                <div class="course-meta">
+                                    <span>Duration: 12 weeks</span>
+                                    <span>Level: Advanced</span>
+                                </div>
+                            </li>
+                            <li class="course-item">
+                                <div class="course-title">Embedded System Design</div>
+                                <div class="course-desc">Real-time operating systems, hardware-software co-design, and IoT applications.</div>
+                                <div class="course-meta">
+                                    <span>Duration: 14 weeks</span>
+                                    <span>Level: Advanced</span>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="accordion-item">
+                    <div class="accordion-header">Software & Simulation Courses</div>
+                    <div class="accordion-content">
+                        <ul class="course-list">
+                            <li class="course-item">
+                                <div class="course-title">PCB Design with Altium Designer</div>
+                                <div class="course-desc">Schematic capture, PCB layout, routing, and design for manufacturing.</div>
+                                <div class="course-meta">
+                                    <span>Duration: 8 weeks</span>
+                                    <span>Level: Intermediate</span>
+                                </div>
+                            </li>
+                            <li class="course-item">
+                                <div class="course-title">FPGA Design with Verilog/VHDL</div>
+                                <div class="course-desc">Hardware description languages, synthesis, and implementation on FPGAs.</div>
+                                <div class="course-meta">
+                                    <span>Duration: 10 weeks</span>
+                                    <span>Level: Intermediate</span>
+                                </div>
+                            </li>
+                            <li class="course-item">
+                                <div class="course-title">Electronic Circuit Simulation</div>
+                                <div class="course-desc">Using SPICE-based tools for circuit analysis and verification.</div>
+                                <div class="course-meta">
+                                    <span>Duration: 6 weeks</span>
+                                    <span>Level: Intermediate</span>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section class="section bg-dark" id="projects">
+        <div class="container">
+            <h2 class="section-title" style="color: var(--light-text);">Hands-on Projects</h2>
+            <p class="section-intro" style="color: var(--light-text);">Build your portfolio with these practical electronics projects that demonstrate your skills to potential employers:</p>
+            
+            <div class="cards-grid three-columns">
+                <div class="card project-card">
+                    <div class="card-image">
+                        <img src="https://images.unsplash.com/photo-1553406830-ef2513450d76?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Arduino Project">
+                    </div>
+                    <div class="card-header">
+                        <h3><i class="fas fa-microchip"></i> Smart Home Automation</h3>
+                    </div>
+                    <div class="card-content">
+                        <p>Design and build a home automation system using microcontrollers, sensors, and wireless communication. Control lights, temperature, and appliances through a mobile app or voice commands.</p>
+                        <p><strong>Skills:</strong> Embedded systems, IoT, wireless communication, app development</p>
+                    </div>
+                </div>
+
+                <div class="card project-card">
+                    <div class="card-image">
+                        <img src="https://miro.medium.com/v2/resize:fit:1400/1*4TCjvVsd91hdeh0h1pKjiQ.jpeg" alt="PCB Design">
+                    </div>
+                    <div class="card-header">
+                        <h3><i class="fas fa-print"></i> Custom PCB Design</h3>
+                    </div>
+                    <div class="card-content">
+                        <p>Design a multi-layer PCB for a specific application, such as a power supply, audio amplifier, or sensor interface. Include schematic capture, component selection, layout, and manufacturing.</p>
+                        <p><strong>Skills:</strong> Circuit design, PCB layout, component selection, design for manufacturing</p>
+                    </div>
+                </div>
+
+                <div class="card project-card">
+                    <div class="card-image">
+                        <img src="https://images.unsplash.com/photo-1580584126903-c17d41830450?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="FPGA Project">
+                    </div>
+                    <div class="card-header">
+                        <h3><i class="fas fa-code-branch"></i> FPGA-Based Digital System</h3>
+                    </div>
+                    <div class="card-content">
+                        <p>Implement a digital system on an FPGA platform, such as a custom processor, digital signal processor, or hardware accelerator for specific algorithms.</p>
+                        <p><strong>Skills:</strong> Digital design, HDL programming, timing analysis, hardware optimization</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <h2>GoFarAsYouCan</h2>
+                    <p>Your guide to engineering education and career paths</p>
+                </div>
+
+                <div class="footer-links">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="#about">About Electronics</a></li>
+                        <li><a href="#key-areas">Key Areas</a></li>
+                        <li><a href="#careers">Career Opportunities</a></li>
+                        <li><a href="#skills">Skills & Tools</a></li>
+                        <li><a href="#courses">Recommended Courses</a></li>
+                        <li><a href="#projects">Hands-on Projects</a></li>
+                        <li><a href="electrical-engineering.html">Back to Electrical Engineering</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-resources">
+                    <h3>Resources</h3>
+                    <ul>
+                        <li><a href="https://www.ieee.org/" target="_blank">IEEE</a></li>
+                        <li><a href="https://www.ies.org.sg/" target="_blank">Institution of Engineers</a></li>
+                        <li><a href="https://www.nptel.ac.in/" target="_blank">NPTEL Courses</a></li>
+                        <li><a href="https://www.edx.org/learn/electronics" target="_blank">edX Electronics Courses</a></li>
+                        <li><a href="https://www.allaboutcircuits.com/" target="_blank">All About Circuits</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; <script>document.write(new Date().getFullYear())</script> GoFarAsYouCan. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Accordion functionality
+        function setupAccordions() {
+            const accordionHeaders = document.querySelectorAll(".accordion-header");
+            
+            accordionHeaders.forEach(header => {
+                header.addEventListener("click", function() {
+                    // Toggle active class on the parent accordion item
+                    const accordionItem = this.parentElement;
+                    accordionItem.classList.toggle("active");
+                    
+                    // Toggle active class on the header itself
+                    this.classList.toggle("active");
+                    
+                    // Toggle the content visibility
+                    const content = this.nextElementSibling;
+                    if (accordionItem.classList.contains("active")) {
+                        content.style.maxHeight = content.scrollHeight + "px";
+                    } else {
+                        content.style.maxHeight = 0;
+                    }
+                });
+            });
+        }
+
+        // Smooth scrolling for anchor links
+        function setupSmoothScrolling() {
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+
+                    const targetId = this.getAttribute('href');
+                    if (targetId === "#") return;
+
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        window.scrollTo({
+                            top: targetElement.offsetTop - 80,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+        }
+
+        // Initialize everything when the DOM is loaded
+        document.addEventListener("DOMContentLoaded", function() {
+            setupAccordions();
+            setupSmoothScrolling();
+            
+            // Open the first accordion item by default
+            const firstAccordionItem = document.querySelector(".accordion-item");
+            if (firstAccordionItem) {
+                firstAccordionItem.classList.add("active");
+                const content = firstAccordionItem.querySelector(".accordion-content");
+                content.style.maxHeight = content.scrollHeight + "px";
+                firstAccordionItem.querySelector(".accordion-header").classList.add("active");
+            }
+        });
+    </script>
+</body>
+</html>

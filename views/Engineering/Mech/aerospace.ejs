@@ -1,0 +1,627 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" rel="stylesheet">
+  <title>Aerospace Engineering Learning Hub</title>
+  <style>
+    :root {
+      --primary-bg: #0A0A1A;
+      /* Dark space background */
+      --section-bg: #141428;
+      /* Slightly lighter background */
+      --card-bg: #1E1E3A;
+      /* Card background */
+      --card-hover: #2A2A4A;
+      /* Card hover effect */
+      --text-primary: #E5E5FF;
+      /* Light text color */
+      --text-secondary: #A0A0CC;
+      /* Muted text color */
+      --accent: #7B68EE;
+      /* Purple accent */
+      --accent-hover: #9370DB;
+      /* Lighter purple for hover */
+      --highlight: #00BFFF;
+      /* Bright blue for highlights */
+      --border: #3A3A5A;
+      /* Border color */
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: var(--primary-bg);
+      color: var(--text-primary);
+      line-height: 1.6;
+      background-image: radial-gradient(circle at 50% 50%, rgba(50, 50, 100, 0.1) 0%, rgba(10, 10, 26, 0.1) 100%);
+    }
+
+    .navbar {
+      background: var(--section-bg);
+      padding: 1rem 2rem;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    }
+
+    .nav-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      font-size: 1.8rem;
+      font-weight: bold;
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    .back-button {
+      text-decoration: none;
+      color: var(--text-primary);
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      transition: color 0.3s ease;
+    }
+
+    .back-button:hover {
+      color: var(--accent);
+    }
+
+    header {
+      text-align: center;
+      padding: 4rem 2rem;
+      background: var(--section-bg);
+      background-image: url('/placeholder.svg?height=400&width=1200');
+      background-size: cover;
+      background-position: center;
+      background-blend-mode: overlay;
+      position: relative;
+    }
+
+    header::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(20, 20, 40, 0.7);
+      z-index: 1;
+    }
+
+    header h1, header p {
+      position: relative;
+      z-index: 2;
+    }
+
+    header h1 {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+      color: var(--accent);
+      text-shadow: 0 0 10px rgba(123, 104, 238, 0.5);
+    }
+
+    header p {
+      font-size: 1.25rem;
+      color: var(--text-secondary);
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    section {
+      max-width: 1200px;
+      margin: 2rem auto;
+      padding: 2rem;
+    }
+
+    .section-title {
+      color: var(--accent);
+      margin-bottom: 1.5rem;
+      font-size: 2rem;
+      position: relative;
+      padding-bottom: 0.5rem;
+    }
+
+    .section-title::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100px;
+      height: 3px;
+      background: var(--accent);
+      border-radius: 3px;
+    }
+
+    .topics-grid,
+    .specialization-grid,
+    .projects-grid,
+    .practice-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+      margin: 2rem 0;
+    }
+
+    .topic-card,
+    .specialization-card,
+    .project-card,
+    .practice-card {
+      background: var(--card-bg);
+      padding: 2rem;
+      border-radius: 12px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+      transition: all 0.3s ease;
+      border: 1px solid var(--border);
+    }
+
+    .topic-card:hover,
+    .specialization-card:hover,
+    .project-card:hover,
+    .practice-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+      border-color: var(--accent);
+      background: var(--card-hover);
+    }
+
+    .topic-title,
+    .specialization-title,
+    .project-title {
+      color: var(--highlight);
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
+    }
+
+    .learn-btn {
+      display: inline-block;
+      padding: 0.75rem 1.5rem;
+      background: var(--accent);
+      color: rgb(255, 255, 255);
+      text-decoration: none;
+      border-radius: 8px;
+      transition: all 0.3s ease;
+      margin-top: 1rem;
+      font-weight: bold;
+    }
+
+    .learn-btn:hover {
+      background: var(--accent-hover);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 8px rgba(123, 104, 238, 0.3);
+    }
+
+    footer {
+      text-align: center;
+      padding: 2rem;
+      background: var(--section-bg);
+      margin-top: 4rem;
+      border-top: 1px solid var(--border);
+    }
+
+    .quote {
+      font-style: italic;
+      color: var(--text-secondary);
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .project-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin: 1rem 0;
+    }
+
+    .project-tag {
+      background: rgba(123, 104, 238, 0.2);
+      color: var(--text-primary);
+      padding: 0.3rem 0.6rem;
+      border-radius: 4px;
+      font-size: 0.8rem;
+    }
+
+    .features-list {
+      list-style: none;
+    }
+
+    .features-list li {
+      margin-bottom: 0.5rem;
+    }
+
+    .features-list i {
+      color: var(--highlight);
+      margin-right: 0.5rem;
+    }
+
+    .resources-section {
+      margin-top: 1.5rem;
+    }
+
+    .channel-list {
+      list-style: none;
+    }
+
+    .channel-list li {
+      margin-bottom: 0.5rem;
+    }
+
+    .channel-list i {
+      margin-right: 0.5rem;
+    }
+
+    .resource-list {
+      list-style: none;
+    }
+
+    @media (max-width: 768px) {
+      .navbar {
+        padding: 1rem;
+      }
+
+      .logo {
+        font-size: 1.5rem;
+      }
+
+      header {
+        padding: 3rem 1rem;
+      }
+
+      header h1 {
+        font-size: 2rem;
+      }
+
+      section {
+        padding: 1rem;
+      }
+
+      .topics-grid,
+      .specialization-grid,
+      .projects-grid,
+      .practice-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <nav class="navbar">
+    <div class="nav-container">
+      <a href="#" class="logo">Aerospace Engineering</a>
+      <a href="/Engineering/MECH/mech.ejs" class="back-button">
+        <i class="fas fa-arrow-left"></i> Back
+      </a>
+    </div>
+  </nav>
+
+  <header>
+    <h1>Aerospace Engineering Specialization</h1>
+    <p>Master the fundamentals of aircraft and spacecraft design, propulsion, and systems with comprehensive learning resources.</p>
+  </header>
+
+  <section class="specialization-section">
+    <h2 class="section-title">Specialization Areas</h2>
+    <div class="specialization-grid">
+  
+      <!-- Propulsion Systems -->
+      <div class="specialization-card">
+        <div class="specialization-title">
+          <i class="fas fa-rocket"></i>
+          Propulsion Systems
+        </div>
+        <p>Focus on jet engines, rocket propulsion, and advanced propulsion technologies.</p>
+        <br>
+        <ul class="features-list">
+          <li><i class="fas fa-check"></i> Jet & turbine engines</li><br>
+          <li><i class="fas fa-check"></i> Rocket propulsion</li><br>
+          <li><i class="fas fa-check"></i> Electric propulsion</li>
+        </ul>
+        <br>
+        <div class="resources-section">
+          <div class="resources-title" style="font-size: larger; color: #00BFFF;">Learning Resources</div><br>
+          <ul class="channel-list">
+            <li><a style="color: white; text-decoration: none;" href="https://www.youtube.com/c/NASASpaceflightVideos" target="_blank"><i class="fab fa-youtube"></i> NASA Spaceflight</a></li>
+            <li><a style="color: white; text-decoration: none;" href="https://www.youtube.com/c/EverydayAstronaut" target="_blank"><i class="fab fa-youtube"></i> Everyday Astronaut</a></li>
+            <li><a style="color: white; text-decoration: none;" href="https://www.aiaa.org/publications/journals" target="_blank"><i class="fas fa-book"></i> AIAA Journals</a></li>
+          </ul>
+        </div>
+      </div>
+  
+      <!-- Aerodynamics -->
+      <div class="specialization-card">
+        <div class="specialization-title">
+          <i class="fas fa-wind"></i>
+          Aerodynamics
+        </div>
+        <p>Study of airflow around aircraft, lift generation, drag reduction, and flight stability.</p>
+        <br>
+        <ul class="features-list">
+          <li><i class="fas fa-check"></i> Computational fluid dynamics</li><br>
+          <li><i class="fas fa-check"></i> Wind tunnel testing</li><br>
+          <li><i class="fas fa-check"></i> High-speed aerodynamics</li>
+        </ul>
+        <br>
+        <div class="resources-section">
+          <div class="resources-title" style="font-size: larger; color: #00BFFF;">Learning Resources</div><br>
+          <ul class="channel-list">
+            <li><a style="color: white; text-decoration: none;" href="https://www.youtube.com/c/LearnEngineering" target="_blank"><i class="fab fa-youtube"></i> Learn Engineering</a></li>
+            <li><a style="color: white; text-decoration: none;" href="https://www.youtube.com/c/FlightMechanic" target="_blank"><i class="fab fa-youtube"></i> Flight Mechanics</a></li>
+            <li><a style="color: white; text-decoration: none;" href="https://arc.aiaa.org/doi/book/10.2514/4.862342" target="_blank"><i class="fas fa-globe"></i> Fundamentals of Aerodynamics</a></li>
+          </ul>
+        </div>
+      </div>
+  
+      <!-- Aerospace Structures -->
+      <div class="specialization-card">
+        <div class="specialization-title">
+          <i class="fas fa-cubes"></i>
+          Aerospace Structures
+        </div>
+        <p>Focus on structural design, materials, and analysis for aircraft and spacecraft.</p>
+        <br>
+        <ul class="features-list">
+          <li><i class="fas fa-check"></i> Composite materials</li><br>
+          <li><i class="fas fa-check"></i> Structural analysis</li><br>
+          <li><i class="fas fa-check"></i> Fatigue & fracture mechanics</li>
+        </ul>
+        <br>
+        <div class="resources-section">
+          <div class="resources-title" style="font-size: larger; color: #00BFFF;">Learning Resources</div><br>
+          <ul class="channel-list">
+            <li><a style="color: white; text-decoration: none;" href="https://www.youtube.com/c/NASAGoddard" target="_blank"><i class="fab fa-youtube"></i> NASA Goddard</a></li>
+            <li><a style="color: white; text-decoration: none;" href="https://www.youtube.com/c/MaterialsScienceandEngineering" target="_blank"><i class="fab fa-youtube"></i> Materials Science</a></li>
+            <li><a style="color: white; text-decoration: none;" href="https://arc.aiaa.org/doi/book/10.2514/4.862350" target="_blank"><i class="fas fa-book"></i> Aircraft Structures</a></li>
+          </ul>
+        </div>
+      </div>
+  
+    </div>
+  </section>
+  
+
+  <!-- Projects section -->
+  <section class="projects-section">
+    <h2 class="section-title">Industry Projects</h2>
+    <div class="projects-grid">
+      <div class="project-card">
+        <div class="project-title">
+          <i class="fas fa-satellite"></i>
+          CubeSat Development
+        </div>
+        <p>Design and build small satellites for research, Earth observation, and technology demonstration.</p>
+        <div class="project-tags">
+          <span class="project-tag">Orbital Mechanics</span>
+          <span class="project-tag">Payload Integration</span>
+          <span class="project-tag">Power Systems</span>
+        </div>
+        <a href="https://www.nasa.gov/smallsat-institute/cubesat-101/" class="learn-btn" target="_blank">View Research</a>
+      </div>
+  
+      <div class="project-card">
+        <div class="project-title">
+          <i class="fas fa-plane"></i>
+          Urban Air Mobility
+        </div>
+        <p>Develop electric vertical takeoff and landing (eVTOL) aircraft for urban transportation.</p>
+        <div class="project-tags">
+          <span class="project-tag">Electric Propulsion</span>
+          <span class="project-tag">Flight Control</span>
+          <span class="project-tag">Noise Reduction</span>
+        </div>
+        <a href="https://www.nasa.gov/aeroresearch/programs/iasp/uam/" class="learn-btn" target="_blank">View Course</a>
+      </div>
+  
+      <div class="project-card">
+        <div class="project-title">
+          <i class="fas fa-meteor"></i>
+          Hypersonic Vehicle Design
+        </div>
+        <p>Research and develop vehicles capable of sustained flight at Mach 5+ speeds.</p>
+        <div class="project-tags">
+          <span class="project-tag">Thermal Protection</span>
+          <span class="project-tag">Scramjet Engines</span>
+          <span class="project-tag">Aerothermodynamics</span>
+        </div>
+        <a href="https://www.nasa.gov/centers/armstrong/features/X-43A.html" class="learn-btn" target="_blank">View Tools</a>
+      </div>
+    </div>
+  </section>
+  
+
+  <section>
+    <h2 class="section-title">Core Concepts</h2>
+    <div class="topics-grid">
+      <div class="topic-card">
+        <div class="topic-title">Flight Mechanics & Stability</div>
+        <p>Understand the principles of aircraft motion, stability, and control.</p>
+        <a class="learn-btn" href="https://arc.aiaa.org/doi/book/10.2514/4.103278" target="_blank">Learn More</a>
+      </div>
+  
+      <div class="topic-card">
+        <div class="topic-title">Propulsion Systems</div>
+        <p>Master the fundamentals of jet engines, rockets, and advanced propulsion technologies.</p>
+        <a class="learn-btn" href="https://arc.aiaa.org/doi/book/10.2514/4.862373" target="_blank">Learn More</a>
+      </div>
+  
+      <div class="topic-card">
+        <div class="topic-title">Aerospace Materials</div>
+        <p>Learn about materials selection, properties, and applications in aerospace design.</p>
+        <a class="learn-btn" href="https://www.sae.org/standards/aerospace-material-specifications/385" target="_blank">Learn More</a>
+      </div>
+    </div>
+  
+    <div class="topics-grid">
+      <div class="topic-card">
+        <div class="topic-title">Gas Dynamics & Compressible Flow</div>
+        <p>Study high-speed flows, shock waves, and their effects on aerospace vehicles.</p>
+        <a class="learn-btn" href="https://arc.aiaa.org/doi/book/10.2514/4.862342" target="_blank">Learn More</a>
+      </div>
+  
+      <div class="topic-card">
+        <div class="topic-title">Aircraft Structures</div>
+        <p>Understand structural design, analysis, and optimization for aerospace applications.</p>
+        <a class="learn-btn" href="https://arc.aiaa.org/doi/book/10.2514/4.862350" target="_blank">Learn More</a>
+      </div>
+  
+      <div class="topic-card">
+        <div class="topic-title">Spacecraft Systems</div>
+        <p>Learn about subsystems for spacecraft including power, thermal, and attitude control.</p>
+        <a class="learn-btn" href="https://arc.aiaa.org/doi/book/10.2514/4.862458" target="_blank">Learn More</a>
+      </div>
+  
+      <div class="topic-card">
+        <div class="topic-title">Computational Fluid Dynamics</div>
+        <p>Study numerical methods for analyzing fluid flow around aerospace vehicles.</p>
+        <a class="learn-btn" href="https://arc.aiaa.org/doi/book/10.2514/4.102790" target="_blank">Learn More</a>
+      </div>
+  
+      <div class="topic-card">
+        <div class="topic-title">Electric Propulsion</div>
+        <p>Explore ion thrusters, Hall effect thrusters, and other electric propulsion technologies.</p>
+        <a class="learn-btn" href="https://arc.aiaa.org/doi/book/10.2514/4.866173" target="_blank">Learn More</a>
+      </div>
+  
+      <div class="topic-card">
+        <div class="topic-title">Avionics & Control Systems</div>
+        <p>Master aerospace electronics, navigation systems, and flight control algorithms.</p>
+        <a class="learn-btn" href="https://arc.aiaa.org/doi/book/10.2514/4.868894" target="_blank">Learn More</a>
+      </div>
+  
+      <div class="topic-card">
+        <div class="topic-title">Orbital Mechanics</div>
+        <p>Learn techniques for analyzing spacecraft orbits, trajectories, and maneuvers.</p>
+        <a class="learn-btn" href="https://arc.aiaa.org/doi/book/10.2514/4.862156" target="_blank">Learn More</a>
+      </div>
+  
+      <div class="topic-card">
+        <div class="topic-title">Aircraft Safety & Certification</div>
+        <p>Study certification processes, safety regulations, and airworthiness requirements.</p>
+        <a class="learn-btn" href="https://www.faa.gov/aircraft/air_cert/design_approvals/air_software/media/AC_20-115D.pdf" target="_blank">Learn More</a>
+      </div>
+  
+      <div class="topic-card">
+        <div class="topic-title">Aerospace Manufacturing</div>
+        <p>Understand production processes, quality control, and assembly techniques.</p>
+        <a class="learn-btn" href="https://arc.aiaa.org/doi/book/10.2514/4.103368" target="_blank">Learn More</a>
+      </div>
+  
+      <div class="topic-card">
+        <div class="topic-title">Space Environment</div>
+        <p>Explore radiation, microgravity, vacuum, and their effects on spacecraft design.</p>
+        <a class="learn-btn" href="https://www.nasa.gov/wp-content/uploads/2021/06/nasa-std-3001-vol-2-rev-b.pdf" target="_blank">Learn More</a>
+      </div>
+  
+      <div class="topic-card">
+        <div class="topic-title">Thermal Management</div>
+        <p>Study heating issues and thermal protection systems for aircraft and spacecraft.</p>
+        <a class="learn-btn" href="https://arc.aiaa.org/doi/book/10.2514/4.862458" target="_blank">Learn More</a>
+      </div>
+  
+      <div class="topic-card">
+        <div class="topic-title">Composite Structures</div>
+        <p>Learn strategies for designing and analyzing composite materials in aerospace applications.</p>
+        <a class="learn-btn" href="https://arc.aiaa.org/doi/book/10.2514/4.103719" target="_blank">Learn More</a>
+      </div>
+    </div>
+  </section>
+  
+
+  <section class="practice-section">
+    <h2 class="section-title">Software & Simulation Tools</h2>
+    <div class="practice-grid">
+      <div class="practice-card">
+        <h3>ANSYS Fluent</h3>
+        <p>Industry-standard tool for computational fluid dynamics and aerodynamic analysis.</p>
+        <a href="https://www.ansys.com/products/fluids/ansys-fluent" target="_blank" class="learn-btn">Explore Tool</a>
+      </div>
+
+      <div class="practice-card">
+        <h3>NASA OpenVSP</h3>
+        <p>Open-source parametric aircraft geometry tool for conceptual design.</p>
+        <a href="https://openvsp.org/" target="_blank" class="learn-btn">Explore Tool</a>
+      </div>
+
+      <div class="practice-card">
+        <h3>STK (Systems Tool Kit)</h3>
+        <p>Modeling and simulation software for space, defense, and intelligence analysis.</p>
+        <a href="https://www.agi.com/products/stk" target="_blank" class="learn-btn">Explore Tool</a>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2 class="section-title">Learning Resources</h2>
+    <div class="topics-grid">
+      <div class="topic-card">
+        <div class="topic-title">Online Courses</div>
+        <ul class="resource-list">
+          <li><a style="color: white; text-decoration: none;" href="https://www.edx.org/learn/aerospace-engineering" target="_blank"><i class="fas fa-graduation-cap"></i> edX Aerospace Courses</a></li><br>
+          <li><a style="color: white; text-decoration: none;" href="https://www.coursera.org/courses?query=aerospace%20engineering" target="_blank"><i class="fas fa-graduation-cap"></i> Coursera Aerospace Engineering</a></li><br>
+          <li><a style="color: white; text-decoration: none;" href="https://www.udemy.com/topic/aerospace-engineering/" target="_blank"><i class="fas fa-graduation-cap"></i> Udemy Aerospace Courses</a></li>
+        </ul>
+      </div>
+
+      <div class="topic-card">
+        <div class="topic-title">Technical Resources</div>
+        <ul class="resource-list">
+          <li><a style="color: white; text-decoration: none;" href="https://arc.aiaa.org/loi/jsr" target="_blank"><i class="fas fa-file-alt"></i> AIAA Journal of Spacecraft and Rockets</a></li><br>
+          <li><a style="color: white; text-decoration: none;" href="https://www.researchgate.net/topic/Aerospace-Engineering" target="_blank"><i class="fas fa-file-alt"></i> ResearchGate Aerospace Papers</a></li><br>
+          <li><a style="color: white; text-decoration: none;" href="https://www.sciencedirect.com/topics/engineering/aerospace-engineering" target="_blank"><i class="fas fa-file-alt"></i> ScienceDirect Aerospace Research</a></li>
+        </ul>
+      </div>
+
+      <div class="topic-card">
+        <div class="topic-title">Industry Publications</div>
+        <ul class="resource-list">
+          <li><a style="color: white; text-decoration: none;" href="https://aerospaceamerica.aiaa.org/" target="_blank"><i class="fas fa-newspaper"></i> Aerospace America</a></li><br>
+          <li><a style="color: white; text-decoration: none;" href="https://www.aviationweek.com/" target="_blank"><i class="fas fa-newspaper"></i> Aviation Week</a></li><br>
+          <li><a style="color: white; text-decoration: none;" href="https://www.spacenews.com/" target="_blank"><i class="fas fa-newspaper"></i> Space News</a></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <p class="quote">"Earth is the cradle of humanity, but one cannot live in a cradle forever." - Konstantin Tsiolkovsky</p>
+  </footer>
+
+  <script>
+    // Mobile menu toggle functionality could be added here if needed
+    document.addEventListener('DOMContentLoaded', function() {
+      // Smooth scrolling for anchor links
+      document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+          e.preventDefault();
+
+          const targetId = this.getAttribute('href');
+          if (targetId === '#') return;
+
+          const targetElement = document.querySelector(targetId);
+          if (targetElement) {
+            window.scrollTo({
+              top: targetElement.offsetTop - 70,
+              behavior: 'smooth'
+            });
+          }
+        });
+      });
+    });
+  </script>
+</body>
+
+</html>

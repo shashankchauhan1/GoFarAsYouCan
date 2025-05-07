@@ -1,0 +1,626 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Web Development Learning Hub</title>
+  <style>
+    /* Base Styles */
+    :root {
+      --primary-bg: #121726;
+      --section-bg: #1a1f35;
+      --card-bg: #242a42;
+      --card-hover: #2d3250;
+      --text-primary: #e6e7f0;
+      --text-secondary: #a0a4b8;
+      --accent: #00bcd4;
+      --accent-hover: #0097a7;
+      --highlight: #6d28d9;
+      --border: #2d3250;
+    }
+    
+    html {
+      scroll-behavior: smooth;
+    }
+    
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: var(--primary-bg);
+      color: var(--text-primary);
+      line-height: 1.6;
+    }
+    
+    /* Navigation Bar */
+    .navbar {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      background-color: rgba(18, 23, 38, 0.95);
+      padding: 1rem;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      backdrop-filter: blur(8px);
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+    
+    .navbar a {
+      color: var(--text-primary);
+      margin: 8px 12px;
+      text-decoration: none;
+      font-size: 16px;
+      position: relative;
+      padding: 6px 0;
+      transition: color 0.3s;
+    }
+    
+    .navbar a:hover {
+      color: var(--accent);
+    }
+    
+    .navbar a::after {
+      content: '';
+      position: absolute;
+      width: 0;
+      height: 2px;
+      bottom: 0;
+      left: 0;
+      background-color: var(--accent);
+      transition: width 0.3s ease;
+    }
+    
+    .navbar a:hover::after {
+      width: 100%;
+    }
+    
+    /* Header Section */
+    header {
+      text-align: center;
+      padding: 4rem 2rem;
+      background: linear-gradient(135deg, #2D1B69 0%, #1F5093 100%);
+      color: white;
+      animation: fadeIn 1.5s ease-in;
+      border-bottom: 3px solid var(--accent);
+    }
+    
+    header h1 {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    }
+    
+    header p {
+      font-size: 1.2rem;
+      max-width: 700px;
+      margin: 0 auto;
+      color: rgba(255, 255, 255, 0.9);
+    }
+    
+    /* Sections */
+    section {
+      padding: 3rem;
+      background: var(--section-bg);
+      margin: 1.5rem;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+      animation: fadeIn 1s ease-in;
+      border: 1px solid var(--border);
+    }
+    
+    section h2 {
+      text-align: center;
+      color: var(--accent);
+      margin-bottom: 2rem;
+      position: relative;
+      display: inline-block;
+      padding-bottom: 0.5rem;
+    }
+    
+    section h2::after {
+      content: '';
+      position: absolute;
+      width: 60%;
+      height: 3px;
+      background: linear-gradient(90deg, transparent, var(--accent), transparent);
+      bottom: 0;
+      left: 20%;
+    }
+    
+    .section-header {
+      text-align: center;
+      margin-bottom: 2.5rem;
+    }
+    
+    /* Tech Cards */
+    .tech-card {
+      background: var(--card-bg);
+      padding: 25px;
+      border-radius: 12px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      margin-bottom: 25px;
+      transition: all 0.3s ease;
+      border: 1px solid var(--border);
+    }
+    
+    .tech-card:hover {
+      transform: translateY(-5px) scale(1.02);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+      background: var(--card-hover);
+      border-color: var(--accent);
+    }
+    
+    .tech-card h3 {
+      color: var(--accent);
+      margin-top: 0;
+      font-size: 1.4rem;
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 10px;
+      margin-bottom: 15px;
+    }
+    
+    .tech-card p {
+      color: var(--text-secondary);
+      margin-bottom: 1.5rem;
+      line-height: 1.6;
+    }
+    
+    .learn-btn {
+      display: inline-block;
+      padding: 10px 16px;
+      background-color: var(--accent);
+      color: white;
+      border: none;
+      border-radius: 6px;
+      text-decoration: none;
+      font-weight: 500;
+      transition: all 0.3s;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    }
+    
+    .learn-btn:hover {
+      background-color: var(--accent-hover);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    }
+    
+    /* Framework comparison section */
+    .framework-comparison {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 25px;
+      margin-top: 20px;
+    }
+    
+    /* Animations */
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(-20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    
+    .fade-in {
+      animation: fadeIn 1s ease-in;
+    }
+    
+    .section-title {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 2rem;
+    }
+    
+    .section-title::before,
+    .section-title::after {
+      content: "";
+      flex: 1;
+      height: 1px;
+      background: var(--border);
+      margin: 0 1rem;
+    }
+    
+    /* Back to top button */
+    .back-to-top {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background: var(--accent);
+      color: white;
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+      opacity: 0;
+      pointer-events: none;
+      transition: all 0.3s;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+      z-index: 1000;
+    }
+    
+    .back-to-top.visible {
+      opacity: 1;
+      pointer-events: auto;
+    }
+    
+    /* Responsive styles */
+    @media (max-width: 768px) {
+      section {
+        padding: 2rem 1.5rem;
+        margin: 1rem;
+      }
+      
+      .tech-card {
+        padding: 20px;
+        margin-bottom: 20px;
+      }
+      
+      header h1 {
+        font-size: 2rem;
+      }
+      
+      header p {
+        font-size: 1rem;
+      }
+      
+      .navbar {
+        padding: 0.8rem;
+      }
+      
+      .navbar a {
+        margin: 6px 8px;
+        font-size: 14px;
+      }
+      
+      .framework-comparison {
+        grid-template-columns: 1fr;
+      }
+    }
+    
+    @media (max-width: 480px) {
+      section {
+        padding: 1.5rem 1rem;
+        margin: 0.8rem;
+      }
+      
+      header {
+        padding: 3rem 1rem;
+      }
+      
+      header h1 {
+        font-size: 1.8rem;
+      }
+      
+      .tech-card h3 {
+        font-size: 1.2rem;
+      }
+    }
+    
+    /* Theme toggle */
+    .theme-toggle {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      z-index: 1001;
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      color: var(--text-primary);
+      padding: 8px 12px;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: all 0.3s;
+      font-size: 14px;
+    }
+    
+    .theme-toggle:hover {
+      background: var(--card-hover);
+      border-color: var(--accent);
+    }
+    
+    .resource-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 20px;
+      margin-top: 20px;
+    }
+    
+    .channel-card {
+      background: var(--card-bg);
+      padding: 20px;
+      border-radius: 12px;
+      border: 1px solid var(--border);
+      transition: all 0.3s ease;
+    }
+    
+    .channel-card:hover {
+      transform: translateY(-5px);
+      border-color: var(--accent);
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    }
+    
+    .channel-card h4 {
+      color: var(--highlight);
+      margin: 0 0 10px 0;
+      font-size: 1.2rem;
+    }
+    
+    .channel-card p {
+      color: var(--text-secondary);
+      margin: 0 0 15px 0;
+      font-size: 0.95rem;
+    }
+    
+    .channel-link {
+      color: var(--accent);
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.3s;
+    }
+    
+    .channel-link:hover {
+      color: var(--accent-hover);
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <div class="navbar">
+    <a href="#frontend">Frontend</a>
+    <a href="#css-frameworks">CSS Frameworks</a>
+    <a href="#js-frameworks">JS Frameworks</a>
+    <a href="#backend">Backend</a>
+    <a href="#database">Database</a>
+    <a href="#deployment">Deployment</a>
+    <a href="/Engineering/CSE/cse.ejs">Go Back</a>
+  </div>
+  
+  <header>
+    <h1>Web Development</h1>
+    <p>Master modern web development with comprehensive resources, expert guidance, and hands-on practice</p>
+  </header>
+  
+  <section id="frontend" class="fade-in">
+    <div class="section-title">
+      <h2>Frontend Technologies</h2>
+    </div>
+    
+    <div class="tech-card">
+      <h3>HTML</h3>
+      <p>The skeleton of the web. Learn how to structure web pages effectively with semantic markup, accessibility best practices, and modern HTML5 features.</p>
+      <a class="learn-btn" href="https://developer.mozilla.org/en-US/docs/Web/HTML" target="_blank">Learn More</a>
+    </div>
+    
+    <div class="tech-card">
+      <h3>CSS</h3>
+      <p>Style your web pages beautifully with Cascading Style Sheets. Master layouts, animations, responsive design, and modern features like CSS Grid and Flexbox.</p>
+      <a class="learn-btn" href="https://developer.mozilla.org/en-US/docs/Web/CSS" target="_blank">Learn More</a>
+    </div>
+    
+    <div class="tech-card">
+      <h3>JavaScript</h3>
+      <p>Add interactivity and dynamic behavior to your websites. Learn core concepts, DOM manipulation, asynchronous programming, and modern ES6+ features.</p>
+      <a class="learn-btn" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript" target="_blank">Learn More</a>
+    </div>
+  </section>
+  
+  <section id="css-frameworks" class="fade-in">
+    <div class="section-title">
+      <h2>CSS Frameworks</h2>
+    </div>
+    
+    <div class="framework-comparison">
+      <div class="tech-card">
+        <h3>Tailwind CSS</h3>
+        <p>A utility-first CSS framework that promotes rapid UI development with pre-defined classes. Perfect for custom designs with minimal CSS and maximum flexibility.</p>
+        <p><strong>Best For:</strong> Custom designs, rapid prototyping, developer experience.</p>
+        <a class="learn-btn" href="https://tailwindcss.com/" target="_blank">Learn More</a>
+      </div>
+      
+      <div class="tech-card">
+        <h3>Bootstrap</h3>
+        <p>The most popular CSS framework featuring pre-designed components and a responsive grid system. Excellent for quickly building consistent, professional interfaces.</p>
+        <p><strong>Best For:</strong> Rapid development, consistency across projects, enterprise applications.</p>
+        <a class="learn-btn" href="https://getbootstrap.com/" target="_blank">Learn More</a>
+      </div>
+      
+    </div>
+  </section>
+  
+  <section id="js-frameworks" class="fade-in">
+    <div class="section-title">
+      <h2>JavaScript Frameworks</h2>
+    </div>
+    
+    <div class="framework-comparison">
+      <div class="tech-card">
+        <h3>React.js</h3>
+        <p>A declarative, component-based library for building user interfaces. Features a virtual DOM for efficient updates and a vast ecosystem of tools and libraries.</p>
+        <p><strong>Best For:</strong> Large applications, teams that need flexibility, companies with existing JavaScript expertise.</p>
+        <a class="learn-btn" href="https://reactjs.org/" target="_blank">Learn More</a>
+      </div>
+      
+      <div class="tech-card">
+        <h3>Vue.js</h3>
+        <p>A progressive framework for building user interfaces with an incrementally adoptable architecture. Combines the best aspects of other frameworks with a gentle learning curve.</p>
+        <p><strong>Best For:</strong> Gradual adoption, smaller teams, projects requiring simple integration into existing systems.</p>
+        <a class="learn-btn" href="https://vuejs.org/" target="_blank">Learn More</a>
+      </div>
+      
+      <div class="tech-card">
+        <h3>Angular</h3>
+        <p>A platform and framework for building single-page client applications using TypeScript. Provides a comprehensive solution with built-in features for forms, routing, and state management.</p>
+        <p><strong>Best For:</strong> Enterprise applications, large teams with TypeScript experience, projects requiring strict architecture.</p>
+        <a class="learn-btn" href="https://angular.io/" target="_blank">Learn More</a>
+      </div>
+    </div>
+    
+    <div class="tech-card">
+      <h3>Next.js</h3>
+      <p>Production-ready React framework for server-side rendering, static site generation, and more. Optimized for performance and developer experience with automatic routing and API routes.</p>
+      <a class="learn-btn" href="https://nextjs.org/" target="_blank">Learn More</a>
+    </div>
+    
+  </section>
+  
+  <section id="backend" class="fade-in">
+    <div class="section-title">
+      <h2>Backend Technologies</h2>
+    </div>
+    
+    <div class="tech-card">
+      <h3>Node.js</h3>
+      <p>JavaScript runtime built on Chrome's V8 engine. Used to build scalable backend services with an event-driven, non-blocking I/O model perfect for data-intensive applications.</p>
+      <a class="learn-btn" href="https://nodejs.org/en" target="_blank">Learn More</a>
+    </div>
+    
+    <div class="tech-card">
+      <h3>Express.js</h3>
+      <p>Fast, unopinionated, minimalist web framework for Node.js. The de facto standard for building APIs and web applications with Node.js through robust middleware architecture.</p>
+      <a class="learn-btn" href="https://expressjs.com/" target="_blank">Learn More</a>
+    </div>
+    
+    
+  </section>
+  
+  <section id="database" class="fade-in">
+    <div class="section-title">
+      <h2>Database Technologies</h2>
+    </div>
+    
+    <div class="tech-card">
+      <h3>MongoDB</h3>
+      <p>Popular NoSQL database for modern applications, stores data in JSON-like documents with dynamic schemas. Ideal for applications with evolving data requirements.</p>
+      <a class="learn-btn" href="https://www.mongodb.com/" target="_blank">Learn More</a>
+    </div>
+    
+    <div class="tech-card">
+      <h3>PostgreSQL</h3>
+      <p>Powerful, open-source object-relational database system with a strong reputation for reliability, feature robustness, and performance. Excellent for complex data models.</p>
+      <a class="learn-btn" href="https://www.postgresql.org/" target="_blank">Learn More</a>
+    </div>
+    
+    <div class="tech-card">
+      <h3>MySQL</h3>
+      <p>The world's most popular open-source relational database management system. Known for its speed, reliability, and ease of use in web applications.</p>
+      <a class="learn-btn" href="https://www.mysql.com/" target="_blank">Learn More</a>
+    </div>
+    
+    <div class="tech-card">
+      <h3>Firebase</h3>
+      <p>Google's platform for building web and mobile applications without server-side programming. Offers real-time database, authentication, and hosting services.</p>
+      <a class="learn-btn" href="https://firebase.google.com/" target="_blank">Learn More</a>
+    </div>
+  </section>
+  
+  <section id="deployment" class="fade-in">
+    <div class="section-title">
+      <h2>Deployment & Version Control</h2>
+    </div>
+    
+    <div class="tech-card">
+      <h3>Git</h3>
+      <p>Distributed version control system to track changes in your codebase effectively. Essential for team collaboration and managing code history.</p>
+      <a class="learn-btn" href="https://git-scm.com/" target="_blank">Learn More</a>
+    </div>
+    
+    <div class="tech-card">
+      <h3>GitHub</h3>
+      <p>Hosting platform for Git repositories, enabling collaborative development with features like pull requests, issues, and actions for CI/CD workflows.</p>
+      <a class="learn-btn" href="https://github.com/" target="_blank">Learn More</a>
+    </div>
+    
+    <div class="tech-card">
+      <h3>Vercel</h3>
+      <p>Deploy your Next.js and frontend projects effortlessly. Specializes in static site generation and serverless functions with automatic previews for each commit.</p>
+      <a class="learn-btn" href="https://vercel.com/" target="_blank">Learn More</a>
+    </div>
+    
+    <div class="tech-card">
+      <h3>Netlify</h3>
+      <p>All-in-one platform for automating modern web projects with continuous deployment, serverless functions, and global CDN distribution.</p>
+      <a class="learn-btn" href="https://www.netlify.com/" target="_blank">Learn More</a>
+    </div>
+    
+    
+  </section>
+  
+  <section id="learning-resources" class="fade-in">
+    <div class="section-title">
+      <h2>Learning Resources</h2>
+    </div>
+    
+    <div class="tech-card">
+      <h3>Frontend Development</h3>
+      <div class="resource-grid">
+        <div class="channel-card">
+          <h4>Traversy Media</h4>
+          <p>Comprehensive web development tutorials covering HTML, CSS, JavaScript, and modern frameworks.</p>
+          <a href="https://www.youtube.com/@TraversyMedia" class="channel-link" target="_blank">Visit Channel →</a>
+        </div>
+        <div class="channel-card">
+          <h4>Web Dev Simplified</h4>
+          <p>Clear explanations of web development concepts with practical project tutorials.</p>
+          <a href="https://www.youtube.com/@WebDevSimplified" class="channel-link" target="_blank">Visit Channel →</a>
+        </div>
+        <div class="channel-card">
+          <h4>Kevin Powell</h4>
+          <p>Expert CSS tutorials and modern web design techniques.</p>
+          <a href="https://www.youtube.com/@KevinPowell" class="channel-link" target="_blank">Visit Channel →</a>
+        </div>
+      </div>
+    </div>
+    
+    <div class="tech-card">
+      <h3>JavaScript & Frameworks</h3>
+      <div class="resource-grid">
+        <div class="channel-card">
+          <h4>Jack Herrington</h4>
+          <p>Advanced React patterns, performance optimization, and modern JavaScript.</p>
+          <a href="https://www.youtube.com/@jherr" class="channel-link" target="_blank">Visit Channel →</a>
+        </div>
+        <div class="channel-card">
+          <h4>Fireship</h4>
+          <p>Quick, informative tutorials on modern web technologies and frameworks.</p>
+          <a href="https://www.youtube.com/@Fireship" class="channel-link" target="_blank">Visit Channel →</a>
+        </div>
+        <div class="channel-card">
+          <h4>Academind</h4>
+          <p>In-depth courses on React, Angular, Vue, and full-stack development.</p>
+          <a href="https://www.youtube.com/@academind" class="channel-link" target="_blank">Visit Channel →</a>
+        </div>
+      </div>
+    </div>
+    
+    <div class="tech-card">
+      <h3>Backend Development</h3>
+      <div class="resource-grid">
+        <div class="channel-card">
+          <h4>Net Ninja</h4>
+          <p>Full-stack tutorials covering Node.js, databases, and modern backend technologies.</p>
+          <a href="https://www.youtube.com/@NetNinja" class="channel-link" target="_blank">Visit Channel →</a>
+        </div>
+        <div class="channel-card">
+          <h4>Coding Train</h4>
+          <p>Creative coding tutorials with focus on JavaScript and backend concepts.</p>
+          <a href="https://www.youtube.com/@TheCodingTrain" class="channel-link" target="_blank">Visit Channel →</a>
+        </div>
+        <div class="channel-card">
+          <h4>Ben Awad</h4>
+          <p>Advanced full-stack development tutorials and real-world projects.</p>
+          <a href="https://www.youtube.com/@benawad" class="channel-link" target="_blank">Visit Channel →</a>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  
+</body>
+</html>

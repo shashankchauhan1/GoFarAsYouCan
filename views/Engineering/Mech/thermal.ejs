@@ -1,0 +1,1309 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thermal Engineering - GoFarAsYouCan</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* Base Styles */
+        :root {
+            --primary-color: #e53935;
+            --primary-light: #ff6f60;
+            --secondary-color: #b71c1c;
+            --accent-color: #ff9800;
+            --text-color: #333;
+            --light-text: #fff;
+            --light-bg: #f9f9f9;
+            --dark-bg: #2d2d2d;
+            --card-bg: #fff;
+            --border-radius: 8px;
+            --box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--light-bg);
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        a {
+            text-decoration: none;
+            color: var(--primary-color);
+            transition: var(--transition);
+        }
+
+        a:hover {
+            color: var(--secondary-color);
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            border-radius: var(--border-radius);
+        }
+
+        .bg-light {
+            background-color: var(--light-bg);
+        }
+
+        /* Navbar */
+        .navbar {
+            background-color: var(--dark-bg);
+            color: var(--light-text);
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: var(--box-shadow);
+        }
+
+        .navbar .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--light-text);
+        }
+
+        .back-button a {
+            color: var(--light-text);
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .back-button a:hover {
+            color: var(--accent-color);
+        }
+
+        /* Hero Section */
+        .hero {
+            background-color: var(--dark-bg);
+            color: var(--light-text);
+            text-align: center;
+            padding: 6rem 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://images.unsplash.com/photo-1576400883215-7083980b6193?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80') center/cover;
+            opacity: 0.8;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            position: relative;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        /* Section Styles */
+        .section {
+            padding: 5rem 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+            color: var(--primary-color);
+            position: relative;
+            font-size: 2rem;
+        }
+
+        .section-title::after {
+            content: "";
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background-color: var(--accent-color);
+        }
+
+        .section-intro {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto 2.5rem;
+            font-size: 1.1rem;
+        }
+
+        /* Content Wrapper */
+        .content-wrapper {
+            display: flex;
+            gap: 2.5rem;
+            align-items: center;
+        }
+
+        .text-content {
+            flex: 1;
+        }
+
+        .text-content p {
+            margin-bottom: 1.25rem;
+            font-size: 1.05rem;
+        }
+
+        .image-content {
+            flex: 1;
+            box-shadow: var(--box-shadow);
+            border-radius: var(--border-radius);
+            overflow: hidden;
+        }
+
+        /* Cards Grid */
+        .cards-grid {
+            display: grid;
+            gap: 1.5rem;
+        }
+
+        .two-columns {
+            grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+        }
+
+        .three-columns {
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        }
+
+        .four-columns {
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        }
+
+        /* Card Styles */
+        .card {
+            background-color: var(--card-bg);
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--box-shadow);
+            transition: var(--transition);
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .card-header {
+            padding: 1.25rem 1.25rem 0.5rem;
+        }
+
+        .card-header h3 {
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .card-header h3 i {
+            color: var(--primary-color);
+        }
+
+        .card-header p {
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        .card-content {
+            padding: 0.5rem 1.25rem 1.25rem;
+        }
+
+        /* Application Cards */
+        .application-card {
+            position: relative;
+            overflow: hidden;
+            height: 200px;
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+        }
+
+        .application-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .application-card:hover img {
+            transform: scale(1.05);
+        }
+
+        .application-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(transparent, rgba(0, 0, 0, 0.8));
+            padding: 1rem;
+            color: white;
+        }
+
+        .application-overlay h3 {
+            margin-bottom: 0.5rem;
+            font-size: 1.2rem;
+        }
+
+        /* Career List */
+        .career-list {
+            list-style: none;
+        }
+
+        .career-list li {
+            display: flex;
+            justify-content: space-between;
+            padding: 0.5rem 0;
+            border-bottom: 1px solid #eee;
+        }
+
+        .career-list li:last-child {
+            border-bottom: none;
+        }
+
+        .badge {
+            background-color: #e5e7eb;
+            color: #4b5563;
+            padding: 0.25rem 0.5rem;
+            border-radius: 9999px;
+            font-size: 0.75rem;
+            font-weight: 600;
+        }
+
+        .badge.top {
+            background-color: var(--primary-light);
+            color: white;
+        }
+
+        .badge.program {
+            background-color: var(--accent-color);
+            color: white;
+        }
+
+        .growth-sectors {
+            margin-top: 1rem;
+        }
+
+        .text-success {
+            color: #10b981;
+            font-weight: 600;
+            font-size: 1.05rem;
+        }
+
+        /* Education Pathways */
+        .education-pathways {
+            margin-top: 2.5rem;
+            background-color: white;
+            padding: 1.5rem;
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+        }
+
+        .education-pathways h3 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            font-size: 1.25rem;
+        }
+
+        .pathways-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+        }
+
+        .pathway-card {
+            border: 1px solid #e5e7eb;
+            padding: 1rem;
+            border-radius: var(--border-radius);
+        }
+
+        .pathway-card h4 {
+            margin-bottom: 0.5rem;
+            font-size: 1.1rem;
+        }
+
+        /* Skills List */
+        .skills-list {
+            list-style: none;
+        }
+
+        .skills-list li {
+            padding: 0.5rem 0;
+            border-bottom: 1px solid #eee;
+        }
+
+        .skills-list li:last-child {
+            border-bottom: none;
+        }
+
+        .skill-name {
+            font-weight: 600;
+            display: block;
+            margin-bottom: 0.25rem;
+        }
+
+        .skill-desc {
+            font-size: 0.9rem;
+            color: #666;
+        }
+
+        /* Accordion */
+        .accordion {
+            border-radius: var(--border-radius);
+            overflow: hidden;
+        }
+
+        .accordion-item {
+            border-bottom: 1px solid #e5e7eb;
+        }
+
+        .accordion-item:last-child {
+            border-bottom: none;
+        }
+
+        .accordion-header {
+            padding: 1rem;
+            cursor: pointer;
+            font-weight: 600;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: var(--transition);
+        }
+
+        .accordion-header::after {
+            content: '\f078';
+            font-family: 'Font Awesome 5 Free';
+            font-weight: 900;
+            transition: var(--transition);
+        }
+
+        .accordion-header.active::after {
+            transform: rotate(180deg);
+        }
+
+        .accordion-content {
+            padding: 0 1rem;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+        }
+
+        .accordion-content p {
+            padding-bottom: 1rem;
+        }
+
+        .accordion-item.active .accordion-header {
+            background-color: #fff5f5;
+        }
+
+        .accordion-item.active .accordion-content {
+            max-height: 500px;
+        }
+
+        /* Specialization Grid */
+        .specialization-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .specialization-card {
+            background-color: white;
+            padding: 1.5rem 1rem;
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+            text-align: center;
+            transition: var(--transition);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            color: var(--text-color);
+        }
+
+        .specialization-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+            background-color: var(--primary-color);
+            color: var(--light-text);
+        }
+
+        .specialization-card i {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: var(--primary-color);
+            transition: var(--transition);
+        }
+
+        .specialization-card:hover i {
+            color: var(--light-text);
+        }
+
+        .specialization-card h3 {
+            font-size: 1rem;
+        }
+
+        /* Tabs */
+        .tabs {
+            margin-bottom: 2rem;
+        }
+
+        .tab-buttons {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 2rem;
+        }
+
+        .tab-button {
+            padding: 0.75rem 1.5rem;
+            background-color: #e5e7eb;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: 600;
+            transition: var(--transition);
+        }
+
+        .tab-button:first-child {
+            border-radius: var(--border-radius) 0 0 var(--border-radius);
+        }
+
+        .tab-button:last-child {
+            border-radius: 0 var(--border-radius) var(--border-radius) 0;
+        }
+
+        .tab-button.active {
+            background-color: var(--primary-color);
+            color: var(--light-text);
+        }
+
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        /* Colleges Grid */
+        .colleges-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .college-card {
+            background-color: white;
+            padding: 1.25rem;
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+            transition: var(--transition);
+        }
+
+        .college-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .college-card h3 {
+            color: var(--primary-color);
+            margin-bottom: 0.25rem;
+        }
+
+        .college-location {
+            color: #666;
+            margin-bottom: 0.75rem;
+            font-size: 0.9rem;
+        }
+
+        .college-details {
+            display: flex;
+            justify-content: space-between;
+            color: #666;
+            font-size: 0.85rem;
+            margin-bottom: 1rem;
+        }
+
+        .college-rank, .college-year {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .college-rank i {
+            color: var(--accent-color);
+        }
+
+        .college-year i {
+            color: var(--primary-color);
+        }
+
+        .college-info {
+            border-top: 1px solid #eee;
+            padding-top: 1rem;
+        }
+
+        .college-info p {
+            margin-bottom: 0.5rem;
+            font-size: 0.9rem;
+        }
+
+        .college-info span {
+            font-weight: 600;
+        }
+
+        /* FAQ Section */
+        .faq-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        /* Footer */
+        .footer {
+            background-color: var(--dark-bg);
+            color: var(--light-text);
+            padding: 4rem 0 1rem;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2.5rem;
+            margin-bottom: 2.5rem;
+        }
+
+        .footer-logo h2 {
+            margin-bottom: 1rem;
+        }
+
+        .footer-links h3,
+        .footer-resources h3 {
+            margin-bottom: 1.25rem;
+            position: relative;
+            padding-bottom: 0.5rem;
+            display: inline-block;
+        }
+
+        .footer-links h3::after,
+        .footer-resources h3::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background-color: var(--accent-color);
+        }
+
+        .footer-links ul,
+        .footer-resources ul {
+            list-style-type: none;
+        }
+
+        .footer-links li,
+        .footer-resources li {
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-links a,
+        .footer-resources a {
+            color: #ccc;
+        }
+
+        .footer-links a:hover,
+        .footer-resources a:hover {
+            color: var(--accent-color);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 1.25rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .content-wrapper {
+                flex-direction: column;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .two-columns {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .section {
+                padding: 3.5rem 0;
+            }
+
+            .hero {
+                padding: 5rem 0;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .section-title {
+                font-size: 1.75rem;
+            }
+
+            .college-details {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .navbar {
+                padding: 0.75rem 0;
+            }
+
+            .logo {
+                font-size: 1.2rem;
+            }
+
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+
+            .section-title {
+                font-size: 1.5rem;
+            }
+
+            .tab-buttons {
+                flex-direction: column;
+                width: 100%;
+                max-width: 300px;
+                margin: 0 auto 1.5rem;
+            }
+
+            .tab-button {
+                border-radius: 0;
+            }
+
+            .tab-button:first-child {
+                border-radius: var(--border-radius) var(--border-radius) 0 0;
+            }
+
+            .tab-button:last-child {
+                border-radius: 0 0 var(--border-radius) var(--border-radius);
+            }
+
+            .specialization-grid {
+                grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="logo">GoFarAsYouCan</div>
+            <div class="back-button">
+                <a href="/Engineering/MECH/mech.ejs"><i class="fas fa-arrow-left"></i> Back</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="hero">
+        <div class="overlay"></div>
+        <div class="container">
+            <h1>Thermal Engineering</h1>
+            <p>Explore the science of heat transfer, thermodynamics, and energy systems that power our world</p>
+        </div>
+    </header>
+
+    <!-- What is Thermal Engineering Section -->
+    <section class="section" id="about">
+        <div class="container">
+            <h2 class="section-title">What is Thermal Engineering?</h2>
+            <div class="content-wrapper">
+                <div class="text-content">
+                    <p>Thermal engineering is a specialized branch of mechanical engineering that focuses on the principles of thermodynamics, heat transfer, and fluid mechanics to design, analyze, and optimize thermal systems and energy conversion processes.</p>
+                    <p>Thermal engineers work with systems that involve the generation, transfer, and utilization of heat energy. They develop solutions for heating, cooling, power generation, and energy efficiency across various industries including power plants, HVAC systems, automotive, aerospace, and renewable energy.</p>
+                    <p>As a thermal engineer, you'll be at the forefront of addressing global energy challenges, developing sustainable energy solutions, and improving the efficiency of thermal systems to reduce environmental impact.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Applications Section -->
+    <section class="section bg-light" id="applications">
+        <div class="container">
+            <h2 class="section-title">Applications of Thermal Engineering</h2>
+            <p class="section-intro">Thermal engineering principles are applied across numerous industries and technologies:</p>
+            
+            <div class="cards-grid three-columns">
+                <div class="application-card">
+                    <img src="https://images.unsplash.com/photo-1513828583688-c52646db42da?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Power Generation">
+                    <div class="application-overlay">
+                        <h3>Power Generation</h3>
+                        <p>Thermal, nuclear, and renewable power plants</p>
+                    </div>
+                </div>
+                
+                <div class="application-card">
+                    <img src="https://5.imimg.com/data5/SELLER/Default/2024/8/440479849/US/NR/JM/30513881/hvac-systems-jpeg.jpeg" alt="HVAC Systems">
+                    <div class="application-overlay">
+                        <h3>HVAC Systems</h3>
+                        <p>Heating, ventilation, and air conditioning</p>
+                    </div>
+                </div>
+                
+                <div class="application-card">
+                    <img src="https://imgd.aeplcdn.com/1280x720/n/cw/ec/167293/infographics0.jpeg?isig=1&q=75" alt="Automotive Thermal Management">
+                    <div class="application-overlay">
+                        <h3>Automotive</h3>
+                        <p>Engine cooling, HVAC, and battery thermal management</p>
+                    </div>
+                </div>
+                
+                <div class="application-card">
+                    <img src="https://images.unsplash.com/photo-1532601224476-15c79f2f7a51?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Aerospace Thermal Systems">
+                    <div class="application-overlay">
+                        <h3>Aerospace</h3>
+                        <p>Aircraft engine cooling and cabin climate control</p>
+                    </div>
+                </div>
+                
+                <div class="application-card">
+                    <img src="https://images.unsplash.com/photo-1509391366360-2e959784a276?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Renewable Energy">
+                    <div class="application-overlay">
+                        <h3>Renewable Energy</h3>
+                        <p>Solar thermal, geothermal, and biomass systems</p>
+                    </div>
+                </div>
+                
+                <div class="application-card">
+                    <img src="https://images.unsplash.com/photo-1504917595217-d4dc5ebe6122?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Industrial Processes">
+                    <div class="application-overlay">
+                        <h3>Industrial Processes</h3>
+                        <p>Manufacturing, chemical processing, and refineries</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Career Paths Section -->
+    <section class="section" id="careers">
+        <div class="container">
+            <h2 class="section-title">Career Paths & Outlook</h2>
+            
+            <div class="cards-grid three-columns">
+                <div class="card">
+                    <div class="card-header">
+                        <h3><i class="fas fa-briefcase"></i> Industry Roles</h3>
+                    </div>
+                    <div class="card-content">
+                        <ul class="career-list">
+                            <li>
+                                <span>Thermal Systems Engineer</span>
+                                <span class="badge">₹5-15 LPA</span>
+                            </li>
+                            <li>
+                                <span>HVAC Design Engineer</span>
+                                <span class="badge">₹4-12 LPA</span>
+                            </li>
+                            <li>
+                                <span>Energy Systems Analyst</span>
+                                <span class="badge">₹6-18 LPA</span>
+                            </li>
+                            <li>
+                                <span>Power Plant Engineer</span>
+                                <span class="badge">₹7-20 LPA</span>
+                            </li>
+                            <li>
+                                <span>CFD Simulation Specialist</span>
+                                <span class="badge top">₹8-22 LPA</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <h3><i class="fas fa-chart-line"></i> Job Outlook</h3>
+                    </div>
+                    <div class="card-content">
+                        <p>The demand for thermal engineers in India is projected to grow by 12% through 2030, driven by energy efficiency initiatives, renewable energy expansion, and infrastructure development.</p>
+                        <div class="growth-sectors">
+                            <span class="text-success">Growth Sectors:</span>
+                            <ul>
+                                <li>• Renewable Energy Systems</li>
+                                <li>• Green Building Design</li>
+                                <li>• Electric Vehicle Thermal Management</li>
+                                <li>• Data Center Cooling</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <h3><i class="fas fa-award"></i> Certifications</h3>
+                    </div>
+                    <div class="card-content">
+                        <ul>
+                            <li>• Certified Energy Manager (CEM)</li>
+                            <li>• ASHRAE Certifications</li>
+                            <li>• Certified HVAC Designer (CHD)</li>
+                            <li>• LEED Accredited Professional</li>
+                            <li>• Computational Fluid Dynamics (CFD) Certification</li>
+                            <li>• Thermal Systems Simulation Specialist</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="education-pathways">
+                <h3>Higher Education Pathways</h3>
+                <div class="pathways-grid">
+                    <div class="pathway-card">
+                        <h4>M.Tech in Thermal Engineering</h4>
+                        <p>Specialized master's programs focusing on advanced thermodynamics, heat transfer, and energy systems.</p>
+                    </div>
+                    <div class="pathway-card">
+                        <h4>M.Tech in Energy Systems</h4>
+                        <p>Programs focusing on conventional and renewable energy technologies and systems.</p>
+                    </div>
+                    <div class="pathway-card">
+                        <h4>Ph.D. in Thermal Sciences</h4>
+                        <p>Research-focused doctoral programs for academic and advanced R&D positions.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- What to Master Section -->
+    <section class="section bg-light" id="skills">
+        <div class="container">
+            <h2 class="section-title">What to Master</h2>
+            <div class="cards-grid three-columns">
+                <div class="card">
+                    <div class="card-header">
+                        <h3><i class="fas fa-book-open"></i> Core Technical Skills</h3>
+                    </div>
+                    <div class="card-content">
+                        <ul class="skills-list">
+                            <li>
+                                <span class="skill-name">Thermodynamics</span>
+                                <p class="skill-desc">Laws of thermodynamics, cycles, and energy conversion</p>
+                            </li>
+                            <li>
+                                <span class="skill-name">Heat Transfer</span>
+                                <p class="skill-desc">Conduction, convection, radiation, and phase change</p>
+                            </li>
+                            <li>
+                                <span class="skill-name">Fluid Mechanics</span>
+                                <p class="skill-desc">Fluid flow, turbulence, and computational fluid dynamics</p>
+                            </li>
+                            <li>
+                                <span class="skill-name">Energy Systems</span>
+                                <p class="skill-desc">Power generation, energy conversion, and efficiency analysis</p>
+                            </li>
+                            <li>
+                                <span class="skill-name">Thermal System Design</span>
+                                <p class="skill-desc">Heat exchangers, boilers, condensers, and cooling systems</p>
+                            </li>
+                            <li>
+                                <span class="skill-name">Combustion Engineering</span>
+                                <p class="skill-desc">Combustion processes, fuels, and emissions control</p>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <h3><i class="fas fa-code"></i> Software & Tools</h3>
+                    </div>
+                    <div class="card-content">
+                        <ul class="skills-list">
+                            <li>
+                                <span class="skill-name">CFD Software</span>
+                                <p class="skill-desc">ANSYS Fluent, COMSOL, Star-CCM+, OpenFOAM</p>
+                            </li>
+                            <li>
+                                <span class="skill-name">Thermal Analysis Tools</span>
+                                <p class="skill-desc">ANSYS Thermal, Abaqus, Siemens NX Thermal</p>
+                            </li>
+                            <li>
+                                <span class="skill-name">Programming</span>
+                                <p class="skill-desc">MATLAB, Python, C++, Fortran</p>
+                            </li>
+                            <li>
+                                <span class="skill-name">HVAC Design Software</span>
+                                <p class="skill-desc">Carrier HAP, Trane TRACE, eQUEST</p>
+                            </li>
+                            <li>
+                                <span class="skill-name">Energy Modeling</span>
+                                <p class="skill-desc">EnergyPlus, DesignBuilder, TRNSYS</p>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <h3><i class="fas fa-wrench"></i> Professional Skills</h3>
+                    </div>
+                    <div class="card-content">
+                        <ul class="skills-list">
+                            <li>
+                                <span class="skill-name">System Optimization</span>
+                                <p class="skill-desc">Energy efficiency, performance analysis, cost optimization</p>
+                            </li>
+                            <li>
+                                <span class="skill-name">Technical Writing</span>
+                                <p class="skill-desc">Reports, specifications, and documentation</p>
+                            </li>
+                            <li>
+                                <span class="skill-name">Problem-solving</span>
+                                <p class="skill-desc">Analytical thinking, troubleshooting, innovation</p>
+                            </li>
+                            <li>
+                                <span class="skill-name">Project Management</span>
+                                <p class="skill-desc">Planning, scheduling, resource allocation</p>
+                            </li>
+                            <li>
+                                <span class="skill-name">Industry Standards</span>
+                                <p class="skill-desc">ASHRAE, ASME, ISO, energy codes</p>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Research Areas -->
+    <section class="section" id="research">
+        <div class="container">
+            <h2 class="section-title">Research Areas</h2>
+
+            <div class="cards-grid two-columns">
+                <div class="card">
+                    <div class="card-header">
+                        <h3><i class="fas fa-lightbulb"></i> Emerging Research Fields</h3>
+                    </div>
+                    <div class="card-content">
+                        <div class="accordion">
+                            <div class="accordion-item">
+                                <div class="accordion-header">Advanced Heat Transfer</div>
+                                <div class="accordion-content">
+                                    <p>Research in micro/nanoscale heat transfer, phase change materials, and novel heat transfer enhancement techniques. Applications include electronics cooling, energy storage, and thermal management of advanced systems.</p>
+                                </div>
+                            </div>
+                            <div class="accordion-item">
+                                <div class="accordion-header">Thermal Energy Storage</div>
+                                <div class="accordion-content">
+                                    <p>Development of advanced thermal energy storage systems using sensible, latent, and thermochemical methods. Focus on high-density storage materials, system integration, and applications in renewable energy and waste heat recovery.</p>
+                                </div>
+                            </div>
+                            <div class="accordion-item">
+                                <div class="accordion-header">Thermal Management of Electronics</div>
+                                <div class="accordion-content">
+                                    <p>Research on cooling solutions for high-power electronics, data centers, and electric vehicle batteries. Includes liquid cooling, heat pipes, vapor chambers, and advanced air cooling techniques.</p>
+                                </div>
+                            </div>
+                            <div class="accordion-item">
+                                <div class="accordion-header">Computational Thermal Engineering</div>
+                                <div class="accordion-content">
+                                    <p>Advanced numerical methods, machine learning applications in thermal analysis, multi-physics simulations, and digital twins for thermal systems optimization and predictive maintenance.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <h3><i class="fas fa-lightbulb"></i> Sustainable Thermal Engineering</h3>
+                    </div>
+                    <div class="card-content">
+                        <div class="accordion">
+                            <div class="accordion-item">
+                                <div class="accordion-header">Renewable Thermal Energy</div>
+                                <div class="accordion-content">
+                                    <p>Research in solar thermal systems, geothermal energy, biomass thermal conversion, and integration of renewable thermal sources with conventional systems for heating, cooling, and power generation.</p>
+                                </div>
+                            </div>
+                            <div class="accordion-item">
+                                <div class="accordion-header">Waste Heat Recovery</div>
+                                <div class="accordion-content">
+                                    <p>Development of technologies to capture and utilize waste heat from industrial processes, power generation, and transportation. Includes organic Rankine cycles, thermoelectric generators, and heat pump applications.</p>
+                                </div>
+                            </div>
+                            <div class="accordion-item">
+                                <div class="accordion-header">Net-Zero Energy Buildings</div>
+                                <div class="accordion-content">
+                                    <p>Research on passive thermal design, advanced HVAC systems, building envelope optimization, and integrated renewable energy systems to achieve net-zero energy consumption in buildings.</p>
+                                </div>
+                            </div>
+                            <div class="accordion-item">
+                                <div class="accordion-header">Clean Combustion Technologies</div>
+                                <div class="accordion-content">
+                                    <p>Development of advanced combustion systems with reduced emissions, carbon capture technologies, and alternative fuels for power generation and industrial applications.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Specializations Section -->
+    <section class="section bg-light" id="specializations">
+        <div class="container">
+            <h2 class="section-title">Specializations</h2>
+            <p class="section-intro">Explore different specializations within thermal engineering that align with your interests and career goals:</p>
+            
+            <div class="specialization-grid">
+                <div class="specialization-card">
+                    <i class="fas fa-fire"></i>
+                    <h3>Combustion Engineering</h3>
+                </div>
+                <div class="specialization-card">
+                    <i class="fas fa-fan"></i>
+                    <h3>HVAC Systems</h3>
+                </div>
+                <div class="specialization-card">
+                    <i class="fas fa-industry"></i>
+                    <h3>Power Plant Engineering</h3>
+                </div>
+                <div class="specialization-card">
+                    <i class="fas fa-solar-panel"></i>
+                    <h3>Renewable Energy Systems</h3>
+                </div>
+                <div class="specialization-card">
+                    <i class="fas fa-microchip"></i>
+                    <h3>Electronics Cooling</h3>
+                </div>
+                <div class="specialization-card">
+                    <i class="fas fa-car"></i>
+                    <h3>Automotive Thermal Management</h3>
+                </div>
+                <div class="specialization-card">
+                    <i class="fas fa-building"></i>
+                    <h3>Building Energy Systems</h3>
+                </div>
+                <div class="specialization-card">
+                    <i class="fas fa-wind"></i>
+                    <h3>Computational Fluid Dynamics</h3>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    
+
+    <!-- FAQ Section -->
+    <section class="section bg-light" id="faq">
+        <div class="container">
+            <h2 class="section-title">Frequently Asked Questions</h2>
+
+            <div class="faq-container">
+                <div class="accordion">
+                    <div class="accordion-item">
+                        <div class="accordion-header">What is the difference between Thermal Engineering and Mechanical Engineering?</div>
+                        <div class="accordion-content">
+                            <p>Thermal Engineering is a specialized branch of Mechanical Engineering that focuses specifically on heat transfer, thermodynamics, and energy systems. While Mechanical Engineering covers a broader range of topics including mechanics, materials, manufacturing, and design, Thermal Engineering delves deeper into the principles and applications of thermal sciences and energy conversion processes.</p>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item">
+                        <div class="accordion-header">What skills are most important for a career in Thermal Engineering?</div>
+                        <div class="accordion-content">
+                            <p>Key skills for thermal engineers include strong knowledge of thermodynamics, heat transfer, and fluid mechanics; proficiency in computational tools like CFD software and programming languages; analytical problem-solving abilities; and understanding of energy systems and efficiency. Additionally, skills in technical writing, project management, and familiarity with relevant industry standards and codes are valuable for career advancement.</p>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item">
+                        <div class="accordion-header">What are the emerging areas in Thermal Engineering?</div>
+                        <div class="accordion-content">
+                            <p>Emerging areas include renewable thermal energy systems (solar thermal, geothermal), thermal energy storage technologies, waste heat recovery, thermal management of electronics and batteries, advanced cooling technologies, net-zero energy buildings, and computational thermal engineering using AI and machine learning. The integration of thermal systems with smart grids and IoT for optimization is also a growing field.</p>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item">
+                        <div class="accordion-header">How is the job market for Thermal Engineers in India?</div>
+                        <div class="accordion-content">
+                            <p>The job market for thermal engineers in India is growing, driven by expansion in power generation, HVAC, renewable energy, and industrial sectors. Government initiatives in clean energy, energy efficiency, and infrastructure development are creating new opportunities. Thermal engineers with expertise in emerging technologies like CFD simulation, energy modeling, and green building design are particularly in demand.</p>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item">
+                        <div class="accordion-header">What certifications can enhance my employability as a Thermal Engineer?</div>
+                        <div class="accordion-content">
+                            <p>Valuable certifications include Certified Energy Manager (CEM), ASHRAE certifications (BEAP, BEMP, HBDP), LEED Accredited Professional, Certified HVAC Designer (CHD), CFD certification programs, and specialized software certifications for thermal analysis tools. Industry-specific certifications in power plant operations, refrigeration, or building energy systems can also be beneficial depending on your career focus.</p>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item">
+                        <div class="accordion-header">How can I prepare for GATE in Thermal Engineering?</div>
+                        <div class="accordion-content">
+                            <p>To prepare for GATE with a focus on Thermal Engineering: (1) Master core subjects like Thermodynamics, Heat Transfer, Fluid Mechanics, and Power Plant Engineering, (2) Understand the GATE syllabus thoroughly, (3) Solve previous years' question papers with emphasis on thermal engineering topics, (4) Use standard textbooks by authors like P.K. Nag, Yunus Cengel, and R.K. Rajput, (5) Join a good coaching program if needed, and (6) Practice numerical problems regularly to build problem-solving speed.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <h2>GoFarAsYouCan</h2>
+                    <p>Your guide to engineering education and career paths</p>
+                </div>
+
+                <div class="footer-links">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="#about">About Thermal Engineering</a></li>
+                        <li><a href="#applications">Applications</a></li>
+                        <li><a href="#careers">Career Paths</a></li>
+                        <li><a href="#skills">Skills to Master</a></li>
+                        <li><a href="#specializations">Specializations</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-resources">
+                    <h3>Resources</h3>
+                    <ul>
+                        <li><a href="https://www.ashrae.org/" target="_blank">ASHRAE</a></li>
+                        <li><a href="https://www.asme.org/" target="_blank">ASME</a></li>
+                        <li><a href="https://www.coursera.org/" target="_blank">Online Courses</a></li>
+                        <li><a href="https://scholar.google.com/" target="_blank">Research Papers</a></li>
+                        <li><a href="https://www.naukri.com/career-guidance" target="_blank">Career Guidance</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; <script>document.write(new Date().getFullYear())</script> GoFarAsYouCan. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Tab functionality for colleges section
+        function openTab(tabName) {
+            // Hide all tab content
+            const tabContents = document.querySelectorAll(".tab-content");
+            tabContents.forEach((content) => {
+                content.classList.remove("active");
+            });
+
+            // Remove active class from all tab buttons
+            const tabButtons = document.querySelectorAll(".tab-button");
+            tabButtons.forEach((button) => {
+                button.classList.remove("active");
+            });
+
+            // Show the selected tab content and mark the button as active
+            document.getElementById(tabName).classList.add("active");
+            document.querySelector(`button[onclick="openTab('${tabName}')"]`).classList.add("active");
+        }
+
+        // Accordion functionality
+        function setupAccordions() {
+            const accordionHeaders = document.querySelectorAll(".accordion-header");
+            
+            accordionHeaders.forEach(header => {
+                header.addEventListener("click", function() {
+                    // Toggle active class on the parent accordion item
+                    const accordionItem = this.parentElement;
+                    accordionItem.classList.toggle("active");
+                    
+                    // Toggle active class on the header itself
+                    this.classList.toggle("active");
+                    
+                    // Toggle the content visibility
+                    const content = this.nextElementSibling;
+                    if (accordionItem.classList.contains("active")) {
+                        content.style.maxHeight = content.scrollHeight + "px";
+                    } else {
+                        content.style.maxHeight = 0;
+                    }
+                });
+            });
+        }
+
+        // Smooth scrolling for anchor links
+        function setupSmoothScrolling() {
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+
+                    const targetId = this.getAttribute('href');
+                    if (targetId === "#") return;
+
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        window.scrollTo({
+                            top: targetElement.offsetTop - 80,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+        }
+
+        // Initialize everything when the DOM is loaded
+        document.addEventListener("DOMContentLoaded", function() {
+            // Set the default tab to 'government'
+            openTab("government");
+            
+            // Setup accordions
+            setupAccordions();
+            
+            // Setup smooth scrolling
+            setupSmoothScrolling();
+        });
+    </script>
+</body>
+</html>

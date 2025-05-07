@@ -1,0 +1,919 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" rel="stylesheet">
+    <title>Robotics & Automation Learning Hub</title>
+    <style>
+        :root {
+            --primary-bg: #0F1923;
+            /* Dark tech background */
+            --section-bg: #1A2634;
+            /* Slightly lighter background */
+            --card-bg: #243142;
+            /* Card background */
+            --card-hover: #2E3E52;
+            /* Card hover effect */
+            --text-primary: #E9F1F7;
+            /* Light text color */
+            --text-secondary: #A7BED3;
+            /* Muted text color */
+            --accent: #00E5FF;
+            /* Cyan accent */
+            --accent-hover: #33EAFF;
+            /* Lighter cyan for hover */
+            --highlight: #64FFDA;
+            /* Teal for highlights */
+            --border: #34455E;
+            /* Border color */
+            --gradient-start: #00E5FF;
+            /* Gradient start color */
+            --gradient-end: #64FFDA;
+            /* Gradient end color */
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: var(--primary-bg);
+            color: var(--text-primary);
+            line-height: 1.6;
+        }
+
+        .navbar {
+            background: var(--section-bg);
+            padding: 1rem 2rem;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            border-bottom: 1px solid rgba(0, 229, 255, 0.1);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            background: linear-gradient(90deg, var(--gradient-start), var(--gradient-end));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-decoration: none;
+        }
+
+        .back-button {
+            text-decoration: none;
+            color: var(--text-primary);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: color 0.3s ease;
+        }
+
+        .back-button:hover {
+            color: var(--accent);
+        }
+
+        header {
+            text-align: center;
+            padding: 6rem 2rem;
+            background: var(--section-bg);
+            position: relative;
+            overflow: hidden;
+        }
+
+        header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(0, 229, 255, 0.1) 0%, rgba(100, 255, 218, 0.05) 100%);
+            z-index: 1;
+        }
+
+        header::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image:
+                radial-gradient(circle at 20% 30%, rgba(0, 229, 255, 0.15) 0%, transparent 20%),
+                radial-gradient(circle at 80% 70%, rgba(100, 255, 218, 0.1) 0%, transparent 20%);
+            z-index: 2;
+        }
+
+        header h1,
+        header p {
+            position: relative;
+            z-index: 3;
+        }
+
+        header h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(90deg, var(--gradient-start), var(--gradient-end));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 2px 10px rgba(0, 229, 255, 0.3);
+        }
+
+        header p {
+            font-size: 1.25rem;
+            color: var(--text-secondary);
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        section {
+            max-width: 1200px;
+            margin: 3rem auto;
+            padding: 2rem;
+        }
+
+        .section-title {
+            color: var(--accent);
+            margin-bottom: 2rem;
+            font-size: 2.2rem;
+            position: relative;
+            padding-bottom: 0.8rem;
+            display: inline-block;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 60%;
+            height: 3px;
+            background: linear-gradient(90deg, var(--gradient-start), var(--gradient-end));
+            border-radius: 3px;
+        }
+
+        .topics-grid,
+        .specialization-grid,
+        .projects-grid,
+        .practice-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .topic-card,
+        .specialization-card,
+        .project-card,
+        .practice-card {
+            background: var(--card-bg);
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+            transition: all 0.3s ease;
+            border: 1px solid var(--border);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .topic-card::before,
+        .specialization-card::before,
+        .project-card::before,
+        .practice-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, var(--gradient-start), var(--gradient-end));
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .topic-card:hover::before,
+        .specialization-card:hover::before,
+        .project-card:hover::before,
+        .practice-card:hover::before {
+            opacity: 1;
+        }
+
+        .topic-card:hover,
+        .specialization-card:hover,
+        .project-card:hover,
+        .practice-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.2);
+            border-color: rgba(0, 229, 255, 0.3);
+            background: var(--card-hover);
+        }
+
+        .topic-title,
+        .specialization-title,
+        .project-title {
+            color: var(--highlight);
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+        }
+
+        .topic-title i,
+        .specialization-title i,
+        .project-title i {
+            color: var(--accent);
+        }
+
+        .learn-btn {
+            display: inline-block;
+            padding: 0.75rem 1.5rem;
+            background: linear-gradient(90deg, var(--gradient-start), var(--gradient-end));
+            color: #0F1923;
+            text-decoration: none;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            margin-top: 1.5rem;
+            font-weight: bold;
+            position: relative;
+            z-index: 1;
+            overflow: hidden;
+        }
+
+        .learn-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, var(--gradient-end), var(--gradient-start));
+            z-index: -1;
+            transition: opacity 0.3s ease;
+            opacity: 0;
+        }
+
+        .learn-btn:hover::before {
+            opacity: 1;
+        }
+
+        .learn-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 229, 255, 0.3);
+        }
+
+        footer {
+            text-align: center;
+            padding: 3rem 2rem;
+            background: var(--section-bg);
+            margin-top: 4rem;
+            border-top: 1px solid var(--border);
+            position: relative;
+            overflow: hidden;
+        }
+
+        footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(0, 229, 255, 0.05) 0%, rgba(100, 255, 218, 0.02) 100%);
+            z-index: 1;
+        }
+
+        .quote {
+            font-style: italic;
+            color: var(--text-secondary);
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
+        }
+
+        .project-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin: 1rem 0;
+        }
+
+        .project-tag {
+            background: rgba(0, 229, 255, 0.1);
+            color: var(--accent);
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            border: 1px solid rgba(0, 229, 255, 0.2);
+        }
+
+        .features-list {
+            list-style: none;
+        }
+
+        .features-list li {
+            margin-bottom: 0.8rem;
+            display: flex;
+            align-items: flex-start;
+            gap: 0.8rem;
+        }
+
+        .features-list i {
+            color: var(--highlight);
+            margin-top: 0.3rem;
+        }
+
+        .resources-section {
+            margin-top: 1.8rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid rgba(0, 229, 255, 0.1);
+        }
+
+        .resources-title {
+            font-size: 1.1rem;
+            margin-bottom: 1rem;
+            color: var(--accent);
+        }
+
+        .channel-list {
+            list-style: none;
+        }
+
+        .channel-list li {
+            margin-bottom: 0.8rem;
+        }
+
+        .channel-list i {
+            margin-right: 0.5rem;
+            color: var(--accent);
+        }
+
+        .resource-list {
+            list-style: none;
+        }
+
+        .resource-list li {
+            margin-bottom: 0.8rem;
+        }
+
+        .resource-list i {
+            margin-right: 0.5rem;
+            color: var(--accent);
+        }
+
+        /* Responsive styles */
+        @media (max-width: 1200px) {
+            section {
+                padding: 2rem 1.5rem;
+            }
+        }
+
+        @media (max-width: 992px) {
+
+            .topics-grid,
+            .specialization-grid,
+            .projects-grid,
+            .practice-grid {
+                grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            }
+        }
+
+        @media (max-width: 768px) {
+            .navbar {
+                padding: 1rem;
+            }
+
+            .logo {
+                font-size: 1.5rem;
+            }
+
+            header {
+                padding: 4rem 1.5rem;
+            }
+
+            header h1 {
+                font-size: 2.5rem;
+            }
+
+            header p {
+                font-size: 1.1rem;
+            }
+
+            section {
+                padding: 1.5rem 1rem;
+            }
+
+            .section-title {
+                font-size: 1.8rem;
+            }
+        }
+
+        @media (max-width: 576px) {
+            header h1 {
+                font-size: 2rem;
+            }
+
+            .topics-grid,
+            .specialization-grid,
+            .projects-grid,
+            .practice-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .topic-card,
+            .specialization-card,
+            .project-card,
+            .practice-card {
+                padding: 1.5rem;
+            }
+        }
+
+        /* Animation for cards */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .topic-card,
+        .specialization-card,
+        .project-card,
+        .practice-card {
+            animation: fadeInUp 0.5s ease forwards;
+        }
+
+        .topic-card:nth-child(2),
+        .specialization-card:nth-child(2),
+        .project-card:nth-child(2),
+        .practice-card:nth-child(2) {
+            animation-delay: 0.1s;
+        }
+
+        .topic-card:nth-child(3),
+        .specialization-card:nth-child(3),
+        .project-card:nth-child(3),
+        .practice-card:nth-child(3) {
+            animation-delay: 0.2s;
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="#" class="logo">Robotics & Automation</a>
+            <a href="/Engineering/MECH/mech.ejs" class="back-button">
+                <i class="fas fa-arrow-left"></i> Back
+            </a>
+        </div>
+    </nav>
+
+    <header>
+        <h1>Robotics & Automation Engineering</h1>
+        <p>Master the fundamentals of robotic systems, automation technologies, and intelligent control with
+            comprehensive learning resources.</p>
+    </header>
+
+    <section class="specialization-section">
+        <h2 class="section-title">Specialization Areas</h2>
+        <div class="specialization-grid">
+
+            <!-- Industrial Robotics -->
+            <div class="specialization-card">
+                <div class="specialization-title">
+                    <i class="fas fa-robot"></i>
+                    Industrial Robotics
+                </div>
+                <p>Focus on robotic arms, manufacturing automation, and industrial control systems for production
+                    environments.</p>
+                <ul class="features-list">
+                    <li><i class="fas fa-check"></i> <span>Robotic manipulators and end effectors</span></li>
+                    <li><i class="fas fa-check"></i> <span>Industrial control systems</span></li>
+                    <li><i class="fas fa-check"></i> <span>Manufacturing automation</span></li>
+                </ul>
+                <div class="resources-section">
+                    <div class="resources-title">Learning Resources</div>
+                    <ul class="channel-list">
+                        <li><a style="color: white; text-decoration: none;"
+                                href="https://www.youtube.com/c/FanucAmerica" target="_blank"><i
+                                    class="fab fa-youtube"></i> FANUC Robotics</a></li>
+                        <li><a style="color: white; text-decoration: none;" href="https://www.youtube.com/c/ABBRobotics"
+                                target="_blank"><i class="fab fa-youtube"></i> ABB Robotics</a></li>
+                        <li><a style="color: white; text-decoration: none;"
+                                href="https://www.coursera.org/learn/robotics-flight" target="_blank"><i
+                                    class="fas fa-book"></i> Robotics: Aerial Robotics</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Mobile Robotics -->
+            <div class="specialization-card">
+                <div class="specialization-title">
+                    <i class="fas fa-car-side"></i>
+                    Mobile Robotics
+                </div>
+                <p>Study of autonomous vehicles, drones, and mobile platforms for navigation and interaction in dynamic
+                    environments.</p>
+                <ul class="features-list">
+                    <li><i class="fas fa-check"></i> <span>Autonomous navigation</span></li>
+                    <li><i class="fas fa-check"></i> <span>Localization and mapping (SLAM)</span></li>
+                    <li><i class="fas fa-check"></i> <span>Path planning algorithms</span></li>
+                </ul>
+                <div class="resources-section">
+                    <div class="resources-title">Learning Resources</div>
+                    <ul class="channel-list">
+                        <li><a style="color: white; text-decoration: none;"
+                                href="https://www.youtube.com/c/BostonDynamics" target="_blank"><i
+                                    class="fab fa-youtube"></i> Boston Dynamics</a></li>
+                        <li><a style="color: white; text-decoration: none;"
+                                href="https://www.edx.org/course/autonomous-mobile-robots" target="_blank"><i
+                                    class="fas fa-graduation-cap"></i> Autonomous Mobile Robots</a></li>
+                        <li><a style="color: white; text-decoration: none;"
+                                href="https://www.udacity.com/course/artificial-intelligence-for-robotics--cs373"
+                                target="_blank"><i class="fas fa-graduation-cap"></i> AI for Robotics</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- AI & Intelligent Systems -->
+            <div class="specialization-card">
+                <div class="specialization-title">
+                    <i class="fas fa-brain"></i>
+                    AI & Intelligent Systems
+                </div>
+                <p>Focus on machine learning, computer vision, and AI algorithms for robotic perception and
+                    decision-making.</p>
+                <ul class="features-list">
+                    <li><i class="fas fa-check"></i> <span>Computer vision for robotics</span></li>
+                    <li><i class="fas fa-check"></i> <span>Reinforcement learning</span></li>
+                    <li><i class="fas fa-check"></i> <span>Natural language processing for HRI</span></li>
+                </ul>
+                <div class="resources-section">
+                    <div class="resources-title">Learning Resources</div>
+                    <ul class="channel-list">
+                        <li><a style="color: white; text-decoration: none;" href="https://www.deeplearning.ai/"
+                                target="_blank"><i class="fas fa-graduation-cap"></i> DeepLearning.AI</a></li>
+                        <li><a style="color: white; text-decoration: none;"
+                                href="https://www.youtube.com/c/TwoMinutePapers" target="_blank"><i
+                                    class="fab fa-youtube"></i> Two Minute Papers</a></li>
+                        <li><a style="color: white; text-decoration: none;" href="https://www.fast.ai/"
+                                target="_blank"><i class="fas fa-book"></i> Fast.ai</a></li>
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+
+    <!-- Projects section -->
+    <section class="projects-section">
+        <h2 class="section-title">Industry Projects</h2>
+        <div class="projects-grid">
+            <div class="project-card">
+                <div class="project-title">
+                    <i class="fas fa-industry"></i>
+                    Smart Factory Automation
+                </div>
+                <p>Design and implement Industry 4.0 solutions for manufacturing with IoT sensors and predictive
+                    maintenance.</p>
+                <div class="project-tags">
+                    <span class="project-tag">IoT Integration</span>
+                    <span class="project-tag">Digital Twin</span>
+                    <span class="project-tag">Predictive Maintenance</span>
+                </div>
+                <a href="https://www.plm.automation.siemens.com/global/en/our-story/glossary/digital-twin/24465"
+                    class="learn-btn" target="_blank">View Research</a>
+            </div>
+
+            <div class="project-card">
+                <div class="project-title">
+                    <i class="fas fa-hand-paper"></i>
+                    Collaborative Robotics
+                </div>
+                <p>Develop cobots that safely work alongside humans in shared workspaces with advanced sensing and
+                    control.</p>
+                <div class="project-tags">
+                    <span class="project-tag">Human-Robot Interaction</span>
+                    <span class="project-tag">Safety Systems</span>
+                    <span class="project-tag">Force Control</span>
+                </div>
+                <a href="https://www.universal-robots.com/products/" class="learn-btn" target="_blank">View Examples</a>
+            </div>
+
+            <div class="project-card">
+                <div class="project-title">
+                    <i class="fas fa-warehouse"></i>
+                    Warehouse Automation
+                </div>
+                <p>Create autonomous mobile robots (AMRs) and automated storage and retrieval systems for logistics.</p>
+                <div class="project-tags">
+                    <span class="project-tag">Fleet Management</span>
+                    <span class="project-tag">Inventory Tracking</span>
+                    <span class="project-tag">Order Fulfillment</span>
+                </div>
+                <a href="https://www.bostondynamics.com/solutions/case-studies" class="learn-btn" target="_blank">View
+                    Case Studies</a>
+            </div>
+        </div>
+    </section>
+
+
+    <section>
+        <h2 class="section-title">Core Concepts</h2>
+        <div class="topics-grid">
+            <div class="topic-card">
+                <div class="topic-title"><i class="fas fa-cogs"></i> Robot Kinematics</div>
+                <p>Understand the mathematical principles of robot motion, forward and inverse kinematics, and workspace
+                    analysis.</p>
+                <a class="learn-btn" href="https://www.coursera.org/learn/robotics-kinematics" target="_blank">Learn
+                    More</a>
+            </div>
+
+            <div class="topic-card">
+                <div class="topic-title"><i class="fas fa-microchip"></i> Control Systems</div>
+                <p>Master the fundamentals of feedback control, PID controllers, and advanced control algorithms for
+                    robotics.</p>
+                <a class="learn-btn"
+                    href="https://www.edx.org/course/introduction-to-control-system-design-a-first-look"
+                    target="_blank">Learn More</a>
+            </div>
+
+            <div class="topic-card">
+                <div class="topic-title"><i class="fas fa-eye"></i> Computer Vision</div>
+                <p>Learn about image processing, object detection, and visual SLAM for robotic perception.</p>
+                <a class="learn-btn" href="https://www.pyimagesearch.com/start-here/" target="_blank">Learn More</a>
+            </div>
+        </div>
+
+        <div class="topics-grid">
+            <div class="topic-card">
+                <div class="topic-title"><i class="fas fa-map-marked-alt"></i> SLAM & Navigation</div>
+                <p>Study simultaneous localization and mapping, path planning, and obstacle avoidance algorithms.</p>
+                <a class="learn-btn" href="https://www.udacity.com/course/artificial-intelligence-for-robotics--cs373"
+                    target="_blank">Learn More</a>
+            </div>
+
+            <div class="topic-card">
+                <div class="topic-title"><i class="fas fa-project-diagram"></i> Robot Operating System</div>
+                <p>Understand ROS architecture, nodes, topics, and services for building robotic applications.</p>
+                <a class="learn-btn" href="https://www.ros.org/is-ros-for-me/" target="_blank">Learn More</a>
+            </div>
+
+            <div class="topic-card">
+                <div class="topic-title"><i class="fas fa-sitemap"></i> Robot Dynamics</div>
+                <p>Learn about forces, torques, and the dynamic equations of motion for robotic systems.</p>
+                <a class="learn-btn"
+                    href="https://ocw.mit.edu/courses/mechanical-engineering/2-12-introduction-to-robotics-fall-2005/"
+                    target="_blank">Learn More</a>
+            </div>
+
+            <div class="topic-card">
+                <div class="topic-title"><i class="fas fa-code-branch"></i> Motion Planning</div>
+                <p>Study algorithms for generating optimal trajectories and collision-free paths for robots.</p>
+                <a class="learn-btn" href="https://www.edx.org/course/robotics-motion-planning" target="_blank">Learn
+                    More</a>
+            </div>
+
+            <div class="topic-card">
+                <div class="topic-title"><i class="fas fa-microchip"></i> Embedded Systems</div>
+                <p>Explore microcontrollers, real-time operating systems, and hardware interfaces for robotics.</p>
+                <a class="learn-btn"
+                    href="https://www.edx.org/course/embedded-systems-shape-the-world-microcontroller-i"
+                    target="_blank">Learn More</a>
+            </div>
+
+            <div class="topic-card">
+                <div class="topic-title"><i class="fas fa-network-wired"></i> Industrial Automation</div>
+                <p>Master PLCs, SCADA systems, and industrial networks for manufacturing automation.</p>
+                <a class="learn-btn" href="https://www.udemy.com/course/plc-programming-from-scratch/"
+                    target="_blank">Learn More</a>
+            </div>
+
+            <div class="topic-card">
+                <div class="topic-title"><i class="fas fa-hand-holding"></i> Robotic Manipulation</div>
+                <p>Learn techniques for grasping, object manipulation, and dexterous robot hands.</p>
+                <a class="learn-btn"
+                    href="https://ocw.mit.edu/courses/mechanical-engineering/2-12-introduction-to-robotics-fall-2005/lecture-notes/"
+                    target="_blank">Learn More</a>
+            </div>
+
+            <div class="topic-card">
+                <div class="topic-title"><i class="fas fa-comments"></i> Human-Robot Interaction</div>
+                <p>Study interfaces, safety systems, and collaborative techniques for human-robot teams.</p>
+                <a class="learn-btn" href="https://www.edx.org/course/hello-real-world-with-ros-robot-operating-system"
+                    target="_blank">Learn More</a>
+            </div>
+
+            <div class="topic-card">
+                <div class="topic-title"><i class="fas fa-bolt"></i> Actuators & Sensors</div>
+                <p>Understand the various types of motors, sensors, and actuators used in robotic systems.</p>
+                <a class="learn-btn" href="https://www.coursera.org/learn/mobile-robot" target="_blank">Learn More</a>
+            </div>
+
+            <div class="topic-card">
+                <div class="topic-title"><i class="fas fa-brain"></i> Reinforcement Learning</div>
+                <p>Explore how robots can learn optimal behaviors through interaction with their environment.</p>
+                <a class="learn-btn" href="https://www.coursera.org/specializations/reinforcement-learning"
+                    target="_blank">Learn More</a>
+            </div>
+
+            <div class="topic-card">
+                <div class="topic-title"><i class="fas fa-wifi"></i> IoT & Connected Robots</div>
+                <p>Learn about cloud robotics, IoT integration, and networked robotic systems.</p>
+                <a class="learn-btn" href="https://www.edx.org/course/internet-of-things-how-did-we-get-here"
+                    target="_blank">Learn More</a>
+            </div>
+
+            <div class="topic-card">
+                <div class="topic-title"><i class="fas fa-shield-alt"></i> Robot Safety & Ethics</div>
+                <p>Study safety standards, ethical considerations, and regulatory frameworks for robotics.</p>
+                <a class="learn-btn" href="https://www.edx.org/course/ethics-in-ai-and-data-science"
+                    target="_blank">Learn More</a>
+            </div>
+        </div>
+    </section>
+
+
+    <section class="practice-section">
+        <h2 class="section-title">Software & Simulation Tools</h2>
+        <div class="practice-grid">
+            <div class="practice-card">
+                <h3><i class="fas fa-cube"></i> ROS (Robot Operating System)</h3>
+                <p>Open-source middleware for robot software development with tools, libraries, and conventions.</p>
+                <a href="https://www.ros.org/" target="_blank" class="learn-btn">Explore Tool</a>
+            </div>
+
+            <div class="practice-card">
+                <h3><i class="fas fa-vr-cardboard"></i> Gazebo</h3>
+                <p>3D robotics simulator with physics engine for testing algorithms in virtual environments.</p>
+                <a href="http://gazebosim.org/" target="_blank" class="learn-btn">Explore Tool</a>
+            </div>
+
+            <div class="practice-card">
+                <h3><i class="fas fa-laptop-code"></i> MATLAB & Simulink</h3>
+                <p>Industry-standard tools for modeling, simulating, and analyzing robotic systems.</p>
+                <a href="https://www.mathworks.com/solutions/robotics.html" target="_blank" class="learn-btn">Explore
+                    Tool</a>
+            </div>
+        </div>
+        <!-- </section  target="_blank" class="learn-btn">Explore Tool</a> -->
+        </div>
+        </div>
+    </section>
+
+    <section>
+        <h2 class="section-title">Learning Resources</h2>
+        <div class="topics-grid">
+            <div class="topic-card">
+                <div class="topic-title"><i class="fas fa-graduation-cap"></i> Online Courses</div>
+                <ul class="resource-list">
+                    <li><a style="color: white; text-decoration: none;" href="https://www.edx.org/learn/robotics"
+                            target="_blank"><i class="fas fa-graduation-cap"></i> edX Robotics Courses</a></li>
+                    <li><a style="color: white; text-decoration: none;"
+                            href="https://www.coursera.org/courses?query=robotics" target="_blank"><i
+                                class="fas fa-graduation-cap"></i> Coursera Robotics Engineering</a></li>
+                    <li><a style="color: white; text-decoration: none;"
+                            href="https://www.udacity.com/school/school-of-autonomous-systems" target="_blank"><i
+                                class="fas fa-graduation-cap"></i> Udacity Robotics Nanodegree</a></li>
+                </ul>
+            </div>
+
+            <div class="topic-card">
+                <div class="topic-title"><i class="fas fa-file-alt"></i> Technical Resources</div>
+                <ul class="resource-list">
+                    <li><a style="color: white; text-decoration: none;" href="https://arxiv.org/list/cs.RO/recent"
+                            target="_blank"><i class="fas fa-file-alt"></i> arXiv Robotics Papers</a></li>
+                    <li><a style="color: white; text-decoration: none;"
+                            href="https://www.researchgate.net/topic/Robotics" target="_blank"><i
+                                class="fas fa-file-alt"></i> ResearchGate Robotics</a></li>
+                    <li><a style="color: white; text-decoration: none;"
+                            href="https://ieeexplore.ieee.org/xpl/RecentIssue.jsp?punumber=8856" target="_blank"><i
+                                class="fas fa-file-alt"></i> IEEE Robotics & Automation</a></li>
+                </ul>
+            </div>
+
+            <div class="topic-card">
+                <div class="topic-title"><i class="fas fa-newspaper"></i> Industry Publications</div>
+                <ul class="resource-list">
+                    <li><a style="color: white; text-decoration: none;" href="https://spectrum.ieee.org/robotics"
+                            target="_blank"><i class="fas fa-newspaper"></i> IEEE Spectrum Robotics</a></li>
+                    <li><a style="color: white; text-decoration: none;" href="https://www.therobotreport.com/"
+                            target="_blank"><i class="fas fa-newspaper"></i> The Robot Report</a></li>
+                    <li><a style="color: white; text-decoration: none;" href="https://roboticsandautomationnews.com/"
+                            target="_blank"><i class="fas fa-newspaper"></i> Robotics & Automation News</a></li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section class="community-section">
+        <h2 class="section-title">Communities & Events</h2>
+        <div class="topics-grid">
+            <div class="topic-card">
+                <div class="topic-title"><i class="fas fa-users"></i> Online Communities</div>
+                <ul class="resource-list">
+                    <li><a style="color: white; text-decoration: none;" href="https://discourse.ros.org/"
+                            target="_blank"><i class="fas fa-comments"></i> ROS Discourse</a></li>
+                    <li><a style="color: white; text-decoration: none;" href="https://www.reddit.com/r/robotics/"
+                            target="_blank"><i class="fab fa-reddit"></i> r/robotics</a></li>
+                    <li><a style="color: white; text-decoration: none;" href="https://robotics.stackexchange.com/"
+                            target="_blank"><i class="fas fa-stack-overflow"></i> Robotics Stack Exchange</a></li>
+                </ul>
+            </div>
+
+            <div class="topic-card">
+                <div class="topic-title"><i class="fas fa-calendar-alt"></i> Conferences & Events</div>
+                <ul class="resource-list">
+                    <li><a style="color: white; text-decoration: none;" href="https://www.icra2023.org/"
+                            target="_blank"><i class="fas fa-calendar-day"></i> IEEE ICRA</a></li>
+                    <li><a style="color: white; text-decoration: none;" href="https://iros2023.org/" target="_blank"><i
+                                class="fas fa-calendar-day"></i> IEEE/RSJ IROS</a></li>
+                    <li><a style="color: white; text-decoration: none;" href="https://www.automate.org/"
+                            target="_blank"><i class="fas fa-calendar-day"></i> Automate</a></li>
+                </ul>
+            </div>
+
+            <div class="topic-card">
+                <div class="topic-title"><i class="fas fa-trophy"></i> Competitions</div>
+                <ul class="resource-list">
+                    <li><a style="color: white; text-decoration: none;" href="https://www.robocup.org/"
+                            target="_blank"><i class="fas fa-futbol"></i> RoboCup</a></li>
+                    <li><a style="color: white; text-decoration: none;"
+                            href="https://www.firstinspires.org/robotics/frc" target="_blank"><i
+                                class="fas fa-robot"></i> FIRST Robotics Competition</a></li>
+                    <li><a style="color: white; text-decoration: none;"
+                            href="https://www.darpa.mil/work-with-us/public-competitions" target="_blank"><i
+                                class="fas fa-flag-checkered"></i> DARPA Robotics Challenges</a></li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p class="quote">"A robot may not injure a human being or, through inaction, allow a human being to come to
+            harm." — Isaac Asimov, First Law of Robotics</p>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // Smooth scrolling for anchor links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+
+                    const targetId = this.getAttribute('href');
+                    if (targetId === '#') return;
+
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        window.scrollTo({
+                            top: targetElement.offsetTop - 70,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+
+            // Add intersection observer for animation on scroll
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = 1;
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, {
+                threshold: 0.1
+            });
+
+            document.querySelectorAll('.topic-card, .specialization-card, .project-card, .practice-card').forEach(card => {
+                observer.observe(card);
+            });
+        });
+    </script>
+</body>
+
+</html>

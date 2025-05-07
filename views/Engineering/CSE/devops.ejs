@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DevOps Learning Hub</title>
+  <style>
+    :root {
+      --primary-bg: #13111C;
+      --section-bg: #1A1625;
+      --card-bg: #251D35;
+      --card-hover: #2D2440;
+      --text-primary: #E2E0E7;
+      --text-secondary: #B4B0C0;
+      --accent: #9333EA;
+      --accent-hover: #7E22CE;
+      --highlight: #A855F7;
+      --border: #352C4A;
+    }
+    
+    html {
+      scroll-behavior: smooth;
+    }
+    
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: var(--primary-bg);
+      color: var(--text-primary);
+      line-height: 1.6;
+    }
+    
+    .navbar {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      background-color: rgba(19, 17, 28, 0.95);
+      padding: 1rem;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--border);
+    }
+    
+    .navbar a {
+      color: var(--text-primary);
+      margin: 8px 16px;
+      text-decoration: none;
+      font-size: 16px;
+      position: relative;
+      padding: 6px 0;
+      transition: color 0.3s;
+    }
+    
+    .navbar a:hover {
+      color: var(--accent);
+    }
+    
+    header {
+      text-align: center;
+      padding: 6rem 2rem;
+      background: linear-gradient(135deg, #4C1D95 0%, #6D28D9 100%);
+      color: white;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    header::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      opacity: 0.2;
+      z-index: 0;
+    }
+    
+    header > * {
+      position: relative;
+      z-index: 1;
+    }
+    
+    header h1 {
+      font-size: 3rem;
+      margin-bottom: 1.5rem;
+      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    }
+    
+    header p {
+      font-size: 1.25rem;
+      max-width: 800px;
+      margin: 0 auto;
+      color: var(--text-secondary);
+    }
+    
+    section {
+      padding: 4rem 2rem;
+      background: var(--section-bg);
+      margin: 2rem;
+      border-radius: 16px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+      border: 1px solid var(--border);
+    }
+    
+    .section-title {
+      text-align: center;
+      margin-bottom: 3rem;
+      color: var(--accent);
+      position: relative;
+    }
+    
+    .section-title::after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 60px;
+      height: 3px;
+      background: var(--accent);
+      border-radius: 3px;
+    }
+    
+    .tech-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+      margin-top: 2rem;
+    }
+    
+    .tech-card {
+      background: var(--card-bg);
+      padding: 2rem;
+      border-radius: 12px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      transition: all 0.3s ease;
+      border: 1px solid var(--border);
+    }
+    
+    .tech-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+      border-color: var(--accent);
+    }
+    
+    .tech-card h3 {
+      color: var(--highlight);
+      margin: 0 0 1rem;
+      font-size: 1.5rem;
+    }
+    
+    .tech-card p {
+      color: var(--text-secondary);
+      margin-bottom: 1.5rem;
+    }
+    
+    .learn-btn {
+      display: inline-block;
+      padding: 0.75rem 1.5rem;
+      background-color: var(--accent);
+      color: white;
+      text-decoration: none;
+      border-radius: 8px;
+      transition: all 0.3s ease;
+      font-weight: 500;
+    }
+    
+    .learn-btn:hover {
+      background-color: var(--accent-hover);
+      transform: translateY(-2px);
+    }
+    
+    .roadmap {
+      background: var(--card-bg);
+      padding: 2rem;
+      border-radius: 12px;
+      margin-top: 2rem;
+    }
+    
+    .roadmap-step {
+      margin-bottom: 1.5rem;
+      padding-left: 2rem;
+      position: relative;
+    }
+    
+    .roadmap-step::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 12px;
+      height: 12px;
+      background: var(--accent);
+      border-radius: 50%;
+    }
+    
+    .roadmap-step::after {
+      content: '';
+      position: absolute;
+      left: 5px;
+      top: 12px;
+      width: 2px;
+      height: calc(100% + 1rem);
+      background: var(--border);
+    }
+    
+    .roadmap-step:last-child::after {
+      display: none;
+    }
+    
+    .resource-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+      margin-top: 2rem;
+    }
+    
+    .channel-card {
+      background: var(--card-bg);
+      padding: 1.5rem;
+      border-radius: 12px;
+      border: 1px solid var(--border);
+      transition: all 0.3s ease;
+    }
+    
+    .channel-card:hover {
+      transform: translateY(-5px);
+      border-color: var(--accent);
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    }
+    
+    .channel-card h4 {
+      color: var(--highlight);
+      margin: 0 0 0.75rem;
+      font-size: 1.2rem;
+    }
+    
+    .channel-card p {
+      color: var(--text-secondary);
+      margin: 0 0 1rem;
+      font-size: 0.95rem;
+    }
+    
+    .channel-link {
+      color: var(--accent);
+      text-decoration: none;
+      font-weight: 500;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    
+    .channel-link:hover {
+      color: var(--accent-hover);
+      text-decoration: underline;
+    }
+    
+    @media (max-width: 768px) {
+      header {
+        padding: 4rem 1.5rem;
+      }
+      
+      header h1 {
+        font-size: 2.25rem;
+      }
+      
+      section {
+        padding: 2rem 1.5rem;
+        margin: 1rem;
+      }
+      
+      .tech-grid {
+        gap: 1.5rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="navbar">
+    <a href="#fundamentals">Fundamentals</a>
+    <a href="#tools">Tools</a>
+    <a href="#practices">Best Practices</a>
+    <a href="#roadmap">Roadmap</a>
+    <a href="#resources">Resources</a>
+    <a href="/Engineering/CSE/cse.ejs">Go Back</a>
+  </div>
+  
+  <header>
+    <h1>DevOps</h1>
+    <p>Master the art of DevOps with comprehensive guides on tools, practices, and automation techniques.</p>
+  </header>
+  
+  <section id="fundamentals">
+    <h2 class="section-title">DevOps Fundamentals</h2>
+    <div class="tech-grid">
+      <div class="tech-card">
+        <h3>What is DevOps?</h3>
+        <p>Understand the culture, practices, and tools that combine software development (Dev) with IT operations (Ops).</p>
+        <a href="https://aws.amazon.com/devops/what-is-devops/" class="learn-btn" target="_blank">Learn More</a>
+      </div>
+      
+      <div class="tech-card">
+        <h3>CI/CD</h3>
+        <p>Learn about Continuous Integration and Continuous Deployment/Delivery pipelines and their importance.</p>
+        <a href="https://www.atlassian.com/continuous-delivery/principles" class="learn-btn" target="_blank">Learn More</a>
+      </div>
+      
+      <div class="tech-card">
+        <h3>Infrastructure as Code</h3>
+        <p>Discover how to manage and provision infrastructure through code using tools like Terraform and Ansible.</p>
+        <a href="https://www.hashicorp.com/resources/what-is-infrastructure-as-code" class="learn-btn" target="_blank">Learn More</a>
+      </div>
+    </div>
+  </section>
+  
+  <section id="tools">
+    <h2 class="section-title">Essential DevOps Tools</h2>
+    <div class="tech-grid">
+      <div class="tech-card">
+        <h3>Version Control</h3>
+        <p>Git and GitHub for source code management and collaboration.</p>
+        <a href="https://git-scm.com/book/en/v2" class="learn-btn" target="_blank">Learn Git</a>
+      </div>
+      
+      <div class="tech-card">
+        <h3>Containerization</h3>
+        <p>Docker and Kubernetes for container management and orchestration.</p>
+        <a href="https://www.docker.com/get-started" class="learn-btn" target="_blank">Start Docker</a>
+      </div>
+      
+      <div class="tech-card">
+        <h3>CI/CD Tools</h3>
+        <p>Jenkins, GitLab CI, and GitHub Actions for automated pipelines.</p>
+        <a href="https://www.jenkins.io/doc/tutorials/" class="learn-btn" target="_blank">Jenkins Tutorials</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="practices">
+    <h2 class="section-title">DevOps Best Practices</h2>
+    <div class="tech-grid">
+      <div class="tech-card">
+        <h3>1. Version Control Everything</h3>
+        <p>Use Git or other version control systems to track changes in code, configuration, and infrastructure.</p>
+        <a href="https://git-scm.com/book/en/v2" class="learn-btn" target="_blank">Learn Git</a>
+      </div>
+  
+      <div class="tech-card">
+        <h3>2. Automate Everything</h3>
+        <p>Automate repetitive tasks like testing, deployment, and infrastructure provisioning to save time and reduce errors.</p>
+        <a href="https://www.redhat.com/en/topics/automation" class="learn-btn" target="_blank">Learn More</a>
+      </div>
+  
+      <div class="tech-card">
+        <h3>3. Continuous Integration/Continuous Deployment (CI/CD)</h3>
+        <p>Implement CI/CD pipelines to ensure faster and more reliable software delivery.</p>
+        <a href="https://www.atlassian.com/continuous-delivery/principles" class="learn-btn" target="_blank">Learn CI/CD</a>
+      </div>
+  
+      <div class="tech-card">
+        <h3>4. Infrastructure as Code (IaC)</h3>
+        <p>Use tools like Terraform and Ansible to manage infrastructure as code for consistency and scalability.</p>
+        <a href="https://www.hashicorp.com/resources/what-is-infrastructure-as-code" class="learn-btn" target="_blank">Learn IaC</a>
+      </div>
+  
+      <div class="tech-card">
+        <h3>5. Monitor and Log Everything</h3>
+        <p>Use tools like Prometheus, Grafana, and ELK Stack to monitor and log system performance and errors.</p>
+        <a href="https://prometheus.io/docs/introduction/overview/" class="learn-btn" target="_blank">Learn Monitoring</a>
+      </div>
+  
+      <div class="tech-card">
+        <h3>6. Security as Code</h3>
+        <p>Integrate security practices into the DevOps pipeline to ensure secure software delivery.</p>
+        <a href="https://owasp.org/www-project-devsecops-guideline/" class="learn-btn" target="_blank">Learn DevSecOps</a>
+      </div>
+  
+      <div class="tech-card">
+        <h3>7. Collaboration and Communication</h3>
+        <p>Foster a culture of collaboration between development, operations, and other teams to achieve shared goals.</p>
+        <a href="https://www.atlassian.com/devops/culture" class="learn-btn" target="_blank">Learn More</a>
+      </div>
+  
+      <div class="tech-card">
+        <h3>8. Feedback Loops</h3>
+        <p>Implement feedback loops to continuously improve processes and address issues proactively.</p>
+        <a href="https://www.thoughtworks.com/insights/blog/feedback-loops-devops" class="learn-btn" target="_blank">Learn Feedback Loops</a>
+      </div>
+    </div>
+  </section>
+  
+  <section id="roadmap">
+    <h2 class="section-title">DevOps Learning Roadmap</h2>
+    <div class="roadmap">
+      <div class="roadmap-step">
+        <h3>1. Programming Basics</h3>
+        <p>Learn a scripting language (Python, Shell) and version control with Git.</p>
+      </div>
+      
+      <div class="roadmap-step">
+        <h3>2. Linux & Networking</h3>
+        <p>Master Linux administration and networking fundamentals.</p>
+      </div>
+      
+      <div class="roadmap-step">
+        <h3>3. Containerization</h3>
+        <p>Learn Docker and container orchestration with Kubernetes.</p>
+      </div>
+      
+      <div class="roadmap-step">
+        <h3>4. CI/CD</h3>
+        <p>Implement continuous integration and deployment pipelines.</p>
+      </div>
+      
+      <div class="roadmap-step">
+        <h3>5. Infrastructure as Code</h3>
+        <p>Master infrastructure automation with Terraform and configuration management.</p>
+      </div>
+      
+      <div class="roadmap-step">
+        <h3>6. Monitoring & Logging</h3>
+        <p>Learn tools like Prometheus, Grafana, and ELK Stack.</p>
+      </div>
+    </div>
+  </section>
+  
+  <section id="resources">
+    <h2 class="section-title">Learning Resources</h2>
+    <div class="resource-grid">
+      <div class="channel-card">
+        <h4>TechWorld with Nana</h4>
+        <p>Comprehensive DevOps tutorials and real-world examples.</p>
+        <a href="https://www.youtube.com/@TechWorldwithNana" class="channel-link" target="_blank">Visit Channel →</a>
+      </div>
+      
+      <div class="channel-card">
+        <h4>DevOps Toolkit</h4>
+        <p>Advanced DevOps practices and tools demonstrations.</p>
+        <a href="https://www.youtube.com/@DevOpsToolkit" class="channel-link" target="_blank">Visit Channel →</a>
+      </div>
+      
+      <div class="channel-card">
+        <h4>KodeKloud</h4>
+        <p>Hands-on DevOps training and certification preparation.</p>
+        <a href="https://www.youtube.com/@KodeKloud" class="channel-link" target="_blank">Visit Channel →</a>
+      </div>
+      
+      <div class="channel-card">
+        <h4>DevOps Journey</h4>
+        <p>Step-by-step guides for DevOps tools and practices.</p>
+        <a href="https://www.youtube.com/@DevOpsJourney" class="channel-link" target="_blank">Visit Channel →</a>
+      </div>
+    </div>
+  </section>
+  
+</body>
+</html>

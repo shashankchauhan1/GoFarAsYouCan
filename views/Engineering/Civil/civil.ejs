@@ -1,0 +1,1773 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Civil Engineering - GoFarAsYouCan</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+
+    <style>
+      /* Base Styles */
+:root {
+  --primary-color: #2c3e50;
+  --primary-light: #34495e;
+  --secondary-color: #1a2530;
+  --accent-color: #e67e22;
+  --text-color: #f5f5f5;
+  --light-text: #fff;
+  --light-bg: #2c3e50;
+  --dark-bg: #1a2530;
+  --card-bg: #34495e;
+  --border-radius: 8px;
+  --box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+  --transition: all 0.3s ease;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  line-height: 1.6;
+  color: var(--text-color);
+  background-color: var(--light-bg);
+}
+
+.container {
+  width: 90%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+a {
+  text-decoration: none;
+  color: var(--accent-color);
+  transition: var(--transition);
+}
+
+a:hover {
+  color: #f39c12;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  border-radius: var(--border-radius);
+}
+
+.bg-light {
+  background-color: var(--primary-light);
+}
+
+/* Navbar */
+.navbar {
+  background-color: var(--dark-bg);
+  color: var(--light-text);
+  padding: 1rem 0;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  box-shadow: var(--box-shadow);
+}
+
+.navbar .container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: var(--light-text);
+}
+
+.back-button a {
+  color: var(--light-text);
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.back-button a:hover {
+  color: var(--accent-color);
+}
+
+/* Hero Section */
+.hero {
+  background-color: var(--dark-bg);
+  color: var(--light-text);
+  text-align: center;
+  padding: 6rem 0;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero .overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: url('https://images.unsplash.com/photo-1503387762-592deb58ef4e?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80') center/cover;
+  opacity: 0.3;
+}
+
+.hero h1 {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+  position: relative;
+}
+
+.hero p {
+  font-size: 1.2rem;
+  max-width: 700px;
+  margin: 0 auto;
+  position: relative;
+}
+
+/* Section Styles */
+.section {
+  padding: 5rem 0;
+}
+
+.section-title {
+  text-align: center;
+  margin-bottom: 3rem;
+  color: var(--accent-color);
+  position: relative;
+  font-size: 2rem;
+}
+
+.section-title::after {
+  content: "";
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80px;
+  height: 4px;
+  background-color: var(--accent-color);
+}
+
+.section-intro {
+  text-align: center;
+  max-width: 800px;
+  margin: 0 auto 2.5rem;
+  font-size: 1.1rem;
+}
+
+/* Content Wrapper */
+.content-wrapper {
+  display: flex;
+  gap: 2.5rem;
+  align-items: center;
+}
+
+.text-content {
+  flex: 1;
+}
+
+.text-content p {
+  margin-bottom: 1.25rem;
+  font-size: 1.05rem;
+}
+
+.image-content {
+  flex: 1;
+  box-shadow: var(--box-shadow);
+  border-radius: var(--border-radius);
+  overflow: hidden;
+}
+
+/* Cards Grid */
+.cards-grid {
+  display: grid;
+  gap: 1.5rem;
+}
+
+.two-columns {
+  grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+}
+
+.three-columns {
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+}
+
+.four-columns {
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+}
+
+/* Card Styles */
+.card {
+  background-color: var(--card-bg);
+  border-radius: var(--border-radius);
+  overflow: hidden;
+  box-shadow: var(--box-shadow);
+  transition: var(--transition);
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+}
+
+.card-header {
+  padding: 1.25rem 1.25rem 0.5rem;
+}
+
+.card-header h3 {
+  color: var(--accent-color);
+  margin-bottom: 0.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.card-header h3 i {
+  color: var(--accent-color);
+}
+
+.card-header p {
+  color: #ccc;
+  font-size: 0.9rem;
+}
+
+.card-content {
+  padding: 0.5rem 1.25rem 1.25rem;
+}
+
+/* Project Cards */
+.project-card .card-image {
+  height: 180px;
+  overflow: hidden;
+}
+
+.project-card .card-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.project-card:hover .card-image img {
+  transform: scale(1.05);
+}
+
+/* Career List */
+.career-list {
+  list-style: none;
+}
+
+.career-list li {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.5rem 0;
+  border-bottom: 1px solid #4a6583;
+}
+
+.career-list li:last-child {
+  border-bottom: none;
+}
+
+.badge {
+  background-color: #4a6583;
+  color: #ecf0f1;
+  padding: 0.25rem 0.5rem;
+  border-radius: 9999px;
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+.badge.top {
+  background-color: var(--accent-color);
+  color: white;
+}
+
+.badge.program {
+  background-color: #3498db;
+  color: white;
+}
+
+.growth-sectors {
+  margin-top: 1rem;
+}
+
+.text-success {
+  color: #2ecc71;
+  font-weight: 600;
+  font-size: 1.05rem;
+}
+
+/* Education Pathways */
+.education-pathways {
+  margin-top: 2.5rem;
+  background-color: var(--card-bg);
+  padding: 1.5rem;
+  border-radius: var(--border-radius);
+  box-shadow: var(--box-shadow);
+}
+
+.education-pathways h3 {
+  color: var(--accent-color);
+  margin-bottom: 1rem;
+  font-size: 1.25rem;
+}
+
+.pathways-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1rem;
+}
+
+.pathway-card {
+  border: 1px solid #4a6583;
+  padding: 1rem;
+  border-radius: var(--border-radius);
+}
+
+.pathway-card h4 {
+  margin-bottom: 0.5rem;
+  font-size: 1.1rem;
+}
+
+/* Skills List */
+.skills-list {
+  list-style: none;
+}
+
+.skills-list li {
+  padding: 0.5rem 0;
+  border-bottom: 1px solid #4a6583;
+}
+
+.skills-list li:last-child {
+  border-bottom: none;
+}
+
+.skill-name {
+  font-weight: 600;
+  display: block;
+  margin-bottom: 0.25rem;
+}
+
+.skill-desc {
+  font-size: 0.9rem;
+  color: #bdc3c7;
+}
+
+/* Accordion */
+.accordion {
+  border-radius: var(--border-radius);
+  overflow: hidden;
+}
+
+.accordion-item {
+  border-bottom: 1px solid #4a6583;
+}
+
+.accordion-item:last-child {
+  border-bottom: none;
+}
+
+.accordion-header {
+  padding: 1rem;
+  cursor: pointer;
+  font-weight: 600;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: var(--transition);
+}
+
+.accordion-header::after {
+  content: '\f078';
+  font-family: 'Font Awesome 5 Free';
+  font-weight: 900;
+  transition: var(--transition);
+}
+
+.accordion-header.active::after {
+  transform: rotate(180deg);
+}
+
+.accordion-content {
+  padding: 0 1rem;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease;
+}
+
+.accordion-content p {
+  padding-bottom: 1rem;
+}
+
+.accordion-item.active .accordion-header {
+  background-color: #2c3e50;
+}
+
+.accordion-item.active .accordion-content {
+  max-height: 500px;
+}
+
+/* Specialization Grid */
+.specialization-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  gap: 1.5rem;
+}
+
+.specialization-card {
+  background-color: var(--card-bg);
+  padding: 1.5rem 1rem;
+  border-radius: var(--border-radius);
+  box-shadow: var(--box-shadow);
+  text-align: center;
+  transition: var(--transition);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: var(--text-color);
+}
+
+.specialization-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.4);
+  background-color: var(--primary-color);
+  color: var(--light-text);
+}
+
+.specialization-card i {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+  color: var(--accent-color);
+  transition: var(--transition);
+}
+
+.specialization-card:hover i {
+  color: var(--light-text);
+}
+
+.specialization-card h3 {
+  font-size: 1rem;
+}
+
+/* Internship List */
+.internship-list {
+  list-style: none;
+}
+
+.internship-list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+}
+
+.company-name {
+  font-weight: 600;
+  margin-bottom: 0.25rem;
+}
+
+.company-desc {
+  font-size: 0.9rem;
+  color: #bdc3c7;
+}
+
+/* Internship Tips */
+.internship-tips {
+  margin-top: 2.5rem;
+  background-color: #2c3e50;
+  padding: 1.5rem;
+  border-radius: var(--border-radius);
+  box-shadow: var(--box-shadow);
+}
+
+.internship-tips h3 {
+  color: var(--accent-color);
+  margin-bottom: 1.5rem;
+  font-size: 1.25rem;
+}
+
+.tips-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1.5rem;
+  list-style: none;
+}
+
+.tips-grid li {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+}
+
+.tip-number {
+  background-color: #34495e;
+  width: 2rem;
+  height: 2rem;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+  color: var(--accent-color);
+  flex-shrink: 0;
+}
+
+.tip-title {
+  font-weight: 600;
+  margin-bottom: 0.25rem;
+}
+
+.tip-desc {
+  font-size: 0.9rem;
+  color: #bdc3c7;
+}
+
+/* Tabs */
+.tabs {
+  margin-bottom: 2rem;
+}
+
+.tab-buttons {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 2rem;
+}
+
+.tab-button {
+  padding: 0.75rem 1.5rem;
+  background-color: #34495e;
+  border: none;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: 600;
+  transition: var(--transition);
+  color: var(--text-color);
+}
+
+.tab-button:first-child {
+  border-radius: var(--border-radius) 0 0 var(--border-radius);
+}
+
+.tab-button:last-child {
+  border-radius: 0 var(--border-radius) var(--border-radius) 0;
+}
+
+.tab-button.active {
+  background-color: var(--accent-color);
+  color: var(--light-text);
+}
+
+.tab-content {
+  display: none;
+}
+
+.tab-content.active {
+  display: block;
+}
+
+/* Colleges Grid */
+.colleges-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 1.5rem;
+}
+
+.college-card {
+  background-color: var(--card-bg);
+  padding: 1.25rem;
+  border-radius: var(--border-radius);
+  box-shadow: var(--box-shadow);
+  transition: var(--transition);
+}
+
+.college-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.4);
+}
+
+.college-card h3 {
+  color: var(--accent-color);
+  margin-bottom: 0.25rem;
+}
+
+.college-location {
+  color: #bdc3c7;
+  margin-bottom: 0.75rem;
+  font-size: 0.9rem;
+}
+
+.college-details {
+  display: flex;
+  justify-content: space-between;
+  color: #bdc3c7;
+  font-size: 0.85rem;
+  margin-bottom: 1rem;
+}
+
+.college-rank, .college-year {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.college-rank i {
+  color: var(--accent-color);
+}
+
+.college-year i {
+  color: #3498db;
+}
+
+.college-info {
+  border-top: 1px solid #4a6583;
+  padding-top: 1rem;
+}
+
+.college-info p {
+  margin-bottom: 0.5rem;
+  font-size: 0.9rem;
+}
+
+.college-info span {
+  font-weight: 600;
+}
+
+/* FAQ Section */
+.faq-container {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+/* Footer */
+.footer {
+  background-color: var(--dark-bg);
+  color: var(--light-text);
+  padding: 4rem 0 1rem;
+}
+
+.footer-content {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2.5rem;
+  margin-bottom: 2.5rem;
+}
+
+.footer-logo h2 {
+  margin-bottom: 1rem;
+}
+
+.footer-links h3,
+.footer-resources h3 {
+  margin-bottom: 1.25rem;
+  position: relative;
+  padding-bottom: 0.5rem;
+  display: inline-block;
+}
+
+.footer-links h3::after,
+.footer-resources h3::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 50px;
+  height: 3px;
+  background-color: var(--accent-color);
+}
+
+.footer-links ul,
+.footer-resources ul {
+  list-style-type: none;
+}
+
+.footer-links li,
+.footer-resources li {
+  margin-bottom: 0.5rem;
+}
+
+.footer-links a,
+.footer-resources a {
+  color: #bdc3c7;
+}
+
+.footer-links a:hover,
+.footer-resources a:hover {
+  color: var(--accent-color);
+}
+
+.footer-bottom {
+  text-align: center;
+  padding-top: 1.25rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Responsive Design */
+@media (max-width: 992px) {
+  .content-wrapper {
+    flex-direction: column;
+  }
+
+  .hero h1 {
+    font-size: 2.5rem;
+  }
+  
+  .two-columns {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .section {
+    padding: 3.5rem 0;
+  }
+
+  .hero {
+    padding: 5rem 0;
+  }
+
+  .hero h1 {
+    font-size: 2rem;
+  }
+
+  .section-title {
+    font-size: 1.75rem;
+  }
+
+  .college-details {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+}
+
+@media (max-width: 576px) {
+  .navbar {
+    padding: 0.75rem 0;
+  }
+
+  .logo {
+    font-size: 1.2rem;
+  }
+
+  .hero h1 {
+    font-size: 1.8rem;
+  }
+
+  .section-title {
+    font-size: 1.5rem;
+  }
+
+  .tab-buttons {
+    flex-direction: column;
+    width: 100%;
+    max-width: 300px;
+    margin: 0 auto 1.5rem;
+  }
+
+  .tab-button {
+    border-radius: 0;
+  }
+
+  .tab-button:first-child {
+    border-radius: var(--border-radius) var(--border-radius) 0 0;
+  }
+
+  .tab-button:last-child {
+    border-radius: 0 0 var(--border-radius) var(--border-radius);
+  }
+
+  .specialization-grid {
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  }
+}
+    </style>
+
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="logo">GoFarAsYouCan</div>
+            <div class="back-button">
+                <a href="/Engineering/engineering.ejs"><i class="fas fa-arrow-left"></i> Back</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="hero">
+        <div class="overlay"></div>
+        <div class="container">
+            <h1>Civil Engineering</h1>
+            <p>Discover the world of infrastructure, construction, and sustainable development that shapes our built environment</p>
+        </div>
+    </header>
+
+    <!-- What is Civil Engineering Section -->
+    <section class="section" id="about">
+        <div class="container">
+            <h2 class="section-title">What is Civil Engineering?</h2>
+            <div class="content-wrapper">
+                <div class="text-content">
+                    <p>Civil engineering is one of the oldest engineering disciplines, focusing on the design, construction, and maintenance of the built environment. It encompasses everything from buildings and bridges to roads, dams, and water supply systems.</p>
+                    <p>Civil engineers are responsible for creating the infrastructure that supports modern society. They plan, design, and oversee construction projects while considering factors such as safety, sustainability, cost-effectiveness, and environmental impact.</p>
+                    <p>As a civil engineer, you'll be at the forefront of addressing global challenges in urbanization, infrastructure development, environmental protection, and disaster resilience.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Specializations Section -->
+    <section class="section bg-light" id="specializations">
+      <div class="container">
+          <h2 class="section-title">Specializations</h2>
+          <p class="section-intro">Explore different specializations within civil engineering that align with your interests and career goals:</p>
+          
+          <div class="specialization-grid">
+              <a href="structural.ejs" class="specialization-card">
+                  <i class="fas fa-building"></i>
+                  <h3>Structural Engineering</h3>
+              </a>
+              <a href="geotechnical.ejs" class="specialization-card">
+                  <i class="fas fa-mountain"></i>
+                  <h3>Geotechnical Engineering</h3>
+              </a>
+              <a href="transportation.ejs" class="specialization-card">
+                  <i class="fas fa-road"></i>
+                  <h3>Transportation Engineering</h3>
+              </a>
+              <a href="water.ejs" class="specialization-card">
+                  <i class="fas fa-water"></i>
+                  <h3>Water Resources Engineering</h3>
+              </a>
+              <a href="environmental.ejs" class="specialization-card">
+                  <i class="fas fa-leaf"></i>
+                  <h3>Environmental Engineering</h3>
+              </a>
+              <a href="construction.ejs" class="specialization-card">
+                  <i class="fas fa-hard-hat"></i>
+                  <h3>Construction Management</h3>
+              </a>
+          </div>
+      </div>
+  </section>
+
+    <!-- Career Paths Section -->
+    <section class="section bg-light" id="careers">
+        <div class="container">
+            <h2 class="section-title">Career Paths & Outlook</h2>
+            
+            <div class="cards-grid three-columns">
+                <div class="card">
+                    <div class="card-header">
+                        <h3><i class="fas fa-briefcase"></i> Industry Roles</h3>
+                    </div>
+                    <div class="card-content">
+                        <ul class="career-list">
+                            <li>
+                                <span>Structural Engineer</span>
+                                <span class="badge">₹4-14 LPA</span>
+                            </li>
+                            <li>
+                                <span>Project Engineer</span>
+                                <span class="badge">₹5-15 LPA</span>
+                            </li>
+                            <li>
+                                <span>Construction Manager</span>
+                                <span class="badge">₹6-18 LPA</span>
+                            </li>
+                            <li>
+                                <span>Transportation Engineer</span>
+                                <span class="badge">₹5-16 LPA</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <h3><i class="fas fa-chart-line"></i> Job Outlook</h3>
+                    </div>
+                    <div class="card-content">
+                        <p>The demand for civil engineers in India is projected to grow by 11% through 2030, with over 30,000 new positions annually.</p>
+                        <div class="growth-sectors">
+                            <span class="text-success">Growth Sectors:</span>
+                            <ul>
+                                <li>• Smart Cities</li>
+                                <li>• Infrastructure Development</li>
+                                <li>• Sustainable Construction</li>
+                                <li>• Disaster Resilience</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <h3><i class="fas fa-award"></i> Certifications</h3>
+                    </div>
+                    <div class="card-content">
+                        <ul>
+                            <li>• Professional Engineer (PE) License</li>
+                            <li>• Project Management Professional (PMP)</li>
+                            <li>• LEED Accredited Professional</li>
+                            <li>• Certified Construction Manager (CCM)</li>
+                            <li>• AutoCAD Civil 3D Certification</li>
+                            <li>• Structural Engineering Certification</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="education-pathways">
+                <h3>Higher Education Pathways</h3>
+                <div class="pathways-grid">
+                    <div class="pathway-card">
+                        <h4>M.Tech / M.E.</h4>
+                        <p>Specialized master's programs in areas like structural engineering, geotechnical engineering, transportation engineering, etc.</p>
+                    </div>
+                    <div class="pathway-card">
+                        <h4>MBA</h4>
+                        <p>For engineers looking to move into management roles or start their own construction firms.</p>
+                    </div>
+                    <div class="pathway-card">
+                        <h4>Ph.D.</h4>
+                        <p>For research-oriented careers in academia, R&D labs, or specialized industry positions.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Real-world Projects Section -->
+    <section class="section" id="projects">
+        <div class="container">
+            <h2 class="section-title">Real-world Projects</h2>
+            <div class="cards-grid four-columns">
+
+                <div class="card project-card">
+                    <a href="https://www.sciencedirect.com/topics/engineering/bridge-engineering">
+                      <div class="card-image">
+                        <img src="https://images.unsplash.com/photo-1545558014-8692077e9b5c?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Bridge Engineering">
+                    </div>
+                    <div class="card-header">
+                        <h3>Bridge Engineering</h3>
+                    </div>
+                    <div class="card-content">
+                        <p>Designing and constructing bridges that connect communities and facilitate transportation.</p>
+                    </div>
+                    </a>
+                </div>
+
+                <div class="card project-card">
+                    <a href="https://www.britannica.com/technology/high-rise-building">
+                    <div class="card-image">
+                        <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="High-Rise Buildings">
+                    </div>
+                    <div class="card-header">
+                        <h3>High-Rise Buildings</h3>
+                    </div>
+                    <div class="card-content">
+                        <p>Creating safe, efficient, and sustainable skyscrapers and tall structures.</p>
+                    </div>
+                </a>
+                </div>
+
+                <div class="card project-card">
+                    <a href="https://www.bk-engineering.in/post/roles-for-water-resources-management-engineer#:~:text=Water%20Resources%20Management%20Engineers%20play%20a%20crucial%20role%20in%20sustainable,%2C%20hydraulics%2C%20and%20environmental%20engineering.">
+                    <div class="card-image">
+                        <img src="https://rfeng.biz/wp-content/uploads/2024/06/hydroelectric-dam-grand-falls-new-brunswick-2023-11-27-04-49-21-utc.jpg" alt="Water Management">
+                    </div>
+                    <div class="card-header">
+                        <h3>Water Management</h3>
+                    </div>
+                    <div class="card-content">
+                        <p>Developing dams, canals, and water treatment facilities for sustainable water resources.</p>
+                    </div>
+                </a>
+                </div>
+
+                <div class="card project-card">
+                    <a href="https://en.wikipedia.org/wiki/Highway_engineering">
+                    <div class="card-image">
+                      <img src="https://images.unsplash.com/photo-1465447142348-e9952c393450?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Highway Infrastructure">
+                    </div>
+                    <div class="card-header">
+                        <h3>Highway Infrastructure</h3>
+                    </div>
+                    <div class="card-content">
+                        <p>Planning and constructing road networks, highways, and transportation systems.</p>
+                    </div>
+                </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- What to Master Section -->
+    <section class="section bg-light" id="skills">
+        <div class="container">
+            <h2 class="section-title">What to Master</h2>
+            <div class="cards-grid three-columns">
+                <div class="card">
+                    <div class="card-header">
+                        <h3><i class="fas fa-book-open"></i> Core Technical Skills</h3>
+                    </div>
+                    <div class="card-content">
+                        <ul class="skills-list">
+                            <li>
+                                <span class="skill-name">Structural Analysis</span>
+                                <p class="skill-desc">Force analysis, stress-strain relationships, structural systems</p>
+                            </li>
+                            <li>
+                                <span class="skill-name">Geotechnical Engineering</span>
+                                <p class="skill-desc">Soil mechanics, foundation design, earth structures</p>
+                            </li>
+                            <li>
+                                <span class="skill-name">Hydraulics & Hydrology</span>
+                                <p class="skill-desc">Fluid flow, water resources, drainage systems</p>
+                            </li>
+                            <li>
+                                <span class="skill-name">Transportation Engineering</span>
+                                <p class="skill-desc">Traffic analysis, highway design, urban planning</p>
+                            </li>
+                            <li>
+                                <span class="skill-name">Construction Materials</span>
+                                <p class="skill-desc">Properties, testing, and applications of construction materials</p>
+                            </li>
+                            <li>
+                                <span class="skill-name">Environmental Engineering</span>
+                                <p class="skill-desc">Water treatment, waste management, pollution control</p>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <h3><i class="fas fa-code"></i> Software & Tools</h3>
+                    </div>
+                    <div class="card-content">
+                        <ul class="skills-list">
+                            <li>
+                                <span class="skill-name">CAD Software</span>
+                                <p class="skill-desc">AutoCAD, Civil 3D, Revit, MicroStation</p>
+                            </li>
+                            <li>
+                                <span class="skill-name">Structural Analysis Software</span>
+                                <p class="skill-desc">STAAD.Pro, ETABS, SAP2000, RISA</p>
+                            </li>
+                            <li>
+                                <span class="skill-name">BIM</span>
+                                <p class="skill-desc">Building Information Modeling for integrated project delivery</p>
+                            </li>
+                            <li>
+                                <span class="skill-name">GIS</span>
+                                <p class="skill-desc">Geographic Information Systems for spatial analysis</p>
+                            </li>
+                            <li>
+                                <span class="skill-name">Project Management Software</span>
+                                <p class="skill-desc">MS Project, Primavera P6, Procore</p>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <h3><i class="fas fa-wrench"></i> Professional Skills</h3>
+                    </div>
+                    <div class="card-content">
+                        <ul class="skills-list">
+                            <li>
+                                <span class="skill-name">Project Management</span>
+                                <p class="skill-desc">Planning, scheduling, resource allocation, budgeting</p>
+                            </li>
+                            <li>
+                                <span class="skill-name">Technical Writing</span>
+                                <p class="skill-desc">Reports, specifications, proposals, documentation</p>
+                            </li>
+                            <li>
+                                <span class="skill-name">Problem-solving</span>
+                                <p class="skill-desc">Analytical thinking, troubleshooting, innovation</p>
+                            </li>
+                            <li>
+                                <span class="skill-name">Team Collaboration</span>
+                                <p class="skill-desc">Cross-functional teams, leadership, communication</p>
+                            </li>
+                            <li>
+                                <span class="skill-name">Industry Standards</span>
+                                <p class="skill-desc">IS Codes, NBC, AASHTO, ASTM standards</p>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Research Areas -->
+    <section class="section" id="research">
+        <div class="container">
+            <h2 class="section-title">Research Areas</h2>
+
+            <div class="cards-grid two-columns">
+                <div class="card">
+                    <div class="card-header">
+                        <h3><i class="fas fa-lightbulb"></i> Emerging Research Fields</h3>
+                    </div>
+                    <div class="card-content">
+                        <div class="accordion">
+                            <div class="accordion-item">
+                                <div class="accordion-header">Smart Infrastructure</div>
+                                <div class="accordion-content">
+                                    <p>Research in IoT-enabled infrastructure, structural health monitoring, and intelligent transportation systems. Focus areas include smart bridges, buildings with embedded sensors, and real-time monitoring systems.</p>
+                                </div>
+                            </div>
+                            <div class="accordion-item">
+                                <div class="accordion-header">Advanced Materials</div>
+                                <div class="accordion-content">
+                                    <p>Development and application of innovative construction materials including high-performance concrete, fiber-reinforced polymers, self-healing materials, and nanomaterials for enhanced durability and performance.</p>
+                                </div>
+                            </div>
+                            <div class="accordion-item">
+                                <div class="accordion-header">Earthquake Engineering</div>
+                                <div class="accordion-content">
+                                    <p>Research in seismic design, structural dynamics, base isolation systems, and performance-based design methodologies to improve the resilience of structures against earthquakes.</p>
+                                </div>
+                            </div>
+                            <div class="accordion-item">
+                                <div class="accordion-header">Digital Twins</div>
+                                <div class="accordion-content">
+                                    <p>Creating virtual replicas of physical infrastructure that update in real-time, enabling better monitoring, maintenance planning, and lifecycle management of buildings and infrastructure.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <h3><i class="fas fa-lightbulb"></i> Sustainable Engineering</h3>
+                    </div>
+                    <div class="card-content">
+                        <div class="accordion">
+                            <div class="accordion-item">
+                                <div class="accordion-header">Green Building Design</div>
+                                <div class="accordion-content">
+                                    <p>Research in energy-efficient buildings, passive design strategies, green roofs, and sustainable building materials to reduce environmental impact and improve occupant comfort.</p>
+                                </div>
+                            </div>
+                            <div class="accordion-item">
+                                <div class="accordion-header">Water Conservation</div>
+                                <div class="accordion-content">
+                                    <p>Development of rainwater harvesting systems, greywater recycling, sustainable urban drainage, and water-efficient infrastructure to address water scarcity challenges.</p>
+                                </div>
+                            </div>
+                            <div class="accordion-item">
+                                <div class="accordion-header">Resilient Infrastructure</div>
+                                <div class="accordion-content">
+                                    <p>Design and development of infrastructure systems that can withstand and recover from natural disasters, climate change impacts, and other disruptions.</p>
+                                </div>
+                            </div>
+                            <div class="accordion-item">
+                                <div class="accordion-header">Low-Carbon Construction</div>
+                                <div class="accordion-content">
+                                    <p>Research in carbon-neutral construction methods, embodied carbon reduction, and lifecycle assessment to minimize the carbon footprint of construction projects.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Internship Opportunities -->
+    <section class="section" id="internships">
+        <div class="container">
+            <h2 class="section-title">Internship Opportunities</h2>
+
+            <div class="cards-grid three-columns">
+                <div class="card">
+                    <div class="card-header">
+                        <h3>Industry Internships</h3>
+                        <p>Gain hands-on experience in real-world engineering environments</p>
+                    </div>
+                    <div class="card-content">
+                        <ul class="internship-list">
+                            <li>
+                                <span class="badge top">Top</span>
+                                <div>
+                                    <p class="company-name">L&T Construction</p>
+                                    <p class="company-desc">Infrastructure, buildings, and heavy civil engineering</p>
+                                </div>
+                            </li>
+                            <li>
+                                <span class="badge top">Top</span>
+                                <div>
+                                    <p class="company-name">Shapoorji Pallonji</p>
+                                    <p class="company-desc">Construction, infrastructure development, and real estate</p>
+                                </div>
+                            </li>
+                            <li>
+                                <span class="badge">Popular</span>
+                                <div>
+                                    <p class="company-name">NHAI</p>
+                                    <p class="company-desc">Highway development and management</p>
+                                </div>
+                            </li>
+                            <li>
+                                <span class="badge">Popular</span>
+                                <div>
+                                    <p class="company-name">DLF</p>
+                                    <p class="company-desc">Real estate development and construction</p>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <h3>Research Internships</h3>
+                        <p>Contribute to cutting-edge research and development</p>
+                    </div>
+                    <div class="card-content">
+                        <ul class="internship-list">
+                            <li>
+                                <span class="badge top">Top</span>
+                                <div>
+                                    <p class="company-name">CSIR-CBRI</p>
+                                    <p class="company-desc">Building research and sustainable construction</p>
+                                </div>
+                            </li>
+                            <li>
+                                <span class="badge top">Top</span>
+                                <div>
+                                    <p class="company-name">SERC</p>
+                                    <p class="company-desc">Structural engineering research</p>
+                                </div>
+                            </li>
+                            <li>
+                                <span class="badge">Popular</span>
+                                <div>
+                                    <p class="company-name">IIT Research Centers</p>
+                                    <p class="company-desc">Advanced research in various civil engineering domains</p>
+                                </div>
+                            </li>
+                            <li>
+                                <span class="badge">Popular</span>
+                                <div>
+                                    <p class="company-name">CWPRS</p>
+                                    <p class="company-desc">Water and power research</p>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <h3>International Opportunities</h3>
+                        <p>Expand your horizons with global experience</p>
+                    </div>
+                    <div class="card-content">
+                        <ul class="internship-list">
+                            <li>
+                                <span class="badge program">Program</span>
+                                <div>
+                                    <p class="company-name">IAESTE</p>
+                                    <p class="company-desc">International internship exchange program</p>
+                                </div>
+                            </li>
+                            <li>
+                                <span class="badge program">Program</span>
+                                <div>
+                                    <p class="company-name">DAAD WISE</p>
+                                    <p class="company-desc">Research internships in German universities</p>
+                                </div>
+                            </li>
+                            <li>
+                                <span class="badge">Company</span>
+                                <div>
+                                    <p class="company-name">AECOM</p>
+                                    <p class="company-desc">Global infrastructure consulting firm</p>
+                                </div>
+                            </li>
+                            <li>
+                                <span class="badge">Company</span>
+                                <div>
+                                    <p class="company-name">Jacobs</p>
+                                    <p class="company-desc">Engineering solutions and technical services</p>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="internship-tips">
+                <h3>Tips for Securing Internships</h3>
+                <ul class="tips-grid">
+                    <li>
+                        <div class="tip-number">1</div>
+                        <div>
+                            <p class="tip-title">Build a Strong Portfolio</p>
+                            <p class="tip-desc">Document your projects, include CAD models, structural designs, and site work</p>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="tip-number">2</div>
+                        <div>
+                            <p class="tip-title">Develop Technical Skills</p>
+                            <p class="tip-desc">Master relevant software tools like AutoCAD, STAAD.Pro, and Civil 3D</p>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="tip-number">3</div>
+                        <div>
+                            <p class="tip-title">Participate in Competitions</p>
+                            <p class="tip-desc">Join concrete canoe, bridge design, or other civil engineering competitions</p>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="tip-number">4</div>
+                        <div>
+                            <p class="tip-title">Network Effectively</p>
+                            <p class="tip-desc">Connect with professionals on LinkedIn and join organizations like ASCE or IEI</p>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Top Colleges Section -->
+    <section class="section bg-light" id="colleges">
+        <div class="container">
+            <h2 class="section-title">Top Colleges for Civil Engineering</h2>
+            
+            <div class="tabs">
+                <div class="tab-buttons">
+                    <button class="tab-button active" onclick="openTab('government')">Government</button>
+                    <button class="tab-button" onclick="openTab('private')">Private</button>
+                </div>
+                
+                <div id="government" class="tab-content active">
+                    <div class="colleges-grid">
+                        <div class="college-card">
+                            <h3>IIT Madras</h3>
+                            <p class="college-location">Chennai, Tamil Nadu</p>
+                            <div class="college-details">
+                                <div class="college-rank">
+                                    <i class="fas fa-star"></i>
+                                    <span>NIRF Rank: 1</span>
+                                </div>
+                                <div class="college-year">
+                                    <i class="fas fa-graduation-cap"></i>
+                                    <span>Established: 1959</span>
+                                </div>
+                            </div>
+                            <div class="college-info">
+                                <p><span>Specializations:</span> Structural, Geotechnical, Transportation, Water Resources</p>
+                                <p><span>Average Placement:</span> ₹12-22 LPA</p>
+                            </div>
+                        </div>
+
+                        <div class="college-card">
+                            <h3>IIT Delhi</h3>
+                            <p class="college-location">New Delhi</p>
+                            <div class="college-details">
+                                <div class="college-rank">
+                                    <i class="fas fa-star"></i>
+                                    <span>NIRF Rank: 2</span>
+                                </div>
+                                <div class="college-year">
+                                    <i class="fas fa-graduation-cap"></i>
+                                    <span>Established: 1961</span>
+                                </div>
+                            </div>
+                            <div class="college-info">
+                                <p><span>Specializations:</span> Structural Engineering, Environmental, Construction Technology</p>
+                                <p><span>Average Placement:</span> ₹12-20 LPA</p>
+                            </div>
+                        </div>
+
+                        <div class="college-card">
+                            <h3>IIT Bombay</h3>
+                            <p class="college-location">Mumbai, Maharashtra</p>
+                            <div class="college-details">
+                                <div class="college-rank">
+                                    <i class="fas fa-star"></i>
+                                    <span>NIRF Rank: 3</span>
+                                </div>
+                                <div class="college-year">
+                                    <i class="fas fa-graduation-cap"></i>
+                                    <span>Established: 1958</span>
+                                </div>
+                            </div>
+                            <div class="college-info">
+                                <p><span>Specializations:</span> Structural, Geotechnical, Water Resources</p>
+                                <p><span>Average Placement:</span> ₹11-20 LPA</p>
+                            </div>
+                        </div>
+
+                        <div class="college-card">
+                            <h3>IIT Roorkee</h3>
+                            <p class="college-location">Roorkee, Uttarakhand</p>
+                            <div class="college-details">
+                                <div class="college-rank">
+                                    <i class="fas fa-star"></i>
+                                    <span>NIRF Rank: 4</span>
+                                </div>
+                                <div class="college-year">
+                                    <i class="fas fa-graduation-cap"></i>
+                                    <span>Established: 1847</span>
+                                </div>
+                            </div>
+                            <div class="college-info">
+                                <p><span>Specializations:</span> Hydraulics, Structural, Geotechnical, Transportation</p>
+                                <p><span>Average Placement:</span> ₹10-18 LPA</p>
+                            </div>
+                        </div>
+
+                        <div class="college-card">
+                            <h3>IIT Kharagpur</h3>
+                            <p class="college-location">Kharagpur, West Bengal</p>
+                            <div class="college-details">
+                                <div class="college-rank">
+                                    <i class="fas fa-star"></i>
+                                    <span>NIRF Rank: 5</span>
+                                </div>
+                                <div class="college-year">
+                                    <i class="fas fa-graduation-cap"></i>
+                                    <span>Established: 1951</span>
+                                </div>
+                            </div>
+                            <div class="college-info">
+                                <p><span>Specializations:</span> Structural, Transportation, Environmental</p>
+                                <p><span>Average Placement:</span> ₹10-17 LPA</p>
+                            </div>
+                        </div>
+
+                        <div class="college-card">
+                            <h3>NIT Trichy</h3>
+                            <p class="college-location">Tiruchirappalli, Tamil Nadu</p>
+                            <div class="college-details">
+                                <div class="college-rank">
+                                    <i class="fas fa-star"></i>
+                                    <span>NIRF Rank: 9</span>
+                                </div>
+                                <div class="college-year">
+                                    <i class="fas fa-graduation-cap"></i>
+                                    <span>Established: 1964</span>
+                                </div>
+                            </div>
+                            <div class="college-info">
+                                <p><span>Specializations:</span> Structural, Environmental, Transportation</p>
+                                <p><span>Average Placement:</span> ₹7-14 LPA</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div id="private" class="tab-content">
+                    <div class="colleges-grid">
+                        <div class="college-card">
+                            <h3>BITS Pilani</h3>
+                            <p class="college-location">Pilani, Rajasthan</p>
+                            <div class="college-details">
+                                <div class="college-rank">
+                                    <i class="fas fa-star"></i>
+                                    <span>NIRF Rank: 17</span>
+                                </div>
+                                <div class="college-year">
+                                    <i class="fas fa-graduation-cap"></i>
+                                    <span>Established: 1964</span>
+                                </div>
+                            </div>
+                            <div class="college-info">
+                                <p><span>Specializations:</span> Structural, Water Resources, Transportation</p>
+                                <p><span>Average Placement:</span> ₹8-16 LPA</p>
+                            </div>
+                        </div>
+
+                        <div class="college-card">
+                            <h3>VIT Vellore</h3>
+                            <p class="college-location">Vellore, Tamil Nadu</p>
+                            <div class="college-details">
+                                <div class="college-rank">
+                                    <i class="fas fa-star"></i>
+                                    <span>NIRF Rank: 15</span>
+                                </div>
+                                <div class="college-year">
+                                    <i class="fas fa-graduation-cap"></i>
+                                    <span>Established: 1984</span>
+                                </div>
+                            </div>
+                            <div class="college-info">
+                                <p><span>Specializations:</span> Structural, Environmental, Construction Management</p>
+                                <p><span>Average Placement:</span> ₹5-12 LPA</p>
+                            </div>
+                        </div>
+
+                        <div class="college-card">
+                            <h3>Manipal Institute of Technology</h3>
+                            <p class="college-location">Manipal, Karnataka</p>
+                            <div class="college-details">
+                                <div class="college-rank">
+                                    <i class="fas fa-star"></i>
+                                    <span>NIRF Rank: 43</span>
+                                </div>
+                                <div class="college-year">
+                                    <i class="fas fa-graduation-cap"></i>
+                                    <span>Established: 1957</span>
+                                </div>
+                            </div>
+                            <div class="college-info">
+                                <p><span>Specializations:</span> Structural, Environmental, Construction Technology</p>
+                                <p><span>Average Placement:</span> ₹5-11 LPA</p>
+                            </div>
+                        </div>
+
+                        <div class="college-card">
+                            <h3>SRM Institute of Science and Technology</h3>
+                            <p class="college-location">Chennai, Tamil Nadu</p>
+                            <div class="college-details">
+                                <div class="college-rank">
+                                    <i class="fas fa-star"></i>
+                                    <span>NIRF Rank: 36</span>
+                                </div>
+                                <div class="college-year">
+                                    <i class="fas fa-graduation-cap"></i>
+                                    <span>Established: 1985</span>
+                                </div>
+                            </div>
+                            <div class="college-info">
+                                <p><span>Specializations:</span> Structural, Transportation, Environmental</p>
+                                <p><span>Average Placement:</span> ₹4-10 LPA</p>
+                            </div>
+                        </div>
+
+                        <div class="college-card">
+                            <h3>Thapar Institute of Engineering & Technology</h3>
+                            <p class="college-location">Patiala, Punjab</p>
+                            <div class="college-details">
+                                <div class="college-rank">
+                                    <i class="fas fa-star"></i>
+                                    <span>NIRF Rank: 26</span>
+                                </div>
+                                <div class="college-year">
+                                    <i class="fas fa-graduation-cap"></i>
+                                    <span>Established: 1956</span>
+                                </div>
+                            </div>
+                            <div class="college-info">
+                                <p><span>Specializations:</span> Structural, Geotechnical, Transportation</p>
+                                <p><span>Average Placement:</span> ₹5-12 LPA</p>
+                            </div>
+                        </div>
+
+                        <div class="college-card">
+                            <h3>College of Engineering, Pune</h3>
+                            <p class="college-location">Pune, Maharashtra</p>
+                            <div class="college-details">
+                                <div class="college-rank">
+                                    <i class="fas fa-star"></i>
+                                    <span>NIRF Rank: 48</span>
+                                </div>
+                                <div class="college-year">
+                                    <i class="fas fa-graduation-cap"></i>
+                                    <span>Established: 1854</span>
+                                </div>
+                            </div>
+                            <div class="college-info">
+                                <p><span>Specializations:</span> Structural, Water Resources, Transportation</p>
+                                <p><span>Average Placement:</span> ₹5-11 LPA</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="section" id="faq">
+        <div class="container">
+            <h2 class="section-title">Frequently Asked Questions</h2>
+
+            <div class="faq-container">
+                <div class="accordion">
+                    <div class="accordion-item">
+                        <div class="accordion-header">What is the difference between Civil and Architectural Engineering?</div>
+                        <div class="accordion-content">
+                            <p>Civil Engineering focuses on the technical aspects of designing and constructing infrastructure like buildings, bridges, roads, and water systems. It emphasizes structural integrity, materials, and construction methods. Architectural Engineering combines elements of architecture and engineering, focusing on building systems design, aesthetics, and functionality. Civil engineers ensure structures are safe and durable, while architectural engineers focus more on how building systems integrate with architectural design.</p>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item">
+                        <div class="accordion-header">Is coding knowledge necessary for Civil Engineers?</div>
+                        <div class="accordion-content">
+                            <p>While not mandatory, coding knowledge is increasingly valuable for civil engineers. Programming skills in languages like Python, MATLAB, and VBA help in automating calculations, data analysis, and working with specialized software. As the industry embraces digital tools like BIM, GIS, and parametric design, civil engineers with programming skills have a competitive advantage, especially in areas like structural analysis, hydraulic modeling, and transportation planning.</p>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item">
+                        <div class="accordion-header">What are the emerging areas in Civil Engineering?</div>
+                        <div class="accordion-content">
+                            <p>Emerging areas include sustainable infrastructure, smart cities, resilient design, 3D printing in construction, advanced materials, digital twins, and infrastructure asset management. The integration of AI, IoT, and data analytics with civil engineering is creating new opportunities in fields like structural health monitoring, traffic management, and disaster resilience. Climate adaptation engineering and green infrastructure are also growing rapidly as responses to environmental challenges.</p>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item">
+                        <div class="accordion-header">How is the job market for Civil Engineers in India?</div>
+                        <div class="accordion-content">
+                            <p>The job market for civil engineers in India remains strong, with opportunities in infrastructure development, urban planning, transportation, water resources, and construction sectors. Government initiatives like Smart Cities Mission, Bharatmala, and housing for all are creating new opportunities. However, the field is becoming more competitive, and engineers with specialized skills in emerging areas like sustainable design, BIM, and project management have better prospects.</p>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item">
+                        <div class="accordion-header">What certifications can enhance my employability as a Civil Engineer?</div>
+                        <div class="accordion-content">
+                            <p>Valuable certifications include: Professional Engineer (PE) license, Project Management Professional (PMP), LEED Accredited Professional, Certified Construction Manager (CCM), AutoCAD Civil 3D Certification, Revit Structure Certification, and GIS Certification. Specialized certifications in structural design codes, transportation planning, or water resources can also be beneficial depending on your career goals.</p>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item">
+                        <div class="accordion-header">How can I prepare for GATE in Civil Engineering?</div>
+                        <div class="accordion-content">
+                            <p>To prepare for GATE in Civil Engineering: (1) Understand the syllabus thoroughly, (2) Focus on core subjects like Structural Analysis, Geotechnical Engineering, Transportation Engineering, and Environmental Engineering, (3) Solve previous years' question papers, (4) Use standard textbooks and reference materials, (5) Join a good coaching program if needed, (6) Create a structured study plan with regular revision, and (7) Take mock tests to improve time management and identify weak areas.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <h2>GoFarAsYouCan</h2>
+                    <p>Your guide to engineering education and career paths</p>
+                </div>
+
+                <div class="footer-links">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="#about">About Civil Engineering</a></li>
+                        <li><a href="#careers">Career Paths</a></li>
+                        <li><a href="#projects">Real-world Projects</a></li>
+                        <li><a href="#skills">Skills to Master</a></li>
+                        <li><a href="#specializations">Specializations</a></li>
+                        <li><a href="#colleges">Top Colleges</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-resources">
+                  <h3>Resources</h3>
+                  <ul>
+                      <li><a href="https://www.engineering.com/" target="_blank">Engineering Blogs</a></li>
+                      <li><a href="https://www.coursera.org/" target="_blank">Online Courses</a></li>
+                      <li><a href="https://scholar.google.com/" target="_blank">Research Papers</a></li>
+                      <li><a href="https://www.statista.com/" target="_blank">Industry Reports</a></li>
+                      <li><a href="https://www.naukri.com/career-guidance" target="_blank">Career Guidance</a></li>
+                  </ul>
+              </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; <script>document.write(new Date().getFullYear())</script> GoFarAsYouCan. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+      // Tab functionality for colleges section
+function openTab(tabName) {
+  // Hide all tab content
+  const tabContents = document.querySelectorAll(".tab-content");
+  tabContents.forEach((content) => {
+    content.classList.remove("active");
+  });
+
+  // Remove active class from all tab buttons
+  const tabButtons = document.querySelectorAll(".tab-button");
+  tabButtons.forEach((button) => {
+    button.classList.remove("active");
+  });
+
+  // Show the selected tab content and mark the button as active
+  document.getElementById(tabName).classList.add("active");
+  document.querySelector(`button[onclick="openTab('${tabName}')"]`).classList.add("active");
+}
+
+// Accordion functionality
+function setupAccordions() {
+  const accordionHeaders = document.querySelectorAll(".accordion-header");
+  
+  accordionHeaders.forEach(header => {
+    header.addEventListener("click", function() {
+      // Toggle active class on the parent accordion item
+      const accordionItem = this.parentElement;
+      accordionItem.classList.toggle("active");
+      
+      // Toggle active class on the header itself
+      this.classList.toggle("active");
+      
+      // Toggle the content visibility
+      const content = this.nextElementSibling;
+      if (accordionItem.classList.contains("active")) {
+        content.style.maxHeight = content.scrollHeight + "px";
+      } else {
+        content.style.maxHeight = 0;
+      }
+    });
+  });
+}
+
+// Smooth scrolling for anchor links
+function setupSmoothScrolling() {
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+      e.preventDefault();
+
+      const targetId = this.getAttribute('href');
+      if (targetId === "#") return;
+
+      const targetElement = document.querySelector(targetId);
+      if (targetElement) {
+        window.scrollTo({
+          top: targetElement.offsetTop - 80,
+          behavior: 'smooth'
+        });
+      }
+    });
+  });
+}
+
+// Initialize everything when the DOM is loaded
+document.addEventListener("DOMContentLoaded", function() {
+  // Set the default tab to 'government'
+  openTab("government");
+  
+  // Setup accordions
+  setupAccordions();
+  
+  // Setup smooth scrolling
+  setupSmoothScrolling();
+});
+    </script>
+</body>
+</html>

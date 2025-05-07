@@ -1,0 +1,570 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" rel="stylesheet">
+  <title>DSA & Programming Learning Hub</title>
+  <style>
+    :root {
+      --primary-bg: #0A0A0A;
+      /* Dark background */
+      --section-bg: #1A1A1A;
+      /* Slightly lighter background */
+      --card-bg: #222222;
+      /* Card background */
+      --card-hover: #333333;
+      /* Card hover effect */
+      --text-primary: #E5E5E5;
+      /* Light text color */
+      --text-secondary: #A0A0A0;
+      /* Muted text color */
+      --accent: #00E5FF;
+      /* Teal accent */
+      --accent-hover: #00B8D4;
+      /* Darker teal for hover */
+      --highlight: #40C4FF;
+      /* Bright teal for highlights */
+      --border: #444444;
+      /* Border color */
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: var(--primary-bg);
+      color: var(--text-primary);
+      line-height: 1.6;
+    }
+
+    .navbar {
+      background: var(--section-bg);
+      padding: 1rem 2rem;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .nav-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      font-size: 1.8rem;
+      font-weight: bold;
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    .back-button {
+      text-decoration: none;
+      color: var(--text-primary);
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      transition: color 0.3s ease;
+    }
+
+    .back-button:hover {
+      color: var(--accent);
+    }
+
+    header {
+      text-align: center;
+      padding: 4rem 2rem;
+      background: var(--section-bg);
+    }
+
+    header h1 {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+      color: var(--accent);
+    }
+
+    header p {
+      font-size: 1.25rem;
+      color: var(--text-secondary);
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    section {
+      max-width: 1200px;
+      margin: 2rem auto;
+      padding: 2rem;
+    }
+
+    .section-title {
+      color: var(--accent);
+      margin-bottom: 1.5rem;
+      font-size: 2rem;
+      position: relative;
+      padding-bottom: 0.5rem;
+    }
+
+    .section-title::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100px;
+      height: 3px;
+      background: var(--accent);
+      border-radius: 3px;
+    }
+
+    .topics-grid,
+    .language-grid,
+    .projects-grid,
+    .practice-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+      margin: 2rem 0;
+    }
+
+    .topic-card,
+    .language-card,
+    .project-card,
+    .practice-card {
+      background: var(--card-bg);
+      padding: 2rem;
+      border-radius: 12px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      transition: all 0.3s ease;
+      border: 1px solid var(--border);
+    }
+
+    .topic-card:hover,
+    .language-card:hover,
+    .project-card:hover,
+    .practice-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+      border-color: var(--accent);
+      background: var(--card-hover);
+    }
+
+    .topic-title,
+    .language-title,
+    .project-title {
+      color: var(--highlight);
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
+    }
+
+    .learn-btn {
+      display: inline-block;
+      padding: 0.75rem 1.5rem;
+      background: aqua;
+      color: black;
+      text-decoration: none;
+      border-radius: 8px;
+      transition: all 0.3s ease;
+      margin-top: 1rem;
+    }
+
+    .learn-btn:hover {
+      background: var(--accent-hover);
+      transform: translateY(-2px);
+    }
+
+    footer {
+      text-align: center;
+      padding: 2rem;
+      background: var(--section-bg);
+      margin-top: 4rem;
+      border-top: 1px solid var(--border);
+    }
+
+    .quote {
+      font-style: italic;
+      color: var(--text-secondary);
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    @media (max-width: 768px) {
+      .navbar {
+        padding: 1rem;
+      }
+
+      .logo {
+        font-size: 1.5rem;
+      }
+
+      header {
+        padding: 3rem 1rem;
+      }
+
+      header h1 {
+        font-size: 2rem;
+      }
+
+      section {
+        padding: 1rem;
+      }
+
+      .topics-grid,
+      .language-grid,
+      .projects-grid,
+      .practice-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <nav class="navbar">
+    <div class="nav-container">
+      <a href="#" class="logo">DSA Learning </a>
+      <a href="/Engineering/CSE/cse.ejs" class="back-button">
+        <i class="fas fa-arrow-left"></i> Back
+      </a>
+    </div>
+  </nav>
+
+  <header>
+    <h1>Data Structures & Algorithms</h1>
+    <p>Master the fundamentals of programming with comprehensive DSA learning resources.</p>
+  </header>
+
+  <section class="language-section">
+    <h2 class="section-title">Programming Languages</h2>
+    <div class="language-grid">
+      <div class="language-card">
+        <div class="language-title">
+          <i class="fab fa-python"></i>
+          Python
+        </div>
+        <p>Perfect for beginners and data science enthusiasts. Known for its readability and vast library ecosystem.</p>
+        <br>
+        <ul class="features-list">
+          <li><i class="fas fa-check"></i> Easy to learn syntax</li><br>
+          <li><i class="fas fa-check"></i> Great for AI/ML</li><br>
+          <li><i class="fas fa-check"></i> Rich library ecosystem</li>
+        </ul>
+        <br>
+        <div class="resources-section">
+          <div class="resources-title" style="font-size: larger; color: gold;">Learning Resources</div><br>
+          <ul class="channel-list">
+            <li><a style="color: white; text-decoration: none;" href="https://www.youtube.com/@Telusko" target="_blank"><i class="fab fa-youtube"></i> Telusko</a>
+            </li><br>
+            <li><a style="color: white; text-decoration: none;" href="https://www.youtube.com/@CoreySchafer" target="_blank"><i class="fab fa-youtube"></i> Corey
+                Schafer</a></li><br>
+            <li><a style="color: white; text-decoration: none;" href="https://www.youtube.com/@sentdex" target="_blank"><i class="fab fa-youtube"></i> Sentdex</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="language-card">
+        <div class="language-title">
+          <i class="fas fa-code"></i>
+          C++
+        </div>
+        <p>Powerful language for competitive programming and system development. Offers great performance and control.
+        </p>
+        <br>
+        <ul class="features-list">
+          <li><i class="fas fa-check"></i> High performance</li><br>
+          <li><i class="fas fa-check"></i> Memory management</li><br>
+          <li><i class="fas fa-check"></i> STL library</li>
+        </ul>
+        <br>
+        <div class="resources-section">
+          <div class="resources-title" style="font-size: larger; color: gold;">Learning Resources</div><br>
+          <ul class="channel-list">
+            <li><a style="color: white; text-decoration: none;" href="https://www.youtube.com/@CodeHelp" target="_blank"><i class="fab fa-youtube"></i> Code Help</a>
+            </li><br>
+            <li><a style="color: white; text-decoration: none;" href="https://www.youtube.com/@mycodeschool" target="_blank"><i class="fab fa-youtube"></i>
+                mycodeschool</a></li><br>
+            <li><a style="color: white; text-decoration: none;" href="https://www.youtube.com/@ApnaCollegeOfficial" target="_blank"><i class="fab fa-youtube"></i>
+                Apna College</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="language-card">
+        <div class="language-title">
+          <i class="fab fa-java"></i>
+          Java
+        </div>
+        <p>Enterprise-grade language with strong OOP principles. Popular for Android development and backend services.
+        </p>
+        <br>
+        <ul class="features-list">
+          <li><i class="fas fa-check"></i> Platform independent</li><br>
+          <li><i class="fas fa-check"></i> Strong OOP support</li><br>
+          <li><i class="fas fa-check"></i> Enterprise ready</li>
+        </ul>
+        <br>
+        <div class="resources-section">
+          <div class="resources-title" style="font-size: larger; color: gold;">Learning Resources</div><br>
+          <ul class="channel-list">
+            <li><a style="color: white; text-decoration: none;" href="https://www.youtube.com/@Telusko" target="_blank"><i class="fab fa-youtube"></i> Telusko</a>
+            </li><br>
+            <li><a style="color: white; text-decoration: none;" href="https://www.youtube.com/@DurgaSoftwareSolutions" target="_blank"><i class="fab fa-youtube"></i>
+                Durga Sir</a></li><br>
+            <li><a style="color: white; text-decoration: none;" href="https://www.youtube.com/@JavaGuides" target="_blank"><i class="fab fa-youtube"></i> Java
+                Guides</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Add new Projects section -->
+  <section class="projects-section">
+    <h2 class="section-title">Real-World Projects</h2>
+    <div class="projects-grid">
+      <div class="project-card">
+        <div class="project-title">
+          <i class="fas fa-search"></i>
+          Search Engine
+        </div>
+        <p>Build a mini search engine implementing indexing and ranking algorithms.</p>
+        <div class="project-tags">
+          <span class="project-tag">Trie</span>
+          <span class="project-tag">Graphs</span>
+          <span class="project-tag">Ranking</span>
+        </div>
+        <a href="https://github.com/topics/search-engine" class="learn-btn" target="_blank">View Examples</a>
+      </div>
+
+      <div class="project-card">
+        <div class="project-title">
+          <i class="fas fa-project-diagram"></i>
+          Social Network
+        </div>
+        <p>Create a social network backend implementing friend recommendations and feed algorithms.</p>
+        <div class="project-tags">
+          <span class="project-tag">Graphs</span>
+          <span class="project-tag">BFS/DFS</span>
+          <span class="project-tag">Caching</span>
+        </div>
+        <a href="https://github.com/topics/social-network" class="learn-btn" target="_blank">View Examples</a>
+      </div>
+
+      <div class="project-card">
+        <div class="project-title">
+          <i class="fas fa-chess"></i>
+          Game AI
+        </div>
+        <p>Implement AI algorithms for games like Chess, Tic-tac-toe, or Connect Four.</p>
+        <div class="project-tags">
+          <span class="project-tag">Minimax</span>
+          <span class="project-tag">Alpha-Beta</span>
+          <span class="project-tag">Tree Search</span>
+        </div>
+        <a href="https://github.com/topics/game-ai" class="learn-btn" target="_blank">View Examples</a>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2 class="section-title">Core Concepts</h2>
+    <div class="topics-grid">
+      <div class="topic-card">
+        <div class="topic-title">Time & Space Complexity</div>
+        <p>Learn how to analyze algorithm efficiency and optimize your code performance.</p>
+        <a class="learn-btn" href="https://www.geeksforgeeks.org/time-complexity-and-space-complexity/"
+          target="_blank">Learn More</a>
+      </div>
+
+      <div class="topic-card">
+        <div class="topic-title">Arrays & Strings</div>
+        <p>Master fundamental data structures and common manipulation techniques.</p>
+        <a class="learn-btn" href="https://www.geeksforgeeks.org/array-data-structure/" target="_blank">Learn More</a>
+      </div>
+
+      <div class="topic-card">
+        <div class="topic-title">Linked Lists</div>
+        <p>Understand implementation and operations on singly, doubly, and circular linked lists.</p>
+        <a class="learn-btn" href="https://www.geeksforgeeks.org/data-structures/linked-list/" target="_blank">Learn
+          More</a>
+      </div>
+    </div>
+
+    <div class="topics-grid">
+      <div class="topic-card">
+        <div class="topic-title">Dynamic Programming</div>
+        <p>Master the art of solving complex problems by breaking them into simpler subproblems.</p>
+        <a class="learn-btn" href="https://www.geeksforgeeks.org/dynamic-programming/" target="_blank">Learn More</a>
+      </div>
+
+
+
+      <div class="topic-card">
+        <div class="topic-title">Stacks & Queues</div>
+        <p>Learn about LIFO and FIFO structures, implementation, and real-world applications like expression evaluation
+          and scheduling.</p> <a class="learn-btn" href="https://www.geeksforgeeks.org/stack-data-structure/"
+          target="_blank">Learn More</a>
+      </div>
+      <div class="topic-card">
+        <div class="topic-title">Recursion & Backtracking</div>
+        <p>Understand the core of recursion, explore backtracking algorithms for problems like Sudoku, N-Queens, and
+          combinations.</p> <a class="learn-btn" href="https://www.geeksforgeeks.org/recursion/" target="_blank">Learn
+          More</a>
+      </div>
+      <div class="topic-card">
+        <div class="topic-title">Binary Search</div>
+        <p>Master efficient search techniques over sorted data, including variations like lower bound, upper bound, and
+          binary search on answer.</p> <a class="learn-btn" href="https://www.geeksforgeeks.org/binary-search/"
+          target="_blank">Learn More</a>
+      </div>
+      <div class="topic-card">
+        <div class="topic-title">Heaps & Priority Queues</div>
+        <p>Study min-heaps and max-heaps to understand efficient priority management and their use in algorithms like
+          Dijkstra’s.</p> <a class="learn-btn" href="https://www.geeksforgeeks.org/heap-data-structure/"
+          target="_blank">Learn More</a>
+      </div>
+      <div class="topic-card">
+        <div class="topic-title">Hashing & Hashmaps</div>
+        <p>Learn about efficient data storage and retrieval, collision handling techniques, and applications like
+          anagrams and frequency count.</p> <a class="learn-btn"
+          href="https://www.geeksforgeeks.org/hashing-data-structure/" target="_blank">Learn More</a>
+      </div>
+      <div class="topic-card">
+        <div class="topic-title">Greedy Algorithms</div>
+        <p>Explore problems that require making locally optimal choices at each step, like Activity Selection and
+          Huffman Coding.</p> <a class="learn-btn" href="https://www.geeksforgeeks.org/greedy-algorithms/"
+          target="_blank">Learn More</a>
+      </div>
+      <div class="topic-card">
+        <div class="topic-title">Divide and Conquer</div>
+        <p>Master problem-solving by dividing a problem into smaller subproblems, applying it to Merge Sort, Quick Sort,
+          and Binary Search.</p> <a class="learn-btn" href="https://www.geeksforgeeks.org/divide-and-conquer-algorithm/"
+          target="_blank">Learn More</a>
+      </div>
+      <div class="topic-card">
+        <div class="topic-title">Graph Algorithms (Advanced)</div>
+        <p>Learn advanced concepts like shortest paths (Dijkstra, Bellman-Ford), MST (Kruskal, Prim), and Topological
+          Sorting.</p> <a class="learn-btn" href="https://www.geeksforgeeks.org/graph-data-structure-and-algorithms/"
+          target="_blank">Learn More</a>
+      </div>
+      <div class="topic-card">
+        <div class="topic-title">Binary Trees & Binary Search Trees (BST)</div>
+        <p>Understand tree traversals (inorder, preorder, postorder), BST operations, balancing techniques like AVL
+          Trees and Red-Black Trees.</p> <a class="learn-btn"
+          href="https://www.geeksforgeeks.org/binary-search-tree-data-structure/" target="_blank">Learn More</a>
+      </div>
+      <div class="topic-card">
+        <div class="topic-title">Trie (Prefix Tree)</div>
+        <p>Master efficient storage and retrieval of strings, auto-complete features, and solving complex string
+          problems.</p> <a class="learn-btn" href="https://www.geeksforgeeks.org/trie-insert-and-search/"
+          target="_blank">Learn More</a>
+      </div>
+      <div class="topic-card">
+        <div class="topic-title">Sliding Window & Two Pointer Techniques</div>
+        <p>Learn to optimize solutions for subarray and substring problems using efficient pointer movement strategies.
+        </p> <a class="learn-btn" href="https://www.geeksforgeeks.org/window-sliding-technique/" target="_blank">Learn
+          More</a>
+      </div>
+      <div class="topic-card">
+        <div class="topic-title">Union Find / Disjoint Set Union (DSU)</div>
+        <p>Understand efficient data structures to solve connectivity problems, essential for graphs and dynamic
+          connectivity queries.</p> <a class="learn-btn"
+          href="https://www.geeksforgeeks.org/disjoint-set-data-structures/" target="_blank">Learn More</a>
+      </div>
+      <div class="topic-card">
+        <div class="topic-title">Bit Manipulation</div>
+        <p>Explore low-level data operations for optimizing solutions to mathematical and logical problems using bits.
+        </p> <a class="learn-btn" href="https://www.geeksforgeeks.org/bitwise-operators-in-c-cpp/" target="_blank">Learn
+          More</a>
+      </div>
+
+
+
+    </div>
+
+
+
+
+  </section>
+
+
+
+  <section class="practice-section">
+    <h2 class="section-title">Practice Resources</h2>
+    <div class="practice-grid">
+      <div class="practice-card">
+        <h3>LeetCode</h3>
+        <p>Practice coding problems with varying difficulty levels.</p>
+        <a href="https://leetcode.com/" target="_blank" class="learn-btn">Start Practicing</a>
+      </div>
+
+      <div class="practice-card">
+        <h3>CodeForces</h3>
+        <p>Participate in competitive programming contests.</p>
+        <a href="https://codeforces.com/" target="_blank" class="learn-btn">Join Contests</a>
+      </div>
+
+      <div class="practice-card">
+        <h3>GeeksforGeeks</h3>
+        <p>Access comprehensive DSA tutorials and practice problems.</p>
+        <a href="https://practice.geeksforgeeks.org/" target="_blank" class="learn-btn">Learn & Practice</a>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2 class="section-title">Learning Resources</h2>
+    <div class="topics-grid">
+      <div class="topic-card">
+        <div class="topic-title">Video Tutorials</div>
+        <ul class="resource-list">
+          <li><a style="color: white; text-decoration: none;" href="https://www.youtube.com/@takeUforward" target="_blank"><i class="fab fa-youtube"></i> Take U
+              Forward</a></li><br>
+          <li><a style="color: white; text-decoration: none;" href="https://www.youtube.com/@CodeHelp" target="_blank"><i class="fab fa-youtube"></i> Code Help - by
+              Babbar</a></li><br>
+          <li><a style="color: white; text-decoration: none;" href="https://www.youtube.com/@ApnaCollegeOfficial" target="_blank"><i class="fab fa-youtube"></i> Apna
+              College</a></li>
+        </ul>
+      </div>
+
+      <div class="topic-card">
+        <div class="topic-title">Practice Sheets</div>
+        <ul class="resource-list">
+          <li><a style="color: white; text-decoration: none;" href="https://takeuforward.org/interviews/strivers-sde-sheet-top-coding-interview-problems/"
+              target="_blank"><i class="fas fa-file-code"></i> Striver's SDE Sheet</a></li><br>
+          <li><a style="color: white; text-decoration: none;" href="https://www.techinterviewhandbook.org/grind75" target="_blank"><i class="fas fa-file-code"></i>
+              Grind 75</a></li><br>
+          <li><a style="color: white; text-decoration: none;" href="https://450dsa.com/" target="_blank"><i class="fas fa-file-code"></i> Love Babbar 450</a></li>
+        </ul>
+      </div>
+
+      <div class="topic-card">
+        <div class="topic-title">Interview Preparation</div>
+        <ul class="resource-list">
+          <li><a style="color: white; text-decoration: none;"
+              href="https://www.geeksforgeeks.org/must-do-coding-questions-for-companies-like-amazon-microsoft-adobe/"
+              target="_blank"><i class="fas fa-briefcase"></i> Company-wise Questions</a></li><br>
+          <li><a style="color: white; text-decoration: none;" href="https://leetcode.com/explore/interview/card/top-interview-questions-medium/" target="_blank"><i
+                class="fas fa-code"></i> Top Interview Questions</a></li><br>
+          <li><a style="color: white; text-decoration: none;" href="https://www.interviewbit.com/practice/" target="_blank"><i class="fas fa-laptop-code"></i>
+              InterviewBit Practice</a></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <p class="quote">"The only way to learn a new programming language is by writing programs in it." - Dennis Ritchie
+    </p>
+  </footer>
+</body>
+
+</html>

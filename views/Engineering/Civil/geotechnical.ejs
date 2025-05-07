@@ -1,0 +1,597 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" rel="stylesheet">
+  <title>Geotechnical Engineering Learning Hub</title>
+  <style>
+    :root {
+      --primary-bg: #1e2639;      /* Dark navy background */
+      --section-bg: #2a3447;      /* Slightly lighter background */
+      --card-bg: #323e57;         /* Card background */
+      --card-hover: #3d4a66;      /* Card hover effect */
+      --text-primary: #e8edf7;    /* Light text color */
+      --text-secondary: #b3bfd1;  /* Muted text color */
+      --accent: #f0b429;          /* Gold accent */
+      --accent-hover: #e0a718;    /* Darker gold for hover */
+      --highlight: #ffd166;       /* Bright gold for highlights */
+      --border: #4a5573;          /* Border color */
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: var(--primary-bg);
+      color: var(--text-primary);
+      line-height: 1.6;
+    }
+
+    .navbar {
+      background: var(--section-bg);
+      padding: 1rem 2rem;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .nav-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      font-size: 1.8rem;
+      font-weight: bold;
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    .back-button {
+      text-decoration: none;
+      color: var(--text-primary);
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      transition: color 0.3s ease;
+    }
+
+    .back-button:hover {
+      color: var(--accent);
+    }
+
+    header {
+      text-align: center;
+      padding: 4rem 2rem;
+      background: var(--section-bg);
+      background-image: linear-gradient(rgba(42, 52, 71, 0.9), rgba(42, 52, 71, 0.9)), 
+                        url('https://images.unsplash.com/photo-1541888946425-d81bb19240f5?q=80&w=2000');
+      background-size: cover;
+      background-position: center;
+    }
+
+    header h1 {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+      color: var(--accent);
+    }
+
+    header p {
+      font-size: 1.25rem;
+      color: var(--text-secondary);
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    section {
+      max-width: 1200px;
+      margin: 2rem auto;
+      padding: 2rem;
+    }
+
+    .section-title {
+      color: var(--accent);
+      margin-bottom: 1.5rem;
+      font-size: 2rem;
+      position: relative;
+      padding-bottom: 0.5rem;
+    }
+
+    .section-title::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100px;
+      height: 3px;
+      background: var(--accent);
+      border-radius: 3px;
+    }
+
+    .topics-grid,
+    .specialization-grid,
+    .projects-grid,
+    .practice-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+      margin: 2rem 0;
+    }
+
+    .topic-card,
+    .specialization-card,
+    .project-card,
+    .practice-card {
+      background: var(--card-bg);
+      padding: 2rem;
+      border-radius: 12px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      transition: all 0.3s ease;
+      border: 1px solid var(--border);
+    }
+
+    .topic-card:hover,
+    .specialization-card:hover,
+    .project-card:hover,
+    .practice-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+      border-color: var(--accent);
+      background: var(--card-hover);
+    }
+
+    .topic-title,
+    .specialization-title,
+    .project-title {
+      color: var(--highlight);
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
+    }
+
+    .learn-btn {
+      display: inline-block;
+      padding: 0.75rem 1.5rem;
+      background: var(--accent);
+      color: #0e1814;
+      font-weight: bold;
+      text-decoration: none;
+      border-radius: 8px;
+      transition: all 0.3s ease;
+      margin-top: 1rem;
+    }
+
+    .learn-btn:hover {
+      background: var(--accent-hover);
+      transform: translateY(-2px);
+    }
+
+    footer {
+      text-align: center;
+      padding: 2rem;
+      background: var(--section-bg);
+      margin-top: 4rem;
+      border-top: 1px solid var(--border);
+    }
+
+    .quote {
+      font-style: italic;
+      color: var(--text-secondary);
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .project-tags {
+      margin-top: 1rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+
+    .project-tag {
+      background: rgba(240, 180, 41, 0.2);
+      color: var(--accent);
+      padding: 0.3rem 0.6rem;
+      border-radius: 4px;
+      font-size: 0.8rem;
+      font-weight: 500;
+    }
+
+    .features-list {
+      list-style: none;
+    }
+
+    .features-list li {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .features-list i {
+      color: var(--accent);
+    }
+
+    .resources-title {
+      font-size: larger;
+      color: #f0c75e;
+    }
+
+    .channel-list {
+      list-style: none;
+      margin-top: 0.5rem;
+    }
+
+    .channel-list li {
+      margin-bottom: 0.5rem;
+    }
+
+    .resource-list {
+      list-style: none;
+    }
+
+    @media (max-width: 768px) {
+      .navbar {
+        padding: 1rem;
+      }
+
+      .logo {
+        font-size: 1.5rem;
+      }
+
+      header {
+        padding: 3rem 1rem;
+      }
+
+      header h1 {
+        font-size: 2rem;
+      }
+
+      section {
+        padding: 1rem;
+      }
+
+      .topics-grid,
+      .specialization-grid,
+      .projects-grid,
+      .practice-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <nav class="navbar">
+    <div class="nav-container">
+      <a href="#" class="logo">Geotechnical Engineering</a>
+      <a href="/Engineering/CIVIL/civil.ejs" class="back-button">
+        <i class="fas fa-arrow-left"></i> Back
+      </a>
+    </div>
+  </nav>
+
+  <header>
+    <h1>Geotechnical Engineering Specialization</h1>
+    <p>Master the fundamentals of soil mechanics, foundation design, and ground improvement with comprehensive learning resources.</p>
+  </header>
+
+  <section class="specialization-section">
+    <h2 class="section-title">Specialization Areas</h2>
+    <div class="specialization-grid">
+  
+      <!-- Foundation Engineering -->
+      <div class="specialization-card">
+        <div class="specialization-title">
+          <i class="fas fa-building-columns"></i>
+          Foundation Engineering
+        </div>
+        <p>Focus on design and analysis of shallow and deep foundations for various soil conditions.</p>
+        <br>
+        <ul class="features-list">
+          <li><i class="fas fa-check"></i> Shallow foundations</li><br>
+          <li><i class="fas fa-check"></i> Deep foundations</li><br>
+          <li><i class="fas fa-check"></i> Settlement analysis</li>
+        </ul>
+        <br>
+        <div class="resources-section">
+          <div class="resources-title">Learning Resources</div><br>
+          <ul class="channel-list">
+            <li><a style="color: white; text-decoration: none;" href="https://www.youtube.com/c/PracticalEngineering" target="_blank"><i class="fab fa-youtube"></i> Practical Engineering</a></li>
+            <li><a style="color: white; text-decoration: none;" href="https://www.youtube.com/c/CivilEngineeringAcademy" target="_blank"><i class="fab fa-youtube"></i> Civil Engineering Academy</a></li>
+            <li><a style="color: white; text-decoration: none;" href="https://www.geoengineer.org/" target="_blank"><i class="fas fa-book"></i> GeoEngineer.org</a></li>
+          </ul>
+        </div>
+      </div>
+  
+      <!-- Soil Mechanics -->
+      <div class="specialization-card">
+        <div class="specialization-title">
+          <i class="fas fa-mountain"></i>
+          Soil Mechanics
+        </div>
+        <p>Study of soil behavior, properties, and classification for engineering applications.</p>
+        <br>
+        <ul class="features-list">
+          <li><i class="fas fa-check"></i> Soil classification</li><br>
+          <li><i class="fas fa-check"></i> Shear strength</li><br>
+          <li><i class="fas fa-check"></i> Consolidation theory</li>
+        </ul>
+        <br>
+        <div class="resources-section">
+          <div class="resources-title">Learning Resources</div><br>
+          <ul class="channel-list">
+            <li><a style="color: white; text-decoration: none;" href="https://www.youtube.com/@nptel" target="_blank"><i class="fab fa-youtube"></i> NPTEL Soil Mechanics</a></li>
+            <li><a style="color: white; text-decoration: none;" href="https://www.youtube.com/@TheGeotechnicalEngineer" target="_blank"><i class="fab fa-youtube"></i> The Geotechnical Engineer</a></li>
+            <li><a style="color: white; text-decoration: none;" href="https://www.issmge.org/education" target="_blank"><i class="fas fa-book"></i> ISSMGE Resources</a></li>
+          </ul>
+        </div>
+      </div>
+  
+      <!-- Geotechnical Earthquake Engineering -->
+      <div class="specialization-card">
+        <div class="specialization-title">
+          <i class="fas fa-wave-square"></i>
+          Geotechnical Earthquake Engineering
+        </div>
+        <p>Focus on soil behavior during earthquakes, liquefaction, and seismic design of foundations.</p>
+        <br>
+        <ul class="features-list">
+          <li><i class="fas fa-check"></i> Soil liquefaction</li><br>
+          <li><i class="fas fa-check"></i> Seismic slope stability</li><br>
+          <li><i class="fas fa-check"></i> Ground response analysis</li>
+        </ul>
+        <br>
+        <div class="resources-section">
+          <div class="resources-title">Learning Resources</div><br>
+          <ul class="channel-list">
+            <li><a style="color: white; text-decoration: none;" href="https://www.youtube.com/c/EERIvideos" target="_blank"><i class="fab fa-youtube"></i> EERI Learning</a></li>
+            <li><a style="color: white; text-decoration: none;" href="https://www.youtube.com/c/UCBerkeley" target="_blank"><i class="fab fa-youtube"></i> UC Berkeley Geotechnical Engineering</a></li>
+            <li><a style="color: white; text-decoration: none;" href="https://www.geerassociation.org/" target="_blank"><i class="fas fa-globe"></i> GEER Association</a></li>
+          </ul>
+        </div>
+      </div>
+  
+    </div>
+  </section>
+  
+
+  <!-- Projects section -->
+  <section class="projects-section">
+    <h2 class="section-title">Industry Projects</h2>
+    <div class="projects-grid">
+      <div class="project-card">
+        <div class="project-title">
+          <i class="fas fa-road"></i>
+          Slope Stabilization
+        </div>
+        <p>Design and implement slope stabilization measures for highways and infrastructure.</p>
+        <div class="project-tags">
+          <span class="project-tag">Retaining Structures</span>
+          <span class="project-tag">Soil Nailing</span>
+          <span class="project-tag">Drainage Systems</span>
+        </div>
+        <a href="https://www.fhwa.dot.gov/engineering/geotech/pubs/nhi16072.pdf" class="learn-btn" target="_blank">View Research</a>
+      </div>
+  
+      <div class="project-card">
+        <div class="project-title">
+          <i class="fas fa-water"></i>
+          Ground Improvement
+        </div>
+        <p>Develop techniques to enhance soil properties for construction on problematic soils.</p>
+        <div class="project-tags">
+          <span class="project-tag">Soil Mixing</span>
+          <span class="project-tag">Dynamic Compaction</span>
+          <span class="project-tag">Grouting</span>
+        </div>
+        <a href="https://www.dfi.org/publications/" class="learn-btn" target="_blank">View Resources</a>
+      </div>
+  
+      <div class="project-card">
+        <div class="project-title">
+          <i class="fas fa-city"></i>
+          Deep Excavation
+        </div>
+        <p>Design support systems for deep excavations in urban environments.</p>
+        <div class="project-tags">
+          <span class="project-tag">Diaphragm Walls</span>
+          <span class="project-tag">Bracing Systems</span>
+          <span class="project-tag">Dewatering</span>
+        </div>
+        <a href="https://www.geoengineer.org/education/web-based-class-projects/select-topics-in-deep-excavation" class="learn-btn" target="_blank">View Guidelines</a>
+      </div>
+    </div>
+  </section>
+  
+
+  <section>
+    <h2 class="section-title">Core Concepts</h2>
+    <div class="topics-grid">
+      <div class="topic-card">
+        <div class="topic-title">Soil Classification</div>
+        <p>Understand soil types, properties, and classification systems (USCS, AASHTO).</p>
+        <a class="learn-btn" href="https://www.geoengineer.org/education/soil-mechanics" target="_blank">Learn More</a>
+      </div>
+  
+      <div class="topic-card">
+        <div class="topic-title">Shear Strength</div>
+        <p>Master the fundamentals of soil shear strength, testing methods, and failure criteria.</p>
+        <a class="learn-btn" href="https://www.geotechdata.info/parameter/shear-strength.html" target="_blank">Learn More</a>
+      </div>
+  
+      <div class="topic-card">
+        <div class="topic-title">Consolidation Theory</div>
+        <p>Learn about soil settlement, time-dependent behavior, and consolidation testing.</p>
+        <a class="learn-btn" href="https://www.geoengineer.org/education/soil-mechanics/consolidation" target="_blank">Learn More</a>
+      </div>
+    </div>
+  
+    <div class="topics-grid">
+      <div class="topic-card">
+        <div class="topic-title">Slope Stability</div>
+        <p>Study methods for analyzing and designing stable slopes in various soil conditions.</p>
+        <a class="learn-btn" href="https://www.geoengineer.org/education/slope-stability" target="_blank">Learn More</a>
+      </div>
+  
+      <div class="topic-card">
+        <div class="topic-title">Retaining Structures</div>
+        <p>Understand earth pressure theories and design of various retaining wall systems.</p>
+        <a class="learn-btn" href="https://www.geoengineer.org/education/earth-retaining-structures" target="_blank">Learn More</a>
+      </div>
+  
+      <div class="topic-card">
+        <div class="topic-title">Foundation Design</div>
+        <p>Learn about shallow and deep foundation systems, bearing capacity, and settlement analysis.</p>
+        <a class="learn-btn" href="https://www.geoengineer.org/education/foundation-engineering" target="_blank">Learn More</a>
+      </div>
+  
+      <div class="topic-card">
+        <div class="topic-title">Soil Dynamics</div>
+        <p>Study dynamic soil properties, wave propagation, and vibration analysis.</p>
+        <a class="learn-btn" href="https://www.geoengineer.org/education/soil-dynamics" target="_blank">Learn More</a>
+      </div>
+  
+      <div class="topic-card">
+        <div class="topic-title">Ground Improvement</div>
+        <p>Explore techniques for enhancing soil properties for construction purposes.</p>
+        <a class="learn-btn" href="https://www.geoengineer.org/education/ground-improvement" target="_blank">Learn More</a>
+      </div>
+  
+      <div class="topic-card">
+        <div class="topic-title">Geosynthetics</div>
+        <p>Master applications of geotextiles, geogrids, and geomembranes in geotechnical projects.</p>
+        <a class="learn-btn" href="https://www.geosyntheticsociety.org/education" target="_blank">Learn More</a>
+      </div>
+  
+      <div class="topic-card">
+        <div class="topic-title">Tunneling</div>
+        <p>Learn techniques for underground excavation, support systems, and ground control.</p>
+        <a class="learn-btn" href="https://www.ita-aites.org/en/publications" target="_blank">Learn More</a>
+      </div>
+  
+      <div class="topic-card">
+        <div class="topic-title">Geotechnical Investigation</div>
+        <p>Study site investigation methods, in-situ testing, and soil sampling techniques.</p>
+        <a class="learn-btn" href="https://www.geoengineer.org/education/geotechnical-investigation" target="_blank">Learn More</a>
+      </div>
+  
+      <div class="topic-card">
+        <div class="topic-title">Numerical Modeling</div>
+        <p>Understand finite element analysis and numerical methods for geotechnical problems.</p>
+        <a class="learn-btn" href="https://www.geoengineer.org/education/numerical-methods" target="_blank">Learn More</a>
+      </div>
+  
+      <div class="topic-card">
+        <div class="topic-title">Unsaturated Soil Mechanics</div>
+        <p>Explore behavior of partially saturated soils and their engineering applications.</p>
+        <a class="learn-btn" href="https://www.issmge.org/committees/technical-committees/fundamentals/unsaturated-soils" target="_blank">Learn More</a>
+      </div>
+  
+      <div class="topic-card">
+        <div class="topic-title">Geoenvironmental Engineering</div>
+        <p>Learn about contaminant transport, remediation, and waste containment systems.</p>
+        <a class="learn-btn" href="https://www.geoengineer.org/education/environmental-geotechnics" target="_blank">Learn More</a>
+      </div>
+  
+      <div class="topic-card">
+        <div class="topic-title">Liquefaction</div>
+        <p>Study soil liquefaction phenomena, assessment methods, and mitigation strategies.</p>
+        <a class="learn-btn" href="https://www.geoengineer.org/education/soil-liquefaction" target="_blank">Learn More</a>
+      </div>
+    </div>
+  </section>
+  
+
+  <section class="practice-section">
+    <h2 class="section-title">Software & Analysis Tools</h2>
+    <div class="practice-grid">
+      <div class="practice-card">
+        <h3>PLAXIS</h3>
+        <p>Industry-standard finite element software for geotechnical analysis and design.</p>
+        <a href="https://www.bentley.com/en/products/brands/plaxis" target="_blank" class="learn-btn">Explore Tool</a>
+      </div>
+
+      <div class="practice-card">
+        <h3>Slide</h3>
+        <p>Specialized software for slope stability analysis and design.</p>
+        <a href="https://www.rocscience.com/software/slide2" target="_blank" class="learn-btn">Explore Tool</a>
+      </div>
+
+      <div class="practice-card">
+        <h3>GeoStudio</h3>
+        <p>Comprehensive suite for geotechnical modeling including seepage, stability, and stress-deformation analysis.</p>
+        <a href="https://www.geoslope.com/products/geostudio" target="_blank" class="learn-btn">Explore Tool</a>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2 class="section-title">Learning Resources</h2>
+    <div class="topics-grid">
+      <div class="topic-card">
+        <div class="topic-title">Online Courses</div>
+        <ul class="resource-list">
+          <li><a style="color: white; text-decoration: none;" href="https://www.edx.org/learn/geotechnical-engineering" target="_blank"><i class="fas fa-graduation-cap"></i> edX Geotechnical Engineering Courses</a></li><br>
+          <li><a style="color: white; text-decoration: none;" href="https://www.coursera.org/courses?query=geotechnical%20engineering" target="_blank"><i class="fas fa-graduation-cap"></i> Coursera Geotechnical Engineering</a></li><br>
+          <li><a style="color: white; text-decoration: none;" href="https://www.linkedin.com/learning/topics/geotechnical-engineering" target="_blank"><i class="fas fa-graduation-cap"></i> LinkedIn Learning Geotechnical Courses</a></li>
+        </ul>
+      </div>
+
+      <div class="topic-card">
+        <div class="topic-title">Technical Resources</div>
+        <ul class="resource-list">
+          <li><a style="color: white; text-decoration: none;" href="https://ascelibrary.org/journal/jggefk" target="_blank"><i class="fas fa-file-alt"></i> ASCE Journal of Geotechnical Engineering</a></li><br>
+          <li><a style="color: white; text-decoration: none;" href="https://www.geoengineer.org/" target="_blank"><i class="fas fa-file-alt"></i> GeoEngineer.org</a></li><br>
+          <li><a style="color: white; text-decoration: none;" href="https://www.sciencedirect.com/journal/geotextiles-and-geomembranes" target="_blank"><i class="fas fa-file-alt"></i> Geotextiles and Geomembranes Journal</a></li>
+        </ul>
+      </div>
+
+      <div class="topic-card">
+        <div class="topic-title">Industry Publications</div>
+        <ul class="resource-list">
+          <li><a style="color: white; text-decoration: none;" href="https://www.issmge.org/publications/international-journal-of-geoengineering-case-histories" target="_blank"><i class="fas fa-newspaper"></i> International Journal of Geoengineering Case Histories</a></li><br>
+          <li><a style="color: white; text-decoration: none;" href="https://www.geoengineer.org/news" target="_blank"><i class="fas fa-newspaper"></i> GeoEngineer News</a></li><br>
+          <li><a style="color: white; text-decoration: none;" href="https://www.icevirtuallibrary.com/journal/jgein" target="_blank"><i class="fas fa-newspaper"></i> Geotechnical Engineering Journal</a></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <p class="quote">"The best geotechnical engineer is the one who has made the most mistakes and learned from them." - Karl Terzaghi, Father of Soil Mechanics</p>
+  </footer>
+
+  <script>
+    // Mobile menu toggle functionality could be added here if needed
+    document.addEventListener('DOMContentLoaded', function() {
+      // Smooth scrolling for anchor links
+      document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+          e.preventDefault();
+
+          const targetId = this.getAttribute('href');
+          if (targetId === '#') return;
+
+          const targetElement = document.querySelector(targetId);
+          if (targetElement) {
+            window.scrollTo({
+              top: targetElement.offsetTop - 70,
+              behavior: 'smooth'
+            });
+          }
+        });
+      });
+    });
+  </script>
+</body>
+
+</html>

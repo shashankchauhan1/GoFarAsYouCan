@@ -1,0 +1,1608 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chemical Engineering - GoFarAsYouCan</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+      /* Base Styles */
+      :root {
+        --primary-color: #0a3d62;        /* Deep teal */
+        --primary-light: #3c6382;        /* Lighter teal */
+        --secondary-color: #1b263b;      /* Dark navy */
+        --accent-color: #5e84ff;         /* Vibrant coral */
+        --accent-light: #00f7ff;         /* Soft coral */
+        --text-color: #e0e1dd;           /* Soft off-white */
+        --light-text: #ffffff;           /* Pure white */
+        --light-bg: #415a77;             /* Muted teal background */
+        --dark-bg: #0d1b2a;              /* Deep navy background */
+        --card-bg: #1b263b;              /* Slightly lighter navy for cards */
+        --border-radius: 10px;
+        --box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+        --transition: all 0.3s ease-in-out;
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        line-height: 1.6;
+        color: var(--text-color);
+        background-color: var(--light-bg);
+        background-image: linear-gradient(135deg, var(--light-bg) 0%, var(--dark-bg) 100%);
+        background-attachment: fixed;
+      }
+
+      .container {
+        width: 90%;
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 20px;
+      }
+
+      a {
+        text-decoration: none;
+        color: var(--accent-light);
+        transition: var(--transition);
+      }
+
+      a:hover {
+        color: #ffd166;
+      }
+
+      img {
+        max-width: 100%;
+        height: auto;
+        border-radius: var(--border-radius);
+      }
+
+      .bg-light {
+        background-color: var(--primary-light);
+        background-image: linear-gradient(to right, var(--primary-light), var(--secondary-color));
+      }
+
+      /* Navbar */
+      .navbar {
+        background-color: var(--dark-bg);
+        color: var(--light-text);
+        padding: 1rem 0;
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+        box-shadow: var(--box-shadow);
+      }
+
+      .navbar .container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .logo {
+        font-size: 1.5rem;
+        font-weight: bold;
+        color: var(--light-text);
+      }
+
+      .back-button a {
+        color: var(--light-text);
+        display: flex;
+        align-items: center;
+        gap: 5px;
+      }
+
+      .back-button a:hover {
+        color: var(--accent-light);
+      }
+
+      /* Hero Section */
+      .hero {
+        background-color: var(--dark-bg);
+        color: var(--light-text);
+        text-align: center;
+        padding: 6rem 0;
+        position: relative;
+        overflow: hidden;
+        background-image: linear-gradient(135deg, var(--dark-bg) 0%, var(--secondary-color) 100%);
+      }
+
+      .hero .overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        opacity: 0.2;
+        mix-blend-mode: luminosity;
+      }
+
+      .hero h1 {
+        font-size: 3rem;
+        margin-bottom: 1rem;
+        position: relative;
+        text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+      }
+
+      .hero p {
+        font-size: 1.2rem;
+        max-width: 700px;
+        margin: 0 auto;
+        position: relative;
+      }
+
+      /* Section Styles */
+      .section {
+        padding: 5rem 0;
+      }
+
+      .section-title {
+        text-align: center;
+        margin-bottom: 3rem;
+        color: var(--accent-light);
+        position: relative;
+        font-size: 2rem;
+        text-shadow: 0 2px 4px rgba(0,0,0,0.2);
+      }
+
+      .section-title::after {
+        content: "";
+        position: absolute;
+        bottom: -10px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 80px;
+        height: 4px;
+        background-color: var(--accent-light);
+        border-radius: 2px;
+      }
+
+      .section-intro {
+        text-align: center;
+        max-width: 800px;
+        margin: 0 auto 2.5rem;
+        font-size: 1.1rem;
+      }
+
+      /* Content Wrapper */
+      .content-wrapper {
+        display: flex;
+        gap: 2.5rem;
+        align-items: center;
+      }
+
+      .text-content {
+        flex: 1;
+      }
+
+      .text-content p {
+        margin-bottom: 1.25rem;
+        font-size: 1.05rem;
+      }
+
+      .image-content {
+        flex: 1;
+        box-shadow: var(--box-shadow);
+        border-radius: var(--border-radius);
+        overflow: hidden;
+      }
+
+      /* Cards Grid */
+      .cards-grid {
+        display: grid;
+        gap: 1.5rem;
+      }
+
+      .two-columns {
+        grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+      }
+
+      .three-columns {
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      }
+
+      .four-columns {
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      }
+
+      /* Card Styles */
+      .card {
+        background-color: var(--card-bg);
+        border-radius: var(--border-radius);
+        overflow: hidden;
+        box-shadow: var(--box-shadow);
+        transition: var(--transition);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+      }
+
+      .card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+        border-color: var(--accent-light);
+      }
+
+      .card-header {
+        padding: 1.25rem 1.25rem 0.5rem;
+        background-image: linear-gradient(to right, rgba(10, 61, 98, 0.3), rgba(207, 94, 255, 0.3));
+      }
+
+      .card-header h3 {
+        color: var(--accent-light);
+        margin-bottom: 0.5rem;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+      }
+
+      .card-header h3 i {
+        color: var(--accent-light);
+      }
+
+      .card-header p {
+        color: #ccc;
+        font-size: 0.9rem;
+      }
+
+      .card-content {
+        padding: 0.5rem 1.25rem 1.25rem;
+      }
+
+      /* Project Cards */
+      .project-card .card-image {
+        height: 180px;
+        overflow: hidden;
+      }
+
+      .project-card .card-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.5s ease;
+      }
+
+      .project-card:hover .card-image img {
+        transform: scale(1.05);
+      }
+
+      /* Career List */
+      .career-list {
+        list-style: none;
+      }
+
+      .career-list li {
+        display: flex;
+        justify-content: space-between;
+        padding: 0.5rem 0;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      }
+
+      .career-list li:last-child {
+        border-bottom: none;
+      }
+
+      .badge {
+        background-color: rgba(255, 255, 255, 0.1);
+        color: #ecf0f1;
+        padding: 0.25rem 0.5rem;
+        border-radius: 9999px;
+        font-size: 0.75rem;
+        font-weight: 600;
+      }
+
+      .badge.top {
+        background-color: var(--accent-color);
+        color: white;
+      }
+
+      .badge.program {
+        background-color: #06d6a0;
+        color: white;
+      }
+
+      .growth-sectors {
+        margin-top: 1rem;
+      }
+
+      .text-success {
+        color: #ffd166;
+        font-weight: 600;
+        font-size: 1.05rem;
+      }
+
+      /* Education Pathways */
+      .education-pathways {
+        margin-top: 2.5rem;
+        background-color: var(--card-bg);
+        padding: 1.5rem;
+        border-radius: var(--border-radius);
+        box-shadow: var(--box-shadow);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+      }
+
+      .education-pathways h3 {
+        color: var(--accent-light);
+        margin-bottom: 1rem;
+        font-size: 1.25rem;
+      }
+
+      .pathways-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 1rem;
+      }
+
+      .pathway-card {
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        padding: 1rem;
+        border-radius: var(--border-radius);
+        transition: var(--transition);
+      }
+
+      .pathway-card:hover {
+        background-color: rgba(255, 255, 255, 0.05);
+        border-color: var(--accent-light);
+      }
+
+      .pathway-card h4 {
+        margin-bottom: 0.5rem;
+        font-size: 1.1rem;
+      }
+
+      /* Skills List */
+      .skills-list {
+        list-style: none;
+      }
+
+      .skills-list li {
+        padding: 0.5rem 0;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      }
+
+      .skills-list li:last-child {
+        border-bottom: none;
+      }
+
+      .skill-name {
+        font-weight: 600;
+        display: block;
+        margin-bottom: 0.25rem;
+      }
+
+      .skill-desc {
+        font-size: 0.9rem;
+        color: #bdc3c7;
+      }
+
+      /* Accordion */
+      .accordion {
+        border-radius: var(--border-radius);
+        overflow: hidden;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+      }
+
+      .accordion-item {
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      }
+
+      .accordion-item:last-child {
+        border-bottom: none;
+      }
+
+      .accordion-header {
+        padding: 1rem;
+        cursor: pointer;
+        font-weight: 600;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        transition: var(--transition);
+      }
+
+      .accordion-header::after {
+        content: '\f078';
+        font-family: 'Font Awesome 5 Free';
+        font-weight: 900;
+        transition: var(--transition);
+      }
+
+      .accordion-header.active::after {
+        transform: rotate(180deg);
+      }
+
+      .accordion-content {
+        padding: 0 1rem;
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.3s ease;
+      }
+
+      .accordion-content p {
+        padding-bottom: 1rem;
+      }
+
+      .accordion-item.active .accordion-header {
+        background-color: rgba(255, 255, 255, 0.05);
+        color: var(--accent-light);
+      }
+
+      .accordion-item.active .accordion-content {
+        max-height: 500px;
+      }
+
+      /* Specialization Grid */
+      .specialization-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+        gap: 1.5rem;
+      }
+
+      .specialization-card {
+        background-color: var(--card-bg);
+        padding: 1.5rem 1rem;
+        border-radius: var(--border-radius);
+        box-shadow: var(--box-shadow);
+        text-align: center;
+        transition: var(--transition);
+        display: flex;
+        flex-direction: column;
+        align-items:center;
+        color: var(--text-color);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+      }
+
+      .specialization-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 15px rgba(0, 0, 0, 0.4);
+        background-color: var(--primary-color);
+        color: var(--light-text);
+        border-color: var(--accent-light);
+      }
+
+      .specialization-card i {
+        font-size: 2.5rem;
+        margin-bottom: 1rem;
+        color: var(--accent-light);
+        transition: var(--transition);
+      }
+
+      .specialization-card:hover i {
+        color: var(--light-text);
+      }
+
+      .specialization-card h3 {
+        font-size: 1rem;
+      }
+
+      /* Internship List */
+      .internship-list {
+        list-style: none;
+      }
+
+      .internship-list li {
+        display: flex;
+        align-items: flex-start;
+        gap: 0.75rem;
+        margin-bottom: 1rem;
+      }
+
+      .company-name {
+        font-weight: 600;
+        margin-bottom: 0.25rem;
+      }
+
+      .company-desc {
+        font-size: 0.9rem;
+        color: #bdc3c7;
+      }
+
+      /* Internship Tips */
+      .internship-tips {
+        margin-top: 2.5rem;
+        background-color: var(--primary-light);
+        padding: 1.5rem;
+        border-radius: var(--border-radius);
+        box-shadow: var(--box-shadow);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+      }
+
+      .internship-tips h3 {
+        color: var(--accent-light);
+        margin-bottom: 1.5rem;
+        font-size: 1.25rem;
+      }
+
+      .tips-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 1.5rem;
+        list-style: none;
+      }
+
+      .tips-grid li {
+        display: flex;
+        align-items: flex-start;
+        gap: 1rem;
+      }
+
+      .tip-number {
+        background-color: var(--dark-bg);
+        width: 2rem;
+        height: 2rem;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: 600;
+        color: var(--accent-light);
+        flex-shrink: 0;
+      }
+
+      .tip-title {
+        font-weight: 600;
+        margin-bottom: 0.25rem;
+      }
+
+      .tip-desc {
+        font-size: 0.9rem;
+        color: #bdc3c7;
+      }
+
+      /* Tabs */
+      .tabs {
+        margin-bottom: 2rem;
+      }
+
+      .tab-buttons {
+        display: flex;
+        justify-content: center;
+        margin-bottom: 2rem;
+      }
+
+      .tab-button {
+        padding: 0.75rem 1.5rem;
+        background-color: var(--dark-bg);
+        border: none;
+        cursor: pointer;
+        font-size: 1rem;
+        font-weight: 600;
+        transition: var(--transition);
+        color: var(--text-color);
+      }
+
+      .tab-button:first-child {
+        border-radius: var(--border-radius) 0 0 var(--border-radius);
+      }
+
+      .tab-button:last-child {
+        border-radius: 0 var(--border-radius) var(--border-radius) 0;
+      }
+
+      .tab-button.active {
+        background-color: var(--accent-color);
+        color: var(--light-text);
+      }
+
+      .tab-content {
+        display: none;
+      }
+
+      .tab-content.active {
+        display: block;
+      }
+
+      /* Colleges Grid */
+      .colleges-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+        gap: 1.5rem;
+      }
+
+      .college-card {
+        background-color: var(--card-bg);
+        padding: 1.25rem;
+        border-radius: var(--border-radius);
+        box-shadow: var(--box-shadow);
+        transition: var(--transition);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+      }
+
+      .college-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 15px rgba(0, 0, 0, 0.4);
+        border-color: var(--accent-light);
+      }
+
+      .college-card h3 {
+        color: var(--accent-light);
+        margin-bottom: 0.25rem;
+      }
+
+      .college-location {
+        color: #bdc3c7;
+        margin-bottom: 0.75rem;
+        font-size: 0.9rem;
+      }
+
+      .college-details {
+        display: flex;
+        justify-content: space-between;
+        color: #bdc3c7;
+        font-size: 0.85rem;
+        margin-bottom: 1rem;
+      }
+
+      .college-rank, .college-year {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+      }
+
+      .college-rank i {
+        color: var(--accent-light);
+      }
+
+      .college-year i {
+        color: #06d6a0;
+      }
+
+      .college-info {
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+        padding-top: 1rem;
+      }
+
+      .college-info p {
+        margin-bottom: 0.5rem;
+        font-size: 0.9rem;
+      }
+
+      .college-info span {
+        font-weight: 600;
+      }
+
+      /* FAQ Section */
+      .faq-container {
+        max-width: 800px;
+        margin: 0 auto;
+      }
+
+      /* Footer */
+      .footer {
+        background-color: var(--dark-bg);
+        color: var(--light-text);
+        padding: 4rem 0 1rem;
+        background-image: linear-gradient(to top, var(--dark-bg), var(--primary-light));
+      }
+
+      .footer-content {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 2.5rem;
+        margin-bottom: 2.5rem;
+      }
+
+      .footer-logo h2 {
+        margin-bottom: 1rem;
+      }
+
+      .footer-links h3,
+      .footer-resources h3 {
+        margin-bottom: 1.25rem;
+        position: relative;
+        padding-bottom: 0.5rem;
+        display: inline-block;
+      }
+
+      .footer-links h3::after,
+      .footer-resources h3::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 50px;
+        height: 3px;
+        background-color: var(--accent-light);
+      }
+
+      .footer-links ul,
+      .footer-resources ul {
+        list-style-type: none;
+      }
+
+      .footer-links li,
+      .footer-resources li {
+        margin-bottom: 0.5rem;
+      }
+
+      .footer-links a,
+      .footer-resources a {
+        color: #bdc3c7;
+      }
+
+      .footer-links a:hover,
+      .footer-resources a:hover {
+        color: var(--accent-light);
+      }
+
+      .footer-bottom {
+        text-align: center;
+        padding-top: 1.25rem;
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+      }
+
+      /* Responsive Design */
+      @media (max-width: 992px) {
+        .content-wrapper {
+          flex-direction: column;
+        }
+
+        .hero h1 {
+          font-size: 2.5rem;
+        }
+        
+        .two-columns {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      @media (max-width: 768px) {
+        .section {
+          padding: 3.5rem 0;
+        }
+
+        .hero {
+          padding: 5rem 0;
+        }
+
+        .hero h1 {
+          font-size: 2rem;
+        }
+
+        .section-title {
+          font-size: 1.75rem;
+        }
+
+        .college-details {
+          flex-direction: column;
+          gap: 0.5rem;
+        }
+      }
+
+      @media (max-width: 576px) {
+        .navbar {
+          padding: 0.75rem 0;
+        }
+
+        .logo {
+          font-size: 1.2rem;
+        }
+
+        .hero h1 {
+          font-size: 1.8rem;
+        }
+
+        .section-title {
+          font-size: 1.5rem;
+        }
+
+        .tab-buttons {
+          flex-direction: column;
+          width: 100%;
+          max-width: 300px;
+          margin: 0 auto 1.5rem;
+        }
+
+        .tab-button {
+          border-radius: 0;
+        }
+
+        .tab-button:first-child {
+          border-radius: var(--border-radius) var(--border-radius) 0 0;
+        }
+
+        .tab-button:last-child {
+          border-radius: 0 0 var(--border-radius) var(--border-radius);
+        }
+
+        .specialization-grid {
+          grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+        }
+      }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="logo">GoFarAsYouCan</div>
+            <div class="back-button">
+                <a href="/Engineering/engineering.ejs"><i class="fas fa-arrow-left"></i> Back</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="hero">
+        <div class="overlay"></div>
+        <div class="container">
+            <h1>Chemical Engineering</h1>
+            <p>Unlock the power of chemistry to design innovative processes and materials that shape the future</p>
+        </div>
+    </header>
+
+    <!-- What is Chemical Engineering Section -->
+    <section class="section" id="about">
+        <div class="container">
+            <h2 class="section-title">What is Chemical Engineering?</h2>
+            <div class="content-wrapper">
+                <div class="text-content">
+                    <p>Chemical engineering combines principles of chemistry, physics, mathematics, and biology to design processes that convert raw materials into valuable products. From developing sustainable fuels to creating life-saving pharmaceuticals, chemical engineers solve real-world problems on a global scale.</p>
+                    <p>As a chemical engineer, you'll work on designing, optimizing, and managing processes in industries like energy, pharmaceuticals, food production, and materials manufacturing. The field requires creativity, analytical thinking, and a passion for innovation to address challenges like sustainability and resource efficiency.</p>
+                    <p>Chemical engineering is at the forefront of tackling pressing issues such as renewable energy, clean water, and advanced materials, making it a dynamic and impactful career choice.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Specializations Section -->
+    <section class="section bg-light" id="specializations">
+        <div class="container">
+            <h2 class="section-title">Specializations</h2>
+            <p class="section-intro">Explore exciting specializations within chemical engineering to match your interests and career goals:</p>
+            
+            <div class="specialization-grid">
+                <a href="process.ejs" class="specialization-card">
+                    <i class="fas fa-cogs"></i>
+                    <h3>Process Engineering</h3>
+                </a>
+                <a href="biochemical.ejs" class="specialization-card">
+                    <i class="fas fa-dna"></i>
+                    <h3>Biochemical Engineering</h3>
+                </a>
+                <a href="petroleum.ejs" class="specialization-card">
+                    <i class="fas fa-oil-can"></i>
+                    <h3>Petroleum Engineering</h3>
+                </a>
+                <a href="polymer.ejs" class="specialization-card">
+                    <i class="fas fa-atom"></i>
+                    <h3>Polymer Engineering</h3>
+                </a>
+                <a href="environmental.ejs" class="specialization-card">
+                    <i class="fas fa-leaf"></i>
+                    <h3>Environmental Engineering</h3>
+                </a>
+                <a href="nanotech.ejs" class="specialization-card">
+                    <i class="fas fa-microscope"></i>
+                    <h3>Nanotechnology</h3>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Career Paths Section -->
+    <section class="section bg-light" id="careers">
+        <div class="container">
+            <h2 class="section-title">Career Paths & Outlook</h2>
+            
+            <div class="cards-grid three-columns">
+                <div class="card">
+                    <div class="card-header">
+                        <h3><i class="fas fa-briefcase"></i> Industry Roles</h3>
+                    </div>
+                    <div class="card-content">
+                        <ul class="career-list">
+                            <li>
+                                <span>Process Engineer</span>
+                                <span class="badge">₹6-18 LPA</span>
+                            </li>
+                            <li>
+                                <span>Plant Manager</span>
+                                <span class="badge">₹10-25 LPA</span>
+                            </li>
+                            <li>
+                                <span>Environmental Engineer</span>
+                                <span class="badge">₹5-15 LPA</span>
+                            </li>
+                            <li>
+                                <span>R&D Engineer</span>
+                                <span class="badge">₹7-20 LPA</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <h3><i class="fas fa-chart-line"></i> Job Outlook</h3>
+                    </div>
+                    <div class="card-content">
+                        <p>The demand for chemical engineers in India is expected to grow by 12% through 2030, with opportunities in energy, pharmaceuticals, and sustainable technologies.</p>
+                        <div class="growth-sectors">
+                            <span class="text-success">Growth Sectors:</span>
+                            <ul>
+                                <li>• Renewable Energy</li>
+                                <li>• Pharmaceuticals</li>
+                                <li>• Green Chemistry</li>
+                                <li>• Advanced Materials</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <h3><i class="fas fa-award"></i> Certifications</h3>
+                    </div>
+                    <div class="card-content">
+                        <ul>
+                            <li>• Six Sigma Green Belt</li>
+                            <li>• Certified Process Safety Professional</li>
+                            <li>• HAZOP Study Certification</li>
+                            <li>• ASPEN Plus Certification</li>
+                            <li>• ISO 14001 Environmental Management</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="education-pathways">
+                <h3>Higher Education Pathways</h3>
+                <div class="pathways-grid">
+                    <div class="pathway-card">
+                        <h4>M.Tech / M.E.</h4>
+                        <p>Advanced studies in process engineering, biochemical engineering, or nanotechnology.</p>
+                    </div>
+                    <div class="pathway-card">
+                        <h4>MBA</h4>
+                        <p>For leadership roles in chemical industries or entrepreneurial ventures.</p>
+                    </div>
+                    <div class="pathway-card">
+                        <h4>Ph.D.</h4>
+                        <p>For careers in academia, R&D, or specialized industry roles.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Real-world Projects Section -->
+    <section class="section" id="projects">
+        <div class="container">
+            <h2 class="section-title">Real-world Projects</h2>
+            <div class="cards-grid four-columns">
+                <div class="card project-card">
+                    <a href="https://www.energy.gov/eere/bioenergy/bioenergy-technologies-office">
+                        <div class="card-image">
+                            <img src="https://images.unsplash.com/photo-1512621776951-a57141f2eefd?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Biofuel Production">
+                        </div>
+                        <div class="card-header">
+                            <h3>Biofuel Production</h3>
+                        </div>
+                        <div class="card-content">
+                            <p>Designing processes to produce sustainable biofuels from biomass and waste materials.</p>
+                        </div>
+                    </a>
+                </div>
+
+                <div class="card project-card">
+                    <a href="https://www.pharmamanufacturing.com/">
+                        <div class="card-image">
+                            <img src="https://images.unsplash.com/photo-1584483766114-2cea6facdf57?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Pharmaceutical Manufacturing">
+                        </div>
+                        <div class="card-header">
+                            <h3>Pharmaceutical Manufacturing</h3>
+                        </div>
+                        <div class="card-content">
+                            <p>Developing processes for large-scale production of medicines and vaccines.</p>
+                        </div>
+                    </a>
+                </div>
+
+                <div class="card project-card">
+                    <a href="https://www.compositesworld.com/">
+                        <div class="card-image">
+                            <img src="https://images.unsplash.com/photo-1561214115-f2f134cc4912?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Polymer Composites">
+                        </div>
+                        <div class="card-header">
+                            <h3>Polymer Composites</h3>
+                        </div>
+                        <div class="card-content">
+                            <p>Creating advanced materials for aerospace, automotive, and construction industries.</p>
+                        </div>
+                    </a>
+                </div>
+
+                <div class="card project-card">
+                    <a href="https://www.waterworld.com/">
+                        <div class="card-image">
+                            <img src="https://images.unsplash.com/photo-1519378058457-4c29a0a2efac?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Water Treatment">
+                        </div>
+                        <div class="card-header">
+                            <h3>Water Treatment</h3>
+                        </div>
+                        <div class="card-content">
+                            <p>Designing systems for clean water supply and wastewater treatment.</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- What to Master Section -->
+    <section class="section bg-light" id="skills">
+        <div class="container">
+            <h2 class="section-title">What to Master</h2>
+            <div class="cards-grid three-columns">
+                <div class="card">
+                    <div class="card-header">
+                        <h3><i class="fas fa-book-open"></i> Core Technical Skills</h3>
+                    </div>
+                    <div class="card-content">
+                        <ul class="skills-list">
+                            <li>
+                                <span class="skill-name">Process Design</span>
+                                <p class="skill-desc">Flow diagrams, P&ID, equipment sizing</p>
+                            </li>
+                            <li>
+                                <span class="skill-name">Thermodynamics</span>
+                                <p class="skill-desc">Heat transfer, phase equilibria, energy balances</p>
+                            </li>
+                            <li>
+                                <span class="skill-name">Fluid Mechanics</span>
+                                <p class="skill-desc">Fluid flow, pump design, pipeline systems</p>
+                            </li>
+                            <li>
+                                <span class="skill-name">Reaction Engineering</span>
+                                <p class="skill-desc">Kinetics, reactor design, catalysis</p>
+                            </li>
+                            <li>
+                                <span class="skill-name">Mass Transfer</span>
+                                <p class="skill-desc">Distillation, extraction, absorption</p>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <h3><i class="fas fa-code"></i> Software & Tools</h3>
+                    </div>
+                    <div class="card-content">
+                        <ul class="skills-list">
+                            <li>
+                                <span class="skill-name">Process Simulation</span>
+                                <p class="skill-desc">ASPEN Plus, HYSYS, ChemCAD</p>
+                            </li>
+                            <li>
+                                <span class="skill-name">Data Analysis</span>
+                                <p class="skill-desc">MATLAB, Python, Excel</p>
+                            </li>
+                            <li>
+                                <span class="skill-name">CAD Software</span>
+                                <p class="skill-desc">AutoCAD, SolidWorks</p>
+                            </li>
+                            <li>
+                                <span class="skill-name">Computational Fluid Dynamics</span>
+                                <p class="skill-desc">ANSYS Fluent, COMSOL</p>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <h3><i class="fas fa-wrench"></i> Professional Skills</h3>
+                    </div>
+                    <div class="card-content">
+                        <ul class="skills-list">
+                            <li>
+                                <span class="skill-name">Safety Management</span>
+                                <p class="skill-desc">HAZOP, risk assessment, safety protocols</p>
+                            </li>
+                            <li>
+                                <span class="skill-name">Project Management</span>
+                                <p class="skill-desc">Planning, budgeting, execution</p>
+                            </li>
+                            <li>
+                                <span class="skill-name">Communication</span>
+                                <p class="skill-desc">Technical reports, presentations, teamwork</p>
+                            </li>
+                            <li>
+                                <span class="skill-name">Sustainability</span>
+                                <p class="skill-desc">Green engineering, lifecycle assessment</p>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Research Areas -->
+    <section class="section" id="research">
+        <div class="container">
+            <h2 class="section-title">Research Areas</h2>
+
+            <div class="cards-grid two-columns">
+                <div class="card">
+                    <div class="card-header">
+                        <h3><i class="fas fa-lightbulb"></i> Emerging Research Fields</h3>
+                    </div>
+                    <div class="card-content">
+                        <div class="accordion">
+                            <div class="accordion-item Saab">
+                                <div class="accordion-header">Green Chemistry</div>
+                                <div class="accordion-content">
+                                    <p>Developing sustainable chemical processes that minimize waste, reduce energy use, and utilize renewable feedstocks for industrial applications.</p>
+                                </div>
+                            </div>
+                            <div class="accordion-item">
+                                <div class="accordion-header">Nanotechnology</div>
+                                <div class="accordion-content">
+                                    <p>Researching nanomaterials for applications in drug delivery, catalysis, energy storage, and advanced composites.</p>
+                                </div>
+                            </div>
+                            <div class="accordion-item">
+                                <div class="accordion-header">Biotechnology</div>
+                                <div class="accordion-content">
+                                    <p>Advancing bioprocesses for biofuels, biopharmaceuticals, and bioremediation using microbial and enzymatic systems.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <h3><i class="fas fa-lightbulb"></i> Sustainable Technologies</h3>
+                    </div>
+                    <div class="card-content">
+                        <div class="accordion">
+                            <div class="accordion-item">
+                                <div class="accordion-header">Carbon Capture</div>
+                                <div class="accordion-content">
+                                    <p>Designing systems to capture and store CO2 emissions from industrial processes to mitigate climate change.</p>
+                                </div>
+                            </div>
+                            <div class="accordion-item">
+                                <div class="accordion-header">Renewable Energy</div>
+                                <div class="accordion-content">
+                                    <p>Developing processes for solar fuels, hydrogen production, and energy-efficient chemical manufacturing.</p>
+                                </div>
+                            </div>
+                            <div class="accordion-item">
+                                <div class="accordion-header">Waste Valorization</div>
+                                <div class="accordion-content">
+                                    <p>Converting industrial and agricultural waste into valuable products like chemicals, fuels, and materials.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Internship Opportunities -->
+    <section class="section" id="internships">
+        <div class="container">
+            <h2 class="section-title">Internship Opportunities</h2>
+
+            <div class="cards-grid three-columns">
+                <div class="card">
+                    <div class="card-header">
+                        <h3>Industry Internships</h3>
+                        <p>Hands-on experience in chemical manufacturing and processing</p>
+                    </div>
+                    <div class="card-content">
+                        <ul class="internship-list">
+                            <li>
+                                <span class="badge top">Top</span>
+                                <div>
+                                    <p class="company-name">Reliance Industries</p>
+                                    <p class="company-desc">Petrochemicals and refining</p>
+                                </div>
+                            </li>
+                            <li>
+                                <span class="badge top">Top</span>
+                                <div>
+                                    <p class="company-name">IOCL</p>
+                                    <p class="company-desc">Oil and gas processing</p>
+                                </div>
+                            </li>
+                            <li>
+                                <span class="badge">Popular</span>
+                                <div>
+                                    <p class="company-name">BASF India</p>
+                                    <p class="company-desc">Chemicals and materials</p>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <h3>Research Internships</h3>
+                        <p>Contribute to innovative R&D projects</p>
+                    </div>
+                    <div class="card-content">
+                        <ul class="internship-list">
+                            <li>
+                                <span class="badge top">Top</span>
+                                <div>
+                                    <p class="company-name">CSIR-NCL</p>
+                                    <p class="company-desc">Chemical and materials research</p>
+                                </div>
+                            </li>
+                            <li>
+                                <span class="badge">Popular</span>
+                                <div>
+                                    <p class="company-name">IIT Research Labs</p>
+                                    <p class="company-desc">Advanced chemical engineering research</p>
+                                </div>
+                            </li>
+                            <li>
+                                <span class="badge">Popular</span>
+                                <div>
+                                    <p class="company-name">DRDO</p>
+                                    <p class="company-desc">Defense and materials research</p>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <h3>Pharmaceutical Companies</h3>
+                        <p>Work in drug development and manufacturing</p>
+                    </div>
+                    <div class="card-content">
+                        <ul class="internship-list">
+                            <li>
+                                <span class="badge program">Top</span>
+                                <div>
+                                    <p class="company-name">Dr. Reddy’s Laboratories</p>
+                                    <p class="company-desc">Pharmaceutical manufacturing</p>
+                                </div>
+                            </li>
+                            <li>
+                                <span class="badge">Popular</span>
+                                <div>
+                                    <p class="company-name">Cipla</p>
+                                    <p class="company-desc">Drug development and production</p>
+                                </div>
+                            </li>
+                            <li>
+                                <span class="badge">Popular</span>
+                                <div>
+                                    <p class="company-name">Sun Pharma</p>
+                                    <p class="company-desc">Pharmaceutical research</p>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="internship-tips">
+                <h3>Tips for Securing Internships</h3>
+                <ul class="tips-grid">
+                    <li>
+                        <div class="tip-number">1</div>
+                        <div>
+                            <p class="tip-title">Build a Strong Foundation</p>
+                            <p class="tip-desc">Master core concepts like thermodynamics and process design</p>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="tip-number">2</div>
+                        <div>
+                            <p class="tip-title">Learn Simulation Tools</p>
+                            <p class="tip-desc">Get proficient with ASPEN Plus, HYSYS, and MATLAB</p>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="tip-number">3</div>
+                        <div>
+                            <p class="tip-title">Showcase Projects</p>
+                            <p class="tip-desc">Create a portfolio with process designs and simulations</p>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="tip-number">4</div>
+                        <div>
+                            <p class="tip-title">Network Actively</p>
+                            <p class="tip-desc">Join AIChE and connect with industry professionals</p>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Top Colleges Section -->
+    <section class="section bg-light" id="colleges">
+        <div class="container">
+            <h2 class="section-title">Top Colleges for Chemical Engineering</h2>
+            
+            <div class="tabs">
+                <div class="tab-buttons">
+                    <button class="tab-button active" onclick="openTab('government')">Government</button>
+                    <button class="tab-button" onclick="openTab('private')">Private</button>
+                </div>
+                
+                <div id="government" class="tab-content active">
+                    <div class="colleges-grid">
+                        <div class="college-card">
+                            <h3>IIT Bombay</h3>
+                            <p class="college-location">Mumbai, Maharashtra</p>
+                            <div class="college-details">
+                                <div class="college-rank">
+                                    <i class="fas fa-star"></i>
+                                    <span>NIRF Rank: 1</span>
+                                </div>
+                                <div class="college-year">
+                                    <i class="fas fa-graduation-cap"></i>
+                                    <span>Established: 1958</span>
+                                </div>
+                            </div>
+                            <div class="college-info">
+                                <p><span>Specializations:</span> Process Engineering, Biochemical Engineering</p>
+                                <p><span>Average Placement:</span> ₹14-24 LPA</p>
+                            </div>
+                        </div>
+
+                        <div class="college-card">
+                            <h3>IIT Delhi</h3>
+                            <p class="college-location">New Delhi</p>
+                            <div class="college-details">
+                                <div class="college-rank">
+                                    <i class="fas fa-star"></i>
+                                    <span>NIRF Rank: 2</span>
+                                </div>
+                                <div class="college-year">
+                                    <i class="fas fa-graduation-cap"></i>
+                                    <span>Established: 1961</span>
+                                </div>
+                            </div>
+                            <div class="college-info">
+                                <p><span>Specializations:</span> Process Systems, Nanotechnology</p>
+                                <p><span>Average Placement:</span> ₹13-23 LPA</p>
+                            </div>
+                        </div>
+
+                        <div class="college-card">
+                            <h3>IIT Madras</h3>
+                            <p class="college-location">Chennai, Tamil Nadu</p>
+                            <div class="college-details">
+                                <div class="college-rank">
+                                    <i class="fas fa-star"></i>
+                                    <span>NIRF Rank: 3</span>
+                                </div>
+                                <div class="college-year">
+                                    <i class="fas fa-graduation-cap"></i>
+                                    <span>Established: 1959</span>
+                                </div>
+                            </div>
+                            <div class="college-info">
+                                <p><span>Specializations:</span> Catalysis, Environmental Engineering</p>
+                                <p><span>Average Placement:</span> ₹12-22 LPA</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div id="private" class="tab-content">
+                    <div class="colleges-grid">
+                        <div class="college-card">
+                            <h3>BITS Pilani</h3>
+                            <p class="college-location">Pilani, Rajasthan</p>
+                            <div class="college-details">
+                                <div class="college-rank">
+                                    <i class="fas fa-star"></i>
+                                    <span>NIRF Rank: 12</span>
+                                </div>
+                                <div class="college-year">
+                                    <i class="fas fa-graduation-cap"></i>
+                                    <span>Established: 1964</span>
+                                </div>
+                            </div>
+                            <div class="college-info">
+                                <p><span>Specializations:</span> Process Engineering, Polymer Engineering</p>
+                                <p><span>Average Placement:</span> ₹9-18 LPA</p>
+                            </div>
+                        </div>
+
+                        <div class="college-card">
+                            <h3>VIT Vellore</h3>
+                            <p class="college-location">Vellore, Tamil Nadu</p>
+                            <div class="college-details">
+                                <div class="college-rank">
+                                    <i class="fas fa-star"></i>
+                                    <span>NIRF Rank: 15</span>
+                                </div>
+                                <div class="college-year">
+                                    <i class="fas fa-graduation-cap"></i>
+                                    <span>Established: 1984</span>
+                                </div>
+                            </div>
+                            <div class="college-info">
+                                <p><span>Specializations:</span> Biochemical Engineering, Nanotechnology</p>
+                                <p><span>Average Placement:</span> ₹6-14 LPA</p>
+                            </div>
+                        </div>
+
+                        <div class="college-card">
+                            <h3>Manipal Institute of Technology</h3>
+                            <p class="college-location">Manipal, Karnataka</p>
+                            <div class="college-details">
+                                <div class="college-rank">
+                                    <i class="fas fa-star"></i>
+                                    <span>NIRF Rank: 18</span>
+                                </div>
+                                <div class="college-year">
+                                    <i class="fas fa-graduation-cap"></i>
+                                    <span>Established: 1957</span>
+                                </div>
+                            </div>
+                            <div class="college-info">
+                                <p><span>Specializations:</span> Process Engineering, Environmental Engineering</p>
+                                <p><span>Average Placement:</span> ₹6-13 LPA</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="section" id="faq">
+        <div class="container">
+            <h2 class="section-title">Frequently Asked Questions</h2>
+
+            <div class="faq-container">
+                <div class="accordion">
+                    <div class="accordion-item">
+                        <div class="accordion-header">What does a Chemical Engineer do?</div>
+                        <div class="accordion-content">
+                            <p>Chemical engineers design, develop, and optimize processes to produce chemicals, fuels, pharmaceuticals, food, and materials. They work on scaling up laboratory processes to industrial levels, ensuring safety, efficiency, and sustainability.</p>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item">
+                        <div class="accordion-header">Is programming necessary for Chemical Engineers?</div>
+                        <div class="accordion-content">
+                            <p>Programming is valuable for chemical engineers, particularly for process simulation, data analysis, and automation. Tools like MATLAB, Python, and ASPEN Plus are commonly used, and proficiency in these can enhance employability.</p>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item">
+                        <div class="accordion-header">What are the emerging trends in Chemical Engineering?</div>
+                        <div class="accordion-content">
+                            <p>Emerging trends include green chemistry, carbon capture, renewable energy, nanotechnology, and bioprocessing. These areas focus on sustainability, energy efficiency, and advanced materials to address global challenges.</p>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item">
+                        <div class="accordion-header">How is the job market for Chemical Engineers in India?</div>
+                        <div class="accordion-content">
+                            <p>The job market is strong, with opportunities in petrochemicals, pharmaceuticals, energy, and environmental sectors. Specialized skills in green chemistry and process optimization are in high demand.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <h2>GoFarAsYouCan</h2>
+                    <p>Your guide to engineering education and career paths</p>
+                </div>
+
+                <div class="footer-links">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="#about">About Chemical Engineering</a></li>
+                        <li><a href="#careers">Career Paths</a></li>
+                        <li><a href="#projects">Real-world Projects</a></li>
+                        <li><a href="#skills">Skills to Master</a></li>
+                        <li><a href="#specializations">Specializations</a></li>
+                        <li><a href="#colleges">Top Colleges</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-resources">
+                    <h3>Resources</h3>
+                    <ul>
+                        <li><a href="https://www.aiche.org/" target="_blank">AIChE</a></li>
+                        <li><a href="https://www.coursera.org/" target="_blank">Online Courses</a></li>
+                        <li><a href="https://scholar.google.com/" target="_blank">Research Papers</a></li>
+                        <li><a href="https://www.statista.com/" target="_blank">Industry Reports</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>© <script>document.write(new Date().getFullYear())</script> GoFarAsYouCan. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+      // Tab functionality for colleges section
+      function openTab(tabName) {
+        const tabContents = document.querySelectorAll(".tab-content");
+        tabContents.forEach((content) => {
+          content.classList.remove("active");
+        });
+
+        const tabButtons = document.querySelectorAll(".tab-button");
+        tabButtons.forEach((button) => {
+          button.classList.remove("active");
+        });
+
+        document.getElementById(tabName).classList.add("active");
+        document.querySelector(`button[onclick="openTab('${tabName}')"]`).classList.add("active");
+      }
+
+      // Accordion functionality
+      function setupAccordions() {
+        const accordionHeaders = document.querySelectorAll(".accordion-header");
+        
+        accordionHeaders.forEach(header => {
+          header.addEventListener("click", function() {
+            const accordionItem = this.parentElement;
+            accordionItem.classList.toggle("active");
+            
+            this.classList.toggle("active");
+            
+            const content = this.nextElementSibling;
+            if (accordionItem.classList.contains("active")) {
+              content.style.maxHeight = content.scrollHeight + "px";
+            } else {
+              content.style.maxHeight = 0;
+            }
+          });
+        });
+      }
+
+      // Smooth scrolling for anchor links
+      function setupSmoothScrolling() {
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+          anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+
+            const targetId = this.getAttribute('href');
+            if (targetId === "#") return;
+
+            const targetElement = document.querySelector(targetId);
+            if (targetElement) {
+              window.scrollTo({
+                top: targetElement.offsetTop - 80,
+                behavior: 'smooth'
+              });
+            }
+          });
+        });
+      }
+
+      // Initialize everything when the DOM is loaded
+      document.addEventListener("DOMContentLoaded", function() {
+        openTab("government");
+        setupAccordions();
+        setupSmoothScrolling();
+      });
+    </script>
+</body>
+</html>

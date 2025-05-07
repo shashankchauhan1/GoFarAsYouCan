@@ -1,0 +1,621 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Computer Science Engineering (CSE)</title>
+    <link rel="stylesheet" href="/styles/cse.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" rel="stylesheet">
+
+    <style>
+        /* Reset */
+        body,
+        h1,
+        h2,
+        h3,
+        p,
+        ul {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: #0f172a;
+            /* Dark blue background */
+            color: #e2e8f0;
+            /* Light text color */
+        }
+
+        /* Navbar */
+        .navbar {
+            background: linear-gradient(to right, #1e293b, #334155);
+            /* Dark gradient */
+            padding: 1rem 2rem;
+            color: #fff;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: #38bdf8;
+            /* Neon blue */
+        }
+
+        .back-button {
+            text-decoration: none;
+            color: #fff;
+            font-size: 1rem;
+            transition: color 0.3s ease;
+        }
+
+        .back-button:hover {
+            color: #38bdf8;
+        }
+
+        @media (max-width: 768px) {
+            .logo {
+                font-size: 1.5rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .navbar {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+
+        /* Intro Section */
+        .intro {
+            padding: 50px 20px;
+            text-align: center;
+            background: linear-gradient(135deg, #1e293b, #0f172a);
+            /* Dark gradient */
+            color: #38bdf8;
+            /* Neon blue */
+        }
+
+        .intro h1 {
+            font-size: 3rem;
+            margin-bottom: 15px;
+        }
+
+        .intro p {
+            font-size: 1.2rem;
+            color: #94a3b8;
+            /* Muted text */
+        }
+
+        /* Real World Projects Section */
+        .projects {
+            padding: 50px 20px;
+            text-align: center;
+        }
+
+        .projects h2 {
+            color: #38bdf8;
+        }
+
+        .project-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .project-card {
+            background: #1e293b;
+            /* Dark card background */
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 12px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .project-card h3 {
+            color: #38bdf8;
+        }
+
+        /* Quote Section */
+        .quote {
+            background: #0f172a;
+            color: #38bdf8;
+            padding: 40px 20px;
+            text-align: center;
+        }
+
+        .quote p {
+            font-size: 1.5rem;
+            font-style: italic;
+        }
+
+            /* Study Paths Section */
+    .study-paths {
+        padding: 50px 20px;
+        background: #1e293b;
+        text-align: center;
+    }
+
+    .study-paths h2 {
+        color: #38bdf8;
+        font-size: 2.5rem;
+        margin-bottom: 30px;
+    }
+
+    .paths-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 25px;
+        margin-top: 30px;
+    }
+
+    .path-card {
+        background: #0f172a;
+        padding: 20px;
+        border-radius: 12px;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+        text-align: center;
+    }
+
+    .path-card:hover {
+        background: #1e293b;
+        transform: translateY(-5px);
+        box-shadow: 0 12px 20px rgba(0, 0, 0, 0.3);
+    }
+
+    .path-card img {
+        width: 100%;
+        height: 150px;
+        object-fit: cover;
+        border-radius: 8px;
+        margin-bottom: 15px;
+    }
+
+    .path-card h3 {
+        color: #38bdf8;
+        font-size: 1.5rem;
+        margin-bottom: 10px;
+    }
+
+    .path-card p {
+        color: #94a3b8;
+        font-size: 1rem;
+        line-height: 1.5;
+    }
+
+    .path-card a {
+        color: #38bdf8;
+        text-decoration: none;
+        font-weight: bold;
+        transition: color 0.3s ease;
+    }
+
+    .path-card a:hover {
+        color: #93c5fd;
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+        .paths-grid {
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        }
+    }
+
+    @media (max-width: 480px) {
+        .paths-grid {
+            grid-template-columns: 1fr;
+        }
+
+        .path-card img {
+            height: 120px;
+        }
+    }
+
+
+          /* Top Colleges Section */
+  .colleges {
+    padding: 50px 20px;
+    background: #1e293b; /* Dark background */
+    text-align: center;
+  }
+
+  .colleges h2 {
+    color: #38bdf8; /* Neon blue */
+    margin-bottom: 20px;
+    font-size: 2.5rem;
+  }
+
+  .colleges p {
+    color: #94a3b8; /* Muted text */
+    font-size: 1.2rem;
+    margin-bottom: 30px;
+  }
+
+  .college-category {
+    margin-bottom: 40px;
+  }
+
+  .college-category h3 {
+    color: #38bdf8;
+    font-size: 1.8rem;
+    margin-bottom: 20px;
+  }
+
+  .college-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+  }
+
+  .college-card {
+    background: #0f172a; /* Darker card background */
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    text-align: left;
+  }
+
+  .college-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 20px rgba(0, 0, 0, 0.3);
+    background: #1e293b; /* Slightly lighter background on hover */
+  }
+
+  .college-card h4 {
+    color: #38bdf8;
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+  }
+
+  .college-card p {
+    color: #94a3b8;
+    font-size: 1rem;
+    margin-bottom: 15px;
+  }
+
+  .college-card a {
+    color: #38bdf8;
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s ease;
+  }
+
+  .college-card a:hover {
+    color: #93c5fd; /* Lighter blue on hover */
+  }
+
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    .college-grid {
+      grid-template-columns: 1fr;
+    }
+
+  }
+
+    .project-card img {
+        width: 100%;
+        height: 150px;
+        object-fit: cover;
+        border-radius: 8px;
+        margin-bottom: 1rem;
+    }
+
+    .project-card h3 {
+        color: #38bdf8;
+        margin-bottom: 0.5rem;
+    }
+
+    .project-card p {
+        color: #94a3b8;
+        font-size: 0.95rem;
+    }
+
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 20px;
+            background: #1e293b;
+            color: #94a3b8;
+            margin-top: 30px;
+        }
+
+        footer p {
+            color: #38bdf8;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .intro h1 {
+                font-size: 2.5rem;
+            }
+
+            .intro p {
+                font-size: 1rem;
+            }
+
+            .paths-grid {
+                grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            }
+
+            .project-cards {
+                grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            }
+        }
+
+        @media (max-width: 480px) {
+            .intro h1 {
+                font-size: 2rem;
+            }
+
+            .intro p {
+                font-size: 0.9rem;
+            }
+
+            .paths-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .project-cards {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav class="navbar">
+        <div class="nav-container">
+            <h1 class="logo">GoFarAsYouCan</h1>
+            <a href="/Engineering/engineering.ejs" class="back-button"><i class="fas fa-arrow-left"></i> Back to
+                Engineering</a>
+        </div>
+    </nav>
+
+    <!-- Intro Section -->
+    <div class="intro">
+        <h1>Computer Science Engineers: Architects of the Digital World</h1>
+        <p>CSE engineers design, innovate, and power the technology that runs the modern world — from websites and apps
+            to artificial intelligence and rocket software.</p>
+    </div>
+
+    <!-- Real World Projects Section -->
+    <section class="projects">
+        <h2>Real-World Projects Built by CSE Engineers</h2>
+        <div class="project-cards">
+            <div class="project-card">
+                <img src="https://autovista24.autovistagroup.com/wp-content/uploads/sites/5/2025/01/ces-self-driving-cars-15-2-25-e1736953706226.jpg">
+                <h3>Self-driving Car Software</h3>
+                <p>Machine Learning models that control autonomous vehicles.</p>
+            </div>
+            <div class="project-card">
+                <img src="https://memberpress.com/wp-content/uploads/2019/10/Choosing-platforms@2x.png" alt="Social Media Platforms">
+                <h3>Social Media Platforms</h3>
+                <p>Apps like Instagram, WhatsApp, and Snapchat — all built by CSE minds.</p>
+            </div>
+            <div class="project-card">
+                <img src="https://www.phaseone.com/wp-content/uploads/2023/05/SS-2400x1350.jpg" alt="Space Exploration Software">
+                <h3>Space Exploration Software</h3>
+                <p>Code that runs on satellites, Mars Rovers, and rockets like SpaceX!</p>
+            </div>
+            <div class="project-card">
+                <img src="https://media.istockphoto.com/id/1399936043/photo/data-transfer-cloud-computing-technology-concept-there-is-a-large-prominent-cloud-icon-in-the.jpg?s=612x612&w=0&k=20&c=pSrIUkBc6Yf1gT7G0SnjQL4T-PjbC6KmFZavud7To2I=" alt="Cloud Platforms">
+                <h3>Cloud Platforms</h3>
+                <p>Massive cloud services like AWS, Azure, and Google Cloud.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Savage Quote -->
+    <section class="quote">
+        <p>"We don't just build apps — we build the future. 💻🚀"</p>
+    </section>
+
+    <!-- Study Paths Section -->
+    <section class="study-paths">
+        <h2>What Should You Master in CSE?</h2>
+        <div class="paths-grid">
+            <div class="path-card">
+                <img src="https://flourisense.in/wp-content/uploads/2022/09/ds.jpg" alt="Data Structures & Algorithms">
+                <h3>DSA (Data Structures & Algorithms)</h3>
+                <a href="/engineering/CSE/dsa.ejs" style="color: white; text-decoration: none;">
+                    <p>Build logical skills & ace coding interviews.</p>
+                </a>
+            </div>
+    
+            <div class="path-card">
+                <img src="https://miro.medium.com/v2/resize:fit:1200/0*M4bxiCIjcTK-2Xr6.jpeg" alt="Web Development">
+                <h3>Web Development</h3>
+                <a href="/engineering/CSE/webdev.ejs" style="color: white; text-decoration: none;">
+                    <p>Create dynamic websites, web apps, and APIs, play with Databases.</p>
+                </a>
+            </div>
+    
+            <div class="path-card">
+                <img src="https://media0.giphy.com/media/v1.Y2lkPTc5MGI3NjExYXZrYWV5NnBmYzhuZml1eTRqdnFmcXNsenh4bGxudzhzMW04cnJ2YSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/39wFTeHR6424Pjw8TO/giphy.gif" alt="AI / Machine Learning">
+                <h3>AI / Machine Learning</h3>
+                <a href="/engineering/CSE/aiml.ejs" style="color: white; text-decoration: none;">
+                    <p>Teach machines to think, predict, and learn.</p>
+                </a>
+            </div>
+    
+            <div class="path-card">
+                <img src="https://euro-systems.co.uk/wp-content/uploads/2024/09/Cloud-Computing-History-1.png" alt="Cloud Computing">
+                <h3>Cloud Computing</h3>
+                <a href="/engineering/CSE/cloud.ejs" style="color: white; text-decoration: none;">
+                    <p>Deploy apps and manage servers globally.</p>
+                </a>
+            </div>
+    
+            <div class="path-card">
+                <img src="https://testgrid.io/blog/wp-content/uploads/2024/09/devops-testing.jpg" alt="DevOps">
+                <h3>DevOps</h3>
+                <a href="/engineering/CSE/devops.ejs" style="color: white; text-decoration: none;">
+                    <p>Automate deployments, monitoring, and scaling.</p>
+                </a>
+            </div>
+    
+            <div class="path-card">
+                <img src="https://media.istockphoto.com/id/1193278024/vector/application-of-smartphone-with-business-graph-and-analytics-data-on-isometric-mobile-phone.jpg?s=612x612&w=0&k=20&c=cV3zqN7LAi6_qAqW45_vZMg7HVRSt4_2NV-SRJ-FK04=" alt="App Development">
+                <h3>App Development</h3>
+                <a href="/engineering/CSE/appdev.ejs" style="color: white; text-decoration: none;">
+                    <p>Build Android and cross-platform mobile apps.</p>
+                </a>
+            </div>
+    
+            <div class="path-card">
+                <img src="https://i.pinimg.com/originals/be/cb/ca/becbca09cc81c9ecd1ce133c836b3f25.gif">
+                <h3>iOS Development</h3>
+                <a href="/engineering/CSE/iosdev.ejs" style="color: white; text-decoration: none;">
+                    <p>Create high-end apps for Apple devices.</p>
+                </a>
+            </div>
+    
+            <div class="path-card">
+                <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExMDM0MTRoNGg1YzRkeTV2amM0dGp6bHhvc3h0cHlkZndnYTF4OTA0eiZlcD12MV9naWZzX3NlYXJjaCZjdD1n/KX5nwoDX97AtPvKBF6/giphy.gif" alt="Networking">
+                <h3>Networking</h3>
+                <a href="/engineering/CSE/networking.ejs" style="color: white; text-decoration: none;">
+                    <p>Understand internet, protocols, and security deeply.</p>
+                </a>
+            </div>
+    
+            <div class="path-card">
+                <img src="https://expertifie.com/wp-content/uploads/2022/07/System-designhld-lld.jpg" alt="System Design">
+                <h3>System Design</h3>
+                <a href="/engineering/CSE/systemdesign.ejs" style="color: white; text-decoration: none;">
+                    <p>Learn to design scalable, reliable, and efficient systems.</p>
+                </a>
+            </div>
+    
+            <div class="path-card">
+                <img src="https://media.licdn.com/dms/image/v2/D4D12AQFOu5LK7c_Aqw/article-cover_image-shrink_600_2000/article-cover_image-shrink_600_2000/0/1685338553716?e=2147483647&v=beta&t=-zn3b04gVPi82jdiuII1x8LpAnU2D0dnSsHXG7ore2Q" alt="Data Analytics">
+                <h3>Data Analytics</h3>
+                <a href="/engineering/CSE/dataanalytic.ejs" style="color: white; text-decoration: none;">
+                    <p>Analyze data, uncover insights, and make data-driven decisions using tools like Python, R, and SQL.</p>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Top Colleges Section -->
+    <section class="colleges">
+        <h2>Dream Big: Top Colleges for CSE</h2>
+        <p>Getting into a top college can significantly shape your technical journey and open doors to incredible opportunities.</p>
+      
+        <!-- Top Government Colleges -->
+        <div class="college-category">
+          <h3>🏛️ Top Government Colleges</h3>
+          <div class="college-grid">
+            <div class="college-card">
+              <h4>IIT Bombay</h4>
+              <p>India's No.1 tech institute, famous for research and innovation.</p>
+              <a href="https://www.iitb.ac.in/" target="_blank">Visit Website →</a>
+            </div>
+            <div class="college-card">
+              <h4>IIT Delhi</h4>
+              <p>Top-ranked for CSE, startups, and global placement opportunities.</p>
+              <a href="https://home.iitd.ac.in/" target="_blank">Visit Website →</a>
+            </div>
+            <div class="college-card">
+              <h4>IIIT Hyderabad</h4>
+              <p>Premier institute for AI, ML, and research-focused computer science.</p>
+              <a href="https://www.iiit.ac.in/" target="_blank">Visit Website →</a>
+            </div>
+            <div class="college-card">
+              <h4>BITS Pilani</h4>
+              <p>Highly reputed for flexibility, tech culture, and industry-oriented education.</p>
+              <a href="https://www.bits-pilani.ac.in/" target="_blank">Visit Website →</a>
+            </div>
+            <div class="college-card">
+              <h4>NIT Trichy</h4>
+              <p>Leading NIT known for excellent academic environment and placements.</p>
+              <a href="https://www.nitt.edu/" target="_blank">Visit Website →</a>
+            </div>
+            <div class="college-card">
+              <h4>NIT Surathkal</h4>
+              <p>Beautiful beach-side campus and strong coding culture.</p>
+              <a href="https://www.nitk.ac.in/" target="_blank">Visit Website →</a>
+            </div>
+            <div class="college-card">
+                <h4>NIT Hamirpur</h4>
+                <p>Known for its serene campus and strong coding culture.</p>
+                <a href="https://nith.ac.in/" target="_blank">Visit Website →</a>
+              </div>
+              <div class="college-card">
+                <h4>IIT Jammu</h4>
+                <p>Emerging IIT with a focus on innovation and research.</p>
+                <a href="https://iitjammu.ac.in/" target="_blank">Visit Website →</a>
+              </div>
+          </div>
+        </div>
+      
+        <!-- Top Private Colleges -->
+        <div class="college-category">
+          <h3>🏫 Top Private Colleges</h3>
+          <div class="college-grid">
+            <div class="college-card">
+              <h4>VIT Vellore</h4>
+              <p>Excellent placements, international exposure, and tech events.</p>
+              <a href="https://vit.ac.in/" target="_blank">Visit Website →</a>
+            </div>
+            <div class="college-card">
+              <h4>SRM Institute of Science and Technology</h4>
+              <p>Known for global partnerships and innovation programs.</p>
+              <a href="https://www.srmist.edu.in/" target="_blank">Visit Website →</a>
+            </div>
+            <div class="college-card">
+              <h4>Manipal Institute of Technology (MIT)</h4>
+              <p>Strong industry connections and tech competitions.</p>
+              <a href="https://manipal.edu/" target="_blank">Visit Website →</a>
+            </div>
+            <div class="college-card">
+              <h4>Amity University, Noida</h4>
+              <p>Offers great exposure, modern facilities, and global collaborations.</p>
+              <a href="https://www.shiksha.com/university/amity-university-noida-24905" target="_blank">Visit Website →</a>
+            </div>
+
+            <div class="college-card">
+                <h4>Chitkara University</h4>
+                <p>Known for its industry-oriented curriculum and placements.</p>
+                <a href="https://www.chitkara.edu.in/" target="_blank">Visit Website →</a>
+              </div>
+              <div class="college-card">
+                <h4>Chandigarh University</h4>
+                <p>Offers excellent infrastructure and global exposure opportunities.</p>
+                <a href="https://www.cuchd.in/" target="_blank">Visit Website →</a>
+              </div>
+              <div class="college-card">
+                <h4>BITS Pilani</h4>
+                <p>Highly reputed for flexibility, tech culture, and industry-oriented education.</p>
+                <a href="https://www.bits-pilani.ac.in/" target="_blank">Visit Website →</a>
+              </div>
+          </div>
+        </div>
+      </section>
+      
+
+    <!-- Footer -->
+    <footer>
+        <p>💡 Your code can change the world. Start building today. 🚀</p>
+    </footer>
+
+</body>
+
+</html>

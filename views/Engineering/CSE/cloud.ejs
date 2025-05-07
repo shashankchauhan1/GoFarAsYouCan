@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cloud Computing Learning Hub</title>
+  <style>
+    :root {
+      --primary-bg: #0F172A;
+      --section-bg: #1E293B;
+      --card-bg: #334155;
+      --card-hover: #475569;
+      --text-primary: #F1F5F9;
+      --text-secondary: #CBD5E1;
+      --accent: #3B82F6;
+      --accent-hover: #2563EB;
+      --highlight: #60A5FA;
+      --border: #475569;
+    }
+    
+    html {
+      scroll-behavior: smooth;
+    }
+    
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: var(--primary-bg);
+      color: var(--text-primary);
+      line-height: 1.6;
+    }
+    
+    .navbar {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      background-color: rgba(15, 23, 42, 0.95);
+      padding: 1rem;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--border);
+    }
+    
+    .navbar a {
+      color: var(--text-primary);
+      margin: 8px 16px;
+      text-decoration: none;
+      font-size: 16px;
+      position: relative;
+      padding: 6px 0;
+      transition: color 0.3s;
+    }
+    
+    .navbar a:hover {
+      color: var(--accent);
+    }
+    
+    header {
+      text-align: center;
+      padding: 6rem 2rem;
+      background: linear-gradient(135deg, #1E3A8A 0%, #1E40AF 100%);
+      color: white;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    header::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      opacity: 0.2;
+      z-index: 0;
+    }
+    
+    header > * {
+      position: relative;
+      z-index: 1;
+    }
+    
+    header h1 {
+      font-size: 3rem;
+      margin-bottom: 1.5rem;
+      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    }
+    
+    header p {
+      font-size: 1.25rem;
+      max-width: 800px;
+      margin: 0 auto;
+      color: var(--text-secondary);
+    }
+    
+    section {
+      padding: 4rem 2rem;
+      background: var(--section-bg);
+      margin: 2rem;
+      border-radius: 16px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+      border: 1px solid var(--border);
+    }
+    
+    .section-title {
+      text-align: center;
+      margin-bottom: 3rem;
+      color: var(--accent);
+      position: relative;
+    }
+    
+    .section-title::after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 60px;
+      height: 3px;
+      background: var(--accent);
+      border-radius: 3px;
+    }
+    
+    .tech-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+      margin-top: 2rem;
+    }
+    
+    .tech-card {
+      background: var(--card-bg);
+      padding: 2rem;
+      border-radius: 12px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      transition: all 0.3s ease;
+      border: 1px solid var(--border);
+    }
+    
+    .tech-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+      border-color: var(--accent);
+    }
+    
+    .tech-card h3 {
+      color: var(--highlight);
+      margin: 0 0 1rem;
+      font-size: 1.5rem;
+    }
+    
+    .tech-card p {
+      color: var(--text-secondary);
+      margin-bottom: 1.5rem;
+    }
+    
+    .learn-btn {
+      display: inline-block;
+      padding: 0.75rem 1.5rem;
+      background-color: var(--accent);
+      color: white;
+      text-decoration: none;
+      border-radius: 8px;
+      transition: all 0.3s ease;
+      font-weight: 500;
+    }
+    
+    .learn-btn:hover {
+      background-color: var(--accent-hover);
+      transform: translateY(-2px);
+    }
+    
+    .roadmap {
+      background: var(--card-bg);
+      padding: 2rem;
+      border-radius: 12px;
+      margin-top: 2rem;
+    }
+    
+    .roadmap-step {
+      margin-bottom: 1.5rem;
+      padding-left: 2rem;
+      position: relative;
+    }
+    
+    .roadmap-step::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 12px;
+      height: 12px;
+      background: var(--accent);
+      border-radius: 50%;
+    }
+    
+    .roadmap-step::after {
+      content: '';
+      position: absolute;
+      left: 5px;
+      top: 12px;
+      width: 2px;
+      height: calc(100% + 1rem);
+      background: var(--border);
+    }
+    
+    .roadmap-step:last-child::after {
+      display: none;
+    }
+    
+    .resource-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+      margin-top: 2rem;
+    }
+    
+    .channel-card {
+      background: var(--card-bg);
+      padding: 1.5rem;
+      border-radius: 12px;
+      border: 1px solid var(--border);
+      transition: all 0.3s ease;
+    }
+    
+    .channel-card:hover {
+      transform: translateY(-5px);
+      border-color: var(--accent);
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    }
+    
+    .channel-card h4 {
+      color: var(--highlight);
+      margin: 0 0 0.75rem;
+      font-size: 1.2rem;
+    }
+    
+    .channel-card p {
+      color: var(--text-secondary);
+      margin: 0 0 1rem;
+      font-size: 0.95rem;
+    }
+    
+    .channel-link {
+      color: var(--accent);
+      text-decoration: none;
+      font-weight: 500;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    
+    .channel-link:hover {
+      color: var(--accent-hover);
+      text-decoration: underline;
+    }
+    
+    @media (max-width: 768px) {
+      header {
+        padding: 4rem 1.5rem;
+      }
+      
+      header h1 {
+        font-size: 2.25rem;
+      }
+      
+      section {
+        padding: 2rem 1.5rem;
+        margin: 1rem;
+      }
+      
+      .tech-grid {
+        gap: 1.5rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="navbar">
+    <a href="#fundamentals">Fundamentals</a>
+    <a href="#providers">Cloud Providers</a>
+    <a href="#services">Services</a>
+    <a href="#roadmap">Roadmap</a>
+    <a href="#resources">Resources</a>
+    <a href="/Engineering/CSE/cse.ejs">Go Back</a>
+  </div>
+  
+  <header>
+    <h1>Cloud Computing</h1>
+    <p>Master cloud computing concepts, services, and best practices with our comprehensive learning path and curated resources.</p>
+  </header>
+  
+  <section id="fundamentals">
+    <h2 class="section-title">Cloud Fundamentals</h2>
+    <div class="tech-grid">
+      <div class="tech-card">
+        <h3>Cloud Computing Basics</h3>
+        <p>Learn the core concepts of cloud computing, including service models (IaaS, PaaS, SaaS) and deployment models (public, private, hybrid).</p>
+        <a href="https://aws.amazon.com/what-is-cloud-computing/" class="learn-btn" target="_blank">Learn More</a>
+      </div>
+      
+      <div class="tech-card">
+        <h3>Virtualization</h3>
+        <p>Understand virtualization technology, hypervisors, and how they enable cloud computing infrastructure.</p>
+        <a href="https://www.vmware.com/topics/glossary/content/virtualization" class="learn-btn" target="_blank">Learn More</a>
+      </div>
+      
+      <div class="tech-card">
+        <h3>Networking</h3>
+        <p>Master cloud networking concepts, including VPCs, subnets, routing, and security groups.</p>
+        <a href="https://docs.aws.amazon.com/vpc/latest/userguide/what-is-amazon-vpc.html" class="learn-btn" target="_blank">Learn More</a>
+      </div>
+    </div>
+  </section>
+  
+  <section id="providers">
+    <h2 class="section-title">Major Cloud Providers</h2>
+    <div class="tech-grid">
+      <div class="tech-card">
+        <h3>Amazon Web Services (AWS)</h3>
+        <p>The most comprehensive and widely adopted cloud platform, offering over 200 fully featured services.</p>
+        <a href="https://aws.amazon.com/getting-started/" class="learn-btn" target="_blank">Get Started</a>
+      </div>
+      
+      <div class="tech-card">
+        <h3>Microsoft Azure</h3>
+        <p>Enterprise-ready cloud platform with strong integration with Microsoft products and services.</p>
+        <a href="https://azure.microsoft.com/en-us/get-started/" class="learn-btn" target="_blank">Get Started</a>
+      </div>
+      
+      <div class="tech-card">
+        <h3>Google Cloud Platform</h3>
+        <p>Known for strong data analytics, machine learning, and container orchestration capabilities.</p>
+        <a href="https://cloud.google.com/gcp/getting-started" class="learn-btn" target="_blank">Get Started</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="services">
+    <h2 class="section-title">Key Cloud Services</h2>
+    <div class="tech-grid">
+      <div class="tech-card">
+        <h3>Compute</h3>
+        <p>Learn about virtual machines, serverless computing, and container orchestration platforms like Kubernetes.</p>
+        <a href="https://aws.amazon.com/ec2/" class="learn-btn" target="_blank">Learn More</a>
+      </div>
+  
+      <div class="tech-card">
+        <h3>Storage</h3>
+        <p>Explore object storage (S3), block storage (EBS), and file storage solutions for scalable data management.</p>
+        <a href="https://aws.amazon.com/s3/" class="learn-btn" target="_blank">Learn More</a>
+      </div>
+  
+      <div class="tech-card">
+        <h3>Databases</h3>
+        <p>Understand relational databases (RDS), NoSQL databases (DynamoDB), and data warehousing solutions.</p>
+        <a href="https://aws.amazon.com/rds/" class="learn-btn" target="_blank">Learn More</a>
+      </div>
+  
+      <div class="tech-card">
+        <h3>Networking</h3>
+        <p>Master cloud networking concepts like VPCs, load balancers, and content delivery networks (CDNs).</p>
+        <a href="https://aws.amazon.com/vpc/" class="learn-btn" target="_blank">Learn More</a>
+      </div>
+  
+      <div class="tech-card">
+        <h3>Security</h3>
+        <p>Learn about identity and access management (IAM), encryption, and compliance frameworks.</p>
+        <a href="https://aws.amazon.com/iam/" class="learn-btn" target="_blank">Learn More</a>
+      </div>
+  
+      <div class="tech-card">
+        <h3>Analytics</h3>
+        <p>Discover tools for big data processing, data lakes, and real-time analytics like AWS Redshift and Athena.</p>
+        <a href="https://aws.amazon.com/analytics/" class="learn-btn" target="_blank">Learn More</a>
+      </div>
+  
+      <div class="tech-card">
+        <h3>Machine Learning</h3>
+        <p>Explore AI and ML services like AWS SageMaker, TensorFlow, and pre-trained AI models.</p>
+        <a href="https://aws.amazon.com/machine-learning/" class="learn-btn" target="_blank">Learn More</a>
+      </div>
+  
+      <div class="tech-card">
+        <h3>DevOps</h3>
+        <p>Learn about CI/CD pipelines, infrastructure as code (IaC), and monitoring tools like AWS CodePipeline.</p>
+        <a href="https://aws.amazon.com/devops/" class="learn-btn" target="_blank">Learn More</a>
+      </div>
+    </div>
+  </section>
+  
+  <section id="roadmap">
+    <h2 class="section-title">Learning Roadmap</h2>
+    <div class="roadmap">
+      <div class="roadmap-step">
+        <h3>1. Cloud Fundamentals</h3>
+        <p>Start with basic concepts, terminology, and understanding different service models.</p>
+      </div>
+      
+      <div class="roadmap-step">
+        <h3>2. Choose a Cloud Provider</h3>
+        <p>Focus on one major cloud provider (AWS, Azure, or GCP) and their core services.</p>
+      </div>
+      
+      <div class="roadmap-step">
+        <h3>3. Core Services</h3>
+        <p>Master compute, storage, networking, and database services.</p>
+      </div>
+      
+      <div class="roadmap-step">
+        <h3>4. Security & Compliance</h3>
+        <p>Learn about identity management, security best practices, and compliance frameworks.</p>
+      </div>
+      
+      <div class="roadmap-step">
+        <h3>5. Advanced Topics</h3>
+        <p>Explore serverless computing, containers, and cloud-native applications.</p>
+      </div>
+      
+      <div class="roadmap-step">
+        <h3>6. Certification</h3>
+        <p>Prepare for and obtain cloud certifications relevant to your career goals.</p>
+      </div>
+    </div>
+  </section>
+  
+  <section id="resources">
+    <h2 class="section-title">Learning Resources</h2>
+    <div class="resource-grid">
+      <div class="channel-card">
+        <h4>FreeCodeCamp</h4>
+        <p>Comprehensive cloud certification courses and hands-on tutorials.</p>
+        <a href="https://www.youtube.com/@freecodecamp" class="channel-link" target="_blank">Visit Channel →</a>
+      </div>
+      
+      <div class="channel-card">
+        <h4>AWS Training</h4>
+        <p>Official AWS training videos and certification preparation.</p>
+        <a href="https://www.youtube.com/@AWSTraining" class="channel-link" target="_blank">Visit Channel →</a>
+      </div>
+      
+      <div class="channel-card">
+        <h4>TechWorld with Nana</h4>
+        <p>Cloud computing and DevOps tutorials with practical examples.</p>
+        <a href="https://www.youtube.com/@TechWorldwithNana" class="channel-link" target="_blank">Visit Channel →</a>
+      </div>
+      
+      <div class="channel-card">
+        <h4>Cloud Guru</h4>
+        <p>In-depth cloud training and certification preparation guides.</p>
+        <a href="https://www.youtube.com/@ACloudGuru" class="channel-link" target="_blank">Visit Channel →</a>
+      </div>
+    </div>
+  </section>
+  
+</body>
+</html>

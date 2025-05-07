@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI/ML Learning Hub</title>
+  <style>
+    :root {
+      --primary-bg: #0a1930;
+      --section-bg: #152238;
+      --card-bg: #1d2d4a;
+      --card-hover: #243b61;
+      --text-primary: #e6e7f0;
+      --text-secondary: #a0a4b8;
+      --accent: #6d28d9;
+      --accent-hover: #5b21b6;
+      --highlight: #00bcd4;
+      --border: #2d3250;
+    }
+    
+    html {
+      scroll-behavior: smooth;
+    }
+    
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: var(--primary-bg);
+      color: var(--text-primary);
+      line-height: 1.6;
+    }
+    
+    .navbar {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      background-color: rgba(10, 25, 48, 0.95);
+      padding: 1rem;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      backdrop-filter: blur(8px);
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+    
+    .navbar a {
+      color: var(--text-primary);
+      margin: 8px 12px;
+      text-decoration: none;
+      font-size: 16px;
+      position: relative;
+      padding: 6px 0;
+      transition: color 0.3s;
+    }
+    
+    .navbar a:hover {
+      color: var(--accent);
+    }
+    
+    .navbar a::after {
+      content: '';
+      position: absolute;
+      width: 0;
+      height: 2px;
+      bottom: 0;
+      left: 0;
+      background-color: var(--accent);
+      transition: width 0.3s ease;
+    }
+    
+    .navbar a:hover::after {
+      width: 100%;
+    }
+    
+    header {
+      text-align: center;
+      padding: 4rem 2rem;
+      background: linear-gradient(135deg, #4c1d95 0%, #2563eb 100%);
+      color: white;
+      animation: fadeIn 1.5s ease-in;
+      border-bottom: 3px solid var(--accent);
+    }
+    
+    header h1 {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    }
+    
+    header p {
+      font-size: 1.2rem;
+      max-width: 700px;
+      margin: 0 auto;
+      color: rgba(255, 255, 255, 0.9);
+    }
+    
+    section {
+      padding: 3rem;
+      background: var(--section-bg);
+      margin: 1.5rem;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+      animation: fadeIn 1s ease-in;
+      border: 1px solid var(--border);
+    }
+    
+    .section-title {
+      text-align: center;
+      color: var(--accent);
+      margin-bottom: 2.5rem;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    
+    .section-title h2 {
+      margin: 0;
+      padding: 0 1.5rem;
+    }
+    
+    .section-title::before,
+    .section-title::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: var(--border);
+    }
+    
+    .tech-card {
+      background: var(--card-bg);
+      padding: 25px;
+      border-radius: 12px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      margin-bottom: 25px;
+      transition: all 0.3s ease;
+      border: 1px solid var(--border);
+    }
+    
+    .tech-card:hover {
+      transform: translateY(-5px) scale(1.02);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+      background: var(--card-hover);
+      border-color: var(--accent);
+    }
+    
+    .tech-card h3 {
+      color: var(--highlight);
+      margin-top: 0;
+      font-size: 1.4rem;
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 10px;
+      margin-bottom: 15px;
+    }
+    
+    .tech-card p {
+      color: var(--text-secondary);
+      margin-bottom: 1.5rem;
+      line-height: 1.6;
+    }
+    
+    .learn-btn {
+      display: inline-block;
+      padding: 10px 16px;
+      background-color: var(--accent);
+      color: white;
+      border: none;
+      border-radius: 6px;
+      text-decoration: none;
+      font-weight: 500;
+      transition: all 0.3s;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    }
+    
+    .learn-btn:hover {
+      background-color: var(--accent-hover);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    }
+    
+    .framework-comparison {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 25px;
+      margin-top: 20px;
+    }
+    
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(-20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    
+    .fade-in {
+      animation: fadeIn 1s ease-in;
+    }
+    
+    .back-to-top {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background: var(--accent);
+      color: white;
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+      opacity: 0;
+      pointer-events: none;
+      transition: all 0.3s;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+      z-index: 1000;
+    }
+    
+    .back-to-top.visible {
+      opacity: 1;
+      pointer-events: auto;
+    }
+    
+    @media (max-width: 768px) {
+      section {
+        padding: 2rem 1.5rem;
+        margin: 1rem;
+      }
+      
+      .tech-card {
+        padding: 20px;
+      }
+      
+      header h1 {
+        font-size: 2rem;
+      }
+      
+      .navbar {
+        padding: 0.8rem;
+      }
+      
+      .navbar a {
+        margin: 6px 8px;
+        font-size: 14px;
+      }
+    }
+    
+    @media (max-width: 480px) {
+      section {
+        padding: 1.5rem 1rem;
+        margin: 0.8rem;
+      }
+      
+      header {
+        padding: 3rem 1rem;
+      }
+      
+      header h1 {
+        font-size: 1.8rem;
+      }
+      
+      .tech-card h3 {
+        font-size: 1.2rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="navbar">
+    <a href="#fundamentals">Fundamentals</a>
+    <a href="#machine-learning">Machine Learning</a>
+    <a href="#deep-learning">Deep Learning</a>
+    <a href="#frameworks">Frameworks</a>
+    <a href="#applications">Applications</a>
+    <a href="/Engineering/CSE/cse.ejs">Go Back</a>
+  </div>
+  
+  <header>
+    <h1>AI & Machine Learning</h1>
+    <p>Explore the world of artificial intelligence and machine learning with comprehensive resources and practical guidance</p>
+  </header>
+  
+  <section id="fundamentals" class="fade-in">
+    <div class="section-title">
+      <h2>AI/ML Fundamentals</h2>
+    </div>
+    
+    <div class="tech-card">
+      <h3>Mathematics for AI/ML</h3>
+      <p>Master the essential mathematical concepts behind AI and ML: linear algebra, calculus, probability, and statistics. These fundamentals form the backbone of machine learning algorithms.</p>
+      <a class="learn-btn" href="https://www.coursera.org/specializations/mathematics-machine-learning" target="_blank">Learn More</a>
+    </div>
+    
+    <div class="tech-card">
+      <h3>Python Programming</h3>
+      <p>Learn Python programming with a focus on data science and machine learning libraries. Master NumPy, Pandas, and other essential tools for data manipulation and analysis.</p>
+      <a class="learn-btn" href="https://www.python.org/about/gettingstarted/" target="_blank">Learn More</a>
+    </div>
+    
+    <div class="tech-card">
+      <h3>Data Preprocessing</h3>
+      <p>Understand data cleaning, normalization, feature engineering, and other crucial preprocessing steps that prepare your data for machine learning models.</p>
+      <a class="learn-btn" href="https://scikit-learn.org/stable/modules/preprocessing.html" target="_blank">Learn More</a>
+    </div>
+  </section>
+  
+  <section id="machine-learning" class="fade-in">
+    <div class="section-title">
+      <h2>Machine Learning</h2>
+    </div>
+    
+    <div class="framework-comparison">
+      <div class="tech-card">
+        <h3>Supervised Learning</h3>
+        <p>Learn algorithms that use labeled data to make predictions, including regression, classification, and decision trees.</p>
+        <p><strong>Key Algorithms:</strong> Linear Regression, Random Forests, Support Vector Machines</p>
+        <a class="learn-btn" href="https://scikit-learn.org/stable/supervised_learning.html" target="_blank">Learn More</a>
+      </div>
+      
+      <div class="tech-card">
+        <h3>Unsupervised Learning</h3>
+        <p>Explore techniques for finding patterns in unlabeled data through clustering and dimensionality reduction.</p>
+        <p><strong>Key Algorithms:</strong> K-means, PCA, Autoencoders</p>
+        <a class="learn-btn" href="https://scikit-learn.org/stable/unsupervised_learning.html" target="_blank">Learn More</a>
+      </div>
+      
+      <div class="tech-card">
+        <h3>Reinforcement Learning</h3>
+        <p>Study how agents learn to make decisions by interacting with an environment through rewards and penalties.</p>
+        <p><strong>Key Concepts:</strong> Q-Learning, Policy Gradients, Deep RL</p>
+        <a class="learn-btn" href="https://gym.openai.com/" target="_blank">Learn More</a>
+      </div>
+    </div>
+  </section>
+  
+  <section id="deep-learning" class="fade-in">
+    <div class="section-title">
+      <h2>Deep Learning</h2>
+    </div>
+    
+    <div class="tech-card">
+      <h3>Neural Networks</h3>
+      <p>Understand the fundamentals of neural networks, including architecture, backpropagation, and optimization techniques.</p>
+      <a class="learn-btn" href="https://www.deeplearning.ai/" target="_blank">Learn More</a>
+    </div>
+    
+    <div class="tech-card">
+      <h3>Convolutional Neural Networks (CNN)</h3>
+      <p>Master CNNs for image processing, computer vision, and pattern recognition tasks.</p>
+      <a class="learn-btn" href="https://keras.io/api/layers/convolution_layers/" target="_blank">Learn More</a>
+    </div>
+    
+    <div class="tech-card">
+      <h3>Recurrent Neural Networks (RNN)</h3>
+      <p>Learn about RNNs, LSTM, and GRU for sequential data processing and natural language processing.</p>
+      <a class="learn-btn" href="https://www.tensorflow.org/guide/keras/rnn" target="_blank">Learn More</a>
+    </div>
+  </section>
+  
+  <section id="frameworks" class="fade-in">
+    <div class="section-title">
+      <h2>AI/ML Frameworks</h2>
+    </div>
+    
+    <div class="framework-comparison">
+      <div class="tech-card">
+        <h3>TensorFlow</h3>
+        <p>Google's open-source platform for machine learning and deep learning, offering both high-level and low-level APIs.</p>
+        <p><strong>Best For:</strong> Production deployment, mobile/edge devices, large-scale training</p>
+        <a class="learn-btn" href="https://www.tensorflow.org/" target="_blank">Learn More</a>
+      </div>
+      
+      <div class="tech-card">
+        <h3>PyTorch</h3>
+        <p>Facebook's dynamic deep learning framework, popular in research for its intuitive design and debugging capabilities.</p>
+        <p><strong>Best For:</strong> Research, prototyping, dynamic neural networks</p>
+        <a class="learn-btn" href="https://pytorch.org/" target="_blank">Learn More</a>
+      </div>
+      
+      <div class="tech-card">
+        <h3>Scikit-learn</h3>
+        <p>Simple and efficient tools for data mining and data analysis, built on NumPy, SciPy, and matplotlib.</p>
+        <p><strong>Best For:</strong> Classical ML algorithms, data preprocessing, model evaluation</p>
+        <a class="learn-btn" href="https://scikit-learn.org/" target="_blank">Learn More</a>
+      </div>
+    </div>
+  </section>
+  
+  <section id="applications" class="fade-in">
+    <div class="section-title">
+      <h2>AI/ML Applications</h2>
+    </div>
+    
+    <div class="tech-card">
+      <h3>Computer Vision</h3>
+      <p>Learn how to process and analyze visual information using deep learning models. Applications include object detection, face recognition, and image segmentation.</p>
+      <a class="learn-btn" href="https://opencv.org/" target="_blank">Learn More</a>
+    </div>
+    
+    <div class="tech-card">
+      <h3>Natural Language Processing</h3>
+      <p>Explore techniques for processing and understanding human language, including text classification, translation, and sentiment analysis.</p>
+      <a class="learn-btn" href="https://huggingface.co/" target="_blank">Learn More</a>
+    </div>
+    
+    <div class="tech-card">
+      <h3>Generative AI</h3>
+      <p>Discover how to create new content using generative models like GANs and transformers. Applications include image synthesis, text generation, and music composition.</p>
+      <a class="learn-btn" href="https://openai.com/research/" target="_blank">Learn More</a>
+    </div>
+  </section>
+
+  <section id="learning-resources" class="fade-in">
+    <div class="section-title">
+      <h2>Learning Resources</h2>
+    </div>
+    
+    <div class="tech-card">
+      <h3>Machine Learning Fundamentals</h3>
+      <div class="resource-grid">
+        <div class="channel-card">
+          <h4>StatQuest with Josh Starmer</h4>
+          <p>Clear explanations of machine learning concepts and statistics.</p>
+          <a style="color: white; text-decoration: none;" href="https://www.youtube.com/@statquest" class="channel-link" target="_blank">Visit Channel →</a>
+        </div>
+        <div class="channel-card">
+          <h4>3Blue1Brown</h4>
+          <p>Visual explanations of math concepts crucial for machine learning.</p>
+          <a style="color: white; text-decoration: none;" href="https://www.youtube.com/@3blue1brown" class="channel-link" target="_blank">Visit Channel →</a>
+        </div>
+        <div class="channel-card">
+          <h4>Krish Naik</h4>
+          <p>Practical machine learning tutorials and end-to-end projects.</p>
+          <a style="color: white; text-decoration: none;" href="https://www.youtube.com/@krishnaik06" class="channel-link" target="_blank">Visit Channel →</a>
+        </div>
+      </div>
+    </div>
+    
+    <div class="tech-card">
+      <h3>Deep Learning</h3>
+      <div class="resource-grid">
+        <div class="channel-card">
+          <h4>Sentdex</h4>
+          <p>Python programming and practical deep learning tutorials.</p>
+          <a style="color: white; text-decoration: none;" href="https://www.youtube.com/@sentdex" class="channel-link" target="_blank">Visit Channel →</a>
+        </div>
+        <div class="channel-card">
+          <h4>Two Minute Papers</h4>
+          <p>Latest AI research and breakthroughs explained simply.</p>
+          <a style="color: white; text-decoration: none;" href="https://www.youtube.com/@TwoMinutePapers" class="channel-link" target="_blank">Visit Channel →</a>
+        </div>
+        <div class="channel-card">
+          <h4>Yannic Kilcher</h4>
+          <p>In-depth explanations of AI research papers and concepts.</p>
+          <a style="color: white; text-decoration: none;" href="https://www.youtube.com/@YannicKilcher" class="channel-link" target="_blank">Visit Channel →</a>
+        </div>
+      </div>
+    </div>
+    
+    <div class="tech-card">
+      <h3>Applied AI & Projects</h3>
+      <div class="resource-grid">
+        <div class="channel-card">
+          <h4>Nicholas Renotte</h4>
+          <p>Hands-on AI projects and practical implementations.</p>
+          <a style="color: white; text-decoration: none;" href="https://www.youtube.com/@NicholasRenotte" class="channel-link" target="_blank">Visit Channel →</a>
+        </div>
+        <div class="channel-card">
+          <h4>Abhishek Thakur</h4>
+          <p>Applied machine learning and competition winning strategies.</p>
+          <a style="color: white; text-decoration: none;" href="https://www.youtube.com/@abhishekkrthakur" class="channel-link" target="_blank">Visit Channel →</a>
+        </div>
+        <div class="channel-card">
+          <h4>Code Emporium</h4>
+          <p>Deep learning projects and paper implementations.</p>
+          <a style="color: white; text-decoration: none;" href="https://www.youtube.com/@CodeEmporium" class="channel-link" target="_blank">Visit Channel →</a>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <a href="#" class="back-to-top" id="backToTop">↑</a>
+  
+  
+</body>
+</html>

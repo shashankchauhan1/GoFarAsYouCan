@@ -1,0 +1,1236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Signal Processing - Electrical Engineering Specialization</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* Base Styles */
+        :root {
+            --primary-color: #123363;         /* Deep blue */
+            --primary-light: #1976d2;         /* Medium blue */
+            --secondary-color: #134469;       /* Dark cyan */
+            --accent-color: #00b0ff;          /* Bright cyan */
+            --accent-light: #40c4ff;          /* Light cyan */
+            --text-color: #e0e0e0;            /* Light gray for readability */
+            --light-text: #ffffff;            /* Pure white */
+            --dark-text: #b0bec5;             /* Medium gray for less emphasis */
+            --light-bg: #121212;              /* Very dark background */
+            --dark-bg: #0a0a0a;               /* Darker background */
+            --card-bg: #1e1e1e;               /* Dark card surface */
+            --card-shadow: rgba(0, 0, 0, 0.4); /* Shadow color */
+            --border-radius: 8px;
+            --box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+            --transition: all 0.3s ease-in-out;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--light-bg);
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        a {
+            text-decoration: none;
+            color: var(--accent-color);
+            transition: var(--transition);
+        }
+
+        a:hover {
+            color: var(--accent-light);
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            border-radius: var(--border-radius);
+        }
+
+        .bg-dark {
+            background-color: var(--dark-bg);
+            color: var(--light-text);
+        }
+
+        /* Navbar */
+        .navbar {
+            background-color: var(--primary-color);
+            color: var(--light-text);
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: var(--box-shadow);
+        }
+
+        .navbar .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--light-text);
+        }
+
+        .back-button a {
+            color: var(--light-text);
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .back-button a:hover {
+            color: var(--accent-light);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            color: var(--light-text);
+            text-align: center;
+            padding: 6rem 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0.15;
+            mix-blend-mode: overlay;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            position: relative;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        /* Section Styles */
+        .section {
+            padding: 5rem 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+            color: var(--accent-color);
+            position: relative;
+            font-size: 2rem;
+        }
+
+        .section-title::after {
+            content: "";
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background-color: var(--accent-color);
+            border-radius: 2px;
+        }
+
+        .section-intro {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto 2.5rem;
+            font-size: 1.1rem;
+        }
+
+        /* Content Wrapper */
+        .content-wrapper {
+            display: flex;
+            gap: 2.5rem;
+            align-items: center;
+        }
+
+        .text-content {
+            flex: 1;
+        }
+
+        .text-content p {
+            margin-bottom: 1.25rem;
+            font-size: 1.05rem;
+        }
+
+        .image-content {
+            flex: 1;
+            box-shadow: var(--box-shadow);
+            border-radius: var(--border-radius);
+            overflow: hidden;
+        }
+
+        /* Cards Grid */
+        .cards-grid {
+            display: grid;
+            gap: 1.5rem;
+        }
+
+        .two-columns {
+            grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+        }
+
+        .three-columns {
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        }
+
+        .four-columns {
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        }
+
+        /* Card Styles */
+        .card {
+            background-color: var(--card-bg);
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: 0 4px 12px var(--card-shadow);
+            transition: var(--transition);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4);
+            border-color: var(--accent-color);
+        }
+
+        .card-header {
+            padding: 1.25rem 1.25rem 0.5rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .card-header h3 {
+            color: var(--accent-color);
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .card-header h3 i {
+            color: var(--accent-light);
+        }
+
+        .card-header p {
+            color: var(--dark-text);
+            font-size: 0.9rem;
+        }
+
+        .card-content {
+            padding: 1.25rem;
+            color: var(--text-color);
+        }
+
+        /* Project Cards */
+        .project-card .card-image {
+            height: 180px;
+            overflow: hidden;
+        }
+
+        .project-card .card-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .project-card:hover .card-image img {
+            transform: scale(1.05);
+        }
+
+        /* Career List */
+        .career-list {
+            list-style: none;
+        }
+
+        .career-list li {
+            display: flex;
+            justify-content: space-between;
+            padding: 0.5rem 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .career-list li:last-child {
+            border-bottom: none;
+        }
+
+        .badge {
+            background-color: rgba(255, 255, 255, 0.1);
+            color: var(--light-text);
+            padding: 0.25rem 0.5rem;
+            border-radius: 9999px;
+            font-size: 0.75rem;
+            font-weight: 600;
+        }
+
+        .badge.top {
+            background-color: var(--accent-color);
+            color: var(--light-bg);
+        }
+
+        .badge.program {
+            background-color: var(--primary-light);
+            color: var(--light-text);
+        }
+
+        /* Skills List */
+        .skills-list {
+            list-style: none;
+        }
+
+        .skills-list li {
+            padding: 0.5rem 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .skills-list li:last-child {
+            border-bottom: none;
+        }
+
+        .skill-name {
+            font-weight: 600;
+            display: block;
+            margin-bottom: 0.25rem;
+            color: var(--accent-color);
+        }
+
+        .skill-desc {
+            font-size: 0.9rem;
+            color: var(--dark-text);
+        }
+
+        /* Accordion */
+        .accordion {
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            background-color: var(--card-bg);
+        }
+
+        .accordion-item {
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .accordion-item:last-child {
+            border-bottom: none;
+        }
+
+        .accordion-header {
+            padding: 1rem;
+            cursor: pointer;
+            font-weight: 600;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: var(--transition);
+            color: var(--accent-color);
+        }
+
+        .accordion-header::after {
+            content: '\f078';
+            font-family: 'Font Awesome 5 Free';
+            font-weight: 900;
+            transition: var(--transition);
+        }
+
+        .accordion-header.active::after {
+            transform: rotate(180deg);
+        }
+
+        .accordion-content {
+            padding: 0 1rem;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+        }
+
+        .accordion-content p {
+            padding-bottom: 1rem;
+        }
+
+        .accordion-item.active .accordion-header {
+            background-color: rgba(255, 255, 255, 0.05);
+            color: var(--accent-light);
+        }
+
+        .accordion-item.active .accordion-content {
+            max-height: 500px;
+        }
+
+        /* Course List */
+        .course-list {
+            list-style: none;
+            margin-top: 1rem;
+        }
+
+        .course-item {
+            background-color: rgba(255, 255, 255, 0.05);
+            border-radius: var(--border-radius);
+            padding: 1rem;
+            margin-bottom: 1rem;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: var(--transition);
+        }
+
+        .course-item:hover {
+            background-color: rgba(255, 255, 255, 0.08);
+            border-color: var(--accent-color);
+        }
+
+        .course-title {
+            font-weight: 600;
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+            color: var(--accent-color);
+        }
+
+        .course-desc {
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .course-meta {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.8rem;
+            color: var(--dark-text);
+        }
+
+        /* Tools Grid */
+        .tools-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .tool-card {
+            background-color: var(--card-bg);
+            border-radius: var(--border-radius);
+            padding: 1.5rem 1rem;
+            text-align: center;
+            box-shadow: 0 4px 8px var(--card-shadow);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: var(--transition);
+        }
+
+        .tool-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3);
+            border-color: var(--accent-color);
+        }
+
+        .tool-card img {
+            height: 60px;
+            width: auto;
+            margin-bottom: 1rem;
+        }
+
+        .tool-card h3 {
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+            color: var(--accent-color);
+        }
+
+        .tool-card p {
+            font-size: 0.9rem;
+            color: var(--dark-text);
+        }
+
+        /* Footer */
+        .footer {
+            background-color: var(--dark-bg);
+            color: var(--light-text);
+            padding: 4rem 0 1rem;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2.5rem;
+            margin-bottom: 2.5rem;
+        }
+
+        .footer-logo h2 {
+            margin-bottom: 1rem;
+        }
+
+        .footer-links h3,
+        .footer-resources h3 {
+            margin-bottom: 1.25rem;
+            position: relative;
+            padding-bottom: 0.5rem;
+            display: inline-block;
+        }
+
+        .footer-links h3::after,
+        .footer-resources h3::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background-color: var(--accent-color);
+        }
+
+        .footer-links ul,
+        .footer-resources ul {
+            list-style-type: none;
+        }
+
+        .footer-links li,
+        .footer-resources li {
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-links a,
+        .footer-resources a {
+            color: var(--dark-text);
+        }
+
+        .footer-links a:hover,
+        .footer-resources a:hover {
+            color: var(--accent-light);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 1.25rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .content-wrapper {
+                flex-direction: column;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .two-columns {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .section {
+                padding: 3.5rem 0;
+            }
+
+            .hero {
+                padding: 5rem 0;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .section-title {
+                font-size: 1.75rem;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .navbar {
+                padding: 0.75rem 0;
+            }
+
+            .logo {
+                font-size: 1.2rem;
+            }
+
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+
+            .section-title {
+                font-size: 1.5rem;
+            }
+
+            .tools-grid {
+                grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="logo">GoFarAsYouCan</div>
+            <div class="back-button">
+                <a href="/Engineering/Electrical/electrical.ejs"><i class="fas fa-arrow-left"></i> Go Back</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="hero">
+        <div class="overlay"></div>
+        <div class="container">
+            <h1>Signal Processing</h1>
+            <p>Discover the art and science of analyzing, modifying, and extracting information from signals in our digital world</p>
+        </div>
+    </header>
+
+    <!-- About Section -->
+    <section class="section" id="about">
+        <div class="container">
+            <h2 class="section-title">What is Signal Processing?</h2>
+            <div class="content-wrapper">
+                <div class="text-content">
+                    <p>Signal Processing is a specialized branch of electrical engineering that focuses on analyzing, modifying, and extracting information from signals. A signal is any time-varying or spatial-varying quantity that carries information, such as audio, video, images, sensor readings, or communication transmissions. Signal processing techniques enable us to enhance, filter, compress, and interpret these signals for various applications.</p>
+                    <p>As a signal processing engineer, you'll work on developing algorithms and systems that manipulate signals to achieve desired outcomes. This might involve removing noise from audio recordings, compressing images for efficient storage, extracting features from biomedical signals for diagnosis, or designing filters for communication systems.</p>
+                    <p>This field combines elements of mathematics, computer science, and electrical engineering to create powerful tools for understanding and working with the vast amounts of data generated in our digital world. Signal processing is fundamental to technologies we use every day, from smartphones and digital cameras to medical imaging devices and autonomous vehicles.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Key Areas Section -->
+    <section class="section bg-dark" id="key-areas">
+        <div class="container">
+            <h2 class="section-title">Key Areas of Study</h2>
+            <p class="section-intro">Signal Processing encompasses several specialized areas that form the foundation of modern signal analysis and manipulation:</p>
+            
+            <div class="cards-grid three-columns">
+                <div class="card">
+                    <div class="card-header">
+                        <h3><i class="fas fa-wave-square"></i> Digital Signal Processing</h3>
+                    </div>
+                    <div class="card-content">
+                        <p>The analysis and manipulation of signals that have been converted from analog to digital form. This includes sampling, quantization, filtering, and spectral analysis of discrete-time signals.</p>
+                        <ul class="skills-list">
+                            <li>
+                                <span class="skill-name">Discrete-Time Systems</span>
+                                <p class="skill-desc">Z-transforms, difference equations, system response</p>
+                            </li>
+                            <li>
+                                <span class="skill-name">Digital Filters</span>
+                                <p class="skill-desc">FIR, IIR, filter design methods, implementation</p>
+                            </li>
+                            <li>
+                                <span class="skill-name">Spectral Analysis</span>
+                                <p class="skill-desc">DFT, FFT, power spectrum estimation</p>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <h3><i class="fas fa-image"></i> Image Processing</h3>
+                    </div>
+                    <div class="card-content">
+                        <p>The analysis and manipulation of two-dimensional signals (images). This includes image enhancement, restoration, compression, segmentation, and feature extraction for applications like computer vision and medical imaging.</p>
+                        <ul class="skills-list">
+                            <li>
+                                <span class="skill-name">Image Enhancement</span>
+                                <p class="skill-desc">Contrast adjustment, noise reduction, sharpening</p>
+                            </li>
+                            <li>
+                                <span class="skill-name">Image Transforms</span>
+                                <p class="skill-desc">2D Fourier transform, wavelets, DCT</p>
+                            </li>
+                            <li>
+                                <span class="skill-name">Image Analysis</span>
+                                <p class="skill-desc">Segmentation, feature extraction, pattern recognition</p>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <h3><i class="fas fa-music"></i> Audio Signal Processing</h3>
+                    </div>
+                    <div class="card-content">
+                        <p>The analysis and manipulation of audio signals. This includes speech and music processing, audio compression, noise reduction, and acoustic feature extraction for applications like voice recognition and music information retrieval.</p>
+                        <ul class="skills-list">
+                            <li>
+                                <span class="skill-name">Speech Processing</span>
+                                <p class="skill-desc">Speech recognition, synthesis, enhancement</p>
+                            </li>
+                            <li>
+                                <span class="skill-name">Audio Effects</span>
+                                <p class="skill-desc">Reverberation, equalization, time-stretching</p>
+                            </li>
+                            <li>
+                                <span class="skill-name">Music Analysis</span>
+                                <p class="skill-desc">Pitch detection, beat tracking, genre classification</p>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="cards-grid three-columns" style="margin-top: 1.5rem;">
+                <div class="card">
+                    <div class="card-header">
+                        <h3><i class="fas fa-brain"></i> Statistical Signal Processing</h3>
+                    </div>
+                    <div class="card-content">
+                        <p>The application of statistical methods to signal processing problems. This includes estimation theory, detection theory, and machine learning approaches for extracting information from noisy or uncertain signals.</p>
+                        <ul class="skills-list">
+                            <li>
+                                <span class="skill-name">Estimation Theory</span>
+                                <p class="skill-desc">Parameter estimation, Kalman filtering, Wiener filtering</p>
+                            </li>
+                            <li>
+                                <span class="skill-name">Detection Theory</span>
+                                <p class="skill-desc">Hypothesis testing, ROC analysis, optimal detection</p>
+                            </li>
+                            <li>
+                                <span class="skill-name">Adaptive Filtering</span>
+                                <p class="skill-desc">LMS algorithm, RLS algorithm, adaptive equalization</p>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <h3><i class="fas fa-broadcast-tower"></i> Communication Signal Processing</h3>
+                    </div>
+                    <div class="card-content">
+                        <p>The processing of signals for communication systems. This includes modulation, demodulation, channel coding, equalization, and synchronization for reliable data transmission over various channels.</p>
+                        <ul class="skills-list">
+                            <li>
+                                <span class="skill-name">Modulation Techniques</span>
+                                <p class="skill-desc">AM, FM, PSK, QAM, OFDM</p>
+                            </li>
+                            <li>
+                                <span class="skill-name">Channel Coding</span>
+                                <p class="skill-desc">Error correction codes, interleaving, LDPC</p>
+                            </li>
+                            <li>
+                                <span class="skill-name">Equalization</span>
+                                <p class="skill-desc">Channel estimation, adaptive equalization</p>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <h3><i class="fas fa-microchip"></i> Array Signal Processing</h3>
+                    </div>
+                    <div class="card-content">
+                        <p>The processing of signals received by an array of sensors. This includes beamforming, direction finding, and spatial filtering for applications like radar, sonar, and wireless communications.</p>
+                        <ul class="skills-list">
+                            <li>
+                                <span class="skill-name">Beamforming</span>
+                                <p class="skill-desc">Conventional, adaptive, and optimal beamforming</p>
+                            </li>
+                            <li>
+                                <span class="skill-name">Direction Finding</span>
+                                <p class="skill-desc">MUSIC, ESPRIT, maximum likelihood methods</p>
+                            </li>
+                            <li>
+                                <span class="skill-name">Spatial Filtering</span>
+                                <p class="skill-desc">Interference cancellation, source separation</p>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Career Opportunities Section -->
+    <section class="section" id="careers">
+        <div class="container">
+            <h2 class="section-title">Career Opportunities</h2>
+            <p class="section-intro">Signal Processing offers diverse career paths across various industries and sectors:</p>
+            
+            <div class="cards-grid three-columns">
+                <div class="card">
+                    <div class="card-header">
+                        <h3><i class="fas fa-briefcase"></i> Industry Roles</h3>
+                    </div>
+                    <div class="card-content">
+                        <ul class="career-list">
+                            <li>
+                                <span>Signal Processing Engineer</span>
+                                <span class="badge">₹8-25 LPA</span>
+                            </li>
+                            <li>
+                                <span>DSP Algorithm Developer</span>
+                                <span class="badge">₹10-28 LPA</span>
+                            </li>
+                            <li>
+                                <span>Audio/Speech Engineer</span>
+                                <span class="badge">₹7-22 LPA</span>
+                            </li>
+                            <li>
+                                <span>Image Processing Specialist</span>
+                                <span class="badge">₹9-26 LPA</span>
+                            </li>
+                            <li>
+                                <span>Computer Vision Engineer</span>
+                                <span class="badge">₹12-30 LPA</span>
+                            </li>
+                            <li>
+                                <span>Communications Systems Engineer</span>
+                                <span class="badge">₹8-24 LPA</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <h3><i class="fas fa-building"></i> Top Employers</h3>
+                    </div>
+                    <div class="card-content">
+                        <ul class="career-list">
+                            <li>
+                                <span>Semiconductor Companies</span>
+                                <span class="badge top">Intel, TI</span>
+                            </li>
+                            <li>
+                                <span>Telecommunications</span>
+                                <span class="badge top">Qualcomm, Nokia</span>
+                            </li>
+                            <li>
+                                <span>Audio/Video Technology</span>
+                                <span class="badge">Dolby, Sony</span>
+                            </li>
+                            <li>
+                                <span>Medical Imaging</span>
+                                <span class="badge">GE Healthcare, Philips</span>
+                            </li>
+                            <li>
+                                <span>Defense & Aerospace</span>
+                                <span class="badge">DRDO, HAL</span>
+                            </li>
+                            <li>
+                                <span>Tech Giants</span>
+                                <span class="badge">Google, Apple</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <h3><i class="fas fa-chart-line"></i> Growth Areas</h3>
+                    </div>
+                    <div class="card-content">
+                        <p>The signal processing field is experiencing significant growth due to several emerging technologies:</p>
+                        <ul>
+                            <li>• Artificial Intelligence & Machine Learning</li>
+                            <li>• Computer Vision & Augmented Reality</li>
+                            <li>• Speech Recognition & Natural Language Processing</li>
+                            <li>• Medical Signal Analysis</li>
+                            <li>• Advanced Driver Assistance Systems</li>
+                            <li>• 5G and Beyond Communication</li>
+                            <li>• Edge Computing for IoT</li>
+                            <li>• Quantum Signal Processing</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Essential Skills Section -->
+    <section class="section bg-dark" id="skills">
+        <div class="container">
+            <h2 class="section-title">Essential Skills & Tools</h2>
+            <p class="section-intro">To excel in Signal Processing, you'll need to develop a combination of technical knowledge, software proficiency, and professional skills:</p>
+            
+            <div class="cards-grid three-columns">
+                <div class="card">
+                    <div class="card-header">
+                        <h3><i class="fas fa-book-open"></i> Technical Knowledge</h3>
+                    </div>
+                    <div class="card-content">
+                        <ul class="skills-list">
+                            <li>
+                                <span class="skill-name">Mathematics</span>
+                                <p class="skill-desc">Linear algebra, calculus, probability, statistics</p>
+                            </li>
+                            <li>
+                                <span class="skill-name">Signal Theory</span>
+                                <p class="skill-desc">Fourier analysis, sampling theory, filter design</p>
+                            </li>
+                            <li>
+                                <span class="skill-name">Algorithm Development</span>
+                                <p class="skill-desc">Optimization, numerical methods, complexity analysis</p>
+                            </li>
+                            <li>
+                                <span class="skill-name">Machine Learning</span>
+                                <p class="skill-desc">Neural networks, pattern recognition, feature extraction</p>
+                            </li>
+                            <li>
+                                <span class="skill-name">Real-time Processing</span>
+                                <p class="skill-desc">Embedded systems, parallel processing, optimization</p>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <h3><i class="fas fa-laptop-code"></i> Software & Tools</h3>
+                    </div>
+                    <div class="card-content">
+                        <p>Proficiency in industry-standard software tools is essential:</p>
+                        <div class="tools-grid">
+                            <div class="tool-card">
+                                <i class="fas fa-calculator" style="font-size: 2.5rem; color: var(--accent-color); margin-bottom: 1rem;"></i>
+                                <h3>MATLAB</h3>
+                                <p>Signal analysis</p>
+                            </div>
+                            <div class="tool-card">
+                                <i class="fab fa-python" style="font-size: 2.5rem; color: var(--accent-color); margin-bottom: 1rem;"></i>
+                                <h3>Python</h3>
+                                <p>SciPy, NumPy, PyTorch</p>
+                            </div>
+                            <div class="tool-card">
+                                <i class="fas fa-microchip" style="font-size: 2.5rem; color: var(--accent-color); margin-bottom: 1rem;"></i>
+                                <h3>DSP Hardware</h3>
+                                <p>TI, ADI processors</p>
+                            </div>
+                            <div class="tool-card">
+                                <i class="fas fa-code" style="font-size: 2.5rem; color: var(--accent-color); margin-bottom: 1rem;"></i>
+                                <h3>C/C++</h3>
+                                <p>Real-time processing</p>
+                            </div>
+                            <div class="tool-card">
+                                <i class="fas fa-wave-square" style="font-size: 2.5rem; color: var(--accent-color); margin-bottom: 1rem;"></i>
+                                <h3>LabVIEW</h3>
+                                <p>Data acquisition</p>
+                            </div>
+                            <div class="tool-card">
+                                <i class="fas fa-brain" style="font-size: 2.5rem; color: var(--accent-color); margin-bottom: 1rem;"></i>
+                                <h3>TensorFlow</h3>
+                                <p>Deep learning</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <h3><i class="fas fa-user-tie"></i> Professional Skills</h3>
+                    </div>
+                    <div class="card-content">
+                        <ul class="skills-list">
+                            <li>
+                                <span class="skill-name">Problem Solving</span>
+                                <p class="skill-desc">Analytical thinking, algorithm development, optimization</p>
+                            </li>
+                            <li>
+                                <span class="skill-name">Technical Documentation</span>
+                                <p class="skill-desc">Algorithm descriptions, performance analysis, specifications</p>
+                            </li>
+                            <li>
+                                <span class="skill-name">Research Skills</span>
+                                <p class="skill-desc">Literature review, experimental design, validation</p>
+                            </li>
+                            <li>
+                                <span class="skill-name">Communication</span>
+                                <p class="skill-desc">Explaining complex concepts to diverse audiences</p>
+                            </li>
+                            <li>
+                                <span class="skill-name">Interdisciplinary Collaboration</span>
+                                <p class="skill-desc">Working with domain experts in various fields</p>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Courses Section -->
+    <section class="section" id="courses">
+        <div class="container">
+            <h2 class="section-title">Recommended Courses</h2>
+            <p class="section-intro">Enhance your knowledge and skills in Signal Processing with these specialized courses:</p>
+            
+            <div class="accordion">
+                <div class="accordion-item">
+                    <div class="accordion-header">Core Signal Processing Courses</div>
+                    <div class="accordion-content">
+                        <ul class="course-list">
+                            <li class="course-item">
+                                <div class="course-title">Digital Signal Processing Fundamentals</div>
+                                <div class="course-desc">Discrete-time signals and systems, Z-transform, DFT, FFT, and digital filter design.</div>
+                                <div class="course-meta">
+                                    <span>Duration: 12 weeks</span>
+                                    <span>Level: Intermediate</span>
+                                </div>
+                            </li>
+                            <li class="course-item">
+                                <div class="course-title">Advanced Signal Processing</div>
+                                <div class="course-desc">Multirate systems, filter banks, wavelets, and adaptive filtering techniques.</div>
+                                <div class="course-meta">
+                                    <span>Duration: 10 weeks</span>
+                                    <span>Level: Advanced</span>
+                                </div>
+                            </li>
+                            <li class="course-item">
+                                <div class="course-title">Statistical Signal Processing</div>
+                                <div class="course-desc">Random signals, estimation theory, detection theory, and Kalman filtering.</div>
+                                <div class="course-meta">
+                                    <span>Duration: 14 weeks</span>
+                                    <span>Level: Advanced</span>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="accordion-item">
+                    <div class="accordion-header">Application-Specific Courses</div>
+                    <div class="accordion-content">
+                        <ul class="course-list">
+                            <li class="course-item">
+                                <div class="course-title">Image and Video Processing</div>
+                                <div class="course-desc">Image enhancement, restoration, compression, segmentation, and feature extraction.</div>
+                                <div class="course-meta">
+                                    <span>Duration: 12 weeks</span>
+                                    <span>Level: Intermediate</span>
+                                </div>
+                            </li>
+                            <li class="course-item">
+                                <div class="course-title">Speech and Audio Processing</div>
+                                <div class="course-desc">Speech analysis, synthesis, recognition, and audio effects processing.</div>
+                                <div class="course-meta">
+                                    <span>Duration: 10 weeks</span>
+                                    <span>Level: Intermediate</span>
+                                </div>
+                            </li>
+                            <li class="course-item">
+                                <div class="course-title">Biomedical Signal Processing</div>
+                                <div class="course-desc">Analysis of ECG, EEG, EMG signals, and medical imaging techniques.</div>
+                                <div class="course-meta">
+                                    <span>Duration: 8 weeks</span>
+                                    <span>Level: Advanced</span>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="accordion-item">
+                    <div class="accordion-header">Emerging Technologies Courses</div>
+                    <div class="accordion-content">
+                        <ul class="course-list">
+                            <li class="course-item">
+                                <div class="course-title">Machine Learning for Signal Processing</div>
+                                <div class="course-desc">Neural networks, deep learning, and pattern recognition for signal analysis.</div>
+                                <div class="course-meta">
+                                    <span>Duration: 10 weeks</span>
+                                    <span>Level: Advanced</span>
+                                </div>
+                            </li>
+                            <li class="course-item">
+                                <div class="course-title">Computer Vision</div>
+                                <div class="course-desc">Object detection, tracking, recognition, and 3D reconstruction from images.</div>
+                                <div class="course-meta">
+                                    <span>Duration: 12 weeks</span>
+                                    <span>Level: Advanced</span>
+                                </div>
+                            </li>
+                            <li class="course-item">
+                                <div class="course-title">Array Signal Processing</div>
+                                <div class="course-desc">Beamforming, direction finding, and spatial filtering for sensor arrays.</div>
+                                <div class="course-meta">
+                                    <span>Duration: 8 weeks</span>
+                                    <span>Level: Advanced</span>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section class="section bg-dark" id="projects">
+        <div class="container">
+            <h2 class="section-title">Hands-on Projects</h2>
+            <p class="section-intro">Build your portfolio with these practical signal processing projects that demonstrate your skills to potential employers:</p>
+            
+            <div class="cards-grid three-columns">
+                <div class="card project-card">
+                    <div class="card-image">
+                        <img src="https://images.unsplash.com/photo-1527430253228-e93688616381?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Audio Processing">
+                    </div>
+                    <div class="card-header">
+                        <h3><i class="fas fa-music"></i> Audio Enhancement System</h3>
+                    </div>
+                    <div class="card-content">
+                        <p>Develop a real-time audio processing system that can remove noise, enhance speech clarity, and apply various audio effects. Implement adaptive filtering algorithms and spectral processing techniques.</p>
+                        <p><strong>Skills:</strong> Audio processing, adaptive filtering, real-time implementation</p>
+                    </div>
+                </div>
+
+                <div class="card project-card">
+                    <div class="card-image">
+                        <img src="https://images.unsplash.com/photo-1507146153580-69a1fe6d8aa1?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Image Processing">
+                    </div>
+                    <div class="card-header">
+                        <h3><i class="fas fa-image"></i> Advanced Image Restoration</h3>
+                    </div>
+                    <div class="card-content">
+                        <p>Create an image processing application that can restore degraded images affected by blur, noise, or compression artifacts. Implement various restoration algorithms and compare their performance.</p>
+                        <p><strong>Skills:</strong> Image processing, inverse problems, optimization techniques</p>
+                    </div>
+                </div>
+
+                <div class="card project-card">
+                    <div class="card-image">
+                        <img src="https://images.unsplash.com/photo-1576086213369-97a306d36557?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Biomedical Signal">
+                    </div>
+                    <div class="card-header">
+                        <h3><i class="fas fa-heartbeat"></i> Biomedical Signal Analyzer</h3>
+                    </div>
+                    <div class="card-content">
+                        <p>Develop a system for analyzing biomedical signals such as ECG, EEG, or EMG. Implement feature extraction algorithms, classification methods, and visualization tools for medical diagnostics.</p>
+                        <p><strong>Skills:</strong> Biomedical signal processing, pattern recognition, feature extraction</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <h2>GoFarAsYouCan</h2>
+                    <p>Your guide to engineering education and career paths</p>
+                </div>
+
+                <div class="footer-links">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="#about">About Signal Processing</a></li>
+                        <li><a href="#key-areas">Key Areas</a></li>
+                        <li><a href="#careers">Career Opportunities</a></li>
+                        <li><a href="#skills">Skills & Tools</a></li>
+                        <li><a href="#courses">Recommended Courses</a></li>
+                        <li><a href="#projects">Hands-on Projects</a></li>
+                        <li><a href="electrical-engineering.html">Back to Electrical Engineering</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-resources">
+                    <h3>Resources</h3>
+                    <ul>
+                        <li><a href="https://www.ieee-sps.org/" target="_blank">IEEE Signal Processing Society</a></li>
+                        <li><a href="https://signalprocessingsociety.org/" target="_blank">Signal Processing Society</a></li>
+                        <li><a href="https://www.nptel.ac.in/courses/117106135/" target="_blank">NPTEL Signal Processing Courses</a></li>
+                        <li><a href="https://dsp.rice.edu/" target="_blank">Rice DSP Resources</a></li>
+                        <li><a href="https://www.eurasip.org/" target="_blank">European Association for Signal Processing</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; <script>document.write(new Date().getFullYear())</script> GoFarAsYouCan. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Accordion functionality
+        function setupAccordions() {
+            const accordionHeaders = document.querySelectorAll(".accordion-header");
+            
+            accordionHeaders.forEach(header => {
+                header.addEventListener("click", function() {
+                    // Toggle active class on the parent accordion item
+                    const accordionItem = this.parentElement;
+                    accordionItem.classList.toggle("active");
+                    
+                    // Toggle active class on the header itself
+                    this.classList.toggle("active");
+                    
+                    // Toggle the content visibility
+                    const content = this.nextElementSibling;
+                    if (accordionItem.classList.contains("active")) {
+                        content.style.maxHeight = content.scrollHeight + "px";
+                    } else {
+                        content.style.maxHeight = 0;
+                    }
+                });
+            });
+        }
+
+        // Smooth scrolling for anchor links
+        function setupSmoothScrolling() {
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+
+                    const targetId = this.getAttribute('href');
+                    if (targetId === "#") return;
+
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        window.scrollTo({
+                            top: targetElement.offsetTop - 80,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+        }
+
+        // Initialize everything when the DOM is loaded
+        document.addEventListener("DOMContentLoaded", function() {
+            setupAccordions();
+            setupSmoothScrolling();
+            
+            // Open the first accordion item by default
+            const firstAccordionItem = document.querySelector(".accordion-item");
+            if (firstAccordionItem) {
+                firstAccordionItem.classList.add("active");
+                const content = firstAccordionItem.querySelector(".accordion-content");
+                content.style.maxHeight = content.scrollHeight + "px";
+                firstAccordionItem.querySelector(".accordion-header").classList.add("active");
+            }
+        });
+    </script>
+</body>
+</html>

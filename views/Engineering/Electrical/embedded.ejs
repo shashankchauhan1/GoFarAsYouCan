@@ -1,0 +1,1370 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Embedded Systems - Electrical Engineering Specialization</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* Base Styles */
+        :root {
+            --primary-color: #006269;         /* Deep teal */
+            --primary-light: #00897b;         /* Medium teal */
+            --secondary-color: #004d40;       /* Dark teal */
+            --accent-color: #26a69a;          /* Bright teal */
+            --accent-light: #80cbc4;          /* Light teal */
+            --text-color: #e0e0e0;            /* Light gray for readability */
+            --light-text: #ffffff;            /* Pure white */
+            --dark-text: #b0bec5;             /* Medium gray for less emphasis */
+            --light-bg: #121212;              /* Very dark background */
+            --dark-bg: #0a0a0a;               /* Darker background */
+            --card-bg: #1e1e1e;               /* Dark card surface */
+            --card-shadow: rgba(0, 0, 0, 0.4); /* Shadow color */
+            --border-radius: 8px;
+            --box-shadow: 0 4px 12px rgba(0, 255, 242, 0.632);
+            --transition: all 0.3s ease-in-out;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--light-bg);
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        a {
+            text-decoration: none;
+            color: var(--accent-color);
+            transition: var(--transition);
+        }
+
+        a:hover {
+            color: var(--accent-light);
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            border-radius: var(--border-radius);
+        }
+
+        .bg-dark {
+            background-color: var(--dark-bg);
+            color: var(--light-text);
+        }
+
+        /* Navbar */
+        .navbar {
+            background-color: var(--primary-color);
+            color: var(--light-text);
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: var(--box-shadow);
+        }
+
+        .navbar .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--light-text);
+        }
+
+        .back-button a {
+            color: var(--light-text);
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .back-button a:hover {
+            color: var(--accent-light);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            color: var(--light-text);
+            text-align: center;
+            padding: 6rem 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0.15;
+            mix-blend-mode: overlay;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            position: relative;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        /* Section Styles */
+        .section {
+            padding: 5rem 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+            color: var(--accent-color);
+            position: relative;
+            font-size: 2rem;
+        }
+
+        .section-title::after {
+            content: "";
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background-color: var(--accent-color);
+            border-radius: 2px;
+        }
+
+        .section-intro {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto 2.5rem;
+            font-size: 1.1rem;
+        }
+
+        /* Content Wrapper */
+        .content-wrapper {
+            display: flex;
+            gap: 2.5rem;
+            align-items: center;
+        }
+
+        .text-content {
+            flex: 1;
+        }
+
+        .text-content p {
+            margin-bottom: 1.25rem;
+            font-size: 1.05rem;
+        }
+
+        .image-content {
+            flex: 1;
+            box-shadow: var(--box-shadow);
+            border-radius: var(--border-radius);
+            overflow: hidden;
+        }
+
+        /* Cards Grid */
+        .cards-grid {
+            display: grid;
+            gap: 1.5rem;
+        }
+
+        .two-columns {
+            grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+        }
+
+        .three-columns {
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        }
+
+        .four-columns {
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        }
+
+        /* Card Styles */
+        .card {
+            background-color: var(--card-bg);
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: 0 4px 12px var(--card-shadow);
+            transition: var(--transition);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4);
+            border-color: var(--accent-color);
+        }
+
+        .card-header {
+            padding: 1.25rem 1.25rem 0.5rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .card-header h3 {
+            color: var(--accent-color);
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .card-header h3 i {
+            color: var(--primary-light);
+        }
+
+        .card-header p {
+            color: var(--dark-text);
+            font-size: 0.9rem;
+        }
+
+        .card-content {
+            padding: 1.25rem;
+            color: var(--text-color);
+        }
+
+        /* Project Cards */
+        .project-card .card-image {
+            height: 180px;
+            overflow: hidden;
+        }
+
+        .project-card .card-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            /* transition: transform 0.5s ease; */
+        }
+
+        .project-card:hover .card-image img {
+            transform: scale(1.05);
+        }
+
+        /* Career List */
+        .career-list {
+            list-style: none;
+        }
+
+        .career-list li {
+            display: flex;
+            justify-content: space-between;
+            padding: 0.5rem 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .career-list li:last-child {
+            border-bottom: none;
+        }
+
+        .badge {
+            background-color: rgba(255, 255, 255, 0.1);
+            color: var(--light-text);
+            padding: 0.25rem 0.5rem;
+            border-radius: 9999px;
+            font-size: 0.75rem;
+            font-weight: 600;
+        }
+
+        .badge.top {
+            background-color: var(--accent-color);
+            color: var(--dark-bg);
+        }
+
+        .badge.program {
+            background-color: var(--primary-light);
+            color: var(--light-text);
+        }
+
+        /* Skills List */
+        .skills-list {
+            list-style: none;
+        }
+
+        .skills-list li {
+            padding: 0.5rem 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .skills-list li:last-child {
+            border-bottom: none;
+        }
+
+        .skill-name {
+            font-weight: 600;
+            display: block;
+            margin-bottom: 0.25rem;
+            color: var(--accent-color);
+        }
+
+        .skill-desc {
+            font-size: 0.9rem;
+            color: var(--dark-text);
+        }
+
+        /* Accordion */
+        .accordion {
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            background-color: var(--card-bg);
+        }
+
+        .accordion-item {
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .accordion-item:last-child {
+            border-bottom: none;
+        }
+
+        .accordion-header {
+            padding: 1rem;
+            cursor: pointer;
+            font-weight: 600;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            /* transition: var(--transition); */
+            color: var(--accent-color);
+        }
+
+        .accordion-header::after {
+            content: '\f078';
+            font-family: 'Font Awesome 5 Free';
+            font-weight: 900;
+            /* transition: var(--transition); */
+        }
+
+        /* .accordion-header.active::after {
+             transform: rotate(180deg); 
+        } */
+
+        .accordion-content {
+            padding: 0 1rem;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+        }
+
+        .accordion-content p {
+            padding-bottom: 1rem;
+        }
+
+        .accordion-item.active .accordion-header {
+            background-color: rgba(255, 255, 255, 0.05);
+            color: var(--primary-light);
+        }
+
+        .accordion-item.active .accordion-content {
+            max-height: 500px;
+        }
+
+        /* Course List */
+        .course-list {
+            list-style: none;
+            margin-top: 1rem;
+        }
+
+        .course-item {
+            background-color: rgba(255, 255, 255, 0.05);
+            border-radius: var(--border-radius);
+            padding: 1rem;
+            margin-bottom: 1rem;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: var(--transition);
+        }
+
+        .course-item:hover {
+            background-color: rgba(255, 255, 255, 0.08);
+            border-color: var(--accent-color);
+        }
+
+        .course-title {
+            font-weight: 600;
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+            color: var(--accent-color);
+        }
+
+        .course-desc {
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .course-meta {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.8rem;
+            color: var(--dark-text);
+        }
+
+        /* Tools Grid */
+        .tools-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .tool-card {
+            background-color: var(--card-bg);
+            border-radius: var(--border-radius);
+            padding: 1.5rem 1rem;
+            text-align: center;
+            box-shadow: 0 4px 8px var(--card-shadow);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: var(--transition);
+        }
+
+        .tool-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3);
+            border-color: var(--accent-color);
+        }
+
+        .tool-card img {
+            height: 60px;
+            width: auto;
+            margin-bottom: 1rem;
+        }
+
+        .tool-card h3 {
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+            color: var(--accent-color);
+        }
+
+        .tool-card p {
+            font-size: 0.9rem;
+            color: var(--dark-text);
+        }
+
+        /* Footer */
+        .footer {
+            background-color: var(--dark-bg);
+            color: var(--light-text);
+            padding: 4rem 0 1rem;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2.5rem;
+            margin-bottom: 2.5rem;
+        }
+
+        .footer-logo h2 {
+            margin-bottom: 1rem;
+        }
+
+        .footer-links h3,
+        .footer-resources h3 {
+            margin-bottom: 1.25rem;
+            position: relative;
+            padding-bottom: 0.5rem;
+            display: inline-block;
+        }
+
+        .footer-links h3::after,
+        .footer-resources h3::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background-color: var(--accent-color);
+        }
+
+        .footer-links ul,
+        .footer-resources ul {
+            list-style-type: none;
+        }
+
+        .footer-links li,
+        .footer-resources li {
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-links a,
+        .footer-resources a {
+            color: var(--dark-text);
+        }
+
+        .footer-links a:hover,
+        .footer-resources a:hover {
+            color: var(--accent-light);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 1.25rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        /* Animation */
+        /* @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        } */
+
+        .animate-fade-in {
+            animation: fadeIn 0.8s ease-out forwards;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .content-wrapper {
+                flex-direction: column;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .two-columns {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .section {
+                padding: 3.5rem 0;
+            }
+
+            .hero {
+                padding: 5rem 0;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .section-title {
+                font-size: 1.75rem;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .navbar {
+                padding: 0.75rem 0;
+            }
+
+            .logo {
+                font-size: 1.2rem;
+            }
+
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+
+            .section-title {
+                font-size: 1.5rem;
+            }
+
+            .tools-grid {
+                grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="logo">GoFarAsYouCan</div>
+            <div class="back-button">
+                <a href="/Engineering/Electrical/electrical.ejs"><i class="fas fa-arrow-left"></i> Go Back</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="hero">
+        <div class="overlay"></div>
+        <div class="container">
+            <h1>Embedded Systems</h1>
+            <p>Explore the fascinating world of hardware-software integration that powers smart devices and IoT solutions</p>
+        </div>
+    </header>
+
+    <!-- About Section -->
+    <section class="section" id="about">
+        <div class="container">
+            <h2 class="section-title">What are Embedded Systems?</h2>
+            <div class="content-wrapper">
+                <div class="text-content">
+                    <p>Embedded systems are specialized computing systems designed to perform dedicated functions within larger mechanical or electrical systems. Unlike general-purpose computers, embedded systems are optimized for specific tasks, combining hardware and software components to create efficient, reliable, and often real-time solutions.</p>
+                    <p>As an embedded systems engineer, you'll work at the intersection of hardware and software, designing and implementing systems that control everything from household appliances and medical devices to industrial automation equipment and automotive electronics. You'll need to understand both the physical constraints of hardware and the logical flow of software to create integrated solutions.</p>
+                    <p>This field is experiencing rapid growth with the proliferation of Internet of Things (IoT) devices, smart appliances, wearable technology, and autonomous systems. Embedded systems engineers are in high demand across various industries, making this a rewarding specialization within electrical engineering.</p>
+                </div>
+                <div class="image-content">
+                    <img src="https://images.unsplash.com/photo-1517420704952-d9f39e95b43e?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Embedded Systems">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Key Areas Section -->
+    <section class="section bg-dark" id="key-areas">
+        <div class="container">
+            <h2 class="section-title">Key Areas of Study</h2>
+            <p class="section-intro">Embedded Systems encompasses several specialized areas that form the foundation of modern smart devices and control systems:</p>
+            
+            <div class="cards-grid three-columns">
+                <div class="card">
+                    <div class="card-header">
+                        <h3><i class="fas fa-microchip"></i> Microcontroller Architecture</h3>
+                    </div>
+                    <div class="card-content">
+                        <p>The study of microcontroller internals, including CPU cores, memory systems, peripherals, and instruction sets that form the hardware foundation of embedded systems.</p>
+                        <ul class="skills-list">
+                            <li>
+                                <span class="skill-name">CPU Architectures</span>
+                                <p class="skill-desc">ARM, RISC-V, PIC, AVR architectures and instruction sets</p>
+                            </li>
+                            <li>
+                                <span class="skill-name">Memory Systems</span>
+                                <p class="skill-desc">Flash, RAM, EEPROM, memory management units</p>
+                            </li>
+                            <li>
+                                <span class="skill-name">Peripherals</span>
+                                <p class="skill-desc">Timers, ADCs, DACs, communication interfaces</p>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <h3><i class="fas fa-code"></i> Embedded Software</h3>
+                    </div>
+                    <div class="card-content">
+                        <p>The development of software specifically for embedded devices, focusing on resource constraints, reliability, and real-time performance requirements.</p>
+                        <ul class="skills-list">
+                            <li>
+                                <span class="skill-name">Firmware Development</span>
+                                <p class="skill-desc">Bare-metal programming, bootloaders, device drivers</p>
+                            </li>
+                            <li>
+                                <span class="skill-name">Programming Languages</span>
+                                <p class="skill-desc">C, C++, Assembly, Rust for embedded systems</p>
+                            </li>
+                            <li>
+                                <span class="skill-name">Software Architecture</span>
+                                <p class="skill-desc">State machines, event-driven programming, layered design</p>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <h3><i class="fas fa-clock"></i> Real-Time Systems</h3>
+                    </div>
+                    <div class="card-content">
+                        <p>The design and implementation of systems with strict timing constraints, where operations must complete within guaranteed deadlines to ensure correct functionality.</p>
+                        <ul class="skills-list">
+                            <li>
+                                <span class="skill-name">RTOS Fundamentals</span>
+                                <p class="skill-desc">Task scheduling, synchronization, resource management</p>
+                            </li>
+                            <li>
+                                <span class="skill-name">Real-Time Design</span>
+                                <p class="skill-desc">Deadline analysis, priority inversion, jitter control</p>
+                            </li>
+                            <li>
+                                <span class="skill-name">RTOS Implementations</span>
+                                <p class="skill-desc">FreeRTOS, Zephyr, RT-Linux, VxWorks</p>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="cards-grid three-columns" style="margin-top: 1.5rem;">
+                <div class="card">
+                    <div class="card-header">
+                        <h3><i class="fas fa-network-wired"></i> Communication Protocols</h3>
+                    </div>
+                    <div class="card-content">
+                        <p>The standards and methods used for data exchange between embedded systems and other devices, including wired and wireless protocols for various applications.</p>
+                        <ul class="skills-list">
+                            <li>
+                                <span class="skill-name">Wired Protocols</span>
+                                <p class="skill-desc">I2C, SPI, UART, CAN, Ethernet, USB</p>
+                            </li>
+                            <li>
+                                <span class="skill-name">Wireless Protocols</span>
+                                <p class="skill-desc">Bluetooth, WiFi, ZigBee, LoRa, NB-IoT</p>
+                            </li>
+                            <li>
+                                <span class="skill-name">Protocol Implementation</span>
+                                <p class="skill-desc">Driver development, stack integration, debugging</p>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <h3><i class="fas fa-bolt"></i> Power Management</h3>
+                    </div>
+                    <div class="card-content">
+                        <p>Techniques and strategies for optimizing energy consumption in embedded systems, critical for battery-powered and energy-efficient devices.</p>
+                        <ul class="skills-list">
+                            <li>
+                                <span class="skill-name">Low-Power Design</span>
+                                <p class="skill-desc">Sleep modes, clock gating, voltage scaling</p>
+                            </li>
+                            <li>
+                                <span class="skill-name">Battery Management</span>
+                                <p class="skill-desc">Charging circuits, fuel gauging, protection</p>
+                            </li>
+                            <li>
+                                <span class="skill-name">Energy Harvesting</span>
+                                <p class="skill-desc">Solar, thermal, vibration, RF energy sources</p>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <h3><i class="fas fa-shield-alt"></i> Security & Safety</h3>
+                    </div>
+                    <div class="card-content">
+                        <p>Protecting embedded systems from unauthorized access and ensuring they operate safely, especially important for critical infrastructure and safety-critical applications.</p>
+                        <ul class="skills-list">
+                            <li>
+                                <span class="skill-name">Embedded Security</span>
+                                <p class="skill-desc">Secure boot, encryption, authentication, secure storage</p>
+                            </li>
+                            <li>
+                                <span class="skill-name">Safety Standards</span>
+                                <p class="skill-desc">IEC 61508, ISO 26262, DO-178C compliance</p>
+                            </li>
+                            <li>
+                                <span class="skill-name">Secure Development</span>
+                                <p class="skill-desc">Threat modeling, secure coding, vulnerability testing</p>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Career Opportunities Section -->
+    <section class="section" id="careers">
+        <div class="container">
+            <h2 class="section-title">Career Opportunities</h2>
+            <p class="section-intro">Embedded Systems offers diverse career paths across various industries and sectors:</p>
+            
+            <div class="cards-grid three-columns">
+                <div class="card">
+                    <div class="card-header">
+                        <h3><i class="fas fa-briefcase"></i> Industry Roles</h3>
+                    </div>
+                    <div class="card-content">
+                        <ul class="career-list">
+                            <li>
+                                <span>Embedded Systems Engineer</span>
+                                <span class="badge">₹8-25 LPA</span>
+                            </li>
+                            <li>
+                                <span>Firmware Developer</span>
+                                <span class="badge">₹10-28 LPA</span>
+                            </li>
+                            <li>
+                                <span>IoT Systems Architect</span>
+                                <span class="badge">₹15-35 LPA</span>
+                            </li>
+                            <li>
+                                <span>RTOS Specialist</span>
+                                <span class="badge">₹12-30 LPA</span>
+                            </li>
+                            <li>
+                                <span>Embedded Security Engineer</span>
+                                <span class="badge">₹14-32 LPA</span>
+                            </li>
+                            <li>
+                                <span>Hardware-Software Co-designer</span>
+                                <span class="badge">₹10-28 LPA</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <h3><i class="fas fa-building"></i> Top Employers</h3>
+                    </div>
+                    <div class="card-content">
+                        <ul class="career-list">
+                            <li>
+                                <span>Semiconductor Companies</span>
+                                <span class="badge top">ARM, Intel</span>
+                            </li>
+                            <li>
+                                <span>Automotive</span>
+                                <span class="badge top">Bosch, Continental</span>
+                            </li>
+                            <li>
+                                <span>Consumer Electronics</span>
+                                <span class="badge">Samsung, LG</span>
+                            </li>
+                            <li>
+                                <span>Medical Devices</span>
+                                <span class="badge">Philips, Medtronic</span>
+                            </li>
+                            <li>
+                                <span>Aerospace & Defense</span>
+                                <span class="badge">DRDO, HAL</span>
+                            </li>
+                            <li>
+                                <span>Industrial Automation</span>
+                                <span class="badge">Siemens, ABB</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <h3><i class="fas fa-chart-line"></i> Growth Areas</h3>
+                    </div>
+                    <div class="card-content">
+                        <p>The embedded systems field is experiencing significant growth due to several emerging technologies:</p>
+                        <ul>
+                            <li>• Internet of Things (IoT) & Smart Devices</li>
+                            <li>• Autonomous Vehicles & ADAS Systems</li>
+                            <li>• Wearable Technology & Health Monitoring</li>
+                            <li>• Edge Computing & AI-enabled Devices</li>
+                            <li>• Smart Home & Building Automation</li>
+                            <li>• Industrial IoT (IIoT) & Industry 4.0</li>
+                            <li>• Secure Embedded Systems</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Essential Skills Section -->
+    <section class="section bg-dark" id="skills">
+        <div class="container">
+            <h2 class="section-title">Essential Skills & Tools</h2>
+            <p class="section-intro">To excel in Embedded Systems, you'll need to develop a combination of technical knowledge, software proficiency, and professional skills:</p>
+            
+            <div class="cards-grid three-columns">
+                <div class="card">
+                    <div class="card-header">
+                        <h3><i class="fas fa-book-open"></i> Technical Knowledge</h3>
+                    </div>
+                    <div class="card-content">
+                        <ul class="skills-list">
+                            <li>
+                                <span class="skill-name">Digital Electronics</span>
+                                <p class="skill-desc">Logic design, digital circuits, timing analysis</p>
+                            </li>
+                            <li>
+                                <span class="skill-name">Computer Architecture</span>
+                                <p class="skill-desc">CPU design, memory hierarchy, bus protocols</p>
+                            </li>
+                            <li>
+                                <span class="skill-name">Programming</span>
+                                <p class="skill-desc">C/C++, Assembly, Python for embedded applications</p>
+                            </li>
+                            <li>
+                                <span class="skill-name">Operating Systems</span>
+                                <p class="skill-desc">RTOS concepts, Linux for embedded systems</p>
+                            </li>
+                            <li>
+                                <span class="skill-name">Signal Processing</span>
+                                <p class="skill-desc">Filtering, sampling, sensor data processing</p>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <h3><i class="fas fa-laptop-code"></i> Software & Tools</h3>
+                    </div>
+                    <div class="card-content">
+                        <p>Proficiency in industry-standard software tools is essential:</p>
+                        <div class="tools-grid">
+                            <div class="tool-card">
+                                <i class="fas fa-code" style="font-size: 2.5rem; color: var(--accent-color); margin-bottom: 1rem;"></i>
+                                <h3>IDEs</h3>
+                                <p>Keil, IAR, Eclipse</p>
+                            </div>
+                            <div class="tool-card">
+                                <i class="fas fa-bug" style="font-size: 2.5rem; color: var(--accent-color); margin-bottom: 1rem;"></i>
+                                <h3>Debuggers</h3>
+                                <p>JTAG, SWD tools</p>
+                            </div>
+                            <div class="tool-card">
+                                <i class="fas fa-microchip" style="font-size: 2.5rem; color: var(--accent-color); margin-bottom: 1rem;"></i>
+                                <h3>RTOS</h3>
+                                <p>FreeRTOS, Zephyr</p>
+                            </div>
+                            <div class="tool-card">
+                                <i class="fas fa-project-diagram" style="font-size: 2.5rem; color: var(--accent-color); margin-bottom: 1rem;"></i>
+                                <h3>PCB Design</h3>
+                                <p>Altium, KiCad</p>
+                            </div>
+                            <div class="tool-card">
+                                <i class="fas fa-wave-square" style="font-size: 2.5rem; color: var(--accent-color); margin-bottom: 1rem;"></i>
+                                <h3>Logic Analyzer</h3>
+                                <p>Signal analysis</p>
+                            </div>
+                            <div class="tool-card">
+                                <i class="fas fa-code-branch" style="font-size: 2.5rem; color: var(--accent-color); margin-bottom: 1rem;"></i>
+                                <h3>Version Control</h3>
+                                <p>Git, SVN</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <h3><i class="fas fa-user-tie"></i> Professional Skills</h3>
+                    </div>
+                    <div class="card-content">
+                        <ul class="skills-list">
+                            <li>
+                                <span class="skill-name">System Thinking</span>
+                                <p class="skill-desc">Understanding complex interactions between hardware and software</p>
+                            </li>
+                            <li>
+                                <span class="skill-name">Debugging</span>
+                                <p class="skill-desc">Methodical problem solving, root cause analysis</p>
+                            </li>
+                            <li>
+                                <span class="skill-name">Documentation</span>
+                                <p class="skill-desc">Technical writing, specifications, API documentation</p>
+                            </li>
+                            <li>
+                                <span class="skill-name">Cross-functional Collaboration</span>
+                                <p class="skill-desc">Working with hardware, software, and mechanical engineers</p>
+                            </li>
+                            <li>
+                                <span class="skill-name">Resource Optimization</span>
+                                <p class="skill-desc">Memory, power, and performance optimization</p>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Courses Section -->
+    <section class="section" id="courses">
+        <div class="container">
+            <h2 class="section-title">Recommended Courses</h2>
+            <p class="section-intro">Enhance your knowledge and skills in Embedded Systems with these specialized courses:</p>
+            
+            <div class="accordion">
+                <div class="accordion-item">
+                    <div class="accordion-header">Core Embedded Systems Courses</div>
+                    <div class="accordion-content">
+                        <ul class="course-list">
+                            <li class="course-item">
+                                <div class="course-title">Microcontroller Programming</div>
+                                <div class="course-desc">Architecture, peripherals, programming, and interfacing of modern microcontrollers.</div>
+                                <div class="course-meta">
+                                    <span>Duration: 12 weeks</span>
+                                    <span>Level: Intermediate</span>
+                                </div>
+                            </li>
+                            <li class="course-item">
+                                <div class="course-title">Embedded C Programming</div>
+                                <div class="course-desc">C language for embedded systems, memory management, optimization techniques.</div>
+                                <div class="course-meta">
+                                    <span>Duration: 10 weeks</span>
+                                    <span>Level: Intermediate</span>
+                                </div>
+                            </li>
+                            <li class="course-item">
+                                <div class="course-title">Real-Time Operating Systems</div>
+                                <div class="course-desc">RTOS concepts, task scheduling, synchronization, and practical implementation.</div>
+                                <div class="course-meta">
+                                    <span>Duration: 8 weeks</span>
+                                    <span>Level: Advanced</span>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="accordion-item">
+                    <div class="accordion-header">Application-Specific Courses</div>
+                    <div class="accordion-content">
+                        <ul class="course-list">
+                            <li class="course-item">
+                                <div class="course-title">IoT System Design</div>
+                                <div class="course-desc">End-to-end IoT architecture, protocols, cloud integration, and security.</div>
+                                <div class="course-meta">
+                                    <span>Duration: 12 weeks</span>
+                                    <span>Level: Intermediate</span>
+                                </div>
+                            </li>
+                            <li class="course-item">
+                                <div class="course-title">Embedded Linux</div>
+                                <div class="course-desc">Linux for embedded devices, bootloaders, device drivers, and system optimization.</div>
+                                <div class="course-meta">
+                                    <span>Duration: 14 weeks</span>
+                                    <span>Level: Advanced</span>
+                                </div>
+                            </li>
+                            <li class="course-item">
+                                <div class="course-title">Automotive Embedded Systems</div>
+                                <div class="course-desc">CAN bus, AUTOSAR, functional safety, and automotive-specific requirements.</div>
+                                <div class="course-meta">
+                                    <span>Duration: 10 weeks</span>
+                                    <span>Level: Advanced</span>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="accordion-item">
+                    <div class="accordion-header">Advanced Topics</div>
+                    <div class="accordion-content">
+                        <ul class="course-list">
+                            <li class="course-item">
+                                <div class="course-title">Embedded Security</div>
+                                <div class="course-desc">Secure boot, encryption, authentication, and secure firmware updates.</div>
+                                <div class="course-meta">
+                                    <span>Duration: 8 weeks</span>
+                                    <span>Level: Advanced</span>
+                                </div>
+                            </li>
+                            <li class="course-item">
+                                <div class="course-title">Low-Power Embedded Design</div>
+                                <div class="course-desc">Power optimization techniques, battery management, and energy harvesting.</div>
+                                <div class="course-meta">
+                                    <span>Duration: 6 weeks</span>
+                                    <span>Level: Advanced</span>
+                                </div>
+                            </li>
+                            <li class="course-item">
+                                <div class="course-title">Machine Learning for Embedded Systems</div>
+                                <div class="course-desc">TinyML, model optimization, and deployment on resource-constrained devices.</div>
+                                <div class="course-meta">
+                                    <span>Duration: 10 weeks</span>
+                                    <span>Level: Advanced</span>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section class="section bg-dark" id="projects">
+        <div class="container">
+            <h2 class="section-title">Hands-on Projects</h2>
+            <p class="section-intro">Build your portfolio with these practical embedded systems projects that demonstrate your skills to potential employers:</p>
+            
+            <div class="cards-grid three-columns">
+                <div class="card project-card">
+                    <div class="card-image">
+                        <img src="https://storage.googleapis.com/public-homes-web-media-prod/how_to_make_smart_home_867a45d277/how_to_make_smart_home_867a45d277.jpeg" alt="Smart Home Project">
+                    </div>
+                    <div class="card-header">
+                        <h3><i class="fas fa-home"></i> Smart Home Automation System</h3>
+                    </div>
+                    <div class="card-content">
+                        <p>Design and build a home automation system using microcontrollers, sensors, and wireless communication. Implement features like temperature control, lighting automation, security monitoring, and remote access via a mobile app.</p>
+                        <p><strong>Skills:</strong> Microcontroller programming, sensor interfacing, wireless communication, mobile app integration</p>
+                    </div>
+                </div>
+
+                <div class="card project-card">
+                    <div class="card-image">
+                        <img src="https://images.unsplash.com/photo-1555664424-778a1e5e1b48?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Wearable Device">
+                    </div>
+                    <div class="card-header">
+                        <h3><i class="fas fa-heartbeat"></i> Health Monitoring Wearable</h3>
+                    </div>
+                    <div class="card-content">
+                        <p>Develop a wearable device that monitors health parameters like heart rate, body temperature, and activity levels. Implement low-power design techniques, real-time data processing, and Bluetooth connectivity to a smartphone app.</p>
+                        <p><strong>Skills:</strong> Low-power design, sensor fusion, real-time processing, Bluetooth communication</p>
+                    </div>
+                </div>
+
+                <div class="card project-card">
+                    <div class="card-image">
+                        <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Autonomous Robot">
+                    </div>
+                    <div class="card-header">
+                        <h3><i class="fas fa-robot"></i> Autonomous Navigation Robot</h3>
+                    </div>
+                    <div class="card-content">
+                        <p>Build an autonomous robot that can navigate environments using sensors, mapping algorithms, and real-time control systems. Implement obstacle avoidance, path planning, and potentially machine learning for improved navigation.</p>
+                        <p><strong>Skills:</strong> RTOS, motor control, sensor integration, algorithm implementation</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="cards-grid three-columns" style="margin-top: 1.5rem;">
+                <div class="card project-card">
+                    <div class="card-image">
+                        <img src="https://images.unsplash.com/photo-1580584126903-c17d41830450?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Weather Station">
+                    </div>
+                    <div class="card-header">
+                        <h3><i class="fas fa-cloud-sun"></i> IoT Weather Station</h3>
+                    </div>
+                    <div class="card-content">
+                        <p>Create a connected weather station that collects environmental data using various sensors, processes it locally, and transmits it to a cloud platform for storage and visualization. Implement power-efficient operation for battery or solar power.</p>
+                        <p><strong>Skills:</strong> Environmental sensing, cloud connectivity, power management, data visualization</p>
+                    </div>
+                </div>
+
+                <div class="card project-card">
+                    <div class="card-image">
+                        <img src="https://images.unsplash.com/photo-1558346490-a72e53ae2d4f?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Smart Agriculture">
+                    </div>
+                    <div class="card-header">
+                        <h3><i class="fas fa-seedling"></i> Smart Agriculture System</h3>
+                    </div>
+                    <div class="card-content">
+                        <p>Develop an automated irrigation and monitoring system for agriculture that uses soil moisture sensors, weather data, and machine learning to optimize water usage and crop growth. Include remote monitoring and control capabilities.</p>
+                        <p><strong>Skills:</strong> Sensor networks, machine learning, remote monitoring, actuator control</p>
+                    </div>
+                </div>
+
+                <div class="card project-card">
+                    <div class="card-image">
+                        <img src="https://www.energyly.com/assets/images/video/analytics.png" alt="Energy Monitor">
+                    </div>
+                    <div class="card-header">
+                        <h3><i class="fas fa-bolt"></i> Home Energy Monitoring System</h3>
+                    </div>
+                    <div class="card-content">
+                        <p>Build a system that monitors electricity usage throughout a home, identifies energy consumption patterns, and provides recommendations for reducing energy usage. Include real-time monitoring and historical data analysis.</p>
+                        <p><strong>Skills:</strong> Current/voltage sensing, data analysis, web dashboard development, energy management</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="section" id="faq">
+        <div class="container">
+            <h2 class="section-title">Frequently Asked Questions</h2>
+            <p class="section-intro">Find answers to common questions about pursuing a career in embedded systems:</p>
+            
+            <div class="accordion">
+                <div class="accordion-item active">
+                    <div class="accordion-header">What educational background is needed for embedded systems?</div>
+                    <div class="accordion-content">
+                        <p>A bachelor's degree in Electrical Engineering, Computer Engineering, or Computer Science provides a solid foundation. However, specific knowledge in microcontrollers, digital electronics, programming (especially C/C++), and computer architecture is essential. Many professionals also pursue specialized master's degrees or certifications in embedded systems to enhance their expertise.</p>
+                    </div>
+                </div>
+                
+                <div class="accordion-item">
+                    <div class="accordion-header">How is embedded systems different from general software development?</div>
+                    <div class="accordion-content">
+                        <p>Embedded systems development differs from general software development in several key ways:</p>
+                        <p>• It involves programming for resource-constrained devices with limited memory and processing power</p>
+                        <p>• It requires understanding of hardware-software interaction and low-level programming</p>
+                        <p>• It often involves real-time constraints where timing is critical</p>
+                        <p>• It typically uses languages like C/C++ rather than higher-level languages</p>
+                        <p>• It requires consideration of power consumption, reliability, and safety requirements</p>
+                    </div>
+                </div>
+                
+                <div class="accordion-item">
+                    <div class="accordion-header">What programming languages are most important for embedded systems?</div>
+                    <div class="accordion-content">
+                        <p>C is the most widely used language in embedded systems due to its efficiency, low-level capabilities, and direct hardware control. C++ is increasingly popular for more complex systems. Assembly language is still important for performance-critical sections and low-level hardware interaction. Other languages gaining traction include:</p>
+                        <p>• Rust: For memory-safe systems programming</p>
+                        <p>• Python: For rapid prototyping and with MicroPython for microcontrollers</p>
+                        <p>• Ada: For safety-critical applications</p>
+                    </div>
+                </div>
+                
+                <div class="accordion-item">
+                    <div class="accordion-header">How do I start learning embedded systems as a beginner?</div>
+                    <div class="accordion-content">
+                        <p>For beginners, a structured approach to learning embedded systems includes:</p>
+                        <p>1. Start with Arduino or similar beginner-friendly platforms to understand basic concepts</p>
+                        <p>2. Learn C programming fundamentals, focusing on pointers, memory management, and bit manipulation</p>
+                        <p>3. Study digital electronics and microcontroller architecture basics</p>
+                        <p>4. Progress to more professional development boards like STM32, ESP32, or Raspberry Pi Pico</p>
+                        <p>5. Learn to read datasheets and technical documentation</p>
+                        <p>6. Practice with small projects that integrate sensors, actuators, and communication interfaces</p>
+                        <p>7. Explore real-time operating systems like FreeRTOS</p>
+                    </div>
+                </div>
+                
+                <div class="accordion-item">
+                    <div class="accordion-header">What are the growth prospects in embedded systems?</div>
+                    <div class="accordion-content">
+                        <p>The embedded systems field offers excellent growth prospects due to the proliferation of IoT devices, smart appliances, automotive electronics, and industrial automation. Career progression typically moves from junior embedded engineer to senior roles, then to specialized positions like RTOS specialist, embedded security expert, or IoT architect. Many professionals also move into technical leadership, systems architecture, or product management roles. With the integration of AI and edge computing into embedded systems, professionals with skills in these areas are particularly in demand.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <h2>GoFarAsYouCan</h2>
+                    <p>Empowering the next generation of engineers with comprehensive educational resources and career guidance.</p>
+                </div>
+                
+                <div class="footer-links">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="#about">About Embedded Systems</a></li>
+                        <li><a href="#key-areas">Key Areas</a></li>
+                        <li><a href="#careers">Career Opportunities</a></li>
+                        <li><a href="#skills">Essential Skills</a></li>
+                        <li><a href="#courses">Recommended Courses</a></li>
+                        <li><a href="#projects">Hands-on Projects</a></li>
+                        <li><a href="#faq">FAQ</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-resources">
+                    <h3>More Resources</h3>
+                    <ul>
+                        <li><a href="/Engineering">Engineering Disciplines</a></li>
+                        <li><a href="/Engineering/Electrical/electrical.ejs">Electrical Engineering</a></li>
+                        <li><a href="/resources">Learning Resources</a></li>
+                        <li><a href="/blog">Engineering Blog</a></li>
+                        <li><a href="/contact">Contact Us</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; <script>document.write(new Date().getFullYear())</script> GoFarAsYouCan. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Accordion functionality
+        function setupAccordions() {
+            const accordionHeaders = document.querySelectorAll(".accordion-header");
+            
+            accordionHeaders.forEach(header => {
+                header.addEventListener("click", function() {
+                    // Toggle active class on the parent accordion item
+                    const accordionItem = this.parentElement;
+                    accordionItem.classList.toggle("active");
+                    
+                    // Toggle active class on the header itself
+                    this.classList.toggle("active");
+                    
+                    // Toggle the content visibility
+                    const content = this.nextElementSibling;
+                    if (accordionItem.classList.contains("active")) {
+                        content.style.maxHeight = content.scrollHeight + "px";
+                    } else {
+                        content.style.maxHeight = 0;
+                    }
+                });
+            });
+        }
+
+        // Smooth scrolling for anchor links
+        function setupSmoothScrolling() {
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+
+                    const targetId = this.getAttribute('href');
+                    if (targetId === "#") return;
+
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        window.scrollTo({
+                            top: targetElement.offsetTop - 80,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+        }
+
+        // Animate elements on scroll
+        function setupScrollAnimations() {
+            const animateElements = document.querySelectorAll('.card, .section-title, .section-intro');
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('animate-fade-in');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, {
+                threshold: 0.1
+            });
+            
+            animateElements.forEach(element => {
+                observer.observe(element);
+            });
+        }
+
+        // Initialize everything when the DOM is loaded
+        document.addEventListener("DOMContentLoaded", function() {
+            setupAccordions();
+            setupSmoothScrolling();
+            setupScrollAnimations();
+            
+            // Open the first accordion item by default
+            const firstAccordionItem = document.querySelector(".accordion-item");
+            if (firstAccordionItem) {
+                firstAccordionItem.classList.add("active");
+                const content = firstAccordionItem.querySelector(".accordion-content");
+                content.style.maxHeight = content.scrollHeight + "px";
+                firstAccordionItem.querySelector(".accordion-header").classList.add("active");
+            }
+        });
+    </script>
+</body>
+</html>

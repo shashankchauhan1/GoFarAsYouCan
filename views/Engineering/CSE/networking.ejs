@@ -1,0 +1,1042 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Networking Learning Hub</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <style>
+    :root {
+      --primary-bg: #0A192F; /* Dark blue background */
+      --section-bg: #112240; /* Slightly lighter blue */
+      --card-bg: #172A45; /* Card background */
+      --card-hover: #1D3557; /* Card hover effect */
+      --text-primary: #E6F1FF; /* Light text color */
+      --text-secondary: #A8B2D1; /* Muted text color */
+      --accent: #00B4D8; /* Teal blue accent */
+      --accent-hover: #0096C7; /* Darker teal for hover */
+      --highlight: #48CAE4; /* Bright teal for highlights */
+      --border: #1D3557; /* Border color */
+    }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: var(--primary-bg);
+      color: var(--text-primary);
+      line-height: 1.6;
+    }
+
+    .navbar {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      background-color: rgba(10, 25, 47, 0.95); /* Semi-transparent dark blue */
+      padding: 1rem;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--border);
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    }
+
+    .navbar a {
+      color: var(--text-primary);
+      margin: 8px 16px;
+      text-decoration: none;
+      font-size: 16px;
+      position: relative;
+      padding: 6px 0;
+      transition: color 0.3s;
+    }
+
+    .navbar a:hover {
+      color: var(--accent);
+    }
+
+    .navbar a::after {
+      content: '';
+      position: absolute;
+      width: 0;
+      height: 2px;
+      bottom: 0;
+      left: 0;
+      background-color: var(--accent);
+      transition: width 0.3s;
+    }
+
+    .navbar a:hover::after {
+      width: 100%;
+    }
+
+    header {
+      text-align: center;
+      padding: 6rem 2rem;
+      background: linear-gradient(135deg, #112240 0%, #0A192F 100%); /* Gradient with blue tones */
+      color: white;
+      position: relative;
+      overflow: hidden;
+      border-bottom: 3px solid var(--accent);
+    }
+
+    header::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      opacity: 0.2;
+      z-index: 0;
+      background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI1IiBoZWlnaHQ9IjUiPgo8cmVjdCB3aWR0aD0iNSIgaGVpZ2h0PSI1IiBmaWxsPSIjMDAwIj48L3JlY3Q+CjxwYXRoIGQ9Ik0wIDVMNSAwWk02IDRMNCA2Wk0tMSAxTDEgLTFaIiBzdHJva2U9IiMyMjIiIHN0cm9rZS13aWR0aD0iMSI+PC9wYXRoPgo8L3N2Zz4=');
+    }
+
+    header > * {
+      position: relative;
+      z-index: 1;
+    }
+
+    header h1 {
+      font-size: 3rem;
+      margin-bottom: 1.5rem;
+      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    }
+
+    header p {
+      font-size: 1.25rem;
+      max-width: 800px;
+      margin: 0 auto;
+      color: var(--text-secondary);
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 1rem;
+    }
+
+    section {
+      padding: 4rem 2rem;
+      background: var(--section-bg);
+      margin: 2rem auto;
+      border-radius: 16px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+      border: 1px solid var(--border);
+      max-width: 1200px;
+    }
+
+    .section-title {
+      text-align: center;
+      margin-bottom: 3rem;
+      color: var(--accent);
+      position: relative;
+      font-size: 2rem;
+    }
+
+    .section-title::after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 60px;
+      height: 3px;
+      background: var(--accent);
+      border-radius: 3px;
+    }
+
+    .intro-text {
+      text-align: center;
+      max-width: 800px;
+      margin: 0 auto 3rem;
+      color: var(--text-secondary);
+      font-size: 1.1rem;
+    }
+
+    .tech-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+      margin-top: 2rem;
+    }
+
+    .tech-card {
+      background: var(--card-bg);
+      padding: 2rem;
+      border-radius: 12px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      transition: all 0.3s ease;
+      border: 1px solid var(--border);
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .tech-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+      border-color: var(--accent);
+    }
+
+    .tech-card h3 {
+      color: var(--highlight);
+      margin: 0 0 1rem;
+      font-size: 1.5rem;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .tech-card p {
+      color: var(--text-secondary);
+      margin-bottom: 1.5rem;
+      flex-grow: 1;
+    }
+
+    .tech-card ul {
+      color: var(--text-secondary);
+      margin-bottom: 1.5rem;
+      padding-left: 1.5rem;
+    }
+
+    .tech-card li {
+      margin-bottom: 0.5rem;
+    }
+
+    .learn-btn {
+      display: inline-block;
+      padding: 0.75rem 1.5rem;
+      background-color: var(--accent);
+      color: white;
+      text-decoration: none;
+      border-radius: 8px;
+      transition: all 0.3s ease;
+      font-weight: 500;
+      text-align: center;
+      margin-top: auto;
+    }
+
+    .learn-btn:hover {
+      background-color: var(--accent-hover);
+      transform: translateY(-2px);
+    }
+
+    .roadmap {
+      max-width: 800px;
+      margin: 0 auto;
+      position: relative;
+    }
+
+    .roadmap::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 24px;
+      width: 4px;
+      background: var(--accent);
+      border-radius: 2px;
+    }
+
+    .roadmap-step {
+      position: relative;
+      padding-left: 60px;
+      margin-bottom: 2rem;
+    }
+
+    .roadmap-step::before {
+      content: '';
+      position: absolute;
+      left: 12px;
+      top: 5px;
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      background: var(--accent);
+      border: 4px solid var(--primary-bg);
+      z-index: 1;
+    }
+
+    .roadmap-step h3 {
+      color: var(--highlight);
+      margin: 0 0 0.5rem;
+      font-size: 1.3rem;
+    }
+
+    .roadmap-step p {
+      color: var(--text-secondary);
+      margin: 0;
+    }
+
+    .roadmap-step ul {
+      color: var(--text-secondary);
+      margin-top: 0.5rem;
+      padding-left: 1.5rem;
+    }
+
+    .roadmap-step li {
+      margin-bottom: 0.5rem;
+    }
+
+    .resource-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2rem;
+      margin-top: 2rem;
+    }
+
+    .resource-card {
+      background: var(--card-bg);
+      padding: 1.5rem;
+      border-radius: 12px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      transition: all 0.3s ease;
+      border: 1px solid var(--border);
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .resource-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+      border-color: var(--accent);
+    }
+
+    .resource-card h4 {
+      color: var(--highlight);
+      margin: 0 0 1rem;
+      font-size: 1.3rem;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .resource-card p {
+      color: var(--text-secondary);
+      margin-bottom: 1rem;
+      flex-grow: 1;
+    }
+
+    .resource-card .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-bottom: 1rem;
+    }
+
+    .resource-card .tag {
+      background: var(--border);
+      color: var(--text-secondary);
+      padding: 0.25rem 0.5rem;
+      border-radius: 4px;
+      font-size: 0.8rem;
+    }
+
+    .resource-link {
+      display: inline-block;
+      padding: 0.6rem 1.2rem;
+      background-color: var(--accent);
+      color: white !important;
+      text-decoration: none;
+      border-radius: 8px;
+      transition: all 0.3s ease;
+      font-weight: 500;
+      text-align: center;
+      margin-top: auto;
+    }
+
+    .resource-link:hover {
+      background-color: var(--accent-hover);
+      transform: translateY(-2px);
+    }
+
+    .tools-section {
+      margin-top: 3rem;
+    }
+
+    .tools-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1.5rem;
+      margin-top: 2rem;
+    }
+
+    .tool-card {
+      background: var(--card-bg);
+      padding: 1.5rem;
+      border-radius: 12px;
+      text-align: center;
+      transition: all 0.3s ease;
+      border: 1px solid var(--border);
+    }
+
+    .tool-card:hover {
+      transform: translateY(-5px);
+      border-color: var(--accent);
+    }
+
+    .tool-card i {
+      font-size: 2.5rem;
+      color: var(--accent);
+      margin-bottom: 1rem;
+    }
+
+    .tool-card h4 {
+      color: var(--highlight);
+      margin: 0 0 0.5rem;
+    }
+
+    .tool-card p {
+      color: var(--text-secondary);
+      font-size: 0.9rem;
+      margin: 0;
+    }
+
+    .faq-section {
+      margin-top: 3rem;
+    }
+
+    .faq-item {
+      background: var(--card-bg);
+      border-radius: 12px;
+      padding: 1.5rem;
+      margin-bottom: 1rem;
+      border: 1px solid var(--border);
+      transition: all 0.3s ease;
+    }
+
+    .faq-item:hover {
+      border-color: var(--accent);
+    }
+
+    .faq-question {
+      color: var(--highlight);
+      margin: 0 0 1rem;
+      font-size: 1.2rem;
+      font-weight: 600;
+    }
+
+    .faq-answer {
+      color: var(--text-secondary);
+      margin: 0;
+    }
+
+    footer {
+      text-align: center;
+      padding: 2rem;
+      background: var(--section-bg);
+      color: var(--text-secondary);
+      margin-top: 3rem;
+      border-top: 1px solid var(--border);
+    }
+
+    @media (max-width: 768px) {
+      header {
+        padding: 4rem 1.5rem;
+      }
+
+      header h1 {
+        font-size: 2.25rem;
+      }
+
+      section {
+        padding: 2rem 1.5rem;
+        margin: 1.5rem 1rem;
+      }
+
+      .tech-grid, .resource-grid {
+        gap: 1.5rem;
+      }
+
+      .navbar {
+        justify-content: flex-start;
+        overflow-x: auto;
+        padding: 0.8rem;
+      }
+      
+      .navbar a {
+        white-space: nowrap;
+        margin: 8px 10px;
+        font-size: 14px;
+      }
+
+      .section-title {
+        font-size: 1.75rem;
+      }
+
+      .roadmap::before {
+        left: 18px;
+      }
+
+      .roadmap-step {
+        padding-left: 50px;
+      }
+
+      .roadmap-step::before {
+        width: 20px;
+        height: 20px;
+        left: 10px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      header h1 {
+        font-size: 2rem;
+      }
+
+      header p {
+        font-size: 1rem;
+      }
+
+      section {
+        padding: 1.5rem 1rem;
+        margin: 1rem 0.5rem;
+      }
+
+      .tech-card, .resource-card {
+        padding: 1.5rem;
+      }
+
+      .tech-card h3, .resource-card h4 {
+        font-size: 1.3rem;
+      }
+
+      .roadmap-step h3 {
+        font-size: 1.2rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="navbar">
+    <a href="#intro">Introduction</a>
+    <a href="#fundamentals">Fundamentals</a>
+    <a href="#protocols">Protocols</a>
+    <a href="#security">Security</a>
+    <a href="#tools">Tools</a>
+    <a href="#roadmap">Roadmap</a>
+    <a href="#resources">Resources</a>
+    <a href="/Engineering/CSE/cse.ejs">Go Back</a>
+  </div>
+  
+  <header>
+    <h1>Networking Learning Hub</h1>
+    <p>Your complete guide to understanding computer networking from the basics to advanced concepts</p>
+  </header>
+  
+  <div class="container">
+    <section id="intro">
+      <h2 class="section-title">What is Computer Networking?</h2>
+      <p class="intro-text">
+        Computer networking is how devices communicate with each other, enabling everything from browsing websites to sending emails. 
+        Whether you're just starting out or looking to deepen your knowledge, this guide will help you understand the fundamentals 
+        and provide resources to master networking concepts.
+      </p>
+      
+      
+    </section>
+  
+    <section id="fundamentals">
+      <h2 class="section-title">Networking Fundamentals</h2>
+      <p class="intro-text">
+        Before diving into complex topics, it's essential to understand the basic building blocks of networking.
+        These fundamental concepts form the foundation for everything else in networking.
+      </p>
+      
+      <div class="tech-grid">
+        <div class="tech-card">
+          <h3><i class="fas fa-layer-group"></i> OSI Model</h3>
+          <p>
+            The OSI (Open Systems Interconnection) model divides network communication into 7 layers, each with specific functions:
+          </p>
+          <ul>
+            <li><strong>Layer 7: Application</strong> - User interfaces and data (HTTP, SMTP)</li>
+            <li><strong>Layer 6: Presentation</strong> - Data translation and encryption</li>
+            <li><strong>Layer 5: Session</strong> - Connection management between devices</li>
+            <li><strong>Layer 4: Transport</strong> - End-to-end connections (TCP, UDP)</li>
+            <li><strong>Layer 3: Network</strong> - Routing and logical addressing (IP)</li>
+            <li><strong>Layer 2: Data Link</strong> - Physical addressing (MAC)</li>
+            <li><strong>Layer 1: Physical</strong> - Cables, signals, and hardware</li>
+          </ul>
+          <a href="https://www.cloudflare.com/learning/ddos/glossary/open-systems-interconnection-model-osi/" class="learn-btn" target="_blank">Learn More</a>
+        </div>
+        
+        <div class="tech-card">
+          <h3><i class="fas fa-exchange-alt"></i> TCP/IP Model</h3>
+          <p>
+            The TCP/IP model is a simplified, practical version of the OSI model with 4 layers that powers the internet:
+          </p>
+          <ul>
+            <li><strong>Application Layer</strong> - User services and applications</li>
+            <li><strong>Transport Layer</strong> - End-to-end communication (TCP/UDP)</li>
+            <li><strong>Internet Layer</strong> - Routing between networks (IP)</li>
+            <li><strong>Link Layer</strong> - Physical connections and hardware</li>
+          </ul>
+          <p>
+            Understanding how TCP/IP works is crucial as it's the foundation of all internet communications.
+          </p>
+          <a href="https://www.cloudflare.com/learning/ddos/glossary/tcp-ip/" class="learn-btn" target="_blank">Learn More</a>
+        </div>
+        
+        <div class="tech-card">
+          <h3><i class="fas fa-project-diagram"></i> Network Types</h3>
+          <p>Networks come in different sizes and purposes:</p>
+          <ul>
+            <li><strong>LAN (Local Area Network)</strong> - Small network in a single location</li>
+            <li><strong>WAN (Wide Area Network)</strong> - Connects LANs across distances</li>
+            <li><strong>MAN (Metropolitan Area Network)</strong> - City-sized network</li>
+            <li><strong>PAN (Personal Area Network)</strong> - Very small network (Bluetooth)</li>
+            <li><strong>WLAN (Wireless LAN)</strong> - Wireless local network (Wi-Fi)</li>
+          </ul>
+          <a href="https://www.cisco.com/c/en/us/solutions/enterprise-networks/what-is-a-lan-local-area-network.html" class="learn-btn" target="_blank">Learn More</a>
+        </div>
+        
+        <div class="tech-card">
+          <h3><i class="fas fa-sitemap"></i> Network Topologies</h3>
+          <p>
+            Network topology refers to the physical or logical layout of devices:
+          </p>
+          <ul>
+            <li><strong>Star</strong> - Devices connect to a central hub/switch</li>
+            <li><strong>Bus</strong> - All devices connect to a single backbone</li>
+            <li><strong>Ring</strong> - Devices form a closed loop</li>
+            <li><strong>Mesh</strong> - Devices connect to multiple other devices</li>
+            <li><strong>Hybrid</strong> - Combination of different topologies</li>
+          </ul>
+          <p>Each topology has advantages and disadvantages in terms of cost, reliability, and scalability.</p>
+          <a href="https://www.cisco.com/c/en/us/solutions/enterprise-networks/what-is-network-topology.html" class="learn-btn" target="_blank">Learn More</a>
+        </div>
+        
+        <div class="tech-card">
+          <h3><i class="fas fa-map-marker-alt"></i> IP Addressing</h3>
+          <p>
+            IP addresses uniquely identify devices on a network:
+          </p>
+
+          <ul>
+            <li><strong>IPv4</strong> - 32-bit addresses (e.g., 192.168.1.1)</li>
+            <li><strong>IPv6</strong> - 128-bit addresses for more devices</li>
+            <li><strong>Public vs Private</strong> - Internet vs local network addresses</li>
+            <li><strong>Subnetting</strong> - Dividing networks into smaller networks</li>
+            <li><strong>CIDR Notation</strong> - Representing IP ranges (192.168.1.0/24)</li>
+          </ul>
+          <a href="https://www.cloudflare.com/learning/network-layer/what-is-an-ip-address/" class="learn-btn" target="_blank">Learn More</a>
+        </div>
+        
+        <div class="tech-card">
+          <h3><i class="fas fa-wifi"></i> Wireless Networking</h3>
+          <p>
+            Wireless networks connect devices without physical cables:
+          </p>
+          <ul>
+            <li><strong>Wi-Fi Standards</strong> - 802.11a/b/g/n/ac/ax (Wi-Fi 6)</li>
+            <li><strong>Frequencies</strong> - 2.4GHz vs 5GHz bands</li>
+            <li><strong>Security</strong> - WEP, WPA, WPA2, WPA3</li>
+            <li><strong>Channels</strong> - Avoiding interference</li>
+            <li><strong>Range and Signal Strength</strong> - Factors affecting performance</li>
+          </ul>
+          <a href="https://www.cisco.com/c/en/us/solutions/enterprise-networks/what-is-wifi.html" class="learn-btn" target="_blank">Learn More</a>
+        </div>
+      </div>
+    </section>
+  
+    <section id="protocols">
+      <h2 class="section-title">Essential Protocols</h2>
+      <p class="intro-text">
+        Protocols are the languages that devices use to communicate. Understanding these protocols is crucial for 
+        troubleshooting network issues and designing efficient systems.
+      </p>
+      
+      <div class="tech-grid">
+        <div class="tech-card">
+          <h3><i class="fas fa-route"></i> Routing Protocols</h3>
+          <p>
+            Routing protocols determine the best path for data to travel across networks:
+          </p>
+          <ul>
+            <li><strong>OSPF (Open Shortest Path First)</strong> - Interior gateway protocol using link-state algorithm</li>
+            <li><strong>BGP (Border Gateway Protocol)</strong> - Exterior gateway protocol that routes between autonomous systems</li>
+            <li><strong>RIP (Routing Information Protocol)</strong> - Simple distance-vector protocol</li>
+            <li><strong>EIGRP (Enhanced Interior Gateway Routing Protocol)</strong> - Cisco's advanced routing protocol</li>
+          </ul>
+          <p>
+            <strong>For beginners:</strong> Start with understanding the difference between static and dynamic routing before diving into specific protocols.
+          </p>
+          <a href="https://www.cisco.com/c/en/us/solutions/enterprise-networks/what-is-routing.html" class="learn-btn" target="_blank">Learn More</a>
+        </div>
+        
+        <div class="tech-card">
+          <h3><i class="fas fa-globe"></i> Application Protocols</h3>
+          <p>
+            These protocols enable specific applications and services:
+          </p>
+          <ul>
+            <li><strong>HTTP/HTTPS</strong> - Web browsing (port 80/443)</li>
+            <li><strong>FTP</strong> - File transfers (port 21)</li>
+            <li><strong>SMTP/POP3/IMAP</strong> - Email (ports 25, 110, 143)</li>
+            <li><strong>SSH</strong> - Secure remote access (port 22)</li>
+            <li><strong>DNS</strong> - Domain name resolution (port 53)</li>
+            <li><strong>DHCP</strong> - Automatic IP assignment (ports 67/68)</li>
+          </ul>
+          <p>
+            <strong>Beginner tip:</strong> Learn common port numbers and what each protocol does in simple terms.
+          </p>
+          <a href="https://www.cloudflare.com/learning/network-layer/what-is-a-protocol/" class="learn-btn" target="_blank">Learn More</a>
+        </div>
+        
+        <div class="tech-card">
+          <h3><i class="fas fa-exchange-alt"></i> Transport Protocols</h3>
+          <p>
+            Transport protocols manage the delivery of data between devices:
+          </p>
+          <ul>
+            <li><strong>TCP (Transmission Control Protocol)</strong>
+              <ul>
+                <li>Connection-oriented and reliable</li>
+                <li>Three-way handshake (SYN, SYN-ACK, ACK)</li>
+                <li>Error checking and retransmission</li>
+              </ul>
+            </li>
+            <li><strong>UDP (User Datagram Protocol)</strong>
+              <ul>
+                <li>Connectionless and faster</li>
+                <li>No error recovery</li>
+                <li>Used for streaming, gaming, DNS</li>
+              </ul>
+            </li>
+          </ul>
+          <p>
+            <strong>For beginners:</strong> Think of TCP as a phone call (confirmed connection) and UDP as sending a letter (no confirmation).
+          </p>
+          <a href="https://www.cloudflare.com/learning/ddos/glossary/tcp-ip/" class="learn-btn" target="_blank">Learn More</a>
+        </div>
+        
+        <div class="tech-card">
+          <h3><i class="fas fa-server"></i> Network Services</h3>
+          <p>
+            These services provide essential functionality for networks:
+          </p>
+          <ul>
+            <li><strong>DNS (Domain Name System)</strong> - Translates domain names to IP addresses</li>
+            <li><strong>DHCP (Dynamic Host Configuration Protocol)</strong> - Automatically assigns IP addresses</li>
+            <li><strong>NAT (Network Address Translation)</strong> - Allows multiple devices to share one public IP</li>
+            <li><strong>Proxy Servers</strong> - Intermediaries for requests between clients and servers</li>
+            <li><strong>Load Balancers</strong> - Distribute traffic across multiple servers</li>
+          </ul>
+          <p>
+            <strong>Beginner exercise:</strong> Try to explain how DNS works when you type a website address in your browser.
+          </p>
+          <a href="https://www.cloudflare.com/learning/dns/what-is-dns/" class="learn-btn" target="_blank">Learn More</a>
+        </div>
+      </div>
+    </section>
+  
+    <section id="security">
+      <h2 class="section-title">Network Security</h2>
+      <p class="intro-text">
+        Security is a critical aspect of networking. Understanding how to protect networks from threats is essential 
+        for any networking professional.
+      </p>
+      
+      <div class="tech-grid">
+        <div class="tech-card">
+          <h3><i class="fas fa-shield-alt"></i> Firewalls</h3>
+          <p>
+            Firewalls monitor and control incoming and outgoing network traffic:
+          </p>
+          <ul>
+            <li><strong>Packet Filtering</strong> - Examines packets based on rules</li>
+            <li><strong>Stateful Inspection</strong> - Tracks active connections</li>
+            <li><strong>Application Layer</strong> - Analyzes specific application data</li>
+            <li><strong>Next-Generation Firewalls</strong> - Combines traditional firewall with advanced features</li>
+          </ul>
+          <p>
+            <strong>For beginners:</strong> Think of a firewall as a security guard that checks IDs before allowing entry.
+          </p>
+          <a href="https://www.cisco.com/c/en/us/products/security/firewalls/what-is-a-firewall.html" class="learn-btn" target="_blank">Learn More</a>
+        </div>
+        
+        <div class="tech-card">
+          <h3><i class="fas fa-lock"></i> Encryption</h3>
+          <p>
+            Encryption protects data by converting it into a code that only authorized parties can read:
+          </p>
+          <ul>
+            <li><strong>Symmetric Encryption</strong> - Same key for encryption and decryption</li>
+            <li><strong>Asymmetric Encryption</strong> - Public and private key pairs</li>
+            <li><strong>TLS/SSL</strong> - Secures web traffic (HTTPS)</li>
+            <li><strong>VPN</strong> - Creates encrypted tunnels for private communication</li>
+            <li><strong>IPsec</strong> - Security protocol for IP communications</li>
+          </ul>
+          <p>
+            <strong>Beginner tip:</strong> Look for the padlock icon in your browser to ensure a website uses encryption.
+          </p>
+          <a href="https://www.cloudflare.com/learning/ssl/what-is-encryption/" class="learn-btn" target="_blank">Learn More</a>
+        </div>
+        
+        <div class="tech-card">
+          <h3><i class="fas fa-user-shield"></i> Authentication & Authorization</h3>
+          <p>
+            Verifying identity and controlling access to network resources:
+          </p>
+          <ul>
+            <li><strong>Authentication Protocols</strong> - RADIUS, TACACS+, Kerberos</li>
+            <li><strong>Multi-Factor Authentication</strong> - Something you know, have, and are</li>
+            <li><strong>Access Control Lists (ACLs)</strong> - Rules that filter traffic</li>
+            <li><strong>Role-Based Access Control</strong> - Permissions based on user roles</li>
+          </ul>
+          <p>
+            <strong>For beginners:</strong> Authentication answers "Who are you?" while authorization answers "What are you allowed to do?"
+          </p>
+          <a href="https://www.cisco.com/c/en/us/products/security/identity-services-engine/what-is-network-access-control.html" class="learn-btn" target="_blank">Learn More</a>
+        </div>
+        
+        <div class="tech-card">
+          <h3><i class="fas fa-radar"></i> IDS/IPS</h3>
+          <p>
+            Systems that monitor and respond to suspicious network activity:
+          </p>
+          <ul>
+            <li><strong>IDS (Intrusion Detection System)</strong> - Monitors and alerts on suspicious activity</li>
+            <li><strong>IPS (Intrusion Prevention System)</strong> - Actively blocks detected threats</li>
+            <li><strong>Signature-Based Detection</strong> - Matches known attack patterns</li>
+            <li><strong>Anomaly-Based Detection</strong> - Identifies unusual behavior</li>
+          </ul>
+          <p>
+            <strong>Simple explanation:</strong> IDS is like a security camera that alerts you to intruders, while IPS is like a security guard that stops them.
+          </p>
+          <a href="https://www.paloaltonetworks.com/cyberpedia/what-is-an-ids-ips" class="learn-btn" target="_blank">Learn More</a>
+        </div>
+      </div>
+    </section>
+    
+    <section id="tools">
+      <h2 class="section-title">Essential Networking Tools</h2>
+      <p class="intro-text">
+        These tools will help you learn, practice, and troubleshoot networking concepts. Many are free and beginner-friendly.
+      </p>
+      
+      <div class="tools-grid">
+        <div class="tool-card">
+          <i class="fas fa-terminal"></i>
+          <h4>Wireshark</h4>
+          <p>Network protocol analyzer for capturing and examining packets</p>
+        </div>
+        
+        <div class="tool-card">
+          <i class="fas fa-network-wired"></i>
+          <h4>Cisco Packet Tracer</h4>
+          <p>Network simulation tool for practicing configurations</p>
+        </div>
+        
+        <div class="tool-card">
+          <i class="fas fa-laptop-code"></i>
+          <h4>GNS3</h4>
+          <p>Network emulator for creating complex virtual networks</p>
+        </div>
+        
+        <div class="tool-card">
+          <i class="fas fa-terminal"></i>
+          <h4>Nmap</h4>
+          <p>Network scanning and security auditing tool</p>
+        </div>
+        
+        <div class="tool-card">
+          <i class="fas fa-signal"></i>
+          <h4>Ping & Traceroute</h4>
+          <p>Basic tools for testing connectivity and tracing routes</p>
+        </div>
+        
+        <div class="tool-card">
+          <i class="fas fa-desktop"></i>
+          <h4>Virtual Box</h4>
+          <p>Create virtual machines for networking labs</p>
+        </div>
+      </div>
+      
+    </section>
+  
+    <section id="roadmap">
+      <h2 class="section-title">Networking Career Roadmap</h2>
+      <p class="intro-text">
+        Follow this step-by-step path to build your networking knowledge from beginner to advanced levels.
+        Each stage builds on the previous one, providing a structured learning journey.
+      </p>
+      
+      <div class="roadmap">
+        <div class="roadmap-step">
+          <h3>1. Network Fundamentals</h3>
+          <p>Start with the basic concepts that form the foundation of networking:</p>
+          <ul>
+            <li>OSI and TCP/IP models</li>
+            <li>IP addressing and subnetting</li>
+            <li>Network types and topologies</li>
+            <li>Basic network hardware (routers, switches, cables)</li>
+            <li>Recommended certification: CompTIA Network+</li>
+          </ul>
+        </div>
+        
+        <div class="roadmap-step">
+          <h3>2. Network Infrastructure</h3>
+          <p>Learn about the physical and logical components of networks:</p>
+          <ul>
+            <li>Switching concepts (VLANs, trunking, STP)</li>
+            <li>Routing basics (static vs dynamic)</li>
+            <li>Wireless networking fundamentals</li>
+            <li>Network cabling and connections</li>
+            <li>Hands-on practice: Set up a small home network</li>
+          </ul>
+        </div>
+        
+        <div class="roadmap-step">
+          <h3>3. Routing & Switching</h3>
+          <p>Dive deeper into how data moves through networks:</p>
+          <ul>
+            <li>Routing protocols (OSPF, EIGRP, BGP)</li>
+            <li>Advanced switching (VTP, DTP, port security)</li>
+            <li>Network segmentation strategies</li>
+            <li>Troubleshooting connectivity issues</li>
+            <li>Recommended certification: CCNA</li>
+          </ul>
+        </div>
+        
+        <div class="roadmap-step">
+          <h3>4. Network Security</h3>
+          <p>Learn to protect networks from threats:</p>
+          <ul>
+            <li>Firewall implementation and configuration</li>
+            <li>VPN technologies</li>
+            <li>Security protocols and encryption</li>
+            <li>Intrusion detection and prevention</li>
+            <li>Security best practices and policies</li>
+            <li>Recommended certification: Security+</li>
+          </ul>
+        </div>
+        
+        <div class="roadmap-step">
+          <h3>5. Cloud Networking</h3>
+          <p>Explore how networking works in cloud environments:</p>
+          <ul>
+            <li>Virtual networks in AWS, Azure, GCP</li>
+            <li>Software-defined networking (SDN)</li>
+            <li>Hybrid cloud connectivity</li>
+            <li>Cloud security and compliance</li>
+            <li>Recommended certification: AWS Solutions Architect or Azure Administrator</li>
+          </ul>
+        </div>
+        
+        <div class="roadmap-step">
+          <h3>6. Advanced Topics</h3>
+          <p>Specialize in cutting-edge networking technologies:</p>
+          <ul>
+            <li>Network automation and programmability</li>
+            <li>Container networking (Docker, Kubernetes)</li>
+            <li>IPv6 implementation</li>
+            <li>5G and edge computing</li>
+            <li>Network design and optimization</li>
+            <li>Recommended certification: CCNP or specialized certifications</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+  
+    <section id="resources">
+      <h2 class="section-title">Learning Resources</h2>
+      <p class="intro-text">
+        These carefully selected resources will help you learn networking concepts at your own pace.
+        From free YouTube channels to comprehensive courses, there's something for every learning style.
+      </p>
+      
+      <div class="resource-grid">
+        <div class="resource-card">
+          <h4><i class="fab fa-youtube"></i> Network Chuck</h4>
+          <p>Engaging, beginner-friendly networking tutorials with real-world examples and enthusiasm.</p>
+          <div class="tags">
+            <span class="tag">Beginner</span>
+            <span class="tag">Free</span>
+            <span class="tag">Video</span>
+          </div>
+          <p><strong>Best for:</strong> Complete beginners who want entertaining explanations</p>
+          <a href="https://www.youtube.com/@NetworkChuck" class="resource-link" target="_blank">Visit Channel</a>
+        </div>
+        
+        <div class="resource-card">
+          <h4><i class="fab fa-youtube"></i> David Bombal</h4>
+          <p>Comprehensive networking courses covering Cisco, Python automation, ethical hacking, and more.</p>
+          <div class="tags">
+            <span class="tag">All Levels</span>
+            <span class="tag">Free/Paid</span>
+            <span class="tag">Video</span>
+          </div>
+          <p><strong>Best for:</strong> Hands-on labs and practical demonstrations</p>
+          <a href="https://www.youtube.com/@davidbombal" class="resource-link" target="_blank">Visit Channel</a>
+        </div>
+        
+        <div class="resource-card">
+          <h4><i class="fab fa-youtube"></i> Keith Barker</h4>
+          <p>Clear, methodical explanations of networking concepts with certification preparation.</p>
+          <div class="tags">
+            <span class="tag">Intermediate</span>
+            <span class="tag">Free</span>
+            <span class="tag">Video</span>
+          </div>
+          <p><strong>Best for:</strong> Certification preparation (CCNA, Network+)</p>
+          <a href="https://www.youtube.com/@KeithBarker" class="resource-link" target="_blank">Visit Channel</a>
+        </div>
+        
+        <div class="resource-card">
+          <h4><i class="fab fa-youtube"></i> Jeremy's IT Lab</h4>
+          <p>Structured CCNA course with free Packet Tracer labs, practice exams, and study notes.</p>
+          <div class="tags">
+            <span class="tag">Beginner/Intermediate</span>
+            <span class="tag">Free</span>
+            <span class="tag">Video</span>
+          </div>
+          <p><strong>Best for:</strong> CCNA preparation with practical labs</p>
+          <a href="https://www.youtube.com/@JeremysITLab" class="resource-link" target="_blank">Visit Channel</a>
+        </div>
+        
+        <div class="resource-card">
+          <h4><i class="fas fa-book"></i> Cisco Skills for All</h4>
+          <p>Free, self-paced courses from Cisco covering networking fundamentals to advanced topics.</p>
+          <div class="tags">
+            <span class="tag">All Levels</span>
+            <span class="tag">Free</span>
+            <span class="tag">Interactive</span>
+          </div>
+          <p><strong>Best for:</strong> Structured learning with certificates</p>
+          <a href="https://skillsforall.com/catalog?category=infrastructure" class="resource-link" target="_blank">Start Learning</a>
+        </div>
+        
+        <div class="resource-card">
+          <h4><i class="fas fa-laptop-code"></i> Practical Networking</h4>
+          <p>Simplified explanations of complex networking concepts with visual aids and examples.</p>
+          <div class="tags">
+            <span class="tag">Beginner/Intermediate</span>
+            <span class="tag">Free</span>
+            <span class="tag">Video/Text</span>
+          </div>
+          <p><strong>Best for:</strong> Visual learners who want clear explanations</p>
+          <a href="https://www.practicalnetworking.net/" class="resource-link" target="_blank">Visit Website</a>
+        </div>
+        
+
+        
+        
+        
+      </div>
+    </section>
+    
+    <!--  -->
+  </div>
+  
+  <footer>
+    <p>✨ Remember: Networking is about connecting things. Start small, practice consistently, and build your knowledge step by step. ✨</p>
+    <p>© 2025 Networking Learning | Created for students by students</p>
+  </footer>
+  
+</body>
+</html>

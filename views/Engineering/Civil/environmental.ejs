@@ -1,0 +1,596 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" rel="stylesheet">
+  <title>Environmental Engineering Learning Hub</title>
+  <style>
+    :root {
+      --primary-bg: #0f2c1d;      /* Dark green background */
+      --section-bg: #1a3c2a;      /* Slightly lighter background */
+      --card-bg: #254c38;         /* Card background */
+      --card-hover: #2e5a44;      /* Card hover effect */
+      --text-primary: #e8f5ee;    /* Light text color */
+      --text-secondary: #b3d1c2;  /* Muted text color */
+      --accent: #4ecdc4;          /* Teal accent */
+      --accent-hover: #3dbdb4;    /* Darker teal for hover */
+      --highlight: #6fe2d9;       /* Bright teal for highlights */
+      --border: #2e5a44;          /* Border color */
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: var(--primary-bg);
+      color: var(--text-primary);
+      line-height: 1.6;
+    }
+
+    .navbar {
+      background: var(--section-bg);
+      padding: 1rem 2rem;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .nav-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      font-size: 1.8rem;
+      font-weight: bold;
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    .back-button {
+      text-decoration: none;
+      color: var(--text-primary);
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      transition: color 0.3s ease;
+    }
+
+    .back-button:hover {
+      color: var(--accent);
+    }
+
+    header {
+      text-align: center;
+      padding: 4rem 2rem;
+      background: var(--section-bg);
+      background-image: linear-gradient(rgba(26, 60, 42, 0.9), rgba(26, 60, 42, 0.9)), 
+                        url('https://images.unsplash.com/photo-1497435334941-8c899ee9e8e9?q=80&w=2000');
+      background-size: cover;
+      background-position: center;
+    }
+
+    header h1 {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+      color: var(--accent);
+    }
+
+    header p {
+      font-size: 1.25rem;
+      color: var(--text-secondary);
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    section {
+      max-width: 1200px;
+      margin: 2rem auto;
+      padding: 2rem;
+    }
+
+    .section-title {
+      color: var(--accent);
+      margin-bottom: 1.5rem;
+      font-size: 2rem;
+      position: relative;
+      padding-bottom: 0.5rem;
+    }
+
+    .section-title::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100px;
+      height: 3px;
+      background: var(--accent);
+      border-radius: 3px;
+    }
+
+    .topics-grid,
+    .specialization-grid,
+    .projects-grid,
+    .practice-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+      margin: 2rem 0;
+    }
+
+    .topic-card,
+    .specialization-card,
+    .project-card,
+    .practice-card {
+      background: var(--card-bg);
+      padding: 2rem;
+      border-radius: 12px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      transition: all 0.3s ease;
+      border: 1px solid var(--border);
+    }
+
+    .topic-card:hover,
+    .specialization-card:hover,
+    .project-card:hover,
+    .practice-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+      border-color: var(--accent);
+      background: var(--card-hover);
+    }
+
+    .topic-title,
+    .specialization-title,
+    .project-title {
+      color: var(--highlight);
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
+    }
+
+    .learn-btn {
+      display: inline-block;
+      padding: 0.75rem 1.5rem;
+      background: var(--accent);
+      color: #0f2c1d;
+      font-weight: bold;
+      text-decoration: none;
+      border-radius: 8px;
+      transition: all 0.3s ease;
+      margin-top: 1rem;
+    }
+
+    .learn-btn:hover {
+      background: var(--accent-hover);
+      transform: translateY(-2px);
+    }
+
+    footer {
+      text-align: center;
+      padding: 2rem;
+      background: var(--section-bg);
+      margin-top: 4rem;
+      border-top: 1px solid var(--border);
+    }
+
+    .quote {
+      font-style: italic;
+      color: var(--text-secondary);
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .project-tags {
+      margin-top: 1rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+
+    .project-tag {
+      background: rgba(78, 205, 196, 0.2);
+      color: var(--accent);
+      padding: 0.3rem 0.6rem;
+      border-radius: 4px;
+      font-size: 0.8rem;
+      font-weight: 500;
+    }
+
+    .features-list {
+      list-style: none;
+    }
+
+    .features-list li {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .features-list i {
+      color: var(--accent);
+    }
+
+    .resources-title {
+      font-size: larger;
+      color: #6fe2d9;
+    }
+
+    .channel-list {
+      list-style: none;
+      margin-top: 0.5rem;
+    }
+
+    .channel-list li {
+      margin-bottom: 0.5rem;
+    }
+
+    .resource-list {
+      list-style: none;
+    }
+
+    @media (max-width: 768px) {
+      .navbar {
+        padding: 1rem;
+      }
+
+      .logo {
+        font-size: 1.5rem;
+      }
+
+      header {
+        padding: 3rem 1rem;
+      }
+
+      header h1 {
+        font-size: 2rem;
+      }
+
+      section {
+        padding: 1rem;
+      }
+
+      .topics-grid,
+      .specialization-grid,
+      .projects-grid,
+      .practice-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <nav class="navbar">
+    <div class="nav-container">
+      <a href="#" class="logo">Environmental Engineering</a>
+      <a href="/Engineering/CIVIL/civil.ejs" class="back-button">
+        <i class="fas fa-arrow-left"></i> Back
+      </a>
+    </div>
+  </nav>
+
+  <header>
+    <h1>Environmental Engineering Specialization</h1>
+    <p>Master the fundamentals of water treatment, waste management, and sustainable environmental solutions with comprehensive learning resources.</p>
+  </header>
+
+  <section class="specialization-section">
+    <h2 class="section-title">Specialization Areas</h2>
+    <div class="specialization-grid">
+  
+      <!-- Water Resources Engineering -->
+      <div class="specialization-card">
+        <div class="specialization-title">
+          <i class="fas fa-water"></i>
+          Water Resources Engineering
+        </div>
+        <p>Focus on water supply, treatment, distribution, and management of water resources.</p>
+        <br>
+        <ul class="features-list">
+          <li><i class="fas fa-check"></i> Water treatment processes</li><br>
+          <li><i class="fas fa-check"></i> Hydraulic design</li><br>
+          <li><i class="fas fa-check"></i> Watershed management</li>
+        </ul>
+        <br>
+        <div class="resources-section">
+          <div class="resources-title">Learning Resources</div><br>
+          <ul class="channel-list">
+            <li><a style="color: white; text-decoration: none;" href="https://www.youtube.com/c/PracticalEngineering" target="_blank"><i class="fab fa-youtube"></i> Practical Engineering</a></li>
+            <li><a style="color: white; text-decoration: none;" href="https://www.youtube.com/c/USEPAGOV" target="_blank"><i class="fab fa-youtube"></i> US EPA</a></li>
+            <li><a style="color: white; text-decoration: none;" href="https://www.awwa.org/Resources-Tools" target="_blank"><i class="fas fa-book"></i> AWWA Resources</a></li>
+          </ul>
+        </div>
+      </div>
+  
+      <!-- Air Quality Engineering -->
+      <div class="specialization-card">
+        <div class="specialization-title">
+          <i class="fas fa-wind"></i>
+          Air Quality Engineering
+        </div>
+        <p>Study of air pollution control, emissions monitoring, and atmospheric dispersion modeling.</p>
+        <br>
+        <ul class="features-list">
+          <li><i class="fas fa-check"></i> Air pollution control</li><br>
+          <li><i class="fas fa-check"></i> Dispersion modeling</li><br>
+          <li><i class="fas fa-check"></i> Indoor air quality</li>
+        </ul>
+        <br>
+        <div class="resources-section">
+          <div class="resources-title">Learning Resources</div><br>
+          <ul class="channel-list">
+            <li><a style="color: white; text-decoration: none;" href="https://www.youtube.com/@nptel" target="_blank"><i class="fab fa-youtube"></i> NPTEL Air Quality</a></li>
+            <li><a style="color: white; text-decoration: none;" href="https://www.youtube.com/c/USEPAGOV" target="_blank"><i class="fab fa-youtube"></i> US EPA Air</a></li>
+            <li><a style="color: white; text-decoration: none;" href="https://www.epa.gov/air-research" target="_blank"><i class="fas fa-book"></i> EPA Air Research</a></li>
+          </ul>
+        </div>
+      </div>
+  
+      <!-- Solid Waste Management -->
+      <div class="specialization-card">
+        <div class="specialization-title">
+          <i class="fas fa-recycle"></i>
+          Solid Waste Management
+        </div>
+        <p>Focus on collection, treatment, recycling, and disposal of solid waste materials.</p>
+        <br>
+        <ul class="features-list">
+          <li><i class="fas fa-check"></i> Landfill design</li><br>
+          <li><i class="fas fa-check"></i> Recycling systems</li><br>
+          <li><i class="fas fa-check"></i> Waste-to-energy</li>
+        </ul>
+        <br>
+        <div class="resources-section">
+          <div class="resources-title">Learning Resources</div><br>
+          <ul class="channel-list">
+            <li><a style="color: white; text-decoration: none;" href="https://www.youtube.com/c/USEPAGOV" target="_blank"><i class="fab fa-youtube"></i> US EPA Waste</a></li>
+            <li><a style="color: white; text-decoration: none;" href="https://www.youtube.com/c/ISWA" target="_blank"><i class="fab fa-youtube"></i> ISWA Channel</a></li>
+            <li><a style="color: white; text-decoration: none;" href="https://swana.org/resources" target="_blank"><i class="fas fa-globe"></i> SWANA Resources</a></li>
+          </ul>
+        </div>
+      </div>
+  
+    </div>
+  </section>
+  
+
+  <!-- Projects section -->
+  <section class="projects-section">
+    <h2 class="section-title">Industry Projects</h2>
+    <div class="projects-grid">
+      <div class="project-card">
+        <div class="project-title">
+          <i class="fas fa-tint"></i>
+          Sustainable Water Systems
+        </div>
+        <p>Design and implement water conservation and reuse systems for urban environments.</p>
+        <div class="project-tags">
+          <span class="project-tag">Rainwater Harvesting</span>
+          <span class="project-tag">Greywater Reuse</span>
+          <span class="project-tag">Water Efficiency</span>
+        </div>
+        <a href="https://www.epa.gov/water-research/water-reuse-research" class="learn-btn" target="_blank">View Research</a>
+      </div>
+  
+      <div class="project-card">
+        <div class="project-title">
+          <i class="fas fa-leaf"></i>
+          Green Infrastructure
+        </div>
+        <p>Develop nature-based solutions for stormwater management and urban resilience.</p>
+        <div class="project-tags">
+          <span class="project-tag">Bioswales</span>
+          <span class="project-tag">Permeable Pavements</span>
+          <span class="project-tag">Green Roofs</span>
+        </div>
+        <a href="https://www.epa.gov/green-infrastructure" class="learn-btn" target="_blank">View Resources</a>
+      </div>
+  
+      <div class="project-card">
+        <div class="project-title">
+          <i class="fas fa-industry"></i>
+          Industrial Pollution Control
+        </div>
+        <p>Design treatment systems for industrial wastewater and emissions control.</p>
+        <div class="project-tags">
+          <span class="project-tag">Effluent Treatment</span>
+          <span class="project-tag">Scrubber Systems</span>
+          <span class="project-tag">Process Optimization</span>
+        </div>
+        <a href="https://www.epa.gov/eg/industrial-effluent-guidelines" class="learn-btn" target="_blank">View Guidelines</a>
+      </div>
+    </div>
+  </section>
+  
+
+  <section>
+    <h2 class="section-title">Core Concepts</h2>
+    <div class="topics-grid">
+      <div class="topic-card">
+        <div class="topic-title">Water Treatment</div>
+        <p>Understand the principles of physical, chemical, and biological water treatment processes.</p>
+        <a class="learn-btn" href="https://www.epa.gov/sustainable-water-infrastructure/water-and-wastewater-treatment" target="_blank">Learn More</a>
+      </div>
+  
+      <div class="topic-card">
+        <div class="topic-title">Air Pollution Control</div>
+        <p>Master the fundamentals of air quality management, emissions control, and monitoring.</p>
+        <a class="learn-btn" href="https://www.epa.gov/air-quality-management-process" target="_blank">Learn More</a>
+      </div>
+  
+      <div class="topic-card">
+        <div class="topic-title">Solid Waste Management</div>
+        <p>Learn about waste collection, processing, recycling, and disposal methods.</p>
+        <a class="learn-btn" href="https://www.epa.gov/landfills" target="_blank">Learn More</a>
+      </div>
+    </div>
+  
+    <div class="topics-grid">
+      <div class="topic-card">
+        <div class="topic-title">Environmental Impact Assessment</div>
+        <p>Study methodologies for evaluating environmental impacts of projects and developments.</p>
+        <a class="learn-btn" href="https://www.epa.gov/nepa" target="_blank">Learn More</a>
+      </div>
+  
+      <div class="topic-card">
+        <div class="topic-title">Hazardous Waste Management</div>
+        <p>Understand treatment, storage, and disposal of hazardous materials.</p>
+        <a class="learn-btn" href="https://www.epa.gov/hw" target="_blank">Learn More</a>
+      </div>
+  
+      <div class="topic-card">
+        <div class="topic-title">Environmental Remediation</div>
+        <p>Learn about techniques for cleaning up contaminated sites and groundwater.</p>
+        <a class="learn-btn" href="https://www.epa.gov/remedytech" target="_blank">Learn More</a>
+      </div>
+  
+      <div class="topic-card">
+        <div class="topic-title">Hydrology</div>
+        <p>Study water cycle, watershed processes, and surface/groundwater interactions.</p>
+        <a class="learn-btn" href="https://water.usgs.gov/edu/hydrology.html" target="_blank">Learn More</a>
+      </div>
+  
+      <div class="topic-card">
+        <div class="topic-title">Environmental Chemistry</div>
+        <p>Explore chemical processes in air, water, and soil environments.</p>
+        <a class="learn-btn" href="https://www.acs.org/education/resources/undergraduate/chemistryincontext.html" target="_blank">Learn More</a>
+      </div>
+  
+      <div class="topic-card">
+        <div class="topic-title">Renewable Energy Systems</div>
+        <p>Master applications of solar, wind, and other renewable energy technologies.</p>
+        <a class="learn-btn" href="https://www.energy.gov/eere/renewables" target="_blank">Learn More</a>
+      </div>
+  
+      <div class="topic-card">
+        <div class="topic-title">Climate Change Mitigation</div>
+        <p>Learn techniques for reducing greenhouse gas emissions and carbon footprint.</p>
+        <a class="learn-btn" href="https://www.epa.gov/climate-change" target="_blank">Learn More</a>
+      </div>
+  
+      <div class="topic-card">
+        <div class="topic-title">Environmental Microbiology</div>
+        <p>Study microorganisms in environmental processes and treatment systems.</p>
+        <a class="learn-btn" href="https://www.asm.org/Articles/Policy/Environmental-Microbiology" target="_blank">Learn More</a>
+      </div>
+  
+      <div class="topic-card">
+        <div class="topic-title">Sustainable Design</div>
+        <p>Understand principles of green building, eco-design, and life cycle assessment.</p>
+        <a class="learn-btn" href="https://www.epa.gov/sustainability" target="_blank">Learn More</a>
+      </div>
+  
+      <div class="topic-card">
+        <div class="topic-title">Environmental Modeling</div>
+        <p>Explore computational models for environmental systems and processes.</p>
+        <a class="learn-btn" href="https://www.epa.gov/research/environmental-modeling" target="_blank">Learn More</a>
+      </div>
+  
+      <div class="topic-card">
+        <div class="topic-title">Environmental Policy</div>
+        <p>Learn about regulations, compliance, and policy frameworks for environmental protection.</p>
+        <a class="learn-btn" href="https://www.epa.gov/laws-regulations" target="_blank">Learn More</a>
+      </div>
+  
+      <div class="topic-card">
+        <div class="topic-title">Ecological Engineering</div>
+        <p>Study integration of ecological principles in environmental problem-solving.</p>
+        <a class="learn-btn" href="https://www.epa.gov/eco-research" target="_blank">Learn More</a>
+      </div>
+    </div>
+  </section>
+  
+
+  <section class="practice-section">
+    <h2 class="section-title">Software & Analysis Tools</h2>
+    <div class="practice-grid">
+      <div class="practice-card">
+        <h3>EPANET</h3>
+        <p>Software for modeling drinking water distribution systems.</p>
+        <a href="https://www.epa.gov/water-research/epanet" target="_blank" class="learn-btn">Explore Tool</a>
+      </div>
+
+      <div class="practice-card">
+        <h3>AERMOD</h3>
+        <p>Air quality dispersion modeling system for regulatory applications.</p>
+        <a href="https://www.epa.gov/scram/air-quality-dispersion-modeling-preferred-and-recommended-models" target="_blank" class="learn-btn">Explore Tool</a>
+      </div>
+
+      <div class="practice-card">
+        <h3>SWMM</h3>
+        <p>Storm Water Management Model for planning, analysis, and design of drainage systems.</p>
+        <a href="https://www.epa.gov/water-research/storm-water-management-model-swmm" target="_blank" class="learn-btn">Explore Tool</a>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2 class="section-title">Learning Resources</h2>
+    <div class="topics-grid">
+      <div class="topic-card">
+        <div class="topic-title">Online Courses</div>
+        <ul class="resource-list">
+          <li><a style="color: white; text-decoration: none;" href="https://www.edx.org/learn/environmental-engineering" target="_blank"><i class="fas fa-graduation-cap"></i> edX Environmental Engineering Courses</a></li><br>
+          <li><a style="color: white; text-decoration: none;" href="https://www.coursera.org/courses?query=environmental%20engineering" target="_blank"><i class="fas fa-graduation-cap"></i> Coursera Environmental Engineering</a></li><br>
+          <li><a style="color: white; text-decoration: none;" href="https://www.epa.gov/training" target="_blank"><i class="fas fa-graduation-cap"></i> EPA Training Resources</a></li>
+        </ul>
+      </div>
+
+      <div class="topic-card">
+        <div class="topic-title">Technical Resources</div>
+        <ul class="resource-list">
+          <li><a style="color: white; text-decoration: none;" href="https://www.epa.gov/research" target="_blank"><i class="fas fa-file-alt"></i> EPA Research</a></li><br>
+          <li><a style="color: white; text-decoration: none;" href="https://ascelibrary.org/journal/joeedu" target="_blank"><i class="fas fa-file-alt"></i> ASCE Journal of Environmental Engineering</a></li><br>
+          <li><a style="color: white; text-decoration: none;" href="https://www.sciencedirect.com/journal/environmental-engineering-science" target="_blank"><i class="fas fa-file-alt"></i> Environmental Engineering Science Journal</a></li>
+        </ul>
+      </div>
+
+      <div class="topic-card">
+        <div class="topic-title">Industry Publications</div>
+        <ul class="resource-list">
+          <li><a style="color: white; text-decoration: none;" href="https://www.waterworld.com/" target="_blank"><i class="fas fa-newspaper"></i> WaterWorld</a></li><br>
+          <li><a style="color: white; text-decoration: none;" href="https://www.waste360.com/" target="_blank"><i class="fas fa-newspaper"></i> Waste360</a></li><br>
+          <li><a style="color: white; text-decoration: none;" href="https://www.enr.com/topics/69-environment" target="_blank"><i class="fas fa-newspaper"></i> ENR Environmental News</a></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <p class="quote">"We do not inherit the earth from our ancestors; we borrow it from our children." - Native American Proverb</p>
+  </footer>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // Smooth scrolling for anchor links
+      document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+          e.preventDefault();
+
+          const targetId = this.getAttribute('href');
+          if (targetId === '#') return;
+
+          const targetElement = document.querySelector(targetId);
+          if (targetElement) {
+            window.scrollTo({
+              top: targetElement.offsetTop - 70,
+              behavior: 'smooth'
+            });
+          }
+        });
+      });
+    });
+  </script>
+</body>
+
+</html>

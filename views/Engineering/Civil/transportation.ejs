@@ -1,0 +1,596 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" rel="stylesheet">
+  <title>Transportation Engineering Learning Hub</title>
+  <style>
+    :root {
+      --primary-bg: #1a2238;      /* Dark blue background */
+      --section-bg: #252e48;      /* Slightly lighter background */
+      --card-bg: #303a5a;         /* Card background */
+      --card-hover: #3a4468;      /* Card hover effect */
+      --text-primary: #e8edf7;    /* Light text color */
+      --text-secondary: #b3bfd1;  /* Muted text color */
+      --accent: #ff6a3d;          /* Orange accent */
+      --accent-hover: #f05a2d;    /* Darker orange for hover */
+      --highlight: #ff8c66;       /* Bright orange for highlights */
+      --border: #3d4766;          /* Border color */
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: var(--primary-bg);
+      color: var(--text-primary);
+      line-height: 1.6;
+    }
+
+    .navbar {
+      background: var(--section-bg);
+      padding: 1rem 2rem;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .nav-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      font-size: 1.8rem;
+      font-weight: bold;
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    .back-button {
+      text-decoration: none;
+      color: var(--text-primary);
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      transition: color 0.3s ease;
+    }
+
+    .back-button:hover {
+      color: var(--accent);
+    }
+
+    header {
+      text-align: center;
+      padding: 4rem 2rem;
+      background: var(--section-bg);
+      background-image: linear-gradient(rgba(37, 46, 72, 0.9), rgba(37, 46, 72, 0.9)), 
+                        url('https://images.unsplash.com/photo-1494522358652-f30e61a60313?q=80&w=2000');
+      background-size: cover;
+      background-position: center;
+    }
+
+    header h1 {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+      color: var(--accent);
+    }
+
+    header p {
+      font-size: 1.25rem;
+      color: var(--text-secondary);
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    section {
+      max-width: 1200px;
+      margin: 2rem auto;
+      padding: 2rem;
+    }
+
+    .section-title {
+      color: var(--accent);
+      margin-bottom: 1.5rem;
+      font-size: 2rem;
+      position: relative;
+      padding-bottom: 0.5rem;
+    }
+
+    .section-title::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100px;
+      height: 3px;
+      background: var(--accent);
+      border-radius: 3px;
+    }
+
+    .topics-grid,
+    .specialization-grid,
+    .projects-grid,
+    .practice-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+      margin: 2rem 0;
+    }
+
+    .topic-card,
+    .specialization-card,
+    .project-card,
+    .practice-card {
+      background: var(--card-bg);
+      padding: 2rem;
+      border-radius: 12px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      transition: all 0.3s ease;
+      border: 1px solid var(--border);
+    }
+
+    .topic-card:hover,
+    .specialization-card:hover,
+    .project-card:hover,
+    .practice-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+      border-color: var(--accent);
+      background: var(--card-hover);
+    }
+
+    .topic-title,
+    .specialization-title,
+    .project-title {
+      color: var(--highlight);
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
+    }
+
+    .learn-btn {
+      display: inline-block;
+      padding: 0.75rem 1.5rem;
+      background: var(--accent);
+      color: #fff;
+      font-weight: bold;
+      text-decoration: none;
+      border-radius: 8px;
+      transition: all 0.3s ease;
+      margin-top: 1rem;
+    }
+
+    .learn-btn:hover {
+      background: var(--accent-hover);
+      transform: translateY(-2px);
+    }
+
+    footer {
+      text-align: center;
+      padding: 2rem;
+      background: var(--section-bg);
+      margin-top: 4rem;
+      border-top: 1px solid var(--border);
+    }
+
+    .quote {
+      font-style: italic;
+      color: var(--text-secondary);
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .project-tags {
+      margin-top: 1rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+
+    .project-tag {
+      background: rgba(255, 106, 61, 0.2);
+      color: var(--accent);
+      padding: 0.3rem 0.6rem;
+      border-radius: 4px;
+      font-size: 0.8rem;
+      font-weight: 500;
+    }
+
+    .features-list {
+      list-style: none;
+    }
+
+    .features-list li {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .features-list i {
+      color: var(--accent);
+    }
+
+    .resources-title {
+      font-size: larger;
+      color: #ff8c66;
+    }
+
+    .channel-list {
+      list-style: none;
+      margin-top: 0.5rem;
+    }
+
+    .channel-list li {
+      margin-bottom: 0.5rem;
+    }
+
+    .resource-list {
+      list-style: none;
+    }
+
+    @media (max-width: 768px) {
+      .navbar {
+        padding: 1rem;
+      }
+
+      .logo {
+        font-size: 1.5rem;
+      }
+
+      header {
+        padding: 3rem 1rem;
+      }
+
+      header h1 {
+        font-size: 2rem;
+      }
+
+      section {
+        padding: 1rem;
+      }
+
+      .topics-grid,
+      .specialization-grid,
+      .projects-grid,
+      .practice-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <nav class="navbar">
+    <div class="nav-container">
+      <a href="#" class="logo">Transportation Engineering</a>
+      <a href="/Engineering/CIVIL/civil.ejs" class="back-button">
+        <i class="fas fa-arrow-left"></i> Back
+      </a>
+    </div>
+  </nav>
+
+  <header>
+    <h1>Transportation Engineering Specialization</h1>
+    <p>Master the fundamentals of transportation planning, design, and operations with comprehensive learning resources.</p>
+  </header>
+
+  <section class="specialization-section">
+    <h2 class="section-title">Specialization Areas</h2>
+    <div class="specialization-grid">
+  
+      <!-- Highway Engineering -->
+      <div class="specialization-card">
+        <div class="specialization-title">
+          <i class="fas fa-road"></i>
+          Highway Engineering
+        </div>
+        <p>Focus on design, construction, and maintenance of highways and roadway systems.</p>
+        <br>
+        <ul class="features-list">
+          <li><i class="fas fa-check"></i> Geometric design</li><br>
+          <li><i class="fas fa-check"></i> Pavement design</li><br>
+          <li><i class="fas fa-check"></i> Traffic safety</li>
+        </ul>
+        <br>
+        <div class="resources-section">
+          <div class="resources-title">Learning Resources</div><br>
+          <ul class="channel-list">
+            <li><a style="color: white; text-decoration: none;" href="https://www.youtube.com/c/PracticalEngineering" target="_blank"><i class="fab fa-youtube"></i> Practical Engineering</a></li>
+            <li><a style="color: white; text-decoration: none;" href="https://www.youtube.com/c/CivilEngineeringAcademy" target="_blank"><i class="fab fa-youtube"></i> Civil Engineering Academy</a></li>
+            <li><a style="color: white; text-decoration: none;" href="https://highways.dot.gov/research" target="_blank"><i class="fas fa-book"></i> FHWA Research</a></li>
+          </ul>
+        </div>
+      </div>
+  
+      <!-- Traffic Engineering -->
+      <div class="specialization-card">
+        <div class="specialization-title">
+          <i class="fas fa-traffic-light"></i>
+          Traffic Engineering
+        </div>
+        <p>Study of traffic flow, control systems, and management strategies for efficient transportation.</p>
+        <br>
+        <ul class="features-list">
+          <li><i class="fas fa-check"></i> Traffic flow theory</li><br>
+          <li><i class="fas fa-check"></i> Signal design</li><br>
+          <li><i class="fas fa-check"></i> Intelligent Transportation Systems</li>
+        </ul>
+        <br>
+        <div class="resources-section">
+          <div class="resources-title">Learning Resources</div><br>
+          <ul class="channel-list">
+            <li><a style="color: white; text-decoration: none;" href="https://www.youtube.com/@nptel" target="_blank"><i class="fab fa-youtube"></i> NPTEL Traffic Engineering</a></li>
+            <li><a style="color: white; text-decoration: none;" href="https://www.youtube.com/@RoadGuyRob" target="_blank"><i class="fab fa-youtube"></i> Road Guy Rob</a></li>
+            <li><a style="color: white; text-decoration: none;" href="https://www.ite.org/technical-resources/" target="_blank"><i class="fas fa-book"></i> ITE Resources</a></li>
+          </ul>
+        </div>
+      </div>
+  
+      <!-- Transportation Planning -->
+      <div class="specialization-card">
+        <div class="specialization-title">
+          <i class="fas fa-map-marked-alt"></i>
+          Transportation Planning
+        </div>
+        <p>Focus on long-term planning, policy development, and sustainable transportation systems.</p>
+        <br>
+        <ul class="features-list">
+          <li><i class="fas fa-check"></i> Travel demand modeling</li><br>
+          <li><i class="fas fa-check"></i> Land use integration</li><br>
+          <li><i class="fas fa-check"></i> Multimodal planning</li>
+        </ul>
+        <br>
+        <div class="resources-section">
+          <div class="resources-title">Learning Resources</div><br>
+          <ul class="channel-list">
+            <li><a style="color: white; text-decoration: none;" href="https://www.youtube.com/c/StreetFilms" target="_blank"><i class="fab fa-youtube"></i> Streetfilms</a></li>
+            <li><a style="color: white; text-decoration: none;" href="https://www.youtube.com/c/NotJustBikes" target="_blank"><i class="fab fa-youtube"></i> Not Just Bikes</a></li>
+            <li><a style="color: white; text-decoration: none;" href="https://planning.dot.gov/resources.aspx" target="_blank"><i class="fas fa-globe"></i> USDOT Planning Resources</a></li>
+          </ul>
+        </div>
+      </div>
+  
+    </div>
+  </section>
+  
+
+  <!-- Projects section -->
+  <section class="projects-section">
+    <h2 class="section-title">Industry Projects</h2>
+    <div class="projects-grid">
+      <div class="project-card">
+        <div class="project-title">
+          <i class="fas fa-network-wired"></i>
+          Smart Corridor Development
+        </div>
+        <p>Design and implement intelligent transportation systems for urban corridors.</p>
+        <div class="project-tags">
+          <span class="project-tag">Connected Vehicles</span>
+          <span class="project-tag">Adaptive Signals</span>
+          <span class="project-tag">Real-time Data</span>
+        </div>
+        <a href="https://www.its.dot.gov/research_areas/connected_vehicle.htm" class="learn-btn" target="_blank">View Research</a>
+      </div>
+  
+      <div class="project-card">
+        <div class="project-title">
+          <i class="fas fa-subway"></i>
+          Transit-Oriented Development
+        </div>
+        <p>Develop integrated land use and transportation plans for sustainable urban growth.</p>
+        <div class="project-tags">
+          <span class="project-tag">Mixed-Use Development</span>
+          <span class="project-tag">Accessibility</span>
+          <span class="project-tag">Multimodal Integration</span>
+        </div>
+        <a href="https://www.transit.dot.gov/TOD" class="learn-btn" target="_blank">View Resources</a>
+      </div>
+  
+      <div class="project-card">
+        <div class="project-title">
+          <i class="fas fa-car-crash"></i>
+          Vision Zero Implementation
+        </div>
+        <p>Design safety improvements to eliminate traffic fatalities and serious injuries.</p>
+        <div class="project-tags">
+          <span class="project-tag">Road Safety Audits</span>
+          <span class="project-tag">Complete Streets</span>
+          <span class="project-tag">Traffic Calming</span>
+        </div>
+        <a href="https://safety.fhwa.dot.gov/zerodeaths/" class="learn-btn" target="_blank">View Guidelines</a>
+      </div>
+    </div>
+  </section>
+  
+
+  <section>
+    <h2 class="section-title">Core Concepts</h2>
+    <div class="topics-grid">
+      <div class="topic-card">
+        <div class="topic-title">Traffic Flow Theory</div>
+        <p>Understand the principles of traffic flow, capacity analysis, and level of service concepts.</p>
+        <a class="learn-btn" href="https://ops.fhwa.dot.gov/trafficanalysistools/index.htm" target="_blank">Learn More</a>
+      </div>
+  
+      <div class="topic-card">
+        <div class="topic-title">Geometric Design</div>
+        <p>Master the fundamentals of roadway alignment, cross-section design, and intersection geometry.</p>
+        <a class="learn-btn" href="https://highways.dot.gov/safety/proven-safety-countermeasures/geometric-design" target="_blank">Learn More</a>
+      </div>
+  
+      <div class="topic-card">
+        <div class="topic-title">Pavement Design</div>
+        <p>Learn about flexible and rigid pavement design, materials, and performance evaluation.</p>
+        <a class="learn-btn" href="https://www.fhwa.dot.gov/pavement/design.cfm" target="_blank">Learn More</a>
+      </div>
+    </div>
+  
+    <div class="topics-grid">
+      <div class="topic-card">
+        <div class="topic-title">Traffic Safety</div>
+        <p>Study crash analysis, safety countermeasures, and road safety audits.</p>
+        <a class="learn-btn" href="https://safety.fhwa.dot.gov/" target="_blank">Learn More</a>
+      </div>
+  
+      <div class="topic-card">
+        <div class="topic-title">Transportation Planning</div>
+        <p>Understand travel demand modeling, forecasting, and transportation system planning.</p>
+        <a class="learn-btn" href="https://www.planning.dot.gov/" target="_blank">Learn More</a>
+      </div>
+  
+      <div class="topic-card">
+        <div class="topic-title">Public Transportation</div>
+        <p>Learn about transit planning, operations, and management principles.</p>
+        <a class="learn-btn" href="https://www.transit.dot.gov/research-innovation" target="_blank">Learn More</a>
+      </div>
+  
+      <div class="topic-card">
+        <div class="topic-title">Traffic Signal Design</div>
+        <p>Study signal timing, coordination, and adaptive control systems.</p>
+        <a class="learn-btn" href="https://ops.fhwa.dot.gov/arterial_mgmt/traffic_sig.htm" target="_blank">Learn More</a>
+      </div>
+  
+      <div class="topic-card">
+        <div class="topic-title">Intelligent Transportation Systems</div>
+        <p>Explore advanced technologies for improving transportation safety and efficiency.</p>
+        <a class="learn-btn" href="https://www.its.dot.gov/" target="_blank">Learn More</a>
+      </div>
+  
+      <div class="topic-card">
+        <div class="topic-title">Transportation Economics</div>
+        <p>Master benefit-cost analysis, project evaluation, and transportation financing.</p>
+        <a class="learn-btn" href="https://www.transportation.gov/transportation-policy/transportation-and-economy" target="_blank">Learn More</a>
+      </div>
+  
+      <div class="topic-card">
+        <div class="topic-title">Airport Planning & Design</div>
+        <p>Learn techniques for airport layout, airside and landside facilities design.</p>
+        <a class="learn-btn" href="https://www.faa.gov/airports/resources/advisory_circulars/" target="_blank">Learn More</a>
+      </div>
+  
+      <div class="topic-card">
+        <div class="topic-title">Sustainable Transportation</div>
+        <p>Study environmentally friendly transportation systems and green infrastructure.</p>
+        <a class="learn-btn" href="https://www.transportation.gov/sustainability" target="_blank">Learn More</a>
+      </div>
+  
+      <div class="topic-card">
+        <div class="topic-title">Transportation Data Analysis</div>
+        <p>Understand statistical methods, big data applications, and transportation modeling.</p>
+        <a class="learn-btn" href="https://www.bts.gov/learn-about-bts-and-our-work" target="_blank">Learn More</a>
+      </div>
+  
+      <div class="topic-card">
+        <div class="topic-title">Complete Streets</div>
+        <p>Explore design approaches that accommodate all road users safely and efficiently.</p>
+        <a class="learn-btn" href="https://highways.dot.gov/complete-streets" target="_blank">Learn More</a>
+      </div>
+  
+      <div class="topic-card">
+        <div class="topic-title">Freight Transportation</div>
+        <p>Learn about logistics, supply chain management, and freight planning.</p>
+        <a class="learn-btn" href="https://ops.fhwa.dot.gov/freight/" target="_blank">Learn More</a>
+      </div>
+  
+      <div class="topic-card">
+        <div class="topic-title">Transportation Equity</div>
+        <p>Study accessibility, environmental justice, and inclusive transportation planning.</p>
+        <a class="learn-btn" href="https://www.transportation.gov/equity-Justice40" target="_blank">Learn More</a>
+      </div>
+    </div>
+  </section>
+  
+
+  <section class="practice-section">
+    <h2 class="section-title">Software & Analysis Tools</h2>
+    <div class="practice-grid">
+      <div class="practice-card">
+        <h3>Synchro/SimTraffic</h3>
+        <p>Industry-standard software for traffic signal timing optimization and simulation.</p>
+        <a href="https://www.trafficware.com/synchro.html" target="_blank" class="learn-btn">Explore Tool</a>
+      </div>
+
+      <div class="practice-card">
+        <h3>VISSIM</h3>
+        <p>Microscopic multi-modal traffic flow simulation software.</p>
+        <a href="https://www.ptvgroup.com/en/solutions/products/ptv-vissim/" target="_blank" class="learn-btn">Explore Tool</a>
+      </div>
+
+      <div class="practice-card">
+        <h3>TransCAD</h3>
+        <p>Comprehensive transportation planning software for travel demand modeling.</p>
+        <a href="https://www.caliper.com/tcovu.htm" target="_blank" class="learn-btn">Explore Tool</a>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2 class="section-title">Learning Resources</h2>
+    <div class="topics-grid">
+      <div class="topic-card">
+        <div class="topic-title">Online Courses</div>
+        <ul class="resource-list">
+          <li><a style="color: white; text-decoration: none;" href="https://www.edx.org/learn/transportation" target="_blank"><i class="fas fa-graduation-cap"></i> edX Transportation Engineering Courses</a></li><br>
+          <li><a style="color: white; text-decoration: none;" href="https://www.coursera.org/courses?query=transportation%20engineering" target="_blank"><i class="fas fa-graduation-cap"></i> Coursera Transportation Engineering</a></li><br>
+          <li><a style="color: white; text-decoration: none;" href="https://www.nhi.fhwa.dot.gov/course-search" target="_blank"><i class="fas fa-graduation-cap"></i> National Highway Institute Courses</a></li>
+        </ul>
+      </div>
+
+      <div class="topic-card">
+        <div class="topic-title">Technical Resources</div>
+        <ul class="resource-list">
+          <li><a style="color: white; text-decoration: none;" href="https://www.trb.org/Publications/PubsOnlinePublicationsforProject.aspx" target="_blank"><i class="fas fa-file-alt"></i> TRB Publications</a></li><br>
+          <li><a style="color: white; text-decoration: none;" href="https://highways.dot.gov/research/publications" target="_blank"><i class="fas fa-file-alt"></i> FHWA Research Publications</a></li><br>
+          <li><a style="color: white; text-decoration: none;" href="https://www.sciencedirect.com/journal/transportation-research-part-a-policy-and-practice" target="_blank"><i class="fas fa-file-alt"></i> Transportation Research Journals</a></li>
+        </ul>
+      </div>
+
+      <div class="topic-card">
+        <div class="topic-title">Industry Publications</div>
+        <ul class="resource-list">
+          <li><a style="color: white; text-decoration: none;" href="https://www.ite.org/publications/ite-journal/" target="_blank"><i class="fas fa-newspaper"></i> ITE Journal</a></li><br>
+          <li><a style="color: white; text-decoration: none;" href="https://www.asce.org/publications-and-news/civil-engineering-source/transportation" target="_blank"><i class="fas fa-newspaper"></i> ASCE Transportation News</a></li><br>
+          <li><a style="color: white; text-decoration: none;" href="https://www.ttnews.com/" target="_blank"><i class="fas fa-newspaper"></i> Transport Topics</a></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <p class="quote">"Transportation is the center of the world! It is the glue of our daily lives." - Robin Chase, Co-founder of Zipcar</p>
+  </footer>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // Smooth scrolling for anchor links
+      document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+          e.preventDefault();
+
+          const targetId = this.getAttribute('href');
+          if (targetId === '#') return;
+
+          const targetElement = document.querySelector(targetId);
+          if (targetElement) {
+            window.scrollTo({
+              top: targetElement.offsetTop - 70,
+              behavior: 'smooth'
+            });
+          }
+        });
+      });
+    });
+  </script>
+</body>
+
+</html>
