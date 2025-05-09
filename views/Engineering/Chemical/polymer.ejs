@@ -1,0 +1,1265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Polymer Engineering - Materials Engineering Specialization</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* Base Styles */
+        :root {
+            --primary-color: #0b2c25;        /* Deep teal */
+            --primary-light: #1c4a42;        /* Lighter teal */
+            --secondary-color: #1e1f2a;      /* Dark navy */
+            --accent-color: #00a67c;         /* Bright teal */
+            --accent-light: #73d4b3;         /* Light teal */
+            --text-color: #e6e6e6;           /* Off-white for readability */
+            --light-text: #ffffff;           /* Pure white */
+            --dark-text: #b8b8b8;            /* Light gray for contrast */
+            --light-bg: #1d2d28;             /* Dark teal background */
+            --dark-bg: #202537;              /* Darker navy background */
+            --card-bg: #284345;              /* Dark teal card surface */
+            --card-shadow: rgba(0, 0, 0, 0.5); /* Subtle shadow */
+            --border-radius: 10px;
+            --box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+            --transition: all 0.3s ease-in-out;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--light-bg);
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        a {
+            text-decoration: none;
+            color: var(--accent-light);
+            transition: var(--transition);
+        }
+
+        a:hover {
+            color: var(--accent-color);
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            border-radius: var(--border-radius);
+        }
+
+        .bg-dark {
+            background-color: var(--dark-bg);
+        }
+
+        /* Navbar */
+        .navbar {
+            background-color: var(--primary-color);
+            color: var(--light-text);
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: var(--box-shadow);
+        }
+
+        .navbar .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--light-text);
+        }
+
+        .back-button a {
+            color: var(--light-text);
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .back-button a:hover {
+            color: var(--accent-light);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            color: var(--light-text);
+            text-align: center;
+            padding: 6rem 0;
+            position: relative;
+        }
+
+        .hero .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0.2;
+            mix-blend-mode: overlay;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        /* Section Styles */
+        .section {
+            padding: 5rem 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+            color: var(--accent-light);
+            position: relative;
+            font-size: 2rem;
+        }
+
+        .section-title::after {
+            content: "";
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background-color: var(--accent-light);
+            border-radius: 2px;
+        }
+
+        .section-intro {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto 2.5rem;
+            font-size: 1.1rem;
+        }
+
+        /* Content Wrapper */
+        .content-wrapper {
+            display: flex;
+            gap: 2.5rem;
+            align-items: center;
+        }
+
+        .text-content {
+            flex: 1;
+        }
+
+        .text-content p {
+            margin-bottom: 1.25rem;
+            font-size: 1.05rem;
+        }
+
+        .image-content {
+            flex: 1;
+            box-shadow: var(--box-shadow);
+            border-radius: var(--border-radius);
+            overflow: hidden;
+        }
+
+        /* Cards Grid */
+        .cards-grid {
+            display: grid;
+            gap: 1.5rem;
+        }
+
+        .two-columns {
+            grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+        }
+
+        .three-columns {
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        }
+
+        .four-columns {
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        }
+
+        /* Card Styles */
+        .card {
+            background-color: var(--card-bg);
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--box-shadow);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .card:hover {
+            border-color: var(--accent-light);
+        }
+
+        .card-header {
+            padding: 1.25rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .card-header h3 {
+            color: var(--accent-light);
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .card-header h3 i {
+            color: var(--accent-color);
+        }
+
+        .card-header p {
+            color: var(--dark-text);
+            font-size: 0.9rem;
+        }
+
+        .card-content {
+            padding: 1.25rem;
+        }
+
+        /* Project Cards */
+        .project-card .card-image {
+            height: 180px;
+            overflow: hidden;
+        }
+
+        .project-card .card-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* Career List */
+        .career-list {
+            list-style: none;
+        }
+
+        .career-list li {
+            display: flex;
+            justify-content: space-between;
+            padding: 0.5rem 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .career-list li:last-child {
+            border-bottom: none;
+        }
+
+        .badge {
+            background-color: rgba(255, 255, 255, 0.15);
+            color: var(--light-text);
+            padding: 0.25rem 0.5rem;
+            border-radius: 9999px;
+            font-size: 0.75rem;
+            font-weight: 600;
+        }
+
+        .badge.top {
+            background-color: var(--accent-color);
+            color: var(--dark-bg);
+        }
+
+        .badge.program {
+            background-color: var(--primary-light);
+            color: var(--light-text);
+        }
+
+        /* Skills List */
+        .skills-list {
+            list-style: none;
+        }
+
+        .skills-list li {
+            padding: 0.5rem 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .skills-list li:last-child {
+            border-bottom: none;
+        }
+
+        .skill-name {
+            font-weight: 600;
+            display: block;
+            margin-bottom: 0.25rem;
+            color: var(--accent-light);
+        }
+
+        .skill-desc {
+            font-size: 0.9rem;
+            color: var(--dark-text);
+        }
+
+        /* Accordion */
+        .accordion {
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            background-color: var(--card-bg);
+        }
+
+        .accordion-item {
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .accordion-item:last-child {
+            border-bottom: none;
+        }
+
+        .accordion-header {
+            padding: 1rem;
+            cursor: pointer;
+            font-weight: 600;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: var(--accent-light);
+        }
+
+        .accordion-header::after {
+            content: '\f078';
+            font-family: 'Font Awesome 5 Free';
+            font-weight: 900;
+        }
+
+        .accordion-content {
+            padding: 0 1rem;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+        }
+
+        .accordion-content p {
+            padding-bottom: 1rem;
+        }
+
+        .accordion-item.active .accordion-header {
+            background-color: rgba(255, 255, 255, 0.05);
+            color: var(--accent-color);
+        }
+
+        .accordion-item.active .accordion-content {
+            max-height: 500px;
+        }
+
+        /* Course List */
+        .course-list {
+            list-style: none;
+            margin-top: 1rem;
+        }
+
+        .course-item {
+            background-color: rgba(255, 255, 255, 0.05);
+            border-radius: var(--border-radius);
+            padding: 1rem;
+            margin-bottom: 1rem;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .course-item:hover {
+            border-color: var(--accent-light);
+        }
+
+        .course-title {
+            font-weight: 600;
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+            color: var(--accent-light);
+        }
+
+        .course-desc {
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .course-meta {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.8rem;
+            color: var(--dark-text);
+        }
+
+        /* Tools Grid */
+        .tools-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .tool-card {
+            background-color: var(--card-bg);
+            border-radius: var(--border-radius);
+            padding: 1.5rem 1rem;
+            text-align: center;
+            box-shadow: var(--box-shadow);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .tool-card:hover {
+            border-color: var(--accent-light);
+        }
+
+        .tool-card i {
+            font-size: 2.5rem;
+            color: var(--accent-light);
+            margin-bottom: 1rem;
+        }
+
+        .tool-card h3 {
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+            color: var(--accent-light);
+        }
+
+        .tool-card p {
+            font-size: 0.9rem;
+            color: var(--dark-text);
+        }
+
+        /* Footer */
+        .footer {
+            background-color: var(--dark-bg);
+            color: var(--light-text);
+            padding: 4rem 0 1rem;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2.5rem;
+            margin-bottom: 2.5rem;
+        }
+
+        .footer-logo h2 {
+            margin-bottom: 1rem;
+        }
+
+        .footer-links h3,
+        .footer-resources h3 {
+            margin-bottom: 1.25rem;
+            position: relative;
+            padding-bottom: 0.5rem;
+            display: inline-block;
+        }
+
+        .footer-links h3::after,
+        .footer-resources h3::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background-color: var(--accent-light);
+        }
+
+        .footer-links ul,
+        .footer-resources ul {
+            list-style-type: none;
+        }
+
+        .footer-links li,
+        .footer-resources li {
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-links a,
+        .footer-resources a {
+            color: var(--dark-text);
+        }
+
+        .footer-links a:hover,
+        .footer-resources a:hover {
+            color: var(--accent-light);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 1.25rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .content-wrapper {
+                flex-direction: column;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .two-columns {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .section {
+                padding: 3.5rem 0;
+            }
+
+            .hero {
+                padding: 5rem 0;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .section-title {
+                font-size: 1.75rem;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .navbar {
+                padding: 0.75rem 0;
+            }
+
+            .logo {
+                font-size: 1.2rem;
+            }
+
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+
+            .section-title {
+                font-size: 1.5rem;
+            }
+
+            .tools-grid {
+                grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="logo">GoFarAsYouCan</div>
+            <div class="back-button">
+                <a href="/Engineering/Chemical/chemical.ejs"><i class="fas fa-arrow-left"></i> Go Back</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="hero">
+        <div class="overlay"></div>
+        <div class="container">
+            <h1>Polymer Engineering</h1>
+            <p>Explore the science and technology behind designing, processing, and applying polymeric materials</p>
+        </div>
+    </header>
+
+    <!-- About Section -->
+    <section class="section" id="about">
+        <div class="container">
+            <h2 class="section-title">What is Polymer Engineering?</h2>
+            <div class="content-wrapper">
+                <div class="text-content">
+                    <p>Polymer engineering is a multidisciplinary field that focuses on the design, synthesis, processing, and application of polymeric materials. It combines principles of chemistry, materials science, and engineering to develop and optimize polymers with specific properties for various applications ranging from everyday consumer products to advanced medical devices and aerospace components.</p>
+                    <p>As a polymer engineer, you'll work on creating new polymeric materials, improving existing ones, and developing efficient processing methods. You'll apply your knowledge of polymer structure-property relationships to design materials with tailored characteristics such as strength, flexibility, durability, and environmental resistance. This field requires a deep understanding of molecular structures and how they influence macroscopic properties.</p>
+                    <p>With growing concerns about sustainability, polymer engineers are increasingly focused on developing biodegradable polymers, recycling technologies, and bio-based alternatives to petroleum-derived plastics, making this an exciting and evolving career path with significant environmental impact.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Key Areas Section -->
+    <section class="section bg-dark" id="key-areas">
+        <div class="container">
+            <h2 class="section-title">Key Areas of Study</h2>
+            <p class="section-intro">Polymer Engineering encompasses critical disciplines for developing and processing advanced polymeric materials:</p>
+            
+            <div class="cards-grid three-columns">
+                <div class="card">
+                    <div class="card-header">
+                        <h3><i class="fas fa-atom"></i> Polymer Chemistry</h3>
+                    </div>
+                    <div class="card-content">
+                        <p>Synthesis and characterization of polymers at the molecular level.</p>
+                        <ul class="skills-list">
+                            <li>
+                                <span class="skill-name">Polymerization Methods</span>
+                                <p class="skill-desc">Addition, condensation reactions</p>
+                            </li>
+                            <li>
+                                <span class="skill-name">Polymer Structure</span>
+                                <p class="skill-desc">Chain architecture, molecular weight</p>
+                            </li>
+                            <li>
+                                <span class="skill-name">Characterization Techniques</span>
+                                <p class="skill-desc">Spectroscopy, chromatography</p>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <h3><i class="fas fa-cogs"></i> Polymer Processing</h3>
+                    </div>
+                    <div class="card-content">
+                        <p>Methods and technologies for converting raw polymers into finished products.</p>
+                        <ul class="skills-list">
+                            <li>
+                                <span class="skill-name">Extrusion</span>
+                                <p class="skill-desc">Film, sheet, profile production</p>
+                            </li>
+                            <li>
+                                <span class="skill-name">Injection Molding</span>
+                                <p class="skill-desc">Complex part manufacturing</p>
+                            </li>
+                            <li>
+                                <span class="skill-name">Additive Manufacturing</span>
+                                <p class="skill-desc">3D printing with polymers</p>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <h3><i class="fas fa-microscope"></i> Polymer Physics</h3>
+                    </div>
+                    <div class="card-content">
+                        <p>Study of physical properties and behavior of polymeric materials.</p>
+                        <ul class="skills-list">
+                            <li>
+                                <span class="skill-name">Viscoelasticity</span>
+                                <p class="skill-desc">Creep, stress relaxation</p>
+                            </li>
+                            <li>
+                                <span class="skill-name">Thermal Properties</span>
+                                <p class="skill-desc">Glass transition, crystallinity</p>
+                            </li>
+                            <li>
+                                <span class="skill-name">Mechanical Behavior</span>
+                                <p class="skill-desc">Strength, toughness, elasticity</p>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="cards-grid three-columns" style="margin-top: 1.5rem;">
+                <div class="card">
+                    <div class="card-header">
+                        <h3><i class="fas fa-flask"></i> Polymer Composites</h3>
+                    </div>
+                    <div class="card-content">
+                        <p>Development and characterization of polymer-based composite materials.</p>
+                        <ul class="skills-list">
+                            <li>
+                                <span class="skill-name">Fiber Reinforcement</span>
+                                <p class="skill-desc">Carbon, glass, natural fibers</p>
+                            </li>
+                            <li>
+                                <span class="skill-name">Nanocomposites</span>
+                                <p class="skill-desc">Nanoclays, carbon nanotubes</p>
+                            </li>
+                            <li>
+                                <span class="skill-name">Interface Engineering</span>
+                                <p class="skill-desc">Adhesion, compatibility</p>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <h3><i class="fas fa-recycle"></i> Sustainable Polymers</h3>
+                    </div>
+                    <div class="card-content">
+                        <p>Development of environmentally friendly polymers and recycling technologies.</p>
+                        <ul class="skills-list">
+                            <li>
+                                <span class="skill-name">Biodegradable Polymers</span>
+                                <p class="skill-desc">PLA, PHA, starch-based</p>
+                            </li>
+                            <li>
+                                <span class="skill-name">Recycling Technologies</span>
+                                <p class="skill-desc">Mechanical, chemical recycling</p>
+                            </li>
+                            <li>
+                                <span class="skill-name">Bio-based Polymers</span>
+                                <p class="skill-desc">Cellulose, lignin derivatives</p>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <h3><i class="fas fa-laptop-code"></i> Polymer Modeling</h3>
+                    </div>
+                    <div class="card-content">
+                        <p>Computational methods for predicting polymer properties and behavior.</p>
+                        <ul class="skills-list">
+                            <li>
+                                <span class="skill-name">Molecular Dynamics</span>
+                                <p class="skill-desc">Chain conformation, diffusion</p>
+                            </li>
+                            <li>
+                                <span class="skill-name">Process Simulation</span>
+                                <p class="skill-desc">Mold filling, extrusion</p>
+                            </li>
+                            <li>
+                                <span class="skill-name">Structure-Property Modeling</span>
+                                <p class="skill-desc">QSPR, machine learning</p>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Career Opportunities Section -->
+    <section class="section" id="careers">
+        <div class="container">
+            <h2 class="section-title">Career Opportunities</h2>
+            <p class="section-intro">Polymer Engineering offers diverse roles across multiple industries with opportunities in emerging sustainable technologies:</p>
+            
+            <div class="cards-grid three-columns">
+                <div class="card">
+                    <div class="card-header">
+                        <h3><i class="fas fa-briefcase"></i> Industry Roles</h3>
+                    </div>
+                    <div class="card-content">
+                        <ul class="career-list">
+                            <li>
+                                <span>R&D Engineer</span>
+                                <span class="badge">₹8-25 LPA</span>
+                            </li>
+                            <li>
+                                <span>Process Engineer</span>
+                                <span class="badge">₹7-20 LPA</span>
+                            </li>
+                            <li>
+                                <span>Product Development Engineer</span>
+                                <span class="badge">₹10-30 LPA</span>
+                            </li>
+                            <li>
+                                <span>Quality Control Engineer</span>
+                                <span class="badge">₹6-18 LPA</span>
+                            </li>
+                            <li>
+                                <span>Applications Engineer</span>
+                                <span class="badge">₹8-22 LPA</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <h3><i class="fas fa-building"></i> Top Employers</h3>
+                    </div>
+                    <div class="card-content">
+                        <ul class="career-list">
+                            <li>
+                                <span>Polymer Manufacturers</span>
+                                <span class="badge top">BASF, Dow</span>
+                            </li>
+                            <li>
+                                <span>Consumer Products</span>
+                                <span class="badge top">P&G, Unilever</span>
+                            </li>
+                            <li>
+                                <span>Automotive</span>
+                                <span class="badge">Tata, Mahindra</span>
+                            </li>
+                            <li>
+                                <span>Medical Devices</span>
+                                <span class="badge">Medtronic, Boston Scientific</span>
+                            </li>
+                            <li>
+                                <span>Packaging Industry</span>
+                                <span class="badge">Amcor, Berry Global</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <h3><i class="fas fa-chart-line"></i> Growth Areas</h3>
+                    </div>
+                    <div class="card-content">
+                        <p>Polymer engineering is evolving with new opportunities in sustainable materials:</p>
+                        <ul>
+                            <li>• Biodegradable Polymers</li>
+                            <li>• Advanced Polymer Composites</li>
+                            <li>• Smart and Responsive Polymers</li>
+                            <li>• Polymer-based Medical Devices</li>
+                            <li>• Polymer Recycling Technologies</li>
+                            <li>• 3D Printing Materials</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Essential Skills Section -->
+    <section class="section bg-dark" id="skills">
+        <div class="container">
+            <h2 class="section-title">Essential Skills & Tools</h2>
+            <p class="section-intro">To succeed in Polymer Engineering, you need technical expertise, software proficiency, and professional skills:</p>
+            
+            <div class="cards-grid three-columns">
+                <div class="card">
+                    <div class="card-header">
+                        <h3><i class="fas fa-book-open"></i> Technical Knowledge</h3>
+                    </div>
+                    <div class="card-content">
+                        <ul class="skills-list">
+                            <li>
+                                <span class="skill-name">Organic Chemistry</span>
+                                <p class="skill-desc">Reaction mechanisms, functional groups</p>
+                            </li>
+                            <li>
+                                <span class="skill-name">Materials Science</span>
+                                <p class="skill-desc">Structure-property relationships</p>
+                            </li>
+                            <li>
+                                <span class="skill-name">Rheology</span>
+                                <p class="skill-desc">Flow behavior, viscoelasticity</p>
+                            </li>
+                            <li>
+                                <span class="skill-name">Thermal Analysis</span>
+                                <p class="skill-desc">DSC, TGA techniques</p>
+                            </li>
+                            <li>
+                                <span class="skill-name">Mechanical Testing</span>
+                                <p class="skill-desc">Tensile, impact, fatigue</p>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <h3><i class="fas fa-laptop-code"></i> Software & Tools</h3>
+                    </div>
+                    <div class="card-content">
+                        <p>Proficiency in industry-standard tools is essential:</p>
+                        <div class="tools-grid">
+                            <div class="tool-card">
+                                <i class="fas fa-cogs"></i>
+                                <h3>CAD/CAM</h3>
+                                <p>SolidWorks, AutoCAD</p>
+                            </div>
+                            <div class="tool-card">
+                                <i class="fas fa-chart-bar"></i>
+                                <h3>Simulation</h3>
+                                <p>ANSYS, Moldflow</p>
+                            </div>
+                            <div class="tool-card">
+                                <i class="fas fa-atom"></i>
+                                <h3>Molecular Modeling</h3>
+                                <p>LAMMPS, Materials Studio</p>
+                            </div>
+                            <div class="tool-card">
+                                <i class="fas fa-microscope"></i>
+                                <h3>Analysis Software</h3>
+                                <p>Origin, MATLAB</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <h3><i class="fas fa-user-tie"></i> Professional Skills</h3>
+                    </div>
+                    <div class="card-content">
+                        <ul class="skills-list">
+                            <li>
+                                <span class="skill-name">Problem Solving</span>
+                                <p class="skill-desc">Material selection, failure analysis</p>
+                            </li>
+                            <li>
+                                <span class="skill-name">Experimental Design</span>
+                                <p class="skill-desc">DOE, statistical analysis</p>
+                            </li>
+                            <li>
+                                <span class="skill-name">Project Management</span>
+                                <p class="skill-desc">Timeline, resource planning</p>
+                            </li>
+                            <li>
+                                <span class="skill-name">Technical Communication</span>
+                                <p class="skill-desc">Reports, presentations</p>
+                            </li>
+                            <li>
+                                <span class="skill-name">Sustainability Awareness</span>
+                                <p class="skill-desc">Life cycle assessment, eco-design</p>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Courses Section -->
+    <section class="section" id="courses">
+        <div class="container">
+            <h2 class="section-title">Recommended Courses</h2>
+            <p class="section-intro">Enhance your expertise in Polymer Engineering with these specialized courses:</p>
+            
+            <div class="accordion">
+                <div class="accordion-item">
+                    <div class="accordion-header">Core Polymer Courses</div>
+                    <div class="accordion-content">
+                        <ul class="course-list">
+                            <li class="course-item">
+                                <div class="course-title">Polymer Chemistry and Synthesis</div>
+                                <div class="course-desc">Polymerization mechanisms, kinetics, and polymer structure control.</div>
+                                <div class="course-meta">
+                                    <span>Duration: 12 weeks</span>
+                                    <span>Level: Intermediate</span>
+                                </div>
+                            </li>
+                            <li class="course-item">
+                                <div class="course-title">Polymer Physics</div>
+                                <div class="course-desc">Viscoelasticity, thermal transitions, and mechanical behavior of polymers.</div>
+                                <div class="course-meta">
+                                    <span>Duration: 10 weeks</span>
+                                    <span>Level: Intermediate</span>
+                                </div>
+                            </li>
+                            <li class="course-item">
+                                <div class="course-title">Polymer Processing</div>
+                                <div class="course-desc">Extrusion, injection molding, and other polymer manufacturing techniques.</div>
+                                <div class="course-meta">
+                                    <span>Duration: 8 weeks</span>
+                                    <span>Level: Intermediate</span>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="accordion-item">
+                    <div class="accordion-header">Application-Specific Courses</div>
+                    <div class="accordion-content">
+                        <ul class="course-list">
+                            <li class="course-item">
+                                <div class="course-title">Polymer Composites</div>
+                                <div class="course-desc">Design, manufacturing, and characterization of fiber-reinforced polymer composites.</div>
+                                <div class="course-meta">
+                                    <span>Duration: 10 weeks</span>
+                                    <span>Level: Advanced</span>
+                                </div>
+                            </li>
+                            <li class="course-item">
+                                <div class="course-title">Polymer Characterization</div>
+                                <div class="course-desc">Analytical techniques for determining polymer structure and properties.</div>
+                                <div class="course-meta">
+                                    <span>Duration: 8 weeks</span>
+                                    <span>Level: Intermediate</span>
+                                </div>
+                            </li>
+                            <li class="course-item">
+                                <div class="course-title">Polymer Additives and Formulation</div>
+                                <div class="course-desc">Selection and incorporation of additives to enhance polymer performance.</div>
+                                <div class="course-meta">
+                                    <span>Duration: 6 weeks</span>
+                                    <span>Level: Advanced</span>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="accordion-item">
+                    <div class="accordion-header">Advanced Topics</div>
+                    <div class="accordion-content">
+                        <ul class="course-list">
+                            <li class="course-item">
+                                <div class="course-title">Sustainable Polymers</div>
+                                <div class="course-desc">Biodegradable polymers, recycling technologies, and bio-based materials.</div>
+                                <div class="course-meta">
+                                    <span>Duration: 8 weeks</span>
+                                    <span>Level: Advanced</span>
+                                </div>
+                            </li>
+                            <li class="course-item">
+                                <div class="course-title">Smart and Responsive Polymers</div>
+                                <div class="course-desc">Stimuli-responsive polymers for sensors, actuators, and drug delivery.</div>
+                                <div class="course-meta">
+                                    <span>Duration: 10 weeks</span>
+                                    <span>Level: Advanced</span>
+                                </div>
+                            </li>
+                            <li class="course-item">
+                                <div class="course-title">Polymer Modeling and Simulation</div>
+                                <div class="course-desc">Computational methods for predicting polymer behavior and properties.</div>
+                                <div class="course-meta">
+                                    <span>Duration: 10 weeks</span>
+                                    <span>Level: Advanced</span>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section class="section bg-dark" id="projects">
+        <div class="container">
+            <h2 class="section-title">Hands-on Projects</h2>
+            <p class="section-intro">Build your portfolio with these practical polymer engineering projects to demonstrate your skills:</p>
+            
+            <div class="cards-grid three-columns">
+                <div class="card project-card">
+                    <div class="card-image">
+                        <img src="https://onlinelibrary.wiley.com/cms/asset/aff6cb97-e56f-4330-a1dd-ac346dbeec71/app45726-toc-0001-m.jpg?trick=1741585335036" alt="Biodegradable Polymer">
+                    </div>
+                    <div class="card-header">
+                        <h3><i class="fas fa-recycle"></i> Biodegradable Polymer Blend</h3>
+                    </div>
+                    <div class="card-content">
+                        <p>Develop a biodegradable polymer blend with optimized mechanical properties for packaging applications.</p>
+                        <p><strong>Skills:</strong> Polymer blending, characterization, biodegradation testing</p>
+                    </div>
+                </div>
+
+                <div class="card project-card">
+                    <div class="card-image">
+                        <img src="https://www.amolen.com/cdn/shop/files/7_5525d264-b5c4-4b45-9e7b-4dc09d7ff98f.png?v=1727479268&width=1024" alt="3D Printing">
+                    </div>
+                    <div class="card-header">
+                        <h3><i class="fas fa-print"></i> Custom 3D Printing Filament</h3>
+                    </div>
+                    <div class="card-content">
+                        <p>Design and formulate a specialized 3D printing filament with enhanced properties for specific applications.</p>
+                        <p><strong>Skills:</strong> Extrusion, additive manufacturing, material formulation</p>
+                    </div>
+                </div>
+
+                <div class="card project-card">
+                    <div class="card-image">
+                        <img src="https://ars.els-cdn.com/content/image/1-s2.0-S2352012423004551-gr1.jpg" alt="Composite Material">
+                    </div>
+                    <div class="card-header">
+                        <h3><i class="fas fa-layer-group"></i> Fiber-Reinforced Composite</h3>
+                    </div>
+                    <div class="card-content">
+                        <p>Fabricate and characterize a fiber-reinforced polymer composite with optimized mechanical properties.</p>
+                        <p><strong>Skills:</strong> Composite manufacturing, mechanical testing, microstructural analysis</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="cards-grid three-columns" style="margin-top: 1.5rem;">
+                <div class="card project-card">
+                    <div class="card-image">
+                        <img src="https://d12oja0ew7x0i8.cloudfront.net/images/Article_Images/ImageForArticle_18412(1).jpg" alt="Smart Polymer">
+                    </div>
+                    <div class="card-header">
+                        <h3><i class="fas fa-brain"></i> Smart Polymer Sensor</h3>
+                    </div>
+                    <div class="card-content">
+                        <p>Develop a stimuli-responsive polymer sensor that changes properties in response to environmental conditions.</p>
+                        <p><strong>Skills:</strong> Responsive polymers, sensor design, characterization</p>
+                    </div>
+                </div>
+
+                <div class="card project-card">
+                    <div class="card-image">
+                        <img src="https://zetarmold.com/wp-content/uploads/2023/03/The-basics-of-injection-molding-1.jpg" alt="Polymer Processing">
+                    </div>
+                    <div class="card-header">
+                        <h3><i class="fas fa-cogs"></i> Injection Molding Optimization</h3>
+                    </div>
+                    <div class="card-content">
+                        <p>Optimize injection molding parameters for a complex polymer part using simulation and experimental validation.</p>
+                        <p><strong>Skills:</strong> Process simulation, DOE, quality control</p>
+                    </div>
+                </div>
+
+                <div class="card project-card">
+                    <div class="card-image">
+                        <img src="https://www.shutterstock.com/image-vector/closed-loop-production-system-plastic-260nw-2284294085.jpg" alt="Polymer Recycling">
+                    </div>
+                    <div class="card-header">
+                        <h3><i class="fas fa-sync-alt"></i> Polymer Recycling System</h3>
+                    </div>
+                    <div class="card-content">
+                        <p>Design a process for recycling mixed plastic waste into useful products with acceptable properties.</p>
+                        <p><strong>Skills:</strong> Recycling technology, material recovery, property enhancement</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="section" id="faq">
+        <div class="container">
+            <h2 class="section-title">Frequently Asked Questions</h2>
+            <p class="section-intro">Answers to common questions about pursuing a career in Polymer Engineering:</p>
+            
+            <div class="accordion">
+                <div class="accordion-item active">
+                    <div class="accordion-header">What educational background is needed for polymer engineering?</div>
+                    <div class="accordion-content">
+                        <p>A bachelor's degree in Polymer Engineering, Chemical Engineering, Materials Science, or Chemistry provides a good foundation. Knowledge in organic chemistry, materials science, and processing techniques is essential. Advanced roles in R&D may require a master's or PhD, especially for specialized areas like smart polymers or computational modeling.</p>
+                    </div>
+                </div>
+                
+                <div class="accordion-item">
+                    <div class="accordion-header">How does polymer engineering differ from other engineering fields?</div>
+                    <div class="accordion-content">
+                        <p>Polymer engineering focuses specifically on the development, processing, and application of polymeric materials. Unlike mechanical or civil engineering, it requires deep knowledge of molecular structures and how they influence macroscopic properties. It combines elements of chemistry, materials science, and process engineering with a focus on polymers' unique viscoelastic behavior.</p>
+                    </div>
+                </div>
+                
+                <div class="accordion-item">
+                    <div class="accordion-header">What are the key industries for polymer engineers?</div>
+                    <div class="accordion-content">
+                        <p>Polymer engineers work in diverse industries including plastics manufacturing, consumer products, automotive, packaging, medical devices, electronics, and aerospace. Emerging sectors include sustainable materials, 3D printing, and biomedical applications. Consulting firms and research institutions also hire polymer engineers for specialized projects.</p>
+                    </div>
+                </div>
+                
+                <div class="accordion-item">
+                    <div class="accordion-header">How can I start learning polymer engineering?</div>
+                    <div class="accordion-content">
+                        <p>Begin with courses in organic chemistry, materials science, and polymer fundamentals. Learn software like CAD and simulation tools. Gain hands-on experience through laboratory work with polymer processing and characterization. Join professional societies like SPE (Society of Plastics Engineers) for networking and resources.</p>
+                    </div>
+                </div>
+                
+                <div class="accordion-item">
+                    <div class="accordion-header">What are the career growth prospects?</div>
+                    <div class="accordion-content">
+                        <p>Polymer engineering offers strong career prospects, with roles progressing from process or R&D engineer to senior engineer, technical specialist, or project manager. With experience, you can move into leadership positions or specialized roles in product development, sustainability, or technical sales. The growing focus on sustainable materials and advanced applications creates new opportunities in this evolving field.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <h2>GoFarAsYouCan</h2>
+                    <p>Empowering engineers with comprehensive resources and career guidance.</p>
+                </div>
+                
+                <div class="footer-links">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="#about">About Polymer Engineering</a></li>
+                        <li><a href="#key-areas">Key Areas</a></li>
+                        <li><a href="#careers">Career Opportunities</a></li>
+                        <li><a href="#skills">Essential Skills</a></li>
+                        <li><a href="#courses">Recommended Courses</a></li>
+                        <li><a href="#projects">Hands-on Projects</a></li>
+                        <li><a href="#faq">FAQ</a></li>
+                    </ul>
+                </div>
+                
+                
+            </div>
+            
+            <div class="footer-bottom">
+                <p>© <script>document.write(new Date().getFullYear())</script> GoFarAsYouCan. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Accordion functionality
+        function setupAccordions() {
+            const accordionHeaders = document.querySelectorAll(".accordion-header");
+            
+            accordionHeaders.forEach(header => {
+                header.addEventListener("click", function() {
+                    const accordionItem = this.parentElement;
+                    accordionItem.classList.toggle("active");
+                    
+                    this.classList.toggle("active");
+                    
+                    const content = this.nextElementSibling;
+                    if (accordionItem.classList.contains("active")) {
+                        content.style.maxHeight = content.scrollHeight + "px";
+                    } else {
+                        content.style.maxHeight = 0;
+                    }
+                });
+            });
+        }
+
+        // Smooth scrolling for anchor links
+        function setupSmoothScrolling() {
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+
+                    const targetId = this.getAttribute('href');
+                    if (targetId === "#") return;
+
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        window.scrollTo({
+                            top: targetElement.offsetTop - 80,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+        }
+
+        // Initialize when DOM is loaded
+        document.addEventListener("DOMContentLoaded", function() {
+            setupAccordions();
+            setupSmoothScrolling();
+            
+            // Open the first accordion item by default
+            const firstAccordionItem = document.querySelector(".accordion-item");
+            if (firstAccordionItem) {
+                firstAccordionItem.classList.add("active");
+                const content = firstAccordionItem.querySelector(".accordion-content");
+                content.style.maxHeight = content.scrollHeight + "px";
+                firstAccordionItem.querySelector(".accordion-header").classList.add("active");
+            }
+        });
+    </script>
+</body>
+</html>

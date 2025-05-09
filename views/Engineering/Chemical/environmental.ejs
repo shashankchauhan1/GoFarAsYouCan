@@ -1,0 +1,1269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Environmental Engineering - Sustainable Engineering Specialization</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* Base Styles */
+        :root {
+            --primary-color: #1b4332;        /* Deep forest green */
+            --primary-light: #2d6a4f;        /* Medium green */
+            --secondary-color: #1a3a32;      /* Dark green */
+            --accent-color: #52b788;         /* Bright green */
+            --accent-light: #95d5b2;         /* Light green */
+            --text-color: #f1f8f5;           /* Off-white with green tint */
+            --light-text: #ffffff;           /* Pure white */
+            --dark-text: #b7c4c0;            /* Light gray with green tint */
+            --light-bg: #1e352f;             /* Dark green background */
+            --dark-bg: #081c15;              /* Darker green background */
+            --card-bg: #2b4c3f;              /* Medium-dark green card surface */
+            --card-shadow: rgba(0, 0, 0, 0.5); /* Subtle shadow */
+            --border-radius: 10px;
+            --box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+            --transition: all 0.3s ease-in-out;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--light-bg);
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        a {
+            text-decoration: none;
+            color: var(--accent-light);
+            transition: var(--transition);
+        }
+
+        a:hover {
+            color: var(--accent-color);
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            border-radius: var(--border-radius);
+        }
+
+        .bg-dark {
+            background-color: var(--dark-bg);
+        }
+
+        /* Navbar */
+        .navbar {
+            background-color: var(--primary-color);
+            color: var(--light-text);
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: var(--box-shadow);
+        }
+
+        .navbar .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--light-text);
+        }
+
+        .back-button a {
+            color: var(--light-text);
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .back-button a:hover {
+            color: var(--accent-light);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            color: var(--light-text);
+            text-align: center;
+            padding: 6rem 0;
+            position: relative;
+        }
+
+        .hero .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0.2;
+            mix-blend-mode: overlay;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        /* Section Styles */
+        .section {
+            padding: 5rem 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+            color: var(--accent-light);
+            position: relative;
+            font-size: 2rem;
+        }
+
+        .section-title::after {
+            content: "";
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background-color: var(--accent-light);
+            border-radius: 2px;
+        }
+
+        .section-intro {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto 2.5rem;
+            font-size: 1.1rem;
+        }
+
+        /* Content Wrapper */
+        .content-wrapper {
+            display: flex;
+            gap: 2.5rem;
+            align-items: center;
+        }
+
+        .text-content {
+            flex: 1;
+        }
+
+        .text-content p {
+            margin-bottom: 1.25rem;
+            font-size: 1.05rem;
+        }
+
+        .image-content {
+            flex: 1;
+            box-shadow: var(--box-shadow);
+            border-radius: var(--border-radius);
+            overflow: hidden;
+        }
+
+        /* Cards Grid */
+        .cards-grid {
+            display: grid;
+            gap: 1.5rem;
+        }
+
+        .two-columns {
+            grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+        }
+
+        .three-columns {
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        }
+
+        .four-columns {
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        }
+
+        /* Card Styles */
+        .card {
+            background-color: var(--card-bg);
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--box-shadow);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .card:hover {
+            border-color: var(--accent-light);
+        }
+
+        .card-header {
+            padding: 1.25rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .card-header h3 {
+            color: var(--accent-light);
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .card-header h3 i {
+            color: var(--accent-color);
+        }
+
+        .card-header p {
+            color: var(--dark-text);
+            font-size: 0.9rem;
+        }
+
+        .card-content {
+            padding: 1.25rem;
+        }
+
+        /* Project Cards */
+        .project-card .card-image {
+            height: 180px;
+            overflow: hidden;
+        }
+
+        .project-card .card-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* Career List */
+        .career-list {
+            list-style: none;
+        }
+
+        .career-list li {
+            display: flex;
+            justify-content: space-between;
+            padding: 0.5rem 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .career-list li:last-child {
+            border-bottom: none;
+        }
+
+        .badge {
+            background-color: rgba(255, 255, 255, 0.15);
+            color: var(--light-text);
+            padding: 0.25rem 0.5rem;
+            border-radius: 9999px;
+            font-size: 0.75rem;
+            font-weight: 600;
+        }
+
+        .badge.top {
+            background-color: var(--accent-color);
+            color: var(--dark-bg);
+        }
+
+        .badge.program {
+            background-color: var(--primary-light);
+            color: var(--light-text);
+        }
+
+        /* Skills List */
+        .skills-list {
+            list-style: none;
+        }
+
+        .skills-list li {
+            padding: 0.5rem 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .skills-list li:last-child {
+            border-bottom: none;
+        }
+
+        .skill-name {
+            font-weight: 600;
+            display: block;
+            margin-bottom: 0.25rem;
+            color: var(--accent-light);
+        }
+
+        .skill-desc {
+            font-size: 0.9rem;
+            color: var(--dark-text);
+        }
+
+        /* Accordion */
+        .accordion {
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            background-color: var(--card-bg);
+        }
+
+        .accordion-item {
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .accordion-item:last-child {
+            border-bottom: none;
+        }
+
+        .accordion-header {
+            padding: 1rem;
+            cursor: pointer;
+            font-weight: 600;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: var(--accent-light);
+        }
+
+        .accordion-header::after {
+            content: '\f078';
+            font-family: 'Font Awesome 5 Free';
+            font-weight: 900;
+        }
+
+        .accordion-content {
+            padding: 0 1rem;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+        }
+
+        .accordion-content p {
+            padding-bottom: 1rem;
+        }
+
+        .accordion-item.active .accordion-header {
+            background-color: rgba(255, 255, 255, 0.05);
+            color: var(--accent-color);
+        }
+
+        .accordion-item.active .accordion-content {
+            max-height: 500px;
+        }
+
+        /* Course List */
+        .course-list {
+            list-style: none;
+            margin-top: 1rem;
+        }
+
+        .course-item {
+            background-color: rgba(255, 255, 255, 0.05);
+            border-radius: var(--border-radius);
+            padding: 1rem;
+            margin-bottom: 1rem;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .course-item:hover {
+            border-color: var(--accent-light);
+        }
+
+        .course-title {
+            font-weight: 600;
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+            color: var(--accent-light);
+        }
+
+        .course-desc {
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .course-meta {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.8rem;
+            color: var(--dark-text);
+        }
+
+        /* Tools Grid */
+        .tools-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .tool-card {
+            background-color: var(--card-bg);
+            border-radius: var(--border-radius);
+            padding: 1.5rem 1rem;
+            text-align: center;
+            box-shadow: var(--box-shadow);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .tool-card:hover {
+            border-color: var(--accent-light);
+        }
+
+        .tool-card i {
+            font-size: 2.5rem;
+            color: var(--accent-light);
+            margin-bottom: 1rem;
+        }
+
+        .tool-card h3 {
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+            color: var(--accent-light);
+        }
+
+        .tool-card p {
+            font-size: 0.9rem;
+            color: var(--dark-text);
+        }
+
+        /* Footer */
+        .footer {
+            background-color: var(--dark-bg);
+            color: var(--light-text);
+            padding: 4rem 0 1rem;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2.5rem;
+            margin-bottom: 2.5rem;
+        }
+
+        .footer-logo h2 {
+            margin-bottom: 1rem;
+        }
+
+        .footer-links h3,
+        .footer-resources h3 {
+            margin-bottom: 1.25rem;
+            position: relative;
+            padding-bottom: 0.5rem;
+            display: inline-block;
+        }
+
+        .footer-links h3::after,
+        .footer-resources h3::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background-color: var(--accent-light);
+        }
+
+        .footer-links ul,
+        .footer-resources ul {
+            list-style-type: none;
+        }
+
+        .footer-links li,
+        .footer-resources li {
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-links a,
+        .footer-resources a {
+            color: var(--dark-text);
+        }
+
+        .footer-links a:hover,
+        .footer-resources a:hover {
+            color: var(--accent-light);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 1.25rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .content-wrapper {
+                flex-direction: column;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .two-columns {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .section {
+                padding: 3.5rem 0;
+            }
+
+            .hero {
+                padding: 5rem 0;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .section-title {
+                font-size: 1.75rem;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .navbar {
+                padding: 0.75rem 0;
+            }
+
+            .logo {
+                font-size: 1.2rem;
+            }
+
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+
+            .section-title {
+                font-size: 1.5rem;
+            }
+
+            .tools-grid {
+                grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="logo">GoFarAsYouCan</div>
+            <div class="back-button">
+                <a href="/Engineering/Chemical/chemical.ejs"><i class="fas fa-arrow-left"></i> Go Back</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="hero">
+        <div class="overlay"></div>
+        <div class="container">
+            <h1>Environmental Engineering</h1>
+            <p>Designing sustainable solutions to protect our environment and improve quality of life</p>
+        </div>
+    </header>
+
+    <!-- About Section -->
+    <section class="section" id="about">
+        <div class="container">
+            <h2 class="section-title">What is Environmental Engineering?</h2>
+            <div class="content-wrapper">
+                <div class="text-content">
+                    <p>Environmental Engineering is a discipline that applies scientific and engineering principles to protect human health and the environment. It focuses on developing solutions for critical challenges such as clean water access, air pollution control, waste management, and ecosystem restoration while promoting sustainable development.</p>
+                    <p>As an environmental engineer, you'll design systems and processes that minimize pollution, conserve resources, and remediate contaminated sites. You'll work at the intersection of multiple disciplines, including civil engineering, chemistry, biology, and public health, to address complex environmental problems. This field requires both technical expertise and an understanding of environmental regulations and policies.</p>
+                    <p>With growing concerns about climate change, resource depletion, and environmental degradation, environmental engineers play a crucial role in creating a sustainable future. The field continues to evolve with innovations in renewable energy, green infrastructure, and circular economy approaches, making this an impactful and dynamic career path.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Key Areas Section -->
+    <section class="section bg-dark" id="key-areas">
+        <div class="container">
+            <h2 class="section-title">Key Areas of Study</h2>
+            <p class="section-intro">Environmental Engineering encompasses critical disciplines for protecting our environment and public health:</p>
+            
+            <div class="cards-grid three-columns">
+                <div class="card">
+                    <div class="card-header">
+                        <h3><i class="fas fa-tint"></i> Water Resources Engineering</h3>
+                    </div>
+                    <div class="card-content">
+                        <p>Management and protection of water resources for sustainable use.</p>
+                        <ul class="skills-list">
+                            <li>
+                                <span class="skill-name">Hydrology</span>
+                                <p class="skill-desc">Water cycle, watershed management</p>
+                            </li>
+                            <li>
+                                <span class="skill-name">Hydraulic Systems</span>
+                                <p class="skill-desc">Flow control, distribution networks</p>
+                            </li>
+                            <li>
+                                <span class="skill-name">Flood Control</span>
+                                <p class="skill-desc">Mitigation strategies, modeling</p>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <h3><i class="fas fa-filter"></i> Water & Wastewater Treatment</h3>
+                    </div>
+                    <div class="card-content">
+                        <p>Design of systems to purify water and treat wastewater for safe disposal or reuse.</p>
+                        <ul class="skills-list">
+                            <li>
+                                <span class="skill-name">Treatment Processes</span>
+                                <p class="skill-desc">Physical, chemical, biological</p>
+                            </li>
+                            <li>
+                                <span class="skill-name">Water Quality</span>
+                                <p class="skill-desc">Testing, standards, monitoring</p>
+                            </li>
+                            <li>
+                                <span class="skill-name">Resource Recovery</span>
+                                <p class="skill-desc">Energy, nutrients, water reuse</p>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <h3><i class="fas fa-wind"></i> Air Quality Management</h3>
+                    </div>
+                    <div class="card-content">
+                        <p>Control and prevention of air pollution from various sources.</p>
+                        <ul class="skills-list">
+                            <li>
+                                <span class="skill-name">Pollution Control</span>
+                                <p class="skill-desc">Emissions reduction, scrubbers</p>
+                            </li>
+                            <li>
+                                <span class="skill-name">Air Dispersion</span>
+                                <p class="skill-desc">Modeling, impact assessment</p>
+                            </li>
+                            <li>
+                                <span class="skill-name">Indoor Air Quality</span>
+                                <p class="skill-desc">Ventilation, contaminant control</p>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="cards-grid three-columns" style="margin-top: 1.5rem;">
+                <div class="card">
+                    <div class="card-header">
+                        <h3><i class="fas fa-trash-alt"></i> Solid & Hazardous Waste</h3>
+                    </div>
+                    <div class="card-content">
+                        <p>Management and treatment of waste materials to minimize environmental impact.</p>
+                        <ul class="skills-list">
+                            <li>
+                                <span class="skill-name">Waste Minimization</span>
+                                <p class="skill-desc">Source reduction, recycling</p>
+                            </li>
+                            <li>
+                                <span class="skill-name">Treatment Technologies</span>
+                                <p class="skill-desc">Incineration, stabilization</p>
+                            </li>
+                            <li>
+                                <span class="skill-name">Landfill Design</span>
+                                <p class="skill-desc">Containment, gas collection</p>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <h3><i class="fas fa-seedling"></i> Environmental Remediation</h3>
+                    </div>
+                    <div class="card-content">
+                        <p>Cleanup and restoration of contaminated sites and ecosystems.</p>
+                        <ul class="skills-list">
+                            <li>
+                                <span class="skill-name">Site Assessment</span>
+                                <p class="skill-desc">Sampling, risk evaluation</p>
+                            </li>
+                            <li>
+                                <span class="skill-name">Soil Remediation</span>
+                                <p class="skill-desc">Bioremediation, thermal treatment</p>
+                            </li>
+                            <li>
+                                <span class="skill-name">Groundwater Cleanup</span>
+                                <p class="skill-desc">Pump and treat, permeable barriers</p>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <h3><i class="fas fa-solar-panel"></i> Sustainable Systems</h3>
+                    </div>
+                    <div class="card-content">
+                        <p>Design of environmentally friendly infrastructure and processes.</p>
+                        <ul class="skills-list">
+                            <li>
+                                <span class="skill-name">Green Infrastructure</span>
+                                <p class="skill-desc">Bioswales, permeable pavements</p>
+                            </li>
+                            <li>
+                                <span class="skill-name">Renewable Energy</span>
+                                <p class="skill-desc">Solar, wind, biomass systems</p>
+                            </li>
+                            <li>
+                                <span class="skill-name">Life Cycle Assessment</span>
+                                <p class="skill-desc">Environmental impact evaluation</p>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Career Opportunities Section -->
+    <section class="section" id="careers">
+        <div class="container">
+            <h2 class="section-title">Career Opportunities</h2>
+            <p class="section-intro">Environmental Engineering offers diverse roles across multiple sectors with growing demand for sustainable solutions:</p>
+            
+            <div class="cards-grid three-columns">
+                <div class="card">
+                    <div class="card-header">
+                        <h3><i class="fas fa-briefcase"></i> Industry Roles</h3>
+                    </div>
+                    <div class="card-content">
+                        <ul class="career-list">
+                            <li>
+                                <span>Water Resources Engineer</span>
+                                <span class="badge">₹6-18 LPA</span>
+                            </li>
+                            <li>
+                                <span>Wastewater Treatment Engineer</span>
+                                <span class="badge">₹7-20 LPA</span>
+                            </li>
+                            <li>
+                                <span>Air Quality Specialist</span>
+                                <span class="badge">₹8-22 LPA</span>
+                            </li>
+                            <li>
+                                <span>Remediation Engineer</span>
+                                <span class="badge">₹8-25 LPA</span>
+                            </li>
+                            <li>
+                                <span>Sustainability Consultant</span>
+                                <span class="badge">₹10-30 LPA</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <h3><i class="fas fa-building"></i> Top Employers</h3>
+                    </div>
+                    <div class="card-content">
+                        <ul class="career-list">
+                            <li>
+                                <span>Engineering Consultancies</span>
+                                <span class="badge top">AECOM, Jacobs</span>
+                            </li>
+                            <li>
+                                <span>Government Agencies</span>
+                                <span class="badge top">CPCB, State PCBs</span>
+                            </li>
+                            <li>
+                                <span>Water Utilities</span>
+                                <span class="badge">Municipal Corporations</span>
+                            </li>
+                            <li>
+                                <span>Industrial Corporations</span>
+                                <span class="badge">Tata, Reliance</span>
+                            </li>
+                            <li>
+                                <span>Research Organizations</span>
+                                <span class="badge">NEERI, TERI</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <h3><i class="fas fa-chart-line"></i> Growth Areas</h3>
+                    </div>
+                    <div class="card-content">
+                        <p>Environmental engineering is expanding with new opportunities in emerging fields:</p>
+                        <ul>
+                            <li>• Climate Change Adaptation</li>
+                            <li>• Circular Economy Solutions</li>
+                            <li>• Smart Water Systems</li>
+                            <li>• Renewable Energy Integration</li>
+                            <li>• Urban Resilience Planning</li>
+                            <li>• Environmental Data Science</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Essential Skills Section -->
+    <section class="section bg-dark" id="skills">
+        <div class="container">
+            <h2 class="section-title">Essential Skills & Tools</h2>
+            <p class="section-intro">To succeed in Environmental Engineering, you need technical expertise, software proficiency, and professional skills:</p>
+            
+            <div class="cards-grid three-columns">
+                <div class="card">
+                    <div class="card-header">
+                        <h3><i class="fas fa-book-open"></i> Technical Knowledge</h3>
+                    </div>
+                    <div class="card-content">
+                        <ul class="skills-list">
+                            <li>
+                                <span class="skill-name">Fluid Mechanics</span>
+                                <p class="skill-desc">Water flow, hydraulics</p>
+                            </li>
+                            <li>
+                                <span class="skill-name">Chemistry</span>
+                                <p class="skill-desc">Water quality, treatment processes</p>
+                            </li>
+                            <li>
+                                <span class="skill-name">Microbiology</span>
+                                <p class="skill-desc">Biological treatment, pathogens</p>
+                            </li>
+                            <li>
+                                <span class="skill-name">Geotechnical Engineering</span>
+                                <p class="skill-desc">Soil properties, containment</p>
+                            </li>
+                            <li>
+                                <span class="skill-name">Ecology</span>
+                                <p class="skill-desc">Ecosystem impacts, restoration</p>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <h3><i class="fas fa-laptop-code"></i> Software & Tools</h3>
+                    </div>
+                    <div class="card-content">
+                        <p>Proficiency in industry-standard tools is essential:</p>
+                        <div class="tools-grid">
+                            <div class="tool-card">
+                                <i class="fas fa-water"></i>
+                                <h3>Hydraulic Modeling</h3>
+                                <p>EPANET, HEC-RAS</p>
+                            </div>
+                            <div class="tool-card">
+                                <i class="fas fa-map-marked-alt"></i>
+                                <h3>GIS</h3>
+                                <p>ArcGIS, QGIS</p>
+                            </div>
+                            <div class="tool-card">
+                                <i class="fas fa-cloud"></i>
+                                <h3>Air Dispersion</h3>
+                                <p>AERMOD, CALPUFF</p>
+                            </div>
+                            <div class="tool-card">
+                                <i class="fas fa-chart-bar"></i>
+                                <h3>Data Analysis</h3>
+                                <p>R, Python, Excel</p>
+                            </div>
+                            <div class="tool-card">
+                                <i class="fas fa-drafting-compass"></i>
+                                <h3>CAD Software</h3>
+                                <p>AutoCAD, Civil 3D</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <h3><i class="fas fa-user-tie"></i> Professional Skills</h3>
+                    </div>
+                    <div class="card-content">
+                        <ul class="skills-list">
+                            <li>
+                                <span class="skill-name">Environmental Regulations</span>
+                                <p class="skill-desc">Compliance, permitting</p>
+                            </li>
+                            <li>
+                                <span class="skill-name">Project Management</span>
+                                <p class="skill-desc">Planning, budgeting, scheduling</p>
+                            </li>
+                            <li>
+                                <span class="skill-name">Risk Assessment</span>
+                                <p class="skill-desc">Hazard identification, mitigation</p>
+                            </li>
+                            <li>
+                                <span class="skill-name">Technical Writing</span>
+                                <p class="skill-desc">Reports, permit applications</p>
+                            </li>
+                            <li>
+                                <span class="skill-name">Stakeholder Engagement</span>
+                                <p class="skill-desc">Public consultation, client relations</p>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Courses Section -->
+    <section class="section" id="courses">
+        <div class="container">
+            <h2 class="section-title">Recommended Courses</h2>
+            <p class="section-intro">Enhance your expertise in Environmental Engineering with these specialized courses:</p>
+            
+            <div class="accordion">
+                <div class="accordion-item">
+                    <div class="accordion-header">Core Environmental Courses</div>
+                    <div class="accordion-content">
+                        <ul class="course-list">
+                            <li class="course-item">
+                                <div class="course-title">Water & Wastewater Engineering</div>
+                                <div class="course-desc">Design of treatment systems, water quality management, and distribution networks.</div>
+                                <div class="course-meta">
+                                    <span>Duration: 12 weeks</span>
+                                    <span>Level: Intermediate</span>
+                                </div>
+                            </li>
+                            <li class="course-item">
+                                <div class="course-title">Air Pollution Control</div>
+                                <div class="course-desc">Emissions control technologies, air quality modeling, and regulatory frameworks.</div>
+                                <div class="course-meta">
+                                    <span>Duration: 10 weeks</span>
+                                    <span>Level: Intermediate</span>
+                                </div>
+                            </li>
+                            <li class="course-item">
+                                <div class="course-title">Solid & Hazardous Waste Management</div>
+                                <div class="course-desc">Waste characterization, treatment technologies, and disposal methods.</div>
+                                <div class="course-meta">
+                                    <span>Duration: 8 weeks</span>
+                                    <span>Level: Intermediate</span>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="accordion-item">
+                    <div class="accordion-header">Application-Specific Courses</div>
+                    <div class="accordion-content">
+                        <ul class="course-list">
+                            <li class="course-item">
+                                <div class="course-title">Environmental Impact Assessment</div>
+                                <div class="course-desc">Methods for evaluating environmental effects of proposed projects and developments.</div>
+                                <div class="course-meta">
+                                    <span>Duration: 8 weeks</span>
+                                    <span>Level: Advanced</span>
+                                </div>
+                            </li>
+                            <li class="course-item">
+                                <div class="course-title">Groundwater Hydrology</div>
+                                <div class="course-desc">Groundwater flow, contaminant transport, and aquifer remediation techniques.</div>
+                                <div class="course-meta">
+                                    <span>Duration: 10 weeks</span>
+                                    <span>Level: Intermediate</span>
+                                </div>
+                            </li>
+                            <li class="course-item">
+                                <div class="course-title">Environmental Remediation</div>
+                                <div class="course-desc">Site assessment, cleanup technologies, and restoration strategies.</div>
+                                <div class="course-meta">
+                                    <span>Duration: 10 weeks</span>
+                                    <span>Level: Advanced</span>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="accordion-item">
+                    <div class="accordion-header">Advanced Topics</div>
+                    <div class="accordion-content">
+                        <ul class="course-list">
+                            <li class="course-item">
+                                <div class="course-title">Climate Change Adaptation</div>
+                                <div class="course-desc">Strategies for designing resilient infrastructure and systems in a changing climate.</div>
+                                <div class="course-meta">
+                                    <span>Duration: 8 weeks</span>
+                                    <span>Level: Advanced</span>
+                                </div>
+                            </li>
+                            <li class="course-item">
+                                <div class="course-title">Green Infrastructure Design</div>
+                                <div class="course-desc">Planning and implementation of nature-based solutions for stormwater management.</div>
+                                <div class="course-meta">
+                                    <span>Duration: 8 weeks</span>
+                                    <span>Level: Advanced</span>
+                                </div>
+                            </li>
+                            <li class="course-item">
+                                <div class="course-title">Environmental Data Science</div>
+                                <div class="course-desc">Application of data analytics and modeling to environmental problems.</div>
+                                <div class="course-meta">
+                                    <span>Duration: 10 weeks</span>
+                                    <span>Level: Advanced</span>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section class="section bg-dark" id="projects">
+        <div class="container">
+            <h2 class="section-title">Hands-on Projects</h2>
+            <p class="section-intro">Build your portfolio with these practical environmental engineering projects to demonstrate your skills:</p>
+            
+            <div class="cards-grid three-columns">
+                <div class="card project-card">
+                    <div class="card-image">
+                        <img src="https://images.unsplash.com/photo-1527100673774-cce25eafaf7f?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Water Treatment">
+                    </div>
+                    <div class="card-header">
+                        <h3><i class="fas fa-tint"></i> Small-Scale Water Treatment System</h3>
+                    </div>
+                    <div class="card-content">
+                        <p>Design and build a prototype water treatment system for removing specific contaminants from drinking water.</p>
+                        <p><strong>Skills:</strong> Treatment process design, water quality testing, prototype development</p>
+                    </div>
+                </div>
+
+                <div class="card project-card">
+                    <div class="card-image">
+                        <img src="https://images.unsplash.com/photo-1611273426858-450d8e3c9fce?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Air Quality">
+                    </div>
+                    <div class="card-header">
+                        <h3><i class="fas fa-wind"></i> Air Quality Monitoring Network</h3>
+                    </div>
+                    <div class="card-content">
+                        <p>Develop a low-cost air quality monitoring system using sensors and data visualization tools.</p>
+                        <p><strong>Skills:</strong> Sensor integration, data analysis, environmental monitoring</p>
+                    </div>
+                </div>
+
+                <div class="card project-card">
+                    <div class="card-image">
+                        <img src="https://images.unsplash.com/photo-1532996122724-e3c354a0b15b?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Waste Management">
+                    </div>
+                    <div class="card-header">
+                        <h3><i class="fas fa-recycle"></i> Waste-to-Resource System</h3>
+                    </div>
+                    <div class="card-content">
+                        <p>Create a process for converting organic waste into valuable products like compost or biogas.</p>
+                        <p><strong>Skills:</strong> Waste characterization, process design, resource recovery</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="cards-grid three-columns" style="margin-top: 1.5rem;">
+                <div class="card project-card">
+                    <div class="card-image">
+                        <img src="https://images.unsplash.com/photo-1621451537084-482c73073a0f?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Green Infrastructure">
+                    </div>
+                    <div class="card-header">
+                        <h3><i class="fas fa-leaf"></i> Green Infrastructure Design</h3>
+                    </div>
+                    <div class="card-content">
+                        <p>Design a bioretention system or rain garden for managing stormwater runoff in an urban area.</p>
+                        <p><strong>Skills:</strong> Hydrologic modeling, green design, landscape integration</p>
+                    </div>
+                </div>
+
+                <div class="card project-card">
+                    <div class="card-image">
+                        <img src="https://images.unsplash.com/photo-1440342359743-84fcb8c21f21?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Watershed Analysis">
+                    </div>
+                    <div class="card-header">
+                        <h3><i class="fas fa-map-marked-alt"></i> Watershed Analysis</h3>
+                    </div>
+                    <div class="card-content">
+                        <p>Conduct a comprehensive assessment of a local watershed, including water quality, land use impacts, and improvement strategies.</p>
+                        <p><strong>Skills:</strong> GIS mapping, water sampling, environmental assessment</p>
+                    </div>
+                </div>
+
+                <div class="card project-card">
+                    <div class="card-image">
+                        <img src="https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Renewable Energy">
+                    </div>
+                    <div class="card-header">
+                        <h3><i class="fas fa-solar-panel"></i> Renewable Energy Integration</h3>
+                    </div>
+                    <div class="card-content">
+                        <p>Design a renewable energy system for powering environmental infrastructure like water pumps or treatment facilities.</p>
+                        <p><strong>Skills:</strong> Energy modeling, system design, sustainability analysis</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="section" id="faq">
+        <div class="container">
+            <h2 class="section-title">Frequently Asked Questions</h2>
+            <p class="section-intro">Answers to common questions about pursuing a career in Environmental Engineering:</p>
+            
+            <div class="accordion">
+                <div class="accordion-item active">
+                    <div class="accordion-header">What educational background is needed for environmental engineering?</div>
+                    <div class="accordion-content">
+                        <p>A bachelor's degree in Environmental Engineering, Civil Engineering, or a related field provides a good foundation. Knowledge in chemistry, biology, fluid mechanics, and earth sciences is valuable. Advanced roles in specialized areas or research may require a master's degree or PhD. Professional certification like Environmental Engineer (EVP) can enhance career prospects.</p>
+                    </div>
+                </div>
+                
+                <div class="accordion-item">
+                    <div class="accordion-header">How does environmental engineering differ from other engineering fields?</div>
+                    <div class="accordion-content">
+                        <p>Environmental engineering uniquely focuses on protecting human health and the environment through sustainable solutions. Unlike other engineering disciplines, it requires interdisciplinary knowledge spanning civil engineering, chemistry, biology, ecology, and public health. Environmental engineers work on diverse challenges from water treatment to climate adaptation, with a strong emphasis on sustainability and regulatory compliance.</p>
+                    </div>
+                </div>
+                
+                <div class="accordion-item">
+                    <div class="accordion-header">What are the key industries for environmental engineers?</div>
+                    <div class="accordion-content">
+                        <p>Environmental engineers work in diverse sectors including consulting firms, government agencies (pollution control boards, municipal corporations), water and wastewater utilities, construction companies, industrial corporations, and research organizations. Emerging opportunities exist in renewable energy, climate adaptation, smart cities, and environmental technology startups.</p>
+                    </div>
+                </div>
+                
+                <div class="accordion-item">
+                    <div class="accordion-header">How can I start learning environmental engineering?</div>
+                    <div class="accordion-content">
+                        <p>Begin with courses in environmental science, water resources, and pollution control. Learn software tools like GIS, hydraulic modeling, and environmental assessment tools. Gain hands-on experience through laboratory work, field sampling, or internships with environmental agencies or consulting firms. Join professional organizations like the Indian Environmental Association for networking and resources.</p>
+                    </div>
+                </div>
+                
+                <div class="accordion-item">
+                    <div class="accordion-header">What are the career growth prospects?</div>
+                    <div class="accordion-content">
+                        <p>Environmental engineering offers strong career prospects with growing demand for sustainable solutions. Career paths typically progress from junior engineer to project engineer, senior engineer, and eventually project manager or technical specialist. With experience, opportunities exist in leadership roles, specialized consulting, policy development, or entrepreneurship in environmental technology. The field continues to expand with increasing focus on climate resilience and sustainable development.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <h2>GoFarAsYouCan</h2>
+                    <p>Empowering engineers with comprehensive resources and career guidance.</p>
+                </div>
+                
+                <div class="footer-links">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="#about">About Environmental Engineering</a></li>
+                        <li><a href="#key-areas">Key Areas</a></li>
+                        <li><a href="#careers">Career Opportunities</a></li>
+                        <li><a href="#skills">Essential Skills</a></li>
+                        <li><a href="#courses">Recommended Courses</a></li>
+                        <li><a href="#projects">Hands-on Projects</a></li>
+                        <li><a href="#faq">FAQ</a></li>
+                    </ul>
+                </div>
+                
+            </div>
+            
+            <div class="footer-bottom">
+                <p>© <script>document.write(new Date().getFullYear())</script> GoFarAsYouCan. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Accordion functionality
+        function setupAccordions() {
+            const accordionHeaders = document.querySelectorAll(".accordion-header");
+            
+            accordionHeaders.forEach(header => {
+                header.addEventListener("click", function() {
+                    const accordionItem = this.parentElement;
+                    accordionItem.classList.toggle("active");
+                    
+                    this.classList.toggle("active");
+                    
+                    const content = this.nextElementSibling;
+                    if (accordionItem.classList.contains("active")) {
+                        content.style.maxHeight = content.scrollHeight + "px";
+                    } else {
+                        content.style.maxHeight = 0;
+                    }
+                });
+            });
+        }
+
+        // Smooth scrolling for anchor links
+        function setupSmoothScrolling() {
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+
+                    const targetId = this.getAttribute('href');
+                    if (targetId === "#") return;
+
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        window.scrollTo({
+                            top: targetElement.offsetTop - 80,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+        }
+
+        // Initialize when DOM is loaded
+        document.addEventListener("DOMContentLoaded", function() {
+            setupAccordions();
+            setupSmoothScrolling();
+            
+            // Open the first accordion item by default
+            const firstAccordionItem = document.querySelector(".accordion-item");
+            if (firstAccordionItem) {
+                firstAccordionItem.classList.add("active");
+                const content = firstAccordionItem.querySelector(".accordion-content");
+                content.style.maxHeight = content.scrollHeight + "px";
+                firstAccordionItem.querySelector(".accordion-header").classList.add("active");
+            }
+        });
+    </script>
+</body>
+</html>

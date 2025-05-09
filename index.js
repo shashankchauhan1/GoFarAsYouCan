@@ -231,6 +231,18 @@ app.get("/Engineering/Chemical/petroleum.ejs", authMiddleware, (req, res) => {
     res.render("Engineering/Chemical/petroleum", { userId: req.userId }); // Pass user data if needed
 });
 
+app.get("/Engineering/Chemical/polymer.ejs", authMiddleware, (req, res) => {
+    res.render("Engineering/Chemical/polymer", { userId: req.userId }); // Pass user data if needed
+});
+
+app.get("/Engineering/Chemical/environmental.ejs", authMiddleware, (req, res) => {
+    res.render("Engineering/Chemical/environmental", { userId: req.userId }); // Pass user data if needed
+});
+
+app.get("/Engineering/Chemical/nanotech.ejs", authMiddleware, (req, res) => {
+    res.render("Engineering/Chemical/nanotech", { userId: req.userId }); // Pass user data if needed
+});
+
 // Start the server
 app.listen(PORT, () => {
     console.log(`Server running on port ${PORT}`);

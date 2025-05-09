@@ -1,0 +1,1270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nanotechnology - Advanced Materials Engineering Specialization</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* Base Styles */
+        :root {
+            --primary-color: #0f172a;        /* Deep navy blue */
+            --primary-light: #1e293b;        /* Medium navy blue */
+            --secondary-color: #1e1e2c;      /* Dark blue-purple */
+            --accent-color: #3b82f6;         /* Bright blue */
+            --accent-light: #93c5fd;         /* Light blue */
+            --text-color: #f1f5f9;           /* Off-white with blue tint */
+            --light-text: #ffffff;           /* Pure white */
+            --dark-text: #cbd5e1;            /* Light gray with blue tint */
+            --light-bg: #0f1729;             /* Dark blue background */
+            --dark-bg: #020617;              /* Darker blue background */
+            --card-bg: #1e293b;              /* Medium-dark blue card surface */
+            --card-shadow: rgba(0, 0, 0, 0.5); /* Subtle shadow */
+            --border-radius: 10px;
+            --box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+            --transition: all 0.3s ease-in-out;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--light-bg);
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        a {
+            text-decoration: none;
+            color: var(--accent-light);
+            transition: var(--transition);
+        }
+
+        a:hover {
+            color: var(--accent-color);
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            border-radius: var(--border-radius);
+        }
+
+        .bg-dark {
+            background-color: var(--dark-bg);
+        }
+
+        /* Navbar */
+        .navbar {
+            background-color: var(--primary-color);
+            color: var(--light-text);
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: var(--box-shadow);
+        }
+
+        .navbar .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--light-text);
+        }
+
+        .back-button a {
+            color: var(--light-text);
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .back-button a:hover {
+            color: var(--accent-light);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            color: var(--light-text);
+            text-align: center;
+            padding: 6rem 0;
+            position: relative;
+        }
+
+        .hero .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0.2;
+            mix-blend-mode: overlay;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        /* Section Styles */
+        .section {
+            padding: 5rem 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+            color: var(--accent-light);
+            position: relative;
+            font-size: 2rem;
+        }
+
+        .section-title::after {
+            content: "";
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background-color: var(--accent-light);
+            border-radius: 2px;
+        }
+
+        .section-intro {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto 2.5rem;
+            font-size: 1.1rem;
+        }
+
+        /* Content Wrapper */
+        .content-wrapper {
+            display: flex;
+            gap: 2.5rem;
+            align-items: center;
+        }
+
+        .text-content {
+            flex: 1;
+        }
+
+        .text-content p {
+            margin-bottom: 1.25rem;
+            font-size: 1.05rem;
+        }
+
+        .image-content {
+            flex: 1;
+            box-shadow: var(--box-shadow);
+            border-radius: var(--border-radius);
+            overflow: hidden;
+        }
+
+        /* Cards Grid */
+        .cards-grid {
+            display: grid;
+            gap: 1.5rem;
+        }
+
+        .two-columns {
+            grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+        }
+
+        .three-columns {
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        }
+
+        .four-columns {
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        }
+
+        /* Card Styles */
+        .card {
+            background-color: var(--card-bg);
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--box-shadow);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .card:hover {
+            border-color: var(--accent-light);
+        }
+
+        .card-header {
+            padding: 1.25rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .card-header h3 {
+            color: var(--accent-light);
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .card-header h3 i {
+            color: var(--accent-color);
+        }
+
+        .card-header p {
+            color: var(--dark-text);
+            font-size: 0.9rem;
+        }
+
+        .card-content {
+            padding: 1.25rem;
+        }
+
+        /* Project Cards */
+        .project-card .card-image {
+            height: 180px;
+            overflow: hidden;
+        }
+
+        .project-card .card-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* Career List */
+        .career-list {
+            list-style: none;
+        }
+
+        .career-list li {
+            display: flex;
+            justify-content: space-between;
+            padding: 0.5rem 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .career-list li:last-child {
+            border-bottom: none;
+        }
+
+        .badge {
+            background-color: rgba(255, 255, 255, 0.15);
+            color: var(--light-text);
+            padding: 0.25rem 0.5rem;
+            border-radius: 9999px;
+            font-size: 0.75rem;
+            font-weight: 600;
+        }
+
+        .badge.top {
+            background-color: var(--accent-color);
+            color: var(--dark-bg);
+        }
+
+        .badge.program {
+            background-color: var(--primary-light);
+            color: var(--light-text);
+        }
+
+        /* Skills List */
+        .skills-list {
+            list-style: none;
+        }
+
+        .skills-list li {
+            padding: 0.5rem 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .skills-list li:last-child {
+            border-bottom: none;
+        }
+
+        .skill-name {
+            font-weight: 600;
+            display: block;
+            margin-bottom: 0.25rem;
+            color: var(--accent-light);
+        }
+
+        .skill-desc {
+            font-size: 0.9rem;
+            color: var(--dark-text);
+        }
+
+        /* Accordion */
+        .accordion {
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            background-color: var(--card-bg);
+        }
+
+        .accordion-item {
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .accordion-item:last-child {
+            border-bottom: none;
+        }
+
+        .accordion-header {
+            padding: 1rem;
+            cursor: pointer;
+            font-weight: 600;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: var(--accent-light);
+        }
+
+        .accordion-header::after {
+            content: '\f078';
+            font-family: 'Font Awesome 5 Free';
+            font-weight: 900;
+        }
+
+        .accordion-content {
+            padding: 0 1rem;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+        }
+
+        .accordion-content p {
+            padding-bottom: 1rem;
+        }
+
+        .accordion-item.active .accordion-header {
+            background-color: rgba(255, 255, 255, 0.05);
+            color: var(--accent-color);
+        }
+
+        .accordion-item.active .accordion-content {
+            max-height: 500px;
+        }
+
+        /* Course List */
+        .course-list {
+            list-style: none;
+            margin-top: 1rem;
+        }
+
+        .course-item {
+            background-color: rgba(255, 255, 255, 0.05);
+            border-radius: var(--border-radius);
+            padding: 1rem;
+            margin-bottom: 1rem;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .course-item:hover {
+            border-color: var(--accent-light);
+        }
+
+        .course-title {
+            font-weight: 600;
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+            color: var(--accent-light);
+        }
+
+        .course-desc {
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .course-meta {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.8rem;
+            color: var(--dark-text);
+        }
+
+        /* Tools Grid */
+        .tools-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .tool-card {
+            background-color: var(--card-bg);
+            border-radius: var(--border-radius);
+            padding: 1.5rem 1rem;
+            text-align: center;
+            box-shadow: var(--box-shadow);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .tool-card:hover {
+            border-color: var(--accent-light);
+        }
+
+        .tool-card i {
+            font-size: 2.5rem;
+            color: var(--accent-light);
+            margin-bottom: 1rem;
+        }
+
+        .tool-card h3 {
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+            color: var(--accent-light);
+        }
+
+        .tool-card p {
+            font-size: 0.9rem;
+            color: var(--dark-text);
+        }
+
+        /* Footer */
+        .footer {
+            background-color: var(--dark-bg);
+            color: var(--light-text);
+            padding: 4rem 0 1rem;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2.5rem;
+            margin-bottom: 2.5rem;
+        }
+
+        .footer-logo h2 {
+            margin-bottom: 1rem;
+        }
+
+        .footer-links h3,
+        .footer-resources h3 {
+            margin-bottom: 1.25rem;
+            position: relative;
+            padding-bottom: 0.5rem;
+            display: inline-block;
+        }
+
+        .footer-links h3::after,
+        .footer-resources h3::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background-color: var(--accent-light);
+        }
+
+        .footer-links ul,
+        .footer-resources ul {
+            list-style-type: none;
+        }
+
+        .footer-links li,
+        .footer-resources li {
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-links a,
+        .footer-resources a {
+            color: var(--dark-text);
+        }
+
+        .footer-links a:hover,
+        .footer-resources a:hover {
+            color: var(--accent-light);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 1.25rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .content-wrapper {
+                flex-direction: column;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .two-columns {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .section {
+                padding: 3.5rem 0;
+            }
+
+            .hero {
+                padding: 5rem 0;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .section-title {
+                font-size: 1.75rem;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .navbar {
+                padding: 0.75rem 0;
+            }
+
+            .logo {
+                font-size: 1.2rem;
+            }
+
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+
+            .section-title {
+                font-size: 1.5rem;
+            }
+
+            .tools-grid {
+                grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="logo">GoFarAsYouCan</div>
+            <div class="back-button">
+                <a href="/Engineering/Chemical/chemical.ejs"><i class="fas fa-arrow-left"></i> Go Back</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="hero">
+        <div class="overlay"></div>
+        <div class="container">
+            <h1>Nanotechnology</h1>
+            <p>Exploring the science and engineering of materials at the nanoscale to create revolutionary technologies</p>
+        </div>
+    </header>
+
+    <!-- About Section -->
+    <section class="section" id="about">
+        <div class="container">
+            <h2 class="section-title">What is Nanotechnology?</h2>
+            <div class="content-wrapper">
+                <div class="text-content">
+                    <p>Nanotechnology is the science, engineering, and application of materials and devices at the nanoscale—typically between 1 and 100 nanometers. At this scale, materials exhibit unique physical, chemical, and biological properties that differ significantly from their bulk counterparts, opening up possibilities for revolutionary technologies across multiple industries.</p>
+                    <p>As a nanotechnology engineer, you'll work at the intersection of physics, chemistry, biology, materials science, and engineering to design, fabricate, and apply nanomaterials and nanodevices. You'll develop techniques to manipulate matter at the atomic and molecular level, creating materials with enhanced properties such as increased strength, lighter weight, greater chemical reactivity, or novel electronic characteristics.</p>
+                    <p>This rapidly evolving field is driving innovations in medicine, electronics, energy, materials, and environmental remediation. From targeted drug delivery systems to quantum computing components, nanotechnology is transforming our technological capabilities and addressing some of society's most pressing challenges.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Key Areas Section -->
+    <section class="section bg-dark" id="key-areas">
+        <div class="container">
+            <h2 class="section-title">Key Areas of Study</h2>
+            <p class="section-intro">Nanotechnology encompasses critical disciplines for developing and applying nanoscale materials and devices:</p>
+            
+            <div class="cards-grid three-columns">
+                <div class="card">
+                    <div class="card-header">
+                        <h3><i class="fas fa-atom"></i> Nanomaterials</h3>
+                    </div>
+                    <div class="card-content">
+                        <p>Synthesis, characterization, and application of materials at the nanoscale.</p>
+                        <ul class="skills-list">
+                            <li>
+                                <span class="skill-name">Carbon Nanostructures</span>
+                                <p class="skill-desc">Nanotubes, graphene, fullerenes</p>
+                            </li>
+                            <li>
+                                <span class="skill-name">Nanoparticles</span>
+                                <p class="skill-desc">Metallic, semiconductor, polymeric</p>
+                            </li>
+                            <li>
+                                <span class="skill-name">Quantum Dots</span>
+                                <p class="skill-desc">Optical, electronic properties</p>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <h3><i class="fas fa-microchip"></i> Nanoelectronics</h3>
+                    </div>
+                    <div class="card-content">
+                        <p>Development of electronic components and devices at the nanoscale.</p>
+                        <ul class="skills-list">
+                            <li>
+                                <span class="skill-name">Quantum Computing</span>
+                                <p class="skill-desc">Qubits, quantum gates</p>
+                            </li>
+                            <li>
+                                <span class="skill-name">Molecular Electronics</span>
+                                <p class="skill-desc">Single-molecule devices</p>
+                            </li>
+                            <li>
+                                <span class="skill-name">Spintronics</span>
+                                <p class="skill-desc">Electron spin-based devices</p>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <h3><i class="fas fa-microscope"></i> Nanofabrication</h3>
+                    </div>
+                    <div class="card-content">
+                        <p>Techniques for creating structures and devices at the nanoscale.</p>
+                        <ul class="skills-list">
+                            <li>
+                                <span class="skill-name">Lithography</span>
+                                <p class="skill-desc">E-beam, photolithography</p>
+                            </li>
+                            <li>
+                                <span class="skill-name">Self-Assembly</span>
+                                <p class="skill-desc">Bottom-up fabrication</p>
+                            </li>
+                            <li>
+                                <span class="skill-name">Nanoimprint</span>
+                                <p class="skill-desc">Pattern transfer techniques</p>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="cards-grid three-columns" style="margin-top: 1.5rem;">
+                <div class="card">
+                    <div class="card-header">
+                        <h3><i class="fas fa-dna"></i> Nanobiotechnology</h3>
+                    </div>
+                    <div class="card-content">
+                        <p>Application of nanotechnology to biological systems and medicine.</p>
+                        <ul class="skills-list">
+                            <li>
+                                <span class="skill-name">Drug Delivery</span>
+                                <p class="skill-desc">Targeted therapies, nanocarriers</p>
+                            </li>
+                            <li>
+                                <span class="skill-name">Biosensors</span>
+                                <p class="skill-desc">Disease detection, monitoring</p>
+                            </li>
+                            <li>
+                                <span class="skill-name">Tissue Engineering</span>
+                                <p class="skill-desc">Nanoscaffolds, regenerative medicine</p>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <h3><i class="fas fa-solar-panel"></i> Nanoenergy</h3>
+                    </div>
+                    <div class="card-content">
+                        <p>Nanotechnology applications in energy generation, storage, and efficiency.</p>
+                        <ul class="skills-list">
+                            <li>
+                                <span class="skill-name">Solar Cells</span>
+                                <p class="skill-desc">Quantum dot, perovskite</p>
+                            </li>
+                            <li>
+                                <span class="skill-name">Energy Storage</span>
+                                <p class="skill-desc">Batteries, supercapacitors</p>
+                            </li>
+                            <li>
+                                <span class="skill-name">Fuel Cells</span>
+                                <p class="skill-desc">Nanocatalysts, membranes</p>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <h3><i class="fas fa-laptop-code"></i> Nanocharacterization</h3>
+                    </div>
+                    <div class="card-content">
+                        <p>Techniques for imaging and analyzing nanoscale materials and structures.</p>
+                        <ul class="skills-list">
+                            <li>
+                                <span class="skill-name">Electron Microscopy</span>
+                                <p class="skill-desc">TEM, SEM, STEM</p>
+                            </li>
+                            <li>
+                                <span class="skill-name">Scanning Probe Microscopy</span>
+                                <p class="skill-desc">AFM, STM techniques</p>
+                            </li>
+                            <li>
+                                <span class="skill-name">Spectroscopy</span>
+                                <p class="skill-desc">XPS, Raman, FTIR</p>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Career Opportunities Section -->
+    <section class="section" id="careers">
+        <div class="container">
+            <h2 class="section-title">Career Opportunities</h2>
+            <p class="section-intro">Nanotechnology offers diverse roles across multiple industries with opportunities in cutting-edge research and applications:</p>
+            
+            <div class="cards-grid three-columns">
+                <div class="card">
+                    <div class="card-header">
+                        <h3><i class="fas fa-briefcase"></i> Industry Roles</h3>
+                    </div>
+                    <div class="card-content">
+                        <ul class="career-list">
+                            <li>
+                                <span>R&D Scientist/Engineer</span>
+                                <span class="badge">₹8-30 LPA</span>
+                            </li>
+                            <li>
+                                <span>Process Development Engineer</span>
+                                <span class="badge">₹10-25 LPA</span>
+                            </li>
+                            <li>
+                                <span>Nanofabrication Specialist</span>
+                                <span class="badge">₹12-28 LPA</span>
+                            </li>
+                            <li>
+                                <span>Materials Characterization Scientist</span>
+                                <span class="badge">₹10-26 LPA</span>
+                            </li>
+                            <li>
+                                <span>Product Development Engineer</span>
+                                <span class="badge">₹12-35 LPA</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <h3><i class="fas fa-building"></i> Top Employers</h3>
+                    </div>
+                    <div class="card-content">
+                        <ul class="career-list">
+                            <li>
+                                <span>Semiconductor Industry</span>
+                                <span class="badge top">Intel, Samsung</span>
+                            </li>
+                            <li>
+                                <span>Pharmaceutical Companies</span>
+                                <span class="badge top">Sun Pharma, Dr. Reddy's</span>
+                            </li>
+                            <li>
+                                <span>Materials Manufacturers</span>
+                                <span class="badge">Tata Steel, JSW</span>
+                            </li>
+                            <li>
+                                <span>Electronics Companies</span>
+                                <span class="badge">Apple, Qualcomm</span>
+                            </li>
+                            <li>
+                                <span>Research Institutions</span>
+                                <span class="badge">CSIR, IISc</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <h3><i class="fas fa-chart-line"></i> Growth Areas</h3>
+                    </div>
+                    <div class="card-content">
+                        <p>Nanotechnology is expanding with new opportunities in emerging fields:</p>
+                        <ul>
+                            <li>• Quantum Computing</li>
+                            <li>• Nanomedicine</li>
+                            <li>• Advanced Energy Storage</li>
+                            <li>• Nanoelectronics</li>
+                            <li>• Environmental Remediation</li>
+                            <li>• Smart Materials</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Essential Skills Section -->
+    <section class="section bg-dark" id="skills">
+        <div class="container">
+            <h2 class="section-title">Essential Skills & Tools</h2>
+            <p class="section-intro">To succeed in Nanotechnology, you need technical expertise, software proficiency, and professional skills:</p>
+            
+            <div class="cards-grid three-columns">
+                <div class="card">
+                    <div class="card-header">
+                        <h3><i class="fas fa-book-open"></i> Technical Knowledge</h3>
+                    </div>
+                    <div class="card-content">
+                        <ul class="skills-list">
+                            <li>
+                                <span class="skill-name">Quantum Mechanics</span>
+                                <p class="skill-desc">Nanoscale phenomena, wave functions</p>
+                            </li>
+                            <li>
+                                <span class="skill-name">Materials Science</span>
+                                <p class="skill-desc">Structure-property relationships</p>
+                            </li>
+                            <li>
+                                <span class="skill-name">Surface Chemistry</span>
+                                <p class="skill-desc">Interfaces, functionalization</p>
+                            </li>
+                            <li>
+                                <span class="skill-name">Solid State Physics</span>
+                                <p class="skill-desc">Electronic properties, band theory</p>
+                            </li>
+                            <li>
+                                <span class="skill-name">Fabrication Techniques</span>
+                                <p class="skill-desc">Cleanroom processes, lithography</p>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <h3><i class="fas fa-laptop-code"></i> Software & Tools</h3>
+                    </div>
+                    <div class="card-content">
+                        <p>Proficiency in industry-standard tools is essential:</p>
+                        <div class="tools-grid">
+                            <div class="tool-card">
+                                <i class="fas fa-atom"></i>
+                                <h3>Molecular Modeling</h3>
+                                <p>LAMMPS, VASP</p>
+                            </div>
+                            <div class="tool-card">
+                                <i class="fas fa-microscope"></i>
+                                <h3>Image Analysis</h3>
+                                <p>ImageJ, Gwyddion</p>
+                            </div>
+                            <div class="tool-card">
+                                <i class="fas fa-project-diagram"></i>
+                                <h3>Simulation</h3>
+                                <p>COMSOL, ANSYS</p>
+                            </div>
+                            <div class="tool-card">
+                                <i class="fas fa-chart-bar"></i>
+                                <h3>Data Analysis</h3>
+                                <p>MATLAB, Python</p>
+                            </div>
+                            <div class="tool-card">
+                                <i class="fas fa-cogs"></i>
+                                <h3>CAD Software</h3>
+                                <p>SolidWorks, AutoCAD</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <h3><i class="fas fa-user-tie"></i> Professional Skills</h3>
+                    </div>
+                    <div class="card-content">
+                        <ul class="skills-list">
+                            <li>
+                                <span class="skill-name">Interdisciplinary Collaboration</span>
+                                <p class="skill-desc">Working across fields</p>
+                            </li>
+                            <li>
+                                <span class="skill-name">Experimental Design</span>
+                                <p class="skill-desc">DOE, statistical analysis</p>
+                            </li>
+                            <li>
+                                <span class="skill-name">Technical Writing</span>
+                                <p class="skill-desc">Publications, patents</p>
+                            </li>
+                            <li>
+                                <span class="skill-name">Problem Solving</span>
+                                <p class="skill-desc">Troubleshooting, innovation</p>
+                            </li>
+                            <li>
+                                <span class="skill-name">IP Knowledge</span>
+                                <p class="skill-desc">Patents, technology transfer</p>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Courses Section -->
+    <section class="section" id="courses">
+        <div class="container">
+            <h2 class="section-title">Recommended Courses</h2>
+            <p class="section-intro">Enhance your expertise in Nanotechnology with these specialized courses:</p>
+            
+            <div class="accordion">
+                <div class="accordion-item">
+                    <div class="accordion-header">Core Nanotechnology Courses</div>
+                    <div class="accordion-content">
+                        <ul class="course-list">
+                            <li class="course-item">
+                                <div class="course-title">Introduction to Nanoscience and Nanotechnology</div>
+                                <div class="course-desc">Fundamental concepts, scale effects, and applications of nanotechnology.</div>
+                                <div class="course-meta">
+                                    <span>Duration: 12 weeks</span>
+                                    <span>Level: Intermediate</span>
+                                </div>
+                            </li>
+                            <li class="course-item">
+                                <div class="course-title">Nanomaterials Synthesis and Characterization</div>
+                                <div class="course-desc">Methods for creating and analyzing nanomaterials and nanostructures.</div>
+                                <div class="course-meta">
+                                    <span>Duration: 10 weeks</span>
+                                    <span>Level: Intermediate</span>
+                                </div>
+                            </li>
+                            <li class="course-item">
+                                <div class="course-title">Nanofabrication Techniques</div>
+                                <div class="course-desc">Top-down and bottom-up approaches to creating nanoscale structures.</div>
+                                <div class="course-meta">
+                                    <span>Duration: 8 weeks</span>
+                                    <span>Level: Intermediate</span>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="accordion-item">
+                    <div class="accordion-header">Application-Specific Courses</div>
+                    <div class="accordion-content">
+                        <ul class="course-list">
+                            <li class="course-item">
+                                <div class="course-title">Nanoelectronics and Quantum Computing</div>
+                                <div class="course-desc">Principles and applications of nanoscale electronic devices and quantum systems.</div>
+                                <div class="course-meta">
+                                    <span>Duration: 10 weeks</span>
+                                    <span>Level: Advanced</span>
+                                </div>
+                            </li>
+                            <li class="course-item">
+                                <div class="course-title">Nanomedicine and Drug Delivery</div>
+                                <div class="course-desc">Applications of nanotechnology in medical diagnostics and therapeutics.</div>
+                                <div class="course-meta">
+                                    <span>Duration: 8 weeks</span>
+                                    <span>Level: Advanced</span>
+                                </div>
+                            </li>
+                            <li class="course-item">
+                                <div class="course-title">Nanophotonics and Optical Materials</div>
+                                <div class="course-desc">Light-matter interactions at the nanoscale and optical device applications.</div>
+                                <div class="course-meta">
+                                    <span>Duration: 10 weeks</span>
+                                    <span>Level: Advanced</span>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="accordion-item">
+                    <div class="accordion-header">Advanced Topics</div>
+                    <div class="accordion-content">
+                        <ul class="course-list">
+                            <li class="course-item">
+                                <div class="course-title">Computational Nanotechnology</div>
+                                <div class="course-desc">Modeling and simulation of nanoscale systems and phenomena.</div>
+                                <div class="course-meta">
+                                    <span>Duration: 10 weeks</span>
+                                    <span>Level: Advanced</span>
+                                </div>
+                            </li>
+                            <li class="course-item">
+                                <div class="course-title">Nanosensors and Nanodevices</div>
+                                <div class="course-desc">Design and fabrication of nanoscale sensors and functional devices.</div>
+                                <div class="course-meta">
+                                    <span>Duration: 8 weeks</span>
+                                    <span>Level: Advanced</span>
+                                </div>
+                            </li>
+                            <li class="course-item">
+                                <div class="course-title">Nanotechnology for Energy Applications</div>
+                                <div class="course-desc">Nanomaterials for solar cells, batteries, and energy conversion.</div>
+                                <div class="course-meta">
+                                    <span>Duration: 8 weeks</span>
+                                    <span>Level: Advanced</span>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section class="section bg-dark" id="projects">
+        <div class="container">
+            <h2 class="section-title">Hands-on Projects</h2>
+            <p class="section-intro">Build your portfolio with these practical nanotechnology projects to demonstrate your skills:</p>
+            
+            <div class="cards-grid three-columns">
+                <div class="card project-card">
+                    <div class="card-image">
+                        <img src="https://www.shutterstock.com/shutterstock/videos/1080647840/thumb/1.jpg?ip=x480" alt="Nanoparticle Synthesis">
+                    </div>
+                    <div class="card-header">
+                        <h3><i class="fas fa-atom"></i> Nanoparticle Synthesis</h3>
+                    </div>
+                    <div class="card-content">
+                        <p>Synthesize and characterize metal nanoparticles for specific applications like catalysis or sensing.</p>
+                        <p><strong>Skills:</strong> Chemical synthesis, characterization, application testing</p>
+                    </div>
+                </div>
+
+                <div class="card project-card">
+                    <div class="card-image">
+                        <img src="https://images.unsplash.com/photo-1581092335397-9583eb92d232?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Nanofabrication">
+                    </div>
+                    <div class="card-header">
+                        <h3><i class="fas fa-microchip"></i> Nanopatterned Surface</h3>
+                    </div>
+                    <div class="card-content">
+                        <p>Design and fabricate nanopatterned surfaces with specific wetting, optical, or mechanical properties.</p>
+                        <p><strong>Skills:</strong> Lithography, surface modification, property testing</p>
+                    </div>
+                </div>
+
+                <div class="card project-card">
+                    <div class="card-image">
+                        <img src="https://images.unsplash.com/photo-1532187863486-abf9dbad1b69?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Nanosensor">
+                    </div>
+                    <div class="card-header">
+                        <h3><i class="fas fa-search"></i> Nanosensor Development</h3>
+                    </div>
+                    <div class="card-content">
+                        <p>Create a nanosensor for detecting specific chemicals, biological molecules, or environmental contaminants.</p>
+                        <p><strong>Skills:</strong> Sensor design, nanofabrication, signal processing</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="cards-grid three-columns" style="margin-top: 1.5rem;">
+                <div class="card project-card">
+                    <div class="card-image">
+                        <img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Quantum Dots">
+                    </div>
+                    <div class="card-header">
+                        <h3><i class="fas fa-lightbulb"></i> Quantum Dot Synthesis</h3>
+                    </div>
+                    <div class="card-content">
+                        <p>Synthesize semiconductor quantum dots with tunable optical properties for display or sensing applications.</p>
+                        <p><strong>Skills:</strong> Colloidal synthesis, optical characterization, application testing</p>
+                    </div>
+                </div>
+
+                <div class="card project-card">
+                    <div class="card-image">
+                        <img src="https://images.unsplash.com/photo-1564325724739-bae0bd08762c?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Nanocomposite">
+                    </div>
+                    <div class="card-header">
+                        <h3><i class="fas fa-layer-group"></i> Nanocomposite Material</h3>
+                    </div>
+                    <div class="card-content">
+                        <p>Develop a polymer nanocomposite with enhanced mechanical, thermal, or electrical properties.</p>
+                        <p><strong>Skills:</strong> Materials processing, composite fabrication, property testing</p>
+                    </div>
+                </div>
+
+                <div class="card project-card">
+                    <div class="card-image">
+                        <img src="https://images.unsplash.com/photo-1532187863486-abf9dbad1b69?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Nanomedicine">
+                    </div>
+                    <div class="card-header">
+                        <h3><i class="fas fa-capsules"></i> Drug Delivery System</h3>
+                    </div>
+                    <div class="card-content">
+                        <p>Design a nanoparticle-based drug delivery system with controlled release properties.</p>
+                        <p><strong>Skills:</strong> Biocompatible synthesis, encapsulation, release kinetics</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="section" id="faq">
+        <div class="container">
+            <h2 class="section-title">Frequently Asked Questions</h2>
+            <p class="section-intro">Answers to common questions about pursuing a career in Nanotechnology:</p>
+            
+            <div class="accordion">
+                <div class="accordion-item active">
+                    <div class="accordion-header">What educational background is needed for nanotechnology?</div>
+                    <div class="accordion-content">
+                        <p>A bachelor's degree in Physics, Chemistry, Materials Science, or Engineering provides a good foundation. Specialized knowledge in quantum mechanics, materials science, and fabrication techniques is essential. Advanced roles in R&D typically require a master's or PhD in Nanotechnology or a related field. Interdisciplinary knowledge spanning multiple scientific domains is highly valuable in this field.</p>
+                    </div>
+                </div>
+                
+                <div class="accordion-item">
+                    <div class="accordion-header">How does nanotechnology differ from other engineering fields?</div>
+                    <div class="accordion-content">
+                        <p>Nanotechnology is uniquely focused on understanding and manipulating matter at the nanoscale (1-100 nm), where materials exhibit quantum effects and novel properties. Unlike traditional engineering disciplines, it's inherently interdisciplinary, combining elements of physics, chemistry, biology, and engineering. Nanotechnology engineers work at the atomic and molecular level to create materials and devices with unprecedented capabilities.</p>
+                    </div>
+                </div>
+                
+                <div class="accordion-item">
+                    <div class="accordion-header">What are the key industries for nanotechnology professionals?</div>
+                    <div class="accordion-content">
+                        <p>Nanotechnology professionals work in diverse sectors including semiconductor and electronics, pharmaceuticals and biotechnology, advanced materials manufacturing, energy (solar cells, batteries), aerospace, and defense. Research institutions, government laboratories, and startups focused on nanotechnology innovations also offer significant opportunities. The field continues to expand into new industries as applications develop.</p>
+                    </div>
+                </div>
+                
+                <div class="accordion-item">
+                    <div class="accordion-header">How can I start learning nanotechnology?</div>
+                    <div class="accordion-content">
+                        <p>Begin with courses in physics, chemistry, and materials science to build a strong foundation. Learn specialized topics like quantum mechanics, surface science, and nanofabrication techniques. Gain hands-on experience through laboratory work with nanomaterials synthesis and characterization equipment. Join professional organizations like the Nano Science and Technology Consortium (NSTC) for networking and resources.</p>
+                    </div>
+                </div>
+                
+                <div class="accordion-item">
+                    <div class="accordion-header">What are the career growth prospects?</div>
+                    <div class="accordion-content">
+                        <p>Nanotechnology offers strong career prospects with growing demand for innovations across multiple industries. Career paths typically progress from research scientist or process engineer to senior researcher, project leader, or technical specialist. With experience, opportunities exist in technology management, intellectual property development, or entrepreneurship in nanotechnology startups. The field's interdisciplinary nature allows professionals to pivot between different application areas as the technology evolves.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <h2>GoFarAsYouCan</h2>
+                    <p>Empowering engineers with comprehensive resources and career guidance.</p>
+                </div>
+                
+                <div class="footer-links">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="#about">About Nanotechnology</a></li>
+                        <li><a href="#key-areas">Key Areas</a></li>
+                        <li><a href="#careers">Career Opportunities</a></li>
+                        <li><a href="#skills">Essential Skills</a></li>
+                        <li><a href="#courses">Recommended Courses</a></li>
+                        <li><a href="#projects">Hands-on Projects</a></li>
+                        <li><a href="#faq">FAQ</a></li>
+                    </ul>
+                </div>
+                
+                
+            </div>
+            
+            <div class="footer-bottom">
+                <p>© <script>document.write(new Date().getFullYear())</script> GoFarAsYouCan. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Accordion functionality
+        function setupAccordions() {
+            const accordionHeaders = document.querySelectorAll(".accordion-header");
+            
+            accordionHeaders.forEach(header => {
+                header.addEventListener("click", function() {
+                    const accordionItem = this.parentElement;
+                    accordionItem.classList.toggle("active");
+                    
+                    this.classList.toggle("active");
+                    
+                    const content = this.nextElementSibling;
+                    if (accordionItem.classList.contains("active")) {
+                        content.style.maxHeight = content.scrollHeight + "px";
+                    } else {
+                        content.style.maxHeight = 0;
+                    }
+                });
+            });
+        }
+
+        // Smooth scrolling for anchor links
+        function setupSmoothScrolling() {
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+
+                    const targetId = this.getAttribute('href');
+                    if (targetId === "#") return;
+
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        window.scrollTo({
+                            top: targetElement.offsetTop - 80,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+        }
+
+        // Initialize when DOM is loaded
+        document.addEventListener("DOMContentLoaded", function() {
+            setupAccordions();
+            setupSmoothScrolling();
+            
+            // Open the first accordion item by default
+            const firstAccordionItem = document.querySelector(".accordion-item");
+            if (firstAccordionItem) {
+                firstAccordionItem.classList.add("active");
+                const content = firstAccordionItem.querySelector(".accordion-content");
+                content.style.maxHeight = content.scrollHeight + "px";
+                firstAccordionItem.querySelector(".accordion-header").classList.add("active");
+            }
+        });
+    </script>
+</body>
+</html>
