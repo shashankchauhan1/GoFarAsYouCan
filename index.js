@@ -244,6 +244,30 @@ app.get("/Engineering/Chemical/nanotech.ejs", authMiddleware, (req, res) => {
     res.render("Engineering/Chemical/nanotech", { userId: req.userId }); // Pass user data if needed
 });
 
+// Resume Builder Route
+app.get("/Resume/resume.ejs", authMiddleware, (req, res) => {
+    res.render("Resume/resume", { userId: req.userId }); // Pass user data if needed
+});
+
+
+// LinkedIn Route
+
+app.get("/Linkedin/linkedin.ejs", authMiddleware, (req, res) => {
+    res.render("Linkedin/linkedin", { userId: req.userId }); // Pass user data if needed
+});
+
+// Communication Route
+
+app.get("/Communication/communication.ejs", authMiddleware, (req, res) => {
+    res.render("Communication/communication", { userId: req.userId }); // Pass user data if needed
+});
+
+// Time management Route
+app.get("/Soft/softskills.ejs", authMiddleware, (req, res) => {
+    res.render("Soft/softskills", { userId: req.userId }); // Pass user data if needed
+});
+
+
 // Start the server
 app.listen(PORT, () => {
     console.log(`Server running on port ${PORT}`);

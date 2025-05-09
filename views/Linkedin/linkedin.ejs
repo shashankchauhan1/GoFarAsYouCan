@@ -1,0 +1,1885 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LinkedIn Profile Optimization Guide</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* Base Styles */
+        :root {
+            --primary-color: #121212;        /* Deep dark background */
+            --secondary-color: #1e1e1e;      /* Slightly lighter dark */
+            --accent-color: #0a66c2;         /* LinkedIn blue */
+            --accent-light: #0077b5;         /* Lighter LinkedIn blue */
+            --accent-secondary: #00a0dc;     /* Secondary LinkedIn blue */
+            --text-color: #f5f5f5;           /* Off-white text */
+            --text-secondary: #bdc3c7;       /* Light gray text */
+            --success-color: #2ecc71;        /* Green for success */
+            --warning-color: #f39c12;        /* Orange for warnings */
+            --danger-color: #e74c3c;         /* Red for errors/danger */
+            --card-bg: #1f1f1f;              /* Card background */
+            --card-border: #333333;          /* Card border */
+            --border-radius: 8px;
+            --box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--primary-color);
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        a {
+            color: var(--accent-light);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        a:hover {
+            color: var(--accent-secondary);
+            text-decoration: underline;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            margin-bottom: 1rem;
+            line-height: 1.3;
+        }
+
+        p {
+            margin-bottom: 1.5rem;
+        }
+
+        ul, ol {
+            margin-bottom: 1.5rem;
+            padding-left: 1.5rem;
+        }
+
+        li {
+            margin-bottom: 0.5rem;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            border-radius: var(--border-radius);
+        }
+
+        /* Header */
+        .header {
+            background-color: var(--secondary-color);
+            padding: 1.5rem 0;
+            box-shadow: var(--box-shadow);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: var(--accent-color);
+        }
+
+        .logo span {
+            color: var(--text-color);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 1.5rem;
+        }
+
+        .nav-links a {
+            color: var(--text-color);
+            font-weight: 500;
+            padding: 0.5rem;
+            border-radius: var(--border-radius);
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+            text-decoration: none;
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--text-color);
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, var(--secondary-color) 0%, var(--primary-color) 100%);
+            padding: 5rem 0;
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .hero h1 {
+            font-size: 2.8rem;
+            margin-bottom: 1.5rem;
+            color: var(--accent-light);
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto 2rem;
+            color: var(--text-secondary);
+        }
+
+        .cta-button {
+            display: inline-block;
+            background-color: var(--accent-color);
+            color: white;
+            padding: 0.8rem 1.5rem;
+            border-radius: var(--border-radius);
+            font-weight: 600;
+            transition: var(--transition);
+            text-decoration: none;
+        }
+
+        .cta-button:hover {
+            background-color: var(--accent-light);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            text-decoration: none;
+        }
+
+        /* Section Styles */
+        .section {
+            padding: 3rem 0;
+            margin-bottom: 2rem;
+        }
+
+        .section-title {
+            font-size: 2.2rem;
+            margin-bottom: 2rem;
+            text-align: center;
+            color: var(--accent-light);
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background-color: var(--accent-color);
+            border-radius: 2px;
+        }
+
+        .section-intro {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto 3rem;
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+        }
+
+        /* Cards */
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .card {
+            background-color: var(--card-bg);
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--box-shadow);
+            border: 1px solid var(--card-border);
+            transition: var(--transition);
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4);
+            border-color: var(--accent-color);
+        }
+
+        .card-header {
+            background-color: rgba(0, 0, 0, 0.2);
+            padding: 1.5rem;
+            border-bottom: 1px solid var(--card-border);
+        }
+
+        .card-header h3 {
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            color: var(--accent-light);
+        }
+
+        .card-header h3 i {
+            color: var(--accent-color);
+        }
+
+        .card-content {
+            padding: 1.5rem;
+        }
+
+        /* Steps */
+        .steps {
+            counter-reset: step;
+            margin-bottom: 3rem;
+        }
+
+        .step {
+            position: relative;
+            padding: 2rem;
+            background-color: var(--card-bg);
+            border-radius: var(--border-radius);
+            margin-bottom: 2rem;
+            border-left: 4px solid var(--accent-color);
+            counter-increment: step;
+        }
+
+        .step::before {
+            content: counter(step);
+            position: absolute;
+            top: -15px;
+            left: -15px;
+            width: 40px;
+            height: 40px;
+            background-color: var(--accent-color);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 1.2rem;
+            box-shadow: var(--box-shadow);
+        }
+
+        .step h3 {
+            margin-bottom: 1rem;
+            color: var(--accent-light);
+        }
+
+        /* Tips and Warnings */
+        .tip, .warning, .mistake {
+            padding: 1.5rem;
+            border-radius: var(--border-radius);
+            margin-bottom: 1.5rem;
+            position: relative;
+            padding-left: 4rem;
+        }
+
+        .tip {
+            background-color: rgba(46, 204, 113, 0.1);
+            border-left: 4px solid var(--success-color);
+        }
+
+        .warning {
+            background-color: rgba(243, 156, 18, 0.1);
+            border-left: 4px solid var(--warning-color);
+        }
+
+        .mistake {
+            background-color: rgba(231, 76, 60, 0.1);
+            border-left: 4px solid var(--danger-color);
+        }
+
+        .tip::before, .warning::before, .mistake::before {
+            font-family: 'Font Awesome 5 Free';
+            font-weight: 900;
+            position: absolute;
+            left: 1.5rem;
+            top: 1.5rem;
+            font-size: 1.5rem;
+        }
+
+        .tip::before {
+            content: '\f0eb';
+            color: var(--success-color);
+        }
+
+        .warning::before {
+            content: '\f071';
+            color: var(--warning-color);
+        }
+
+        .mistake::before {
+            content: '\f057';
+            color: var(--danger-color);
+        }
+
+        /* Example Section */
+        .example {
+            background-color: var(--card-bg);
+            border-radius: var(--border-radius);
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+            border: 1px solid var(--card-border);
+        }
+
+        .example-header {
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 1px solid var(--card-border);
+            color: var(--accent-light);
+        }
+
+        .example-content {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            white-space: pre-wrap;
+            background-color: rgba(0, 0, 0, 0.2);
+            padding: 1rem;
+            border-radius: var(--border-radius);
+            overflow-x: auto;
+        }
+
+        /* Before/After Examples */
+        .before-after {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .before, .after {
+            background-color: var(--card-bg);
+            border-radius: var(--border-radius);
+            padding: 1.5rem;
+            border: 1px solid var(--card-border);
+        }
+
+        .before h4, .after h4 {
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 1px solid var(--card-border);
+        }
+
+        .before h4 {
+            color: var(--danger-color);
+        }
+
+        .after h4 {
+            color: var(--success-color);
+        }
+
+        .before-content, .after-content {
+            background-color: rgba(0, 0, 0, 0.2);
+            padding: 1rem;
+            border-radius: var(--border-radius);
+        }
+
+        @media (max-width: 768px) {
+            .before-after {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Accordion */
+        .accordion {
+            margin-bottom: 3rem;
+        }
+
+        .accordion-item {
+            background-color: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: var(--border-radius);
+            margin-bottom: 1rem;
+            overflow: hidden;
+        }
+
+        .accordion-header {
+            padding: 1.2rem 1.5rem;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 600;
+            color: var(--accent-light);
+            transition: var(--transition);
+        }
+
+        .accordion-header:hover {
+            background-color: rgba(255, 255, 255, 0.05);
+        }
+
+        .accordion-header::after {
+            content: '\f078';
+            font-family: 'Font Awesome 5 Free';
+            font-weight: 900;
+            transition: var(--transition);
+        }
+
+        .accordion-item.active .accordion-header::after {
+            transform: rotate(180deg);
+        }
+
+        .accordion-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+        }
+
+        .accordion-item.active .accordion-content {
+            max-height: 1000px;
+        }
+
+        .accordion-body {
+            padding: 0 1.5rem 1.5rem;
+        }
+
+        /* Stats Section */
+        .stats-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .stat-card {
+            background-color: var(--card-bg);
+            border-radius: var(--border-radius);
+            padding: 2rem;
+            text-align: center;
+            box-shadow: var(--box-shadow);
+            border: 1px solid var(--card-border);
+            transition: var(--transition);
+        }
+
+        .stat-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent-color);
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+            color: var(--accent-light);
+        }
+
+        .stat-label {
+            font-size: 1rem;
+            color: var(--text-secondary);
+        }
+
+        /* CTA Section */
+        .cta-section {
+            text-align: center;
+            padding: 4rem 0;
+            background-color: var(--secondary-color);
+            border-radius: var(--border-radius);
+            margin-bottom: 3rem;
+        }
+
+        .cta-section h2 {
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            color: var(--accent-light);
+        }
+
+        .cta-section p {
+            max-width: 700px;
+            margin: 0 auto 2rem;
+            color: var(--text-secondary);
+        }
+
+        /* Footer */
+        .footer {
+            background-color: var(--secondary-color);
+            padding: 3rem 0 1rem;
+            margin-top: 4rem;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-column h3 {
+            color: var(--accent-light);
+            margin-bottom: 1.2rem;
+            position: relative;
+            padding-bottom: 0.5rem;
+        }
+
+        .footer-column h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 40px;
+            height: 3px;
+            background-color: var(--accent-color);
+        }
+
+        .footer-links {
+            list-style: none;
+            padding: 0;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-links a {
+            color: var(--text-secondary);
+            transition: var(--transition);
+        }
+
+        .footer-links a:hover {
+            color: var(--accent-light);
+            text-decoration: none;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            color: var(--text-color);
+            transition: var(--transition);
+        }
+
+        .social-links a:hover {
+            background-color: var(--accent-color);
+            transform: translateY(-3px);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        /* Back to Top Button */
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            background-color: var(--accent-color);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            opacity: 0;
+            visibility: hidden;
+            transition: var(--transition);
+            box-shadow: var(--box-shadow);
+            z-index: 99;
+        }
+
+        .back-to-top.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .back-to-top:hover {
+            background-color: var(--accent-light);
+            transform: translateY(-3px);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .section-title {
+                font-size: 2rem;
+            }
+            
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background-color: var(--secondary-color);
+                flex-direction: column;
+                padding: 1rem 0;
+                box-shadow: var(--box-shadow);
+            }
+            
+            .nav-links.active {
+                display: flex;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            .section-title {
+                font-size: 1.8rem;
+            }
+            
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+            
+            .hero p {
+                font-size: 1.1rem;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .section-title {
+                font-size: 1.6rem;
+            }
+            
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+            
+            .hero p {
+                font-size: 1rem;
+            }
+            
+            .step {
+                padding: 1.5rem;
+            }
+            
+            .step::before {
+                width: 35px;
+                height: 35px;
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">LinkedIn<span>Optimizer</span></div>
+                <nav>
+                    <ul class="nav-links" id="navLinks">
+                        <li><a href="#basics">Basics</a></li>
+                        <li><a href="#profile">Profile</a></li>
+                        <li><a href="#content">Content</a></li>
+                        <li><a href="#networking">Networking</a></li>
+                        <li><a href="#faq">FAQ</a></li>
+                        <li><a href="/dashboard"><i class="fas fa-arrow-left"></i> Back</a></li>
+                    </ul>
+                    <button class="mobile-menu-btn" id="mobileMenuBtn">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h1>Optimize Your LinkedIn Profile</h1>
+            <p>A step-by-step guide to create a standout LinkedIn profile that attracts recruiters, builds your professional network, and advances your career.</p>
+            <a href="#basics" class="cta-button">Get Started <i class="fas fa-arrow-right"></i></a>
+        </div>
+    </section>
+
+    <!-- LinkedIn Basics Section -->
+    <section class="section" id="basics">
+        <div class="container">
+            <h2 class="section-title">LinkedIn Basics</h2>
+            <p class="section-intro">Before diving into optimization, let's understand why LinkedIn matters and how it can benefit your career.</p>
+            
+            <div class="stats-container">
+                <div class="stat-card">
+                    <div class="stat-number">900M+</div>
+                    <div class="stat-label">LinkedIn Users Worldwide</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">87%</div>
+                    <div class="stat-label">Recruiters Use LinkedIn</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">6x</div>
+                    <div class="stat-label">More Profile Views with a Photo</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">40M+</div>
+                    <div class="stat-label">People Search for Jobs Weekly</div>
+                </div>
+            </div>
+            
+            <div class="cards-grid">
+                <div class="card">
+                    <div class="card-header">
+                        <h3><i class="fas fa-question-circle"></i> Why LinkedIn Matters</h3>
+                    </div>
+                    <div class="card-content">
+                        <p>LinkedIn is more than just a social network—it's the world's largest professional platform where you can:</p>
+                        <ul>
+                            <li>Showcase your professional experience and skills</li>
+                            <li>Connect with industry professionals and potential employers</li>
+                            <li>Research companies and job opportunities</li>
+                            <li>Establish yourself as a thought leader in your field</li>
+                            <li>Learn about industry trends and developments</li>
+                        </ul>
+                        <p>A well-optimized LinkedIn profile serves as your digital professional identity and can open doors to opportunities you might not find elsewhere.</p>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <div class="card-header">
+                        <h3><i class="fas fa-bullseye"></i> LinkedIn for Career Growth</h3>
+                    </div>
+                    <div class="card-content">
+                        <p>LinkedIn can accelerate your career growth through:</p>
+                        <ul>
+                            <li><strong>Job Opportunities:</strong> 85% of jobs are filled through networking</li>
+                            <li><strong>Industry Insights:</strong> Access to latest trends and best practices</li>
+                            <li><strong>Personal Branding:</strong> Establish yourself as an expert</li>
+                            <li><strong>Learning:</strong> Access to LinkedIn Learning courses</li>
+                            <li><strong>Mentorship:</strong> Connect with industry leaders and mentors</li>
+                        </ul>
+                        <p>Whether you're actively job hunting or not, maintaining an optimized LinkedIn profile is essential for long-term career success.</p>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <div class="card-header">
+                        <h3><i class="fas fa-search"></i> How Recruiters Use LinkedIn</h3>
+                    </div>
+                    <div class="card-content">
+                        <p>Understanding how recruiters use LinkedIn helps you optimize your profile effectively:</p>
+                        <ul>
+                            <li><strong>Keyword Searches:</strong> Recruiters search for specific skills and qualifications</li>
+                            <li><strong>Boolean Searches:</strong> Complex search strings to find ideal candidates</li>
+                            <li><strong>LinkedIn Recruiter:</strong> Advanced tools to filter and find candidates</li>
+                            <li><strong>Activity Monitoring:</strong> Reviewing your posts and engagement</li>
+                            <li><strong>Network Exploration:</strong> Finding candidates through mutual connections</li>
+                        </ul>
+                        <p>By optimizing your profile for these recruiting methods, you'll significantly increase your visibility to potential employers.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="tip">
+                <h4>Pro Tip: LinkedIn All-Star Status</h4>
+                <p>LinkedIn's algorithm favors "All-Star" profiles (those with 100% completion). Complete profiles are 40 times more likely to receive opportunities through LinkedIn. Make sure to fill out all sections of your profile to reach All-Star status.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Profile Optimization Section -->
+    <section class="section" id="profile">
+        <div class="container">
+            <h2 class="section-title">Profile Optimization</h2>
+            <p class="section-intro">Let's break down each section of your LinkedIn profile and learn how to optimize it for maximum impact.</p>
+            
+            <div class="accordion">
+                <div class="accordion-item active">
+                    <div class="accordion-header">Profile Photo & Background Image</div>
+                    <div class="accordion-content">
+                        <div class="accordion-body">
+                            <p>Your profile photo is the first thing people notice—profiles with professional photos get 14x more views.</p>
+                            
+                            <h4>Profile Photo Best Practices:</h4>
+                            <ul>
+                                <li><strong>Professional Quality:</strong> Clear, well-lit, high-resolution image</li>
+                                <li><strong>Recent:</strong> Should look like you do now</li>
+                                <li><strong>Framing:</strong> Head and shoulders or head-to-waist shot</li>
+                                <li><strong>Background:</strong> Simple, non-distracting background</li>
+                                <li><strong>Expression:</strong> Friendly, approachable smile</li>
+                                <li><strong>Attire:</strong> Professional dress appropriate for your industry</li>
+                            </ul>
+                            
+                            <div class="warning">
+                                <h4>Photo Don'ts</h4>
+                                <ul>
+                                    <li>Group photos where you need to be identified</li>
+                                    <li>Casual vacation or party photos</li>
+                                    <li>Selfies or poorly cropped images</li>
+                                    <li>Outdated photos that don't resemble your current appearance</li>
+                                    <li>Overly filtered or edited images</li>
+                                </ul>
+                            </div>
+                            
+                            <h4>Background Image Strategy:</h4>
+                            <p>The background image (1584 x 396 pixels) is valuable real estate that most users underutilize.</p>
+                            <ul>
+                                <li><strong>Branded Background:</strong> Use your company or personal brand colors/logo</li>
+                                <li><strong>Industry-Relevant Image:</strong> Choose something that represents your field</li>
+                                <li><strong>Portfolio Showcase:</strong> Display your work or achievements</li>
+                                <li><strong>Custom Banner:</strong> Create a banner with your tagline or value proposition</li>
+                            </ul>
+                            
+                            <div class="tip">
+                                <h4>Photo Feedback</h4>
+                                <p>Use LinkedIn's photo feedback feature to test how your profile photo is perceived. It allows you to get anonymous feedback on how professional, approachable, and competent you appear in your photo.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="accordion-item">
+                    <div class="accordion-header">Headline</div>
+                    <div class="accordion-content">
+                        <div class="accordion-body">
+                            <p>Your headline appears right below your name and follows you across LinkedIn in comments, messages, and search results. It's limited to 220 characters.</p>
+                            
+                            <h4>Headline Formula:</h4>
+                            <p>An effective headline goes beyond just your job title. Consider this formula:</p>
+                            <p><strong>Current Role + Expertise/Specialization + Value Proposition</strong></p>
+                            
+                            <div class="before-after">
+                                <div class="before">
+                                    <h4>Weak Headline</h4>
+                                    <div class="before-content">
+                                        Marketing Manager at XYZ Company
+                                    </div>
+                                </div>
+                                <div class="after">
+                                    <h4>Strong Headline</h4>
+                                    <div class="after-content">
+                                        Marketing Manager | Digital Strategy Expert | Helping B2B Tech Companies Increase Lead Generation by 40% | Data-Driven Marketing Professional
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <h4>Headline Tips:</h4>
+                            <ul>
+                                <li><strong>Include Keywords:</strong> Add industry-specific keywords for search visibility</li>
+                                <li><strong>Show Your Value:</strong> Explain how you help companies/clients</li>
+                                <li><strong>Use Separators:</strong> Pipes (|) or bullets (•) for readability</li>
+                                <li><strong>Avoid Buzzwords:</strong> Skip overused terms like "guru" or "ninja"</li>
+                                <li><strong>For Students:</strong> Include your degree, expected graduation date, and career interests</li>
+                            </ul>
+                            
+                            <div class="example">
+                                <h4 class="example-header">Student Headline Example</h4>
+                                <div class="example-content">
+Computer Science Student at IIT Delhi | Graduating 2024 | Machine Learning Enthusiast | Seeking Software Engineering Internships | Python & Java Developer
+                                </div>
+                            </div>
+                            
+                            <div class="tip">
+                                <h4>Headline SEO</h4>
+                                <p>LinkedIn's search algorithm heavily weights keywords in headlines. Research relevant industry keywords and naturally incorporate them to improve your visibility in recruiter searches.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="accordion-item">
+                    <div class="accordion-header">About (Summary)</div>
+                    <div class="accordion-content">
+                        <div class="accordion-body">
+                            <p>The About section is your opportunity to tell your professional story in up to 2,600 characters. It's where you can showcase your personality, achievements, and career aspirations.</p>
+                            
+                            <h4>Summary Structure:</h4>
+                            <ol>
+                                <li><strong>Hook:</strong> Start with an attention-grabbing statement about your passion or expertise</li>
+                                <li><strong>Professional Overview:</strong> Brief description of your experience and specialization</li>
+                                <li><strong>Key Achievements:</strong> 3-5 accomplishments with measurable results</li>
+                                <li><strong>Skills & Expertise:</strong> List of your core competencies</li>
+                                <li><strong>Personal Touch:</strong> Brief mention of what drives you professionally</li>
+                                <li><strong>Call to Action:</strong> How to contact you or what you're seeking</li>
+                            </ol>
+                            
+                            <div class="warning">
+                                <h4>First 3 Lines Matter Most</h4>
+                                <p>LinkedIn only displays the first 3 lines (approximately 280-300 characters) of your summary before readers need to click "see more." Make these lines compelling enough to encourage further reading.</p>
+                            </div>
+                            
+                            <div class="example">
+                                <h4 class="example-header">Summary Example</h4>
+                                <div class="example-content">
+I transform complex data into actionable business strategies that drive revenue growth and operational efficiency.
+
+With 5+ years in data analytics across e-commerce and fintech, I specialize in building predictive models that solve real business problems. My work has helped companies increase customer retention by 35% and optimize marketing spend by identifying high-value customer segments.
+
+Key achievements:
+• Developed a churn prediction model that reduced customer attrition by 28%
+• Built an automated reporting system that saved 20+ hours of manual work weekly
+• Led a cross-functional team to implement a new data warehouse, improving query performance by 60%
+
+Technical expertise: Python, SQL, Tableau, AWS, Machine Learning, A/B Testing
+
+I'm passionate about mentoring junior analysts and regularly contribute to open-source data science projects.
+
+Currently open to data science leadership roles in consumer tech. Connect with me at email@example.com
+                                </div>
+                            </div>
+                            
+                            <h4>Writing Tips:</h4>
+                            <ul>
+                                <li><strong>Use First Person:</strong> Write in the first person to create a personal connection</li>
+                                <li><strong>Include Keywords:</strong> Naturally incorporate industry-specific terms</li>
+                                <li><strong>Be Authentic:</strong> Let your personality shine through</li>
+                                <li><strong>Use White Space:</strong> Break up text with bullet points and paragraphs</li>
+                                <li><strong>Quantify Results:</strong> Use numbers and percentages to demonstrate impact</li>
+                            </ul>
+                            
+                            <div class="tip">
+                                <h4>For Students & Early Career</h4>
+                                <p>Focus on your education, relevant coursework, projects, internships, and career goals. Highlight transferable skills and demonstrate your passion for your chosen field.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="accordion-item">
+                    <div class="accordion-header">Experience Section</div>
+                    <div class="accordion-content">
+                        <div class="accordion-body">
+                            <p>Your experience section should tell a coherent story of your career progression and highlight your most significant contributions and achievements.</p>
+                            
+                            <h4>For Each Position, Include:</h4>
+                            <ul>
+                                <li><strong>Accurate Job Title:</strong> Use the official title that best describes your role</li>
+                                <li><strong>Company Name:</strong> Link to the company's LinkedIn page</li>
+                                <li><strong>Employment Dates:</strong> Month and year for start and end dates</li>
+                                <li><strong>Location:</strong> City and country</li>
+                                <li><strong>Company Logo:</strong> Automatically appears when you link to the company page</li>
+                                <li><strong>Description:</strong> Responsibilities and achievements (not just a job description)</li>
+                            </ul>
+                            
+                            <h4>Writing Effective Descriptions:</h4>
+                            <ul>
+                                <li><strong>Start with a Brief Overview:</strong> 1-2 sentences describing your role</li>
+                                <li><strong>Focus on Achievements:</strong> Use bullet points to highlight specific accomplishments</li>
+                                <li><strong>Quantify Results:</strong> Include numbers, percentages, and metrics</li>
+                                <li><strong>Use Action Verbs:</strong> Begin bullets with strong verbs (Led, Created, Implemented)</li>
+                                <li><strong>Include Keywords:</strong> Incorporate industry-specific terminology</li>
+                            </ul>
+                            
+                            <div class="before-after">
+                                <div class="before">
+                                    <h4>Weak Description</h4>
+                                    <div class="before-content">
+Responsible for managing social media accounts and creating content. Worked on marketing campaigns and helped with customer engagement. Part of the team that launched new products.
+                                    </div>
+                                </div>
+                                <div class="after">
+                                    <h4>Strong Description</h4>
+                                    <div class="after-content">
+Led social media strategy across 5 platforms with a combined audience of 100K+ followers.
+
+• Increased engagement by 45% through data-driven content strategy and community management
+• Developed and executed 12 marketing campaigns that generated ₹3.5M in direct revenue
+• Created a content calendar system that improved team efficiency by 30%
+• Collaborated with product team to launch 3 new products, resulting in 25K pre-orders
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="tip">
+                                <h4>Media Attachments</h4>
+                                <p>Add relevant media to your experience entries—presentations, videos, publications, or project samples. This provides visual evidence of your work and makes your profile more engaging.</p>
+                            </div>
+                            
+                            <h4>For Students & Limited Experience:</h4>
+                            <ul>
+                                <li><strong>Include Internships:</strong> Even short-term experiences are valuable</li>
+                                <li><strong>Add Volunteer Work:</strong> Especially if it's related to your field</li>
+                                <li><strong>List Part-Time Jobs:</strong> Highlight transferable skills</li>
+                                <li><strong>Feature Academic Projects:</strong> Treat significant projects as experience entries</li>
+                                <li><strong>Campus Leadership:</strong> Include roles in student organizations</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="accordion-item">
+                    <div class="accordion-header">Education Section</div>
+                    <div class="accordion-content">
+                        <div class="accordion-body">
+                            <p>A well-crafted education section helps you connect with alumni and demonstrates your academic qualifications.</p>
+                            
+                            <h4>What to Include:</h4>
+                            <ul>
+                                <li><strong>Institution Name:</strong> Link to the school's LinkedIn page</li>
+                                <li><strong>Degree & Field of Study:</strong> Be specific (e.g., "Bachelor of Technology in Computer Science")</li>
+                                <li><strong>Dates Attended:</strong> Start and end years (or expected graduation)</li>
+                                <li><strong>Grade/GPA:</strong> Include if it's impressive (optional)</li>
+                                <li><strong>Activities & Societies:</strong> Student organizations, sports teams, etc.</li>
+                                <li><strong>Courses:</strong> List relevant coursework, especially for recent graduates</li>
+                                <li><strong>Honors & Awards:</strong> Scholarships, dean's list, academic achievements</li>
+                            </ul>
+                            
+                            <div class="example">
+                                <h4 class="example-header">Education Entry Example</h4>
+                                <div class="example-content">
+Indian Institute of Technology, Delhi
+Bachelor of Technology, Computer Science
+2020 - 2024 (Expected)
+CGPA: 8.7/10
+
+Activities and societies: Technical Secretary of Computer Science Club, Member of Robotics Team, Volunteer for Digital Literacy Program
+
+Courses: Data Structures & Algorithms, Machine Learning, Database Management Systems, Computer Networks, Software Engineering
+
+Honors & Awards: Merit Scholarship Recipient (2021-2022), 2nd Place in National Coding Competition (2022)
+                                </div>
+                            </div>
+                            
+                            <div class="tip">
+                                <h4>Alumni Connections</h4>
+                                <p>Properly listing your education helps LinkedIn suggest alumni connections who work in companies or industries you're interested in. These connections can be valuable for informational interviews and job referrals.</p>
+                            </div>
+                            
+                            <h4>Additional Education Tips:</h4>
+                            <ul>
+                                <li><strong>List in Reverse Chronological Order:</strong> Most recent degree first</li>
+                                <li><strong>Include All Degrees:</strong> Bachelor's, Master's, PhD, etc.</li>
+                                <li><strong>Add Certifications Separately:</strong> Use the dedicated Certifications section</li>
+                                <li><strong>Link to Projects:</strong> If you completed significant academic projects</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="accordion-item">
+                    <div class="accordion-header">Skills & Endorsements</div>
+                    <div class="accordion-content">
+                        <div class="accordion-body">
+                            <p>The Skills section is crucial for LinkedIn's search algorithm and recruiter searches. You can add up to 50 skills, but focus on quality over quantity.</p>
+                            
+                            <h4>Skills Strategy:</h4>
+                            <ul>
+                                <li><strong>Pin Top 3 Skills:</strong> These appear prominently on your profile</li>
+                                <li><strong>Mix of Hard & Soft Skills:</strong> Technical abilities and interpersonal qualities</li>
+                                <li><strong>Industry-Specific Keywords:</strong> Match skills to those mentioned in job descriptions</li>
+                                <li><strong>Arrange by Relevance:</strong> Most important skills first</li>
+                                <li><strong>Group Similar Skills:</strong> LinkedIn will suggest skill groupings</li>
+                            </ul>
+                            
+                            <h4>Getting Quality Endorsements:</h4>
+                            <ul>
+                                <li><strong>Endorse Others First:</strong> Many will reciprocate</li>
+                                <li><strong>Ask Directly:</strong> Request endorsements from colleagues who've seen your work</li>
+                                <li><strong>Be Specific:</strong> Ask for endorsements for particular skills</li>
+                                <li><strong>Target Relevant People:</strong> Endorsements from experts in your field carry more weight</li>
+                            </ul>
+                            
+                            <div class="warning">
+                                <h4>Quality Over Quantity</h4>
+                                <p>It's better to have 10 endorsements from industry professionals for a key skill than 50 endorsements from random connections for irrelevant skills. Focus on building quality endorsements for your most marketable skills.</p>
+                            </div>
+                            
+                            <h4>Skill Assessment Badges:</h4>
+                            <p>LinkedIn offers skill assessments for various technical and business skills. Passing these assessments (scoring in the top 30%) earns you a verified skill badge that increases your credibility.</p>
+                            <ul>
+                                <li>Take assessments for your strongest skills</li>
+                                <li>Prepare before attempting the assessment</li>
+                                <li>You can retake assessments after 3 months if you don't pass</li>
+                                <li>Results are private unless you pass and choose to display the badge</li>
+                            </ul>
+                            
+                            <div class="tip">
+                                <h4>Skill Categories</h4>
+                                <p>For a well-rounded profile, include skills from these categories:</p>
+                                <ul>
+                                    <li><strong>Technical Skills:</strong> Software, tools, programming languages</li>
+                                    <li><strong>Industry Knowledge:</strong> Sector-specific expertise</li>
+                                    <li><strong>Transferable Skills:</strong> Project management, leadership, analysis</li>
+                                    <li><strong>Soft Skills:</strong> Communication, teamwork, problem-solving</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="accordion-item">
+                    <div class="accordion-header">Recommendations</div>
+                    <div class="accordion-content">
+                        <div class="accordion-body">
+                            <p>Recommendations provide social proof of your skills and character. They're more valuable than endorsements because they require more effort and provide detailed insights.</p>
+                            
+                            <h4>Recommendation Strategy:</h4>
+                            <ul>
+                                <li><strong>Quality Over Quantity:</strong> A few thoughtful recommendations are better than many generic ones</li>
+                                <li><strong>Diverse Perspectives:</strong> Seek recommendations from managers, colleagues, clients, and direct reports</li>
+                                <li><strong>Recent is Relevant:</strong> Prioritize recommendations from recent positions</li>
+                                <li><strong>Give to Receive:</strong> Write thoughtful recommendations for others first</li>
+                            </ul>
+                            
+                            <h4>How to Request Recommendations:</h4>
+                            <ol>
+                                <li>Navigate to the person's profile</li>
+                                <li>Click "More" in the introduction section</li>
+                                <li>Select "Request a recommendation"</li>
+                                <li>Choose your relationship and position</li>
+                                <li>Write a personalized message</li>
+                            </ol>
+                            
+                            <div class="example">
+                                <h4 class="example-header">Recommendation Request Template</h4>
+                                <div class="example-content">
+Hi [Name],
+
+I hope you're doing well. I'm currently updating my LinkedIn profile and would greatly value a recommendation from you based on our work together at [Company/Project].
+
+If you have time, I'd appreciate if you could highlight my skills in [specific area] and our collaboration on [specific project]. I'm happy to provide more details if helpful.
+
+Thank you for considering this request. I'd be glad to write a recommendation for you as well.
+
+Best regards,
+[Your Name]
+                                </div>
+                            </div>
+                            
+                            <div class="tip">
+                                <h4>Guide Your Recommenders</h4>
+                                <p>When requesting recommendations, politely suggest specific projects or skills you'd like mentioned. This ensures the recommendation highlights your most relevant strengths and provides concrete examples of your work.</p>
+                            </div>
+                            
+                            <h4>Managing Recommendations:</h4>
+                            <ul>
+                                <li><strong>Hide Recommendations:</strong> You can choose which recommendations appear on your profile</li>
+                                <li><strong>Request Revisions:</strong> If a recommendation is inaccurate or too generic, you can ask for changes</li>
+                                <li><strong>Arrange Strategically:</strong> Place the most impressive recommendations at the top</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="accordion-item">
+                    <div class="accordion-header">Additional Sections</div>
+                    <div class="accordion-content">
+                        <div class="accordion-body">
+                            <p>These additional sections can significantly enhance your profile and showcase different aspects of your professional identity.</p>
+                            
+                            <h4>Featured Section:</h4>
+                            <p>This prime real estate appears near the top of your profile. Use it to showcase:</p>
+                            <ul>
+                                <li>Your best LinkedIn posts or articles</li>
+                                <li>External content (articles, videos, websites)</li>
+                                <li>Media files (presentations, PDFs, images)</li>
+                                <li>Links to projects or portfolios</li>
+                            </ul>
+                            <p>Update this section regularly to highlight your latest work.</p>
+                            
+                            <h4>Accomplishments:</h4>
+                            <p>This section can include various subsections:</p>
+                            <ul>
+                                <li><strong>Publications:</strong> Books, articles, research papers</li>
+                                <li><strong>Patents:</strong> Registered patents with links</li>
+                                <li><strong>Courses:</strong> Significant courses you've completed</li>
+                                <li><strong>Projects:</strong> Major initiatives separate from work experience</li>
+                                <li><strong>Honors & Awards:</strong> Recognition and achievements</li>
+                                <li><strong>Languages:</strong> Language proficiency levels</li>
+                                <li><strong>Organizations:</strong> Professional memberships</li>
+                            </ul>
+                            
+                            <h4>Volunteer Experience:</h4>
+                            <p>Highlighting volunteer work shows character and can demonstrate valuable skills:</p>
+                            <ul>
+                                <li>Treat this section like work experience with details and achievements</li>
+                                <li>Include leadership roles in non-profits or community organizations</li>
+                                <li>Describe skills developed through volunteering</li>
+                                <li>Mention pro bono professional work</li>
+                            </ul>
+                            
+                            <div class="tip">
+                                <h4>Certifications Matter</h4>
+                                <p>The dedicated Certifications section should include all relevant professional certifications with the issuing organization, date, and credential ID if applicable. These are highly valued by recruiters and can help you bypass initial screening filters.</p>
+                            </div>
+                            
+                            <h4>Interests:</h4>
+                            <p>The companies, groups, and people you follow appear in this section:</p>
+                            <ul>
+                                <li>Follow industry-relevant companies and thought leaders</li>
+                                <li>Join professional groups related to your field</li>
+                                <li>This section reveals your professional interests and network</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="mistake">
+                <h4>Common Profile Mistakes to Avoid</h4>
+                <ul>
+                    <li><strong>Using a generic headline</strong> that only states your job title</li>
+                    <li><strong>Having an incomplete profile</strong> with missing sections</li>
+                    <li><strong>Using the third person</strong> in your summary (use first person instead)</li>
+                    <li><strong>Including an unprofessional photo</strong> or no photo at all</li>
+                    <li><strong>Writing job descriptions</strong> instead of highlighting achievements</li>
+                    <li><strong>Neglecting to customize your URL</strong> (linkedin.com/in/yourname)</li>
+                    <li><strong>Ignoring spelling and grammar errors</strong> that undermine your professionalism</li>
+                    <li><strong>Having inconsistencies</strong> between your resume and LinkedIn profile</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Content & Engagement Section -->
+    <section class="section" id="content">
+        <div class="container">
+            <h2 class="section-title">Content & Engagement Strategy</h2>
+            <p class="section-intro">A complete LinkedIn strategy goes beyond your profile. Regular activity and engagement significantly increase your visibility and network growth.</p>
+            
+            <div class="steps">
+                <div class="step">
+                    <h3>Develop a Content Strategy</h3>
+                    <p>Sharing valuable content establishes you as a thought leader in your field and keeps you visible in your connections' feeds.</p>
+                    <h4>Content Types to Consider:</h4>
+                    <ul>
+                        <li><strong>Industry Insights:</strong> Share your perspective on trends and news</li>
+                        <li><strong>Professional Achievements:</strong> Celebrate milestones and projects</li>
+                        <li><strong>Behind-the-Scenes:</strong> Show your work process or team collaboration</li>
+                        <li><strong>Educational Content:</strong> Share tips, how-tos, and lessons learned</li>
+                        <li><strong>Personal Stories:</strong> Professional challenges and growth experiences</li>
+                    </ul>
+                    <div class="tip">
+                        <h4>Content Calendar</h4>
+                        <p>Create a simple content calendar to maintain consistency. Aim for 2-3 posts per week, mixing original content with thoughtful engagement on others' posts.</p>
+                    </div>
+                </div>
+                
+                <div class="step">
+                    <h3>Create Engaging Posts</h3>
+                    <p>The LinkedIn algorithm favors posts that generate meaningful engagement.</p>
+                    <h4>Post Structure Best Practices:</h4>
+                    <ul>
+                        <li><strong>Hook in First Line:</strong> Capture attention with a question, statistic, or bold statement</li>
+                        <li><strong>White Space:</strong> Break text into short paragraphs for readability</li>
+                        <li><strong>Visual Elements:</strong> Include images, videos, or documents when relevant</li>
+                        <li><strong>Call to Action:</strong> End with a question or invitation for comments</li>
+                        <li><strong>Relevant Hashtags:</strong> Include 3-5 targeted hashtags</li>
+                    </ul>
+                    <div class="example">
+                        <h4 class="example-header">Engaging Post Example</h4>
+                        <div class="example-content">
+I rejected a job offer that would have doubled my salary. Here's why:
+
+The role checked all the boxes on paper:
+• 100% salary increase
+• Senior title
+• Prestigious company
+• Excellent benefits
+
+But during the interview process, I noticed some red flags:
+
+1. The team had 4 different managers in the past year
+2. When I asked about work-life balance, they couldn't give a straight answer
+3. Current employees seemed hesitant to discuss company culture
+
+Sometimes the highest paying opportunity isn't the right one.
+
+What factors beyond salary do you consider when evaluating job offers?
+
+#CareerDecisions #JobSearch #WorkCulture
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="step">
+                    <h3>Engage Meaningfully with Others</h3>
+                    <p>Engagement is a two-way street. Interacting with others' content increases your visibility and builds relationships.</p>
+                    <h4>Effective Engagement Tactics:</h4>
+                    <ul>
+                        <li><strong>Thoughtful Comments:</strong> Go beyond "Great post!" with substantive insights</li>
+                        <li><strong>Share with Added Value:</strong> Repost content with your own perspective</li>
+                        <li><strong>Engage with Influencers:</strong> Comment on posts from industry leaders</li>
+                        <li><strong>Support Your Network:</strong> Like and comment on your connections' achievements</li>
+                        <li><strong>Join Conversations:</strong> Participate in comment threads with valuable contributions</li>
+                    </ul>
+                    <div class="warning">
+                        <h4>Engagement Etiquette</h4>
+                        <p>Keep all interactions professional and constructive. Avoid political debates, controversial topics, or negative comments that could damage your professional reputation.</p>
+                    </div>
+                </div>
+                
+                <div class="step">
+                    <h3>Create Long-form Content</h3>
+                    <p>LinkedIn articles allow you to showcase deeper expertise on topics relevant to your industry.</p>
+                    <h4>Article Writing Tips:</h4>
+                    <ul>
+                        <li><strong>Focus on Your Expertise:</strong> Write about topics where you have unique insights</li>
+                        <li><strong>Solve Problems:</strong> Address common challenges in your industry</li>
+                        <li><strong>Use Subheadings:</strong> Break content into scannable sections</li>
+                        <li><strong>Include Visuals:</strong> Add relevant images, charts, or infographics</li>
+                        <li><strong>Optimal Length:</strong> 1,000-2,000 words for comprehensive coverage</li>
+                        <li><strong>Promote Your Articles:</strong> Share them as posts to increase visibility</li>
+                    </ul>
+                    <div class="tip">
+                        <h4>Content Repurposing</h4>
+                        <p>You can repurpose content from your blog, presentations, or industry reports into LinkedIn articles. This extends the reach of your existing content to a professional audience.</p>
+                    </div>
+                </div>
+                
+                <div class="step">
+                    <h3>Participate in Groups</h3>
+                    <p>LinkedIn Groups connect you with professionals who share your interests and industry focus.</p>
+                    <h4>Group Strategy:</h4>
+                    <ul>
+                        <li><strong>Join Relevant Groups:</strong> Focus on quality over quantity</li>
+                        <li><strong>Contribute Regularly:</strong> Share insights and answer questions</li>
+                        <li><strong>Start Discussions:</strong> Pose thoughtful questions to the community</li>
+                        <li><strong>Connect with Active Members:</strong> Build relationships with engaged participants</li>
+                        <li><strong>Avoid Self-Promotion:</strong> Focus on providing value rather than selling</li>
+                    </ul>
+                    <p>Active participation in groups can establish you as a knowledgeable resource in your field and connect you with potential mentors, collaborators, or employers.</p>
+                </div>
+            </div>
+            
+            <div class="tip">
+                <h4>LinkedIn Creator Mode</h4>
+                <p>Consider enabling Creator Mode if you regularly share content. This feature allows you to add hashtags to your profile, changes the "Connect" button to "Follow," and highlights your content. It's ideal for thought leaders and those building a professional audience.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Networking Section -->
+    <section class="section" id="networking">
+        <div class="container">
+            <h2 class="section-title">Strategic Networking</h2>
+            <p class="section-intro">Effective networking on LinkedIn can open doors to opportunities, insights, and relationships that advance your career.</p>
+            
+            <div class="cards-grid">
+                <div class="card">
+                    <div class="card-header">
+                        <h3><i class="fas fa-user-plus"></i> Building Your Network</h3>
+                    </div>
+                    <div class="card-content">
+                        <p>A strategic approach to connections yields better results than random adding:</p>
+                        <h4>Who to Connect With:</h4>
+                        <ul>
+                            <li><strong>Current & Former Colleagues:</strong> People you've worked with directly</li>
+                            <li><strong>Industry Peers:</strong> Professionals in your field</li>
+                            <li><strong>Alumni:</strong> Graduates from your educational institutions</li>
+                            <li><strong>Event Contacts:</strong> People you meet at conferences or webinars</li>
+                            <li><strong>Group Members:</strong> Active participants in your LinkedIn groups</li>
+                        </ul>
+                        <div class="warning">
+                            <h4>Quality Over Quantity</h4>
+                            <p>Focus on building a network of relevant connections rather than accumulating random contacts. A smaller, engaged network is more valuable than thousands of unrelated connections.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <div class="card-header">
+                        <h3><i class="fas fa-comment-dots"></i> Personalized Connection Requests</h3>
+                    </div>
+                    <div class="card-content">
+                        <p>Always customize your connection requests instead of using LinkedIn's default message.</p>
+                        <h4>Elements of an Effective Request:</h4>
+                        <ul>
+                            <li><strong>Context:</strong> How you know them or found their profile</li>
+                            <li><strong>Common Ground:</strong> Shared interests, groups, or backgrounds</li>
+                            <li><strong>Value:</strong> Why connecting would be mutually beneficial</li>
+                            <li><strong>Authenticity:</strong> Genuine interest in connecting</li>
+                        </ul>
+                        <div class="example">
+                            <h4 class="example-header">Connection Request Templates</h4>
+                            <div class="example-content">
+For someone you met at an event:
+"Hi [Name], It was great meeting you at [Event] yesterday and discussing [Topic]. I'd love to stay connected and continue our conversation about [Specific Point]. Looking forward to sharing insights!"
+
+For an industry peer:
+"Hello [Name], I came across your profile while researching [Topic/Company]. Your work in [Their Specialty] aligns with my interests in [Your Field]. I'd appreciate connecting to learn from your experience and share relevant insights."
+
+For alumni:
+"Hi [Name], I noticed we both studied [Subject] at [University]. I'm currently working in [Your Field] and would love to connect with fellow alumni. I'd be interested in hearing about your journey since graduation!"
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <div class="card-header">
+                        <h3><i class="fas fa-handshake"></i> Nurturing Relationships</h3>
+                    </div>
+                    <div class="card-content">
+                        <p>Connecting is just the first step—building meaningful professional relationships requires ongoing engagement.</p>
+                        <h4>Relationship Building Tactics:</h4>
+                        <ul>
+                            <li><strong>Engage Regularly:</strong> Comment on and share their content</li>
+                            <li><strong>Provide Value:</strong> Share relevant articles or opportunities</li>
+                            <li><strong>Celebrate Milestones:</strong> Acknowledge work anniversaries and promotions</li>
+                            <li><strong>Check In Periodically:</strong> Send brief messages to maintain contact</li>
+                            <li><strong>Offer Help:</strong> Provide introductions or assistance when possible</li>
+                        </ul>
+                        <div class="tip">
+                            <h4>Relationship Management</h4>
+                            <p>Use LinkedIn's tagging feature to categorize your connections (colleagues, industry peers, potential clients, etc.) and set reminders to engage with important contacts regularly.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="step">
+                <h3>Informational Interviews</h3>
+                <p>LinkedIn is an excellent platform for requesting and conducting informational interviews—conversations with professionals in roles or companies you're interested in.</p>
+                <h4>Requesting Informational Interviews:</h4>
+                <ul>
+                    <li><strong>Research First:</strong> Review the person's profile thoroughly before reaching out</li>
+                    <li><strong>Be Specific:</strong> Explain exactly why you want to speak with them</li>
+                    <li><strong>Respect Their Time:</strong> Request a brief (15-20 minute) conversation</li>
+                    <li><strong>Suggest Options:</strong> Offer flexibility in scheduling</li>
+                    <li><strong>Prepare Questions:</strong> Have thoughtful questions ready</li>
+                </ul>
+                <div class="example">
+                    <h4 class="example-header">Informational Interview Request</h4>
+                    <div class="example-content">
+Hi [Name],
+
+I hope this message finds you well. I've been following your work at [Company] and was particularly impressed by [specific achievement or project].
+
+I'm a [Your Position] exploring opportunities in [Their Field], and your career path is inspiring. Would you be willing to spare 15-20 minutes for a virtual coffee to share insights about your experience in [specific aspect of their work]?
+
+I'm particularly interested in learning about [1-2 specific questions]. Your perspective would be invaluable to my professional development.
+
+I understand you're busy, so I'm happy to work around your schedule. Would any of these times work for you? [Suggest 2-3 options]
+
+Thank you for considering my request.
+
+Best regards,
+[Your Name]
+                    </div>
+                </div>
+            </div>
+            
+            <div class="step">
+                <h3>Finding Job Opportunities</h3>
+                <p>Beyond the Jobs tab, LinkedIn offers multiple ways to discover opportunities:</p>
+                <h4>Job Search Strategies:</h4>
+                <ul>
+                    <li><strong>Company Follow:</strong> Follow target companies to see their job postings</li>
+                    <li><strong>Network Announcements:</strong> Pay attention to hiring posts from connections</li>
+                    <li><strong>#Hiring Hashtag:</strong> Search for posts with this and industry-specific hashtags</li>
+                    <li><strong>Alumni Tool:</strong> Find where graduates from your school work</li>
+                    <li><strong>Open to Work:</strong> Use this feature to signal recruiters (can be visible only to them)</li>
+                </ul>
+                <div class="tip">
+                    <h4>Leverage Second-Degree Connections</h4>
+                    <p>When you find a job you're interested in, check if you have any connections who work at the company. A referral can make you 9x more likely to get hired.</p>
+                </div>
+            </div>
+            
+            <div class="step">
+                <h3>Outreach to Recruiters</h3>
+                <p>Connecting with recruiters can give you access to opportunities not publicly posted.</p>
+                <h4>Effective Recruiter Engagement:</h4>
+                <ul>
+                    <li><strong>Target Relevant Recruiters:</strong> Focus on those in your industry and location</li>
+                    <li><strong>Personalize Your Approach:</strong> Reference specific roles they're recruiting for</li>
+                    <li><strong>Be Clear About Your Goals:</strong> Specify what positions you're seeking</li>
+                    <li><strong>Highlight Key Qualifications:</strong> Briefly mention your most relevant experience</li>
+                    <li><strong>Attach Your Resume:</strong> Make it easy for them to consider you</li>
+                </ul>
+                <div class="example">
+                    <h4 class="example-header">Recruiter Outreach Message</h4>
+                    <div class="example-content">
+Hello [Recruiter Name],
+
+I noticed you recruit for [specific role type] positions at [companies/industries]. I'm a [Your Position] with [X] years of experience in [relevant skills/industry], currently looking for opportunities in [target role/industry].
+
+My background includes [brief highlight of 1-2 key achievements or qualifications]. I'm particularly interested in roles that involve [specific aspects you're looking for].
+
+I've attached my resume for your reference. Would you be open to a brief conversation about potential opportunities that might align with my background?
+
+Thank you for your consideration.
+
+Best regards,
+[Your Name]
+                    </div>
+                </div>
+            </div>
+            
+            <div class="mistake">
+                <h4>Networking Mistakes to Avoid</h4>
+                <ul>
+                    <li><strong>Sending generic connection requests</strong> without personalization</li>
+                    <li><strong>Immediately pitching</strong> after someone accepts your connection</li>
+                    <li><strong>Only reaching out</strong> when you need something</li>
+                    <li><strong>Connecting with too many strangers</strong> without context</li>
+                    <li><strong>Neglecting to follow up</strong> after meaningful interactions</li>
+                    <li><strong>Asking for big favors</strong> from new connections</li>
+                    <li><strong>Being unresponsive</strong> when others reach out to you</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Privacy & Settings Section -->
+    <section class="section">
+        <div class="container">
+            <h2 class="section-title">Privacy & Settings Optimization</h2>
+            <p class="section-intro">Configuring your LinkedIn settings properly ensures you maintain control over your privacy while maximizing visibility to the right audience.</p>
+            
+            <div class="accordion">
+                <div class="accordion-item">
+                    <div class="accordion-header">Profile Visibility Settings</div>
+                    <div class="accordion-content">
+                        <div class="accordion-body">
+                            <p>Control who can see your profile and activity:</p>
+                            <h4>Key Settings to Review:</h4>
+                            <ul>
+                                <li><strong>Profile Viewing Options:</strong> Choose between public, semi-private, or private mode when viewing profiles</li>
+                                <li><strong>Edit Public Profile:</strong> Control what parts of your profile are visible to non-connections</li>
+                                <li><strong>Profile Visibility Off LinkedIn:</strong> Determine if search engines can index your profile</li>
+                                <li><strong>Connections Visibility:</strong> Choose whether others can see your connection list</li>
+                            </ul>
+                            <div class="tip">
+                                <h4>Job Seeking Privacy</h4>
+                                <p>If you're currently employed but job hunting, adjust your job seeking preferences to be visible only to recruiters. This prevents your current employer from seeing that you're open to opportunities.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="accordion-item">
+                    <div class="accordion-header">Activity Broadcast Controls</div>
+                    <div class="accordion-content">
+                        <div class="accordion-body">
+                            <p>Manage notifications sent to your network about your LinkedIn activity:</p>
+                            <h4>Important Broadcast Settings:</h4>
+                            <ul>
+                                <li><strong>Profile Edit Notifications:</strong> Turn off when making multiple profile updates</li>
+                                <li><strong>Job Application Settings:</strong> Control whether your network is notified when you apply for jobs</li>
+                                <li><strong>Mentions and Tags:</strong> Review who can mention or tag you in posts</li>
+                                <li><strong>Article Publishing:</strong> Manage notifications when you publish articles</li>
+                            </ul>
+                            <div class="warning">
+                                <h4>Before Major Updates</h4>
+                                <p>Turn off activity broadcasts before making significant profile changes to avoid flooding your connections' feeds. Remember to turn them back on afterward for normal activity.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="accordion-item">
+                    <div class="accordion-header">Communication Preferences</div>
+                    <div class="accordion-content">
+                        <div class="accordion-body">
+                            <p>Control how you receive messages and notifications:</p>
+                            <h4>Communication Settings to Optimize:</h4>
+                            <ul>
+                                <li><strong>Email Frequency:</strong> Adjust how often you receive email notifications</li>
+                                <li><strong>Message Preferences:</strong> Control who can send you InMail and messages</li>
+                                <li><strong>Notification Types:</strong> Choose which activities trigger notifications</li>
+                                <li><strong>Read Receipts:</strong> Decide if others can see when you've read their messages</li>
+                            </ul>
+                            <div class="tip">
+                                <h4>Mobile App Settings</h4>
+                                <p>Configure push notification settings in the LinkedIn mobile app separately from email notifications to avoid duplicate alerts while staying informed of important activity.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="accordion-item">
+                    <div class="accordion-header">Data Privacy & Account Security</div>
+                    <div class="accordion-content">
+                        <div class="accordion-body">
+                            <p>Protect your information and secure your account:</p>
+                            <h4>Security Best Practices:</h4>
+                            <ul>
+                                <li><strong>Two-Step Verification:</strong> Enable for additional account security</li>
+                                <li><strong>Device Management:</strong> Review and remove devices that have accessed your account</li>
+                                <li><strong>Data Export:</strong> Request a copy of your LinkedIn data periodically</li>
+                                <li><strong>Third-Party Applications:</strong> Review apps with access to your LinkedIn account</li>
+                                <li><strong>Ad Preferences:</strong> Control how your data is used for advertising</li>
+                            </ul>
+                            <div class="warning">
+                                <h4>Regular Security Audits</h4>
+                                <p>Periodically review your account's security settings, connected applications, and logged-in devices to ensure your professional information remains secure.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="section" id="faq">
+        <div class="container">
+            <h2 class="section-title">Frequently Asked Questions</h2>
+            <p class="section-intro">Answers to common questions about LinkedIn profile optimization and networking.</p>
+            
+            <div class="accordion">
+                <div class="accordion-item">
+                    <div class="accordion-header">How often should I update my LinkedIn profile?</div>
+                    <div class="accordion-content">
+                        <div class="accordion-body">
+                            <p>Your LinkedIn profile should be updated regularly to reflect your current professional status:</p>
+                            <ul>
+                                <li><strong>Major Updates:</strong> Immediately after job changes, promotions, or completing significant projects</li>
+                                <li><strong>Skills & Endorsements:</strong> Review and update quarterly</li>
+                                <li><strong>Recommendations:</strong> Seek new ones after completing projects or changing roles</li>
+                                <li><strong>Summary/About:</strong> Refresh annually or when your career focus changes</li>
+                                <li><strong>Photo:</strong> Update every 2-3 years or when your appearance changes significantly</li>
+                            </ul>
+                            <p>Even when not job hunting, regular updates keep your profile current and maintain your visibility in your network's feeds.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="accordion-item">
+                    <div class="accordion-header">Should I accept all connection requests?</div>
+                    <div class="accordion-content">
+                        <div class="accordion-body">
+                            <p>It's best to be selective about connection requests rather than accepting everyone:</p>
+                            <h4>Consider accepting connections who:</h4>
+                            <ul>
+                                <li>Work in your industry or adjacent fields</li>
+                                <li>Share mutual connections relevant to your professional network</li>
+                                <li>Send personalized connection requests explaining why they want to connect</li>
+                                <li>Could provide value through their expertise or network</li>
+                                <li>Work at companies you're interested in</li>
+                            </ul>
+                            <h4>Consider declining connections who:</h4>
+                            <ul>
+                                <li>Have very few connections or an incomplete profile</li>
+                                <li>Send generic requests with no personalization</li>
+                                <li>Have no apparent professional relevance to your field</li>
+                                <li>Appear to be sales-focused with immediate pitching intentions</li>
+                            </ul>
+                            <p>Remember that your connections reflect on your professional brand and influence the content you see in your feed.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="accordion-item">
+                    <div class="accordion-header">How can I use LinkedIn effectively as a student?</div>
+                    <div class="accordion-content">
+                        <div class="accordion-body">
+                            <p>Students can leverage LinkedIn to build their professional presence before graduation:</p>
+                            <ul>
+                                <li><strong>Complete Profile:</strong> Include coursework, projects, internships, and campus activities</li>
+                                <li><strong>Join University Groups:</strong> Connect with alumni and fellow students</li>
+                                <li><strong>Follow Target Companies:</strong> Research potential employers</li>
+                                <li><strong>Engage with Content:</strong> Comment on posts related to your field of study</li>
+                                <li><strong>Showcase Projects:</strong> Add class projects, research, and assignments to your profile</li>
+                                <li><strong>Request Recommendations:</strong> From professors, internship supervisors, and group project peers</li>
+                                <li><strong>Use Alumni Tool:</strong> Find graduates from your school in fields you're interested in</li>
+                            </ul>
+                            <div class="tip">
+                                <h4>Student-Specific Features</h4>
+                                <p>LinkedIn offers features specifically for students, including internship listings, campus recruiter connections, and education-focused content. Make sure to indicate your student status and expected graduation date in your profile.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="accordion-item">
+                    <div class="accordion-header">Is LinkedIn Premium worth it?</div>
+                    <div class="accordion-content">
+                        <div class="accordion-body">
+                            <p>Whether LinkedIn Premium is worth the investment depends on your specific needs:</p>
+                            <h4>Premium Benefits:</h4>
+                            <ul>
+                                <li><strong>InMail Credits:</strong> Send messages to people outside your network</li>
+                                <li><strong>Who Viewed Your Profile:</strong> See everyone who viewed your profile</li>
+                                <li><strong>Applicant Insights:</strong> Compare your qualifications to other applicants</li>
+                                <li><strong>LinkedIn Learning:</strong> Access to courses and tutorials</li>
+                                <li><strong>Advanced Search Filters:</strong> More specific search capabilities</li>
+                                <li><strong>Salary Data:</strong> Detailed compensation insights</li>
+                            </ul>
+                            <h4>Premium May Be Worth It If You're:</h4>
+                            <ul>
+                                <li>Actively job hunting in a competitive field</li>
+                                <li>A recruiter or sales professional who needs to reach out to prospects</li>
+                                <li>Looking to build your skills through LinkedIn Learning</li>
+                                <li>Researching companies and want detailed insights</li>
+                            </ul>
+                            <p>Consider starting with the free one-month trial to evaluate if the premium features provide enough value for your specific situation.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="accordion-item">
+                    <div class="accordion-header">How do I handle employment gaps on LinkedIn?</div>
+                    <div class="accordion-content">
+                        <div class="accordion-body">
+                            <p>Employment gaps can be addressed transparently and professionally:</p>
+                            <h4>Strategies for Handling Gaps:</h4>
+                            <ul>
+                                <li><strong>Focus on Years:</strong> Use years instead of months in employment dates for short gaps</li>
+                                <li><strong>Include Relevant Activities:</strong> List freelance work, consulting, volunteering, or education during gap periods</li>
+                                <li><strong>Create a "Career Break" Entry:</strong> LinkedIn now offers a specific feature for career breaks with categories like caregiving, health, and personal development</li>
+                                <li><strong>Address in Summary:</strong> Briefly explain significant gaps in your About section if relevant</li>
+                                <li><strong>Highlight Skills Developed:</strong> Emphasize skills gained during time away from traditional employment</li>
+                            </ul>
+                            <div class="tip">
+                                <h4>Honesty is Best</h4>
+                                <p>Be truthful about employment gaps rather than trying to hide them with false information. Many employers understand that careers aren't always linear, especially if you can demonstrate how you used the time productively.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Call to Action -->
+    <section class="cta-section">
+        <div class="container">
+            <h2>Ready to Optimize Your LinkedIn Profile?</h2>
+            <p>Start implementing these strategies today to create a standout LinkedIn presence that attracts recruiters, builds your network, and advances your career.</p>
+            <a href="#profile" class="cta-button">Begin Optimization <i class="fas fa-arrow-right"></i></a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>LinkedIn Optimizer</h3>
+                    <p>Your guide to creating a professional LinkedIn profile that stands out to recruiters and helps you build a powerful professional network.</p>
+                    
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="#basics">LinkedIn Basics</a></li>
+                        <li><a href="#profile">Profile Optimization</a></li>
+                        <li><a href="#content">Content Strategy</a></li>
+                        <li><a href="#networking">Strategic Networking</a></li>
+                        <li><a href="#faq">FAQ</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Resources</h3>
+                    <ul class="footer-links">
+                        <li><a href="https://zety.com/resume-builder" target="_blank">Resume Building Guide</a></li>
+                        <li><a href="https://www.indeed.com/career-advice/interviewing" target="_blank">Interview Preparation</a></li>
+                        <li><a href="https://www.linkedin.com/learning/topics/job-search" target="_blank">Job Search Strategies</a></li>
+                        <li><a href="https://www.coursera.org/courses?query=career%20development" target="_blank">Career Development</a></li>
+                        <li><a href="https://www.themuse.com/advice/personal-branding" target="_blank">Personal Branding</a></li>
+                    </ul>
+                </div>
+                
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2023 LinkedIn Optimizer. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <div class="back-to-top" id="backToTop">
+        <i class="fas fa-arrow-up"></i>
+    </div>
+
+    <script>
+        // Mobile Menu Toggle
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const navLinks = document.getElementById('navLinks');
+        
+        mobileMenuBtn.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+        
+        // Accordion Functionality
+        const accordionHeaders = document.querySelectorAll('.accordion-header');
+        
+        accordionHeaders.forEach(header => {
+            header.addEventListener('click', () => {
+                const accordionItem = header.parentElement;
+                accordionItem.classList.toggle('active');
+                
+                const content = accordionItem.querySelector('.accordion-content');
+                if (accordionItem.classList.contains('active')) {
+                    content.style.maxHeight = content.scrollHeight + 'px';
+                } else {
+                    content.style.maxHeight = 0;
+                }
+            });
+        });
+        
+        // Back to Top Button
+        const backToTopBtn = document.getElementById('backToTop');
+        
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 300) {
+                backToTopBtn.classList.add('visible');
+            } else {
+                backToTopBtn.classList.remove('visible');
+            }
+        });
+        
+        backToTopBtn.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+        
+        // Smooth Scrolling for Anchor Links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                    
+                    // Close mobile menu if open
+                    if (navLinks.classList.contains('active')) {
+                        navLinks.classList.remove('active');
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+</html>

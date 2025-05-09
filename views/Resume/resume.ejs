@@ -1,0 +1,1557 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resume Building Guide for Students</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* Base Styles */
+        :root {
+            --primary-color: #121212;        /* Deep dark background */
+            --secondary-color: #1e1e1e;      /* Slightly lighter dark */
+            --accent-color: #8e44ad;         /* Purple accent */
+            --accent-light: #9b59b6;         /* Lighter purple */
+            --accent-secondary: #3498db;     /* Blue accent */
+            --text-color: #f5f5f5;           /* Off-white text */
+            --text-secondary: #bdc3c7;       /* Light gray text */
+            --success-color: #2ecc71;        /* Green for success */
+            --warning-color: #f39c12;        /* Orange for warnings */
+            --danger-color: #e74c3c;         /* Red for errors/danger */
+            --card-bg: #1f1f1f;              /* Card background */
+            --card-border: #333333;          /* Card border */
+            --border-radius: 8px;
+            --box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--primary-color);
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        a {
+            color: var(--accent-light);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        a:hover {
+            color: var(--accent-secondary);
+            text-decoration: underline;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            margin-bottom: 1rem;
+            line-height: 1.3;
+        }
+
+        p {
+            margin-bottom: 1.5rem;
+        }
+
+        ul, ol {
+            margin-bottom: 1.5rem;
+            padding-left: 1.5rem;
+        }
+
+        li {
+            margin-bottom: 0.5rem;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            border-radius: var(--border-radius);
+        }
+
+        /* Header */
+        .header {
+            background-color: var(--secondary-color);
+            padding: 1.5rem 0;
+            box-shadow: var(--box-shadow);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: var(--accent-color);
+        }
+
+        .logo span {
+            color: var(--text-color);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 1.5rem;
+        }
+
+        .nav-links a {
+            color: var(--text-color);
+            font-weight: 500;
+            padding: 0.5rem;
+            border-radius: var(--border-radius);
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+            text-decoration: none;
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--text-color);
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, var(--secondary-color) 0%, var(--primary-color) 100%);
+            padding: 5rem 0;
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .hero h1 {
+            font-size: 2.8rem;
+            margin-bottom: 1.5rem;
+            color: var(--accent-light);
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto 2rem;
+            color: var(--text-secondary);
+        }
+
+        .cta-button {
+            display: inline-block;
+            background-color: var(--accent-color);
+            color: white;
+            padding: 0.8rem 1.5rem;
+            border-radius: var(--border-radius);
+            font-weight: 600;
+            transition: var(--transition);
+            text-decoration: none;
+        }
+
+        .cta-button:hover {
+            background-color: var(--accent-light);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            text-decoration: none;
+        }
+
+        /* Section Styles */
+        .section {
+            padding: 3rem 0;
+            margin-bottom: 2rem;
+        }
+
+        .section-title {
+            font-size: 2.2rem;
+            margin-bottom: 2rem;
+            text-align: center;
+            color: var(--accent-light);
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background-color: var(--accent-color);
+            border-radius: 2px;
+        }
+
+        .section-intro {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto 3rem;
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+        }
+
+        /* Cards */
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .card {
+            background-color: var(--card-bg);
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--box-shadow);
+            border: 1px solid var(--card-border);
+            transition: var(--transition);
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4);
+            border-color: var(--accent-color);
+        }
+
+        .card-header {
+            background-color: rgba(0, 0, 0, 0.2);
+            padding: 1.5rem;
+            border-bottom: 1px solid var(--card-border);
+        }
+
+        .card-header h3 {
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            color: var(--accent-light);
+        }
+
+        .card-header h3 i {
+            color: var(--accent-color);
+        }
+
+        .card-content {
+            padding: 1.5rem;
+        }
+
+        /* Steps */
+        .steps {
+            counter-reset: step;
+            margin-bottom: 3rem;
+        }
+
+        .step {
+            position: relative;
+            padding: 2rem;
+            background-color: var(--card-bg);
+            border-radius: var(--border-radius);
+            margin-bottom: 2rem;
+            border-left: 4px solid var(--accent-color);
+            counter-increment: step;
+        }
+
+        .step::before {
+            content: counter(step);
+            position: absolute;
+            top: -15px;
+            left: -15px;
+            width: 40px;
+            height: 40px;
+            background-color: var(--accent-color);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 1.2rem;
+            box-shadow: var(--box-shadow);
+        }
+
+        .step h3 {
+            margin-bottom: 1rem;
+            color: var(--accent-light);
+        }
+
+        /* Tips and Warnings */
+        .tip, .warning, .mistake {
+            padding: 1.5rem;
+            border-radius: var(--border-radius);
+            margin-bottom: 1.5rem;
+            position: relative;
+            padding-left: 4rem;
+        }
+
+        .tip {
+            background-color: rgba(46, 204, 113, 0.1);
+            border-left: 4px solid var(--success-color);
+        }
+
+        .warning {
+            background-color: rgba(243, 156, 18, 0.1);
+            border-left: 4px solid var(--warning-color);
+        }
+
+        .mistake {
+            background-color: rgba(231, 76, 60, 0.1);
+            border-left: 4px solid var(--danger-color);
+        }
+
+        .tip::before, .warning::before, .mistake::before {
+            font-family: 'Font Awesome 5 Free';
+            font-weight: 900;
+            position: absolute;
+            left: 1.5rem;
+            top: 1.5rem;
+            font-size: 1.5rem;
+        }
+
+        .tip::before {
+            content: '\f0eb';
+            color: var(--success-color);
+        }
+
+        .warning::before {
+            content: '\f071';
+            color: var(--warning-color);
+        }
+
+        .mistake::before {
+            content: '\f057';
+            color: var(--danger-color);
+        }
+
+        /* Tools Section */
+        .tools-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .tool-card {
+            background-color: var(--card-bg);
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--box-shadow);
+            transition: var(--transition);
+            border: 1px solid var(--card-border);
+        }
+
+        .tool-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4);
+            border-color: var(--accent-color);
+        }
+
+        .tool-image {
+            height: 150px;
+            overflow: hidden;
+            background-color: #2c2c2c;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .tool-image i {
+            font-size: 4rem;
+            color: var(--accent-light);
+        }
+
+        .tool-content {
+            padding: 1.5rem;
+        }
+
+        .tool-content h3 {
+            margin-bottom: 0.5rem;
+            color: var(--accent-light);
+        }
+
+        .tool-content p {
+            margin-bottom: 1rem;
+            color: var(--text-secondary);
+        }
+
+        .tool-link {
+            display: inline-block;
+            padding: 0.5rem 1rem;
+            background-color: var(--accent-color);
+            color: white;
+            border-radius: var(--border-radius);
+            transition: var(--transition);
+            text-decoration: none;
+        }
+
+        .tool-link:hover {
+            background-color: var(--accent-light);
+            text-decoration: none;
+        }
+
+        /* Accordion */
+        .accordion {
+            margin-bottom: 3rem;
+        }
+
+        .accordion-item {
+            background-color: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: var(--border-radius);
+            margin-bottom: 1rem;
+            overflow: hidden;
+        }
+
+        .accordion-header {
+            padding: 1.2rem 1.5rem;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 600;
+            color: var(--accent-light);
+            transition: var(--transition);
+        }
+
+        .accordion-header:hover {
+            background-color: rgba(255, 255, 255, 0.05);
+        }
+
+        .accordion-header::after {
+            content: '\f078';
+            font-family: 'Font Awesome 5 Free';
+            font-weight: 900;
+            transition: var(--transition);
+        }
+
+        .accordion-item.active .accordion-header::after {
+            transform: rotate(180deg);
+        }
+
+        .accordion-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+        }
+
+        .accordion-item.active .accordion-content {
+            max-height: 1000px;
+        }
+
+        .accordion-body {
+            padding: 0 1.5rem 1.5rem;
+        }
+
+        /* Example Section */
+        .example {
+            background-color: var(--card-bg);
+            border-radius: var(--border-radius);
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+            border: 1px solid var(--card-border);
+        }
+
+        .example-header {
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 1px solid var(--card-border);
+            color: var(--accent-light);
+        }
+
+        .example-content {
+            font-family: 'Courier New', Courier, monospace;
+            white-space: pre-wrap;
+            background-color: rgba(0, 0, 0, 0.2);
+            padding: 1rem;
+            border-radius: var(--border-radius);
+            overflow-x: auto;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            text-align: center;
+            padding: 4rem 0;
+            background-color: var(--secondary-color);
+            border-radius: var(--border-radius);
+            margin-bottom: 3rem;
+        }
+
+        .cta-section h2 {
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            color: var(--accent-light);
+        }
+
+        .cta-section p {
+            max-width: 700px;
+            margin: 0 auto 2rem;
+            color: var(--text-secondary);
+        }
+
+        /* Footer */
+        .footer {
+            background-color: var(--secondary-color);
+            padding: 3rem 0 1rem;
+            margin-top: 4rem;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-column h3 {
+            color: var(--accent-light);
+            margin-bottom: 1.2rem;
+            position: relative;
+            padding-bottom: 0.5rem;
+        }
+
+        .footer-column h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 40px;
+            height: 3px;
+            background-color: var(--accent-color);
+        }
+
+        .footer-links {
+            list-style: none;
+            padding: 0;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-links a {
+            color: var(--text-secondary);
+            transition: var(--transition);
+        }
+
+        .footer-links a:hover {
+            color: var(--accent-light);
+            text-decoration: none;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            color: var(--text-color);
+            transition: var(--transition);
+        }
+
+        .social-links a:hover {
+            background-color: var(--accent-color);
+            transform: translateY(-3px);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        /* Back to Top Button */
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            background-color: var(--accent-color);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            opacity: 0;
+            visibility: hidden;
+            transition: var(--transition);
+            box-shadow: var(--box-shadow);
+            z-index: 99;
+        }
+
+        .back-to-top.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .back-to-top:hover {
+            background-color: var(--accent-light);
+            transform: translateY(-3px);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .section-title {
+                font-size: 2rem;
+            }
+            
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background-color: var(--secondary-color);
+                flex-direction: column;
+                padding: 1rem 0;
+                box-shadow: var(--box-shadow);
+            }
+            
+            .nav-links.active {
+                display: flex;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            .section-title {
+                font-size: 1.8rem;
+            }
+            
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+            
+            .hero p {
+                font-size: 1.1rem;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .section-title {
+                font-size: 1.6rem;
+            }
+            
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+            
+            .hero p {
+                font-size: 1rem;
+            }
+            
+            .step {
+                padding: 1.5rem;
+            }
+            
+            .step::before {
+                width: 35px;
+                height: 35px;
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">Resume<span>Builder</span></div>
+                <nav>
+                    <ul class="nav-links" id="navLinks">
+                        <li><a href="#basics">Basics</a></li>
+                        <li><a href="#sections">Sections</a></li>
+                        <li><a href="#tools">Tools</a></li>
+                        <li><a href="#templates">Templates</a></li>
+                        <li><a href="#faq">FAQ</a></li>
+                        <li><a href="/dashboard"><i class="fas fa-arrow-left"></i> Back</a></li>
+                    </ul>
+                    <button class="mobile-menu-btn" id="mobileMenuBtn">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h1>Build Your Perfect Resume</h1>
+            <p>A step-by-step guide for students and beginners to create professional, eye-catching resumes that stand out to employers.</p>
+            <a href="#basics" class="cta-button">Get Started <i class="fas fa-arrow-right"></i></a>
+        </div>
+    </section>
+
+    <!-- Basics Section -->
+    <section class="section" id="basics">
+        <div class="container">
+            <h2 class="section-title">Resume Basics</h2>
+            <p class="section-intro">Before diving into the details, let's understand what a resume is, why it matters, and the fundamental principles of creating an effective one.</p>
+            
+            <div class="cards-grid">
+                <div class="card">
+                    <div class="card-header">
+                        <h3><i class="fas fa-question-circle"></i> What is a Resume?</h3>
+                    </div>
+                    <div class="card-content">
+                        <p>A resume is a concise document that summarizes your education, skills, experiences, and achievements. It's your personal marketing tool designed to showcase your qualifications for a specific job or opportunity.</p>
+                        <p>Think of it as your professional highlight reel—a carefully curated collection of your most relevant accomplishments and abilities.</p>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <div class="card-header">
+                        <h3><i class="fas fa-bullseye"></i> Purpose of a Resume</h3>
+                    </div>
+                    <div class="card-content">
+                        <p>The primary goal of your resume is to:</p>
+                        <ul>
+                            <li>Get you an interview opportunity</li>
+                            <li>Demonstrate your qualifications for a position</li>
+                            <li>Differentiate you from other candidates</li>
+                            <li>Provide talking points for interviews</li>
+                        </ul>
+                        <p>Remember: Recruiters typically spend only 6-7 seconds scanning a resume initially!</p>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <div class="card-header">
+                        <h3><i class="fas fa-file-alt"></i> Resume Formats</h3>
+                    </div>
+                    <div class="card-content">
+                        <p>There are three main resume formats:</p>
+                        <ul>
+                            <li><strong>Chronological:</strong> Lists work history in reverse chronological order (most recent first). Best for those with steady work history.</li>
+                            <li><strong>Functional:</strong> Emphasizes skills over work history. Good for career changers or those with gaps.</li>
+                            <li><strong>Combination:</strong> Blends both approaches. Ideal for highlighting both skills and experience.</li>
+                        </ul>
+                        <p>For students and beginners, a chronological or combination format usually works best.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="tip">
+                <h4>Pro Tip: One Page Rule</h4>
+                <p>For students and early career professionals, keep your resume to one page. Recruiters appreciate conciseness, and it forces you to include only the most relevant information.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Resume Sections -->
+    <section class="section" id="sections">
+        <div class="container">
+            <h2 class="section-title">Essential Resume Sections</h2>
+            <p class="section-intro">A well-structured resume contains several key sections. Let's break down each one and learn how to craft them effectively.</p>
+            
+            <div class="accordion">
+                <div class="accordion-item active">
+                    <div class="accordion-header">Contact Information</div>
+                    <div class="accordion-content">
+                        <div class="accordion-body">
+                            <p>Your contact section should be prominently placed at the top of your resume and include:</p>
+                            <ul>
+                                <li><strong>Full Name:</strong> Use a slightly larger font to make it stand out</li>
+                                <li><strong>Phone Number:</strong> Make sure it's one you actually answer</li>
+                                <li><strong>Professional Email Address:</strong> Ideally firstname.lastname@domain.com</li>
+                                <li><strong>Location:</strong> City and state/province is sufficient (full address not necessary)</li>
+                                <li><strong>LinkedIn Profile:</strong> Customize your URL (linkedin.com/in/yourname)</li>
+                                <li><strong>Portfolio/GitHub:</strong> If relevant to your field</li>
+                            </ul>
+                            
+                            <div class="example">
+                                <h4 class="example-header">Example</h4>
+                                <div class="example-content">
+JOHN SMITH
+Mumbai, Maharashtra | (91) 98765-43210 | john.smith@email.com
+linkedin.com/in/johnsmith | github.com/johnsmith
+                                </div>
+                            </div>
+                            
+                            <div class="warning">
+                                <h4>Avoid These Mistakes</h4>
+                                <ul>
+                                    <li>Using unprofessional email addresses (partyanimal123@email.com)</li>
+                                    <li>Including social media profiles that aren't professionally relevant</li>
+                                    <li>Forgetting to update your contact information when it changes</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="accordion-item">
+                    <div class="accordion-header">Professional Summary/Objective</div>
+                    <div class="accordion-content">
+                        <div class="accordion-body">
+                            <p>This 2-3 sentence section appears at the top of your resume and provides a quick overview of who you are professionally.</p>
+                            
+                            <h4>For students with limited experience (Objective):</h4>
+                            <p>Focus on your education, relevant skills, and career goals.</p>
+                            
+                            <div class="example">
+                                <h4 class="example-header">Example Objective</h4>
+                                <div class="example-content">
+Recent Computer Science graduate from IIT Mumbai with strong programming skills in Java and Python, seeking an entry-level Software Developer position to apply my knowledge of algorithms and data structures while growing my expertise in cloud technologies.
+                                </div>
+                            </div>
+                            
+                            <h4>For those with some experience (Summary):</h4>
+                            <p>Highlight your most relevant experiences and key accomplishments.</p>
+                            
+                            <div class="example">
+                                <h4 class="example-header">Example Summary</h4>
+                                <div class="example-content">
+Detail-oriented Marketing student with 2 years of internship experience in social media management and content creation. Demonstrated success in increasing engagement by 45% for a campus organization through strategic campaigns. Skilled in Adobe Creative Suite and Google Analytics.
+                                </div>
+                            </div>
+                            
+                            <div class="tip">
+                                <h4>Customize for Each Application</h4>
+                                <p>Tailor your summary/objective to match the specific job you're applying for by incorporating keywords from the job description.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="accordion-item">
+                    <div class="accordion-header">Education</div>
+                    <div class="accordion-content">
+                        <div class="accordion-body">
+                            <p>For students and recent graduates, the education section is particularly important and should be placed prominently on your resume.</p>
+                            
+                            <h4>What to Include:</h4>
+                            <ul>
+                                <li><strong>Degree and Major:</strong> Bachelor of Technology in Computer Science</li>
+                                <li><strong>University Name:</strong> Indian Institute of Technology, Mumbai</li>
+                                <li><strong>Graduation Date:</strong> Expected May 2024 (or Month Year if completed)</li>
+                                <li><strong>GPA:</strong> Include if it's 3.0/4.0 (or 7.5/10) or higher</li>
+                                <li><strong>Relevant Coursework:</strong> List 4-6 courses most relevant to the job</li>
+                                <li><strong>Academic Achievements:</strong> Dean's List, scholarships, honors</li>
+                            </ul>
+                            
+                            <div class="example">
+                                <h4 class="example-header">Example</h4>
+                                <div class="example-content">
+EDUCATION
+Bachelor of Technology in Computer Science                                  May 2023
+Indian Institute of Technology, Mumbai                                      CGPA: 8.7/10
+• Relevant Coursework: Data Structures, Algorithms, Database Systems, Machine Learning
+• Honors: Dean's List (4 semesters), Merit Scholarship Recipient
+                                </div>
+                            </div>
+                            
+                            <div class="tip">
+                                <h4>For Multiple Degrees</h4>
+                                <p>List your most recent or highest degree first, then work backwards chronologically.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="accordion-item">
+                    <div class="accordion-header">Experience</div>
+                    <div class="accordion-content">
+                        <div class="accordion-body">
+                            <p>Even as a student, you likely have experience that's worth including. This can include internships, part-time jobs, volunteer work, and significant academic projects.</p>
+                            
+                            <h4>How to Structure Each Entry:</h4>
+                            <ul>
+                                <li><strong>Position Title:</strong> Marketing Intern</li>
+                                <li><strong>Organization Name:</strong> XYZ Company</li>
+                                <li><strong>Location:</strong> Mumbai, India</li>
+                                <li><strong>Dates:</strong> June 2022 - August 2022</li>
+                                <li><strong>Accomplishments:</strong> 3-5 bullet points describing what you achieved</li>
+                            </ul>
+                            
+                            <div class="tip">
+                                <h4>Use the PAR Method for Bullet Points</h4>
+                                <p><strong>P</strong>roblem: What challenge did you face?<br>
+                                <strong>A</strong>ction: What did you do about it?<br>
+                                <strong>R</strong>esult: What was the positive outcome?</p>
+                            </div>
+                            
+                            <div class="example">
+                                <h4 class="example-header">Example</h4>
+                                <div class="example-content">
+EXPERIENCE
+Marketing Intern                                                  June 2022 - August 2022
+Digital Marketers Inc., Bangalore, India
+• Created and scheduled content for social media platforms, increasing engagement by 35% over 3 months
+• Analyzed campaign performance using Google Analytics, identifying key trends that informed strategy adjustments
+• Collaborated with a team of 5 to develop and execute a product launch campaign that generated ₹3.5 lakhs in sales
+• Designed promotional materials using Canva and Adobe Photoshop for both digital and print distribution
+                                </div>
+                            </div>
+                            
+                            <div class="warning">
+                                <h4>No Formal Experience?</h4>
+                                <p>Include relevant academic projects, volunteer work, campus leadership roles, or significant class assignments. Focus on transferable skills and measurable results.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="accordion-item">
+                    <div class="accordion-header">Skills</div>
+                    <div class="accordion-content">
+                        <div class="accordion-body">
+                            <p>The skills section allows you to highlight your technical and soft skills that are relevant to the position.</p>
+                            
+                            <h4>Types of Skills to Include:</h4>
+                            <ul>
+                                <li><strong>Technical Skills:</strong> Programming languages, software, tools</li>
+                                <li><strong>Language Skills:</strong> Proficiency levels in different languages</li>
+                                <li><strong>Soft Skills:</strong> Communication, leadership, problem-solving</li>
+                            </ul>
+                            
+                            <div class="tip">
+                                <h4>Organization Matters</h4>
+                                <p>Group similar skills together under categories for better readability. For technical roles, consider indicating proficiency levels.</p>
+                            </div>
+                            
+                            <div class="example">
+                                <h4 class="example-header">Example</h4>
+                                <div class="example-content">
+SKILLS
+• Programming: Python (Advanced), Java (Intermediate), SQL (Intermediate), HTML/CSS (Basic)
+• Software: MATLAB, Adobe Photoshop, Microsoft Office Suite, Tableau
+• Languages: English (Fluent), Hindi (Native), French (Conversational)
+• Soft Skills: Team collaboration, project management, public speaking, problem-solving
+                                </div>
+                            </div>
+                            
+                            <div class="mistake">
+                                <h4>Common Mistakes</h4>
+                                <ul>
+                                    <li>Listing generic skills without context (e.g., "hard worker")</li>
+                                    <li>Including skills you're not comfortable demonstrating</li>
+                                    <li>Not tailoring skills to match job requirements</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="accordion-item">
+                    <div class="accordion-header">Projects</div>
+                    <div class="accordion-content">
+                        <div class="accordion-body">
+                            <p>For students, especially in technical fields, a dedicated projects section can showcase your practical skills and initiative.</p>
+                            
+                            <h4>What to Include:</h4>
+                            <ul>
+                                <li><strong>Project Name:</strong> E-commerce Website</li>
+                                <li><strong>Technologies Used:</strong> React, Node.js, MongoDB</li>
+                                <li><strong>Date:</strong> January - March 2023</li>
+                                <li><strong>Description:</strong> Brief explanation of the project's purpose and your role</li>
+                                <li><strong>Key Features/Achievements:</strong> What you accomplished</li>
+                                <li><strong>Link:</strong> GitHub repository or live demo if available</li>
+                            </ul>
+                            
+                            <div class="example">
+                                <h4 class="example-header">Example</h4>
+                                <div class="example-content">
+PROJECTS
+Student Management System (github.com/johnsmith/student-system)              Feb - Apr 2023
+• Developed a full-stack web application using React, Node.js, and MongoDB to manage student records
+• Implemented user authentication, role-based access control, and data visualization features
+• Created a responsive UI that improved user experience and reduced data entry time by 40%
+• Collaborated with 3 team members using Git for version control and Agile methodology
+                                </div>
+                            </div>
+                            
+                            <div class="tip">
+                                <h4>Quality Over Quantity</h4>
+                                <p>Include 2-4 substantial projects that demonstrate different skills rather than many small ones. Focus on projects relevant to your target job.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="accordion-item">
+                    <div class="accordion-header">Additional Sections</div>
+                    <div class="accordion-content">
+                        <div class="accordion-body">
+                            <p>Depending on your background and the job you're applying for, consider including these optional sections:</p>
+                            
+                            <h4>Certifications</h4>
+                            <p>List relevant certifications with the issuing organization and date received.</p>
+                            <div class="example">
+                                <h4 class="example-header">Example</h4>
+                                <div class="example-content">
+CERTIFICATIONS
+• AWS Certified Cloud Practitioner - Amazon Web Services (May 2023)
+• Google Analytics Individual Qualification - Google (January 2023)
+                                </div>
+                            </div>
+                            
+                            <h4>Activities & Leadership</h4>
+                            <p>Include campus organizations, sports teams, or volunteer work, especially if you held leadership positions.</p>
+                            <div class="example">
+                                <h4 class="example-header">Example</h4>
+                                <div class="example-content">
+ACTIVITIES & LEADERSHIP
+• Vice President, Computer Science Club (2022-2023)
+  - Organized weekly coding workshops attended by 30+ students
+  - Managed a budget of ₹50,000 for annual tech symposium
+• Volunteer, Teach For India (2021-Present)
+  - Tutor underprivileged children in mathematics and science weekly
+                                </div>
+                            </div>
+                            
+                            <h4>Awards & Honors</h4>
+                            <p>Highlight academic or professional recognition you've received.</p>
+                            
+                            <h4>Publications</h4>
+                            <p>Include any papers, articles, or research you've published.</p>
+                            
+                            <div class="tip">
+                                <h4>Be Strategic</h4>
+                                <p>Only include additional sections if they strengthen your candidacy for the specific position. Each item should add value to your application.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Resume Writing Tips -->
+    <section class="section">
+        <div class="container">
+            <h2 class="section-title">Resume Writing Tips</h2>
+            <p class="section-intro">Follow these proven strategies to make your resume more effective and professional.</p>
+            
+            <div class="steps">
+                <div class="step">
+                    <h3>Use Action Verbs</h3>
+                    <p>Begin each bullet point with a strong action verb to create impact and show initiative.</p>
+                    <p><strong>Examples:</strong> Developed, Implemented, Coordinated, Analyzed, Created, Managed, Led, Designed</p>
+                    <div class="example">
+                        <h4 class="example-header">Instead of:</h4>
+                        <div class="example-content">
+"Was responsible for managing social media accounts"
+                        </div>
+                    </div>
+                    <div class="example">
+                        <h4 class="example-header">Write:</h4>
+                        <div class="example-content">
+"Managed 5 social media accounts, increasing follower engagement by 45% in 3 months"
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="step">
+                    <h3>Quantify Achievements</h3>
+                    <p>Use numbers, percentages, and specific metrics to demonstrate the impact of your work.</p>
+                    <div class="example">
+                        <h4 class="example-header">Instead of:</h4>
+                        <div class="example-content">
+"Helped increase website traffic"
+                        </div>
+                    </div>
+                    <div class="example">
+                        <h4 class="example-header">Write:</h4>
+                        <div class="example-content">
+"Implemented SEO strategies that increased website traffic by 65% over 4 months"
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="step">
+                    <h3>Tailor to Each Job</h3>
+                    <p>Customize your resume for each position by matching your qualifications to the job requirements.</p>
+                    <ul>
+                        <li>Analyze the job description for keywords and required skills</li>
+                        <li>Reorganize your resume to highlight the most relevant experiences</li>
+                        <li>Adjust your professional summary to align with the specific role</li>
+                    </ul>
+                    <div class="tip">
+                        <h4>ATS Optimization</h4>
+                        <p>Many companies use Applicant Tracking Systems (ATS) to screen resumes. Include relevant keywords from the job description to ensure your resume passes these automated filters.</p>
+                    </div>
+                </div>
+                
+                <div class="step">
+                    <h3>Focus on Design and Formatting</h3>
+                    <p>Create a clean, professional layout that's easy to scan.</p>
+                    <ul>
+                        <li>Use consistent formatting for headings, bullet points, and spacing</li>
+                        <li>Choose a professional, readable font (Arial, Calibri, Garamond)</li>
+                        <li>Use 10-12 point font size for body text, 14-16 for headings</li>
+                        <li>Include sufficient white space to avoid a cluttered appearance</li>
+                        <li>Use bold, italics, and underlining sparingly for emphasis</li>
+                    </ul>
+                    <div class="warning">
+                        <h4>Avoid These Design Mistakes</h4>
+                        <ul>
+                            <li>Fancy graphics or images (unless you're in a creative field)</li>
+                            <li>Excessive colors or decorative fonts</li>
+                            <li>Tables or text boxes that might confuse ATS systems</li>
+                            <li>Cramming too much information onto the page</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="step">
+                    <h3>Proofread Thoroughly</h3>
+                    <p>Errors on your resume can immediately disqualify you from consideration.</p>
+                    <ul>
+                        <li>Check for spelling, grammar, and punctuation errors</li>
+                        <li>Verify that all dates, company names, and titles are accurate</li>
+                        <li>Ensure consistent formatting throughout the document</li>
+                        <li>Have someone else review your resume for feedback</li>
+                        <li>Read your resume out loud to catch awkward phrasing</li>
+                    </ul>
+                    <div class="tip">
+                        <h4>Proofreading Tools</h4>
+                        <p>Use tools like Grammarly or Hemingway Editor to catch errors and improve readability, but don't rely solely on automated tools.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="mistake">
+                <h4>Common Resume Mistakes to Avoid</h4>
+                <ul>
+                    <li><strong>Including an objective that's too generic</strong> - Customize it for each position</li>
+                    <li><strong>Using a one-size-fits-all resume</strong> - Tailor it to each job application</li>
+                    <li><strong>Including irrelevant information</strong> - Focus on what matters for the specific role</li>
+                    <li><strong>Being too modest</strong> - Highlight your achievements confidently</li>
+                    <li><strong>Using personal pronouns</strong> - Avoid "I," "me," or "my" in your resume</li>
+                    <li><strong>Including references</strong> - Save space by providing these only when requested</li>
+                    <li><strong>Lying or exaggerating</strong> - Be honest about your qualifications and experiences</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Resume Tools Section -->
+    <section class="section" id="tools">
+        <div class="container">
+            <h2 class="section-title">Resume Building Tools</h2>
+            <p class="section-intro">These tools can help you create professional-looking resumes with minimal effort.</p>
+            
+            <div class="tools-grid">
+                <div class="tool-card">
+                    <div class="tool-image">
+                        <i class="fas fa-file-alt"></i>
+                    </div>
+                    <div class="tool-content">
+                        <h3>Overleaf</h3>
+                        <p>A collaborative LaTeX editor with professional resume templates. Perfect for creating clean, structured documents with precise formatting control.</p>
+                        <p><strong>Best for:</strong> Technical fields, academia</p>
+                        <a href="https://www.overleaf.com/gallery/tagged/cv" class="tool-link" target="_blank">Explore Overleaf</a>
+                    </div>
+                </div>
+                
+                <div class="tool-card">
+                    <div class="tool-image">
+                        <i class="fas fa-pencil-ruler"></i>
+                    </div>
+                    <div class="tool-content">
+                        <h3>Canva</h3>
+                        <p>User-friendly design platform with hundreds of customizable resume templates. Great for creating visually appealing resumes without design experience.</p>
+                        <p><strong>Best for:</strong> Creative fields, marketing</p>
+                        <a href="https://www.canva.com/resumes/templates/" class="tool-link" target="_blank">Explore Canva</a>
+                    </div>
+                </div>
+                
+                <div class="tool-card">
+                    <div class="tool-image">
+                        <i class="fas fa-briefcase"></i>
+                    </div>
+                    <div class="tool-content">
+                        <h3>Resume.com</h3>
+                        <p>Free resume builder with ATS-friendly templates. Offers step-by-step guidance and export options in multiple formats.</p>
+                        <p><strong>Best for:</strong> Beginners, quick resume creation</p>
+                        <a href="https://www.resume.com/" class="tool-link" target="_blank">Explore Resume.com</a>
+                    </div>
+                </div>
+                
+                <div class="tool-card">
+                    <div class="tool-image">
+                        <i class="fas fa-file-word"></i>
+                    </div>
+                    <div class="tool-content">
+                        <h3>Microsoft Word</h3>
+                        <p>Familiar word processor with built-in resume templates. Good for creating simple, professional resumes with complete control over content.</p>
+                        <p><strong>Best for:</strong> Traditional industries, customization</p>
+                        <a href="https://templates.office.com/en-us/resumes-and-cover-letters" class="tool-link" target="_blank">Explore Templates</a>
+                    </div>
+                </div>
+                
+                <div class="tool-card">
+                    <div class="tool-image">
+                        <i class="fas fa-magic"></i>
+                    </div>
+                    <div class="tool-content">
+                        <h3>Novoresume</h3>
+                        <p>Modern resume builder with content suggestions and real-time feedback. Helps optimize your resume for specific job applications.</p>
+                        <p><strong>Best for:</strong> Optimizing content, modern designs</p>
+                        <a href="https://novoresume.com/" class="tool-link" target="_blank">Explore Novoresume</a>
+                    </div>
+                </div>
+                
+                <div class="tool-card">
+                    <div class="tool-image">
+                        <i class="fas fa-check-circle"></i>
+                    </div>
+                    <div class="tool-content">
+                        <h3>JobScan</h3>
+                        <p>Resume optimization tool that compares your resume to job descriptions and provides ATS compatibility scores and improvement suggestions.</p>
+                        <p><strong>Best for:</strong> ATS optimization, job targeting</p>
+                        <a href="https://www.jobscan.co/" class="tool-link" target="_blank">Explore JobScan</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="tip">
+                <h4>Choosing the Right Tool</h4>
+                <p>Consider your industry, design preferences, and technical comfort level when selecting a resume building tool. For technical fields like engineering or computer science, Overleaf offers precise formatting. For creative roles, Canva provides more design flexibility.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Templates Section -->
+    <section class="section" id="templates">
+        <div class="container">
+            <h2 class="section-title">Resume Templates</h2>
+            <p class="section-intro">Starting with a template can save time and ensure professional formatting. Here are some recommended templates for different career paths.</p>
+            
+            <div class="accordion">
+                <div class="accordion-item">
+                    <div class="accordion-header">Engineering & Technical Fields</div>
+                    <div class="accordion-content">
+                        <div class="accordion-body">
+                            <p>Technical resumes should be clean, structured, and highlight technical skills prominently.</p>
+                            <h4>Recommended Templates:</h4>
+                            <ul>
+                                <li><a href="https://www.overleaf.com/latex/templates/jakes-resume/syzfjbzwjncs" target="_blank">Jake's Resume (Overleaf)</a> - Clean, modern template with clear sections for technical skills</li>
+                                <li><a href="https://www.overleaf.com/latex/templates/software-engineer-resume/gqxmqsvsbdjf" target="_blank">Software Engineer Resume (Overleaf)</a> - Specifically designed for software roles</li>
+                                <li><a href="https://novoresume.com/resume-templates/engineering" target="_blank">Engineering Templates (Novoresume)</a> - Various options for different engineering disciplines</li>
+                            </ul>
+                            <div class="tip">
+                                <h4>For Technical Resumes</h4>
+                                <p>Include a dedicated "Technical Skills" section organized by category (languages, frameworks, tools) and consider adding a "Projects" section with links to GitHub repositories.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="accordion-item">
+                    <div class="accordion-header">Business & Management</div>
+                    <div class="accordion-content">
+                        <div class="accordion-body">
+                            <p>Business resumes should be professional, achievement-focused, and demonstrate leadership abilities.</p>
+                            <h4>Recommended Templates:</h4>
+                            <ul>
+                                <li><a href="https://www.canva.com/templates/EAFCz9YI2WQ-blue-and-white-professional-resume/" target="_blank">Professional Business Resume (Canva)</a> - Clean, corporate design</li>
+                                <li><a href="https://templates.office.com/en-us/simple-resume-tm16412145" target="_blank">Simple Resume (Microsoft Word)</a> - Traditional format suitable for business roles</li>
+                                <li><a href="https://resume.io/resume-templates/business" target="_blank">Business Templates (Resume.io)</a> - Various professional options</li>
+                            </ul>
+                            <div class="tip">
+                                <h4>For Business Resumes</h4>
+                                <p>Emphasize quantifiable achievements (revenue growth, cost savings, team management) and include relevant business certifications or coursework.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="accordion-item">
+                    <div class="accordion-header">Creative Fields</div>
+                    <div class="accordion-content">
+                        <div class="accordion-body">
+                            <p>Creative resumes can showcase your design sensibilities while remaining professional and readable.</p>
+                            <h4>Recommended Templates:</h4>
+                            <ul>
+                                <li><a href="https://www.canva.com/templates/EAFCz9YI2WQ-blue-and-white-professional-resume/" target="_blank">Creative Resume (Canva)</a> - Visually appealing with space for portfolio highlights</li>
+                                <li><a href="https://www.behance.net/gallery/16520019/Free-Resume-Template" target="_blank">Free Creative Resume (Behance)</a> - Designer-created template</li>
+                                <li><a href="https://www.adobe.com/express/create/resume" target="_blank">Adobe Express Resume Templates</a> - Various creative options</li>
+                            </ul>
+                            <div class="warning">
+                                <h4>Balance Creativity and Readability</h4>
+                                <p>While creative resumes can showcase your design skills, ensure they remain professional and easy to read. Avoid excessive decorative elements that might distract from your qualifications.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="accordion-item">
+                    <div class="accordion-header">First-Time Job Seekers</div>
+                    <div class="accordion-content">
+                        <div class="accordion-body">
+                            <p>For students with limited work experience, these templates help highlight education, projects, and transferable skills.</p>
+                            <h4>Recommended Templates:</h4>
+                            <ul>
+                                <li><a href="https://novoresume.com/resume-templates/student" target="_blank">Student Resume (Novoresume)</a> - Designed for those with limited experience</li>
+                                <li><a href="https://www.canva.com/templates/EAFCz_U0afY-white-and-grey-modern-resume/" target="_blank">Modern Student Resume (Canva)</a> - Clean design with emphasis on education</li>
+                                <li><a href="https://www.overleaf.com/latex/templates/entry-level-resume-template/xzkpfbhksvxz" target="_blank">Entry-Level Resume (Overleaf)</a> - Simple, professional template for beginners</li>
+                            </ul>
+                            <div class="tip">
+                                <h4>For First-Time Job Seekers</h4>
+                                <p>Focus on education, relevant coursework, projects, internships, and campus activities. Include transferable skills from volunteer work or extracurricular activities.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="section" id="faq">
+        <div class="container">
+            <h2 class="section-title">Frequently Asked Questions</h2>
+            <p class="section-intro">Answers to common questions about resume building for students and beginners.</p>
+            
+            <div class="accordion">
+                <div class="accordion-item">
+                    <div class="accordion-header">How long should my resume be?</div>
+                    <div class="accordion-content">
+                        <div class="accordion-body">
+                            <p>For students and early career professionals, stick to one page. This forces you to include only the most relevant information and respects recruiters' limited time. Only extend to two pages if you have substantial relevant experience that directly relates to the position.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="accordion-item">
+                    <div class="accordion-header">What if I don't have any work experience?</div>
+                    <div class="accordion-content">
+                        <div class="accordion-body">
+                            <p>Focus on other relevant experiences:</p>
+                            <ul>
+                                <li><strong>Academic projects:</strong> Course assignments, research, thesis work</li>
+                                <li><strong>Volunteer work:</strong> Community service, non-profit contributions</li>
+                                <li><strong>Campus activities:</strong> Student organizations, leadership roles</li>
+                                <li><strong>Personal projects:</strong> Websites, apps, or other initiatives you've created</li>
+                                <li><strong>Relevant coursework:</strong> Classes that taught you applicable skills</li>
+                            </ul>
+                            <p>Emphasize transferable skills from these experiences that relate to the job you're seeking.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="accordion-item">
+                    <div class="accordion-header">Should I include a photo on my resume?</div>
+                    <div class="accordion-content">
+                        <div class="accordion-body">
+                            <p>In most countries including India, it's generally not recommended to include a photo on your resume unless specifically requested. Photos can potentially lead to unconscious bias in the hiring process. Focus on your qualifications rather than appearance.</p>
+                            <p>Exceptions may exist for certain creative fields or international applications where photos are customary (some European countries and parts of Asia).</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="accordion-item">
+                    <div class="accordion-header">How do I explain gaps in my resume?</div>
+                    <div class="accordion-content">
+                        <div class="accordion-body">
+                            <p>Be honest but strategic about gaps:</p>
+                            <ul>
+                                <li>If you took time for education or skill development, mention this</li>
+                                <li>For gaps due to personal reasons, you can briefly explain in your cover letter (not resume)</li>
+                                <li>Focus on what you learned or accomplished during the gap period</li>
+                                <li>Consider using a functional resume format that emphasizes skills over chronology</li>
+                            </ul>
+                            <p>Remember that short gaps (a few months) often don't require explanation, especially for students transitioning between academic periods.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="accordion-item">
+                    <div class="accordion-header">How do I make my resume stand out?</div>
+                    <div class="accordion-content">
+                        <div class="accordion-body">
+                            <p>Make your resume stand out through content and presentation:</p>
+                            <ul>
+                                <li><strong>Quantify achievements</strong> with specific numbers and metrics</li>
+                                <li><strong>Customize</strong> each resume for the specific job</li>
+                                <li><strong>Use industry keywords</strong> relevant to your target position</li>
+                                <li><strong>Include unique projects or experiences</strong> that demonstrate initiative</li>
+                                <li><strong>Ensure perfect formatting</strong> with consistent styling and no errors</li>
+                                <li><strong>Focus on results</strong> rather than just responsibilities</li>
+                            </ul>
+                            <p>Remember that standing out comes from demonstrating your unique value, not from gimmicks or unusual designs (unless you're in a creative field).</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="accordion-item">
+                    <div class="accordion-header">How often should I update my resume?</div>
+                    <div class="accordion-content">
+                        <div class="accordion-body">
+                            <p>Update your resume regularly:</p>
+                            <ul>
+                                <li>After completing new projects or courses</li>
+                                <li>When you gain new skills or certifications</li>
+                                <li>After receiving awards or recognition</li>
+                                <li>When changing jobs or roles</li>
+                                <li>At least every 6-12 months, even if you're not job hunting</li>
+                            </ul>
+                            <p>Keep a master resume with all your experiences and achievements, then customize shorter versions for specific applications.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Call to Action -->
+    <section class="cta-section">
+        <div class="container">
+            <h2>Ready to Build Your Resume?</h2>
+            <p>Start creating a professional resume that showcases your unique qualifications and helps you land your dream job.</p>
+            <a href="#tools" class="cta-button">Choose a Tool <i class="fas fa-arrow-right"></i></a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>Resume Builder</h3>
+                    <p>Your guide to creating professional resumes that stand out to employers and help you land your dream job.</p>
+                    
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="#basics">Resume Basics</a></li>
+                        <li><a href="#sections">Resume Sections</a></li>
+                        <li><a href="#tools">Resume Tools</a></li>
+                        <li><a href="#templates">Resume Templates</a></li>
+                        <li><a href="#faq">FAQ</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Resources</h3>
+                    <ul class="footer-links">
+                        <li><a href="https://zety.com/cover-letter-builder" target="_blank">Cover Letter Guide</a></li>
+                        <li><a href="https://www.indeed.com/career-advice/interviewing" target="_blank">Interview Preparation</a></li>
+                        <li><a href="https://www.linkedin.com/learning/topics/job-search" target="_blank">Job Search Strategies</a></li>
+                        <li><a href="https://www.coursera.org/courses?query=career%20development" target="_blank">Career Development</a></li>
+                        <li><a href="https://www.themuse.com/advice/networking" target="_blank">Networking Tips</a></li>
+                    </ul>
+                </div>
+                
+                
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2023 Resume Builder. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <div class="back-to-top" id="backToTop">
+        <i class="fas fa-arrow-up"></i>
+    </div>
+
+    <script>
+        // Mobile Menu Toggle
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const navLinks = document.getElementById('navLinks');
+        
+        mobileMenuBtn.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+        
+        // Accordion Functionality
+        const accordionHeaders = document.querySelectorAll('.accordion-header');
+        
+        accordionHeaders.forEach(header => {
+            header.addEventListener('click', () => {
+                const accordionItem = header.parentElement;
+                accordionItem.classList.toggle('active');
+                
+                const content = accordionItem.querySelector('.accordion-content');
+                if (accordionItem.classList.contains('active')) {
+                    content.style.maxHeight = content.scrollHeight + 'px';
+                } else {
+                    content.style.maxHeight = 0;
+                }
+            });
+        });
+        
+        // Back to Top Button
+        const backToTopBtn = document.getElementById('backToTop');
+        
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 300) {
+                backToTopBtn.classList.add('visible');
+            } else {
+                backToTopBtn.classList.remove('visible');
+            }
+        });
+        
+        backToTopBtn.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+        
+        // Smooth Scrolling for Anchor Links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                    
+                    // Close mobile menu if open
+                    if (navLinks.classList.contains('active')) {
+                        navLinks.classList.remove('active');
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+</html>

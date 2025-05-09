@@ -1,0 +1,2044 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Essential Soft Skills for Students</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* Base Styles */
+        :root {
+            --primary-color: #121212;        /* Deep dark background */
+            --secondary-color: #1e1e1e;      /* Slightly lighter dark */
+            --accent-color: #6c5ce7;         /* Purple accent */
+            --accent-light: #a29bfe;         /* Lighter purple */
+            --accent-secondary: #00b894;     /* Teal accent */
+            --text-color: #f5f5f5;           /* Off-white text */
+            --text-secondary: #bdc3c7;       /* Light gray text */
+            --success-color: #00b894;        /* Green for success */
+            --warning-color: #fdcb6e;        /* Yellow for warnings */
+            --danger-color: #e74c3c;         /* Red for errors/danger */
+            --card-bg: #1f1f1f;              /* Card background */
+            --card-border: #333333;          /* Card border */
+            --border-radius: 8px;
+            --box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--primary-color);
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        a {
+            color: var(--accent-light);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        a:hover {
+            color: var(--accent-secondary);
+            text-decoration: underline;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            margin-bottom: 1rem;
+            line-height: 1.3;
+        }
+
+        p {
+            margin-bottom: 1.5rem;
+        }
+
+        ul, ol {
+            margin-bottom: 1.5rem;
+            padding-left: 1.5rem;
+        }
+
+        li {
+            margin-bottom: 0.5rem;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            border-radius: var(--border-radius);
+        }
+
+        /* Header */
+        .header {
+            background-color: var(--secondary-color);
+            padding: 1.5rem 0;
+            box-shadow: var(--box-shadow);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: var(--accent-color);
+        }
+
+        .logo span {
+            color: var(--text-color);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 1.5rem;
+        }
+
+        .nav-links a {
+            color: var(--text-color);
+            font-weight: 500;
+            padding: 0.5rem;
+            border-radius: var(--border-radius);
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+            text-decoration: none;
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--text-color);
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, var(--secondary-color) 0%, var(--primary-color) 100%);
+            padding: 5rem 0;
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .hero h1 {
+            font-size: 2.8rem;
+            margin-bottom: 1.5rem;
+            color: var(--accent-light);
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto 2rem;
+            color: var(--text-secondary);
+        }
+
+        .cta-button {
+            display: inline-block;
+            background-color: var(--accent-color);
+            color: white;
+            padding: 0.8rem 1.5rem;
+            border-radius: var(--border-radius);
+            font-weight: 600;
+            transition: var(--transition);
+            text-decoration: none;
+        }
+
+        .cta-button:hover {
+            background-color: var(--accent-light);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            text-decoration: none;
+        }
+
+        /* Section Styles */
+        .section {
+            padding: 3rem 0;
+            margin-bottom: 2rem;
+        }
+
+        .section-title {
+            font-size: 2.2rem;
+            margin-bottom: 2rem;
+            text-align: center;
+            color: var(--accent-light);
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background-color: var(--accent-color);
+            border-radius: 2px;
+        }
+
+        .section-intro {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto 3rem;
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+        }
+
+        /* Cards */
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .card {
+            background-color: var(--card-bg);
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--box-shadow);
+            border: 1px solid var(--card-border);
+            transition: var(--transition);
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4);
+            border-color: var(--accent-color);
+        }
+
+        .card-header {
+            background-color: rgba(0, 0, 0, 0.2);
+            padding: 1.5rem;
+            border-bottom: 1px solid var(--card-border);
+        }
+
+        .card-header h3 {
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            color: var(--accent-light);
+        }
+
+        .card-header h3 i {
+            color: var(--accent-color);
+        }
+
+        .card-content {
+            padding: 1.5rem;
+        }
+
+        /* Steps */
+        .steps {
+            counter-reset: step;
+            margin-bottom: 3rem;
+        }
+
+        .step {
+            position: relative;
+            padding: 2rem;
+            background-color: var(--card-bg);
+            border-radius: var(--border-radius);
+            margin-bottom: 2rem;
+            border-left: 4px solid var(--accent-color);
+            counter-increment: step;
+        }
+
+        .step::before {
+            content: counter(step);
+            position: absolute;
+            top: -15px;
+            left: -15px;
+            width: 40px;
+            height: 40px;
+            background-color: var(--accent-color);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 1.2rem;
+            box-shadow: var(--box-shadow);
+        }
+
+        .step h3 {
+            margin-bottom: 1rem;
+            color: var(--accent-light);
+        }
+
+        /* Tips and Warnings */
+        .tip, .warning, .mistake {
+            padding: 1.5rem;
+            border-radius: var(--border-radius);
+            margin-bottom: 1.5rem;
+            position: relative;
+            padding-left: 4rem;
+        }
+
+        .tip {
+            background-color: rgba(0, 184, 148, 0.1);
+            border-left: 4px solid var(--success-color);
+        }
+
+        .warning {
+            background-color: rgba(253, 203, 110, 0.1);
+            border-left: 4px solid var(--warning-color);
+        }
+
+        .mistake {
+            background-color: rgba(231, 76, 60, 0.1);
+            border-left: 4px solid var(--danger-color);
+        }
+
+        .tip::before, .warning::before, .mistake::before {
+            font-family: 'Font Awesome 5 Free';
+            font-weight: 900;
+            position: absolute;
+            left: 1.5rem;
+            top: 1.5rem;
+            font-size: 1.5rem;
+        }
+
+        .tip::before {
+            content: '\f0eb';
+            color: var(--success-color);
+        }
+
+        .warning::before {
+            content: '\f071';
+            color: var(--warning-color);
+        }
+
+        .mistake::before {
+            content: '\f057';
+            color: var(--danger-color);
+        }
+
+        /* Example Section */
+        .example {
+            background-color: var(--card-bg);
+            border-radius: var(--border-radius);
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+            border: 1px solid var(--card-border);
+        }
+
+        .example-header {
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 1px solid var(--card-border);
+            color: var(--accent-light);
+        }
+
+        .example-content {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            white-space: pre-wrap;
+            background-color: rgba(0, 0, 0, 0.2);
+            padding: 1rem;
+            border-radius: var(--border-radius);
+            overflow-x: auto;
+        }
+
+        /* Before/After Examples */
+        .before-after {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .before, .after {
+            background-color: var(--card-bg);
+            border-radius: var(--border-radius);
+            padding: 1.5rem;
+            border: 1px solid var(--card-border);
+        }
+
+        .before h4, .after h4 {
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 1px solid var(--card-border);
+        }
+
+        .before h4 {
+            color: var(--danger-color);
+        }
+
+        .after h4 {
+            color: var(--success-color);
+        }
+
+        .before-content, .after-content {
+            background-color: rgba(0, 0, 0, 0.2);
+            padding: 1rem;
+            border-radius: var(--border-radius);
+        }
+
+        @media (max-width: 768px) {
+            .before-after {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Accordion */
+        .accordion {
+            margin-bottom: 3rem;
+        }
+
+        .accordion-item {
+            background-color: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: var(--border-radius);
+            margin-bottom: 1rem;
+            overflow: hidden;
+        }
+
+        .accordion-header {
+            padding: 1.2rem 1.5rem;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 600;
+            color: var(--accent-light);
+            transition: var(--transition);
+        }
+
+        .accordion-header:hover {
+            background-color: rgba(255, 255, 255, 0.05);
+        }
+
+        .accordion-header::after {
+            content: '\f078';
+            font-family: 'Font Awesome 5 Free';
+            font-weight: 900;
+            transition: var(--transition);
+        }
+
+        .accordion-item.active .accordion-header::after {
+            transform: rotate(180deg);
+        }
+
+        .accordion-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+        }
+
+        .accordion-item.active .accordion-content {
+            max-height: 1000px;
+        }
+
+        .accordion-body {
+            padding: 0 1.5rem 1.5rem;
+        }
+
+        /* Stats Section */
+        .stats-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .stat-card {
+            background-color: var(--card-bg);
+            border-radius: var(--border-radius);
+            padding: 2rem;
+            text-align: center;
+            box-shadow: var(--box-shadow);
+            border: 1px solid var(--card-border);
+            transition: var(--transition);
+        }
+
+        .stat-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent-color);
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+            color: var(--accent-light);
+        }
+
+        .stat-label {
+            font-size: 1rem;
+            color: var(--text-secondary);
+        }
+
+        /* CTA Section */
+        .cta-section {
+            text-align: center;
+            padding: 4rem 0;
+            background-color: var(--secondary-color);
+            border-radius: var(--border-radius);
+            margin-bottom: 3rem;
+        }
+
+        .cta-section h2 {
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            color: var(--accent-light);
+        }
+
+        .cta-section p {
+            max-width: 700px;
+            margin: 0 auto 2rem;
+            color: var(--text-secondary);
+        }
+
+        /* Footer */
+        .footer {
+            background-color: var(--secondary-color);
+            padding: 3rem 0 1rem;
+            margin-top: 4rem;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-column h3 {
+            color: var(--accent-light);
+            margin-bottom: 1.2rem;
+            position: relative;
+            padding-bottom: 0.5rem;
+        }
+
+        .footer-column h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 40px;
+            height: 3px;
+            background-color: var(--accent-color);
+        }
+
+        .footer-links {
+            list-style: none;
+            padding: 0;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-links a {
+            color: var(--text-secondary);
+            transition: var(--transition);
+        }
+
+        .footer-links a:hover {
+            color: var(--accent-light);
+            text-decoration: none;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            color: var(--text-color);
+            transition: var(--transition);
+        }
+
+        .social-links a:hover {
+            background-color: var(--accent-color);
+            transform: translateY(-3px);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        /* Back to Top Button */
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            background-color: var(--accent-color);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            opacity: 0;
+            visibility: hidden;
+            transition: var(--transition);
+            box-shadow: var(--box-shadow);
+            z-index: 99;
+        }
+
+        .back-to-top.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .back-to-top:hover {
+            background-color: var(--accent-light);
+            transform: translateY(-3px);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .section-title {
+                font-size: 2rem;
+            }
+            
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background-color: var(--secondary-color);
+                flex-direction: column;
+                padding: 1rem 0;
+                box-shadow: var(--box-shadow);
+            }
+            
+            .nav-links.active {
+                display: flex;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            .section-title {
+                font-size: 1.8rem;
+            }
+            
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+            
+            .hero p {
+                font-size: 1.1rem;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .section-title {
+                font-size: 1.6rem;
+            }
+            
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+            
+            .hero p {
+                font-size: 1rem;
+            }
+            
+            .step {
+                padding: 1.5rem;
+            }
+            
+            .step::before {
+                width: 35px;
+                height: 35px;
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">Soft<span>Skills</span></div>
+                <nav>
+                    <ul class="nav-links" id="navLinks">
+                        <li><a href="#importance">Importance</a></li>
+                        <li><a href="#time-management">Time Management</a></li>
+                        <li><a href="#problem-solving">Problem Solving</a></li>
+                        <li><a href="#leadership">Leadership</a></li>
+                        <li><a href="#adaptability">Adaptability</a></li>
+                        <li><a href="#development">Development</a></li>
+                        <li><a href="/dashboard"><i class="fas fa-arrow-left"></i> Back</a></li>
+
+                    </ul>
+                    <button class="mobile-menu-btn" id="mobileMenuBtn">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h1>Essential Soft Skills for Career Success</h1>
+            <p>Master the non-technical abilities that will set you apart in placements, job interviews, and college admissions.</p>
+            <a href="#importance" class="cta-button">Explore Skills <i class="fas fa-arrow-right"></i></a>
+        </div>
+    </section>
+
+    <!-- Importance Section -->
+    <section class="section" id="importance">
+        <div class="container">
+            <h2 class="section-title">Why Soft Skills Matter</h2>
+            <p class="section-intro">In today's competitive job market, technical knowledge alone isn't enough. Employers and admissions officers increasingly value candidates who demonstrate strong soft skills.</p>
+            
+            <div class="stats-container">
+                <div class="stat-card">
+                    <div class="stat-number">85%</div>
+                    <div class="stat-label">Of Job Success Comes From Soft Skills</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">92%</div>
+                    <div class="stat-label">Of Recruiters Value Soft Skills Equally or More Than Hard Skills</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">77%</div>
+                    <div class="stat-label">Of Employers Say Soft Skills Are As Important As Technical Skills</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">89%</div>
+                    <div class="stat-label">Of New Hire Failures Are Due to Attitude, Not Technical Ability</div>
+                </div>
+            </div>
+            
+            <div class="cards-grid">
+                <div class="card">
+                    <div class="card-header">
+                        <h3><i class="fas fa-briefcase"></i> Career Advancement</h3>
+                    </div>
+                    <div class="card-content">
+                        <p>Strong soft skills can accelerate your career progression and open doors to leadership positions.</p>
+                        <ul>
+                            <li>Differentiate yourself from equally qualified candidates</li>
+                            <li>Adapt more quickly to new roles and responsibilities</li>
+                            <li>Build stronger professional relationships</li>
+                            <li>Navigate workplace challenges more effectively</li>
+                            <li>Demonstrate leadership potential to management</li>
+                        </ul>
+                        <p>While technical skills may get you an interview, soft skills often determine whether you get the job and how far you'll advance.</p>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <div class="card-header">
+                        <h3><i class="fas fa-graduation-cap"></i> Academic Success</h3>
+                    </div>
+                    <div class="card-content">
+                        <p>Soft skills are crucial for thriving in educational environments and securing admissions to competitive programs.</p>
+                        <ul>
+                            <li>Collaborate effectively on group projects</li>
+                            <li>Manage coursework and deadlines efficiently</li>
+                            <li>Build meaningful relationships with professors and peers</li>
+                            <li>Adapt to different teaching styles and learning environments</li>
+                            <li>Stand out in college and scholarship applications</li>
+                        </ul>
+                        <p>Admissions officers look beyond grades to identify students who will contribute positively to campus life and succeed in collaborative learning environments.</p>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <div class="card-header">
+                        <h3><i class="fas fa-cogs"></i> Complementing Technical Skills</h3>
+                    </div>
+                    <div class="card-content">
+                        <p>Technical expertise reaches its full potential when paired with strong soft skills.</p>
+                        <ul>
+                            <li>Communicate complex ideas to non-technical stakeholders</li>
+                            <li>Work effectively in cross-functional teams</li>
+                            <li>Manage projects and resources efficiently</li>
+                            <li>Identify problems and implement solutions collaboratively</li>
+                            <li>Adapt to rapidly changing technologies and methodologies</li>
+                        </ul>
+                        <p>Even the most technically proficient professionals need soft skills to apply their expertise effectively in real-world contexts.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="tip">
+                <h4>Soft Skills in Your Application Materials</h4>
+                <p>When applying for jobs or educational programs, demonstrate your soft skills through specific examples:</p>
+                <ul>
+                    <li>Include relevant soft skills in your resume's skills section</li>
+                    <li>Highlight situations where you used soft skills to achieve results</li>
+                    <li>Quantify the impact of your soft skills when possible</li>
+                    <li>Ask recommenders to address specific soft skills they've observed in you</li>
+                    <li>Be prepared to discuss your soft skills during interviews with concrete examples</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Time Management Section -->
+    <section class="section" id="time-management">
+        <div class="container">
+            <h2 class="section-title">Time Management</h2>
+            <p class="section-intro">The ability to plan, organize, and allocate your time effectively is crucial for academic success and workplace productivity.</p>
+            
+            <div class="steps">
+                <div class="step">
+                    <h3>Understanding Time Management Principles</h3>
+                    <p>Effective time management begins with understanding key principles that help you make the most of your limited time.</p>
+                    <h4>Core Principles:</h4>
+                    <ul>
+                        <li><strong>Pareto Principle (80/20 Rule):</strong> 80% of results come from 20% of efforts</li>
+                        <li><strong>Parkinson's Law:</strong> Work expands to fill the time available for its completion</li>
+                        <li><strong>Time Blocking:</strong> Dedicating specific time periods to specific tasks</li>
+                        <li><strong>Task Batching:</strong> Grouping similar tasks together to reduce context switching</li>
+                        <li><strong>Strategic Procrastination:</strong> Deliberately delaying low-priority tasks</li>
+                    </ul>
+                    <div class="example">
+                        <h4 class="example-header">Applying the 80/20 Rule</h4>
+                        <div class="example-content">
+When studying for exams:
+• Identify the 20% of concepts that will likely appear in 80% of the questions
+• Focus your deepest study efforts on these high-impact areas
+• Use practice tests to identify which concepts yield the most points
+
+When working on projects:
+• Determine which 20% of features or components will deliver 80% of the value
+• Prioritize these elements in your timeline
+• Complete the high-impact work before moving to less critical details
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="step">
+                    <h3>Prioritization Techniques</h3>
+                    <p>Not all tasks are created equal. Learning to prioritize effectively ensures you focus on what matters most.</p>
+                    <h4>Prioritization Methods:</h4>
+                    <ul>
+                        <li><strong>Eisenhower Matrix:</strong> Categorize tasks by urgency and importance</li>
+                        <li><strong>ABCDE Method:</strong> Assign priority levels from A (must do) to E (eliminate)</li>
+                        <li><strong>MoSCoW Method:</strong> Categorize as Must have, Should have, Could have, Won't have</li>
+                        <li><strong>Value vs. Effort Analysis:</strong> Prioritize high-value, low-effort tasks first</li>
+                    </ul>
+                    <div class="before-after">
+                        <div class="before">
+                            <h4>Poor Prioritization</h4>
+                            <div class="before-content">
+• Working on tasks in the order they arrive
+• Spending hours on low-impact activities
+• Allowing urgent but unimportant tasks to dominate your schedule
+• Failing to consider deadlines when planning your day
+• Treating all assignments as equally important
+                            </div>
+                        </div>
+                        <div class="after">
+                            <h4>Effective Prioritization</h4>
+                            <div class="after-content">
+• Identifying your most important tasks (MITs) each day
+• Tackling high-impact activities during your peak energy hours
+• Scheduling time for important but non-urgent tasks
+• Considering both deadlines and strategic importance
+• Regularly reassessing priorities as circumstances change
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="step">
+                    <h3>Planning and Scheduling</h3>
+                    <p>Effective planning creates a roadmap for your time and helps prevent last-minute rushes and missed deadlines.</p>
+                    <h4>Planning Strategies:</h4>
+                    <ul>
+                        <li><strong>Weekly Planning:</strong> Set aside time each week to plan the week ahead</li>
+                        <li><strong>Daily Planning:</strong> Review and adjust your plan each morning or evening</li>
+                        <li><strong>Time Blocking:</strong> Schedule specific blocks for different types of work</li>
+                        <li><strong>Buffer Time:</strong> Build in extra time between tasks for transitions and unexpected issues</li>
+                        <li><strong>Backward Planning:</strong> Start with the deadline and work backward</li>
+                    </ul>
+                    <div class="tip">
+                        <h4>The 1-3-5 Rule</h4>
+                        <p>Structure each day to accomplish:</p>
+                        <ul>
+                            <li>1 big thing (a major project or challenging task)</li>
+                            <li>3 medium things (important but less time-intensive tasks)</li>
+                            <li>5 small things (quick tasks that can be completed in minutes)</li>
+                        </ul>
+                        <p>This approach ensures progress on significant projects while still handling smaller responsibilities.</p>
+                    </div>
+                </div>
+                
+                <div class="step">
+                    <h3>Overcoming Procrastination</h3>
+                    <p>Procrastination is one of the biggest obstacles to effective time management. Understanding and addressing its root causes is essential.</p>
+                    <h4>Anti-Procrastination Techniques:</h4>
+                    <ul>
+                        <li><strong>Pomodoro Technique:</strong> Work in focused 25-minute intervals with short breaks</li>
+                        <li><strong>Two-Minute Rule:</strong> If a task takes less than two minutes, do it immediately</li>
+                        <li><strong>Eat the Frog:</strong> Tackle your most difficult task first thing in the morning</li>
+                        <li><strong>Implementation Intentions:</strong> Plan specifically when and where you'll complete tasks</li>
+                        <li><strong>Temptation Bundling:</strong> Pair unpleasant tasks with activities you enjoy</li>
+                    </ul>
+                    <div class="warning">
+                        <h4>Understanding Procrastination Triggers</h4>
+                        <p>Procrastination often stems from specific triggers. Identify which affect you:</p>
+                        <ul>
+                            <li><strong>Fear of failure:</strong> Worry about not meeting expectations</li>
+                            <li><strong>Perfectionism:</strong> Setting unrealistically high standards</li>
+                            <li><strong>Task aversion:</strong> Disliking certain types of work</li>
+                            <li><strong>Overwhelm:</strong> Feeling a task is too large or complex</li>
+                            <li><strong>Lack of clarity:</strong> Uncertainty about how to proceed</li>
+                        </ul>
+                        <p>Once you identify your triggers, you can develop targeted strategies to overcome them.</p>
+                    </div>
+                </div>
+                
+                <div class="step">
+                    <h3>Tools and Systems</h3>
+                    <p>The right tools and systems can significantly enhance your time management capabilities.</p>
+                    <h4>Recommended Tools:</h4>
+                    <ul>
+                        <li><strong>Digital Calendars:</strong> Google Calendar, Microsoft Outlook, Apple Calendar</li>
+                        <li><strong>Task Managers:</strong> Todoist, Microsoft To Do, Notion, Trello</li>
+                        <li><strong>Focus Apps:</strong> Forest, Freedom, Focus@Will</li>
+                        <li><strong>Time Trackers:</strong> Toggl, RescueTime, Clockify</li>
+                        <li><strong>Note-Taking Systems:</strong> Evernote, OneNote, Notion</li>
+                    </ul>
+                    <div class="example">
+                        <h4 class="example-header">Building a Personal Time Management System</h4>
+                        <div class="example-content">
+1. Capture
+   • Use a single trusted system to collect all tasks, commitments, and ideas
+   • Make it easily accessible across all your devices
+
+2. Clarify
+   • Process new items regularly
+   • Break down large projects into specific, actionable tasks
+   • Set clear outcomes for each task
+
+3. Organize
+   • Categorize tasks by project, context, or energy level
+   • Assign due dates and priority levels
+   • Schedule time blocks for focused work
+
+4. Review
+   • Conduct daily reviews to plan your day
+   • Perform weekly reviews to assess progress and adjust plans
+   • Monthly/quarterly reviews to evaluate larger goals and directions
+
+5. Engage
+   • Use your system to make informed decisions about what to work on
+   • Trust your system to remember everything so you can focus fully
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Problem Solving Section -->
+    <section class="section" id="problem-solving">
+        <div class="container">
+            <h2 class="section-title">Problem Solving</h2>
+            <p class="section-intro">The ability to identify issues, analyze situations, and develop effective solutions is highly valued in both academic and professional settings.</p>
+            
+            <div class="accordion">
+                <div class="accordion-item active">
+                    <div class="accordion-header">The Problem-Solving Mindset</div>
+                    <div class="accordion-content">
+                        <div class="accordion-body">
+                            <p>Effective problem solving begins with cultivating the right mindset—one that views challenges as opportunities rather than obstacles.</p>
+                            
+                            <h4>Key Mindset Characteristics:</h4>
+                            <ul>
+                                <li><strong>Curiosity:</strong> A genuine interest in understanding how things work</li>
+                                <li><strong>Persistence:</strong> Willingness to try multiple approaches</li>
+                                <li><strong>Optimism:</strong> Belief that solutions exist, even for difficult problems</li>
+                                <li><strong>Adaptability:</strong> Openness to changing course when needed</li>
+                                <li><strong>Systems Thinking:</strong> Seeing connections between different elements</li>
+                                <li><strong>Growth Orientation:</strong> Viewing failures as learning opportunities</li>
+                            </ul>
+                            
+                            <div class="tip">
+                                <h4>Developing a Problem-Solving Mindset</h4>
+                                <p>Try these practices to strengthen your problem-solving orientation:</p>
+                                <ul>
+                                    <li>Ask "How might we...?" instead of "Why can't we...?"</li>
+                                    <li>Reframe obstacles as challenges to overcome</li>
+                                    <li>Practice finding multiple solutions to everyday problems</li>
+                                    <li>Analyze how others have solved similar problems</li>
+                                    <li>Celebrate small wins in the problem-solving process</li>
+                                </ul>
+                            </div>
+                            
+                            <div class="before-after">
+                                <div class="before">
+                                    <h4>Fixed Mindset Approach</h4>
+                                    <div class="before-content">
+"This problem is too difficult. I don't have the skills to solve it."
+
+"We've always done it this way, so we shouldn't change."
+
+"If my first solution doesn't work, the problem is probably unsolvable."
+
+"This is someone else's responsibility to fix."
+                                    </div>
+                                </div>
+                                <div class="after">
+                                    <h4>Growth Mindset Approach</h4>
+                                    <div class="after-content">
+"This is a challenging problem, but I can develop the skills to address it."
+
+"Let's examine our current approach and see if there are better alternatives."
+
+"If my first solution doesn't work, what can I learn from that attempt?"
+
+"How can I contribute to solving this problem, even if it's not my primary responsibility?"
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="accordion-item">
+                    <div class="accordion-header">Structured Problem-Solving Frameworks</div>
+                    <div class="accordion-content">
+                        <div class="accordion-body">
+                            <p>Using a systematic approach to problem solving helps ensure you don't miss important steps or considerations.</p>
+                            
+                            <h4>Common Problem-Solving Frameworks:</h4>
+                            
+                            <h5>1. The 5-Step Method</h5>
+                            <ol>
+                                <li><strong>Define the Problem:</strong> Clearly articulate what needs to be solved</li>
+                                <li><strong>Analyze the Problem:</strong> Gather information and identify root causes</li>
+                                <li><strong>Generate Solutions:</strong> Brainstorm multiple possible approaches</li>
+                                <li><strong>Evaluate and Select:</strong> Assess options and choose the best solution</li>
+                                <li><strong>Implement and Review:</strong> Put the solution into action and assess results</li>
+                            </ol>
+                            
+                            <h5>2. IDEAL Framework</h5>
+                            <ul>
+                                <li><strong>I</strong>dentify the problem</li>
+                                <li><strong>D</strong>efine the goals</li>
+                                <li><strong>E</strong>xplore possible strategies</li>
+                                <li><strong>A</strong>ct on the best strategy</li>
+                                <li><strong>L</strong>ook back and learn</li>
+                            </ul>
+                            
+                            <h5>3. The 8D Problem-Solving Process</h5>
+                            <ol>
+                                <li><strong>D1:</strong> Form a team</li>
+                                <li><strong>D2:</strong> Define the problem</li>
+                                <li><strong>D3:</strong> Implement containment actions</li>
+                                <li><strong>D4:</strong> Identify root causes</li>
+                                <li><strong>D5:</strong> Develop permanent corrective actions</li>
+                                <li><strong>D6:</strong> Implement and validate solutions</li>
+                                <li><strong>D7:</strong> Prevent recurrence</li>
+                                <li><strong>D8:</strong> Recognize the team and share knowledge</li>
+                            </ol>
+                            
+                            <div class="example">
+                                <h4 class="example-header">Applying the 5-Step Method to Academic Challenges</h4>
+                                <div class="example-content">
+Problem: Consistently scoring lower than expected on exams despite studying
+
+1. Define the Problem:
+   • Specific: Test scores are 15-20% below target
+   • Pattern: Occurs across multiple subjects
+   • Impact: Affecting GPA and confidence
+
+2. Analyze the Problem:
+   • Review past exams for patterns of mistakes
+   • Compare study methods with more successful peers
+   • Consider test anxiety as a potential factor
+   • Evaluate study environment and potential distractions
+
+3. Generate Solutions:
+   • Implement active recall instead of passive review
+   • Create practice tests that mimic exam conditions
+   • Form a study group for collaborative learning
+   • Meet with professors during office hours
+   • Learn and apply test-taking strategies
+
+4. Evaluate and Select:
+   • Prioritize solutions based on evidence of effectiveness
+   • Consider time and resource constraints
+   • Select a combination of approaches to address different aspects
+
+5. Implement and Review:
+   • Apply new strategies for the next exam cycle
+   • Track results and compare to previous performance
+   • Adjust approach based on outcomes
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="accordion-item">
+                    <div class="accordion-header">Creative Problem-Solving Techniques</div>
+                    <div class="accordion-content">
+                        <div class="accordion-body">
+                            <p>Many problems require creative thinking to develop innovative solutions that go beyond the obvious.</p>
+                            
+                            <h4>Creative Thinking Methods:</h4>
+                            <ul>
+                                <li><strong>Brainstorming:</strong> Generating many ideas without judgment</li>
+                                <li><strong>Mind Mapping:</strong> Visual organization of ideas and connections</li>
+                                <li><strong>Reverse Thinking:</strong> Approaching the problem backward</li>
+                                <li><strong>SCAMPER:</strong> Substitute, Combine, Adapt, Modify, Put to other uses, Eliminate, Reverse</li>
+                                <li><strong>Six Thinking Hats:</strong> Looking at problems from multiple perspectives</li>
+                                <li><strong>Analogical Thinking:</strong> Drawing parallels to similar situations</li>
+                            </ul>
+                            
+                            <div class="tip">
+                                <h4>Overcoming Mental Blocks</h4>
+                                <p>When stuck on a problem, try these techniques to stimulate creative thinking:</p>
+                                <ul>
+                                    <li><strong>Change your environment:</strong> Work in a different location</li>
+                                    <li><strong>Take a break:</strong> Allow your subconscious to work on the problem</li>
+                                    <li><strong>Explain the problem to someone else:</strong> Often clarifies your thinking</li>
+                                    <li><strong>Use constraints:</strong> Limit resources or time to force creative solutions</li>
+                                    <li><strong>Challenge assumptions:</strong> Identify and question your underlying beliefs</li>
+                                </ul>
+                            </div>
+                            
+                            <div class="example">
+                                <h4 class="example-header">SCAMPER in Action</h4>
+                                <div class="example-content">
+Problem: Creating a standout group presentation for a class project
+
+Substitute:
+• Replace PowerPoint with an interactive demonstration
+• Use storytelling instead of bullet points
+
+Combine:
+• Merge visual presentation with physical props
+• Integrate audience participation with content delivery
+
+Adapt:
+• Apply presentation techniques from TED talks
+• Modify approaches from successful past presentations
+
+Modify:
+• Change the presentation order to start with a surprising fact
+• Amplify visual elements to make complex data more accessible
+
+Put to other uses:
+• Repurpose the presentation as a shareable resource
+• Use the project as a portfolio piece for job applications
+
+Eliminate:
+• Remove unnecessary technical jargon
+• Cut redundant information to focus on key points
+
+Reverse:
+• Start with the conclusion and work backward
+• Have the audience pose questions first, then address them
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="accordion-item">
+                    <div class="accordion-header">Analytical Problem Solving</div>
+                    <div class="accordion-content">
+                        <div class="accordion-body">
+                            <p>Analytical problem solving involves breaking down complex problems into manageable components and using logic and data to find solutions.</p>
+                            
+                            <h4>Analytical Techniques:</h4>
+                            <ul>
+                                <li><strong>Root Cause Analysis:</strong> Identifying the underlying causes of problems</li>
+                                <li><strong>SWOT Analysis:</strong> Evaluating Strengths, Weaknesses, Opportunities, and Threats</li>
+                                <li><strong>Pareto Analysis:</strong> Identifying the 20% of causes creating 80% of problems</li>
+                                <li><strong>Decision Matrix:</strong> Evaluating options against multiple criteria</li>
+                                <li><strong>Process Mapping:</strong> Visualizing workflows to identify inefficiencies</li>
+                                <li><strong>Cost-Benefit Analysis:</strong> Weighing the pros and cons of potential solutions</li>
+                            </ul>
+                            
+                            <h4>Root Cause Analysis Methods:</h4>
+                            <ul>
+                                <li><strong>5 Whys:</strong> Asking "why" repeatedly to drill down to root causes</li>
+                                <li><strong>Fishbone Diagram:</strong> Categorizing potential causes of a problem</li>
+                                <li><strong>Fault Tree Analysis:</strong> Working backward from an issue to identify causal factors</li>
+                            </ul>
+                            
+                            <div class="example">
+                                <h4 class="example-header">The 5 Whys in Practice</h4>
+                                <div class="example-content">
+Problem: Consistently missing project deadlines
+
+Why #1: Why are we missing deadlines?
+Answer: Because tasks are taking longer than estimated.
+
+Why #2: Why are tasks taking longer than estimated?
+Answer: Because we're encountering unexpected problems during implementation.
+
+Why #3: Why are we encountering unexpected problems?
+Answer: Because we didn't identify all requirements and potential issues during planning.
+
+Why #4: Why didn't we identify all requirements and issues?
+Answer: Because we didn't involve all stakeholders in the planning process.
+
+Why #5: Why didn't we involve all stakeholders?
+Answer: Because we don't have a structured stakeholder consultation process at the project initiation phase.
+
+Root Cause: Lack of a comprehensive stakeholder engagement process during project planning.
+
+Solution: Implement a formal stakeholder analysis and consultation protocol for all new projects.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="accordion-item">
+                    <div class="accordion-header">Collaborative Problem Solving</div>
+                    <div class="accordion-content">
+                        <div class="accordion-body">
+                            <p>Many complex problems benefit from diverse perspectives and collaborative approaches.</p>
+                            
+                            <h4>Benefits of Collaborative Problem Solving:</h4>
+                            <ul>
+                                <li><strong>Diverse Perspectives:</strong> Different viewpoints reveal blind spots</li>
+                                <li><strong>Complementary Skills:</strong> Team members contribute different expertise</li>
+                                <li><strong>Increased Buy-in:</strong> People support solutions they helped create</li>
+                                <li><strong>Enhanced Creativity:</strong> Group dynamics can spark innovative ideas</li>
+                                <li><strong>Distributed Cognitive Load:</strong> Complex problems become more manageable</li>
+                            </ul>
+                            
+                            <h4>Effective Collaboration Techniques:</h4>
+                            <ul>
+                                <li><strong>Structured Brainstorming:</strong> Organized idea generation with clear rules</li>
+                                <li><strong>Round-Robin Contribution:</strong> Ensuring everyone has input</li>
+                                <li><strong>Nominal Group Technique:</strong> Combining individual and group ideation</li>
+                                <li><strong>Delphi Method:</strong> Anonymous feedback and iterative refinement</li>
+                                <li><strong>Design Thinking Workshops:</strong> User-centered collaborative problem solving</li>
+                            </ul>
+                            
+                            <div class="warning">
+                                <h4>Overcoming Collaborative Challenges</h4>
+                                <p>Be aware of these potential pitfalls in group problem solving:</p>
+                                <ul>
+                                    <li><strong>Groupthink:</strong> Pressure to conform limiting critical evaluation</li>
+                                    <li><strong>Social Loafing:</strong> Reduced individual effort in groups</li>
+                                    <li><strong>Dominant Voices:</strong> Some members overshadowing others</li>
+                                    <li><strong>Coordination Overhead:</strong> Time spent organizing rather than solving</li>
+                                    <li><strong>Conflict Avoidance:</strong> Reluctance to challenge ideas</li>
+                                </ul>
+                                <p>Address these issues by establishing clear processes, encouraging respectful dissent, and ensuring equal participation opportunities.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Leadership Section -->
+    <section class="section" id="leadership">
+        <div class="container">
+            <h2 class="section-title">Leadership</h2>
+            <p class="section-intro">Leadership isn't just for those with formal authority—it's about influencing, inspiring, and bringing out the best in others.</p>
+            
+            <div class="cards-grid">
+                <div class="card">
+                    <div class="card-header">
+                        <h3><i class="fas fa-compass"></i> Vision and Direction</h3>
+                    </div>
+                    <div class="card-content">
+                        <p>Effective leaders create and communicate a compelling vision that inspires action.</p>
+                        <h4>Key Aspects:</h4>
+                        <ul>
+                            <li><strong>Future Orientation:</strong> Looking beyond immediate concerns</li>
+                            <li><strong>Purpose-Driven:</strong> Connecting activities to meaningful goals</li>
+                            <li><strong>Strategic Thinking:</strong> Seeing the big picture and planning accordingly</li>
+                            <li><strong>Clear Communication:</strong> Articulating the vision in relatable terms</li>
+                            <li><strong>Consistency:</strong> Aligning decisions and actions with stated vision</li>
+                        </ul>
+                        <div class="tip">
+                            <h4>Developing Vision</h4>
+                            <p>Practice these habits to strengthen your visionary leadership:</p>
+                            <ul>
+                                <li>Regularly set aside time for reflection and strategic thinking</li>
+                                <li>Stay informed about trends in your field and adjacent areas</li>
+                                <li>Seek diverse perspectives to broaden your viewpoint</li>
+                                <li>Practice articulating your ideas clearly and concisely</li>
+                                <li>Connect short-term actions to long-term objectives</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <div class="card-header">
+                        <h3><i class="fas fa-users"></i> Team Building</h3>
+                    </div>
+                    <div class="card-content">
+                        <p>Leaders create environments where teams can collaborate effectively and achieve collective goals.</p>
+                        <h4>Team Building Skills:</h4>
+                        <ul>
+                            <li><strong>Talent Recognition:</strong> Identifying and leveraging individual strengths</li>
+                            <li><strong>Psychological Safety:</strong> Creating an environment where people feel safe to contribute</li>
+                            <li><strong>Conflict Management:</strong> Addressing tensions constructively</li>
+                            <li><strong>Delegation:</strong> Assigning responsibilities appropriately</li>
+                            <li><strong>Cohesion Building:</strong> Fostering connection and shared identity</li>
+                        </ul>
+                        <div class="example">
+                            <h4 class="example-header">Team Building in Action</h4>
+                            <div class="example-content">
+For a group project:
+• Begin with a team charter defining goals, roles, and working agreements
+• Conduct a skills inventory to identify each member's strengths
+• Create opportunities for social connection outside of task work
+• Establish clear communication channels and meeting rhythms
+• Celebrate small wins and milestones along the way
+• Address conflicts promptly and directly
+• Regularly reflect on team processes and adjust as needed
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <div class="card-header">
+                        <h3><i class="fas fa-comment"></i> Communication</h3>
+                    </div>
+                    <div class="card-content">
+                        <p>Leadership communication goes beyond information sharing to inspire, align, and motivate.</p>
+                        <h4>Leadership Communication Skills:</h4>
+                        <ul>
+                            <li><strong>Active Listening:</strong> Truly understanding others' perspectives</li>
+                            <li><strong>Clear Messaging:</strong> Communicating with precision and impact</li>
+                            <li><strong>Storytelling:</strong> Using narratives to convey meaning and inspire</li>
+                            <li><strong>Transparency:</strong> Sharing information openly and honestly</li>
+                            <li><strong>Feedback:</strong> Providing constructive guidance for improvement</li>
+                        </ul>
+                        <div class="before-after">
+                            <div class="before">
+                                <h4>Ineffective Communication</h4>
+                                <div class="before-content">
+"We need to improve our performance. The numbers aren't good enough. Everyone needs to work harder."
+                                </div>
+                            </div>
+                            <div class="after">
+                                <h4>Leadership Communication</h4>
+                                <div class="after-content">
+"I've reviewed our progress, and while we've made strides in areas X and Y, we're still 15% below our target. I believe in our team's ability to overcome this challenge. Let's discuss specific strategies we can implement to improve our effectiveness without burning out."
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <div class="card-header">
+                        <h3><i class="fas fa-lightbulb"></i> Decision Making</h3>
+                    </div>
+                    <div class="card-content">
+                        <p>Leaders make timely, informed decisions while involving others appropriately.</p>
+                        <h4>Decision-Making Approaches:</h4>
+                        <ul>
+                            <li><strong>Consultative:</strong> Seeking input before deciding</li>
+                            <li><strong>Consensus:</strong> Building agreement among team members</li>
+                            <li><strong>Directive:</strong> Making quick decisions when necessary</li>
+                            <li><strong>Analytical:</strong> Using data and evidence to inform choices</li>
+                            <li><strong>Intuitive:</strong> Drawing on experience and judgment</li>
+                        </ul>
+                        <div class="tip">
+                            <h4>Decision-Making Framework</h4>
+                            <p>Consider these factors when determining how to approach a decision:</p>
+                            <ul>
+                                <li><strong>Expertise Required:</strong> Who has the necessary knowledge?</li>
+                                <li><strong>Impact:</strong> Who will be affected by the decision?</li>
+                                <li><strong>Buy-in Needed:</strong> How important is implementation support?</li>
+                                <li><strong>Time Constraints:</strong> How quickly must the decision be made?</li>
+                                <li><strong>Development Opportunity:</strong> Could this help others grow?</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <div class="card-header">
+                        <h3><i class="fas fa-hand-holding-heart"></i> Emotional Intelligence</h3>
+                    </div>
+                    <div class="card-content">
+                        <p>Emotional intelligence is the foundation of effective leadership, enabling authentic connection and influence.</p>
+                        <h4>Components of Emotional Intelligence:</h4>
+                        <ul>
+                            <li><strong>Self-awareness:</strong> Understanding your emotions and their impact</li>
+                            <li><strong>Self-regulation:</strong> Managing your emotions effectively</li>
+                            <li><strong>Motivation:</strong> Internal drive beyond external rewards</li>
+                            <li><strong>Empathy:</strong> Understanding others' perspectives and feelings</li>
+                            <li><strong>Social Skills:</strong> Building relationships and influencing positively</li>
+                        </ul>
+                        <div class="example">
+                            <h4 class="example-header">Applying Emotional Intelligence</h4>
+                            <div class="example-content">
+When a team member is struggling:
+• Notice their emotional state (empathy)
+• Manage your own reaction (self-regulation)
+• Approach them privately (social awareness)
+• Listen without judgment (empathy)
+• Share your own relevant experiences (appropriate vulnerability)
+• Collaborate on solutions (relationship management)
+• Follow up consistently (genuine concern)
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <div class="card-header">
+                        <h3><i class="fas fa-sync-alt"></i> Adaptability</h3>
+                    </div>
+                    <div class="card-content">
+                        <p>Adaptive leadership involves navigating uncertainty and helping others through change.</p>
+                        <h4>Adaptive Leadership Skills:</h4>
+                        <ul>
+                            <li><strong>Change Management:</strong> Guiding transitions effectively</li>
+                            <li><strong>Learning Orientation:</strong> Continuously developing new capabilities</li>
+                            <li><strong>Comfort with Ambiguity:</strong> Operating effectively amid uncertainty</li>
+                            <li><strong>Resilience:</strong> Bouncing back from setbacks</li>
+                            <li><strong>Innovation:</strong> Encouraging and implementing new approaches</li>
+                        </ul>
+                        <div class="warning">
+                            <h4>Leading Through Change</h4>
+                            <p>When guiding others through transitions:</p>
+                            <ul>
+                                <li>Acknowledge the emotional impact of change</li>
+                                <li>Clearly explain the reasons and benefits</li>
+                                <li>Involve people in planning when possible</li>
+                                <li>Provide extra support during transition periods</li>
+                                <li>Celebrate progress and early wins</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="step">
+                <h3>Developing Your Leadership Style</h3>
+                <p>Effective leadership isn't about copying others—it's about developing an authentic approach that leverages your unique strengths.</p>
+                <h4>Leadership Development Strategies:</h4>
+                <ol>
+                    <li><strong>Self-Assessment:</strong> Identify your natural strengths and areas for growth</li>
+                    <li><strong>Seek Feedback:</strong> Ask for honest input from peers, mentors, and team members</li>
+                    <li><strong>Find Role Models:</strong> Study leaders you admire while adapting their approaches to your style</li>
+                    <li><strong>Take Initiative:</strong> Volunteer for leadership opportunities at any level</li>
+                    <li><strong>Reflect Regularly:</strong> Review your experiences and extract lessons</li>
+                    <li><strong>Develop Specific Skills:</strong> Target areas for improvement with deliberate practice</li>
+                </ol>
+                <div class="example">
+                    <h4 class="example-header">Leadership Opportunities for Students</h4>
+                    <div class="example-content">
+• Lead a study group or class project team
+• Organize a campus event or fundraiser
+• Start a student organization around a shared interest
+• Volunteer to coordinate activities for a club or society
+• Mentor younger students in your field
+• Represent student concerns on department committees
+• Take on responsibility in internships or part-time jobs
+• Lead a community service initiative
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Adaptability Section -->
+    <section class="section" id="adaptability">
+        <div class="container">
+            <h2 class="section-title">Adaptability</h2>
+            <p class="section-intro">In today's rapidly changing world, the ability to adjust to new conditions, environments, and expectations is increasingly valuable.</p>
+            
+            <div class="steps">
+                <div class="step">
+                    <h3>Understanding Adaptability</h3>
+                    <p>Adaptability is more than just reacting to change—it's about thriving amid uncertainty and complexity.</p>
+                    <h4>Core Components:</h4>
+                    <ul>
+                        <li><strong>Cognitive Flexibility:</strong> Ability to consider multiple perspectives and solutions</li>
+                        <li><strong>Emotional Resilience:</strong> Managing stress and emotions during transitions</li>
+                        <li><strong>Situational Awareness:</strong> Recognizing when and how to adjust</li>
+                        <li><strong>Proactive Learning:</strong> Continuously acquiring new skills and knowledge</li>
+                        <li><strong>Comfort with Discomfort:</strong> Willingness to operate outside your comfort zone</li>
+                    </ul>
+                    <div class="tip">
+                        <h4>The Adaptability Mindset</h4>
+                        <p>Cultivate these attitudes to enhance your adaptability:</p>
+                        <ul>
+                            <li>View change as an opportunity rather than a threat</li>
+                            <li>Embrace a growth mindset that welcomes challenges</li>
+                            <li>Practice curiosity about new situations and perspectives</li>
+                            <li>Focus on what you can control rather than what you cannot</li>
+                            <li>Maintain optimism while being realistic about challenges</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="step">
+                    <h3>Adapting to New Environments</h3>
+                    <p>Whether starting college, beginning a new job, or studying abroad, the ability to adjust to new environments is crucial.</p>
+                    <h4>Adaptation Strategies:</h4>
+                    <ul>
+                        <li><strong>Observation Period:</strong> Take time to understand the culture and norms</li>
+                        <li><strong>Relationship Building:</strong> Connect with people who can provide guidance</li>
+                        <li><strong>Cultural Intelligence:</strong> Respect and adapt to different cultural practices</li>
+                        <li><strong>Open Communication:</strong> Ask questions and seek clarification</li>
+                        <li><strong>Gradual Integration:</strong> Adopt new practices while maintaining your identity</li>
+                    </ul>
+                    <div class="example">
+                        <h4 class="example-header">First Week in a New Environment</h4>
+                        <div class="example-content">
+College Campus:
+• Explore key locations (classrooms, library, dining, support services)
+• Review syllabi and understand academic expectations
+• Attend orientation events and student organization fairs
+• Introduce yourself to roommates, classmates, and professors
+• Identify resources for academic and personal support
+
+New Workplace:
+• Learn the organizational structure and reporting relationships
+• Understand communication norms and preferred channels
+• Clarify expectations for your role and performance
+• Build relationships with teammates and key stakeholders
+• Observe the unwritten rules and cultural practices
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="step">
+                    <h3>Learning Agility</h3>
+                    <p>Learning agility—the ability to learn quickly from experience and apply that learning to new situations—is a cornerstone of adaptability.</p>
+                    <h4>Developing Learning Agility:</h4>
+                    <ul>
+                        <li><strong>Seek Diverse Experiences:</strong> Expose yourself to different contexts and challenges</li>
+                        <li><strong>Reflect Deliberately:</strong> Process experiences to extract lessons</li>
+                        <li><strong>Apply Learning:</strong> Use insights from one context in new situations</li>
+                        <li><strong>Seek Feedback:</strong> Actively request input on your performance</li>
+                        <li><strong>Experiment:</strong> Try new approaches and learn from the results</li>
+                    </ul>
+                    <div class="before-after">
+                        <div class="before">
+                            <h4>Low Learning Agility</h4>
+                            <div class="before-content">
+• Avoiding unfamiliar situations and challenges
+• Repeating the same approaches regardless of context
+• Becoming defensive when receiving feedback
+• Blaming external factors for failures
+• Focusing only on your area of expertise
+                            </div>
+                        </div>
+                        <div class="after">
+                            <h4>High Learning Agility</h4>
+                            <div class="after-content">
+• Volunteering for new projects and responsibilities
+• Adjusting approaches based on the specific context
+• Actively seeking feedback and implementing changes
+• Viewing setbacks as learning opportunities
+• Exploring adjacent fields and interdisciplinary connections
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="step">
+                    <h3>Resilience</h3>
+                    <p>Resilience—the ability to recover from setbacks and adapt to adversity—is essential for long-term adaptability.</p>
+                    <h4>Building Resilience:</h4>
+                    <ul>
+                        <li><strong>Develop Coping Strategies:</strong> Healthy ways to manage stress and emotions</li>
+                        <li><strong>Maintain Perspective:</strong> View challenges within a broader context</li>
+                        <li><strong>Build Support Networks:</strong> Cultivate relationships that provide assistance</li>
+                        <li><strong>Practice Self-Care:</strong> Attend to physical, emotional, and mental wellbeing</li>
+                        <li><strong>Focus on Purpose:</strong> Connect daily actions to meaningful goals</li>
+                    </ul>
+                    <div class="tip">
+                        <h4>Resilience Practices</h4>
+                        <p>Incorporate these habits to strengthen your resilience:</p>
+                        <ul>
+                            <li>Maintain a gratitude journal to focus on positive aspects</li>
+                            <li>Practice mindfulness to stay present during challenges</li>
+                            <li>Reframe setbacks as temporary and specific, not permanent and pervasive</li>
+                            <li>Set small, achievable goals during difficult periods</li>
+                            <li>Celebrate progress and small wins along the way</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="step">
+                    <h3>Navigating Ambiguity</h3>
+                    <p>The ability to function effectively in unclear, uncertain situations is increasingly valuable in complex environments.</p>
+                    <h4>Strategies for Ambiguity:</h4>
+                    <ul>
+                        <li><strong>Embrace Uncertainty:</strong> Accept that not everything can be known or controlled</li>
+                        <li><strong>Focus on Principles:</strong> Use values and guidelines when specific rules aren't available</li>
+                        <li><strong>Break Down Complexity:</strong> Divide ambiguous situations into manageable parts</li>
+                        <li><strong>Gather Information:</strong> Seek data while recognizing its limitations</li>
+                        <li><strong>Take Calculated Risks:</strong> Make decisions with incomplete information</li>
+                    </ul>
+                    <div class="warning">
+                        <h4>Managing Ambiguity Anxiety</h4>
+                        <p>Uncertainty often triggers anxiety. Try these approaches:</p>
+                        <ul>
+                            <li>Distinguish between what you can and cannot control</li>
+                            <li>Develop contingency plans for different scenarios</li>
+                            <li>Focus on the next step rather than the entire path</li>
+                            <li>Recognize that discomfort with ambiguity is normal</li>
+                            <li>Practice self-compassion during uncertain periods</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skill Development Section -->
+    <section class="section" id="development">
+        <div class="container">
+            <h2 class="section-title">Developing Your Soft Skills</h2>
+            <p class="section-intro">Unlike technical skills, soft skills development requires deliberate practice, reflection, and real-world application.</p>
+            
+            <div class="accordion">
+                <div class="accordion-item active">
+                    <div class="accordion-header">Assessment and Goal Setting</div>
+                    <div class="accordion-content">
+                        <div class="accordion-body">
+                            <p>Effective soft skills development begins with honest self-assessment and clear goals.</p>
+                            
+                            <h4>Self-Assessment Methods:</h4>
+                            <ul>
+                                <li><strong>Reflection:</strong> Regular journaling about your experiences and behaviors</li>
+                                <li><strong>Feedback:</strong> Input from peers, mentors, professors, and supervisors</li>
+                                <li><strong>Formal Assessments:</strong> Personality inventories and skill assessments</li>
+                                <li><strong>Situation Analysis:</strong> Reviewing how you handled specific challenges</li>
+                                <li><strong>Comparative Evaluation:</strong> Benchmarking against role models or standards</li>
+                            </ul>
+                            
+                            <div class="example">
+                                <h4 class="example-header">SMART Goals for Soft Skills</h4>
+                                <div class="example-content">
+Instead of: "Improve my leadership skills"
+
+SMART Goal: "Take on a leadership role in my student organization by the end of this semester, focusing specifically on improving my ability to delegate tasks and provide constructive feedback."
+
+Instead of: "Get better at time management"
+
+SMART Goal: "Reduce the number of late assignments this semester by 100% by implementing a weekly planning session every Sunday and using the Pomodoro technique for at least 3 study sessions per week."
+
+Instead of: "Become more adaptable"
+
+SMART Goal: "Volunteer for two projects outside my comfort zone in the next 6 months and document three specific adaptability strategies I used and their outcomes."
+                                </div>
+                            </div>
+                            
+                            <div class="tip">
+                                <h4>Creating a Development Plan</h4>
+                                <p>Structure your soft skills development with these components:</p>
+                                <ul>
+                                    <li>Prioritize 2-3 skills to focus on at a time</li>
+                                    <li>Set specific, measurable goals for each skill</li>
+                                    <li>Identify learning resources and opportunities for practice</li>
+                                    <li>Establish regular check-in points to assess progress</li>
+                                    <li>Seek accountability through mentors or peers</li>
+                                    <li>Plan how you'll apply new skills in real situations</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="accordion-item">
+                    <div class="accordion-header">Learning Strategies</div>
+                    <div class="accordion-content">
+                        <div class="accordion-body">
+                            <p>Soft skills development requires a multi-faceted approach that combines knowledge acquisition with practical application.</p>
+                            
+                            <h4>Effective Learning Methods:</h4>
+                            <ul>
+                                <li><strong>Formal Education:</strong> Courses, workshops, and seminars</li>
+                                <li><strong>Self-Directed Learning:</strong> Books, podcasts, and online resources</li>
+                                <li><strong>Observation:</strong> Studying effective models and examples</li>
+                                <li><strong>Mentorship:</strong> Learning from experienced guides</li>
+                                <li><strong>Peer Learning:</strong> Exchanging knowledge with colleagues</li>
+                                <li><strong>Experiential Learning:</strong> Developing skills through practice</li>
+                            </ul>
+                            
+                            <h4>Recommended Resources:</h4>
+                            <ul>
+                                <li><strong>Books:</strong> "Emotional Intelligence" (Daniel Goleman), "Atomic Habits" (James Clear)</li>
+                                <li><strong>Online Platforms:</strong> LinkedIn Learning, Coursera, edX</li>
+                                <li><strong>Podcasts:</strong> "How to Be Awesome at Your Job," "The Tim Ferriss Show"</li>
+                                <li><strong>Campus Resources:</strong> Career centers, leadership programs, workshops</li>
+                                <li><strong>Professional Organizations:</strong> Industry-specific associations and their resources</li>
+                            </ul>
+                            
+                            <div class="example">
+                                <h4 class="example-header">Learning Path Example: Public Speaking</h4>
+                                <div class="example-content">
+1. Knowledge Acquisition
+   • Take a public speaking course or workshop
+   • Read "Talk Like TED" by Carmine Gallo
+   • Watch TED Talks and analyze effective techniques
+
+2. Structured Practice
+   • Join Toastmasters or a campus speaking club
+   • Record yourself giving practice presentations
+   • Use speech preparation frameworks for class presentations
+
+3. Feedback Integration
+   • Request specific feedback from professors and peers
+   • Review recordings to identify improvement areas
+   • Work with a communication coach if available
+
+4. Progressive Challenges
+   • Volunteer for small speaking opportunities
+   • Gradually increase audience size and presentation length
+   • Experiment with different speaking contexts and formats
+
+5. Reflection and Refinement
+   • Journal about your experiences and lessons learned
+   • Develop your personal speaking style
+   • Create a repository of effective techniques
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="accordion-item">
+                    <div class="accordion-header">Practical Application</div>
+                    <div class="accordion-content">
+                        <div class="accordion-body">
+                            <p>Soft skills develop primarily through application in real-world contexts. Seek opportunities to practice in various settings.</p>
+                            
+                            <h4>Application Opportunities:</h4>
+                            <ul>
+                                <li><strong>Academic Projects:</strong> Group assignments, presentations, research collaborations</li>
+                                <li><strong>Student Organizations:</strong> Leadership roles, event planning, team projects</li>
+                                <li><strong>Internships:</strong> Professional environments with guidance and feedback</li>
+                                <li><strong>Volunteer Work:</strong> Community service and nonprofit involvement</li>
+                                <li><strong>Part-time Jobs:</strong> Customer service, teamwork, and workplace skills</li>
+                                <li><strong>Competitions:</strong> Hackathons, case competitions, debates</li>
+                            </ul>
+                            
+                            <div class="tip">
+                                <h4>Maximizing Learning from Experiences</h4>
+                                <p>To get the most from practical applications:</p>
+                                <ul>
+                                    <li>Set specific learning goals for each experience</li>
+                                    <li>Step outside your comfort zone deliberately</li>
+                                    <li>Seek roles that target your development areas</li>
+                                    <li>Request specific feedback on your soft skills</li>
+                                    <li>Reflect on what worked and what didn't</li>
+                                    <li>Apply lessons learned to future situations</li>
+                                </ul>
+                            </div>
+                            
+                            <div class="example">
+                                <h4 class="example-header">Skill Application Matrix</h4>
+                                <div class="example-content">
+Time Management:
+• Academic: Create and follow a semester study schedule
+• Extracurricular: Coordinate timelines for a club event
+• Professional: Meet all deadlines during an internship
+• Personal: Balance multiple commitments without burnout
+
+Leadership:
+• Academic: Lead a study group or class project
+• Extracurricular: Run for a position in a student organization
+• Professional: Take initiative on a workplace improvement
+• Personal: Organize a community service project
+
+Problem Solving:
+• Academic: Tackle complex research questions
+• Extracurricular: Resolve conflicts within a student group
+• Professional: Identify and address inefficiencies
+• Personal: Navigate challenging interpersonal situations
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="accordion-item">
+                    <div class="accordion-header">Feedback and Reflection</div>
+                    <div class="accordion-content">
+                        <div class="accordion-body">
+                            <p>Continuous improvement in soft skills requires regular feedback and thoughtful reflection.</p>
+                            
+                            <h4>Seeking Effective Feedback:</h4>
+                            <ul>
+                                <li><strong>Be Specific:</strong> Ask for feedback on particular skills or behaviors</li>
+                                <li><strong>Timing Matters:</strong> Request input soon after relevant situations</li>
+                                <li><strong>Multiple Sources:</strong> Gather perspectives from different people</li>
+                                <li><strong>Open Mindset:</strong> Listen non-defensively to critical feedback</li>
+                                <li><strong>Follow Up:</strong> Check back after implementing changes</li>
+                            </ul>
+                            
+                            <h4>Reflection Practices:</h4>
+                            <ul>
+                                <li><strong>Journaling:</strong> Regular written reflection on experiences</li>
+                                <li><strong>After-Action Reviews:</strong> Structured analysis after key events</li>
+                                <li><strong>Peer Discussions:</strong> Processing experiences with trusted colleagues</li>
+                                <li><strong>Mentorship Conversations:</strong> Guided reflection with experienced advisors</li>
+                                <li><strong>Self-Assessment:</strong> Periodic evaluation against development goals</li>
+                            </ul>
+                            
+                            <div class="example">
+                                <h4 class="example-header">Reflection Questions</h4>
+                                <div class="example-content">
+After a significant experience (presentation, group project, interview, etc.):
+
+1. What went well? What specific skills contributed to success?
+
+2. What challenges did I encounter? Which soft skills would have helped me navigate them better?
+
+3. How did my emotions affect my performance? How effectively did I manage them?
+
+4. What feedback did I receive, and what patterns do I notice?
+
+5. What would I do differently next time? What specific changes would improve my effectiveness?
+
+6. What resources or support would help me develop in the areas I've identified?
+
+7. How can I apply these insights to upcoming situations?
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="accordion-item">
+                    <div class="accordion-header">Showcasing Your Soft Skills</div>
+                    <div class="accordion-content">
+                        <div class="accordion-body">
+                            <p>Effectively demonstrating your soft skills to potential employers and admissions committees is crucial for career advancement.</p>
+                            
+                            <h4>Documentation Strategies:</h4>
+                            <ul>
+                                <li><strong>Achievement Portfolio:</strong> Collect evidence of soft skills in action</li>
+                                <li><strong>Specific Examples:</strong> Prepare stories that demonstrate key skills</li>
+                                <li><strong>Quantifiable Results:</strong> Measure the impact of your soft skills when possible</li>
+                                <li><strong>Recommendation Letters:</strong> Request references that highlight specific soft skills</li>
+                                <li><strong>Digital Presence:</strong> Showcase skills through LinkedIn and professional profiles</li>
+                            </ul>
+                            
+                            <div class="before-after">
+                                <div class="before">
+                                    <h4>Weak Resume Statement</h4>
+                                    <div class="before-content">
+"Good leadership skills and team player."
+                                    </div>
+                                </div>
+                                <div class="after">
+                                    <h4>Strong Resume Statement</h4>
+                                    <div class="after-content">
+"Led a 5-person team to complete a semester project two weeks ahead of deadline by implementing structured weekly check-ins, creating a shared project management system, and facilitating collaborative problem-solving sessions when challenges arose."
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <h4>Interview Strategies:</h4>
+                            <ul>
+                                <li><strong>STAR Method:</strong> Structure examples with Situation, Task, Action, Result</li>
+                                <li><strong>Behavioral Examples:</strong> Prepare specific instances that demonstrate skills</li>
+                                <li><strong>Reflection Insights:</strong> Share what you've learned from challenges</li>
+                                <li><strong>Growth Narrative:</strong> Highlight how you've developed key skills</li>
+                                <li><strong>Future Application:</strong> Explain how you'll apply skills in the role</li>
+                            </ul>
+                            
+                            <div class="example">
+                                <h4 class="example-header">STAR Method Example</h4>
+                                <div class="example-content">
+Interview Question: "Tell me about a time you had to adapt to an unexpected change."
+
+Situation: "During my junior year, I was leading a team of four on our capstone marketing project when our primary client contact left the company two weeks before our final presentation."
+
+Task: "We needed to quickly establish rapport with the new contact, understand their expectations, and potentially adjust our project direction while maintaining our timeline."
+
+Action: "I immediately scheduled a meeting with the new contact, prepared a concise summary of our work to date, and developed a list of critical questions. During the meeting, I practiced active listening to understand their perspective, identified areas where our approach aligned with their vision, and negotiated adjustments where necessary. I then reorganized our team's responsibilities and created a revised timeline to accommodate the changes."
+
+Result: "We successfully adapted our project to meet the new contact's expectations while still delivering on schedule. Our presentation received the highest grade in the class, and the client implemented three of our five recommendations. This experience taught me the importance of relationship building, clear communication, and flexible planning when facing unexpected changes."
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Call to Action -->
+    <section class="cta-section">
+        <div class="container">
+            <h2>Ready to Develop Your Soft Skills?</h2>
+            <p>Start your journey today to build the essential abilities that will set you apart in placements, job interviews, and college admissions.</p>
+            <a href="#importance" class="cta-button">Begin Your Journey <i class="fas fa-arrow-right"></i></a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>SoftSkills</h3>
+                    <p>Your comprehensive guide to developing essential non-technical abilities for academic and professional success.</p>
+                    
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="#importance">Why Soft Skills Matter</a></li>
+                        <li><a href="#time-management">Time Management</a></li>
+                        <li><a href="#problem-solving">Problem Solving</a></li>
+                        <li><a href="#leadership">Leadership</a></li>
+                        <li><a href="#adaptability">Adaptability</a></li>
+                        <li><a href="#development">Skill Development</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Resources</h3>
+                    <ul class="footer-links">
+                        <li><a href="https://www.careeronestop.org/" target="_blank">Career Development Center</a></li>
+                        <li><a href="https://www.goodreads.com/shelf/show/soft-skills" target="_blank">Recommended Books</a></li>
+                        <li><a href="https://www.coursera.org/courses?query=soft%20skills" target="_blank">Online Courses</a></li>
+                        <li><a href="https://www.skillsyouneed.com/" target="_blank">Assessment Tools</a></li>
+                        <li><a href="https://www.toastmasters.org/" target="_blank">Student Organizations</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2025 SoftSkills. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <div class="back-to-top" id="backToTop">
+        <i class="fas fa-arrow-up"></i>
+    </div>
+
+    <script>
+        // Mobile Menu Toggle
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const navLinks = document.getElementById('navLinks');
+        
+        mobileMenuBtn.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+        
+        // Accordion Functionality
+        const accordionHeaders = document.querySelectorAll('.accordion-header');
+        
+        accordionHeaders.forEach(header => {
+            header.addEventListener('click', () => {
+                const accordionItem = header.parentElement;
+                accordionItem.classList.toggle('active');
+                
+                const content = accordionItem.querySelector('.accordion-content');
+                if (accordionItem.classList.contains('active')) {
+                    content.style.maxHeight = content.scrollHeight + 'px';
+                } else {
+                    content.style.maxHeight = 0;
+                }
+            });
+        });
+        
+        // Back to Top Button
+        const backToTopBtn = document.getElementById('backToTop');
+        
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 300) {
+                backToTopBtn.classList.add('visible');
+            } else {
+                backToTopBtn.classList.remove('visible');
+            }
+        });
+        
+        backToTopBtn.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+        
+        // Smooth Scrolling for Anchor Links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                    
+                    // Close mobile menu if open
+                    if (navLinks.classList.contains('active')) {
+                        navLinks.classList.remove('active');
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+</html>
