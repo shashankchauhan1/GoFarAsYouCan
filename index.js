@@ -23,6 +23,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cors());
 app.use(cookieParser()); // Use cookie parser to read cookies
+app.use(express.static(path.join(__dirname, 'public'))); // Serve static files from the public directory
 
 // Set EJS as the view engine
 app.set("view engine", "ejs");
