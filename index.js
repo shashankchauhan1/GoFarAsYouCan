@@ -245,6 +245,7 @@ app.get("/Engineering/Chemical/nanotech.ejs", authMiddleware, (req, res) => {
 });
 
 // Resume Builder Route
+
 app.get("/Resume/resume.ejs", authMiddleware, (req, res) => {
     res.render("Resume/resume", { userId: req.userId }); // Pass user data if needed
 });
@@ -263,12 +264,16 @@ app.get("/Communication/communication.ejs", authMiddleware, (req, res) => {
 });
 
 // Time management Route
+
 app.get("/Soft/softskills.ejs", authMiddleware, (req, res) => {
     res.render("Soft/softskills", { userId: req.userId }); // Pass user data if needed
 });
 
 
 // Start the server
+
 app.listen(PORT, () => {
     console.log(`Server running on port ${PORT}`);
 });
+
+// G-60TX6711V8 
