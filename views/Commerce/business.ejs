@@ -1,0 +1,1208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Business Management - Lead, Strategize, Succeed</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <style>
+        /* Reset and Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #0d1117;
+            color: #e6edf3;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Navigation */
+        .navbar {
+            background: #161b22;
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid #30363d;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #58a6ff;
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: #e6edf3;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: #58a6ff;
+        }
+
+        .back-button {
+            color: #e6edf3;
+            padding: 0.5rem 1rem;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s ease;
+            /* border: 1px solid #30363d; */
+        }
+
+        .back-button:hover {
+            color: #58a6ff;
+            border-color: #58a6ff;
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 120px 0 80px;
+            text-align: center;
+            background: #161b22;
+        }
+
+        .hero-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            margin-bottom: 1.5rem;
+            color: #ffffff;
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            color: #8b949e;
+            margin-bottom: 3rem;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .hero-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .stat-card {
+            background: #21262d;
+            border: 1px solid #30363d;
+            border-radius: 12px;
+            padding: 2rem;
+            text-align: center;
+            transition: border-color 0.3s ease;
+        }
+
+        .stat-card:hover {
+            border-color: #58a6ff;
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: #58a6ff;
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            color: #8b949e;
+            font-size: 1rem;
+            font-weight: 500;
+        }
+
+        /* Main Content */
+        .main-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* Section Styles */
+        .section {
+            padding: 4rem 0;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #ffffff;
+            margin-bottom: 1rem;
+        }
+
+        .section-subtitle {
+            font-size: 1.1rem;
+            color: #8b949e;
+            max-width: 700px;
+            margin: 0 auto;
+            line-height: 1.7;
+        }
+
+        /* Career Paths */
+        .career-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .career-card {
+            background: #21262d;
+            border: 1px solid #30363d;
+            border-radius: 12px;
+            padding: 2rem;
+            transition: all 0.3s ease;
+        }
+
+        .career-card:hover {
+            border-color: #58a6ff;
+            transform: translateY(-5px);
+        }
+
+        .career-icon {
+            width: 60px;
+            height: 60px;
+            background: #58a6ff;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .career-icon i {
+            font-size: 1.5rem;
+            color: white;
+        }
+
+        .career-title {
+            font-size: 1.4rem;
+            font-weight: 600;
+            color: #ffffff;
+            margin-bottom: 1rem;
+        }
+
+        .career-description {
+            color: #8b949e;
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+        }
+
+        .career-features {
+            list-style: none;
+            margin-bottom: 1.5rem;
+        }
+
+        .career-features li {
+            color: #e6edf3;
+            margin-bottom: 0.5rem;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .career-features li::before {
+            content: '•';
+            position: absolute;
+            left: 0;
+            color: #58a6ff;
+            font-weight: bold;
+        }
+
+        .salary-info {
+            background: #161b22;
+            border: 1px solid #30363d;
+            border-radius: 8px;
+            padding: 1rem;
+            text-align: center;
+        }
+
+        .salary-label {
+            font-size: 0.9rem;
+            color: #8b949e;
+            margin-bottom: 0.5rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .salary-range {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: #58a6ff;
+        }
+
+        /* Skills Section */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .skill-card {
+            background: #21262d;
+            border: 1px solid #30363d;
+            border-radius: 12px;
+            padding: 2rem;
+            text-align: center;
+            transition: border-color 0.3s ease;
+        }
+
+        .skill-card:hover {
+            border-color: #58a6ff;
+        }
+
+        .skill-icon {
+            font-size: 2.5rem;
+            color: #58a6ff;
+            margin-bottom: 1.5rem;
+        }
+
+        .skill-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: #ffffff;
+            margin-bottom: 1rem;
+        }
+
+        .skill-description {
+            color: #8b949e;
+            line-height: 1.6;
+        }
+
+        /* MBA Programs Section */
+        .mba-programs {
+            margin: 2rem 0;
+        }
+
+        .program-card {
+            background: #21262d;
+            border: 1px solid #30363d;
+            border-radius: 12px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            transition: all 0.3s ease;
+        }
+
+        .program-card:hover {
+            border-color: #58a6ff;
+            transform: translateY(-5px);
+        }
+
+        .program-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .program-icon {
+            width: 60px;
+            height: 60px;
+            background: #58a6ff;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 1.5rem;
+            flex-shrink: 0;
+        }
+
+        .program-icon i {
+            font-size: 1.5rem;
+            color: white;
+        }
+
+        .program-title-area h3 {
+            font-size: 1.4rem;
+            font-weight: 600;
+            color: #ffffff;
+            margin-bottom: 0.5rem;
+        }
+
+        .program-title-area p {
+            color: #8b949e;
+            font-size: 0.9rem;
+        }
+
+        .program-details {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .program-detail {
+            background: #161b22;
+            border: 1px solid #30363d;
+            border-radius: 8px;
+            padding: 1rem;
+            text-align: center;
+        }
+
+        .detail-label {
+            font-size: 0.8rem;
+            color: #8b949e;
+            margin-bottom: 0.5rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .detail-value {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #58a6ff;
+        }
+
+        .program-description {
+            color: #8b949e;
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+        }
+
+        .program-features {
+            list-style: none;
+            margin-bottom: 1.5rem;
+        }
+
+        .program-features li {
+            color: #e6edf3;
+            margin-bottom: 0.5rem;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .program-features li::before {
+            content: '•';
+            position: absolute;
+            left: 0;
+            color: #58a6ff;
+            font-weight: bold;
+        }
+
+        /* Roadmap Section */
+        .roadmap {
+            margin: 2rem 0;
+        }
+
+        .roadmap-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 2rem;
+            background: #21262d;
+            border: 1px solid #30363d;
+            border-radius: 12px;
+            padding: 2rem;
+            transition: border-color 0.3s ease;
+        }
+
+        .roadmap-item:hover {
+            border-color: #58a6ff;
+        }
+
+        .roadmap-number {
+            width: 50px;
+            height: 50px;
+            background: #58a6ff;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            color: white;
+            margin-right: 1.5rem;
+            flex-shrink: 0;
+        }
+
+        .roadmap-content {
+            flex: 1;
+        }
+
+        .roadmap-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: #ffffff;
+            margin-bottom: 0.5rem;
+        }
+
+        .roadmap-description {
+            color: #8b949e;
+            margin-bottom: 1rem;
+        }
+
+        .roadmap-details {
+            background: #161b22;
+            border-left: 4px solid #58a6ff;
+            border-radius: 6px;
+            padding: 1rem;
+        }
+
+        .roadmap-details p {
+            margin-bottom: 0.5rem;
+            color: #e6edf3;
+        }
+
+        .roadmap-details strong {
+            color: #58a6ff;
+        }
+
+        /* FAQ Section */
+        .faq-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .faq-item {
+            background: #21262d;
+            border: 1px solid #30363d;
+            border-radius: 12px;
+            margin-bottom: 1rem;
+            overflow: hidden;
+        }
+
+        .faq-question {
+            padding: 1.5rem;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 600;
+            color: #ffffff;
+            transition: background-color 0.3s ease;
+        }
+
+        .faq-question:hover {
+            background: #161b22;
+        }
+
+        .faq-toggle {
+            color: #58a6ff;
+            font-size: 1.2rem;
+            transition: transform 0.3s ease;
+        }
+
+        .faq-item.active .faq-toggle {
+            transform: rotate(45deg);
+        }
+
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease, padding 0.3s ease;
+        }
+
+        .faq-item.active .faq-answer {
+            max-height: 300px;
+            padding: 0 1.5rem 1.5rem;
+        }
+
+        .faq-answer p {
+            color: #8b949e;
+            line-height: 1.7;
+        }
+
+        /* Footer */
+        .footer {
+            background: #161b22;
+            border-top: 1px solid #30363d;
+            padding: 2rem 0;
+            text-align: center;
+            margin-top: 4rem;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .footer p {
+            color: #8b949e;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-container {
+                padding: 0 1rem;
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .hero {
+                padding: 150px 0 80px;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero p {
+                font-size: 1.1rem;
+            }
+
+            .hero-stats {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 1rem;
+            }
+
+            .main-content {
+                padding: 0 1rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .career-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .skills-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .roadmap-item {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .roadmap-number {
+                margin: 0 auto 1rem;
+            }
+
+            .program-header {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .program-icon {
+                margin: 0 auto 1rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero-stats {
+                grid-template-columns: 1fr;
+            }
+
+            .skills-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .section {
+                padding: 3rem 0;
+            }
+
+            .program-details {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="#" class="logo">GoFarAsYouCan</a>
+            <ul class="nav-links">
+                <li><a href="#overview">Overview</a></li>
+                <li><a href="#careers">Careers</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#mba">MBA Programs</a></li>
+                <li><a href="#roadmap">Roadmap</a></li>
+                <li><a href="#faq">FAQ</a></li>
+            </ul>
+            <a href="/Commerce/commerce.ejs" class="back-button">
+                <i class="fas fa-arrow-left"></i> Back to Commerce
+            </a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Business Management</h1>
+            <p>Lead organizations, make strategic decisions, and drive business success through MBA. Shape the future of enterprises and build a rewarding leadership career.</p>
+            
+            <div class="hero-stats">
+                <div class="stat-card">
+                    <span class="stat-number">₹6-40L+</span>
+                    <span class="stat-label">Salary Range</span>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-number">94%</span>
+                    <span class="stat-label">MBA Placement Rate</span>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-number">200+</span>
+                    <span class="stat-label">Career Pathways</span>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-number">Leadership</span>
+                    <span class="stat-label">Core Competency</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="main-content">
+        <!-- Overview Section -->
+        <section id="overview" class="section">
+            <div class="section-header">
+                <h2 class="section-title">Why Choose Business Management?</h2>
+                <p class="section-subtitle">Business Management is the backbone of every successful organization. It offers diverse career opportunities, leadership roles, and the chance to make strategic decisions that shape industries and economies.</p>
+            </div>
+
+            <div class="skills-grid">
+                <div class="skill-card">
+                    <i class="fas fa-chess-king skill-icon"></i>
+                    <h3 class="skill-title">Leadership Opportunities</h3>
+                    <p class="skill-description">Take charge of teams, departments, and eventually entire organizations as you progress in your career.</p>
+                </div>
+                <div class="skill-card">
+                    <i class="fas fa-globe skill-icon"></i>
+                    <h3 class="skill-title">Global Mobility</h3>
+                    <p class="skill-description">Management skills are universally valued, opening doors to international careers and global opportunities.</p>
+                </div>
+                <div class="skill-card">
+                    <i class="fas fa-chart-line skill-icon"></i>
+                    <h3 class="skill-title">High Growth Potential</h3>
+                    <p class="skill-description">Rapid career advancement with clear pathways to C-suite positions and executive leadership.</p>
+                </div>
+                <div class="skill-card">
+                    <i class="fas fa-lightbulb skill-icon"></i>
+                    <h3 class="skill-title">Strategic Impact</h3>
+                    <p class="skill-description">Drive organizational change, implement innovative strategies, and shape the future of businesses.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Career Paths Section -->
+        <section id="careers" class="section">
+            <div class="section-header">
+                <h2 class="section-title">Career Paths in Business Management</h2>
+                <p class="section-subtitle">Explore diverse management roles across industries, from corporate leadership to specialized management functions.</p>
+            </div>
+
+            <div class="career-grid">
+                <div class="career-card">
+                    <div class="career-icon">
+                        <i class="fas fa-briefcase"></i>
+                    </div>
+                    <h3 class="career-title">General Management</h3>
+                    <p class="career-description">Lead business units or entire organizations, overseeing operations, strategy, and growth initiatives.</p>
+                    <ul class="career-features">
+                        <li>Business Unit Leadership</li>
+                        <li>Strategic Planning & Execution</li>
+                        <li>Cross-functional Team Management</li>
+                        <li>P&L Responsibility</li>
+                        <li>Organizational Development</li>
+                        <li>Performance Optimization</li>
+                    </ul>
+                    <div class="salary-info">
+                        <div class="salary-label">Salary Range</div>
+                        <div class="salary-range">₹12-40+ Lakhs per annum</div>
+                    </div>
+                </div>
+
+                <div class="career-card">
+                    <div class="career-icon">
+                        <i class="fas fa-chart-pie"></i>
+                    </div>
+                    <h3 class="career-title">Marketing Management</h3>
+                    <p class="career-description">Lead marketing strategies, brand development, and customer acquisition initiatives to drive business growth.</p>
+                    <ul class="career-features">
+                        <li>Brand Strategy Development</li>
+                        <li>Marketing Campaign Leadership</li>
+                        <li>Market Research & Analysis</li>
+                        <li>Digital Marketing Oversight</li>
+                        <li>Product Launch Management</li>
+                        <li>Marketing ROI Optimization</li>
+                    </ul>
+                    <div class="salary-info">
+                        <div class="salary-label">Salary Range</div>
+                        <div class="salary-range">₹8-25 Lakhs per annum</div>
+                    </div>
+                </div>
+
+                <div class="career-card">
+                    <div class="career-icon">
+                        <i class="fas fa-coins"></i>
+                    </div>
+                    <h3 class="career-title">Financial Management</h3>
+                    <p class="career-description">Direct financial strategy, investment decisions, and fiscal policies to ensure organizational financial health.</p>
+                    <ul class="career-features">
+                        <li>Financial Strategy Development</li>
+                        <li>Investment Analysis & Planning</li>
+                        <li>Budget Management</li>
+                        <li>Risk Assessment & Mitigation</li>
+                        <li>Financial Reporting Oversight</li>
+                        <li>Stakeholder Financial Communication</li>
+                    </ul>
+                    <div class="salary-info">
+                        <div class="salary-label">Salary Range</div>
+                        <div class="salary-range">₹10-35 Lakhs per annum</div>
+                    </div>
+                </div>
+
+                <div class="career-card">
+                    <div class="career-icon">
+                        <i class="fas fa-cogs"></i>
+                    </div>
+                    <h3 class="career-title">Operations Management</h3>
+                    <p class="career-description">Optimize business processes, supply chains, and production systems to maximize efficiency and quality.</p>
+                    <ul class="career-features">
+                        <li>Process Optimization</li>
+                        <li>Supply Chain Management</li>
+                        <li>Quality Control Systems</li>
+                        <li>Resource Allocation</li>
+                        <li>Operational Strategy Development</li>
+                        <li>Continuous Improvement Initiatives</li>
+                    </ul>
+                    <div class="salary-info">
+                        <div class="salary-label">Salary Range</div>
+                        <div class="salary-range">₹8-30 Lakhs per annum</div>
+                    </div>
+                </div>
+
+                <div class="career-card">
+                    <div class="career-icon">
+                        <i class="fas fa-project-diagram"></i>
+                    </div>
+                    <h3 class="career-title">Project Management</h3>
+                    <p class="career-description">Lead complex projects from inception to completion, managing resources, timelines, and stakeholders.</p>
+                    <ul class="career-features">
+                        <li>Project Planning & Execution</li>
+                        <li>Resource Management</li>
+                        <li>Risk Management</li>
+                        <li>Stakeholder Communication</li>
+                        <li>Budget Control</li>
+                        <li>Cross-functional Team Leadership</li>
+                    </ul>
+                    <div class="salary-info">
+                        <div class="salary-label">Salary Range</div>
+                        <div class="salary-range">₹7-25 Lakhs per annum</div>
+                    </div>
+                </div>
+
+                <div class="career-card">
+                    <div class="career-icon">
+                        <i class="fas fa-users-cog"></i>
+                    </div>
+                    <h3 class="career-title">Consulting</h3>
+                    <p class="career-description">Advise organizations on strategy, operations, technology, and transformation initiatives to solve complex business challenges.</p>
+                    <ul class="career-features">
+                        <li>Strategic Advisory Services</li>
+                        <li>Business Transformation</li>
+                        <li>Performance Improvement</li>
+                        <li>Change Management</li>
+                        <li>Industry-specific Consulting</li>
+                        <li>Client Relationship Management</li>
+                    </ul>
+                    <div class="salary-info">
+                        <div class="salary-label">Salary Range</div>
+                        <div class="salary-range">₹10-40+ Lakhs per annum</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Skills Section -->
+        <section id="skills" class="section">
+            <div class="section-header">
+                <h2 class="section-title">Essential Skills for Management Success</h2>
+                <p class="section-subtitle">Master these core competencies to excel in business management roles and leadership positions.</p>
+            </div>
+
+            <div class="skills-grid">
+                <div class="skill-card">
+                    <i class="fas fa-users skill-icon"></i>
+                    <h3 class="skill-title">Leadership</h3>
+                    <p class="skill-description">Inspire and motivate teams, set clear vision, and guide organizations through challenges and opportunities.</p>
+                </div>
+                <div class="skill-card">
+                    <i class="fas fa-comments skill-icon"></i>
+                    <h3 class="skill-title">Communication</h3>
+                    <p class="skill-description">Master verbal, written, and presentation skills to effectively convey ideas and influence stakeholders.</p>
+                </div>
+                <div class="skill-card">
+                    <i class="fas fa-chess skill-icon"></i>
+                    <h3 class="skill-title">Strategic Thinking</h3>
+                    <p class="skill-description">Analyze complex situations, identify opportunities, and develop long-term plans for organizational success.</p>
+                </div>
+                <div class="skill-card">
+                    <i class="fas fa-tasks skill-icon"></i>
+                    <h3 class="skill-title">Decision Making</h3>
+                    <p class="skill-description">Make sound, data-driven decisions under pressure while considering multiple perspectives and outcomes.</p>
+                </div>
+                <div class="skill-card">
+                    <i class="fas fa-chart-bar skill-icon"></i>
+                    <h3 class="skill-title">Financial Acumen</h3>
+                    <p class="skill-description">Understand financial statements, budgeting, forecasting, and the financial implications of business decisions.</p>
+                </div>
+                <div class="skill-card">
+                    <i class="fas fa-sync-alt skill-icon"></i>
+                    <h3 class="skill-title">Adaptability</h3>
+                    <p class="skill-description">Navigate change effectively, pivot strategies when needed, and thrive in dynamic business environments.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- MBA Programs Section -->
+        <section id="mba" class="section">
+            <div class="section-header">
+                <h2 class="section-title">MBA Programs & Specializations</h2>
+                <p class="section-subtitle">Explore top MBA programs and specializations to accelerate your management career and develop advanced business expertise.</p>
+            </div>
+
+            <div class="mba-programs">
+                <div class="program-card">
+                    <div class="program-header">
+                        <div class="program-icon">
+                            <i class="fas fa-university"></i>
+                        </div>
+                        <div class="program-title-area">
+                            <h3>IIM MBA Programs</h3>
+                            <p>Premier business education from India's top management institutes</p>
+                        </div>
+                    </div>
+                    <div class="program-details">
+                        <div class="program-detail">
+                            <div class="detail-label">Duration</div>
+                            <div class="detail-value">2 Years</div>
+                        </div>
+                        <div class="program-detail">
+                            <div class="detail-label">Average Placement</div>
+                            <div class="detail-value">₹20-28 LPA</div>
+                        </div>
+                        <div class="program-detail">
+                            <div class="detail-label">Selection</div>
+                            <div class="detail-value">CAT + PI/WAT</div>
+                        </div>
+                        <div class="program-detail">
+                            <div class="detail-label">ROI</div>
+                            <div class="detail-value">Excellent</div>
+                        </div>
+                    </div>
+                    <p class="program-description">The Indian Institutes of Management offer the most prestigious MBA programs in India with exceptional faculty, industry connections, and alumni networks. IIM graduates are highly sought after by top companies across industries.</p>
+                    <ul class="program-features">
+                        <li>Rigorous curriculum with case-based learning</li>
+                        <li>Strong industry connections and corporate exposure</li>
+                        <li>Extensive alumni network across global organizations</li>
+                        <li>Leadership development through various initiatives</li>
+                        <li>International exchange opportunities with top global B-schools</li>
+                    </ul>
+                </div>
+
+                <div class="program-card">
+                    <div class="program-header">
+                        <div class="program-icon">
+                            <i class="fas fa-globe-asia"></i>
+                        </div>
+                        <div class="program-title-area">
+                            <h3>Tier-1 Private B-Schools</h3>
+                            <p>XLRI, ISB, SPJIMR, MDI, and other leading private institutions</p>
+                        </div>
+                    </div>
+                    <div class="program-details">
+                        <div class="program-detail">
+                            <div class="detail-label">Duration</div>
+                            <div class="detail-value">1-2 Years</div>
+                        </div>
+                        <div class="program-detail">
+                            <div class="detail-label">Average Placement</div>
+                            <div class="detail-value">₹15-25 LPA</div>
+                        </div>
+                        <div class="program-detail">
+                            <div class="detail-label">Selection</div>
+                            <div class="detail-value">CAT/XAT/GMAT</div>
+                        </div>
+                        <div class="program-detail">
+                            <div class="detail-label">ROI</div>
+                            <div class="detail-value">Very Good</div>
+                        </div>
+                    </div>
+                    <p class="program-description">These institutions offer excellent management education with specialized focus areas and strong industry connections. Many have unique pedagogical approaches and specialized centers of excellence.</p>
+                    <ul class="program-features">
+                        <li>Specialized industry-focused curriculum</li>
+                        <li>Strong emphasis on experiential learning</li>
+                        <li>Excellent placement records in specific sectors</li>
+                        <li>Focused specializations with industry partnerships</li>
+                        <li>Entrepreneurship support and incubation facilities</li>
+                    </ul>
+                </div>
+
+                <div class="program-card">
+                    <div class="program-header">
+                        <div class="program-icon">
+                            <i class="fas fa-graduation-cap"></i>
+                        </div>
+                        <div class="program-title-area">
+                            <h3>Executive MBA Programs</h3>
+                            <p>For working professionals seeking career advancement</p>
+                        </div>
+                    </div>
+                    <div class="program-details">
+                        <div class="program-detail">
+                            <div class="detail-label">Duration</div>
+                            <div class="detail-value">1-2 Years</div>
+                        </div>
+                        <div class="program-detail">
+                            <div class="detail-label">Format</div>
+                            <div class="detail-value">Weekend/Modular</div>
+                        </div>
+                        <div class="program-detail">
+                            <div class="detail-label">Experience Req.</div>
+                            <div class="detail-value">3-5+ Years</div>
+                        </div>
+                        <div class="program-detail">
+                            <div class="detail-label">Career Impact</div>
+                            <div class="detail-value">Significant</div>
+                        </div>
+                    </div>
+                    <p class="program-description">Executive MBA programs allow working professionals to earn an advanced management degree while continuing their careers. These programs focus on leadership development and strategic management skills.</p>
+                    <ul class="program-features">
+                        <li>Flexible schedule designed for working professionals</li>
+                        <li>Peer learning from experienced cohort</li>
+                        <li>Immediate application of concepts to workplace</li>
+                        <li>Focus on leadership and strategic management</li>
+                        <li>Strong networking opportunities with senior executives</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Roadmap Section -->
+        <section id="roadmap" class="section">
+            <div class="section-header">
+                <h2 class="section-title">Your Business Management Career Journey</h2>
+                <p class="section-subtitle">Step-by-step roadmap to build a successful career in business management and leadership.</p>
+            </div>
+
+            <div class="roadmap">
+                <div class="roadmap-item">
+                    <div class="roadmap-number">1</div>
+                    <div class="roadmap-content">
+                        <h3 class="roadmap-title">Foundation Building (12th Grade & Beyond)</h3>
+                        <p class="roadmap-description">Start with commerce or science subjects and develop basic business understanding.</p>
+                        <div class="roadmap-details">
+                            <p><strong>Academic Focus:</strong> Business Studies, Economics, Mathematics, English</p>
+                            <p><strong>Skills to Develop:</strong> Communication, analytical thinking, leadership</p>
+                            <p><strong>Action Items:</strong> Join business clubs, participate in case competitions, develop public speaking</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="roadmap-item">
+                    <div class="roadmap-number">2</div>
+                    <div class="roadmap-content">
+                        <h3 class="roadmap-title">Undergraduate Education (3-4 Years)</h3>
+                        <p class="roadmap-description">Pursue BBA, B.Com, or other business-related degrees to build core knowledge.</p>
+                        <div class="roadmap-details">
+                            <p><strong>Degree Options:</strong> BBA, B.Com, Economics, Engineering + Management</p>
+                            <p><strong>Practical Learning:</strong> Internships, business projects, leadership roles</p>
+                            <p><strong>Skill Building:</strong> Excel, presentation skills, business communication</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="roadmap-item">
+                    <div class="roadmap-number">3</div>
+                    <div class="roadmap-content">
+                        <h3 class="roadmap-title">Early Career Experience (2-3 Years)</h3>
+                        <p class="roadmap-description">Gain practical business experience before pursuing advanced education.</p>
+                        <div class="roadmap-details">
+                            <p><strong>Role Types:</strong> Business Analyst, Management Trainee, Executive</p>
+                            <p><strong>Focus Areas:</strong> Understanding business operations, building professional network</p>
+                            <p><strong>Preparation:</strong> Begin MBA entrance exam preparation (CAT/GMAT)</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="roadmap-item">
+                    <div class="roadmap-number">4</div>
+                    <div class="roadmap-content">
+                        <h3 class="roadmap-title">MBA or Advanced Management Education</h3>
+                        <p class="roadmap-description">Pursue an MBA or equivalent to accelerate your management career.</p>
+                        <div class="roadmap-details">
+                            <p><strong>Program Selection:</strong> Choose based on specialization, placement, and career goals</p>
+                            <p><strong>During MBA:</strong> Leadership roles, competitions, networking, internships</p>
+                            <p><strong>Specialization:</strong> Finance, Marketing, Operations, Strategy, etc.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="roadmap-item">
+                    <div class="roadmap-number">5</div>
+                    <div class="roadmap-content">
+                        <h3 class="roadmap-title">Mid-Career Growth & Leadership</h3>
+                        <p class="roadmap-description">Progress through management roles toward senior leadership positions.</p>
+                        <div class="roadmap-details">
+                            <p><strong>Career Path:</strong> Manager → Senior Manager → Director → VP → C-Suite</p>
+                            <p><strong>Continuous Learning:</strong> Executive education, leadership development</p>
+                            <p><strong>Strategic Focus:</strong> Building expertise, mentoring others, driving organizational impact</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- FAQ Section -->
+        <section id="faq" class="section">
+            <div class="section-header">
+                <h2 class="section-title">Frequently Asked Questions</h2>
+                <p class="section-subtitle">Get answers to common questions about business management careers and education.</p>
+            </div>
+
+            <div class="faq-container">
+                <div class="faq-item">
+                    <div class="faq-question">
+                        Is an MBA necessary for a successful management career?
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>While an MBA is not absolutely necessary, it significantly accelerates career growth in management. It provides structured business knowledge, valuable networks, and credibility that can help you advance faster. Many senior management and C-suite positions prefer candidates with MBA degrees from reputable institutions. However, exceptional performance, industry expertise, and leadership skills can also lead to management success without an MBA.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        Which MBA specialization has the best career prospects?
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>The "best" specialization depends on your interests, strengths, and industry trends. Finance and consulting typically offer the highest starting salaries. Marketing provides diverse opportunities across industries. Operations is valuable in manufacturing and supply chain-focused companies. Technology management and analytics are rapidly growing fields with excellent prospects. The ideal approach is to choose a specialization that aligns with both your strengths and market demand.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        How important is work experience before an MBA?
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Work experience before an MBA is highly valuable and often required by top programs. It helps you contribute meaningfully to class discussions, understand business concepts in context, and maximize your learning. Most prestigious MBA programs prefer candidates with 2-5 years of work experience. This experience also helps you identify your career goals and specialization interests more clearly, making your MBA journey more focused and effective.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        What's the ROI of an MBA from different tiers of B-schools?
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>The ROI varies significantly by institution tier. Top-tier schools (IIMs, ISB) offer excellent ROI despite higher fees, with average salaries of ₹20-28 LPA and strong career progression. Mid-tier schools provide good ROI with moderate fees and salaries of ₹10-18 LPA. Lower-tier schools may offer questionable ROI unless they have specific industry connections or regional strengths. Consider not just starting salary but long-term career trajectory, network value, and personal growth when evaluating ROI.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        Can I switch industries or functions with an MBA?
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Yes, MBA programs are excellent platforms for career transitions. Many students use their MBA to switch industries, functions, or both. The structured curriculum provides broad business knowledge, while specializations allow you to develop expertise in new areas. Internships, projects, and networking during the program help you build credibility in your target field. However, some transitions (like non-technical to highly technical roles) may be more challenging and require additional preparation.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        What are the emerging trends in business management?
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Key trends include digital transformation leadership, data-driven decision making, sustainability and ESG management, remote/hybrid workforce management, and agile organizational structures. AI and automation are changing how managers operate, requiring new skills in technology integration and change management. There's also increasing focus on purpose-driven leadership, employee wellbeing, and inclusive management practices. Successful managers now need to balance traditional business acumen with adaptability to rapid technological and social changes.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <p>&copy; 2024 GoFarAsYouCan. Empowering future business leaders.</p>
+        </div>
+    </footer>
+
+    <script>
+        // FAQ Accordion Functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const faqItems = document.querySelectorAll('.faq-item');
+            
+            faqItems.forEach(item => {
+                const question = item.querySelector('.faq-question');
+                
+                question.addEventListener('click', () => {
+                    const isActive = item.classList.contains('active');
+                    
+                    // Close all other FAQ items
+                    faqItems.forEach(otherItem => {
+                        otherItem.classList.remove('active');
+                    });
+                    
+                    // Toggle current item
+                    if (!isActive) {
+                        item.classList.add('active');
+                    }
+                });
+            });
+        });
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>

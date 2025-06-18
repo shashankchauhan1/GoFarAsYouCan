@@ -1,0 +1,989 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Marketing & Sales - Create, Connect, Convert</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <style>
+        /* Reset and Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #0a0a0a;
+            color: #e5e5e5;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Navigation */
+        .navbar {
+            background: #111111;
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid #333;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #ff6b6b;
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: #e5e5e5;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: #ff6b6b;
+        }
+
+        .back-button {
+            /* background: #ff6b6b; */
+            color: white;
+            padding: 0.7rem 1.5rem;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: background-color 0.3s ease;
+        }
+
+        .back-button:hover {
+            background: #ff5252;
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 120px 0 80px;
+            text-align: center;
+            background: #111111;
+        }
+
+        .hero-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            margin-bottom: 1.5rem;
+            color: #ffffff;
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            color: #b3b3b3;
+            margin-bottom: 3rem;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .hero-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .stat-card {
+            background: #1a1a1a;
+            border: 1px solid #333;
+            border-radius: 12px;
+            padding: 2rem;
+            text-align: center;
+            transition: border-color 0.3s ease;
+        }
+
+        .stat-card:hover {
+            border-color: #ff6b6b;
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: #ff6b6b;
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            color: #b3b3b3;
+            font-size: 1rem;
+            font-weight: 500;
+        }
+
+        /* Main Content */
+        .main-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* Section Styles */
+        .section {
+            padding: 4rem 0;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #ffffff;
+            margin-bottom: 1rem;
+        }
+
+        .section-subtitle {
+            font-size: 1.1rem;
+            color: #b3b3b3;
+            max-width: 700px;
+            margin: 0 auto;
+            line-height: 1.7;
+        }
+
+        /* Career Paths */
+        .career-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .career-card {
+            background: #1a1a1a;
+            border: 1px solid #333;
+            border-radius: 12px;
+            padding: 2rem;
+            transition: all 0.3s ease;
+        }
+
+        .career-card:hover {
+            border-color: #ff6b6b;
+            transform: translateY(-5px);
+        }
+
+        .career-icon {
+            width: 60px;
+            height: 60px;
+            background: #ff6b6b;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .career-icon i {
+            font-size: 1.5rem;
+            color: white;
+        }
+
+        .career-title {
+            font-size: 1.4rem;
+            font-weight: 600;
+            color: #ffffff;
+            margin-bottom: 1rem;
+        }
+
+        .career-description {
+            color: #b3b3b3;
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+        }
+
+        .career-features {
+            list-style: none;
+            margin-bottom: 1.5rem;
+        }
+
+        .career-features li {
+            color: #e5e5e5;
+            margin-bottom: 0.5rem;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .career-features li::before {
+            content: '•';
+            position: absolute;
+            left: 0;
+            color: #ff6b6b;
+            font-weight: bold;
+        }
+
+        .salary-info {
+            background: #222222;
+            border: 1px solid #444;
+            border-radius: 8px;
+            padding: 1rem;
+            text-align: center;
+        }
+
+        .salary-label {
+            font-size: 0.9rem;
+            color: #b3b3b3;
+            margin-bottom: 0.5rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .salary-range {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: #ff6b6b;
+        }
+
+        /* Skills Section */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .skill-card {
+            background: #1a1a1a;
+            border: 1px solid #333;
+            border-radius: 12px;
+            padding: 2rem;
+            text-align: center;
+            transition: border-color 0.3s ease;
+        }
+
+        .skill-card:hover {
+            border-color: #ff6b6b;
+        }
+
+        .skill-icon {
+            font-size: 2.5rem;
+            color: #ff6b6b;
+            margin-bottom: 1.5rem;
+        }
+
+        .skill-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: #ffffff;
+            margin-bottom: 1rem;
+        }
+
+        .skill-description {
+            color: #b3b3b3;
+            line-height: 1.6;
+        }
+
+        /* Roadmap Section */
+        .roadmap {
+            margin: 2rem 0;
+        }
+
+        .roadmap-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 2rem;
+            background: #1a1a1a;
+            border: 1px solid #333;
+            border-radius: 12px;
+            padding: 2rem;
+            transition: border-color 0.3s ease;
+        }
+
+        .roadmap-item:hover {
+            border-color: #ff6b6b;
+        }
+
+        .roadmap-number {
+            width: 50px;
+            height: 50px;
+            background: #ff6b6b;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            color: white;
+            margin-right: 1.5rem;
+            flex-shrink: 0;
+        }
+
+        .roadmap-content {
+            flex: 1;
+        }
+
+        .roadmap-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: #ffffff;
+            margin-bottom: 0.5rem;
+        }
+
+        .roadmap-description {
+            color: #b3b3b3;
+            margin-bottom: 1rem;
+        }
+
+        .roadmap-details {
+            background: #222222;
+            border-left: 4px solid #ff6b6b;
+            border-radius: 6px;
+            padding: 1rem;
+        }
+
+        .roadmap-details p {
+            margin-bottom: 0.5rem;
+            color: #e5e5e5;
+        }
+
+        .roadmap-details strong {
+            color: #ff6b6b;
+        }
+
+        /* FAQ Section */
+        .faq-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .faq-item {
+            background: #1a1a1a;
+            border: 1px solid #333;
+            border-radius: 12px;
+            margin-bottom: 1rem;
+            overflow: hidden;
+        }
+
+        .faq-question {
+            padding: 1.5rem;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 600;
+            color: #ffffff;
+            transition: background-color 0.3s ease;
+        }
+
+        .faq-question:hover {
+            background: #222222;
+        }
+
+        .faq-toggle {
+            color: #ff6b6b;
+            font-size: 1.2rem;
+            transition: transform 0.3s ease;
+        }
+
+        .faq-item.active .faq-toggle {
+            transform: rotate(45deg);
+        }
+
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease, padding 0.3s ease;
+        }
+
+        .faq-item.active .faq-answer {
+            max-height: 300px;
+            padding: 0 1.5rem 1.5rem;
+        }
+
+        .faq-answer p {
+            color: #b3b3b3;
+            line-height: 1.7;
+        }
+
+        /* Footer */
+        .footer {
+            background: #111111;
+            border-top: 1px solid #333;
+            padding: 2rem 0;
+            text-align: center;
+            margin-top: 4rem;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .footer p {
+            color: #b3b3b3;
+            margin-bottom: 1rem;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .footer-links a {
+            color: #ff6b6b;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: #ff5252;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-container {
+                padding: 0 1rem;
+                flex-direction: column;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero p {
+                font-size: 1.1rem;
+            }
+
+            .hero-stats {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 1rem;
+            }
+
+            .main-content {
+                padding: 0 1rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .career-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .skills-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .roadmap-item {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .roadmap-number {
+                margin: 0 auto 1rem;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .footer-links {
+                flex-direction: column;
+                gap: 1rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero-stats {
+                grid-template-columns: 1fr;
+            }
+
+            .skills-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .section {
+                padding: 3rem 0;
+            }
+
+            .cta-section {
+                padding: 2rem 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="#" class="logo">GoFarAsYouCan</a>
+            <ul class="nav-links">
+                <li><a href="#overview">Overview</a></li>
+                <li><a href="#careers">Careers</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#roadmap">Roadmap</a></li>
+                <li><a href="#faq">FAQ</a></li>
+            </ul>
+            <a href="/Commerce/commerce.ejs" class="back-button">
+                <i class="fas fa-arrow-left"></i> Back to Commerce
+            </a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Marketing & Sales</h1>
+            <p>Create compelling campaigns, understand consumer behavior, and drive business growth. Shape how brands connect with the world and turn ideas into revenue.</p>
+            
+            <div class="hero-stats">
+                <div class="stat-card">
+                    <span class="stat-number">₹3-20L</span>
+                    <span class="stat-label">Salary Range</span>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-number">92%</span>
+                    <span class="stat-label">Job Growth Rate</span>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-number">100+</span>
+                    <span class="stat-label">Career Paths</span>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-number">Digital First</span>
+                    <span class="stat-label">Future Ready</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="main-content">
+        <!-- Overview Section -->
+        <section id="overview" class="section">
+            <div class="section-header">
+                <h2 class="section-title">Why Choose Marketing & Sales?</h2>
+                <p class="section-subtitle">Marketing and Sales is where creativity meets strategy, where psychology meets technology. It's the engine that drives every successful business, from startups to global corporations.</p>
+            </div>
+
+            <div class="skills-grid">
+                <div class="skill-card">
+                    <i class="fas fa-rocket skill-icon"></i>
+                    <h3 class="skill-title">Creative Freedom</h3>
+                    <p class="skill-description">Express your creativity through campaigns, content, and brand storytelling that resonates with millions.</p>
+                </div>
+                <div class="skill-card">
+                    <i class="fas fa-chart-line skill-icon"></i>
+                    <h3 class="skill-title">High Impact</h3>
+                    <p class="skill-description">Directly influence business growth and see the immediate results of your strategies and campaigns.</p>
+                </div>
+                <div class="skill-card">
+                    <i class="fas fa-globe skill-icon"></i>
+                    <h3 class="skill-title">Global Reach</h3>
+                    <p class="skill-description">Work with international brands and reach audiences across the world through digital platforms.</p>
+                </div>
+                <div class="skill-card">
+                    <i class="fas fa-brain skill-icon"></i>
+                    <h3 class="skill-title">Psychology & Data</h3>
+                    <p class="skill-description">Combine human psychology with data analytics to create powerful, targeted marketing strategies.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Career Paths Section -->
+        <section id="careers" class="section">
+            <div class="section-header">
+                <h2 class="section-title">Career Paths in Marketing & Sales</h2>
+                <p class="section-subtitle">Explore diverse opportunities from traditional marketing to cutting-edge digital strategies and sales leadership roles.</p>
+            </div>
+
+            <div class="career-grid">
+                <div class="career-card">
+                    <div class="career-icon">
+                        <i class="fas fa-mobile-alt"></i>
+                    </div>
+                    <h3 class="career-title">Digital Marketing Specialist</h3>
+                    <p class="career-description">Master online marketing channels including social media, search engines, email, and content marketing to drive digital growth.</p>
+                    <ul class="career-features">
+                        <li>Social Media Marketing & Management</li>
+                        <li>Search Engine Optimization (SEO)</li>
+                        <li>Pay-Per-Click (PPC) Advertising</li>
+                        <li>Email Marketing Automation</li>
+                        <li>Content Marketing Strategy</li>
+                        <li>Analytics & Performance Tracking</li>
+                    </ul>
+                    <div class="salary-info">
+                        <div class="salary-label">Salary Range</div>
+                        <div class="salary-range">₹3-12 Lakhs per annum</div>
+                    </div>
+                </div>
+
+                <div class="career-card">
+                    <div class="career-icon">
+                        <i class="fas fa-crown"></i>
+                    </div>
+                    <h3 class="career-title">Brand Manager</h3>
+                    <p class="career-description">Shape brand identity, manage brand perception, and create strategies that build strong emotional connections with consumers.</p>
+                    <ul class="career-features">
+                        <li>Brand Strategy Development</li>
+                        <li>Brand Identity & Positioning</li>
+                        <li>Campaign Planning & Execution</li>
+                        <li>Market Research & Consumer Insights</li>
+                        <li>Cross-functional Team Leadership</li>
+                        <li>Brand Performance Analysis</li>
+                    </ul>
+                    <div class="salary-info">
+                        <div class="salary-label">Salary Range</div>
+                        <div class="salary-range">₹6-18 Lakhs per annum</div>
+                    </div>
+                </div>
+
+                <div class="career-card">
+                    <div class="career-icon">
+                        <i class="fas fa-handshake"></i>
+                    </div>
+                    <h3 class="career-title">Sales Manager</h3>
+                    <p class="career-description">Lead sales teams, develop sales strategies, and drive revenue growth through relationship building and strategic selling.</p>
+                    <ul class="career-features">
+                        <li>Sales Team Leadership & Training</li>
+                        <li>Sales Strategy & Planning</li>
+                        <li>Client Relationship Management</li>
+                        <li>Revenue Forecasting & Analysis</li>
+                        <li>Territory & Account Management</li>
+                        <li>Sales Process Optimization</li>
+                    </ul>
+                    <div class="salary-info">
+                        <div class="salary-label">Salary Range</div>
+                        <div class="salary-range">₹5-20 Lakhs per annum</div>
+                    </div>
+                </div>
+
+                <div class="career-card">
+                    <div class="career-icon">
+                        <i class="fas fa-pen-fancy"></i>
+                    </div>
+                    <h3 class="career-title">Content Marketing Manager</h3>
+                    <p class="career-description">Create compelling content strategies that engage audiences, build brand authority, and drive conversions across multiple channels.</p>
+                    <ul class="career-features">
+                        <li>Content Strategy & Planning</li>
+                        <li>Blog & Article Writing</li>
+                        <li>Video & Visual Content Creation</li>
+                        <li>Content Distribution & Promotion</li>
+                        <li>SEO Content Optimization</li>
+                        <li>Content Performance Analytics</li>
+                    </ul>
+                    <div class="salary-info">
+                        <div class="salary-label">Salary Range</div>
+                        <div class="salary-range">₹4-15 Lakhs per annum</div>
+                    </div>
+                </div>
+
+                <div class="career-card">
+                    <div class="career-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3 class="career-title">Marketing Analytics Manager</h3>
+                    <p class="career-description">Use data science and analytics to measure marketing performance, optimize campaigns, and drive data-driven decision making.</p>
+                    <ul class="career-features">
+                        <li>Marketing Data Analysis</li>
+                        <li>Campaign Performance Measurement</li>
+                        <li>Customer Behavior Analytics</li>
+                        <li>ROI & Attribution Modeling</li>
+                        <li>Marketing Automation Setup</li>
+                        <li>Predictive Analytics & Forecasting</li>
+                    </ul>
+                    <div class="salary-info">
+                        <div class="salary-label">Salary Range</div>
+                        <div class="salary-range">₹6-18 Lakhs per annum</div>
+                    </div>
+                </div>
+
+                <div class="career-card">
+                    <div class="career-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h3 class="career-title">Social Media Manager</h3>
+                    <p class="career-description">Build and manage brand presence across social platforms, create viral content, and engage with online communities.</p>
+                    <ul class="career-features">
+                        <li>Social Media Strategy Development</li>
+                        <li>Content Creation & Curation</li>
+                        <li>Community Management</li>
+                        <li>Influencer Partnership Management</li>
+                        <li>Social Media Advertising</li>
+                        <li>Crisis Management & Reputation</li>
+                    </ul>
+                    <div class="salary-info">
+                        <div class="salary-label">Salary Range</div>
+                        <div class="salary-range">₹3-10 Lakhs per annum</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Skills Section -->
+        <section id="skills" class="section">
+            <div class="section-header">
+                <h2 class="section-title">Essential Skills for Success</h2>
+                <p class="section-subtitle">Master these core competencies to excel in modern marketing and sales careers.</p>
+            </div>
+
+            <div class="skills-grid">
+                <div class="skill-card">
+                    <i class="fas fa-palette skill-icon"></i>
+                    <h3 class="skill-title">Creative Thinking</h3>
+                    <p class="skill-description">Develop innovative campaigns, compelling storytelling, and creative problem-solving abilities.</p>
+                </div>
+                <div class="skill-card">
+                    <i class="fas fa-chart-bar skill-icon"></i>
+                    <h3 class="skill-title">Data Analytics</h3>
+                    <p class="skill-description">Master Google Analytics, social media insights, and marketing automation tools for data-driven decisions.</p>
+                </div>
+                <div class="skill-card">
+                    <i class="fas fa-comments skill-icon"></i>
+                    <h3 class="skill-title">Communication</h3>
+                    <p class="skill-description">Excel in written, verbal, and visual communication across multiple channels and audiences.</p>
+                </div>
+                <div class="skill-card">
+                    <i class="fas fa-laptop-code skill-icon"></i>
+                    <h3 class="skill-title">Digital Tools</h3>
+                    <p class="skill-description">Proficiency in marketing automation, CRM systems, design tools, and social media platforms.</p>
+                </div>
+                <div class="skill-card">
+                    <i class="fas fa-brain skill-icon"></i>
+                    <h3 class="skill-title">Consumer Psychology</h3>
+                    <p class="skill-description">Understand buyer behavior, decision-making processes, and psychological triggers in marketing.</p>
+                </div>
+                <div class="skill-card">
+                    <i class="fas fa-project-diagram skill-icon"></i>
+                    <h3 class="skill-title">Project Management</h3>
+                    <p class="skill-description">Manage multiple campaigns, coordinate teams, and deliver projects on time and within budget.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Roadmap Section -->
+        <section id="roadmap" class="section">
+            <div class="section-header">
+                <h2 class="section-title">Your Marketing & Sales Journey</h2>
+                <p class="section-subtitle">Step-by-step roadmap to build a successful career in marketing and sales.</p>
+            </div>
+
+            <div class="roadmap">
+                <div class="roadmap-item">
+                    <div class="roadmap-number">1</div>
+                    <div class="roadmap-content">
+                        <h3 class="roadmap-title">Foundation Building (12th Grade & Beyond)</h3>
+                        <p class="roadmap-description">Start with commerce subjects and develop basic marketing understanding.</p>
+                        <div class="roadmap-details">
+                            <p><strong>Academic Focus:</strong> Business Studies, Economics, English, Psychology</p>
+                            <p><strong>Skills to Develop:</strong> Communication, creativity, basic digital literacy</p>
+                            <p><strong>Action Items:</strong> Start a blog, create social media content, join marketing clubs</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="roadmap-item">
+                    <div class="roadmap-number">2</div>
+                    <div class="roadmap-content">
+                        <h3 class="roadmap-title">Undergraduate Specialization (3 Years)</h3>
+                        <p class="roadmap-description">Pursue BBA Marketing, B.Com with marketing focus, or Mass Communication degree.</p>
+                        <div class="roadmap-details">
+                            <p><strong>Degree Options:</strong> BBA Marketing, B.Com, BMM, Journalism & Mass Communication</p>
+                            <p><strong>Practical Learning:</strong> Internships, freelance projects, personal branding</p>
+                            <p><strong>Certifications:</strong> Google Ads, Facebook Blueprint, HubSpot Content Marketing</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="roadmap-item">
+                    <div class="roadmap-number">3</div>
+                    <div class="roadmap-content">
+                        <h3 class="roadmap-title">Skill Development & Specialization (1-2 Years)</h3>
+                        <p class="roadmap-description">Choose your specialization and build expertise through courses and practical experience.</p>
+                        <div class="roadmap-details">
+                            <p><strong>Specialization Areas:</strong> Digital Marketing, Brand Management, Sales, Content Marketing</p>
+                            <p><strong>Advanced Certifications:</strong> Google Analytics, Salesforce, Adobe Creative Suite</p>
+                            <p><strong>Portfolio Building:</strong> Case studies, campaign results, client testimonials</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="roadmap-item">
+                    <div class="roadmap-number">4</div>
+                    <div class="roadmap-content">
+                        <h3 class="roadmap-title">Career Launch & Growth</h3>
+                        <p class="roadmap-description">Start your career and rapidly advance through performance and continuous learning.</p>
+                        <div class="roadmap-details">
+                            <p><strong>Entry Roles:</strong> Marketing Executive, Sales Associate, Content Writer, Social Media Coordinator</p>
+                            <p><strong>Growth Path:</strong> Senior Executive → Manager → Senior Manager → Director</p>
+                            <p><strong>Continuous Learning:</strong> Industry trends, new platforms, advanced analytics</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="roadmap-item">
+                    <div class="roadmap-number">5</div>
+                    <div class="roadmap-content">
+                        <h3 class="roadmap-title">Leadership & Entrepreneurship</h3>
+                        <p class="roadmap-description">Advance to senior leadership roles or start your own marketing agency/consultancy.</p>
+                        <div class="roadmap-details">
+                            <p><strong>Leadership Roles:</strong> Marketing Director, VP Marketing, Chief Marketing Officer</p>
+                            <p><strong>Entrepreneurship:</strong> Digital Marketing Agency, Consulting, E-commerce Business</p>
+                            <p><strong>Advanced Education:</strong> MBA Marketing, Executive Programs, Industry Conferences</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- FAQ Section -->
+        <section id="faq" class="section">
+            <div class="section-header">
+                <h2 class="section-title">Frequently Asked Questions</h2>
+                <p class="section-subtitle">Get answers to common questions about marketing and sales careers.</p>
+            </div>
+
+            <div class="faq-container">
+                <div class="faq-item">
+                    <div class="faq-question">
+                        Is marketing only about advertising and promotion?
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Not at all! Modern marketing encompasses market research, consumer psychology, data analytics, brand strategy, content creation, digital platforms, customer experience, and much more. It's a strategic function that drives business growth through understanding and serving customer needs effectively.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        Do I need technical skills for digital marketing?
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Basic technical skills are helpful but not mandatory. You need to understand how to use marketing tools, analytics platforms, and social media. Most platforms are user-friendly and don't require coding. However, understanding HTML, basic design principles, and data analysis can give you a competitive advantage.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        What's the difference between marketing and sales?
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Marketing focuses on creating awareness, generating interest, and nurturing leads through content, campaigns, and brand building. Sales focuses on converting those leads into customers through direct interaction, relationship building, and closing deals. Both work together in the customer acquisition process.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        Can I work freelance in marketing and sales?
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Marketing and sales offer excellent freelance opportunities. You can work as a freelance digital marketer, content creator, social media manager, sales consultant, or marketing strategist. Many professionals start freelancing while building their skills and eventually start their own agencies.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        How important is creativity vs. analytical skills?
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Both are equally important in modern marketing! Creativity helps you create compelling campaigns and content that resonates with audiences. Analytical skills help you measure performance, optimize campaigns, and make data-driven decisions. The best marketers combine creative thinking with analytical rigor.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        What are the emerging trends in marketing and sales?
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Key trends include AI-powered marketing automation, influencer marketing, video-first content, voice search optimization, personalization at scale, social commerce, sustainability marketing, and customer experience focus. Staying updated with these trends is crucial for career growth.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+       
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <p>&copy; 2024 GoFarAsYouCan. Empowering your marketing and sales journey.</p>
+        </div>
+    </footer>
+
+    <script>
+        // FAQ Accordion Functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const faqItems = document.querySelectorAll('.faq-item');
+            
+            faqItems.forEach(item => {
+                const question = item.querySelector('.faq-question');
+                
+                question.addEventListener('click', () => {
+                    const isActive = item.classList.contains('active');
+                    
+                    // Close all other FAQ items
+                    faqItems.forEach(otherItem => {
+                        otherItem.classList.remove('active');
+                    });
+                    
+                    // Toggle current item
+                    if (!isActive) {
+                        item.classList.add('active');
+                    }
+                });
+            });
+        });
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>

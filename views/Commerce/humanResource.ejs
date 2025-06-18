@@ -1,0 +1,979 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Human Resources - Manage Talent, Build Culture</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <style>
+        /* Reset and Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #0d1117;
+            color: #e6edf3;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Navigation */
+        .navbar {
+            background: #161b22;
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid #30363d;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #58a6ff;
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: #e6edf3;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: #58a6ff;
+        }
+
+        .back-button {
+            /* background: #238636; */
+            color: white;
+            padding: 0.7rem 1.5rem;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: background-color 0.3s ease;
+        }
+
+        .back-button:hover {
+            background: #2ea043;
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 120px 0 80px;
+            text-align: center;
+            background: #161b22;
+        }
+
+        .hero-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            margin-bottom: 1.5rem;
+            color: #ffffff;
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            color: #8b949e;
+            margin-bottom: 3rem;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .hero-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .stat-card {
+            background: #21262d;
+            border: 1px solid #30363d;
+            border-radius: 12px;
+            padding: 2rem;
+            text-align: center;
+            transition: border-color 0.3s ease;
+        }
+
+        .stat-card:hover {
+            border-color: #58a6ff;
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: #58a6ff;
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            color: #8b949e;
+            font-size: 1rem;
+            font-weight: 500;
+        }
+
+        /* Main Content */
+        .main-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* Section Styles */
+        .section {
+            padding: 4rem 0;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #ffffff;
+            margin-bottom: 1rem;
+        }
+
+        .section-subtitle {
+            font-size: 1.1rem;
+            color: #8b949e;
+            max-width: 700px;
+            margin: 0 auto;
+            line-height: 1.7;
+        }
+
+        /* Career Paths */
+        .career-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .career-card {
+            background: #21262d;
+            border: 1px solid #30363d;
+            border-radius: 12px;
+            padding: 2rem;
+            transition: all 0.3s ease;
+        }
+
+        .career-card:hover {
+            border-color: #58a6ff;
+            transform: translateY(-5px);
+        }
+
+        .career-icon {
+            width: 60px;
+            height: 60px;
+            background: #58a6ff;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .career-icon i {
+            font-size: 1.5rem;
+            color: white;
+        }
+
+        .career-title {
+            font-size: 1.4rem;
+            font-weight: 600;
+            color: #ffffff;
+            margin-bottom: 1rem;
+        }
+
+        .career-description {
+            color: #8b949e;
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+        }
+
+        .career-features {
+            list-style: none;
+            margin-bottom: 1.5rem;
+        }
+
+        .career-features li {
+            color: #e6edf3;
+            margin-bottom: 0.5rem;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .career-features li::before {
+            content: '•';
+            position: absolute;
+            left: 0;
+            color: #58a6ff;
+            font-weight: bold;
+        }
+
+        .salary-info {
+            background: #161b22;
+            border: 1px solid #30363d;
+            border-radius: 8px;
+            padding: 1rem;
+            text-align: center;
+        }
+
+        .salary-label {
+            font-size: 0.9rem;
+            color: #8b949e;
+            margin-bottom: 0.5rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .salary-range {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: #58a6ff;
+        }
+
+        /* Skills Section */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .skill-card {
+            background: #21262d;
+            border: 1px solid #30363d;
+            border-radius: 12px;
+            padding: 2rem;
+            text-align: center;
+            transition: border-color 0.3s ease;
+        }
+
+        .skill-card:hover {
+            border-color: #58a6ff;
+        }
+
+        .skill-icon {
+            font-size: 2.5rem;
+            color: #58a6ff;
+            margin-bottom: 1.5rem;
+        }
+
+        .skill-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: #ffffff;
+            margin-bottom: 1rem;
+        }
+
+        .skill-description {
+            color: #8b949e;
+            line-height: 1.6;
+        }
+
+        /* Roadmap Section */
+        .roadmap {
+            margin: 2rem 0;
+        }
+
+        .roadmap-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 2rem;
+            background: #21262d;
+            border: 1px solid #30363d;
+            border-radius: 12px;
+            padding: 2rem;
+            transition: border-color 0.3s ease;
+        }
+
+        .roadmap-item:hover {
+            border-color: #58a6ff;
+        }
+
+        .roadmap-number {
+            width: 50px;
+            height: 50px;
+            background: #58a6ff;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            color: white;
+            margin-right: 1.5rem;
+            flex-shrink: 0;
+        }
+
+        .roadmap-content {
+            flex: 1;
+        }
+
+        .roadmap-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: #ffffff;
+            margin-bottom: 0.5rem;
+        }
+
+        .roadmap-description {
+            color: #8b949e;
+            margin-bottom: 1rem;
+        }
+
+        .roadmap-details {
+            background: #161b22;
+            border-left: 4px solid #58a6ff;
+            border-radius: 6px;
+            padding: 1rem;
+        }
+
+        .roadmap-details p {
+            margin-bottom: 0.5rem;
+            color: #e6edf3;
+        }
+
+        .roadmap-details strong {
+            color: #58a6ff;
+        }
+
+        /* FAQ Section */
+        .faq-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .faq-item {
+            background: #21262d;
+            border: 1px solid #30363d;
+            border-radius: 12px;
+            margin-bottom: 1rem;
+            overflow: hidden;
+        }
+
+        .faq-question {
+            padding: 1.5rem;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 600;
+            color: #ffffff;
+            transition: background-color 0.3s ease;
+        }
+
+        .faq-question:hover {
+            background: #161b22;
+        }
+
+        .faq-toggle {
+            color: #58a6ff;
+            font-size: 1.2rem;
+            transition: transform 0.3s ease;
+        }
+
+        .faq-item.active .faq-toggle {
+            transform: rotate(45deg);
+        }
+
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease, padding 0.3s ease;
+        }
+
+        .faq-item.active .faq-answer {
+            max-height: 300px;
+            padding: 0 1.5rem 1.5rem;
+        }
+
+        .faq-answer p {
+            color: #8b949e;
+            line-height: 1.7;
+        }
+
+        /* Footer */
+        .footer {
+            background: #161b22;
+            border-top: 1px solid #30363d;
+            padding: 2rem 0;
+            text-align: center;
+            margin-top: 4rem;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .footer p {
+            color: #8b949e;
+            margin-bottom: 1rem;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .footer-links a {
+            color: #58a6ff;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: #79c0ff;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-container {
+                padding: 0 1rem;
+                flex-direction: column;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero p {
+                font-size: 1.1rem;
+            }
+
+            .hero-stats {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 1rem;
+            }
+
+            .main-content {
+                padding: 0 1rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .career-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .skills-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .roadmap-item {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .roadmap-number {
+                margin: 0 auto 1rem;
+            }
+
+            .footer-links {
+                flex-direction: column;
+                gap: 1rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero-stats {
+                grid-template-columns: 1fr;
+            }
+
+            .skills-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .section {
+                padding: 3rem 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="#" class="logo">GoFarAsYouCan</a>
+            <ul class="nav-links">
+                <li><a href="#overview">Overview</a></li>
+                <li><a href="#careers">Careers</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#roadmap">Roadmap</a></li>
+                <li><a href="#faq">FAQ</a></li>
+            </ul>
+            <a href="/Commerce/commerce.ejs" class="back-button">
+                <i class="fas fa-arrow-left"></i> Back to Commerce
+            </a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Human Resources</h1>
+            <p>Manage talent, build organizational culture, and drive employee engagement. Shape the future of work and create environments where people thrive.</p>
+            
+            <div class="hero-stats">
+                <div class="stat-card">
+                    <span class="stat-number">₹3-18L</span>
+                    <span class="stat-label">Salary Range</span>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-number">85%</span>
+                    <span class="stat-label">Job Satisfaction Rate</span>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-number">50+</span>
+                    <span class="stat-label">Specialization Areas</span>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-number">People First</span>
+                    <span class="stat-label">Core Philosophy</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="main-content">
+        <!-- Overview Section -->
+        <section id="overview" class="section">
+            <div class="section-header">
+                <h2 class="section-title">Why Choose Human Resources?</h2>
+                <p class="section-subtitle">Human Resources is the heart of every organization. You'll shape company culture, develop talent, and create positive work environments that drive business success while making a meaningful impact on people's lives.</p>
+            </div>
+
+            <div class="skills-grid">
+                <div class="skill-card">
+                    <i class="fas fa-heart skill-icon"></i>
+                    <h3 class="skill-title">People Impact</h3>
+                    <p class="skill-description">Directly influence employee satisfaction, career growth, and work-life balance across the organization.</p>
+                </div>
+                <div class="skill-card">
+                    <i class="fas fa-chart-line skill-icon"></i>
+                    <h3 class="skill-title">Strategic Role</h3>
+                    <p class="skill-description">Partner with leadership to align human capital strategies with business objectives and growth plans.</p>
+                </div>
+                <div class="skill-card">
+                    <i class="fas fa-users skill-icon"></i>
+                    <h3 class="skill-title">Diverse Opportunities</h3>
+                    <p class="skill-description">Work across recruitment, training, compensation, employee relations, and organizational development.</p>
+                </div>
+                <div class="skill-card">
+                    <i class="fas fa-balance-scale skill-icon"></i>
+                    <h3 class="skill-title">Work-Life Balance</h3>
+                    <p class="skill-description">HR professionals often enjoy better work-life balance and flexible working arrangements.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Career Paths Section -->
+        <section id="careers" class="section">
+            <div class="section-header">
+                <h2 class="section-title">Career Paths in Human Resources</h2>
+                <p class="section-subtitle">Explore diverse HR specializations from talent acquisition to organizational development and strategic HR leadership roles.</p>
+            </div>
+
+            <div class="career-grid">
+                <div class="career-card">
+                    <div class="career-icon">
+                        <i class="fas fa-search"></i>
+                    </div>
+                    <h3 class="career-title">Talent Acquisition Specialist</h3>
+                    <p class="career-description">Lead recruitment efforts, identify top talent, and build strong hiring processes to attract the best candidates for your organization.</p>
+                    <ul class="career-features">
+                        <li>Full-cycle Recruitment Management</li>
+                        <li>Candidate Sourcing & Screening</li>
+                        <li>Interview Process Design</li>
+                        <li>Employer Branding Initiatives</li>
+                        <li>Recruitment Analytics & Metrics</li>
+                        <li>Vendor & Agency Management</li>
+                    </ul>
+                    <div class="salary-info">
+                        <div class="salary-label">Salary Range</div>
+                        <div class="salary-range">₹3-10 Lakhs per annum</div>
+                    </div>
+                </div>
+
+                <div class="career-card">
+                    <div class="career-icon">
+                        <i class="fas fa-graduation-cap"></i>
+                    </div>
+                    <h3 class="career-title">Learning & Development Manager</h3>
+                    <p class="career-description">Design and implement training programs, develop employee skills, and create learning pathways for career advancement.</p>
+                    <ul class="career-features">
+                        <li>Training Program Development</li>
+                        <li>Skills Assessment & Gap Analysis</li>
+                        <li>Leadership Development Programs</li>
+                        <li>E-learning Platform Management</li>
+                        <li>Performance Improvement Plans</li>
+                        <li>Training ROI Measurement</li>
+                    </ul>
+                    <div class="salary-info">
+                        <div class="salary-label">Salary Range</div>
+                        <div class="salary-range">₹5-15 Lakhs per annum</div>
+                    </div>
+                </div>
+
+                <div class="career-card">
+                    <div class="career-icon">
+                        <i class="fas fa-handshake"></i>
+                    </div>
+                    <h3 class="career-title">Employee Relations Manager</h3>
+                    <p class="career-description">Handle employee grievances, mediate conflicts, ensure compliance, and maintain positive workplace relationships.</p>
+                    <ul class="career-features">
+                        <li>Conflict Resolution & Mediation</li>
+                        <li>Employee Grievance Handling</li>
+                        <li>Policy Development & Implementation</li>
+                        <li>Compliance & Legal Requirements</li>
+                        <li>Workplace Investigation Management</li>
+                        <li>Employee Engagement Initiatives</li>
+                    </ul>
+                    <div class="salary-info">
+                        <div class="salary-label">Salary Range</div>
+                        <div class="salary-range">₹4-12 Lakhs per annum</div>
+                    </div>
+                </div>
+
+                <div class="career-card">
+                    <div class="career-icon">
+                        <i class="fas fa-calculator"></i>
+                    </div>
+                    <h3 class="career-title">Compensation & Benefits Analyst</h3>
+                    <p class="career-description">Design competitive compensation packages, manage benefits programs, and ensure fair and equitable pay structures.</p>
+                    <ul class="career-features">
+                        <li>Salary Structure Design</li>
+                        <li>Market Compensation Analysis</li>
+                        <li>Benefits Program Management</li>
+                        <li>Payroll System Administration</li>
+                        <li>Equity & Fairness Audits</li>
+                        <li>Cost Analysis & Budgeting</li>
+                    </ul>
+                    <div class="salary-info">
+                        <div class="salary-label">Salary Range</div>
+                        <div class="salary-range">₹4-14 Lakhs per annum</div>
+                    </div>
+                </div>
+
+                <div class="career-card">
+                    <div class="career-icon">
+                        <i class="fas fa-chart-bar"></i>
+                    </div>
+                    <h3 class="career-title">HR Analytics Specialist</h3>
+                    <p class="career-description">Use data analytics to drive HR decisions, measure employee performance, and predict workforce trends and patterns.</p>
+                    <ul class="career-features">
+                        <li>HR Data Analysis & Reporting</li>
+                        <li>Predictive Analytics for Turnover</li>
+                        <li>Performance Metrics Development</li>
+                        <li>Dashboard Creation & Maintenance</li>
+                        <li>Workforce Planning Analytics</li>
+                        <li>Employee Survey Analysis</li>
+                    </ul>
+                    <div class="salary-info">
+                        <div class="salary-label">Salary Range</div>
+                        <div class="salary-range">₹5-16 Lakhs per annum</div>
+                    </div>
+                </div>
+
+                <div class="career-card">
+                    <div class="career-icon">
+                        <i class="fas fa-sitemap"></i>
+                    </div>
+                    <h3 class="career-title">Organizational Development Consultant</h3>
+                    <p class="career-description">Drive organizational change, improve processes, and help companies adapt to evolving business needs and market conditions.</p>
+                    <ul class="career-features">
+                        <li>Change Management Leadership</li>
+                        <li>Organizational Structure Design</li>
+                        <li>Culture Transformation Initiatives</li>
+                        <li>Process Improvement Projects</li>
+                        <li>Leadership Coaching & Development</li>
+                        <li>Strategic HR Planning</li>
+                    </ul>
+                    <div class="salary-info">
+                        <div class="salary-label">Salary Range</div>
+                        <div class="salary-range">₹6-18 Lakhs per annum</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Skills Section -->
+        <section id="skills" class="section">
+            <div class="section-header">
+                <h2 class="section-title">Essential Skills for HR Success</h2>
+                <p class="section-subtitle">Master these core competencies to excel in human resources and make a meaningful impact on organizational success.</p>
+            </div>
+
+            <div class="skills-grid">
+                <div class="skill-card">
+                    <i class="fas fa-comments skill-icon"></i>
+                    <h3 class="skill-title">Communication</h3>
+                    <p class="skill-description">Excel in verbal, written, and interpersonal communication to effectively interact with employees at all levels.</p>
+                </div>
+                <div class="skill-card">
+                    <i class="fas fa-gavel skill-icon"></i>
+                    <h3 class="skill-title">Employment Law</h3>
+                    <p class="skill-description">Understand labor laws, compliance requirements, and legal aspects of employment relationships.</p>
+                </div>
+                <div class="skill-card">
+                    <i class="fas fa-brain skill-icon"></i>
+                    <h3 class="skill-title">Psychology</h3>
+                    <p class="skill-description">Apply psychological principles to understand employee behavior, motivation, and workplace dynamics.</p>
+                </div>
+                <div class="skill-card">
+                    <i class="fas fa-chart-pie skill-icon"></i>
+                    <h3 class="skill-title">Data Analysis</h3>
+                    <p class="skill-description">Use HR analytics tools and data interpretation skills to make informed, evidence-based decisions.</p>
+                </div>
+                <div class="skill-card">
+                    <i class="fas fa-users-cog skill-icon"></i>
+                    <h3 class="skill-title">Leadership</h3>
+                    <p class="skill-description">Develop leadership skills to guide teams, influence stakeholders, and drive organizational change.</p>
+                </div>
+                <div class="skill-card">
+                    <i class="fas fa-laptop skill-icon"></i>
+                    <h3 class="skill-title">HR Technology</h3>
+                    <p class="skill-description">Master HRIS systems, applicant tracking systems, and modern HR software platforms.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Roadmap Section -->
+        <section id="roadmap" class="section">
+            <div class="section-header">
+                <h2 class="section-title">Your HR Career Journey</h2>
+                <p class="section-subtitle">Step-by-step roadmap to build a successful career in human resources and organizational development.</p>
+            </div>
+
+            <div class="roadmap">
+                <div class="roadmap-item">
+                    <div class="roadmap-number">1</div>
+                    <div class="roadmap-content">
+                        <h3 class="roadmap-title">Foundation Building (12th Grade & Beyond)</h3>
+                        <p class="roadmap-description">Start with commerce or arts subjects and develop understanding of business and psychology.</p>
+                        <div class="roadmap-details">
+                            <p><strong>Academic Focus:</strong> Business Studies, Psychology, Economics, English</p>
+                            <p><strong>Skills to Develop:</strong> Communication, empathy, analytical thinking</p>
+                            <p><strong>Action Items:</strong> Join debate clubs, volunteer for community service, develop interpersonal skills</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="roadmap-item">
+                    <div class="roadmap-number">2</div>
+                    <div class="roadmap-content">
+                        <h3 class="roadmap-title">Undergraduate Specialization (3 Years)</h3>
+                        <p class="roadmap-description">Pursue BBA HR, B.Com, Psychology, or related degree with HR focus.</p>
+                        <div class="roadmap-details">
+                            <p><strong>Degree Options:</strong> BBA HR, B.Com, BA Psychology, Industrial Psychology</p>
+                            <p><strong>Practical Learning:</strong> HR internships, campus recruitment participation</p>
+                            <p><strong>Certifications:</strong> SHRM-CP, PHR preparation, HR analytics courses</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="roadmap-item">
+                    <div class="roadmap-number">3</div>
+                    <div class="roadmap-content">
+                        <h3 class="roadmap-title">Skill Development & Specialization (1-2 Years)</h3>
+                        <p class="roadmap-description">Choose your HR specialization and build expertise through courses and practical experience.</p>
+                        <div class="roadmap-details">
+                            <p><strong>Specialization Areas:</strong> Recruitment, L&D, Employee Relations, Compensation</p>
+                            <p><strong>Advanced Certifications:</strong> SHRM-SCP, CIPD, Six Sigma for HR</p>
+                            <p><strong>Experience Building:</strong> HR projects, case studies, mentorship programs</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="roadmap-item">
+                    <div class="roadmap-number">4</div>
+                    <div class="roadmap-content">
+                        <h3 class="roadmap-title">Career Launch & Growth</h3>
+                        <p class="roadmap-description">Start your HR career and advance through performance and continuous learning.</p>
+                        <div class="roadmap-details">
+                            <p><strong>Entry Roles:</strong> HR Executive, Recruiter, Training Coordinator, HR Assistant</p>
+                            <p><strong>Growth Path:</strong> Senior Executive → Manager → Senior Manager → Director</p>
+                            <p><strong>Continuous Learning:</strong> Employment law updates, new HR technologies, leadership skills</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="roadmap-item">
+                    <div class="roadmap-number">5</div>
+                    <div class="roadmap-content">
+                        <h3 class="roadmap-title">Leadership & Strategic HR</h3>
+                        <p class="roadmap-description">Advance to senior HR leadership roles or start your own HR consulting practice.</p>
+                        <div class="roadmap-details">
+                            <p><strong>Leadership Roles:</strong> HR Director, VP HR, Chief Human Resources Officer</p>
+                            <p><strong>Consulting:</strong> Independent HR Consultant, Organizational Development Specialist</p>
+                            <p><strong>Advanced Education:</strong> MBA HR, Executive Programs, Industry Conferences</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- FAQ Section -->
+        <section id="faq" class="section">
+            <div class="section-header">
+                <h2 class="section-title">Frequently Asked Questions</h2>
+                <p class="section-subtitle">Get answers to common questions about human resources careers and professional development.</p>
+            </div>
+
+            <div class="faq-container">
+                <div class="faq-item">
+                    <div class="faq-question">
+                        Do I need a psychology degree to work in HR?
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>While a psychology degree is helpful, it's not mandatory. Many successful HR professionals come from business, commerce, or other backgrounds. What's important is developing strong interpersonal skills, understanding of business operations, and knowledge of employment laws. You can build psychology knowledge through courses and certifications.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        Is HR only about hiring and firing people?
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Not at all! Modern HR is strategic and diverse, covering talent development, employee engagement, organizational culture, compensation design, performance management, learning & development, and business partnership. HR professionals are strategic advisors who help shape company culture and drive business success.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        What's the career growth potential in HR?
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>HR offers excellent career growth opportunities. You can advance from HR Executive to Manager, Director, and eventually Chief Human Resources Officer (CHRO). You can also specialize in areas like talent acquisition, learning & development, or start your own HR consulting firm. Many HR professionals also transition to general management roles.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        How important are HR certifications?
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>HR certifications like SHRM-CP, SHRM-SCP, PHR, and CIPD are highly valuable and often preferred by employers. They demonstrate professional competency, keep you updated with best practices, and can significantly boost your career prospects and salary potential. Many companies also support certification costs for their HR employees.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        Can I work remotely in HR roles?
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Yes! Many HR roles now offer remote or hybrid work options, especially in areas like recruitment, HR analytics, learning & development, and HR consulting. However, some roles like employee relations or on-site training may require physical presence. The trend toward remote work has opened up many flexible HR opportunities.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        What are the emerging trends in HR?
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Key trends include AI-powered recruitment tools, people analytics, employee experience focus, remote work management, diversity & inclusion initiatives, mental health and wellness programs, continuous performance management, and HR automation. Staying updated with these trends is crucial for career advancement.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <p>&copy; 2024 GoFarAsYouCan. Empowering your human resources journey.</p>
+            
+        </div>
+    </footer>
+
+    <script>
+        // FAQ Accordion Functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const faqItems = document.querySelectorAll('.faq-item');
+            
+            faqItems.forEach(item => {
+                const question = item.querySelector('.faq-question');
+                
+                question.addEventListener('click', () => {
+                    const isActive = item.classList.contains('active');
+                    
+                    // Close all other FAQ items
+                    faqItems.forEach(otherItem => {
+                        otherItem.classList.remove('active');
+                    });
+                    
+                    // Toggle current item
+                    if (!isActive) {
+                        item.classList.add('active');
+                    }
+                });
+            });
+        });
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>

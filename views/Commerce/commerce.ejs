@@ -1,0 +1,777 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Commerce - Shape Your Business Future</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" rel="stylesheet">
+
+    <style>
+        /* Reset basics */
+        body, h1, h2, h3, p, ul {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: #141424;
+            color: #d1d1e0;
+            overflow-x: hidden;
+        }
+
+        /* Navbar */
+        .navbar {
+            background: #16213e;
+            padding: 1rem 2rem;
+            color: #fff;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            animation: fadeInDown 1s ease-in-out;
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: #f39c12;
+            animation: slideInLeft 1s ease-in-out;
+        }
+
+        .back-button {
+            text-decoration: none;
+            color: #fff;
+            font-size: 1rem;
+            transition: color 0.3s ease;
+        }
+
+        .back-button:hover {
+            color: #f39c12;
+        }
+
+        /* Hero Section */
+        .hero {
+            text-align: center;
+            padding: 60px 20px;
+            color: #fff;
+            background: linear-gradient(135deg, #16213e, #1a1a2e);
+            animation: fadeIn 1.5s ease-in-out;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 15px;
+            animation: zoomIn 1s ease-in-out;
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            animation: fadeInUp 1.5s ease-in-out;
+        }
+
+        /* Streams Section */
+        .streams {
+            padding: 50px 20px;
+            text-align: center;
+            animation: fadeIn 1.5s ease-in-out;
+        }
+
+        .streams h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            color: #f39c12;
+        }
+
+        .stream-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+        }
+
+        .stream-card {
+            background: #16213e;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s, box-shadow 0.3s;
+            animation: fadeInUp 1s ease-in-out;
+            cursor: pointer;
+        }
+
+        .stream-card:hover {
+            transform: translateY(-10px) scale(1.05);
+            box-shadow: 0 12px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .stream-icon {
+            font-size: 2.5rem;
+            color: #f39c12;
+            margin-bottom: 10px;
+            animation: pulse 2s infinite;
+        }
+
+        /* Why Commerce Section */
+        .why-commerce {
+            background: #1a1a2e;
+            padding: 50px 20px;
+            text-align: center;
+            animation: fadeIn 1.5s ease-in-out;
+        }
+
+        .why-commerce h2 {
+            margin-bottom: 20px;
+            color: #f39c12;
+            animation: slideInRight 1s ease-in-out;
+        }
+
+        .why-commerce ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .why-commerce li {
+            font-size: 1.2rem;
+            margin: 10px 0;
+            color: #d1d1e0;
+            animation: fadeInLeft 1s ease-in-out;
+        }
+
+        .why-commerce i {
+            color: #f39c12;
+            margin-right: 10px;
+        }
+
+        /* Getting Started Section */
+        .getting-started {
+            background: #16213e;
+            padding: 50px 20px;
+            text-align: center;
+            animation: fadeIn 1.5s ease-in-out;
+        }
+
+        .getting-started h2 {
+            margin-bottom: 30px;
+            color: #f39c12;
+            animation: slideInRight 1s ease-in-out;
+        }
+
+        .steps-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin-top: 20px;
+        }
+
+        .step-card {
+            background: #1a1a2e;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s;
+            animation: fadeInUp 1s ease-in-out;
+        }
+
+        .step-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .step-number {
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+            line-height: 40px;
+            background: #f39c12;
+            color: #1a1a2e;
+            border-radius: 50%;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+
+        /* Career Paths Section */
+        .career-paths {
+            padding: 50px 20px;
+            text-align: center;
+            animation: fadeIn 1.5s ease-in-out;
+        }
+
+        .career-paths h2 {
+            margin-bottom: 30px;
+            color: #f39c12;
+            animation: slideInRight 1s ease-in-out;
+        }
+
+        .path-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 20px;
+        }
+
+        .path-card {
+            background: #16213e;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s;
+            animation: fadeInUp 1s ease-in-out;
+            text-align: left;
+        }
+
+        .path-card h3 {
+            color: #f39c12;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+        }
+
+        .path-card h3 i {
+            margin-right: 10px;
+        }
+
+        .path-card ul {
+            list-style: none;
+            padding-left: 10px;
+        }
+
+        .path-card li {
+            margin: 8px 0;
+            position: relative;
+            padding-left: 20px;
+        }
+
+        .path-card li:before {
+            content: "→";
+            position: absolute;
+            left: 0;
+            color: #f39c12;
+        }
+
+        /* Skills Section */
+        .skills-section {
+            background: #1a1a2e;
+            padding: 50px 20px;
+            text-align: center;
+            animation: fadeIn 1.5s ease-in-out;
+        }
+
+        .skills-section h2 {
+            margin-bottom: 30px;
+            color: #f39c12;
+            animation: slideInRight 1s ease-in-out;
+        }
+
+        .skills-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 20px;
+        }
+
+        .skill-card {
+            background: #16213e;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s;
+            animation: fadeInUp 1s ease-in-out;
+        }
+
+        .skill-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .skill-card h3 {
+            color: #f39c12;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .skill-card h3 i {
+            margin-right: 10px;
+            font-size: 1.5rem;
+        }
+
+        /* FAQ Section */
+        .faq-section {
+            background: #16213e;
+            padding: 50px 20px;
+            animation: fadeIn 1.5s ease-in-out;
+        }
+
+        .faq-section h2 {
+            text-align: center;
+            margin-bottom: 30px;
+            color: #f39c12;
+            animation: slideInRight 1s ease-in-out;
+        }
+
+        .faq-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .faq-item {
+            background: #1a1a2e;
+            margin-bottom: 15px;
+            border-radius: 8px;
+            overflow: hidden;
+            animation: fadeInUp 1s ease-in-out;
+        }
+
+        .faq-question {
+            padding: 15px 20px;
+            cursor: pointer;
+            font-weight: bold;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: background-color 0.3s;
+        }
+
+        .faq-question:hover {
+            background-color: #2c3e50;
+        }
+
+        .faq-answer {
+            padding: 0 20px;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out, padding 0.3s ease;
+        }
+
+        .faq-item.active .faq-answer {
+            padding: 15px 20px;
+            max-height: 500px;
+        }
+
+        .faq-toggle {
+            color: #f39c12;
+            font-size: 1.2rem;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 20px;
+            background: #16213e;
+            color: white;
+            margin-top: 40px;
+            animation: fadeInUp 1s ease-in-out;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .navbar {
+                padding: 1rem;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+
+            .streams h2, .getting-started h2, .career-paths h2, .faq-section h2, .skills-section h2 {
+                font-size: 2rem;
+            }
+
+            .stream-card, .step-card, .path-card, .skill-card {
+                padding: 15px;
+            }
+
+            .stream-icon {
+                font-size: 2rem;
+            }
+
+            .logo {
+                font-size: 1.5rem;
+            }
+
+            .back-button {
+                font-size: 0.9rem;
+            }
+
+            .why-commerce h2 {
+                font-size: 2rem;
+            }
+
+            .why-commerce li {
+                font-size: 1rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .navbar {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero p {
+                font-size: 0.9rem;
+            }
+
+            .streams h2, .getting-started h2, .career-paths h2, .faq-section h2, .skills-section h2 {
+                font-size: 1.8rem;
+            }
+
+            .stream-card, .step-card, .path-card, .skill-card {
+                padding: 10px;
+            }
+
+            .stream-icon {
+                font-size: 1.8rem;
+            }
+
+            .why-commerce h2 {
+                font-size: 1.8rem;
+            }
+
+            .why-commerce li {
+                font-size: 0.9rem;
+            }
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes fadeInDown {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes slideInLeft {
+            from { opacity: 0; transform: translateX(-100px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+
+        @keyframes slideInRight {
+            from { opacity: 0; transform: translateX(100px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+
+        @keyframes zoomIn {
+            from { opacity: 0; transform: scale(0.8); }
+            to { opacity: 1; transform: scale(1); }
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+
+        @keyframes fadeInLeft {
+            from { opacity: 0; transform: translateX(-20px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <h1 class="logo">GoFarAsYouCan</h1>
+            <a href="/dashboard" class="back-button"><i class="fas fa-arrow-left"></i> Back to Dashboard</a>
+        </div>
+    </nav>
+
+    <div class="hero">
+        <h1>Commerce Excellence</h1>
+        <p>Lead. Manage. Innovate. Shape the business world of tomorrow.</p>
+    </div>
+
+    <section class="streams">
+        <h2>Popular Commerce Streams</h2>
+        <div class="stream-cards">
+            <a href="/Commerce/accounting.ejs" style="color: white; text-decoration: none;">
+                <div class="stream-card">
+                <i class="fas fa-chart-line stream-icon"></i>
+                <h3>Accounting & Finance</h3>
+                <p>Master financial management, auditing, and become a CA, CMA, or financial analyst.</p>
+            </div>
+            </a>
+
+            <a href="/Commerce/marketing.ejs" style="color: white; text-decoration: none;">
+                <div class="stream-card">
+                <i class="fas fa-bullhorn stream-icon"></i>
+                <h3>Marketing & Sales</h3>
+                <p>Create compelling campaigns, understand consumer behavior, and drive business growth.</p>
+            </div>
+            </a>
+
+            <a href="/Commerce/humanResource.ejs" style="color: white; text-decoration: none;">
+                <div class="stream-card">
+                <i class="fas fa-users stream-icon"></i>
+                <h3>Human Resources</h3>
+                <p>Manage talent, build organizational culture, and drive employee engagement.</p>
+            </div>
+            </a>
+
+            <a href="/Commerce/business.ejs" style="color: white; text-decoration: none;">
+                <div class="stream-card">
+                <i class="fas fa-briefcase stream-icon"></i>
+                <h3>Business Management</h3>
+                <p>Lead organizations, make strategic decisions, and drive business success through MBA.</p>
+            </div>
+            </a>
+
+            <a href="/Commerce/international.ejs" style="color: white; text-decoration: none;">
+                <div class="stream-card">
+                <i class="fas fa-globe stream-icon"></i>
+                <h3>International Business</h3>
+                <p>Navigate global markets, manage cross-border operations, and expand businesses worldwide.</p>
+            </div>
+            </a>
+
+            <a href="/Commerce/banking.ejs" style="color: white; text-decoration: none;">
+                <div class="stream-card">
+                <i class="fas fa-handshake stream-icon"></i>
+                <h3>Banking & Insurance</h3>
+                <p>Work in financial institutions, manage risk, and provide financial security solutions.</p>
+            </div>
+            </a>
+        </div>
+    </section>
+
+    <section class="why-commerce">
+        <h2>Why Choose Commerce?</h2>
+        <ul>
+            <li><i class="fas fa-check-circle"></i> Diverse career opportunities across all industries.</li>
+            <li><i class="fas fa-check-circle"></i> High earning potential with professional certifications.</li>
+            <li><i class="fas fa-check-circle"></i> Entrepreneurship opportunities and business ownership.</li>
+            <li><i class="fas fa-check-circle"></i> Essential skills for any business or organization.</li>
+            <li><i class="fas fa-check-circle"></i> Global career prospects and mobility.</li>
+        </ul>
+    </section>
+
+    <section class="getting-started">
+        <h2>Getting Started with Commerce</h2>
+        <p>For 12th grade students and those planning their commerce journey</p>
+        
+        <div class="steps-container">
+            <div class="step-card">
+                <div class="step-number">1</div>
+                <h3>Choose Your Undergraduate Path</h3>
+                <p>Select from B.Com, BBA, BMS, or specialized programs like B.Com (Hons) in Accounting, Finance, or Marketing based on your interests.</p>
+                <p><strong>Tip:</strong> Research college placement records and industry connections before choosing.</p>
+            </div>
+            
+            <div class="step-card">
+                <div class="step-number">2</div>
+                <h3>Build Core Skills Early</h3>
+                <p>Develop strong analytical, communication, and digital skills. Learn Excel, basic accounting principles, and business fundamentals.</p>
+                <p><strong>Tip:</strong> Take online courses in digital marketing, financial literacy, and business communication.</p>
+            </div>
+            
+            <div class="step-card">
+                <div class="step-number">3</div>
+                <h3>Plan Professional Certifications</h3>
+                <p>Identify relevant certifications like CA, CS, CMA, CFA, or digital marketing certifications that align with your career goals.</p>
+                <p><strong>Tip:</strong> Start preparing for entrance exams like CAT, CLAT, or professional course exams early.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="skills-section">
+        <h2>Essential Skills for Commerce Success</h2>
+        
+        <div class="skills-container">
+            <div class="skill-card">
+                <h3><i class="fas fa-calculator"></i> Financial Literacy</h3>
+                <p>Understanding financial statements, budgeting, investment analysis, and financial planning fundamentals.</p>
+            </div>
+            
+            <div class="skill-card">
+                <h3><i class="fas fa-chart-bar"></i> Data Analysis</h3>
+                <p>Excel proficiency, basic statistics, data interpretation, and business intelligence tools.</p>
+            </div>
+            
+            <div class="skill-card">
+                <h3><i class="fas fa-comments"></i> Communication</h3>
+                <p>Business writing, presentation skills, negotiation, and interpersonal communication.</p>
+            </div>
+            
+            <div class="skill-card">
+                <h3><i class="fas fa-laptop"></i> Digital Skills</h3>
+                <p>Digital marketing, e-commerce, social media management, and basic understanding of business software.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="career-paths">
+        <h2>Commerce Career Paths for Freshers</h2>
+        
+        <div class="path-container">
+            <div class="path-card">
+                <h3><i class="fas fa-university"></i> Professional Services</h3>
+                <ul>
+                    <li>Chartered Accountancy (CA) - Audit, Tax, Advisory</li>
+                    <li>Company Secretary (CS) - Corporate Governance</li>
+                    <li>Cost & Management Accountant (CMA)</li>
+                    <li>Average starting salary: ₹4-8 lakhs per annum</li>
+                    <li>High growth potential with experience and expertise</li>
+                </ul>
+            </div>
+            
+            <div class="path-card">
+                <h3><i class="fas fa-building"></i> Corporate Sector</h3>
+                <ul>
+                    <li>Financial Analyst, Marketing Executive, HR Associate</li>
+                    <li>Business Development, Operations Management</li>
+                    <li>Work with MNCs, startups, and established companies</li>
+                    <li>Average starting salary: ₹3-6 lakhs per annum</li>
+                    <li>Rapid career progression opportunities</li>
+                </ul>
+            </div>
+            
+            <div class="path-card">
+                <h3><i class="fas fa-graduation-cap"></i> Higher Education & Specialization</h3>
+                <ul>
+                    <li>MBA from top B-schools (IIMs, ISB, etc.)</li>
+                    <li>Specialized masters in Finance, Marketing, HR</li>
+                    <li>International programs (CFA, ACCA, etc.)</li>
+                    <li>Post-MBA salary: ₹8-25 lakhs per annum</li>
+                    <li>Leadership and C-suite career paths</li>
+                </ul>
+            </div>
+            
+            <div class="path-card">
+                <h3><i class="fas fa-rocket"></i> Entrepreneurship & Startups</h3>
+                <ul>
+                    <li>Start your own business or consultancy</li>
+                    <li>Join early-stage startups in business roles</li>
+                    <li>E-commerce, fintech, and service businesses</li>
+                    <li>Variable income with high growth potential</li>
+                    <li>Government schemes and funding support available</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section class="faq-section">
+        <h2>FAQs for Commerce Aspirants</h2>
+        
+        <div class="faq-container">
+            <div class="faq-item">
+                <div class="faq-question">
+                    Is commerce only about accounting and finance?
+                    <span class="faq-toggle">+</span>
+                </div>
+                <div class="faq-answer">
+                    <p>Not at all! Commerce covers diverse areas including marketing, human resources, international business, entrepreneurship, digital marketing, business analytics, and much more. It's a versatile field with opportunities across all business functions.</p>
+                </div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question">
+                    Can I get a high-paying job without CA or MBA?
+                    <span class="faq-toggle">+</span>
+                </div>
+                <div class="faq-answer">
+                    <p>Yes! Many commerce graduates build successful careers through specialized skills, certifications, and experience. Digital marketing, business analysis, sales, and operations roles offer excellent growth. Professional certifications like CFA, FRM, or digital marketing can boost your career significantly.</p>
+                </div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question">
+                    Which is better: CA or MBA?
+                    <span class="faq-toggle">+</span>
+                </div>
+                <div class="faq-answer">
+                    <p>Both have different career paths. CA offers deep expertise in accounting, taxation, and audit with excellent job security. MBA provides broader business knowledge and leadership opportunities. Your choice should depend on your interests, career goals, and preferred work environment.</p>
+                </div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question">
+                    How important is mathematics for commerce students?
+                    <span class="faq-toggle">+</span>
+                </div>
+                <div class="faq-answer">
+                    <p>Basic mathematics is important for commerce, especially for finance and accounting roles. However, you don't need advanced mathematics. Focus on statistics, basic calculus, and financial mathematics. Many successful commerce professionals come from non-math backgrounds.</p>
+                </div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question">
+                    What are the emerging opportunities in commerce?
+                    <span class="faq-toggle">+</span>
+                </div>
+                <div class="faq-answer">
+                    <p>Digital transformation has created new opportunities: Digital Marketing, E-commerce Management, Business Analytics, Fintech, Cryptocurrency & Blockchain, Sustainability Consulting, and Social Media Management. These fields offer excellent growth prospects for commerce graduates.</p>
+                </div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question">
+                    Can I switch from commerce to other fields later?
+                    <span class="faq-toggle">+</span>
+                </div>
+                <div class="faq-answer">
+                    <p>Commerce provides a strong foundation for various fields. You can transition to law (through CLAT), civil services (UPSC), journalism, teaching, or even tech roles through additional training. The analytical and communication skills from commerce are valuable everywhere.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>💼 Shape Your Business Future | Lead with Confidence</p>
+    </footer>
+
+    <script>
+        // FAQ accordion functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const faqItems = document.querySelectorAll('.faq-item');
+            
+            faqItems.forEach(item => {
+                const question = item.querySelector('.faq-question');
+                
+                question.addEventListener('click', () => {
+                    // Close other open items
+                    faqItems.forEach(otherItem => {
+                        if (otherItem !== item && otherItem.classList.contains('active')) {
+                            otherItem.classList.remove('active');
+                            const otherToggle = otherItem.querySelector('.faq-toggle');
+                            otherToggle.textContent = '+';
+                        }
+                    });
+                    
+                    // Toggle current item
+                    item.classList.toggle('active');
+                    
+                    // Change the toggle symbol
+                    const toggle = question.querySelector('.faq-toggle');
+                    toggle.textContent = item.classList.contains('active') ? '-' : '+';
+                });
+            });
+        });
+
+        // Stream card click tracking
+        document.querySelectorAll('.stream-card').forEach(card => {
+            card.addEventListener('click', function() {
+                const streamName = this.querySelector('h3').textContent;
+                console.log(`Clicked on: ${streamName}`);
+            });
+        });
+    </script>
+</body>
+</html>

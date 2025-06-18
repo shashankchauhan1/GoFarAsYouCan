@@ -1,0 +1,1234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>International Business - Navigate Global Markets</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <style>
+        /* Reset and Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #0f766e 100%);
+            color: #f1f5f9;
+            line-height: 1.6;
+            overflow-x: hidden;
+            min-height: 100vh;
+        }
+
+        /* Navigation */
+        .navbar {
+            background: rgba(15, 23, 42, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid rgba(20, 184, 166, 0.2);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #14b8a6;
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: #f1f5f9;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: #14b8a6;
+        }
+
+        .back-button {
+            color: #f1f5f9;
+            padding: 0.5rem 1rem;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            /* border: 1px solid rgba(20, 184, 166, 0.3); */
+        }
+
+        .back-button:hover {
+            color: #14b8a6;
+            border-color: #14b8a6;
+            background: rgba(20, 184, 166, 0.1);
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 120px 0 80px;
+            text-align: center;
+            background: linear-gradient(135deg, rgba(15, 23, 42, 0.9) 0%, rgba(30, 41, 59, 0.8) 50%, rgba(15, 118, 110, 0.9) 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grid" width="10" height="10" patternUnits="userSpaceOnUse"><path d="M 10 0 L 0 0 0 10" fill="none" stroke="rgba(20,184,166,0.1)" stroke-width="0.5"/></pattern></defs><rect width="100" height="100" fill="url(%23grid)"/></svg>');
+            opacity: 0.3;
+        }
+
+        .hero-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            margin-bottom: 1.5rem;
+            color: #ffffff;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            color: #cbd5e1;
+            margin-bottom: 3rem;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .hero-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .stat-card {
+            background: rgba(20, 184, 166, 0.1);
+            border: 1px solid rgba(20, 184, 166, 0.3);
+            border-radius: 12px;
+            padding: 2rem;
+            text-align: center;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+        }
+
+        .stat-card:hover {
+            border-color: #14b8a6;
+            transform: translateY(-5px);
+            background: rgba(20, 184, 166, 0.15);
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: #14b8a6;
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            color: #cbd5e1;
+            font-size: 1rem;
+            font-weight: 500;
+        }
+
+        /* Main Content */
+        .main-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* Section Styles */
+        .section {
+            padding: 4rem 0;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #ffffff;
+            margin-bottom: 1rem;
+        }
+
+        .section-subtitle {
+            font-size: 1.1rem;
+            color: #cbd5e1;
+            max-width: 700px;
+            margin: 0 auto;
+            line-height: 1.7;
+        }
+
+        /* Career Paths */
+        .career-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .career-card {
+            background: rgba(30, 41, 59, 0.8);
+            border: 1px solid rgba(20, 184, 166, 0.2);
+            border-radius: 12px;
+            padding: 2rem;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+        }
+
+        .career-card:hover {
+            border-color: #14b8a6;
+            transform: translateY(-5px);
+            background: rgba(30, 41, 59, 0.9);
+        }
+
+        .career-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #14b8a6, #0d9488);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .career-icon i {
+            font-size: 1.5rem;
+            color: white;
+        }
+
+        .career-title {
+            font-size: 1.4rem;
+            font-weight: 600;
+            color: #ffffff;
+            margin-bottom: 1rem;
+        }
+
+        .career-description {
+            color: #cbd5e1;
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+        }
+
+        .career-features {
+            list-style: none;
+            margin-bottom: 1.5rem;
+        }
+
+        .career-features li {
+            color: #f1f5f9;
+            margin-bottom: 0.5rem;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .career-features li::before {
+            content: '•';
+            position: absolute;
+            left: 0;
+            color: #14b8a6;
+            font-weight: bold;
+        }
+
+        .salary-info {
+            background: rgba(15, 23, 42, 0.8);
+            border: 1px solid rgba(20, 184, 166, 0.3);
+            border-radius: 8px;
+            padding: 1rem;
+            text-align: center;
+        }
+
+        .salary-label {
+            font-size: 0.9rem;
+            color: #cbd5e1;
+            margin-bottom: 0.5rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .salary-range {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: #14b8a6;
+        }
+
+        /* Skills Section */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .skill-card {
+            background: rgba(30, 41, 59, 0.8);
+            border: 1px solid rgba(20, 184, 166, 0.2);
+            border-radius: 12px;
+            padding: 2rem;
+            text-align: center;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+        }
+
+        .skill-card:hover {
+            border-color: #14b8a6;
+            transform: translateY(-5px);
+        }
+
+        .skill-icon {
+            font-size: 2.5rem;
+            color: #14b8a6;
+            margin-bottom: 1.5rem;
+        }
+
+        .skill-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: #ffffff;
+            margin-bottom: 1rem;
+        }
+
+        .skill-description {
+            color: #cbd5e1;
+            line-height: 1.6;
+        }
+
+        /* Programs Section */
+        .programs {
+            margin: 2rem 0;
+        }
+
+        .program-card {
+            background: rgba(30, 41, 59, 0.8);
+            border: 1px solid rgba(20, 184, 166, 0.2);
+            border-radius: 12px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+        }
+
+        .program-card:hover {
+            border-color: #14b8a6;
+            transform: translateY(-5px);
+        }
+
+        .program-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .program-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #14b8a6, #0d9488);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 1.5rem;
+            flex-shrink: 0;
+        }
+
+        .program-icon i {
+            font-size: 1.5rem;
+            color: white;
+        }
+
+        .program-title-area h3 {
+            font-size: 1.4rem;
+            font-weight: 600;
+            color: #ffffff;
+            margin-bottom: 0.5rem;
+        }
+
+        .program-title-area p {
+            color: #cbd5e1;
+            font-size: 0.9rem;
+        }
+
+        .program-details {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .program-detail {
+            background: rgba(15, 23, 42, 0.8);
+            border: 1px solid rgba(20, 184, 166, 0.3);
+            border-radius: 8px;
+            padding: 1rem;
+            text-align: center;
+        }
+
+        .detail-label {
+            font-size: 0.8rem;
+            color: #cbd5e1;
+            margin-bottom: 0.5rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .detail-value {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #14b8a6;
+        }
+
+        .program-description {
+            color: #cbd5e1;
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+        }
+
+        .program-features {
+            list-style: none;
+            margin-bottom: 1.5rem;
+        }
+
+        .program-features li {
+            color: #f1f5f9;
+            margin-bottom: 0.5rem;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .program-features li::before {
+            content: '•';
+            position: absolute;
+            left: 0;
+            color: #14b8a6;
+            font-weight: bold;
+        }
+
+        /* Roadmap Section */
+        .roadmap {
+            margin: 2rem 0;
+        }
+
+        .roadmap-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 2rem;
+            background: rgba(30, 41, 59, 0.8);
+            border: 1px solid rgba(20, 184, 166, 0.2);
+            border-radius: 12px;
+            padding: 2rem;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+        }
+
+        .roadmap-item:hover {
+            border-color: #14b8a6;
+            transform: translateY(-5px);
+        }
+
+        .roadmap-number {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, #14b8a6, #0d9488);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            color: white;
+            margin-right: 1.5rem;
+            flex-shrink: 0;
+        }
+
+        .roadmap-content {
+            flex: 1;
+        }
+
+        .roadmap-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: #ffffff;
+            margin-bottom: 0.5rem;
+        }
+
+        .roadmap-description {
+            color: #cbd5e1;
+            margin-bottom: 1rem;
+        }
+
+        .roadmap-details {
+            background: rgba(15, 23, 42, 0.8);
+            border-left: 4px solid #14b8a6;
+            border-radius: 6px;
+            padding: 1rem;
+        }
+
+        .roadmap-details p {
+            margin-bottom: 0.5rem;
+            color: #f1f5f9;
+        }
+
+        .roadmap-details strong {
+            color: #14b8a6;
+        }
+
+        /* FAQ Section */
+        .faq-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .faq-item {
+            background: rgba(30, 41, 59, 0.8);
+            border: 1px solid rgba(20, 184, 166, 0.2);
+            border-radius: 12px;
+            margin-bottom: 1rem;
+            overflow: hidden;
+            backdrop-filter: blur(10px);
+        }
+
+        .faq-question {
+            padding: 1.5rem;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 600;
+            color: #ffffff;
+            transition: background-color 0.3s ease;
+        }
+
+        .faq-question:hover {
+            background: rgba(15, 23, 42, 0.8);
+        }
+
+        .faq-toggle {
+            color: #14b8a6;
+            font-size: 1.2rem;
+            transition: transform 0.3s ease;
+        }
+
+        .faq-item.active .faq-toggle {
+            transform: rotate(45deg);
+        }
+
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease, padding 0.3s ease;
+        }
+
+        .faq-item.active .faq-answer {
+            max-height: 300px;
+            padding: 0 1.5rem 1.5rem;
+        }
+
+        .faq-answer p {
+            color: #cbd5e1;
+            line-height: 1.7;
+        }
+
+        /* Footer */
+        .footer {
+            background: rgba(15, 23, 42, 0.95);
+            border-top: 1px solid rgba(20, 184, 166, 0.2);
+            padding: 2rem 0;
+            text-align: center;
+            margin-top: 4rem;
+            backdrop-filter: blur(10px);
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .footer p {
+            color: #cbd5e1;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-container {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero p {
+                font-size: 1.1rem;
+            }
+
+            .hero-stats {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 1rem;
+            }
+
+            .main-content {
+                padding: 0 1rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .career-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .skills-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .roadmap-item {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .roadmap-number {
+                margin: 0 auto 1rem;
+            }
+
+            .program-header {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .program-icon {
+                margin: 0 auto 1rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero-stats {
+                grid-template-columns: 1fr;
+            }
+
+            .skills-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .section {
+                padding: 3rem 0;
+            }
+
+            .program-details {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="#" class="logo">GoFarAsYouCan</a>
+            <ul class="nav-links">
+                <li><a href="#overview">Overview</a></li>
+                <li><a href="#careers">Careers</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#programs">Programs</a></li>
+                <li><a href="#roadmap">Roadmap</a></li>
+                <li><a href="#faq">FAQ</a></li>
+            </ul>
+            <a href="/Commerce/commerce.ejs" class="back-button">
+                <i class="fas fa-arrow-left"></i> Back to Commerce
+            </a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>International Business</h1>
+            <p>Navigate global markets, manage cross-border operations, and expand businesses worldwide. Build a career that spans continents and cultures.</p>
+            
+            <div class="hero-stats">
+                <div class="stat-card">
+                    <span class="stat-number">₹8-50L+</span>
+                    <span class="stat-label">Global Salary Range</span>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-number">195</span>
+                    <span class="stat-label">Countries to Work</span>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-number">92%</span>
+                    <span class="stat-label">Employment Rate</span>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-number">Global</span>
+                    <span class="stat-label">Career Scope</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="main-content">
+        <!-- Overview Section -->
+        <section id="overview" class="section">
+            <div class="section-header">
+                <h2 class="section-title">Why Choose International Business?</h2>
+                <p class="section-subtitle">International Business opens doors to global opportunities, cross-cultural experiences, and the chance to work with multinational corporations across diverse markets and economies.</p>
+            </div>
+
+            <div class="skills-grid">
+                <div class="skill-card">
+                    <i class="fas fa-globe-americas skill-icon"></i>
+                    <h3 class="skill-title">Global Opportunities</h3>
+                    <p class="skill-description">Work across continents with multinational corporations, international organizations, and global consulting firms.</p>
+                </div>
+                <div class="skill-card">
+                    <i class="fas fa-language skill-icon"></i>
+                    <h3 class="skill-title">Cultural Intelligence</h3>
+                    <p class="skill-description">Develop cross-cultural communication skills and understanding of diverse business practices worldwide.</p>
+                </div>
+                <div class="skill-card">
+                    <i class="fas fa-project-diagram skill-icon"></i>
+                    <h3 class="skill-title">Strategic Thinking</h3>
+                    <p class="skill-description">Master complex global strategies, international trade policies, and cross-border business operations.</p>
+                </div>
+                <div class="skill-card">
+                    <i class="fas fa-handshake skill-icon"></i>
+                    <h3 class="skill-title">Networking</h3>
+                    <p class="skill-description">Build international professional networks and establish relationships across global business communities.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Career Paths Section -->
+        <section id="careers" class="section">
+            <div class="section-header">
+                <h2 class="section-title">Career Paths in International Business</h2>
+                <p class="section-subtitle">Explore diverse global career opportunities across industries, from multinational corporations to international trade organizations.</p>
+            </div>
+
+            <div class="career-grid">
+                <div class="career-card">
+                    <div class="career-icon">
+                        <i class="fas fa-shipping-fast"></i>
+                    </div>
+                    <h3 class="career-title">International Trade</h3>
+                    <p class="career-description">Manage import/export operations, trade compliance, and global supply chain logistics for multinational companies.</p>
+                    <ul class="career-features">
+                        <li>Export-Import Management</li>
+                        <li>Trade Compliance & Documentation</li>
+                        <li>Global Supply Chain Optimization</li>
+                        <li>Customs & Regulatory Affairs</li>
+                        <li>International Logistics Coordination</li>
+                        <li>Trade Finance Management</li>
+                    </ul>
+                    <div class="salary-info">
+                        <div class="salary-label">Salary Range</div>
+                        <div class="salary-range">₹6-25 Lakhs per annum</div>
+                    </div>
+                </div>
+
+                <div class="career-card">
+                    <div class="career-icon">
+                        <i class="fas fa-building"></i>
+                    </div>
+                    <h3 class="career-title">Multinational Corporation Management</h3>
+                    <p class="career-description">Lead business operations across multiple countries, managing diverse teams and complex international strategies.</p>
+                    <ul class="career-features">
+                        <li>Global Business Strategy</li>
+                        <li>Cross-Cultural Team Leadership</li>
+                        <li>International Market Entry</li>
+                        <li>Regional Business Development</li>
+                        <li>Global Operations Management</li>
+                        <li>International Partnership Development</li>
+                    </ul>
+                    <div class="salary-info">
+                        <div class="salary-label">Salary Range</div>
+                        <div class="salary-range">₹15-50+ Lakhs per annum</div>
+                    </div>
+                </div>
+
+                <div class="career-card">
+                    <div class="career-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3 class="career-title">International Marketing</h3>
+                    <p class="career-description">Develop and execute marketing strategies for global markets, adapting campaigns for diverse cultural contexts.</p>
+                    <ul class="career-features">
+                        <li>Global Brand Management</li>
+                        <li>Cross-Cultural Marketing Campaigns</li>
+                        <li>International Market Research</li>
+                        <li>Digital Marketing for Global Audiences</li>
+                        <li>Localization Strategy</li>
+                        <li>Global Product Launch Management</li>
+                    </ul>
+                    <div class="salary-info">
+                        <div class="salary-label">Salary Range</div>
+                        <div class="salary-range">₹8-30 Lakhs per annum</div>
+                    </div>
+                </div>
+
+                <div class="career-card">
+                    <div class="career-icon">
+                        <i class="fas fa-university"></i>
+                    </div>
+                    <h3 class="career-title">International Organizations</h3>
+                    <p class="career-description">Work with UN agencies, World Bank, IMF, and other international bodies on global development and policy initiatives.</p>
+                    <ul class="career-features">
+                        <li>International Development Programs</li>
+                        <li>Policy Analysis & Research</li>
+                        <li>Global Economic Analysis</li>
+                        <li>International Relations</li>
+                        <li>Cross-Border Project Management</li>
+                        <li>Diplomatic & Government Relations</li>
+                    </ul>
+                    <div class="salary-info">
+                        <div class="salary-label">Salary Range</div>
+                        <div class="salary-range">₹10-40 Lakhs per annum</div>
+                    </div>
+                </div>
+
+                <div class="career-card">
+                    <div class="career-icon">
+                        <i class="fas fa-coins"></i>
+                    </div>
+                    <h3 class="career-title">International Finance</h3>
+                    <p class="career-description">Manage global financial operations, foreign exchange, international investments, and cross-border transactions.</p>
+                    <ul class="career-features">
+                        <li>Foreign Exchange Management</li>
+                        <li>International Investment Analysis</li>
+                        <li>Cross-Border M&A</li>
+                        <li>Global Financial Risk Management</li>
+                        <li>International Banking Operations</li>
+                        <li>Trade Finance & Letters of Credit</li>
+                    </ul>
+                    <div class="salary-info">
+                        <div class="salary-label">Salary Range</div>
+                        <div class="salary-range">₹12-45 Lakhs per annum</div>
+                    </div>
+                </div>
+
+                <div class="career-card">
+                    <div class="career-icon">
+                        <i class="fas fa-users-cog"></i>
+                    </div>
+                    <h3 class="career-title">International Consulting</h3>
+                    <p class="career-description">Advise companies on global expansion, market entry strategies, and international business optimization.</p>
+                    <ul class="career-features">
+                        <li>Market Entry Strategy</li>
+                        <li>Global Business Transformation</li>
+                        <li>International Regulatory Compliance</li>
+                        <li>Cross-Border Due Diligence</li>
+                        <li>Global Operations Optimization</li>
+                        <li>International Partnership Strategy</li>
+                    </ul>
+                    <div class="salary-info">
+                        <div class="salary-label">Salary Range</div>
+                        <div class="salary-range">₹12-50+ Lakhs per annum</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Skills Section -->
+        <section id="skills" class="section">
+            <div class="section-header">
+                <h2 class="section-title">Essential Skills for International Business</h2>
+                <p class="section-subtitle">Master these critical competencies to excel in global business environments and international markets.</p>
+            </div>
+
+            <div class="skills-grid">
+                <div class="skill-card">
+                    <i class="fas fa-globe skill-icon"></i>
+                    <h3 class="skill-title">Global Awareness</h3>
+                    <p class="skill-description">Understanding of international markets, geopolitical factors, and global economic trends affecting business.</p>
+                </div>
+                <div class="skill-card">
+                    <i class="fas fa-comments skill-icon"></i>
+                    <h3 class="skill-title">Cross-Cultural Communication</h3>
+                    <p class="skill-description">Ability to communicate effectively across cultures, languages, and business practices in diverse environments.</p>
+                </div>
+                <div class="skill-card">
+                    <i class="fas fa-balance-scale skill-icon"></i>
+                    <h3 class="skill-title">International Law & Compliance</h3>
+                    <p class="skill-description">Knowledge of international trade laws, regulations, and compliance requirements across different jurisdictions.</p>
+                </div>
+                <div class="skill-card">
+                    <i class="fas fa-exchange-alt skill-icon"></i>
+                    <h3 class="skill-title">Foreign Exchange</h3>
+                    <p class="skill-description">Understanding of currency markets, exchange rate risks, and international financial instruments.</p>
+                </div>
+                <div class="skill-card">
+                    <i class="fas fa-network-wired skill-icon"></i>
+                    <h3 class="skill-title">Supply Chain Management</h3>
+                    <p class="skill-description">Managing complex global supply chains, logistics, and international distribution networks.</p>
+                </div>
+                <div class="skill-card">
+                    <i class="fas fa-handshake skill-icon"></i>
+                    <h3 class="skill-title">Negotiation</h3>
+                    <p class="skill-description">Advanced negotiation skills for international contracts, partnerships, and cross-border business deals.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Programs Section -->
+        <section id="programs" class="section">
+            <div class="section-header">
+                <h2 class="section-title">International Business Programs</h2>
+                <p class="section-subtitle">Explore specialized programs and degrees designed to prepare you for global business careers.</p>
+            </div>
+
+            <div class="programs">
+                <div class="program-card">
+                    <div class="program-header">
+                        <div class="program-icon">
+                            <i class="fas fa-graduation-cap"></i>
+                        </div>
+                        <div class="program-title-area">
+                            <h3>MBA in International Business</h3>
+                            <p>Comprehensive global business education with international exposure</p>
+                        </div>
+                    </div>
+                    <div class="program-details">
+                        <div class="program-detail">
+                            <div class="detail-label">Duration</div>
+                            <div class="detail-value">2 Years</div>
+                        </div>
+                        <div class="program-detail">
+                            <div class="detail-label">Average Placement</div>
+                            <div class="detail-value">₹18-35 LPA</div>
+                        </div>
+                        <div class="program-detail">
+                            <div class="detail-label">Global Exposure</div>
+                            <div class="detail-value">Mandatory</div>
+                        </div>
+                        <div class="program-detail">
+                            <div class="detail-label">Language Req.</div>
+                            <div class="detail-value">English + 1</div>
+                        </div>
+                    </div>
+                    <p class="program-description">Specialized MBA programs focusing on global business strategies, international trade, cross-cultural management, and global market dynamics. Many programs include mandatory international immersion experiences.</p>
+                    <ul class="program-features">
+                        <li>International business strategy and global market analysis</li>
+                        <li>Cross-cultural management and international leadership</li>
+                        <li>Global supply chain and operations management</li>
+                        <li>International finance and foreign exchange management</li>
+                        <li>Study abroad opportunities and global immersion programs</li>
+                    </ul>
+                </div>
+
+                <div class="program-card">
+                    <div class="program-header">
+                        <div class="program-icon">
+                            <i class="fas fa-certificate"></i>
+                        </div>
+                        <div class="program-title-area">
+                            <h3>International Trade Certifications</h3>
+                            <p>Professional certifications in global trade and logistics</p>
+                        </div>
+                    </div>
+                    <div class="program-details">
+                        <div class="program-detail">
+                            <div class="detail-label">Duration</div>
+                            <div class="detail-value">6-12 Months</div>
+                        </div>
+                        <div class="program-detail">
+                            <div class="detail-label">Format</div>
+                            <div class="detail-value">Online/Hybrid</div>
+                        </div>
+                        <div class="program-detail">
+                            <div class="detail-label">Industry Recognition</div>
+                            <div class="detail-value">High</div>
+                        </div>
+                        <div class="program-detail">
+                            <div class="detail-label">Career Impact</div>
+                            <div class="detail-value">Immediate</div>
+                        </div>
+                    </div>
+                    <p class="program-description">Professional certifications from organizations like IATA, FIATA, and ICC that provide specialized knowledge in international trade, logistics, and global commerce operations.</p>
+                    <ul class="program-features">
+                        <li>Export-import procedures and documentation</li>
+                        <li>International logistics and supply chain management</li>
+                        <li>Trade finance and payment methods</li>
+                        <li>Customs regulations and compliance</li>
+                        <li>Industry-recognized credentials for immediate career advancement</li>
+                    </ul>
+                </div>
+
+                <div class="program-card">
+                    <div class="program-header">
+                        <div class="program-icon">
+                            <i class="fas fa-globe-europe"></i>
+                        </div>
+                        <div class="program-title-area">
+                            <h3>International Exchange Programs</h3>
+                            <p>Study abroad and cultural immersion opportunities</p>
+                        </div>
+                    </div>
+                    <div class="program-details">
+                        <div class="program-detail">
+                            <div class="detail-label">Duration</div>
+                            <div class="detail-value">6 Months - 2 Years</div>
+                        </div>
+                        <div class="program-detail">
+                            <div class="detail-label">Countries</div>
+                            <div class="detail-value">50+ Options</div>
+                        </div>
+                        <div class="program-detail">
+                            <div class="detail-label">Scholarships</div>
+                            <div class="detail-value">Available</div>
+                        </div>
+                        <div class="program-detail">
+                            <div class="detail-label">Career Boost</div>
+                            <div class="detail-value">Significant</div>
+                        </div>
+                    </div>
+                    <p class="program-description">International exchange programs and study abroad opportunities that provide firsthand experience in global business environments and cross-cultural competencies.</p>
+                    <ul class="program-features">
+                        <li>Immersive cultural and business experience</li>
+                        <li>Language proficiency development</li>
+                        <li>International networking opportunities</li>
+                        <li>Global perspective on business practices</li>
+                        <li>Enhanced employability with multinational corporations</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Roadmap Section -->
+        <section id="roadmap" class="section">
+            <div class="section-header">
+                <h2 class="section-title">Your International Business Career Journey</h2>
+                <p class="section-subtitle">Step-by-step roadmap to build a successful global business career with international exposure and expertise.</p>
+            </div>
+
+            <div class="roadmap">
+                <div class="roadmap-item">
+                    <div class="roadmap-number">1</div>
+                    <div class="roadmap-content">
+                        <h3 class="roadmap-title">Foundation & Language Skills (12th Grade & Beyond)</h3>
+                        <p class="roadmap-description">Build strong academic foundation and develop multilingual capabilities.</p>
+                        <div class="roadmap-details">
+                            <p><strong>Academic Focus:</strong> Commerce, Economics, Geography, Foreign Languages</p>
+                            <p><strong>Language Skills:</strong> English proficiency + 1-2 foreign languages</p>
+                            <p><strong>Cultural Exposure:</strong> International events, cultural exchanges, global news awareness</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="roadmap-item">
+                    <div class="roadmap-number">2</div>
+                    <div class="roadmap-content">
+                        <h3 class="roadmap-title">Undergraduate Education (3-4 Years)</h3>
+                        <p class="roadmap-description">Pursue business education with international focus and global exposure.</p>
+                        <div class="roadmap-details">
+                            <p><strong>Degree Options:</strong> BBA International Business, B.Com, Economics, International Relations</p>
+                            <p><strong>Global Exposure:</strong> Exchange programs, international internships, global case studies</p>
+                            <p><strong>Skill Development:</strong> Cross-cultural communication, international business law</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="roadmap-item">
+                    <div class="roadmap-number">3</div>
+                    <div class="roadmap-content">
+                        <h3 class="roadmap-title">International Experience & Certifications</h3>
+                        <p class="roadmap-description">Gain practical global business experience and professional certifications.</p>
+                        <div class="roadmap-details">
+                            <p><strong>Experience:</strong> International internships, export-import companies, MNC roles</p>
+                            <p><strong>Certifications:</strong> International trade, logistics, foreign exchange</p>
+                            <p><strong>Networking:</strong> Global business communities, international chambers of commerce</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="roadmap-item">
+                    <div class="roadmap-number">4</div>
+                    <div class="roadmap-content">
+                        <h3 class="roadmap-title">Advanced Education & Specialization</h3>
+                        <p class="roadmap-description">Pursue MBA or specialized master's programs with international focus.</p>
+                        <div class="roadmap-details">
+                            <p><strong>Program Options:</strong> MBA International Business, MS International Management</p>
+                            <p><strong>Global Immersion:</strong> Mandatory international projects, study abroad components</p>
+                            <p><strong>Specialization:</strong> Global strategy, international finance, cross-cultural management</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="roadmap-item">
+                    <div class="roadmap-number">5</div>
+                    <div class="roadmap-content">
+                        <h3 class="roadmap-title">Global Career & Leadership</h3>
+                        <p class="roadmap-description">Build international career with multinational corporations and global organizations.</p>
+                        <div class="roadmap-details">
+                            <p><strong>Career Path:</strong> International roles → Regional management → Global leadership</p>
+                            <p><strong>Mobility:</strong> Multiple country assignments, cross-cultural team leadership</p>
+                            <p><strong>Expertise:</strong> Global strategy, international market development, cross-border operations</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- FAQ Section -->
+        <section id="faq" class="section">
+            <div class="section-header">
+                <h2 class="section-title">Frequently Asked Questions</h2>
+                <p class="section-subtitle">Get answers to common questions about international business careers and global opportunities.</p>
+            </div>
+
+            <div class="faq-container">
+                <div class="faq-item">
+                    <div class="faq-question">
+                        Do I need to know multiple languages for international business?
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>While English is the primary language of international business, knowing additional languages is highly advantageous. Languages like Mandarin, Spanish, French, German, and Arabic can significantly enhance your career prospects. Many companies prefer candidates with multilingual abilities for regional roles. However, strong English proficiency combined with cultural intelligence can also lead to successful international careers.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        How much travel is involved in international business careers?
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Travel requirements vary significantly by role and company. Some positions involve 20-50% travel for client meetings, market research, and business development. Others may require relocating to different countries for 2-3 year assignments. Many modern international business roles leverage technology for virtual collaboration, reducing travel needs. You can often choose roles based on your travel preferences and life circumstances.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        What are the salary expectations for international business roles?
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Salaries in international business vary widely based on role, experience, and location. Entry-level positions typically start at ₹6-12 LPA in India, with rapid growth potential. Senior international roles can reach ₹25-50+ LPA. Working abroad often comes with additional benefits like housing allowances, international schooling, and tax advantages. Consulting and finance roles generally offer the highest compensation in this field.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        Is an MBA necessary for international business success?
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>While an MBA is not strictly necessary, it significantly accelerates career growth in international business. An MBA provides structured knowledge of global business practices, valuable international networks, and credibility with multinational employers. Many senior international roles prefer MBA graduates. However, exceptional performance, international experience, and specialized certifications can also lead to success without an MBA.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        Which countries offer the best opportunities for international business careers?
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Major global business hubs include Singapore, Hong Kong, Dubai, London, New York, and Shanghai. These cities offer numerous multinational corporations and international organizations. Emerging markets like India, Brazil, and Southeast Asian countries also provide excellent growth opportunities. The "best" location depends on your industry focus, language skills, and personal preferences for culture and lifestyle.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        How do I gain international experience early in my career?
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Start with international internships, exchange programs, or volunteer opportunities abroad. Join multinational companies in India that offer global exposure and rotation programs. Participate in international business competitions and case studies. Build relationships with international students and professionals. Consider roles in export-import companies, international trade organizations, or global consulting firms that provide immediate international exposure.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <p>&copy; 2024 GoFarAsYouCan. Connecting you to global opportunities.</p>
+        </div>
+    </footer>
+
+    <script>
+        // FAQ Accordion Functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const faqItems = document.querySelectorAll('.faq-item');
+            
+            faqItems.forEach(item => {
+                const question = item.querySelector('.faq-question');
+                
+                question.addEventListener('click', () => {
+                    const isActive = item.classList.contains('active');
+                    
+                    // Close all other FAQ items
+                    faqItems.forEach(otherItem => {
+                        otherItem.classList.remove('active');
+                    });
+                    
+                    // Toggle current item
+                    if (!isActive) {
+                        item.classList.add('active');
+                    }
+                });
+            });
+        });
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
