@@ -195,83 +195,83 @@ app.get("/Engineering/Electrical/power.ejs", authMiddleware, (req, res) => {
 });
 
 app.get("/Engineering/Electrical/electronics.ejs", authMiddleware, (req, res) => {
-    res.render("Engineering/Electrical/electronics", { userId: req.userId }); // Pass user data if needed
+    res.render("Engineering/Electrical/electronics", { userId: req.userId });
 });
 
 app.get("/Engineering/Electrical/signal.ejs", authMiddleware, (req, res) => {
-    res.render("Engineering/Electrical/signal", { userId: req.userId }); // Pass user data if needed
+    res.render("Engineering/Electrical/signal", { userId: req.userId }); 
 });
 
 app.get("/Engineering/Electrical/control.ejs", authMiddleware, (req, res) => {
-    res.render("Engineering/Electrical/control", { userId: req.userId }); // Pass user data if needed
+    res.render("Engineering/Electrical/control", { userId: req.userId }); 
 });
 
 app.get("/Engineering/Electrical/telecommunication.ejs", authMiddleware, (req, res) => {
-    res.render("Engineering/Electrical/telecommunication", { userId: req.userId }); // Pass user data if needed
+    res.render("Engineering/Electrical/telecommunication", { userId: req.userId });
 });
 
 app.get("/Engineering/Electrical/embedded.ejs", authMiddleware, (req, res) => {
-    res.render("Engineering/Electrical/embedded", { userId: req.userId }); // Pass user data if needed
+    res.render("Engineering/Electrical/embedded", { userId: req.userId });
 });
 
 // Chemical Engineering Routes
 
 app.get("/Engineering/Chemical/chemical.ejs", authMiddleware, (req, res) => {
-    res.render("Engineering/Chemical/chemical", { userId: req.userId }); // Pass user data if needed
+    res.render("Engineering/Chemical/chemical", { userId: req.userId });
 });
 
 app.get("/Engineering/Chemical/process.ejs", authMiddleware, (req, res) => {
-    res.render("Engineering/Chemical/process", { userId: req.userId }); // Pass user data if needed
+    res.render("Engineering/Chemical/process", { userId: req.userId }); 
 });
 
 app.get("/Engineering/Chemical/biochemical.ejs", authMiddleware, (req, res) => {
-    res.render("Engineering/Chemical/biochemical", { userId: req.userId }); // Pass user data if needed
+    res.render("Engineering/Chemical/biochemical", { userId: req.userId }); 
 });
 
 app.get("/Engineering/Chemical/petroleum.ejs", authMiddleware, (req, res) => {
-    res.render("Engineering/Chemical/petroleum", { userId: req.userId }); // Pass user data if needed
+    res.render("Engineering/Chemical/petroleum", { userId: req.userId }); 
 });
 
 app.get("/Engineering/Chemical/polymer.ejs", authMiddleware, (req, res) => {
-    res.render("Engineering/Chemical/polymer", { userId: req.userId }); // Pass user data if needed
+    res.render("Engineering/Chemical/polymer", { userId: req.userId });
 });
 
 app.get("/Engineering/Chemical/environmental.ejs", authMiddleware, (req, res) => {
-    res.render("Engineering/Chemical/environmental", { userId: req.userId }); // Pass user data if needed
+    res.render("Engineering/Chemical/environmental", { userId: req.userId });
 });
 
 app.get("/Engineering/Chemical/nanotech.ejs", authMiddleware, (req, res) => {
-    res.render("Engineering/Chemical/nanotech", { userId: req.userId }); // Pass user data if needed
+    res.render("Engineering/Chemical/nanotech", { userId: req.userId });
 });
 
 // Commerce section
 
 app.get("/Commerce/commerce.ejs", authMiddleware, (req, res) => {
-    res.render("Commerce/commerce", { userId: req.userId }); // Pass user data if needed
+    res.render("Commerce/commerce", { userId: req.userId }); 
 });
 
 app.get("/Commerce/accounting.ejs", authMiddleware, (req, res) => {
-    res.render("Commerce/accounting", { userId: req.userId }); // Pass user data if needed
+    res.render("Commerce/accounting", { userId: req.userId }); 
 });
 
 app.get("/Commerce/marketing.ejs", authMiddleware, (req, res) => {
-    res.render("Commerce/marketing", { userId: req.userId }); // Pass user data if needed
+    res.render("Commerce/marketing", { userId: req.userId }); 
 });
 
 app.get("/Commerce/humanResource.ejs", authMiddleware, (req, res) => {
-    res.render("Commerce/humanResource", { userId: req.userId }); // Pass user data if needed
+    res.render("Commerce/humanResource", { userId: req.userId }); 
 });
 
 app.get("/Commerce/business.ejs", authMiddleware, (req, res) => {
-    res.render("Commerce/business", { userId: req.userId }); // Pass user data if needed
+    res.render("Commerce/business", { userId: req.userId }); 
 });
 
 app.get("/Commerce/international.ejs", authMiddleware, (req, res) => {
-    res.render("Commerce/international", { userId: req.userId }); // Pass user data if needed
+    res.render("Commerce/international", { userId: req.userId }); 
 });
 
 app.get("/Commerce/banking.ejs", authMiddleware, (req, res) => {
-    res.render("Commerce/banking", { userId: req.userId }); // Pass user data if needed
+    res.render("Commerce/banking", { userId: req.userId }); 
 });
 
 // Resume Builder Route
